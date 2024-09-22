@@ -8,7 +8,7 @@ use File;
 use Lang;
 use View;
 use Config;
-use Schema;
+use Illuminate\Support\Facades\Schema;
 use SystemException;
 use RecursiveIteratorIterator;
 use RecursiveDirectoryIterator;
@@ -603,7 +603,7 @@ class PluginManager
             return;
         }
 
-        $disabled = Db::table('system_plugin_versions')->where('is_disabled', 1)->lists('code');
+        $disabled = Db::table('system_plugin_versions')->where('is_disabled', 1)->pluck('code');
 
         foreach ($disabled as $code) {
             $this->disabledPlugins[$code] = true;

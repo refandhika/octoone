@@ -5,6 +5,7 @@ use File;
 use Twig\Source as TwigSource;
 use Twig\Loader\LoaderInterface as TwigLoaderInterface;
 use Exception;
+use Cms\Classes\Theme;
 
 /**
  * This class implements a Twig template loader for the core system and backend.
@@ -33,6 +34,13 @@ class Loader implements TwigLoaderInterface
     {
         $finder = App::make('view')->getFinder();
 
+        $activeTheme = Theme::getActiveTheme()->getDirName();
+        $themePath = themes_path($activeTheme . '/pages');
+        
+        if (!in_array($themePath, $finder->getPaths())) {
+            $finder->addLocation($themePath);
+        }
+
         if (isset($this->cache[$name])) {
             return $this->cache[$name];
         }
@@ -45,17 +53,17 @@ class Loader implements TwigLoaderInterface
         return $this->cache[$name] = $path;
     }
 
-    public function getSourceContext($name)
+    public function getSourceContext(string $name): TwigSource
     {
         return new TwigSource(File::get($this->findTemplate($name)), $name);
     }
 
-    public function getCacheKey($name)
+    public function getCacheKey(string $name): string
     {
         return $this->findTemplate($name);
     }
 
-    public function isFresh($name, $time)
+    public function isFresh(string $name, int $time): bool
     {
         return File::lastModified($this->findTemplate($name)) <= $time;
     }

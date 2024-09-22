@@ -14,8 +14,7 @@ return [
     */
 
     'paths' => [
-        // Default Laravel Blade template location
-        // realpath(base_path('resources/views'))
+        realpath(base_path('resources/views')),
     ],
 
     /*
@@ -31,4 +30,5 @@ return [
 
     'compiled' => realpath(storage_path('framework/views')),
 
+    'twig_template_base_path' => base_path('themes/rainlab-bonjour/content'),
 ];

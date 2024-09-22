@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => 'file',
+    'default' => env('CACHE_DRIVER', 'redis'),
 
     /*
     |--------------------------------------------------------------------------
@@ -27,7 +27,6 @@ return [
     */
 
     'stores' => [
-
         'apc' => [
             'driver' => 'apc',
         ],
@@ -51,9 +50,7 @@ return [
             'driver' => 'memcached',
             'servers' => [
                 [
-                    'host' => '127.0.0.1',
-                    'port' => 11211,
-                    'weight' => 100,
+                    'host' => '127.0.0.1', 'port' => 11211, 'weight' => 100,
                 ],
             ],
         ],
@@ -62,7 +59,6 @@ return [
             'driver' => 'redis',
             'connection' => 'default',
         ],
-
     ],
 
     /*

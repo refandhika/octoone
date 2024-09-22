@@ -43,7 +43,7 @@ class Loader extends LoaderBase implements TwigLoaderInterface
      * @param string $name The template name
      * @return TwigSource
      */
-    public function getSourceContext($name)
+    public function getSourceContext(string $name): TwigSource
     {
         if (!$this->validateCmsObject($name)) {
             return parent::getSourceContext($name);
@@ -74,7 +74,7 @@ class Loader extends LoaderBase implements TwigLoaderInterface
      * @param string $name The template name
      * @return string
      */
-    public function getCacheKey($name)
+    public function getCacheKey(string $name): string
     {
         if (!$this->validateCmsObject($name)) {
             return parent::getCacheKey($name);
@@ -90,7 +90,7 @@ class Loader extends LoaderBase implements TwigLoaderInterface
      * @param mixed $time The time to check against the template
      * @return bool
      */
-    public function isFresh($name, $time)
+    public function isFresh(string $name, int $time): bool
     {
         if (!$this->validateCmsObject($name)) {
             return parent::isFresh($name, $time);

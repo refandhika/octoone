@@ -55,11 +55,11 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'engine' => 'InnoDB',
-            'host' => 'localhost',
+            'host' => env('DB_HOST', 'localhost'),
             'port' => 3306,
-            'database' => 'database',
-            'username' => 'root',
-            'password' => '',
+            'database' => env('DB_NAME', 'frisianflag2017'),
+            'username' => env('DB_USERNAME', 'db_user'),
+            'password' => env('DB_PASSWORD', 'ooO@)IOIJ12'),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
@@ -120,7 +120,7 @@ return [
         'cluster' => false,
 
         'default' => [
-            'host' => '127.0.0.1',
+            'host' => env('REDIS_HOST', '127.0.0.1'),
             'password' => null,
             'port' => 6379,
             'database' => 0,
