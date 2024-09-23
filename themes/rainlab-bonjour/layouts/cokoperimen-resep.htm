@@ -1,0 +1,72 @@
+description = "Layout for Choco Periment - Resep"
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('cokoperimen-amp-ide-cokoperimen');
+    }
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+    	<img src="{{ 'cokoperimen/desktop/cokoperimen-ide-desktop.jpeg'|media }}" class="hidden-xs" alt="Cokoperimen Ide Desktop" />
+      <img src="{{ 'cokoperimen/mobile/cokoperimen-ide-mobile.jpeg'|media  }}" class="visible-xs" alt="Cokoperimen Ide Mobile" />
+    </div>
+</div>
+
+{% partial 'site/chocoperiment-menu' %}
+
+<div id='main-section' class="container default-content" style="padding: 30px 15px;">
+   <div class="container-fluid view view-md view-sm">
+	     <div class="container view">
+	     <h3>Frisian Flag Kental Manis Cokelat Cokoperimen</h3>
+	         <div class="row">
+				<div class="col-sm-12" style="margin-bottom: 15px;">
+					<a data-fancybox href="https://www.youtube.com/watch?v=D-vXnnxYBQI">
+						<img src="{{'cokoperimen/content/resep-body.jpeg'|media  }}" alt="Resep Body" />								
+					</a>
+				</div>
+        
+         <div class="row" style="text-align: right;">
+            <div class="col-sm-12 col-md-4 card card--small" style="margin-bottom: 15px;">
+              <a data-fancybox href="https://www.youtube.com/watch?v=oBxsDreRbLU">
+                <img src="{{'cokoperimen/content/resep-thumbnail.jpg'|media  }}" alt="Resep Thumbnail" />                
+              </a>
+              </div>
+              <!-- <div class="card__thumbnail card__thumbnail--blue" style="background-size: cover; background-position: top; background-image: url('{{ 'cokoperimen/content/resep-thumbnail.jpg'|media  }}');  border-color: #eee;" data-adaptive-background data-ab-css-background>
+                  <div class="card__meta card__meta--small">
+                        <a href="https://www.youtube.com/watch?v=oBxsDreRbLU" target="_blank" class="button button--small">KLIK DI SINI</a>
+                    </div>
+                </div>
+            </div> -->
+          </div> 
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+    .default-content h3 {
+        font-size: 22px;
+        line-height: 1.2;
+    }
+
+    @media screen and (min-width: 767px) {
+        .default-content h3 {
+            font-size: 30px;
+        }
+    }
+
+  @media screen and (max-width: 767px) {
+    .m-bottom-15 {
+      margin-bottom: 15px;
+    }
+  }
+</style>
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

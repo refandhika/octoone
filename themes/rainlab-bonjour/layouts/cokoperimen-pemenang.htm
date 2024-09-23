@@ -1,0 +1,101 @@
+description = "Layout for choco periment - Pemenang"
+
+[staticPage]
+useContent = 1
+default = 0
+
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('cokoperimen-pemenang-amp');
+    }
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+    	<img src="{{ 'cokoperimen/desktop/pemenang.jpg'|media }}" class="hidden-xs" alt="Cokoperimen Pemenang Desktop" />
+      <img src="{{ 'cokoperimen/mobile/pemenang.jpg'|media }}" class="visible-xs" alt="Cokoperimen Pemenang Mobile" />
+    </div>
+</div>
+
+{% partial 'site/chocoperiment-menu' %}
+
+<div id='main-section' style="padding: 30px 20px;background:#6ab3e0">
+    <h3 style="color:white;margin-bottom: 40px;text-align:center"><strong>Selamat Kepada Pemenang Mingguan Cokoperimen</strong></h3>
+     <div class="row">
+        <!-- <div class="col-sm-6 px py">
+          <img src="{{ 'assets/img/karir/teams/karir-team-01_PUMBA.png'|theme }}" alt="Karir Team 1 Pumba" />               
+        </div>
+        <div class="col-sm-6 px py">
+          <img src="{{ 'assets/img/karir/teams/karir-team-02_RARITY.png'|theme }}" alt="Karir Team 2 Rarity" />                
+        </div>
+      
+        <div class="col-sm-6 px py">
+          <img src="{{ 'assets/img/karir/teams/karir-team-04_CARAKA.png'|theme }}" alt="Karir Team 4 Caraka" />                
+        </div> -->
+        <!-- <div class="col-sm-6 px py">
+            <img src="{{ 'assets/img/karir/teams/karir-team-05_MASLOW.png'|theme }}" alt="Karir Team 5 Maslow" />                                
+        </div> -->
+        <!-- <div class="col-sm-6 px py">
+          <img src="{{ 'assets/img/karir/teams/karir-team-06_EWAKO.png'|theme }}" alt="Karir Team 6 Ewako" />               
+        </div> -->
+
+        <div class="col-sm-6 p-30 px py">
+          <img src="{{ 'cokoperimen/winner/pemenang-week-1.png'|media }}" alt="Pemenang Week 1" />                
+        </div>
+      <div class="col-sm-6 p-30 px py">
+            <img src="{{ 'cokoperimen/winner/pemenang-week-2.png'|media }}" alt="Pemenang Week 2" />                                
+        </div>  
+        <div class="col-sm-6 p-30 px py">
+            <img src="{{ 'cokoperimen/winner/pemenang-week-3.png'|media }}" alt="Pemenang Week 3" />                                
+        </div>  
+        <div class="col-sm-6 p-30 px py">
+            <img src="{{ 'cokoperimen/winner/pemenang-week-4.png'|media }}" alt="Pemenang Week 4" />                                
+        </div>  
+        <div class="col-sm-6 p-30 px py">
+            <img src="{{ 'cokoperimen/winner/pemenang-week-5.png'|media }}" alt="Pemenang Week 5" />                                
+        </div>  
+        <div class="col-sm-6 p-30 px py">
+            <img src="{{ 'cokoperimen/winner/pemenang-week-6.png'|media }}" alt="Pemenang Week 6" />                                
+        </div>                  
+      </div>
+
+
+    <!-- <div class="text-center" style="margin-top: 30px;">
+      <a href="{{ '/aktivitas-kami/promo-alfamart/daftar' }}" class="button button--small">Ikuti Sekarang</a>
+      <a style="display:none !important;" href="{{ '/aktivitas-kami/promo-alfamart/pemenang' }}" class="button button--small">Lihat Pemenang</a>
+    </div> -->
+</div>
+
+<style>
+  .p-30{
+    padding: 30px;
+  }
+  .p-60{
+    padding: 60px;
+  }
+	.default-content h3 {
+	    font-size: 22px;
+	    line-height: 1.2;
+	}
+
+	@media screen and (min-width: 767px) {
+		.default-content h3 {
+			font-size: 30px;
+		}
+	}
+
+  @media screen and (max-width: 767px) {
+    .m-bottom-15 {
+      margin-bottom: 15px;
+    }
+  }
+</style>
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

@@ -1,0 +1,58 @@
+columns:
+    id:
+        label: id
+        type: number
+        sortable: true
+    full_name:
+        label: 'FUll Name'
+        type: text
+    email:
+        label: 'Email'
+        relation: user
+        type: text
+        searchable: true
+        select: email
+    jenis_kelamin:
+        label: 'Jenis Kelamin'
+        type: text
+        sortable: false
+    tgl_lahir:
+        label: 'Tanggal Lahir'
+        type: text
+        sortable: false
+    telephone:
+        label: 'Telepone'
+        type: text
+        sortable: false
+    province:
+        label: 'Province'
+        type: text
+        sortable: false
+    city:
+        label: 'City'
+        type: text
+        sortable: false
+    alamat:
+        label: 'Alamat'
+        relation: user
+        select: alamat
+        type: text
+        sortable: false
+    jumlah:
+        label: 'Jumlah Purefarm'
+        type: text
+    alasan:
+        label: 'Rasa dan Alasan'
+        type: text
+    file_struk:
+        label: 'Struk'
+        type: text
+        sortable: false
+    created_at:
+        label: 'Tanggal Submit'
+        type: datetime
+        sortable: true
+    action:
+        label: Action
+        type: text
+        sortable: false

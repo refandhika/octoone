@@ -1,0 +1,123 @@
+title = "Produk"
+title_en = "Product"
+url = "/produk"
+layout = "default"
+meta_description = "Penuhi kebutuhan nutrisi keluarga Anda dengan produk susu Frisian Flag. Aneka produk olahan susu Bendera tersedia untuk ibu dan anak dengan beragam varian."
+meta_keywords = "produk susu, produk frisian flag, produk susu frisian flag, produk olahan susu, produk susu bendera, susu frisian flag, susu bendera"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[builderList]
+modelClass = "Definite\Products\Models\Category"
+scope = "scopeIsParent"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+{% set records = builderList.records %}
+{% set displayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsPage = builderList.detailsPage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
+
+<h1 aria-hidden="true" class="seo-heading">Produk Kami</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp hidden-xs"><img src="{{ 'assets/img/banner/Banner link 1-desktop.jpg'|theme }}" alt="Banner Link 1 Desktop"/> </div>
+    <div class="imgwrp visible-xs"><img src="{{ 'assets/img/banner/Banner link 1-mobile.jpg'|theme }}" alt="Banner Link 1 Mobile"/> </div>
+</div>
+
+<div class="container-menutab container-menutab--five">
+    <div class="container-one">
+        <ul>
+            <li class="toggle visible-xs visible-sm"><a href="javascript:;" class="active">{{ this.page.title }}</a></li>
+            {% for category in records %}
+                {% if category.parent_id == null %}
+                <li>
+                    <a href="{{ 'our-products-archive'|page({'slug': category.slug }) }}"
+                    {% if category.slug == record.slug %}
+                        class="active"
+                    {% endif %}
+                    >
+                        {{ trans_pick(category, 'title') }}
+                    </a>
+                </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<div id='main-section' class="container-fluid">
+    <div class="col-md-12">
+        <div class="breadcrumb">
+            <div class="container-two">
+                <ul>
+                    <li><a href="#">{{'beranda'|_}}</a> </li>
+                    <li><a href="#">{{'produk'|_}}</a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="default-content">
+            <div class="container-two">
+                <h3>{{ trans_pick(this.page.settings, 'title') }}</h3>
+                <p>
+                    Frisian Flag Indonesia adalah pemimpin pasar di industri susu Indonesia yang menyediakan produk susu terlengkap untuk setiap
+                    tahapan kehidupan mulai dari ibu hamil, anak-anak dan keluarga. Frisian Flag telah menjadi bagian dari pertumbuhan keluarga
+                    Indonesia sejak tahun 1922 dengan merek susu pertamanya adalah ”Friesche Vlag” atau yang lebih dikenal sebagai Susu Bendera,
+                    diimpor dari Cooperative Condensfabriek Friesland di Belanda yang sekarang menjadi Royal FrieslandCampina.
+                </p>
+                <p>
+                    Frisian Flag Indonesia berkomitmen untuk selalu menyediakan produk susu berkualitas dengan rasa lezat, bernilai gizi baik
+                    dan harga terjangkau. Saat ini merek susu yang dipasarkan oleh Frisian Flag Indonesia adalah Frisian Flag, Friso dan Omela,
+                    tersedia dalam bentuk susu kental manis, susu cair dan susu bubuk.
+                </p>
+                <p>
+                    Seluruh produk susu Frisian Flag Indonesia diproses di pabrik modern yang telah menerapkan standar Good Manufacturing Practices
+                    (GMP): Prinsip-prinsip produksi yang baik dan menggunakan teknologi proses yang modern dengan menerapkan sistem jaminan mutu
+                    & keamanan produk yang dijamin oleh sistem Food Safety System Certification (FSSC) serta menerapkan standar produk yang ketat
+                    sesuai dengan regulasi yang berlaku.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section section_card clearfix">
+
+            <div class="card">
+                <div class="imgfull"><img src="{{ 'All Produck.jpg'|media }}" alt="All Product"/></div>
+            </div>
+
+            {% for category in records %}
+                <div class="col-sm-3 itemhomefade">
+                    <div class="card card_featured card_product">
+                        <div class="card__thumbnail card__thumbnail--blue">
+                            <div class="card__image">
+                                {% if category.featured_image %}
+                                    <img src="{{ category.featured_image|media }}" alt="{{ category.title }}"/>
+                                {% else %}
+                                     <img src="http://placehold.it/600x600/797979/666666?text=No+Image" alt="No Image"/>
+                                {% endif %}
+                            </div>
+
+                            <div class="card__meta">
+                                <header class="card__head">
+                                    <h3><a href="{{ 'our-products-archive'|page({'slug': category.slug }) }}">{{ trans_pick(category, 'title') }}</a></h3>
+                                </header>
+                                <a href="{{ 'our-products-archive'|page({'slug': category.slug }) }}" class="button button-dark hidden-xs">{{'selengkapnya'|_}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+<!--            <div class="btn-loadmore"><a class="button medium loadseemore">MUAT LEBIH</a></div>-->
+    </div>
+</div> <!-- end mainsection -->

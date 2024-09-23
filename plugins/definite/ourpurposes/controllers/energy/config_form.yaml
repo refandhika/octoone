@@ -1,0 +1,10 @@
+name: Energy
+form: $/definite/ourpurposes/models/energy/fields.yaml
+modelClass: Definite\Ourpurposes\Models\Energy
+defaultRedirect: definite/ourpurposes/energy
+create:
+    redirect: 'definite/ourpurposes/energy/update/:id'
+    redirectClose: definite/ourpurposes/energy
+update:
+    redirect: definite/ourpurposes/energy
+    redirectClose: definite/ourpurposes/energy

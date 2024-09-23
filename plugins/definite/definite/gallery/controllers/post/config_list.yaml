@@ -1,0 +1,12 @@
+list: $/definite/gallery/models/post/columns.yaml
+modelClass: Definite\Gallery\Models\Post
+title: Post
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'definite/gallery/post/update/:id'

@@ -1,0 +1,134 @@
+title = "Press Release Single"
+url = "/amp/perusahaan-kami/siaran-pers/:slug"
+layout = "basic-amp"
+is_hidden = 0
+
+[builderDetails PressRelease]
+modelClass = "Definite\Pressrelease\Models\PressRelease"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+
+[builderList]
+modelClass = "Definite\Pressrelease\Models\PressRelease"
+scope = "scopeIndex"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "press-release-single"
+detailsKeyColumn = "slug"
+detailsUrlParameter = "slug"
+recordsPerPage = 7
+pageNumber = "{{ :page }}"
+sortColumn = "published_date"
+sortDirection = "desc"
+==
+<?php
+function onEnd() {
+
+    if (!$this->page->components["PressRelease"]->record) {
+        return;
+    }
+
+    // get the post component
+    $_title = $this->page->components["PressRelease"]->record->attributes["title"];
+    $_meta_description = $this->page->components["PressRelease"]->record->attributes["meta_description"];
+    
+    $this->page->title = $_title;
+    $this->page->meta_title = $_title;
+    $this->page->meta_description = $_meta_description;
+    
+    $this->page->meta_title_en = $this->page->components["PressRelease"]->record->attributes["meta_title_en"];
+    $this->page->meta_description_en = $this->page->components["PressRelease"]->record->attributes["meta_description_en"];
+    
+}
+?>
+==
+{% set records = builderList.records %}
+{% set record = PressRelease.record %}
+{% set displayColumn = PressRelease.displayColumn %}
+{% set notFoundMessage = PressRelease.notFoundMessage %}
+
+{% put head_scripts %}
+<script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+{% endput %}
+
+<div class="cover">
+    <amp-img 
+        src="{{ 'assets/img/our-milkpedia.png'|theme }}"
+        srcset="{{ 'assets/img/our-milkpedia.png'|theme }} 640w,
+               {{ 'assets/img/our-milkpedia.png'|theme }} 320w"
+        width="140"
+        height="50"
+        layout="responsive"
+        alt="an image">
+    </amp-img>
+</div>
+
+<amp-accordion class="title_home">
+    <section>
+        <h4 class="arrow_down"><a href="#" target="_self">{{'siaran-pers'|_}}</a></h4>
+        <p>
+          <a href="{{'about-us'|page}}" target="_self">{{'tentang-kami'|_}}</a>
+          <a href="{{'news-amp'|page}}" target="_self">{{'berita'|_}}</a>
+          <a href="{{'galeri-amp'|page}}" target="_self">{{'galeri-foto'|_}}</a>
+          <a href="{{'press-release-amp'|page}}" target="_self">{{'siaran-pers'|_}}</a>
+          <a href="{{'our-purposes-amp'|page}}" target="_self">{{'tujuan-kami'|_}}</a>
+        </p>
+    </section>
+</amp-accordion>
+
+{% if record %}
+<div class="breadcrumb">
+    <a href="{{ 'home'|page }}">{{'beranda'|_}}</a> /
+    <a href="{{'press-release-amp'|page}}">{{'siaran-pers'|_}}</a> /
+    <a href="#">FFI MilkVersation: Frisian Flag Indonesia Ajak Masyarakat Tingkatkan Literasi Gizi, Dukung Pemenuhan Gizi Seimbang melalui Konsumsi Pangan Berkualitas</a>
+</div>
+
+<div class="detail_text">
+        <div class="date">{{record.published_date|date('M d, Y')}}</div>
+        <h1>{{ trans_pick(record, 'title') }}</h1>
+        
+        {{ trans_pick(record, 'description')|raw }}
+
+        <br><br>
+        <div align="center">
+          <a href="{{ record.file_upload|media }}" class="download">Download</a>
+        </div>
+        <br><br>
+
+        <div class="share center mb-10">
+        
+        <p class="title-share">{{'Share This Entry'}}</p>
+        
+              <amp-social-share width="35"
+              height="35" class="rounded" type="facebook"
+              data-param-app_id="872847836388420"></amp-social-share>
+              <amp-social-share width="35"
+              height="35" class="rounded" type="twitter"></amp-social-share>
+              <amp-social-share width="35"
+              height="35" class="rounded" type="whatsapp"></amp-social-share>
+              <amp-social-share width="35"
+              height="35" class="rounded" type="line"></amp-social-share>
+        </div>
+
+        <br><br>
+    </div>
+    <!-- s:section list -->
+    <div class="title_page">Siaran Pers Lainnya</div>
+    {% for other in records.first.getByLatest %}
+    <div class="list_text">
+        <div class="text">
+          <div class="info">
+            {{other.published_date|date('M d, Y')}}
+          </div>
+          <a href="{{ 'press-release-single-amp'|page({"slug": other.slug}) }}" target="_self"><h3>{{trans_pick(other, 'title')}}</h3></a>
+          <a href="{{ other.file_upload|media }}" class="download">Download</a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    {% endfor %}
+    <!-- e:section list -->
+</div>
+{% endif %}

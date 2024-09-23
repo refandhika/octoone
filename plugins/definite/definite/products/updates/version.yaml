@@ -1,0 +1,113 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table definite_products_'
+    - builder_table_create_definite_products_.php
+1.0.3:
+    - 'Updated table definite_products_'
+    - builder_table_update_definite_products_.php
+1.0.4:
+    - 'Updated table definite_products_'
+    - builder_table_update_definite_products__2.php
+1.0.5:
+    - 'Updated table definite_products_'
+    - builder_table_update_definite_products__3.php
+1.0.6:
+    - 'Updated table definite_products_'
+    - builder_table_update_definite_products_product.php
+1.0.7:
+    - 'Created table definite_products_ringkasan_gizi'
+    - builder_table_create_definite_products_ringkasan_gizi.php
+1.0.8:
+    - 'Created table definite_products_detail_kemasan'
+    - builder_table_create_definite_products_detail_kemasan.php
+1.0.9:
+    - 'Created table definite_products_ecommerce'
+    - builder_table_create_definite_products_ecommerce.php
+1.0.10:
+    - 'Created table definite_products_'
+    - builder_table_create_definite_products__2.php
+1.0.11:
+    - 'Created table definite_products_products_categories'
+    - builder_table_create_definite_products_products_categories.php
+1.0.12:
+    - 'Drop table definite_products_'
+    - builder_table_delete_definite_products_.php
+1.0.13:
+    - 'Created table definite_products_category'
+    - builder_table_create_definite_products_category.php
+1.0.14:
+    - 'Updated table definite_products_category'
+    - builder_table_update_definite_products_category.php
+1.0.15:
+    - 'Seeder for Product Categories'
+    - category_seeder.php
+1.0.16:
+    - 'Product Seeder'
+    - product_seeder.php
+1.0.17:
+    - 'Updated table definite_products_product'
+    - builder_table_update_definite_products_product_2.php
+1.0.18:
+    - 'Updated table definite_products_product'
+    - builder_table_update_definite_products_product_3.php
+1.0.19:
+    - 'Updated table definite_products_product'
+    - builder_table_update_definite_products_product_4.php
+1.0.20:
+    - 'Updated table definite_products_product'
+    - builder_table_update_definite_products_product_5.php
+1.0.21:
+    - 'Created table definite_products_varian_rasa'
+    - builder_table_create_definite_products_varian_rasa.php
+1.0.22:
+    - 'Drop table definite_products_varian_rasa'
+    - builder_table_delete_definite_products_varian_rasa.php
+1.0.23:
+    - 'Updated table definite_products_product'
+    - builder_table_update_definite_products_product_6.php
+1.0.24:
+    - 'Updated table definite_products_product'
+    - builder_table_update_definite_products_product_7.php
+1.0.25:
+    - 'Updated table definite_products_product'
+    - builder_table_update_definite_products_product_8.php
+1.0.26:
+    - 'Updated table definite_products_category'
+    - builder_table_update_definite_products_category_2.php
+1.0.27:
+    - 'Updated table definite_products_category'
+    - builder_table_update_definite_products_category_3.php
+1.0.28:
+    - 'Updated table definite_products_product'
+    - builder_table_update_definite_products_product_9.php
+1.0.29:
+    - 'Updated table definite_products_category'
+    - builder_table_update_definite_products_category_4.php
+1.0.30:
+    - 'Updated table definite_products_product'
+    - builder_table_update_definite_products_product_10.php
+1.0.31:
+    - 'Updated table definite_products_product'
+    - builder_table_update_definite_products_product_11.php
+1.0.32:
+    - 'Updated table definite_products_category'
+    - builder_table_update_definite_products_category_5.php
+1.0.33:
+    - 'Updated table definite_products_category'
+    - builder_table_update_definite_products_category6.php
+1.0.34:
+    - 'Updated table definite_products_product'
+    - builder_table_update_definite_products_product12.php
+1.0.35:
+    - 'Updated table definite_products_product'
+    - builder_table_update_definite_products_product_12.php
+1.0.36:
+    - 'Updated table definite_products_ringkasan_gizi'
+    - builder_table_update_definite_products_ringkasan_gizi.php
+1.0.37:
+    - 'Updated table definite_products_product'
+    - builder_table_update_definite_products_product_12.php
+1.0.38:
+    - 'Updated table definite_products_category'
+    - builder_table_update_definite_products_category_6.php

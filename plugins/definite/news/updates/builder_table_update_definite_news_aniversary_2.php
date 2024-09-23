@@ -1,0 +1,23 @@
+<?php namespace Definite\News\Updates;
+
+use Schema;
+use October\Rain\Database\Updates\Migration;
+
+class BuilderTableUpdateDefiniteNewsAniversary2 extends Migration
+{
+    public function up()
+    {
+        Schema::table('definite_news_aniversary', function($table)
+        {
+            $table->string('checkbox', 5)->nullable()->unsigned(false)->default(null)->change();
+        });
+    }
+    
+    public function down()
+    {
+        Schema::table('definite_news_aniversary', function($table)
+        {
+            $table->boolean('checkbox')->nullable()->unsigned(false)->default(null)->change();
+        });
+    }
+}

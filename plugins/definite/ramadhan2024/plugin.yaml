@@ -1,0 +1,52 @@
+plugin:
+    name: 'definite.ramadhan2024::lang.plugin.name'
+    description: 'definite.ramadhan2024::lang.plugin.description'
+    author: Definite
+    icon: oc-icon-adjust
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: 'Ramadhan 2024'
+        url: definite/ramadhan2024/homebanners
+        icon: icon-calendar
+        sideMenu:
+            side-menu-item:
+                label: Sahurku
+                url: definite/ramadhan2024/sahurku
+                icon: icon-space-shuttle
+            side-menu-item2:
+                label: Takjilku
+                url: definite/ramadhan2024/takjil
+                icon: icon-spoon
+            side-menu-item3:
+                label: 'Kue Kering'
+                url: definite/ramadhan2024/kuekering
+                icon: icon-spoon
+            side-menu-item4:
+                label: 'Static Banner'
+                url: definite/ramadhan2024/staticbanner
+                icon: icon-image
+            side-menu-item5:
+                label: Promo
+                url: definite/ramadhan2024/promo
+                icon: icon-money
+            side-menu-item6:
+                label: 'Main Menu'
+                url: definite/ramadhan2024/mainmenu
+                icon: icon-sitemap
+            side-menu-item7:
+                label: 'Promo Banner'
+                url: definite/ramadhan2024/promobanner
+                icon: icon-simplybuilt
+            side-menu-item8:
+                label: 'Whatsapp Btn'
+                url: definite/ramadhan2024/whatsappbtn
+                icon: icon-whatsapp
+            side-menu-item9:
+                label: Article
+                url: definite/ramadhan2024/article
+                icon: icon-newspaper-o
+            side-menu-item10:
+                label: 'Article Category'
+                url: definite/ramadhan2024/articlecategory
+                icon: icon-newspaper-o

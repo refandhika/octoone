@@ -1,0 +1,634 @@
+title = "Resep Page Detail AMP Testing"
+url = "/amp/testing/resep-kami/:category/:slug"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/resep-page-detail-amp-testing"
+==
+<?php
+function hariIndo ($hariInggris) {
+  switch ($hariInggris) {
+    case 'Sunday':
+      return 'Minggu';
+    case 'Monday':
+      return 'Senin';
+    case 'Tuesday':
+      return 'Selasa';
+    case 'Wednesday':
+      return 'Rabu';
+    case 'Thursday':
+      return 'Kamis';
+    case 'Friday':
+      return 'Jumat';
+    case 'Saturday':
+      return 'Sabtu';
+    default:
+      return 'hari tidak valid';
+  }
+}
+
+function onStart(){
+        
+        //get slug
+        
+       
+        $category     = $this->param('category');
+        $slug         = $this->param('slug');
+        $this['alt']  = $this->param('alt');
+        $preview = Input::get('preview') ? Input::get('preview') : 0;
+        
+        $this['pageurl'] = str_replace("/amp","",$this->currentPageUrl());
+         
+        
+        $cmsController     = new Cms\Classes\Controller;
+         $arrContextOptions =array(
+            "ssl"=>array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
+        );
+        //$category = "";
+        $idcategory = 0;
+        $this['class'] = "";
+        $this['promoterbaik'] = 0;
+        if($this->param('category') == "resep-dengan-susu-bubuk"){
+            //$category = "FMP";
+            
+            $this['class'] = "content-festive";
+            $idcategory = 21;
+            $this["headertitle"] = "Resep Nikmat Bergizi <i>dengan</i> Susu Bubuk Frisian Flag";
+            $this["categoryfestive"] = "resep-kue-kering-pilihan";
+            $this['milkpedia'] = DB::select("SELECT t1.title, t1.slug, t1.featured_image, t1.excerpt, t3.slug as category_slug from definite_milkpedia_post t1 left join definite_milkpedia_posts_categories t2 on t2.milkpedia_id = t1.id left join definite_milkpedia_category t3 on t3.id = t2.category_id  where t1.id IN (480,404,398,455,418);");
+            $this['ecommerce'] = [ 
+                "page-cokelat/tokopedia-sq.jpeg" => "https://tokopedia.link/9O57yEzHDfb",
+                "page-cokelat/shopee-sq.jpeg" => "https://shopee.co.id/product/70448302/4716610962?smtt=0.278299262-1619017991.9",
+                "page-cokelat/jdid-sq.jpeg" => "https://m.jd.id/product/frisian-flag-purefarm-susu-full-cream-box-800gr_712043/10053279.html",
+                "page-cokelat/blibli-sq.jpeg" => "https://www.blibli.com/p/frisian-flag-purefarm-susu-bubuk-full-cream-800-g/ps--BLD-60037-00109?ds=BLD-60037-00109-00001",
+                "page-cokelat/indomaret-sq.jpeg" => "https://www.klikindomaret.com/product/susu-bubuk",
+                "page-cokelat/lazada-sq.jpeg" => "https://s.lazada.co.id/s.WrymU"
+            ];
+        }
+        elseif($this->param('category') == "resep-dengan-susu-cair")
+        {
+            //$category = "RTD";
+            $idcategory = 19;
+            $this["headertitle"] = "Resep Praktis Bergizi <i>dengan</i> Susu Cair Frisian Flag";
+            
+            $check = Definite\Activities\Models\Activity::whereHas('categories',function($query) {
+               $query->where('id', 18);
+             })->where('slug',$slug)->count();
+             if($check > 0 ){
+                 $this['class'] = "content-festive";
+                 $this['milkpedia'] = DB::select("SELECT t1.title, t1.slug, t1.featured_image, t1.excerpt, t3.slug as category_slug from definite_milkpedia_post t1 left join definite_milkpedia_posts_categories t2 on t2.milkpedia_id = t1.id left join definite_milkpedia_category t3 on t3.id = t2.category_id  where t1.id IN (411,412,301,415);");   
+             }
+             
+             $this['promoterbaik'] = 1;
+             
+             $this['ecommerce'] = [ 
+                "page-cokelat/blibli-sq.jpeg" => "https://www.blibli.com/brand/frisian-flag-official-store?excludeProductList=false&promoTab=false&brandSearchTerm=susu%20UHT&sort=&utm_source=Frisian_Flag_Indonesia&utm_medium=refpartner_FF_Ecommerce_Button&utm_campaign=FFI_Website",
+                "page-cokelat/indomaret-sq.jpeg" => "https://www.klikindomaret.com/search/?key=Frisian%20Flag%20Susu%20Cair",
+                "page-cokelat/tokopedia-sq.jpeg" => "https://www.tokopedia.com/frisian-flag/etalase/susu-uht",
+                "page-cokelat/shopee-sq.jpeg" => "https://shopee.co.id/universal-link/shop/70448302/search?deep_and_web=1&page=0&shopCollection=19321013&smtt=9&utm_campaign=p70448302_ss_id_othr_ff-cd-websiteff&utm_content=ff-cd-rtd&utm_medium=seller&utm_source=website",
+                "page-cokelat/jdid-sq.jpeg" => "https://www.jd.id/promotion/Frisian-Flag-Official-Store/2UNKdjnR1bxXyHAbKRR7uxC2qLG3.html",
+                "page-cokelat/lazada-sq.jpeg" => "https://c.lazada.co.id/t/c.0xDTyD?intent=false&fallback=true&url=https%3A%2F%2Fwww.lazada.co.id%2Fbeli-makanan-minuman-susu-uht%2F%3Ffrisian-flag-official-store%26from%3Dwangpu"
+            ];
+            
+        }
+        elseif($this->param('category') == "resep-dengan-kental-manis")
+        {
+            //$category = "SCM";
+            $idcategory = 22;
+            $this["headertitle"] = "Resep MANTUL Frisian Flag Kental Manis<br>MAnis Nikmat TUjuh Langkah";
+            $this["categoryfestive"] = "resep-manis-tujuh-langkah";
+            $check = Definite\Activities\Models\Activity::whereHas('categories',function($query) {
+               $query->where('id', 18);
+             })->where('slug',$slug)->count();
+             if($check > 0 ){
+                 $this['class'] = "content-festive";
+                 $this['milkpedia'] = DB::select("SELECT t1.title, t1.slug, t1.featured_image, t1.excerpt, t3.slug as category_slug from definite_milkpedia_post t1 left join definite_milkpedia_posts_categories t2 on t2.milkpedia_id = t1.id left join definite_milkpedia_category t3 on t3.id = t2.category_id  where t1.id IN (419,431,430,425);");   
+             }
+             
+             $this['ecommerce'] = [ 
+                "page-cokelat/alfacart-sq.jpeg" => "https://www.alfacart.com/promo/frisian-flag-fair",
+                "page-cokelat/blibli-sq.jpeg" => "https://www.blibli.com/brand/frisian-flag-official-store?page=1&start=0&multiCategory=true&promoTab=false&excludeProductList=false&brandSearchTerm=Kental%20Manis&intent=false&sort=0&brandName=frisian-flag-official-store&utm_source=Frisian_Flag_Indonesia&utm_medium=refpartner_FF_Ecommerce_Button&utm_campaign=FFI_Website",
+                "page-cokelat/jdid-sq.jpeg" => "https://www.jd.id/category/jual-beverages-875061563.html?category=875061563&pvid=b91f13579a5c4ff28c8511fa8d6dcbe6&brandId=692",
+                "page-cokelat/indomaret-sq.jpeg" => "https://www.klikindomaret.com/frisianflag-kental-manis",
+                "page-cokelat/shopee-sq.jpeg" => "https://shopee.co.id/universal-link/shop/70448302/search?deep_and_web=1&shopCollection=19395096&smtt=9&utm_campaign=p70448302_ss_id_othr_ff-cd-websiteff&utm_content=ff-cd-scm&utm_medium=seller&utm_source=website",
+                "page-cokelat/tokopedia-sq.jpeg" => "https://www.tokopedia.com/frisian-flag/etalase/kental-manis"
+            ];
+             
+        }
+        
+        $pages = Definite\Activities\Models\Activity::whereHas('categories',function($query) use ($idcategory) {
+           $query->where('id', $idcategory);
+        })->where('slug',$slug)->
+        get()->first();
+        if($pages){
+          $this['content'] = $pages;
+          $this['title'] = $pages->title;
+          $this['pageid'] = $pages->id;
+          $this['featuredimage'] = $pages->featured_image;
+          $this['products'] = $pages->products;
+          $array = [];
+          if($this['products']){
+              $link_e_commerce = $pages->products->link_e_commerce;
+              foreach($link_e_commerce as $item){
+                if(strpos($item['link'], 'lazada') > 0){
+                    array_push($array , 'Lazada');
+                } elseif(strpos($item['link'], 'blibli') > 0) {
+                    array_push($array , 'Blibli');
+                } elseif(strpos($item['link'], 'jd.id') > 0) {
+                    array_push($array , 'jd.id');
+                } elseif(strpos($item['link'], 'alfagift') > 0) {
+                    array_push($array , 'Alfagift');
+                } elseif(strpos($item['link'], 'klikindomaret') > 0) {
+                    array_push($array , 'Klikindomaret');
+                } elseif(strpos($item['link'], 'tokopedia') > 0) {
+                    array_push($array , 'Tokopedia');
+                } elseif(strpos($item['link'], 'shopee') > 0) {
+                    array_push($array , 'Shopee');
+                } elseif(strpos($item['link'], 'bukalapak') > 0) {
+                    array_push($array , 'Bukalapak');
+                }
+              }
+              $this['link_e_commerce'] = $array;
+          }
+          $this['youtube'] = $pages->subtitle_en;
+          $this['bahan'] = $pages->description;
+          $this['caramemasak'] = $pages->description_en;
+          
+          $this->page->title = ucwords(strtolower($pages->title));
+          $this->page->meta_title = $pages->meta_title;
+          $this->page->meta_description = $pages->meta_description;
+          $this->page->og_image = $pages->featured_image;
+          $this->page->og_description = $pages->meta_description;
+          
+          $date = $pages->updated_at != '0000-00-00' && $pages->updated_at != null ? $pages->updated_at : $pages->created_at;
+          $bulan = date('M',strtotime($date));
+          if($bulan == "May"){
+            $bulan = "Mei";   
+          }
+          elseif($bulan == "Aug"){
+              $bulan = "Agu"; 
+          }
+          elseif($bulan == "Oct"){
+              $bulan = "Okt"; 
+          }
+          elseif($bulan == "Dec"){
+              $bulan = "Des"; 
+          }
+          $publishdate = $this->hariIndo(date('l',strtotime($date))). ", ".date('d',strtotime($date))." ".$bulan." ". date('Y',strtotime($date));
+          $this['date'] = $publishdate;
+          
+          
+          $relatedresep = [];
+          $orderby = '';
+
+          if($category == "resep-manis-7-langkah"){
+            $this['selengkapnyaimage'] = 'ramadan-istimewa/scm/kue-that.jpg';
+            $relatedresep = [222,213,212];
+            $orderby = 'desc';
+
+          }else{
+            $this['selengkapnyaimage'] = 'ramadan-istimewa/bfc/almond_cookies.jpg';
+            $relatedresep = [218,219,239];
+            $orderby = 'asc';
+          }
+
+          $related = Definite\Activities\Models\Activity::whereHas('categories',function($query)  use ($idcategory) {
+           $query->where('id', $idcategory);
+          })->select('title', 'slug', 'featured_image')->
+          whereNotIn('id',[214,215,$pages->id])->
+          orderBy('id', $orderby)->take(3)->get();
+          
+          $count = count($related);
+          
+          $tambahan = Definite\Activities\Models\Activity::whereHas('categories',function($query) use ($idcategory) {
+           $query->where('id', $idcategory);
+          })->select('title', 'slug', 'featured_image')->
+          whereNotIn('id',[214,215,$pages->id])->
+          take(6-$count)->get();
+          
+          $collection = collect($related);
+          $merged     = $collection->merge($tambahan);
+
+          $this['related'] = $merged;
+
+        }else{
+          return $cmsController->render("/404");
+        }
+     
+        
+        /*
+                 $min               = $collection->where('category',$category)->min('id');
+                 $slice             = $data->id - $min; 
+                 $data_category     = $collection->where('category',$category)->where('slug', '!=', $slug)->slice($slice)->take(3);
+                 $count             = count($data_category);
+                 if($count < 3){
+                         $before        = $collection->where('category',$category)->where('slug', '!=', $slug)->take(3 -$count);
+                         $data_category = $data_category->merge($before);
+                     }
+    
+        
+        switch ($category) {
+            case "resep-manis-7-langkah":
+                $class = "resep-manis";
+                break;
+            case "resep-kue-kering-pilihan":
+                $class = "resep-kue";
+                break;
+            
+        
+        }*/
+
+        //$this['class']          = "resep-kue";  
+        $this['category']       = $category;
+        
+        
+
+}
+?>
+==
+{% partial 'site/header-amp-banner2' %}
+
+{% if(class == "content-festive")%}
+<!--
+<div class="header-ornamen">
+<amp-img src="{{ 'festive2021/Header-Mobile.png' |media }}" width="914" height="224" layout="responsive" alt="Resep Ramadan"></amp-img>
+</div>-->
+
+{% endif %}
+{% if(promoterbaik == 1)%}
+<div class="promoterbaik" style="bottom : 10vw">
+<a href="https://www.frisianflag.com/resepsahurterbaik/promo-terbaik" target="_blank">
+<amp-img src="{{ 'festive2021/Icon-PromoTerbaik.png' |media }}" width="520" height="455" layout="responsive" alt="Promo Terbaik"></amp-img>
+</a>
+</div>
+{% endif %}
+
+<div>
+<div class="body-1 {{ class }}">
+
+    <div class="disresult row">
+
+
+        </amp-state>
+        <amp-state id="product">
+            <script type="application/json">
+                {
+                    "title": "",
+                    "pageid": {{pageid}},
+                    "pageIndex": 2,
+                    "moreItemsPageIndex": 2,
+                    "hasMorePages": true
+                }
+            </script>
+    </amp-state>
+   
+     <amp-state id="favoriteWithCount" src="/return-love?id={{pageid}}">
+    </amp-state>
+
+       {# <form id="formdata" method="GET" action="https://www.frisianflag.com/amp/resep-kami" target="_top" on="submit-success: AMP.setState({
+              product: {
+                  pageIndex : product.category != 'all' ? 6 : 2
+              }
+            });">
+
+            <input class="search-amp-input" type="text" name="q" on="input-throttled:AMP.setState({ product:{ title: event.value } })" placeholder="Ketik Resep atau Bahan">
+           <!-- <input type="hidden" name="category" value="all" [value]="product.category">-->
+            <input type="submit" value="Search" style="display: none;">
+            <button class="category1 fixed" on="tap:AMP.navigateTo(url=/resep-kami/resep-dengan-susu-cair)"></button>
+        	 <button class="category2 fixed" on="tap:AMP.navigateTo(url=/resep-kami/resep-dengan-kental-manis)"></button>
+        	 <button class="category3 fixed" on="tap:AMP.navigateTo(url=/resep-kami/resep-dengan-susu-bubuk)"></button>
+            <!--<button class="category1 fixed" on="tap:AMP.setState({product:{ pageIndex: product.category != 'all' ? 6 : 2, category: 'SCM' }}),formdata.submit, formchecknext.submit"></button>
+            <button class="category2 fixed" on="tap:AMP.setState({product:{ pageIndex: product.category != 'all' ? 6 : 2, category: 'RTD' }}),formdata.submit, formchecknext.submit"></button>
+            <button class="category3 fixed" on="tap:AMP.setState({product:{ pageIndex: product.category != 'all' ? 6 : 2, category: 'FMP' }}),formdata.submit, formchecknext.submit"></button>-->
+        </form>#}
+
+
+
+        <div class="main-section {{color}}">
+            
+            <div class="">
+                    <amp-youtube class="youtube" id="youtubeamp" data-videoid="{{youtube}}" layout="responsive" width="480" data-param-rel="0" height="271" >
+                        <amp-img src="{{ recipe.img |media }}" placeholder layout="fill" />
+                    </amp-youtube>
+                    {#{% if class == 'content-festive'%}
+                        <div class="star-1"><amp-img src="{{ 'festive2021/mobile/Group_11006.png' |media }}" width="58" height="144" layout="responsive" alt="star"></amp-img></div>
+                        <div class="star-2"><amp-img src="{{ 'festive2021/mobile/Group_11183.png' |media }}" width="86" height="170" layout="responsive" alt="star"></amp-img></div>
+                        <div class="moon-1"><amp-img src="{{ 'festive2021/mobile/Group_11011.png' |media }}" width="104" height="93" layout="responsive" alt="moon"></amp-img></div>
+                    {% endif %}#}
+                </div>
+            <div class="relative {{color}} padding-25">
+               
+                
+                
+                 
+               <div class="img-bottom-desc">
+                   <div class="publishdate">
+                       {{ date }}
+                   </div>
+                 <div id="favorite-failed-message" hidden>Error: Could not favorite.<div on="tap:favorite-failed-message.hide" tabindex="0" role="button">CLOSE</div></div>
+                <form class="favorite-button" method="post" action-xhr="/return-love?id={{pageid}}" target="_top" on="submit:AMP.setState({
+                   previousFavoriteWithCount: favoriteWithCount,
+                   favoriteWithCount: {
+                     value: !favoriteWithCount.value,
+                     count: favoriteWithCount.count + (favoriteWithCount.value ? -1 : 1),
+                   }
+                 }),
+                 favorite-failed-message.hide;
+             submit-error:AMP.setState({
+                   value: !favoriteWithCount.value,
+                   favoriteWithCount: previousFavoriteWithCount.count
+                 }),
+                 favorite-failed-message.show">
+                 <input type="hidden" name="clicklike" value="1"/>
+      <amp-list width="auto" height="38" credentials="include" class="love-div" items="." single-item noloading src="/return-love?id={{pageid}}" binding="always">
+      {% verbatim %}
+        <template type="amp-mustache">
+          <div class="favorite-container">
+          <div class="favorite-count" [text]="favoriteWithCount.count ? favoriteWithCount.count : ''">{{count}}</div>
+            <input type="submit" class="{{#value}}heart-fill{{/value}}{{^value}}heart-border{{/value}}" [class]="favoriteWithCount.value ? 'heart-fill' : 'heart-border'" value aria-label="Favorite Toggle">
+            
+          </div>
+        </template>
+        {% endverbatim %}
+        <div placeholder>
+          <div class="favorite-container">
+          <div class="favorite-count loading">0</div>
+            <input type="submit" disabled class="heart-loading" value aria-label="favorite placeholder">
+            
+          </div>
+        </div>
+      </amp-list>
+    </form>
+    
+    </div>
+   
+     {% if class == 'content-festive'%}
+     </div>
+     <div class="title-bg">
+         <h1 class="text-center section__title title-h1">{{ title }}</h1>
+     </div>
+     
+    {% if products %}
+    
+     <div class="wrapper-ecom-resep-3">
+         <div class="wrapper-ecom2">
+             <div class="ecom-left">
+                 <img src="{{ products.featured_image | media }}">
+             </div>
+             <div class="ecom-right">
+                 <span class="needs">yang anda perlukan :</span>
+                 <h4 class="title">{{ products.title }}</h4>
+                 <amp-img src="{{ 'button-ecommerce.png' | media }}" class="click-to-popup" height="25" width="100" on="tap:ecom-lightbox" role="button" tabindex="0">
+             </div>
+         </div>
+     </div>
+     <amp-lightbox id="ecom-lightbox" layout="nodisplay">
+      <div class="lightbox-sustain" role="button" tabindex="0">
+          <div class="amp-modal-wrapper-ecom">
+              <h2 class="amp-modal-ecom-title">Temukan Product Kami di:</h2>
+              <div class="amp-modal-ecom-list">
+              
+                {% for shop in link_e_commerce %}
+                    <a class="amp-modal-ecom-btn" href="{{ shop.link }}" target="_blank">
+                        {{ link_e_commerce[ loop.index - 1] }}
+                    </a>
+                {% endfor %}
+              </div>
+              <button class="close" on="tap:ecom-lightbox.close">X</button>
+          </div>
+      </div>
+    </amp-lightbox>  
+    {% endif %}
+     
+     <div class="relative {{color}} padding-25 pt-15">
+     {% else %}
+     <div class="content-text ">
+        <h1 class="text-center section__title title-h1">{{ title }}</h1>
+        </div>
+        {% if products %}
+             <div class="wrapper-ecom-resep-3" style="width : 100%">
+                 <div class="wrapper-ecom2">
+                     <div class="ecom-left">
+                         <img src="{{ products.featured_image | media }}">
+                     </div>
+                     <div class="ecom-right">
+                         <span class="needs">yang anda perlukan :</span>
+                         <h4 class="title">{{ products.title }}</h4>
+                         <amp-img src="{{ 'button-ecommerce.png' | media }}" class="click-to-popup" height="25" width="100" on="tap:ecom-lightbox" role="button" tabindex="0">
+                     </div>
+                 </div>
+             </div>
+             <amp-lightbox id="ecom-lightbox" layout="nodisplay">
+              <div class="lightbox-sustain" role="button" tabindex="0">
+                  <div class="amp-modal-wrapper-ecom">
+                      <h2 class="amp-modal-ecom-title">Temukan Product Kami di:</h2>
+                      <div class="amp-modal-ecom-list">
+                      
+                        {% for shop in link_e_commerce %}
+                            <a class="amp-modal-ecom-btn" href="{{ shop.link }}" target="_blank">
+                                {{ link_e_commerce[ loop.index - 1] }}
+                            </a>
+                        {% endfor %}
+                      </div>
+                      <button class="close" on="tap:ecom-lightbox.close">X</button>
+                  </div>
+              </div>
+            </amp-lightbox>  
+            {% endif %}
+    {% endif %}
+                
+                    <div class="bahan content-resep">
+                        {{ bahan|raw }}
+                    </div>
+                    <!-- <h2 class="title-h2">Cara Memasak :</h2>
+                <div class="cara-memasak">
+                    {{ caramemasak|raw  }}
+                </div> -->
+                </div>
+                <!--<div class="social">
+                    <button class="btn-socmed" on="tap:AMP.setState({ social: !social })"><i class="fa fa-share-alt"></i> Bagikan</button>
+                </div>-->
+                
+                <div class="share right mb-30 social-position">
+                    <amp-social-share width="35" height="35" class="rounded" type="facebook" data-param-app_id="872847836388420" class="amp-social-share-facebook" style="background-color:#E57B00"></amp-social-share>
+                    <amp-social-share width="35" height="35" class="rounded" type="twitter" class="amp-social-share-twitter" style="background-color:#E57B00"></amp-social-share>
+                    <amp-social-share width="35" height="35" class="rounded" type="whatsapp" class="amp-social-share-whatsapp" style="background-color:#E57B00"></amp-social-share>
+                    <amp-social-share width="35" height="35" class="rounded" type="line" class="amp-social-share-line" style="background-color:#E57B00"></amp-social-share>
+                    <amp-iframe sandbox="allow-scripts" class="ml-5"
+                      width="124"
+                      height="35"
+                      frameborder="0"
+                      src="/copy-button#{{pageurl}}">
+                      <button class="copy-button"
+                        placeholder
+                        disabled>Copy</button>
+                    </amp-iframe>
+
+                </div>
+
+            </div>
+            {% if category == 'resep-dengan-kental-manis' or  class == 'content-festive' %}
+            
+            
+            <section class="beli-sekarang {{ class == 'content-festive' ? 'bg--blue' : '' }}">
+            
+                <h3 class=" {{ class == 'content-festive' ? 'underline' : 'white-left-2' }}">Beli Sekarang</h3>
+                <div class="flex">
+                {% for image, link in ecommerce %}
+                    
+                      <a href="{{link}}">
+                      <div class="thumbnail-ecommerce" >
+                          <amp-img src="{{image | media}}" width="100" height="30" layout="responsive" class="img-ecom shop{{ loop.index }}" alt="Ecommerce"></amp-img>
+                      </div>
+                          
+                      </a>
+                              
+                {% endfor %}
+                
+                </div>
+            </section>
+
+            {% endif %}
+           
+
+        </div>
+    </div>
+</div>
+
+<!-- Related Article -->    
+    
+<div class="body-recipe ">
+    <div class="body-4 {{ class }}">
+        {% if related.count > 0 %}
+                <div class="{{ class == 'content-festive' ? 'padding-15' : 'padding-5' }} related-resep">
+                {% if class == 'content-festive' %}
+                    <h3 class="underline">Resep Lainnya</h3>
+                {% else %}
+                    <h3 class="white-left-2">Coba Resep Lainnya</h3>
+                {% endif %}
+        <amp-base-carousel layout="responsive" class="related-carousel" width="260" height="{{ class == 'content-festive' ? '175' : '150' }}" visible-count="2" snap="true" advance-count="1" loop="true" auto-advance-interval="1" >
+        {% for ct in related %}
+                <div class="{{ class == 'content-festive' ? 'box--p' : '' }} padding-5">
+                  <a href="{{'testing-page'|page}}/{{category}}/{{ct.slug}}">
+                  <div class="{{ class == 'content-festive' ? 'box-item' : '' }}">
+                    <amp-img class="carousel-slider-img border-15" src="{{ ct.featured_image |media }}" width="20vh" height="20vh" layout="responsive" ></amp-img>
+                  </div>
+                  </a>
+                  {% if class == 'content-festive' %}
+                  <a class="button btn-orange" href="{{'testing-page'|page}}/{{category}}/{{ct.slug}}">
+                      Lihat Resepnya
+                  </a>
+                  {% endif %}
+                    <!-- <a href="{{'festive-ramadan-homepage'|page}}/{{ct.slug}}"
+                                class="button-amp button center button--large" style="margin-left: 5%; line-height: 40px; font-size: 5px;">
+                               Lihat Resepnya
+                            </a> -->
+                </div>
+         {% endfor %}
+                
+                
+        </amp-base-carousel>
+     
+        </div>
+        {% endif %}
+    </div>
+</div>    
+{% if class != 'content-festive'%}
+<!-- Aktivitas Kami -->
+<div class="body-recipe">
+    <div class="body-4 {{ class }}">
+        <div class="{{ class == 'content-festive' ? 'padding-15' : 'padding-5' }} related-resep">
+                {% if class == 'content-festive' %}
+                    <h3 class="underline">Artikel Terkait</h3>
+                {% else %}
+                    <h3 class="white-left-2">Aktivitas Kami</h3>
+                {% endif %}
+                
+        <amp-base-carousel layout="responsive" class="related-carousel" width="260" height="{{ class == 'content-festive' ? '240' : '150' }}" visible-count="2" snap="true" advance-count="1" loop="true" auto-advance-interval="1">
+       
+        <!-- Real Lopping Aktivitas Kami -->
+            <!-- {% for ct in related %}
+                    <div class="padding-5">
+                      <a href="{{'testing-page'|page}}/{{ct.slug}}">
+                        <amp-img class="carousel-slider-img border-15" src="{{ ct.featured_image |media }}" width="10vh" height="10vh" layout="responsive"></amp-img>
+                      </a>
+            
+                        <a href="{{'festive-ramadan-homepage'|page}}/{{ct.slug}}"
+                                    class="button-amp button center button--large" style="margin-left: 5%; line-height: 40px; font-size: 5px;">
+                                   Lihat Resepnya
+                                </a>
+                    </div>
+             {% endfor %} -->
+       
+            <div class="padding-5">
+                  <a href="https://www.frisianflag.com/aktivitas-kami/homedelivery">
+                  <div class="{{ class == 'content-festive' ? 'box-item' : '' }}">
+                    <amp-img class="carousel-slider-img border-15" src="https://www.frisianflag.com/storage/app/media/resep-kami/ff_home_delivery.jpg" width="10vh" height="10vh" layout="responsive"></amp-img>
+                  </div>
+                  {% if class == 'content-festive' %}
+                    <div class="article--desc">
+                    <h5>Judul artikel</h5>
+                    <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet</p>
+                    <div class="button btn--blue">Selengkapnya</div>
+                    </div>
+                  {% endif %}
+                  </a>
+            </div>
+            <div class="padding-5">
+                  <a href="https://www.frisianflag.com/produk/susu-siap-minum/minuman-susu-cokelat-kemasan-botol">
+                  <div class="{{ class == 'content-festive' ? 'box-item' : '' }}">
+                    <amp-img class="carousel-slider-img border-15" src="https://www.frisianflag.com/storage/app/media/resep-kami/ff_Chocolate_Hazelnut.jpg" width="10vh" height="10vh" layout="responsive"></amp-img>
+                    </div>
+                    {% if class == 'content-festive' %}
+                    <div class="article--desc">
+                    <h5>Judul artikel</h5>
+                    <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet</p>
+                    <div class="button btn--blue">Selengkapnya</div>
+                    </div>
+                  {% endif %}
+                  </a>
+                  
+            </div>
+  
+                
+        </amp-base-carousel>
+     
+        </div>
+    </div>
+</div>  
+
+{% else %}
+<div class="content-festive related-milkpedia">
+    <div class="padding-15">
+        <h2 class="underline">Artikel Terkait</h2>
+        <amp-base-carousel layout="responsive" class="related-carousel" width="260" height="270" visible-count="2" snap="true" advance-count="1" loop="true" auto-advance-interval="1">
+               
+                    {% for ct in milkpedia %}
+                            <div class="padding-5">
+                              <a href="/milkpedia/{{ct.category_slug}}/{{ct.slug}}">
+                              <div>
+                              <div class="box-milkpedia">
+                                <amp-img class="carousel-slider-img border-15" src="{{ ct.featured_image |media }}" width="10vh" height="10vh" layout="responsive"></amp-img>
+                                </div>
+                                <h5>{{ ct.title }}</h5>
+                                <p>{{ str_limit(ct.excerpt, 60)}}</p>
+                                <span class="button-amp button center button--large">Selengkapnya</span>
+                                </div>
+                              </a>
+                    
+                            </div>
+                     {% endfor %} 
+        </amp-base-carousel>
+    </div>
+</div>
+{% endif %}
+{# The following code will not be executed and nothing will be outputted
+{% if class == 'content-festive'%}
+{% partial 'festive-sticky' %}
+{% endif %}
+#}
+</div>
+{% partial 'site/footer-amp' %}

@@ -1,0 +1,45 @@
+title = "query-eloquent"
+url = "/query-eloquent/:category"
+is_hidden = 1
+
+[viewBag]
+localeUrl[en] = "/query-eloquent"
+==
+<?php
+function onStart() {
+    if($this->param('category') == 'resep'){
+            $resep = Definite\Activities\Models\Activity::leftJoin('definite_activities_categories_activities', 'definite_activities_categories_activities.activity_id', '=', 'definite_activities_activity.id')->
+    leftJoin('definite_activities_category', 'definite_activities_category.id', '=', 'definite_activities_categories_activities.category_id')->whereRaw('definite_activities_category.id = ? OR definite_activities_category.id = ? OR definite_activities_category.id = ? ', [ 19, 21, 22 ] )->
+            select('definite_activities_category.slug as slug_category','definite_activities_activity.title', 'definite_activities_activity.slug', 'definite_activities_activity.featured_image')->get()->pluck('title'); 
+        dd(['resep' => [
+                'total' => count($resep),
+                'data' => $resep
+            ]]);       
+    } else if($this->param('category') == 'aktivitas-kami') {
+        $aktivitas_kami = Definite\Activities\Models\Activity::get()->pluck('title');    
+        
+        dd(['aktivitas_kami' => [
+                'total' => count($aktivitas_kami),
+                'data' => $aktivitas_kami
+            ]]);  
+    } else if($this->param('category') == 'milkpedia') {
+        $milkpedia = Definite\Milkpedia\Models\Milkpedia::orderBy('updated_at', 'desc')->get()->pluck('title'); 
+        
+        dd(['milkpedia' => [
+                'total' => count($milkpedia),
+                'data' => $milkpedia
+            ]]);  
+    } else if($this->param('category') == 'produk') {
+        $produk = Definite\Products\Models\Product::orderBy('updated_at', 'desc')->get()->pluck('title'); 
+        
+        dd(['produk' => [
+                'total' => count($produk),
+                'data' => $produk
+            ]]);  
+    }
+    
+    
+
+}
+?>
+==

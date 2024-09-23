@@ -1,0 +1,26 @@
+description = "ramadhan2024-promo-2"
+
+[viewBag]
+
+[builderList promoBanner]
+modelClass = "Definite\Ramadhan2024\Models\PromoBanner"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+<section class="tips-2">
+    {% for item in promoBanner.records %}
+    <div class="tips-2-container" onclick="handleTips(this)" href="{{item.link}}" style="cursor: pointer;">
+        <img src="{{item.image | media}}" alt="promo" class="tips-image-desktop">
+        <img src="{{item.image_mobile | media}}" alt="promo" class="tips-image-mobile">
+        <div class="text-container">
+            <!-- <div class="tips-headline-text">{{item.title}}</div> -->
+            <a href="{{item.link}}" class="tips-btn">{{item.button_word}}</a>
+        </div>
+    </div>
+    {% endfor %}
+</section>

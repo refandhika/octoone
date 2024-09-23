@@ -1,0 +1,274 @@
+title = "Our Products Archive"
+url = "/produk/:slug"
+layout = "default"
+is_hidden = 0
+
+[builderDetails]
+modelClass = "Definite\Products\Models\Category"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+
+[milkpediaList]
+==
+<?php
+function onEnd() {
+    if( ! $this->builderDetails->record ){
+        $page = new CMS\Classes\Page;
+        return Redirect::to($page->url('our-products'), 301);
+    }
+    
+     // get the post component
+    $_title = $this->page->components["builderDetails"]->record->attributes["title"];
+    $_meta_title = $this->page->components["builderDetails"]->record->attributes["meta_title"];
+    $_meta_description = $this->page->components["builderDetails"]->record->attributes["meta_description"];
+    $_meta_keywords = $this->page->components["builderDetails"]->record->attributes["meta_keywords"];
+    
+    if($_meta_title){
+         $this->page->meta_title = $_meta_title;
+         $this->page->title      = $_meta_title;
+    }else{
+        $this->page->meta_title  = $_title;
+        if($_title == "Susu Siap Minum"){
+            $this->page->title = "Susu Cair Siap Minum";
+        }elseif($_title == "Susu Ibu & Balita"){
+            $this->page->title = "Susu Ibu dan Balita";
+        }
+        elseif($_title == "Susu Kental Manis"){
+            $this->page->title = "Produk Susu Kental Manis Untuk Keluarga Indonesia";
+             $this->page->meta_title = "Produk Susu Kental Manis Untuk Keluarga Indonesia";
+        }else{
+            $this->page->title = $_title;
+            }
+    }
+   
+    $this->page->meta_description = $_meta_description;
+    $this->page->meta_keywords = $_meta_keywords;
+
+    $this->page->title_en = $this->page->components["builderDetails"]->record->attributes["title_en"];
+    $this->page->meta_title_en = $this->page->components["builderDetails"]->record->attributes["title_en"];
+    $this->page->meta_description_en = $this->page->components["builderDetails"]->record->attributes["meta_description_en"];
+    $this->page->meta_keywords_en = $this->page->components["builderDetails"]->record->attributes["meta_keywords_en"];
+    
+    $slug = $this->param('slug');
+    $disableList = [
+        'susu-kental-manis'
+    ];
+    
+    if (!in_array($slug,$disableList) && !in_array('disable-all-pages',$disableList)){
+        $this->page->amp_url = $this->pageUrl('our-products-archive-amp', ['slug'=>$this->param('slug')]);
+    }
+}
+?>
+==
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+{% if record %}
+{% set category = record.categories().first %}
+
+<!-- <h1 aria-hidden="true"  class="seo-heading">{{ record.title }}</h1> -->
+
+<div class="static-baner-pages">
+    
+    {% if record.slug == 'susu-siap-minum' or record.slug == 'purefarm' or record.slug == 'kids' %}
+        <div class="imgwrp hidden-xs"><img src="{{ 'assets/[R1]RTD-Product_2024.jpg'|theme }}" alt="Banner Desktop"/> </div>
+        <div class="imgwrp visible-xs"><img src="{{ 'assets/[R1]RTD-Product_2024_Mobile (1).jpg'|theme }}" alt="Banner Mobile"/> </div>
+    {% elseif record.slug == 'susu-bubuk-keluarga' %}
+    {# /susu-bubuk-d.jpg /susu-bubuk-m.jpg#}
+    
+        <!-- <div class="imgwrp hidden-xs"><img src="{{ 'assets/img/banner/FMP-WEBSITE-SBK.jpg'|theme }}" alt="Banner Desktop"/> </div>
+        <div class="imgwrp visible-xs"><img src="{{ 'assets/img/banner/FMP-WEBSITE-SBK-mobile.jpg'|theme }}" alt="Banner Mobile"/> </div> -->
+        <div class="imgwrp hidden-xs"><img src="{{ 'assets/img/banner/FMP_SKU_2022_Web.jpg'|theme }}" alt="Banner Desktop"/> </div>
+        <div class="imgwrp visible-xs"><img src="{{ 'assets/img/banner/FMP_SKU_2022_Mobile.jpg'|theme }}" alt="Banner Mobile"/> </div>
+    {% elseif record.slug == 'susu-ibu-balita' %}
+        <div class="imgwrp hidden-xs"><img src="{{ 'Banner/new-banner-susu-ibu-dan-balita-desktop.jpg'|media }}" alt="Banner Desktop"/> </div>
+        <div class="imgwrp visible-xs"><img src="{{ 'Banner/new-banner-susu-ibu-dan-balita-desktop.jpg'|media }}" alt="Banner Mobile"/> </div>
+    {% else %}
+        <div class="imgwrp hidden-xs"><img width="1440" height="351" src="{{ 'assets/img/SCM-Category-Website-Banner_Desktop.jpg'|theme }}" alt="Banner Desktop"/> </div>
+        <div class="imgwrp visible-xs"><img width="1440" height="351" src="{{ 'assets/img/SCM-Category-Website-Banner_Mobile.jpg'|theme }}" alt="Banner Mobile"/> </div>
+    {% endif %}
+
+</div>
+<div class="container-menutab container-menutab--seven">
+    <div class="container-one">
+        <ul>
+            <li class="toggle visible-xs visible-sm"><a href="javascript:;" class="active">{{ trans_pick(record, 'title') }}</a></li>
+            {% for category in record.all %}
+                {% if category.parent_id == null %}
+                    <li>
+                        <a href="{{ 'our-products-archive'|page({'slug': category.slug }) }}"
+                        {% if category.slug == record.slug %}
+                            class="active"
+                        {% endif %}
+                        >
+                            {{ trans_pick(category, 'title') }}
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+            <!-- <li>
+                <a href="https://www.susubendera.com/" target="_blank">
+                    Susu Bendera
+                </a>
+            </li>
+            <li>
+                <a href="https://www.friso.co.id/" target="_blank">
+                    Friso
+                </a>
+            </li> -->
+        </ul>
+    </div>
+</div>
+
+<div id='main-section' class="container-fluid">
+    <div class="col-md-12">
+        <div class="breadcrumb">
+            <div class="container-two">
+                <ul>
+                   <li><a href="{{ 'home'|page }}">{{'beranda'|_}}</a> </li>
+                    <li><a href="{{ 'our-products'|page }}">{{'produk'|_}}</a> </li>
+                    <li><a href="{{ 'our-products-archive'|page({"slug": rec}) }}">{{ trans_pick(record, 'title') }}</a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="default-content">
+            <div class="container-two">
+                <h1>{{ trans_pick(record, 'title') }}</h1>
+                <p>{{ trans_pick(record, 'description') | raw}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="section section_card clearfix leverate_section_product" style="justify-content: center;">
+        {% if not record.childs is empty %}
+            {% for category in record.childs.sortBy('order') %}
+                <div class="col-sm-4 itemhomefade">
+                        <div class="card card_featured card_product">
+                            <div class="card__thumbnail">
+                                <div class="card__image card__thumbnail--blue" data-adaptive-background data-ab-css-background>
+                                     {% if category.featured_image %}
+                                        <img src="{{ category.featured_image|media }}" alt="{{ trans_pick(category, 'title') }}"/>
+                                    {% else %}
+                                         <img src="http://placehold.it/600x600/797979/666666?text=No+Image" alt="No image"/>
+                                    {% endif %}
+                                </div>
+
+                                <div class="card__meta">
+                                    <header class="card__head">
+                                        <h3><a href="{{ 'our-products-single'|page({"category-slug": record.slug, "slug": category.slug}) }}">
+                                            {{ trans_pick(category, 'title') }}
+                                        </a></h3>
+                                    </header>
+                                    <a href="{{ 'our-products-single'|page({"category-slug": record.slug, "slug": category.slug}) }}" class="button button-dark hidden-xs">{{'selengkapnya'|_}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            {% endfor %}
+        {% else %}
+            {% for post in record.publishedProducts.sortBy('order') %}
+                <div class="col-sm-4 itemhomefade">
+                        <div class="card card_featured card_product">
+                            <div class="card__thumbnail card__thumbnail--blue">
+                                <div class="card__image" data-adaptive-background data-ab-css-background>
+                                     {% if post.featured_image %}
+                                        <img width="365" height="365" src="{{ post.featured_image|media }}" alt="{{ post.title }}"/>
+                                    {% else %}
+                                         <img src="http://placehold.it/600x600/797979/666666?text=No+Image" alt="Placeholder"/>
+                                    {% endif %}
+                                </div>
+
+                                <div class="card__meta">
+                                    <header class="card__head">
+                                        <h3><a href="{{ 'our-products-single'|page({"category-slug": record.slug, "slug": post.slug}) }}">{{ post.title }}</a></h3>
+                                    </header>
+                                    <a href="{{ 'our-products-single'|page({"category-slug": record.slug, "slug": post.slug}) }}" class="button button-dark hidden-xs">{{ 'selengkapnya'|_ }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div class="container-fluid">
+    {% if record.slug == 'susu-kental-manis'%}
+ 
+
+    {% if milkpediaList.cara_minum_susu  %}
+	{% set milkpedias = milkpediaList.cara_minum_susu.take(3) %}
+
+		<h3 class=" text-center small-news__title">{{ 'kapan-dan-bagaimana-cara-minum-susu'|_ }}</h3>
+
+		{% for milkpediaPost in milkpedias %}
+		<div class="col-sm-4">
+        <div class="card">
+            <div class="card__thumbnail card__thumbnail--half" style="background-image: url('{{ milkpediaPost.featured_image | mediathumb_resize('width', 640, 90)  }}');">
+            </div>
+            <div class="card__meta card__meta--relative">
+            	<div class="date">
+                    <label>Milkpedia</label> | {{ milkpediaPost.created_at.format('d M Y') }}
+                </div>
+                <header class="card__head">
+                    <h3>{{milkpediaPost.title}}</h3>
+                </header>
+                <p>{{milkpediaPost.excerpt}}</p><br>
+                <a href="{{ 'our-milkpedia-single'|page({"category-slug": milkpediaPost.categories.first().slug, "slug": milkpediaPost.slug}) }}" class="button">{{ 'lebih-lanjut'|_ }}</a>
+            </div>
+        </div>
+    </div>
+		
+		{% endfor %}
+
+	{% endif %}
+    
+    {% endif %}
+    
+    {% if record.slug == 'susu-bubuk-keluarga'%}
+ 
+
+    {% if milkpediaList.nutrisi  %}
+	{% set milkpedias = milkpediaList.nutrisi.take(3) %}
+
+		<h3 class=" text-center small-news__title">{{ 'nutrisi-dan-kesehatan'|_ }}</h3>
+
+		{% for milkpediaPost in milkpedias %}
+		<div class="col-sm-4">
+        <div class="card">
+            <div class="card__thumbnail card__thumbnail--half" style="background-image: url('{{ milkpediaPost.featured_image | mediathumb_resize('width', 640, 90)  }}');">
+            </div>
+            <div class="card__meta card__meta--relative">
+            	<div class="date">
+                    <label>Milkpedia</label> | {{ milkpediaPost.created_at.format('d M Y') }}
+                </div>
+                <header class="card__head">
+                    <h3>{{milkpediaPost.title}}</h3>
+                </header>
+                <p>{{milkpediaPost.excerpt}}</p><br>
+                <a href="{{ 'our-milkpedia-single'|page({"category-slug": milkpediaPost.categories.first().slug, "slug": milkpediaPost.slug}) }}" class="button">{{ 'lebih-lanjut'|_ }}</a>
+            </div>
+        </div>
+    </div>
+		
+		{% endfor %}
+
+	{% endif %}
+
+    
+    {% endif %}
+        
+    
+    </div>
+</div> <!-- end mainsection -->
+
+{% put footer %}
+    {{ record.additional_tags|raw }}
+{% endput %}
+
+{% else %}
+    {% partial '404' %}
+{% endif %}

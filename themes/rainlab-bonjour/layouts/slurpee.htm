@@ -1,0 +1,139 @@
+description = "Layout for Slurpee Pages"
+
+[staticPage]
+[subscriberform]
+[account]
+paramCode = "code"
+forceSecure = 0
+[session]
+
+[SessionClose]
+load_js = 1
+==
+
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title') }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+        <img src="{{ 'slurpeee/desktop/masthead-sluurprise.jpg'|media }}" class="hidden-xs" />
+        <img src="{{ 'slurpeee/mobile/masthead-sluurprise.png'|media }}" class="visible-xs" />
+    </div>
+</div>
+<div class="container-menutab container-menutab--five">
+    <div class="container-one">
+        <ul class="breadcrumb">
+            <li class="toggle visible-xs visible-sm">
+                <a href="javascript:;" class="active">Sluurprise</a>
+            </li>
+            <li>
+                <a href=" {{ 'sluurprise' }} " class="active">
+                    Sluurprise
+                </a>
+            </li>
+            <li>
+                <a href=" {{ 'sluurprise/syarat-ketentuan' }} ">
+                    {{ 'syarat-&-ketentuan'|_ }}
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div id='main-section' class="container" style="padding: 20px 0;">
+    <div class="col-md-12">
+        <div class="default-content">
+            {% for featuredImages in collect(page.featured_images).chunk(2) %}
+            <div class="row">
+            {% for featuredImage in featuredImages %}
+            <div class="col-sm-12 col-md-6" style="padding: 0;">
+                <a href="{{ featuredImage.url }}" target="_blank">
+                    <img src="{{trans_pick(featuredImage, 'image')|media}}" />
+                </a>
+            </div>
+            {% endfor %}
+            </div>
+
+            <div class="hidden-xs" style="padding: 10px 0;"></div>
+            {% endfor %}
+
+            <div class="col-md-12">
+                <br />
+                <h5>{{ 'info-lebih-lanjut'|_|strip_tags|lowercase|ucfirst }},
+                    <a href="/aktifitas-kami/sluurprise/syarat-ketentuan/">{{ 'klik-di-sini'|_|strip_tags|lowercase }}</a>
+                </h5>
+            </div>
+
+            <div class="col-md-12">
+                <hr />
+                <h2>{{ 'banyak-sluurprise-nya'|_|uppercase }}</h2>
+                <br />
+            </div>
+
+            <div class="col-md-12">
+                <img src="{{trans_pick(page, 'large_prize_image')|media}}" class="hidden-xs" />
+                <img src="{{trans_pick(page, 'small_prize_image')|media}}" class="visible-xs" />
+            </div>
+
+            {% for video in page.videos %}
+            <div class="col-md-6 milkybox no-padding" style="margin-bottom: 10px;">
+                <a data-fancybox href="{{ video.url }}">
+                    <img src="{{trans_pick(video, 'image')|media}}" />
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<style>
+    .default-content h3 {
+        font-size: 22px;
+        line-height: 1.2;
+    }
+
+    @media screen and (min-width: 767px) {
+        .default-content h3 {
+            font-size: 30px;
+        }
+    }
+</style>
+
+{% partial 'site/footer' %}
+
+
+<!-- {richeditor name="markup_en" tab="Content (en)"}{/richeditor} -->
+
+<!-- {repeater name="featured_images" prompt="Add featured images" tab="Featured Images"}
+    {text name="url" label="URL (id)" placeholder="Type URL"}{/text}
+    {mediafinder name="image" label="Image (id)" placeholder="Insert an image (id)" mode="image"}{/mediafinder}
+    {mediafinder name="image_en" label="Image (en)" placeholder="Insert an image (en)" mode="image"}{/mediafinder}
+{/repeater} -->
+
+<!-- {mediafinder tab="Prize Image"
+    name="large_prize_image"
+    label="Large prize Image (id)"
+    placeholder="Insert a large prize image (id)"
+    mode="image"}{/mediafinder} -->
+<!-- {mediafinder tab="Prize Image"
+    name="large_prize_image_en"
+    label="Large prize Image (en)"
+    placeholder="Insert a large prize image (en)"
+    mode="image"}{/mediafinder} -->
+<!-- {mediafinder tab="Prize Image"
+    name="small_prize_image"
+    label="Small prize Image (id)"
+    placeholder="Insert a small prize image (id)"
+    mode="image"}{/mediafinder} -->
+<!-- {mediafinder tab="Prize Image"
+    name="small_prize_image_en"
+    label="Small prize Image (en)"
+    placeholder="Insert a small prize image (en)"
+    mode="image"}{/mediafinder} -->
+
+<!-- {repeater name="videos" prompt="Add YouTube videos" tab="YouTube videos"}
+    {text name="url" label="URL (id)" placeholder="Type URL"}{/text}
+    {mediafinder name="image" label="Image (id)" placeholder="Insert an image (id)" mode="image"}{/mediafinder}
+    {mediafinder name="image_en" label="Image (en)" placeholder="Insert an image (en)" mode="image"}{/mediafinder}
+{/repeater} -->

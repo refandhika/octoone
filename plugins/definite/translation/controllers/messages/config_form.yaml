@@ -1,0 +1,11 @@
+name: Messages
+modelClass: Definite\Translation\Models\Message
+form: $/definite/translation/models/message/fields.yaml
+defaultRedirect: definite/translation/messages
+create:
+    redirect: 'definite/translation/messages/update/:id'
+    redirectClose: definite/translation/messages
+update:
+    redirect: definite/translation/messages
+    redirectClose: definite/translation/messages
+preview: {  }

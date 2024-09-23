@@ -1,0 +1,61 @@
+description = "Layout for Alfamart - Hadiah"
+
+[staticPage]
+useContent = 1
+default = 0
+[account]
+paramCode = "code"
+forceSecure = 0
+[session]
+
+[SessionClose]
+load_js = 1
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+  <h1 style="display: none;">Alfamart - Hadiah | Frisian Flag Indonesia</h1>
+    <div class="imgwrp">
+    	<img src="{{ 'assets/img/alfamart/hadiah/hadiah-header-desktop.png'|theme }}" class="hidden-xs" />
+      <img src="{{ 'assets/img/alfamart/hadiah/hadiah-header-mobile.png'|theme }}" class="visible-xs" />
+    </div>
+</div>
+
+{% partial 'site/alfamart-menu' %}
+
+<div id='main-section' style="padding: 30px 20px;">
+    <a href="{{ '/aktivitas-kami/promo-alfamart/daftar' }}">
+      <img src="{{ 'assets/img/alfamart/hadiah/hadiah-banner-desktop.png'|theme }}" class="hidden-xs" />
+      <img src="{{ 'assets/img/alfamart/hadiah/hadiah-banner-mobile.png'|theme }}" class="visible-xs" />
+    </a>
+
+    <div class="text-center" style="margin-top: 30px;">
+      <a href="{{ '/aktivitas-kami/promo-alfamart/daftar' }}" class="button button--small">Ikuti Sekarang</a>
+      <a style="display:none !important;" href="{{ '/aktivitas-kami/promo-alfamart/pemenang' }}" class="button button--small">Lihat Pemenang</a>
+    </div>
+</div>
+
+<style>
+	.default-content h3 {
+	    font-size: 22px;
+	    line-height: 1.2;
+	}
+
+	@media screen and (min-width: 767px) {
+		.default-content h3 {
+			font-size: 30px;
+		}
+	}
+
+  @media screen and (max-width: 767px) {
+    .m-bottom-15 {
+      margin-bottom: 15px;
+    }
+  }
+</style>
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

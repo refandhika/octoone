@@ -1,0 +1,87 @@
+[viewBag]
+==
+<script src="{{ 'assets/js/app.js'|theme }}"></script>
+    {% placeholder footer %}
+    {% framework extras %}
+    {% scripts %}
+    <script>
+        // this for temporary
+        jQuery(document).ready(function($) {
+            $('.container-menutab a:contains("Tujuan Kami")').parent().hide();
+            $('.val-submenu a:contains("Tujuan Kami")').parent().hide();
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js"></script>
+    <script>
+        'use strict';
+
+        (function($) {
+            $("#getDaftar").on('click',function(){
+                $(".log").fadeOut();
+                $(".reg").fadeIn();
+            });
+            $("#getMasuk").on('click',function(){
+                $(".log").fadeIn();
+                $(".reg").fadeOut();
+            });
+            $("#edit2").on('click',function(e){
+                e.preventDefault();
+                if($('#form2').hasClass('active')){
+                    $('#form2').removeClass('active');
+                }else{
+                    $('#form2').addClass('active');
+                }
+            });
+            $("#editProfil").on('click',function(e){
+                e.preventDefault();
+                if($('.form-editprofil').hasClass('active')){
+                    $('.form-editprofil').removeClass('active');
+                    $('.form-editprofil').find('input').attr('disabled','disabled');
+                    $('.form-editprofil').find('input').removeClass('active');
+                }else{
+                    $('.form-editprofil').addClass('active');
+                    $('.form-editprofil').find('input').removeAttr('disabled');
+                    $('.form-editprofil').find('input').addClass('active');
+                }
+            });
+            $(document).ready(function() {
+                
+                // Matcheight
+                $('.live-search-list .wrpcontent').matchHeight();
+
+                $.fancybox.defaults.hash = false;
+                {{ this.page.show_form|raw }}
+                {{ this.page.login_alert|raw }}
+            });
+
+        })(jQuery);
+        $('#myModal').on('shown.bs.modal', function (e) {
+          // do something...
+          var button = $(e.relatedTarget);
+          var id = button.data('gal');
+          $("#myModal").find('.item').removeClass('active');
+          $("#myModal").find('.'+id).addClass('active');
+        });
+    </script>
+        <!-- Add mousewheel plugin (this is optional) -->
+
+    {% flash success %}
+        {% if (message == 'An activation email has been sent to your email address.') %}
+
+        <script>
+        (function($) {
+            $.fancybox.open({
+                src  : '#thank-you'                
+            });
+        })(jQuery);
+        </script>
+
+        {% else %}
+        <p data-control="flash-message" data-interval="5" class="success">
+            {{ message }}
+        </p>
+        {% endif %}
+    {% endflash %}
+        
+    </body>
+</html>

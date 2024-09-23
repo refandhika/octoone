@@ -1,0 +1,91 @@
+tabs:
+    fields:
+        title:
+            label: Judul
+            span: auto
+            required: 1
+            type: text
+            tab: 'Informasi Detail'
+        slug:
+            label: Slug
+            span: auto
+            preset:
+                field: title
+                type: slug
+            type: text
+            tab: 'Informasi Detail'
+        status:
+            label: 'Status Tampil'
+            nameFrom: title
+            descriptionFrom: description
+            select: title
+            span: auto
+            type: relation
+            tab: 'Informasi Detail'
+        regencies:
+            label: Kota
+            nameFrom: name
+            descriptionFrom: description
+            emptyOption: '--- Pilih ---'
+            select: name
+            span: auto
+            required: 1
+            type: relation
+            tab: 'Informasi Detail'
+        excerpt:
+            label: Excerpt
+            size: small
+            span: full
+            type: richeditor
+            tab: 'Informasi Detail'
+        description:
+            label: Deskripsi
+            size: huge
+            span: full
+            type: richeditor
+            tab: 'Informasi Detail'
+        start_date:
+            label: Mulai
+            mode: date
+            span: auto
+            type: datepicker
+            tab: 'Informasi Detail'
+        end_date:
+            label: Berakhir
+            mode: date
+            span: auto
+            type: datepicker
+            tab: 'Informasi Detail'
+        thumb_img:
+            label: 'Thumbnail (400 x 400 )'
+            mode: image
+            imageWidth: '400'
+            imageHeight: '400'
+            span: auto
+            required: 1
+            type: mediafinder
+            tab: Gambar
+        img:
+            label: 'Gambar ( 1280 x 1280 )'
+            mode: image
+            imageWidth: '1280'
+            imageHeight: '1280'
+            span: left
+            required: 1
+            type: mediafinder
+            tab: Gambar
+        alt_img:
+            label: ALT
+            span: left
+            type: text
+            tab: Gambar
+        meta_description:
+            label: 'Meta Description'
+            span: auto
+            type: text
+            tab: 'Meta Tag'
+        meta_keywords:
+            label: 'Meta Keywords'
+            span: left
+            type: text
+            tab: 'Meta Tag'

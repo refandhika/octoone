@@ -1,0 +1,143 @@
+description = "Banner Resep Coklat"
+
+[viewBag]
+==
+<?php
+function onStart() {
+    // Get Router
+    $router             = $this->controller->getRouter();
+    $this->page['slug'] = $router->getURL();
+    $this['category']   = $this->param('category');
+}
+?>
+==
+{% put styles %}
+
+    .gradient-orange{background-image:linear-gradient(to bottom,#ff9f02,#db7e00)}.content.resep-manis{background-image:url(/storage/app/media/festive-ramadan/mobile/pattern-manis.png),linear-gradient(to bottom,#00ACF6, #00A3E8);background-size:100%}.resep-manis-archive{background-image:url(/storage/app/media/festive-ramadan/mobile/resep-manis-archive-bg.jpg);background-size:cover}.content.resep-kue{background-image:url(/storage/app/media/festive-ramadan/mobile/pattern-kuekering.png),linear-gradient(to bottom,#0185D8, #0185D8);background-size:100%}.resep-kue-archive{background-image:url(/storage/app/media/festive-ramadan/mobile/resep-kue-archive-bg.jpg);background-size:cover}.detail_text h2{color:#fff;border:0}.arrow{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAABQCAYAAABf9vbdAAAAAXNSR0IArs4c6QAACIZJREFUaAXVW3uMG8UZn9n19e6AcPaFNIWmEpWCOFT+CVULFRWXhEQINWefEw5SShDJ2VcegqJSWiFV5QQCIaAgoA969uXStCiQKDk/IE2Uu0AQiD4opFXVEiCQlkdUkfOjock5vt3h95msWee89u7O2j5Wsnb87Tfz/X7zzXzz2FmVzcFreFgo+89cNNZ+fqitcCD1z1oQea2HrXgmhOCBUCwuBNsA+zOc8aty6WjSCoti9aBVcn8o/suT4AmCT3C2NdA/eqUVnjlFwB+MPcqEuKkCrBBf0DV9R1do44oK+ck/c6YJdYXiDzBd/0k1kCQD0GOMK1fmUpEXzTpzwgOo+XtqgSfAgrHTGNOf6w6PfstMoOUeCATjd+lCv98Mqlaac5b3MXXFkdTgq6TXUgL+4MgP0WF/XguwxbMs96nLcuODf2sZAYTKW3Rd/MICoB3xEZWxpfg1/+oKjkQR7n8FyzIViD7BviZTgCvm/v74OqHrm9Ar5QIIZwd97e29TSXQHYpdown2FGK9lOfRkQ/x9o7e7Lbr/9M0Av7QSFjobCvc5nPlupOZOOfvoeP35tPRd0kkVRN2gSBUfgdxfBv02+zmqaYH8B+2Mb4sk46+YzxvuAe6g7GVmhBpGGw3jLq6c/7fNqb0Iv4fMOdvqAf8/bGlmF0+C4MdZqPO0/wjlYnlU+nov07N2zAPoNlcCvC7BROnn2rU2X+e4T5lOQ1a1fI1xAPz++Pf1HUd4Nm8akbtytDmc6xNXZEfH9xvlcdzD/iD8SVC6JMwGLAyakcOYP9TVWXlVCLy51r6nnogEI5fiGazFwa7axmt9wxx/mOOqXMmGfljPV250dBU+vw1Yz26JiYwSM03iR0nUfPHmOpblU1FXraT2ZMmtCAYX1xkYh9q/xw7Rq11+DRT+ap8IkJN0NYl7QF//9i5AL9XHjwrqJyHnYAnhlIEulfHFjF9hsB/xVZ1WSlxVlQUZSCTiuyyUrGSuyZw1urfna0VSzX/VavCbcpp62RtNhmh0drx5YrAlwY2LigWp6mdnufYojkD55qq8OtyqegOs9hJ2jGBRQPx7umCNoFl9gVODM3S5UyH8Rsyyegzs545EDiKQuiwfqYVJzHCXuTARhVVLrjCBnPJ6FiVh45Etj1wVnB0ntCLu7wAryj8Ji/AE1NbBBau23z6jNB2Yhl4saPqqaKscH4bOuxvqjxyJapLYNHA1s5CvpBCzX/blQVTJkwR7sAIK7MTYSrt02RNAotv3dl+tJAfR5xfPiunQwGazV251NAjDrPVVbck8PWhV9uOHPpgG+Y2V9QtpY4CV5S7s8noA3XUXD2uSmDp8PO+g4df24LFSJ+rUisy8ftyycg9FSIP/8wiQG9HXn/t7c1o82tk7aDDPoTdg5/KllMrf8UWB9o6x8uEUTSb79bKZOcZOuxj2VT0x3Z0ZXTKAxmBx9uRJwF+SKbAUl7Of51PRW+WLsdGAeUmFOiPP+YFeKxjR9Hmb7Fh2xOVEoFA38hDQhe3ypYI8JtvvygyhDu6UHMuBYvwe3XGfiRtjvMtAL9+eJijuOZd8AB2Gj/HV6kTUxPywgsYsDZlE4MbmtmEylHIH4o97kU/YJyPIAJ9v1lOLUehbCLyAzIubRhhmCpDuhybBZQJkNsR/m6kZmAzr6UaeTIQjD1oqeDhgzIBKpNI3L5kcBCJLbI2dCHupAgnW069/OU+YFakydz+v771tBfzIVTKz7BobxiRqgSIDE2nDx5+fbsnM1JFuTOfjDxsriSv0pYEyAAtaD769wdJDBXyawLGbsulh57wCrhRTk0CpERLyo8L+WflV2WYXnB2I0KsfKQz0ONe0YlN8nLy/W1XH2/vag+C6UtloasETv4I9qS/b+QGV9ktMtX1gJGPtlWKTNsjvTNBG1qCX5dNR6UjHWGzTYCUvdvYYjNMVdfmE4PbqVyZq24TMheeS6zPndGhrERo/LtZ7iLtY7q2JRCKS6+5HXnAAEqbu8entX3S+6MM7wQUFsokh3YbZTu9uyJARmh7vVg8DhJyO9RYOx/HanYVFv/0bs3x5agJmUs/smPdYbWNL0dzetcsd5rGaqQTtZgKhEdd7fy59oABlF4x4S3NixgnpN7SoCKOqlxdOZXc8CejbDt31x4wCkfHPoQDGOSJDw2ZmzsqYJ4mtF1dqzc62rqX9oABll6zzhSL+zBOfNGQubvzjMLZMuwp2Yp00h4wQE5tX/+GoiqXYyo+Zcjc3UW3LtjE/HDM1hsgzwgQ2Ox45B94YUfjRM4deCOXWKBpYnLBmrG67+A8a0KGabrTYQ9N0/dgPXGmWe40jYp4H1HqMuN0VrX8DSFAhrw6boNx4pDCfZdlkhveq0bA0yZkNlA666CyVTRQmeVO0/DAuYhOezGZrHqMoWEECGguEX1BYTyEZMEp8Ap9IRYXhTa5MLx5VoRrKAECkUlF9yhcWYN5b7EClPM/PYWZwuSXw7+tOA3TcAKEE83pOTSla5CccY77sxxYn1/4f+3Enq5rnyofpmoKAYKQSw6N07ECjBPaZ5CcpzBiL2FHj+3q/t7vSxGuYVHIChp27a4HiDGM2FKVhxD7Mpa6VzSdABHD1xoRpgss7rFOlrr4TskC3FuXPX5fWkcoSp+nh/6c0Jk+kP5LZ0/fUeRxsefEp1VV7c8lIhMtI0BkQeKV03pCJxBdLndAHkfTlDBONJaWoS0l8CmJ1Eud5/dRh+6tS4LzEzSmICz/wdBtOYESiTfTL3RcEOrEFqb1spLO1XHlKoCns9jla04QIDT4ZnKisyfoR/KSMjojAfA4IjWAXe6UITLuc4YAAUKf2N3RE1yI5DcMgLjPIOavxfeUCZOsnGxZGC0jOCWBQa7iY1B8vXdtPhWhjyc+PxcdOMHXfZvom5t6qD8BWYPc2AG/E2QAAAAASUVORK5CYII=);width:10px;height:15px;background-size:100%;display:inline-block;background-repeat:no-repeat;float:right}.accordion_items ol li,.accordion_items ol li p,.accordion_items ul li,.accordion_items ul li p{color:#fff}.accordion_items ol li p,.accordion_items ul li p{padding:0}.accordion_items .arrow{transform:rotate(-90deg)}.accordion_items h4{color:#0f4d9a;padding:8px 20px;background:#fff;border-radius:4px}.accordion_items section[expanded] .arrow{transform:rotate(90deg)}amp-social-share{background-color:linear-gradient(to bottom,#fd9c00,#df8200)}.resep-manis .light-blue{background-color:#21c3ff}.resep-kue .light-blue{background-color:#119ff7}.light-blue .button{display:block;position:relative}.content-archive h2,.related-resep h2{color:#fff;text-align:center;margin-bottom:25px}.content-archive .button,.main-section section .main__recipe .button,.related-resep .button,.selengkapnya .button{padding:10px 25px;height:auto;text-align:center;display:block;position:relative;box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -1px rgba(0,0,0,.06);transition:.3s;background-image:linear-gradient(to bottom,#ff9f02,#db7e00);font-family:Brevia-Black,Helvetica,Arial,sans-serif;color:#fff;text-transform:uppercase;width:60%;margin:auto;margin-top:15px;border:0}.main-section .detail_text h1{color:#fff}.content-archive .main__recipe,.main-section section .main__recipe{width:48%;margin-right:4%;float:left}.content-archive .main__recipe:nth-child(odd),.main-section section .main__recipe:nth-child(odd){margin-right:0}.content-archive,.main-section section{overflow:hidden;position:relative}.content-archive amp-img,.main__recipe amp-img,.related-resep .carousel-slider-img{border-radius:10px}.promo-ramadan amp-img{border-radius:0}.resep-sahur-terbaik{background-image:url(/storage/app/media/festive-ramadan/mobile/Mobile-ResepSahurTerbaikmu.png);background-size:100%}.resep-manis-7-langkah{background-image:url(/storage/app/media/festive-ramadan/mobile/Mobile-ResepManis7Langkah.png);background-size:100%}.resep-kue-kering-pilihan{background-image:url(/storage/app/media/festive-ramadan/mobile/Mobile-ResepKueKering.png);background-size:100%}.promo-ramadan{background-image:url(/storage/app/media/festive-ramadan/mobile/Mobile-Promo.png);background-size:100%}.navy-blue{background-color:#0085d8}.light-blue{background-color:#119ff7}.selengkapnya>.button{width:60%;background-image:linear-gradient(to bottom,#0f4d9a,#043a7e)}.selengkapnya{width:100%;display:block;float:left}.main-section section{position:relative}.lentern-big{width:5vw;position:absolute;right:5%;z-index:5;height:100px;top:0}.lentern-small{top:0;width:5vw;position:absolute;left:5%;z-index:5;height:100px}.promo-archive{background-color:#119ff7}@media (max-width:500px){.content-archive .button{font-size:10px}}
+
+
+    .amp-social-share-facebook{
+    background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23fff' d='M211.9 197.4h-36.7v59.9h36.7v175.8h70.5V256.5h49.2l5.2-59.1h-54.4v-33.7c0-13.9 2.8-19.5 16.3-19.5h38.2V82.9h-48.8c-52.5 0-76.1 23.1-76.1 67.3-.1 38.6-.1 47.2-.1 47.2z'/%3E%3C/svg%3E"), linear-gradient(to bottom,#FD9C00, #DF8200) ;
+    }
+
+    .amp-social-share-twitter {
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='M0 0h400v400H0z'/%3E%3Cpath fill='%23FFF' fill-rule='nonzero' d='M153.62 301.59c94.34 0 145.94-78.16 145.94-145.94 0-2.22 0-4.43-.15-6.63A104.36 104.36 0 00325 122.47a102.38 102.38 0 01-29.46 8.07 51.47 51.47 0 0022.55-28.37 102.79 102.79 0 01-32.57 12.45c-15.9-16.906-41.163-21.044-61.625-10.093-20.461 10.95-31.032 34.266-25.785 56.873A145.62 145.62 0 0192.4 107.81c-13.614 23.436-6.66 53.419 15.88 68.47A50.91 50.91 0 0185 169.86v.65c.007 24.416 17.218 45.445 41.15 50.28a51.21 51.21 0 01-23.16.88c6.72 20.894 25.976 35.208 47.92 35.62a102.92 102.92 0 01-63.7 22 104.41 104.41 0 01-12.21-.74 145.21 145.21 0 0078.62 23'/%3E%3C/g%3E%3C/svg%3E"), linear-gradient(to bottom,#FD9C00, #DF8200);
+    }
+
+    .amp-social-share-whatsapp {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='46'%3E%3Cpath fill='%23FFF' d='M35.4 10.4C32 6.9 27.3 5 22.5 5 12.3 5 4.1 13.3 4.2 23.4c0 3.2.9 6.3 2.4 9.1L4 42l9.7-2.5c2.7 1.5 5.7 2.2 8.7 2.2 10.1 0 18.3-8.3 18.3-18.4 0-4.9-1.9-9.5-5.3-12.9zM22.5 38.6c-2.7 0-5.4-.7-7.7-2.1l-.6-.3-5.8 1.5L9.9 32l-.4-.6c-4.4-7.1-2.3-16.5 4.9-20.9 7.2-4.4 16.5-2.3 20.9 4.9 4.4 7.2 2.3 16.5-4.9 20.9-2.3 1.5-5.1 2.3-7.9 2.3zm8.8-11.1l-1.1-.5s-1.6-.7-2.6-1.2c-.1 0-.2-.1-.3-.1-.3 0-.5.1-.7.2 0 0-.1.1-1.5 1.7-.1.2-.3.3-.5.3h-.1c-.1 0-.3-.1-.4-.2l-.5-.2c-1.1-.5-2.1-1.1-2.9-1.9-.2-.2-.5-.4-.7-.6-.7-.7-1.4-1.5-1.9-2.4l-.1-.2c-.1-.1-.1-.2-.2-.4 0-.2 0-.4.1-.5 0 0 .4-.5.7-.8.2-.2.3-.5.5-.7.2-.3.3-.7.2-1-.1-.5-1.3-3.2-1.6-3.8-.2-.3-.4-.4-.7-.5h-1.1c-.2 0-.4.1-.6.1l-.1.1c-.2.1-.4.3-.6.4-.2.2-.3.4-.5.6-.7.9-1.1 2-1.1 3.1 0 .8.2 1.6.5 2.3l.1.3c.9 1.9 2.1 3.6 3.7 5.1l.4.4c.3.3.6.5.8.8 2.1 1.8 4.5 3.1 7.2 3.8.3.1.7.1 1 .2h1c.5 0 1.1-.2 1.5-.4.3-.2.5-.2.7-.4l.2-.2c.2-.2.4-.3.6-.5.2-.2.4-.4.5-.6.2-.4.3-.9.4-1.4v-.7s-.1-.1-.3-.2z'/%3E%3C/svg%3E"), linear-gradient(to bottom,#FD9C00, #DF8200);
+}
+.amp-social-share-line {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 511.99'%3E%3Cpath d='M443.2 233.29c0-84.14-84.35-152.6-188-152.6s-188 68.46-188 152.6c0 75.43 66.9 138.61 157.26 150.55 6.13 1.32 14.46 4 16.57 9.27 1.89 4.76 1.24 12.2.61 17 0 0-2.21 13.26-2.69 16.09-.82 4.75-3.78 18.6 16.29 10.14s108.21-63.76 147.66-109.16c27.25-29.89 40.3-60.18 40.3-93.89zm-254.38 44.92a3.67 3.67 0 01-3.66 3.67h-52.69a3.6 3.6 0 01-2.53-1l-.06-.05v-.05a3.65 3.65 0 01-1-2.53v-81.96a3.66 3.66 0 013.66-3.66h13.19a3.66 3.66 0 013.66 3.66v65.07h35.84a3.66 3.66 0 013.66 3.66zm31.8 0a3.65 3.65 0 01-3.66 3.65h-13.2a3.65 3.65 0 01-3.66-3.65v-81.92a3.66 3.66 0 013.66-3.66H217a3.66 3.66 0 013.66 3.66zm90.78 0a3.65 3.65 0 01-3.66 3.65h-13.19a3.67 3.67 0 01-.94-.12h-.05l-.25-.08h-.11l-.18-.08-.17-.08-.11-.06-.22-.14a3.45 3.45 0 01-.93-.9L254 229.56v48.66a3.66 3.66 0 01-3.67 3.65H237.1a3.65 3.65 0 01-3.66-3.65v-81.93a3.66 3.66 0 013.66-3.66h13.86l.21.05h.13l.21.07h.12a1.31 1.31 0 01.21.08l.12.06.19.11a.41.41 0 01.11.07l.19.13.1.07.19.16.07.07a2.28 2.28 0 01.22.22 3.58 3.58 0 01.28.37L290.89 245v-48.71a3.66 3.66 0 013.66-3.66h13.19a3.66 3.66 0 013.66 3.66zm72.83-68.74a3.66 3.66 0 01-3.65 3.67h-35.84V227h35.84a3.66 3.66 0 013.65 3.67v13.19a3.65 3.65 0 01-3.65 3.66h-35.84v13.85h35.84a3.65 3.65 0 013.65 3.66v13.19a3.66 3.66 0 01-3.65 3.67h-52.7a3.66 3.66 0 01-2.53-1l-.05-.05a.12.12 0 01-.05-.05 3.65 3.65 0 01-1-2.53V196.3a3.6 3.6 0 011-2.52l.06-.07a3.63 3.63 0 012.54-1h52.7a3.66 3.66 0 013.65 3.67z' fill='%23fff' data-name='レイヤー 1'/%3E%3C/svg%3E"), linear-gradient(to bottom,#FD9C00, #DF8200);
+}
+.related-resep .carousel-slider-img.img-overlay{
+position:absolute;
+left:0;
+top:0;
+width:88vw;
+height:88vw;
+z-index:5;
+opacity:.9;
+}
+.related-resep .amp-carousel-slide{
+position:relative;
+}
+
+.iframe-youtube{
+position:sticky;
+top:70px;
+left:0;
+z-index:10;
+}
+
+
+{% endput %}
+<div class="carousel-container">
+    <amp-carousel class="carousel-cokelat" width="480" height="480" layout="responsive" type="slides" class="amp-slider-costum" autoplay loop delay="5000">
+
+            <!-- sample coklat design -->
+            <div>
+                <amp-img class="carousel-slider-img fill" src="https://www.frisianflag.com/storage/app/media/cokelatnya-bikin-semua-nikmat/tbanner_cokelat2x.jpg" width="480" height="480" layout="responsive"></amp-img>
+            </div>
+
+            <!-- {% if category == 'resep-manis-7-langkah'%}
+            
+            <div style="border-radius: 50px;">
+                <amp-img class="carousel-slider-img " src="{{ 'festive-ramadan/banner/banner-manis-mobile.jpg' |media }}" width="480" height="480" layout="responsive"></amp-img>
+            </div>    
+            
+            {% elseif category == 'resep-kue-kering-pilihan' %}
+            
+            <div>
+                
+                <amp-img class="carousel-slider-img" src="{{ 'festive-ramadan/banner/kuekering_mobile_banner.jpg' |media }}" width="480" height="480" layout="responsive"></amp-img>
+            </div>
+            {% elseif category == 'promo-ramadan' %}
+            
+            <div>
+                
+                <amp-img class="carousel-slider-img" src="{{ 'festive-ramadan/banner/promo_banner_mobile.jpg' |media }}" width="480" height="480" layout="responsive"></amp-img>
+            </div>
+            
+            {% else %}
+                
+            <div>
+                
+                <amp-img class="carousel-slider-img" src="{{ 'festive-ramadan/banner/campaign-banner-mobile2.jpg' |media }}" width="480" height="480" layout="responsive"></amp-img>
+            </div>
+            <div>
+               
+                <amp-img class="carousel-slider-img" src="{{ 'festive-ramadan/banner/RsepSahurMobile.png' |media }}" width="480" height="480" layout="responsive"></amp-img>
+            </div>
+            
+            <div>
+               
+                <amp-img class="carousel-slider-img" src="{{ 'festive-ramadan/banner/kartuMobile.png' |media }}" width="480" height="480" layout="responsive"></amp-img>
+            </div>    
+             <div>
+               
+                <amp-img class="carousel-slider-img " src="{{ 'festive-ramadan/banner/banner-manis-mobile.jpg' |media }}" width="480" height="480" layout="responsive"></amp-img>
+            </div>    
+            <div>
+                
+                <amp-img class="carousel-slider-img" src="{{ 'festive-ramadan/banner/banner-kuekering-mobile.jpg' |media }}" width="480" height="480" layout="responsive"></amp-img>
+            </div>    
+            <div>
+                
+                <amp-img class="carousel-slider-img" src="{{ 'festive-ramadan/banner/Promo-Mobile.png' |media }}" width="480" height="480" layout="responsive"></amp-img>
+            </div>    
+            <div>
+                
+                <amp-img class="carousel-slider-img" src="{{ 'festive-ramadan/banner/promo_banner_mobile.jpg' |media }}" width="480" height="480" layout="responsive"></amp-img>
+            </div>
+            
+            {% endif %} -->
+            
+            
+    </amp-carousel>
+</div>
+
+
+<!-- {% if menus != "dont-allow"  %}
+    <amp-accordion class="title_home">
+    <section>
+
+     {% if ( this.page.slug == "amp/aktivitas-kami/resep-ramadan-kaya-rasa-dirumahaja/resep-manis-7-langkah" or category == "resep-manis-7-langkah" ) %}    
+        <h4 class="arrow_down"><a href="#" target="_self">{{'Resep manis 7 langkah'|upper}}</a></h4> 
+     {% elseif ( this.page.slug == "amp/aktivitas-kami/resep-ramadan-kaya-rasa-dirumahaja/resep-kue-kering-pilihan" or category == "resep-kue-kering-pilihan") %}    
+        <h4 class="arrow_down"><a href="#" target="_self">{{'Resep Kue kering pilihan'|upper}}</a></h4>  
+     {% elseif ( this.page.slug == "amp/aktivitas-kami/resep-ramadan-kaya-rasa-dirumahaja/promo-ramadan" or category == "promo-ramadan") %}  
+        <h4 class="arrow_down"><a href="#" target="_self">{{'promo ramadan'|upper}}</a></h4>  
+     {% else %}
+        <h4 class="arrow_down"><a href="#" target="_self">{{'Resep Sahur terbaikmu'|upper}}</a></h4>
+     {% endif %}    
+         <p>
+            <a href="https://www.frisianflag.com/resepsahurterbaik">{{'Resep Sahur Terbaikmu'|upper}}</a>
+            <a href="/aktivitas-kami/resep-ramadan-kaya-rasa-dirumahaja/resep-manis-7-langkah#main-scroll">{{'Resep manis 7 langkah'|upper}}</a>
+            <a href="/aktivitas-kami/resep-ramadan-kaya-rasa-dirumahaja/resep-kue-kering-pilihan#main-scroll">{{'Resep Kue kering pilihan'|upper}}</a>
+            <a href="/aktivitas-kami/resep-ramadan-kaya-rasa-dirumahaja/promo-ramadan#main-scroll">{{'promo ramadan'|upper}}</a>
+ 
+         </p>
+    </section>
+</amp-accordion>
+{%endif%} -->

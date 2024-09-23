@@ -1,0 +1,31 @@
+.separator {
+
+	&__text {
+		position: relative;
+		text-align: center;
+		margin-bottom: 20px;
+		
+
+		&:before {
+			display: block;
+			border-top: 2px solid #979797;
+	    content: "";
+	    margin: 0 auto;
+	    position: absolute;
+	    top: 55%;
+	    left: 0;
+	    right: 0;
+	    bottom: 0;
+	    width: 100%;
+	    z-index: 0;
+		}
+
+		span {
+			background: #fff;
+			color: #4A4A4A;
+    	padding: 0 15px;
+    	position: relative;
+    	font-size: 14px;
+		}
+	}
+}

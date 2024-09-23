@@ -1,0 +1,11 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table definite_cities_cities'
+    - builder_table_create_definite_cities_cities.php
+1.0.3:
+    - 'Created table definite_cities_provinces'
+    - builder_table_create_definite_cities_provinces.php
+1.0.4:
+    - 'Insert data'
+    - builder_table_insert_definite_cities.php

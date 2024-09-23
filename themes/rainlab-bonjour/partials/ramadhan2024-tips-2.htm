@@ -1,0 +1,146 @@
+description = "ramadhan2024-tips-2"
+
+[viewBag]
+
+[builderList tips]
+modelClass = "Definite\Ramadhan2024\Models\Staticbanner"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+<style>
+.tips-2{
+    width: 100%;  
+    margin-bottom: 5rem;
+}
+.tips-2-container{
+    max-width: 1536px;
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 40px;
+}
+.tips-2-container img{
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+}
+.text-container{
+    width: 100%; 
+    height: 100%;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: flex-end;
+    padding: 3rem 10rem;
+}
+.tips-headline-text{
+    width: 40%;
+    height: auto;
+    font-size: 35px;
+    /*font-family: Amino-Black;*/  
+    font-family: Uni-Sans !important;
+    color: #224C95;
+    font-weight: 800;
+    padding: 0 1rem;
+}
+.tips-btn{
+    min-width: 18rem;
+    height: 3rem;
+    background-image: linear-gradient(rgb(216,178,93),rgb(251,242,171),rgb(216,178,93));
+    color: #224C95;
+    border-radius: 999px;
+    padding: 0 2rem;
+    /*font-family: Amino;*/
+    font-family: Uni-Sans !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight:800;
+    cursor: pointer;
+}
+.tips-image-mobile{
+    display: none;    
+}
+.tips-image-desktop{
+    display: block;    
+}
+
+@media only screen and (min-width: 432px) and (max-width: 1025px){
+    .text-container {
+        padding: 3rem;        
+    }
+    .tips-headline-text{
+        padding: 0 1rem;
+        width: 45%;
+        font-size: 20px;
+    }
+    .tips-btn {
+        min-width: 15rem;
+        height: 3rem;
+        font-size: 16px;
+    }  
+}
+
+@media only screen and (max-width: 431px){
+    .tips-2-container {
+        width: 90%;
+        /*height: 35rem;*/
+        border-radius: 20px;
+    }
+    .tips-2-container img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+    .tips-headline-text {
+        width: 100%;
+        font-size: 26px;
+        text-align: center;
+    }
+    .text-container{
+        padding: 2rem;
+        align-items: flex-end;
+    }
+    .tips-image-mobile{
+        display: block;    
+    }
+    .tips-image-desktop{
+        display: none;    
+    }
+    .tips-btn{
+        min-width: 10rem;
+        height: 2rem;
+        font-size: 12px;
+    }
+}    
+</style>
+
+<section class="tips-2">
+    {% for item in tips.records %}
+    <div class="tips-2-container" href="{{item.link}}" onclick="handleTips(this)" style="cursor: pointer;">
+        <img src="{{item.image | media}}" alt="tips" class="tips-image-desktop">
+        <img src="{{item.image_mobile | media}}" alt="tips" class="tips-image-mobile">
+        <div class="text-container">
+            <!-- <div class="tips-headline-text">{{item.title}}</div> -->
+            <a href="{{item.link}}" class="tips-btn">Cari Tahu di Sini!</a>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+<script>
+function handleTips(e){
+    window.location.href = e.getAttribute('href');
+}
+</script>

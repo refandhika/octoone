@@ -1,0 +1,52 @@
+title = "Serunya Tambah Terus | AMP"
+url = "/amp/serunyatambahterus"
+layout = "basic-amp"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/milky-unicorn-amp"
+==
+<?php
+function onEnd(){
+    $this->page->meta_description = "Mewarnai gambar dapat hadiah? Ikuti lomba Frisian Flag Milky #SerunyaTambahTerus. Lihat cara mengikutinya di sini.";
+}
+?>
+==
+<div class="body-seru">
+    <div class="cover">
+            <amp-img 
+                src="{{ 'milky-unicorn/mobile-serunya-tambah-terus.jpg'|media }}"
+                width="50"
+                height="50"
+                layout="responsive"
+                alt="Serunya Tambah Terus Mobile">
+            </amp-img>
+    </div>
+    <amp-accordion class="title_home">
+        <section>
+            <h4 class="arrow_down"><a href="#" target="_self">Cara Mengikuti</a></h4>
+            <p>
+                <a href="/amp/serunyatambahterus" class="active">Cara Mengikuti</a>
+                <a href="/amp/serunyatambahterus/download-template">Download Template</a>
+                <a href="/amp/serunyatambahterus/syarat-dan-ketentuan">Syarat dan Ketentuan</a>
+                <a href="/amp/serunyatambahterus/pemenang">Pemenang</a>
+            </p>
+        </section>
+    </amp-accordion>
+    
+    
+    <!--s:event-->
+    <section class="event">
+        <div class="detail_text mt-20">
+            <div class="content mb-10">
+                <amp-img 
+            src="{{ 'milky-unicorn/mekanisme-serunyatambahterus-mobile.jpg'|media }}"
+            width="617"
+            height="1380"
+            layout="responsive"
+            alt="Serunya Tambah Terus Mekanisme Mobile">
+        </amp-img>
+            </div>
+    </section>
+    <!--s:event-->
+</div>

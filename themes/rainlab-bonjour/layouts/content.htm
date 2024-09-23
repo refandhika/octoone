@@ -1,0 +1,60 @@
+description = "Layout for Static Pages"
+
+[staticPage]
+useContent = 1
+default = 0
+
+[subscriberform]
+[account]
+paramCode = "code"
+forceSecure = 0
+[session]
+
+[SessionClose]
+load_js = 1
+==
+<?php
+function onStart() {
+    // Get Router
+    $router = $this->controller->getRouter();
+    $this->page['slug'] = $router->getURL();
+}
+?>
+==
+{% partial 'site/header' %}
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title') }}</h1>
+
+<div class="static-baner-pages">
+    {% if this.page.slug == 'aktivitas-kami/milky-incredibles' %}
+        <div class="imgwrp hidden-xs"><img src="{{ 'assets/img/milkiincridibles/header-desktop.jpg'|theme }}" alt="Header Desktop"/> </div>
+        <div class="imgwrp visible-xs"><img src="{{ 'assets/img/milkiincridibles/header-mobile.jpg'|theme }}" alt="Header Mobile"/> </div>
+    {% elseif this.page.slug == 'aktivitas-kami/jrnba-meet-and-greet' %}
+        <div class="imgwrp hidden-xs"><img src="{{ 'assets/img/jaylen/jaylen-desktop.jpg'|theme }}" alt="Jaylen Desktop"/> </div>
+        <div class="imgwrp visible-xs"><img src="{{ 'assets/img/jaylen/jaylen-mobile.jpg'|theme }}" alt="Jaylen Mobile"/> </div>
+    {% else %}
+        <div class="imgwrp hidden-xs"><img src="{{ 'assets/img/our-milkpedia.png'|theme }}" alt="Our Milkpedia"/> </div>
+        <div class="imgwrp visible-xs"><img src="{{ 'assets/img/staticbaner-xs.jpg'|theme }}" alt="Static Banner Mobile"/> </div>
+    {% endif %}
+</div>
+
+<div id='main-section' class="container" style="padding: 60px 0;">
+    <div class="col-md-12">
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="{{ 'home' | page }}">{{ 'beranda'|trans }}</a> </li>
+                <li><a href="javascript:;">{{ trans_pick(page, 'title') }}</a> </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="default-content">
+            <h3>{{ trans_pick(page, 'title') }}</h3>
+            {{ trans_pick(page, 'markup')|raw }}
+        </div>
+    </div>
+</div>
+
+{% partial 'site/footer' %}
+
+<!-- {text name="title_en" label="Title (en)" tab="Title (en)"}{/text} -->
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

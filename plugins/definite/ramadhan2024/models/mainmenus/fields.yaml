@@ -1,0 +1,18 @@
+fields:
+    title:
+        label: Title
+        span: left
+        type: text
+    button_word:
+        label: 'Button Word'
+        span: right
+        type: text
+    link:
+        label: Link
+        span: full
+        type: text
+    image:
+        label: Image
+        span: auto
+        mode: image
+        type: mediafinder

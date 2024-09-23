@@ -1,0 +1,36 @@
+plugin:
+    name: 'definite.products::lang.plugin.name'
+    description: 'definite.products::lang.plugin.description'
+    author: Definite
+    icon: oc-icon-archive
+    homepage: ''
+navigation:
+    Product:
+        label: 'definite.products::lang.plugin.name'
+        url: definite/products/products
+        icon: icon-archive
+        permissions:
+            - manage_product
+        sideMenu:
+            product-category:
+                label: 'Kategori Produk'
+                url: definite/products/category
+                icon: icon-tag
+                permissions:
+                    - manage_product_category
+            product-products:
+                label: 'Produk Detail'
+                url: definite/products/products
+                icon: icon-book
+                permissions:
+                    - manage_product_detail
+permissions:
+    manage_product:
+        tab: Produk
+        label: 'Manage Produk Menu'
+    manage_product_category:
+        tab: Produk
+        label: 'Manage Produk Kategori'
+    manage_product_detail:
+        tab: Produk
+        label: 'Manage Produk Detail'

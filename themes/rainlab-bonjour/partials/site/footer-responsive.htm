@@ -1,0 +1,235 @@
+[viewBag]
+
+[builderList]
+modelClass = "Definite\FunFact\Models\FunFact"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "description"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[subscriberform]
+==
+<?php
+function onStart(){
+    if(Session::pull('show_login_form', false)){
+        $this->page['show_form'] = '$.fancybox.open({ src  : \'#login\'});';
+
+        if($msg = Session::pull('login_alert')){
+            $this->page['login_alert'] = 'alert(\''.$msg.'\')';
+        }else{
+            $this->page['login_alert'] = '';
+        }
+
+    }else if(Session::pull('show_registration_form', false)){
+        $this->page['show_form'] = '$.fancybox.open({ src  : \'#register\'});';
+    }else{
+        $this->page['show_form'] = '';
+    }
+$this->addJs('assets/js/custom.js?v=1.02');
+
+}
+?>
+==
+<footer class="footer clearfix">
+    <div class="footerblue">
+        <div class="footer__top text-center">
+        </div>
+
+        <div class="footer__widget text-center clearfix">
+            <div class="col-md-4 footer__widget__box">
+                <div class="col-md-12">
+                    <h3 class="footer__widget__title">{{'situs-kami-yang-lain'|_}}</h3>
+                                        <a href="https://www.frieslandcampina.com" class="sites-list" target="_blank">
+                       <div class="friesland-img"></div>
+                    </a>
+
+                    <a href="https://www.ibudanbalita.com/" class="sites-list" target="_blank">
+                        <div class="ibu-balita-img"></div>
+                    </a>
+
+                   <!--  <a href="https://www.friso.co.id/" class="sites-list" target="_blank">
+                     <div class="friso-img"></div>
+                   </a> -->
+
+                    <a href="https://www.omela.com" class="sites-list" target="_blank">
+                        <img src="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/other-sites/omela.png'"
+                             srcset="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/other-sites/omela2x.png" alt="Omela">
+                    </a>
+                    <!-- <a href="https://www.susubendera.com" class="sites-list" target="_blank">
+                        <img src="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/other-sites/Logo_Susu_Bendera.png'"
+                             srcset="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/other-sites/Logo_Susu_Bendera.png" alt="Susu Bendera">
+                    </a> -->
+                </div>
+            </div>
+            
+            {% if not records.isEmpty %}
+                {% set funfact = records.random %}
+                    <div class="col-md-4 footer__widget__box">
+                        <div class="col-md-12">
+                        <h3 class="footer__widget__title">{{'fakta-seru'|_}} #{{ funfact.no }}</h3>
+                            {{ trans_pick(funfact, 'description') | raw }}
+                        </div>
+                    </div>
+            {% endif %}
+
+            <div class="col-md-4 footer__widget__box">
+            <div class="col-md-12">
+                <h3 class="footer__widget__title">{{'temukan-kami'|_}}</h3>
+                <div class="social-follow">
+                    <a href="https://www.facebook.com/FrisianFlagID" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/FrisianFlagID" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <a href="https://www.instagram.com/frisianflagid/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    <a href="https://www.youtube.com/user/frisianflagger" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="footer__address text-center">
+            <p>Jl. Raya Bogor KM 5,  Pasar Rebo, Jakarta Timur, Indonesia 13760 <a href="https://www.google.co.id/maps/place/PT.+Frisian+Flag+Indonesia/@-6.3122231,106.8617656,15z/data=!4m5!3m4!1s0x2e69ed0827ec9d73:0x8a08cc1af1e6ef0e!8m2!3d-6.3050945!4d106.8642973" target="_blank">Map</a> &nbsp; &nbsp; Telp +62 21 8410945 | PO BOX  4074 Jakarta 13760 Indonesia <br> Toll Free Layanan Peduli Frisian Flag 0-80018-21-406; Senin - Jumat, 08:00 - 16:30 WIB, E-mail: layanan.peduli@frieslandcampina.com</p>
+        </div>
+
+        <div class="footer__copyright">
+            <div class="col-md-7">
+                <p>Frisian Flag Indonesia is a subsidiary of Royal FrieslandCampina N.V. Copyright &copy; 2017. All rights reserved.</p>
+            </div>
+
+            <div class="col-md-5">
+                <ul class="footer__menu">
+                   <!--  <li><a href="">Site Map</a></li> -->
+                    <li><a href="{{ 'home' | page }}/syarat-ketentuan">{{'syarat-ketentuan'|_}}</a></li>
+                    <li><a href="{{ 'home' | page }}/kebijakan-cookie">{{'kebijakan-cookie'|_}}</a></li>
+                    <li><a class="optanon-toggle-display" style="cursor: pointer;">Pengaturan Cookie</a></li>
+                    <li><a href="{{ 'home' | page }}/kebijakan-privasi">{{'Kebijakan Privasi'}}</a></li>
+                    <!-- <li><a href="">Terms of Use</a></li> -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script> -->
+    <script src="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/js/jquery-3-6-0.js"></script>
+    
+    {% if this.page.fileName == 'home-skeleteon.htm' %}
+    <script   rel="dns-prefetch" src="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/js/app.min.js"></script>
+    <script   rel="preconnect" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/js/app.min.js" crossorigin></script>
+    
+               <script src="https://rawgit.com/enbifa/jquery.skeleton.loader/master/src/jquery.scheletrone.js"></script>
+
+    
+    {% endif %}
+    
+    {% if this.page.fileName != 'home-skeleteon.htm' %}
+ 
+        <script src="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/js/app.min.js"></script>
+        <!--<script src="https://www.frisianflag.com/themes/rainlab-bonjour/assets/js/app.js"></script>-->
+        
+    
+    {% endif %}
+
+    {% placeholder footer %}
+    {% framework extras %}
+    {% scripts %}
+    <script defer>
+        // this for temporary
+        jQuery(document).ready(function($) {
+            $('.container-menutab a:contains("Tujuan Kami")').parent().hide();
+            $('.val-submenu a:contains("Tujuan Kami")').parent().hide();
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js"></script>
+    <script defer>
+        'use strict';
+
+        (function($) {
+            $("#getDaftar").on('click',function(){
+                $(".log").fadeOut();
+                $(".reg").fadeIn();
+            });
+            $("#getMasuk").on('click',function(){
+                $(".log").fadeIn();
+                $(".reg").fadeOut();
+            });
+            $("#edit2").on('click',function(e){
+                e.preventDefault();
+                if($('#form2').hasClass('active')){
+                    $('#form2').removeClass('active');
+                }else{
+                    $('#form2').addClass('active');
+                }
+            });
+            $("#editProfil").on('click',function(e){
+                e.preventDefault();
+                if($('.form-editprofil').hasClass('active')){
+                    $('.form-editprofil').removeClass('active');
+                    $('.form-editprofil').find('input').attr('disabled','disabled');
+                    $('.form-editprofil').find('input').removeClass('active');
+                }else{
+                    $('.form-editprofil').addClass('active');
+                    $('.form-editprofil').find('input').removeAttr('disabled');
+                    $('.form-editprofil').find('input').addClass('active');
+                }
+            });
+            $(document).ready(function() {
+                
+                // Matcheight
+                $('.live-search-list .wrpcontent').matchHeight();
+
+                $.fancybox.defaults.hash = false;
+                {{ this.page.show_form|raw }}
+                {{ this.page.login_alert|raw }}
+            });
+
+        })(jQuery);
+        $('#myModal').on('shown.bs.modal', function (e) {
+          // do something...
+          var button = $(e.relatedTarget);
+          var id = button.data('gal');
+          $("#myModal").find('.item').removeClass('active');
+          $("#myModal").find('.'+id).addClass('active');
+        });
+    </script>
+        <!-- Add mousewheel plugin (this is optional) -->
+
+    {% flash success %}
+        {% if (message == 'An activation email has been sent to your email address.') %}
+
+        <script>
+        (function($) {
+            $.fancybox.open({
+                src  : '#thank-you'                
+            });
+        })(jQuery);
+        </script>
+
+        {% else %}
+        <p data-control="flash-message" data-interval="5" class="success">
+            {{ message }}
+        </p>
+        {% endif %}
+    {% endflash %}
+    <style>
+        .default-content .button--large {
+            position : relative !important;
+            left: unset !important;
+            bottom: unset !important;
+            }
+    </style>
+        <script>  
+        if(document.location.href == 'https://www.frisianflag.com/' || document.location.href.indexOf('https://www.frisianflag.com/#') >= 0){
+            if($(".card__thumbnail").length > 0){
+                $('.card__thumbnail').each(function () {
+                    var text = $(this).html()
+                    text = text.replace("&lt;-- data-adaptive-background --&gt;","");
+                    $(this).html(text);
+                })
+            }
+        }
+        </script>
+    </body>
+</html>

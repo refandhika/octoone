@@ -1,0 +1,86 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table definite_milkpedia_'
+    - builder_table_create_definite_milkpedia_.php
+1.0.3:
+    - 'Updated table definite_milkpedia_'
+    - builder_table_update_definite_milkpedia_.php
+1.0.4:
+    - 'Updated table definite_milkpedia_'
+    - builder_table_update_definite_milkpedia_post.php
+1.0.5:
+    - 'Created table definite_milkpedia_tag'
+    - builder_table_create_definite_milkpedia_tag.php
+1.0.6:
+    - 'Created table definite_milkpedia_category'
+    - builder_table_create_definite_milkpedia_category.php
+1.0.7:
+    - 'Updated table definite_milkpedia_post'
+    - builder_table_update_definite_milkpedia_post_2.php
+1.0.8:
+    - 'Updated table definite_milkpedia_category'
+    - builder_table_update_definite_milkpedia_category.php
+1.0.9:
+    - 'Updated table definite_milkpedia_post'
+    - builder_table_update_definite_milkpedia_post_3.php
+1.0.11:
+    - 'Updated table definite_milkpedia_tag'
+    - builder_table_update_definite_milkpedia_tag.php
+1.0.14:
+    - 'Created table definite_milkpedia_post_categories'
+    - builder_table_create_definite_milkpedia_post_categories.php
+1.0.15:
+    - 'Updated table definite_milkpedia_post_categories'
+    - builder_table_update_definite_milkpedia_posts_categories.php
+1.0.16:
+    - 'Updated table definite_milkpedia_category'
+    - builder_table_update_definite_milkpedia_category_2.php
+1.0.17:
+    - 'Created table definite_milkpedia_faq'
+    - builder_table_create_definite_milkpedia_faq.php
+1.0.18:
+    - 'Updated table definite_milkpedia_faq'
+    - builder_table_update_definite_milkpedia_faq.php
+1.0.19:
+    - 'Milkpedia Database Seeder'
+    - DatabaseSeeder.php
+1.0.20:
+    - 'Updated table definite_milkpedia_category'
+    - builder_table_update_definite_milkpedia_category_3.php
+1.0.21:
+    - 'Updated table definite_milkpedia_post'
+    - builder_table_update_definite_milkpedia_post_4.php
+1.0.22:
+    - 'Updated table definite_milkpedia_category'
+    - builder_table_update_definite_milkpedia_category_4.php
+1.0.23:
+    - 'Updated table definite_milkpedia_post'
+    - builder_table_update_definite_milkpedia_post_5.php
+1.0.24:
+    - 'Updated table definite_milkpedia_faq'
+    - builder_table_update_definite_milkpedia_faq_2.php
+1.0.25:
+    - 'Updated table definite_milkpedia_category'
+    - builder_table_update_definite_milkpedia_category_5.php
+1.0.26:
+    - 'Updated table definite_milkpedia_category'
+    - builder_table_update_definite_milkpedia_category_6.php
+1.0.27:
+    - 'Updated table definite_milkpedia_post'
+    - builder_table_update_definite_milkpedia_post_6.php
+1.0.28:
+    - 'Updated table definite_milkpedia_post'
+    - builder_table_update_definite_milkpedia_post7.php
+1.0.29:
+    - 'Updated table definite_milkpedia_category'
+    - builder_table_update_definite_milkpedia_category7.php
+1.0.30:
+    - 'Created table definite_milkpedia_post_product'
+    - builder_table_create_definite_milkpedia_post_product.php
+1.0.31:
+    - 'Updated table definite_milkpedia_post'
+    - builder_table_update_definite_milkpedia_post_7.php
+1.0.32:
+    - 'Updated table definite_milkpedia_faq'
+    - builder_table_update_definite_milkpedia_faq_3.php

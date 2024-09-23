@@ -1,0 +1,19 @@
+columns:
+    id:
+        label: id
+        type: number
+    nama_kandidat:
+        label: 'Nama Kandidat'
+        type: text
+    pilar:
+        label: Pilar
+        type: text
+    short_desc:
+        label: 'Desc Singkat'
+        type: text
+    narasi:
+        label: Narasi
+        type: text
+    created_at:
+        label: Create_AT
+        type: text

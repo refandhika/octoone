@@ -1,0 +1,10 @@
+name: Staticbanner
+form: $/definite/ramadhan2024/models/staticbanner/fields.yaml
+modelClass: Definite\Ramadhan2024\Models\Staticbanner
+defaultRedirect: definite/ramadhan2024/staticbanner
+create:
+    redirect: 'definite/ramadhan2024/staticbanner/update/:id'
+    redirectClose: definite/ramadhan2024/staticbanner
+update:
+    redirect: definite/ramadhan2024/staticbanner
+    redirectClose: definite/ramadhan2024/staticbanner

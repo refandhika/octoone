@@ -1,0 +1,130 @@
+title = "Press Release Single"
+url = "/perusahaan-kami/siaran-pers/:slug"
+layout = "default"
+is_hidden = 0
+
+[builderDetails PressRelease]
+modelClass = "Definite\Pressrelease\Models\PressRelease"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+
+[builderList]
+modelClass = "Definite\Pressrelease\Models\PressRelease"
+scope = "scopeIndex"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "press-release-single"
+detailsKeyColumn = "slug"
+detailsUrlParameter = "slug"
+recordsPerPage = 7
+pageNumber = "{{ :page }}"
+sortColumn = "published_date"
+sortDirection = "desc"
+==
+<?php
+function onEnd() {
+
+    // get the post component
+    $_title = $this->page->components["PressRelease"]->record->attributes["meta_title"];
+    $_meta_description = $this->page->components["PressRelease"]->record->attributes["meta_description"];
+    $this->page->title = $_title;
+    $this->page->meta_title = $_title;
+    $this->page->meta_description = $_meta_description;
+    
+    $this->page->meta_title_en = $this->page->components["PressRelease"]->record->attributes["meta_title_en"];
+    $this->page->meta_description_en = $this->page->components["PressRelease"]->record->attributes["meta_description_en"];
+
+}
+?>
+==
+{% set records = builderList.records %}
+{% set record = PressRelease.record %}
+{% set displayColumn = PressRelease.displayColumn %}
+{% set notFoundMessage = PressRelease.notFoundMessage %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ record.title }} - Press Release</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp"><img src="{{ 'assets/img/our-milkpedia.png'|theme }}" alt="Our Milkpedia"/> </div>
+</div>
+
+<div class="container-menutab">
+    <div class="container-one">
+        <ul>
+          <li class="toggle hidden-lg"><a href="javascript:;" class="active">{{'siaran-pers'|trans}}</a></li>
+          <li><a href="{{'about-us'|page}}" class="{% if this.page.id == 'about-us' %}active{% endif %}">{{'tentang-kami'|trans}}</a></li>
+          <li><a href="{{'news'|page}}" class="{% if this.page.id == 'news' %}active{% endif %}">{{'berita'|trans}}</a></li>
+          <li><a href="{{'press-release'|page}}" class="{% if this.page.id == 'press-release-single' %}active{% endif %}">{{'siaran-pers'|trans}}</a></li>
+          <li><a href="{{'our-purposes'|page}}" class="{% if this.page.id == 'our-purposes' %}active{% endif %}">{{'tujuan-kami'|trans}}</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id='main-section' class="container-fluid">
+
+{% if record %}
+    <div class="col-md-12">
+        <div class="breadcrumb">
+            <div class="container-two">
+                <ul>
+                    <li><a href="{{ 'home'|page }}">{{'beranda'|trans}}</a> </li>
+                    <li><a href="{{ 'about-us'|page }}">{{'perusahaan-kami'|trans}}</a> </li>
+                    <li><a href="{{ 'press-release'|page }}">{{'siaran-pers'|trans}}</a></li>
+                    <li><a href="javascript:;">{{trans_pick(record, 'title')}}</a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="default-content">
+            <div class="container-two">
+                <div class="content-halfborder">
+                    <div class="left">
+                        <div class="date">
+                            <label class="hide">{{ record.categories.pluck('title')|join (', ')}}</label>
+                            {{record.published_date|date('M d, Y')}}
+                        </div>
+                        <h3>{{ trans_pick(record, 'title') }}</h3>
+
+                        {{ trans_pick(record, 'description')|raw }}
+
+                        <a href="{{ record.file_upload|media }}" class="center linkdownload" ><i class="fa fa-download"></i> Download PDF</a></p>
+
+                        <div class="wrp-sharesocemd">
+                            <label>SHARE THIS ENTRY</label>
+                            <ul>
+                                <li><a href="#" class="fb"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" class="tw"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" class="gp"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#" class="em"><i class="fa fa-envelope-o"></i></a></li>
+                            </ul>
+                         </div>
+
+
+                    </div>
+                    <div class="right">
+                        <h4>Other Press Release</h4>
+                        <ul>
+                         {% for other in records.first.getByLatest %}
+                            <div class="wrp-listthu">
+                                <div class="item-listthu">
+                                    <div class="imgwrp">
+                                        <img src="{{other.featured_image| mediathumb_resize('width', 100, 80) }}" alt="{{trans_pick(other, 'title')}}"/>
+                                    </div>
+                                    <p><a href="{{ 'press-release-single'|page({"slug": other.slug}) }}">{{trans_pick(other, 'title')}}</a></p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    {{ notFoundMessage }}
+{% endif %}
+</div> <!-- end mainsection -->

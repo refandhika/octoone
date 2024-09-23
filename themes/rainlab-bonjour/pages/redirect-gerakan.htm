@@ -1,0 +1,15 @@
+title = "Redirect Gerakan"
+url = "/aktivitas-kami/gerakan-nusantara/galeri"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/redirect-gerakan"
+==
+<?php
+function onStart(){
+    
+    return Redirect::to('/');
+    
+}
+?>
+==

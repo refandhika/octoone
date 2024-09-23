@@ -1,0 +1,227 @@
+description = "Layour for Sustainability Sehat Page"
+
+[staticPage]
+useContent = 1
+default = 0
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('sustainability/sustainability-sehat-gizi-amp');
+    }
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp banner-lp" style="background:url({{ 'sustainability/sehat/Asset_40@2x-100.jpg'|media  }})">
+    	<div class="container">
+        	<div class="banner-panel">
+        	    <div class="banner-description">
+        			<h2>Kandungan Gizi<br>Lebih Baik</h2>
+        		</div>
+        	</div>
+    	</div>
+    </div>
+</div>
+
+<div class="section">
+   <div id='main-section' class="container sustainability-pages">
+      <div class="row">
+         <div class="col-md-12 top-copy">
+            <p class="description">Kami menyediakan produk susu berkualitas dalam berbagai format untuk setiap anggota keluarga. Kenali lebih lanjut produk-produk kami dan kandungan nutrisinya dan temukan produk yang tepat untuk Anda.</p>
+         </div>
+         <div class="col-md-12 ">
+             <div class="grid-box">
+                  <img src="{{ 'sustainability/sehat/tahukah_kamu.png'|media  }}">
+             </div>
+         </div>
+         <div class="col-md-12 ">
+         <div class="grid-box">
+                            <a href="https://frieslandcampina.h5mag.com/protein_story/cover" target="_blank">
+                            <div class="box-article">
+                                <img src="{{ 'sustainability/sehat/desktop-1157x700.jpg'|media  }}"/>
+                                <div class="article-description right-half">
+                                    <div class="valign-middle" style="vertical-align:bottom;text-align:center;">
+                                    
+                                    <span  class="button">Baca Selengkapnya</span>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+             
+         </div>
+         <div class="col-md-12 ">
+             <div class="grid-box border-line">
+                 
+                 <table>
+                     <tr>
+                         <td width="15%" valign="middle"><img src="{{ 'sustainability/sehat/pilihan_lebih_sehat.png'|media  }}"></td>
+                         <td width="70%" valign="middle">
+                             <p>
+                         Produk-produk susu siap minum Frisian Flag merupakan Pilihan Lebih Sehat dibandingkan produk sejenisnya, karena mengandung kadar gula tambahan di bawah/lebih sedikit dari standard persyaratan BPOM (produk susu siap minum Frisian Flag di angka 2.8gr/100ml - 5.99gr/100ml versus standard BPOM di angka 6g/100ml).
+                         </p>
+                         </td>
+                         <td width="15%" valign="middle"><img src="{{ 'sustainability/sehat/low_sugar.png'|media  }}"></td>
+                     </tr>
+                 </table>
+                 
+             </div>
+             <div class="grid-box border-line">
+             <table>
+                     <tr>
+                         <td width="25%" valign="middle"><img src="{{ 'sustainability/sehat/fsc.png'|media  }}"></td>
+                         <td width="75%" valign="middle">
+                             <p>
+                         Kemasan karton susu siap minum Frisian Flag Purefarm dan Milky sudah memiliki sertifikasi FSC, yang berarti bahwa kemasan yang digunakan berasal dari hutan yang dikelola dengan baik yang memberikan manfaat lingkungan, sosial dan ekonomi. Info lebih lanjut tentang FSC klik <a href="https://id.fsc.org/id-id/sertifikasi-fsc" target="_blank">di sini</a>
+                         </p>
+                         </td>
+                         
+                     </tr>
+                 </table>
+                 
+                  
+             </div>
+         </div>
+         <div class="col-md-12 top-copy card_product_list">
+            <div class="row">
+               <div class="col-sm-6 itemhomefade" style="display: block;">
+                  <div class="card card_featured card_product">
+                     <div class="card__thumbnail card__thumbnail--blue">
+                        <header class="card__head">
+                           <h3><a href="https://www.frisianflag.com/produk/susu-siap-minum">Susu Siap Minum</a></h3>
+                        </header>
+                        <div class="card__image" style="background:url(/storage/app/media/Produk/RTDFamily__1.png)">
+                           
+                        </div>
+                        <div class="card__meta">
+                           <a href="https://www.frisianflag.com/produk/susu-siap-minum" class="button button-dark">Selengkapnya</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-6 itemhomefade" style="display: block;">
+                  <div class="card card_featured card_product">
+                     <div class="card__thumbnail card__thumbnail--blue">
+                        <header class="card__head">
+                           <h3><a href="https://www.frisianflag.com/produk/susu-bubuk-keluarga">Susu Bubuk Keluarga</a></h3>
+                        </header>
+                        <div class="card__image" style="background:url(/storage/app/media/Produk/FMP%20Packshoot%20web.jpg)">
+                           
+                        </div>
+                        <div class="card__meta">
+                           <a href="https://www.frisianflag.com/produk/susu-bubuk-keluarga" class="button button-dark">Selengkapnya</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            
+            <div class="row">
+               <div class="col-sm-6 itemhomefade" style="display: block;">
+                  <div class="card card_featured card_product">
+                     <div class="card__thumbnail card__thumbnail--blue">
+                        <header class="card__head">
+                           <h3><a href="https://www.frisianflag.com/produk/susu-ibu-balita">Susu Ibu & Balita</a></h3>
+                        </header>
+                        <div class="card__image" style="background:url(/storage/app/media/Frisian-flag-susu-ibu-dan-balita.png)">
+                        </div>
+                        <div class="card__meta">
+                           <a href="https://www.frisianflag.com/produk/susu-ibu-balita" class="button button-dark">Selengkapnya</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-6 itemhomefade" style="display: block;">
+                  <div class="card card_featured card_product">
+                     <div class="card__thumbnail card__thumbnail--blue">
+                        <header class="card__head">
+                           <h3><a href="https://www.susubendera.com/" target="_blank">Susu Bendera</a></h3>
+                        </header>
+                        <div class="card__image" style="background:url(https://www.susubendera.com/images/produk/17904791.png)">
+                        </div>
+                        <div class="card__meta">
+                           <a href="https://www.susubendera.com/"  target="_blank" class="button button-dark">Selengkapnya</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            
+            <div class="row">
+               <div class="col-sm-6 itemhomefade" style="display: block;">
+                  <div class="card card_featured card_product">
+                     <div class="card__thumbnail card__thumbnail--blue">
+                        <header class="card__head">
+                           <h3><a href="https://www.friso.co.id/" target="_blank">Friso</a></h3>
+                        </header>
+                        <div class="card__image" style="background:url(/storage/app/media/Produk/Friso__Family.png)">
+                        </div>
+                        <div class="card__meta">
+                           <a href="https://www.friso.co.id/" target="_blank" class="button button-dark">Selengkapnya</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-6 itemhomefade" style="display: block;">
+                  <div class="card card_featured card_product">
+                     <div class="card__thumbnail card__thumbnail--blue">
+                        <header class="card__head">
+                           <h3><a href="https://www.frisianflag.com/produk/susu-kental-manis">Susu Kental Manis dan Krimer Kental Manis</a></h3>
+                        </header>
+                        <div class="card__image" style="background:url(/storage/app/media/Frisian-flag-kental-manis.jpg)">
+                           
+                        </div>
+                        <div class="card__meta">
+                           <a href="https://www.frisianflag.com/produk/susu-kental-manis" class="button button-dark">Selengkapnya</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<script>
+function checkVariable(){
+   if ( window.jQuery){
+       $(document).ready(function(){
+           $('.card_product_list .row').each(function(){  
+      
+              // Cache the highest
+              var highestBox = 0;
+              
+              // Select and loop the elements you want to equalise
+              $('.card__head', this).each(function(){
+                
+                // If this box is higher than the cached highest then store it
+                if($(this).height() > highestBox) {
+                  highestBox = $(this).height(); 
+                }
+              
+              });  
+                    
+              // Set the height of all those children to whichever was highest 
+              $('.card__head',this).height(highestBox);
+                            
+            }); 
+       });
+       
+       
+      
+   }
+   else{
+      window.setTimeout("checkVariable();",100);
+   }
+}
+checkVariable();
+
+</script>
+<link rel="stylesheet" href="{{ 'assets/css/sustainability.css'|theme }}?v=3">
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

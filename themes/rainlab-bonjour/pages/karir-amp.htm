@@ -1,0 +1,143 @@
+title = "Karir AMP"
+url = "/amp/karir"
+layout = "basic-amp"
+is_hidden = 0
+
+[CareerMenu]
+
+[CareerArticle]
+
+[CareerCategory]
+
+[CareerCenter]
+
+[CareerEvent]
+==
+<?php
+function onEnd(){
+    
+     $this->page->set_rule = "disable";
+     $this->page->title    =  "Karir";
+    
+}
+?>
+==
+<div class="cover">
+        <amp-img 
+            src="{{ 'assets/img/menukarir/home-mobile.jpg'|theme }}"
+            srcset="{{ 'assets/img/menukarir/home-mobile.jpg'|theme }} 640w,
+                  {{ 'assets/img/menukarir/home-mobile.jpg'|theme }} 320w"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Home Mobile">
+        </amp-img>
+</div>
+<amp-accordion class="title_home">
+    <section>
+        <h4 class="arrow_down"><a href="#" target="_self">{{ 'Overview' }}</a></h4>
+        <p>
+          {% set careermenus = CareerMenu.submenus %}
+                {% for menu in careermenus %}
+                    {% if menu.id == 1 %}
+                          	    
+                        <a href="{{url('/karir')}}" class="active">{{menu.title}}</a>
+                          	    
+                             {% else %}
+                          	    
+                        <a href="{{url('/karir')}}/{{menu.slug}}">{{menu.title}}</a>
+                          	     
+                    {% endif%}
+                {% endfor %}
+         
+        </p>
+    </section>
+</amp-accordion>
+
+<!--s:breadcrumb-->
+<div class="breadcrumb">
+    <a href="{{ 'home'|page }}">{{ 'beranda'|_ }}</a> /
+    <a href="#">{{'Karir'}}</a> 
+</div>
+<!--s:breadcrumb-->
+
+<div class="detail_text">
+        <h1>PILIHAN KARIR</h1>
+        <div class="text">
+            <p>Bersama kami, Anda memiliki kesempatan untuk berkembang secara personal maupun profesional.</p>
+        </div>
+</div>
+
+<section class="career">
+    {% set careers = CareerCenter.careers.take(4) %}
+          
+    <div class="detail_text">
+    {% for career in careers %}
+        <div class="card">
+         <div class="card__content">
+                    <h3 class="career-position"><a href="{{career.title_url}}" target="_blank">
+                            {{ career.title }}
+                            </a>
+                    </h3>
+                         <div class="career-wrapper-desc">
+                             <div class="career-division">
+                                 {{career.category.title}}
+                             </div>
+                             <div class="career-location">
+                               {{career.regencies.name | title}}
+                             </div>
+                        </div>
+                 </div>
+             </div>
+        {% endfor %}
+        <div class="btn-more"><a href="{{url('/karir/pusat-karir')}}" class="button medium">LIHAT SEMUA</a></div>
+        </div>     
+</section>
+
+
+<section class="event">
+    <div class="detail_text center ">
+            <h1 style="margin-bottom:20px;">EVENT</h1>
+    </div>
+    
+   <div class="detail_text ">
+      {% set events = CareerEvent.events.take(2) %}
+      {% for event in events%}
+      <div class="card--large">
+               <div title ="{{event.alt_img}}" data-mobile="{{ event.thumb_img | media}}" class="card__thumbnail card-ovl card__activity event" style="background-image: url('{{ event.thumb_img | media}}');">
+                  <div class="card__meta">
+                     <!--div class="card__head event">
+                        <h3>{{ event.title }}</h3>
+                        <span class="date">{{event.start_date.format('d F ') }} - {{event.end_date.format('d F Y')}}</span>
+                        
+                     </div-->
+                     <a style="top: 8px;position: relative;" href="{{url('karir/event')}}/{{event.slug}}" class="button button-content">Lebih Lanjut</a>
+                  </div>
+               </div>
+        </div>
+        {% endfor %}
+     <div class="btn-more"><a href="{{url('karir/event')}}" class="button medium">LIHAT SEMUA</a></div>
+    
+    </div>
+    
+</section>
+
+<section class="artikel">
+    <div class="detail_text center ">
+            <h1 style="margin-bottom:20px;">ARTIKEL</h1>
+    </div>
+     {% set articles = CareerArticle.articles.take(3) %}
+     {% for article in articles %}
+      <div class="card--large">
+               <div title ="{{article.alt_img}}" data-mobile="{{article.thumb_img | media }}" class="card__thumbnail card-ovl card__activity event" style="background-image: url('{{article.thumb_img | media }}');">
+                  <div class="card__meta">
+                     <!--div class="card__head">
+                        <h3>{{ article.title }}</h3>
+                     </div-->
+                     <a href="{{url('karir/artikel')}}/{{article.slug}}" class="button button-content">Lebih Lanjut</a>
+                  </div>
+               </div>
+        </div>
+        {% endfor %}
+     <div class="btn-more"><a href="{{url('karir/artikel')}}" class="button medium">LIHAT SEMUA</a></div>
+</section>

@@ -1,0 +1,74 @@
+title = "Search Result Baru"
+url = "/search/:slug"
+layout = "default"
+is_hidden = 0
+
+[siteSearchInclude]
+
+[searchInput]
+useAutoComplete = 1
+autoCompleteResultCount = 5
+showProviderBadge = 1
+
+[searchResults]
+resultsPerPage = 10
+showProviderBadge = "Document"
+noResultsMessage = "Maaf, hasil pencarian tidak ditemukan"
+visitPageMessage = "Visit page"
+==
+
+<h1 aria-hidden="true" class="seo-heading">Hasil Pencarian</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp"><img src="{{ 'assets/img/our-milkpedia.png'|theme }}" alt="Our Milkpedia"/> </div>
+</div>
+
+
+<div id='main-section' class="container" style="padding: 60px 0;">
+    <div class="col-md-12">
+        <div class="default-content">
+	        <form id="form-search" class="searchresult__form" action="{{ 'search' | page }}" method="get">
+				<div class="form-group">
+	  			    <div class="input-group">
+			            <input name="q" id="search-result" type="search" class="form-control" placeholder="Search" value="{{ input('q') }}">
+			  			<div class="input-group-addon"><button type="button"><i class="fa fa-search" aria-hidden="true"></i></button></div>
+	  			    </div>
+	  			  </div>
+	        </form>
+
+			<p>Menampilkan laman dengan kata pencarian <strong>“{{ searchResults.query }}”</strong> <br></p>
+			
+			<div id="dropdown-search" class="container-menutab row hidden-md hidden-lg">
+			    <div class="container-one">
+			        <ul>
+						<li class="toggle hidden-lg"><a href="javascript:;" class="active">Pilih Kategori</a></li>
+
+						<li id="semua"><a href="#semua">Semua</a></li>
+						<li id="produk"><a href="{{ 'home'|page }}/search-result-baru/produk?q={{ input('q') }}">Produk</a></li>
+						<li id="milkpedia"><a href="{{ 'home'|page }}/search-result-baru/milkpedia?q={{ input('q') }}">Milkpedia</a></li>
+						<li id="aktifitas"><a href="{{ 'home'|page }}/search-result-baru/aktifitas?q={{ input('q') }}">Aktivitas</a></li>
+						<li id="berita"><a href="{{ 'home'|page }}/search-result-baru/berita?q={{ input('q') }}">Berita</a></li>
+						<li id="press"><a href="{{ 'home'|page }}/search-result-baru/press?q={{ input('q') }}">Siaran Pers</a>
+						</li>
+			        </ul>
+			    </div>
+			</div>
+
+			<div class="responsiveTabs">
+				<ul id="search-tab" class="nav nav-tabs nav-tabs--50 hidden-xs" role="tablist">
+				    <li id="semua"><a href="#semua">Semua</a></li>
+				    <li id="produk"><a href="{{ 'home'|page }}/search-result-baru/produk?q={{ input('q') }}">Produk</a></li>
+				    <li id="milkpedia"><a href="{{ 'home'|page }}/search-result-baru/milkpedia?q={{ input('q') }}">Milkpedia</a></li>
+				    <li id="aktifitas"><a href="{{ 'home'|page }}/search-result-baru/aktifitas?q={{ input('q') }}">Aktivitas</a></li>
+				    <li id="berita"><a href="{{ 'home'|page }}/search-result-baru/berita?q={{ input('q') }}">Berita</a></li>
+				    <li id="press"><a href="{{ 'home'|page }}/search-result-baru/press?q={{ input('q') }}">Siaran Pers</a></li>
+				</ul>
+				<div id="myTabContent" class="tab-content" style="display: block;">
+					<div role="tabpanel" class="tab-pane" style="display: block;">
+		      			{% component 'searchResults' %}
+		      		</div>
+	      		</div>
+      		</div>
+        </div>
+    </div>
+</div>

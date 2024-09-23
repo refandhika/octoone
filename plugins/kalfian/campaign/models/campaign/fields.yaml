@@ -1,0 +1,52 @@
+fields:
+    title:
+        label: Title
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    title_en:
+        label: 'Title - EN'
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    content:
+        label: Content
+        span: full
+        size: ''
+        oc.commentPosition: ''
+        type: richeditor
+    content_en:
+        label: 'Content - EN'
+        span: full
+        size: ''
+        oc.commentPosition: ''
+        type: richeditor
+    button:
+        label: 'Button Text'
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    button_en:
+        label: 'Button Text - EN'
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    image:
+        label: Image
+        oc.commentPosition: ''
+        mode: file
+        span: auto
+        type: mediafinder
+    button_url:
+        label: 'Button URL'
+        oc.commentPosition: ''
+        span: auto
+        disabled: 0
+        type: text
+    slug:
+        label: Slug
+        span: auto
+        preset:
+            field: title
+            type: slug
+        type: text

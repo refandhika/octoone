@@ -1,0 +1,75 @@
+[viewBag]
+
+[builderList mainmenu]
+modelClass = "Definite\Ramadhan2024\Models\MainMenus"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+<head>
+    <link href="{{ 'assets/css/ramadhan2024-detail.css'|theme }}" rel="stylesheet">
+</head>
+<style>
+.recipe-btn, .recipe-title, .recipe-headline{
+    font-family: Brevia-semibold !important;    
+}
+
+@media only screen and (max-width: 431px){
+    .other-recipes{
+        flex-direction: column;
+    }    
+}
+
+</style>
+<div id="the-other-recipes" class="other-recipes-section">
+    <h2 class="recipe-headline">Resep Ramadan Lainnya</h2>
+    <div class="other-recipes">
+    
+        <!-- Recipe -->
+        <div class="other-recipe-item" category="resep-sahur">
+            <div class="other-recipe-img-container">
+                <img src="{{'assets/ramadhan2024/main-resep-thumbnail/[RTD_Mirrored]-FESTIVE-Thumbnail-2024_Web-FF-372x189.jpg' | theme}}" alt="recipe-img">
+            </div>
+            <div class="card-bottom">
+                <div class="recipe-title">Inspirasi Resep Sahur</div>
+                <a href="/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu/resep-sahur" class="recipe-btn">Selengkapnya</a>
+            </div>
+        </div>
+        <!-- End Recipe -->
+        
+        <!-- Recipe -->
+        <div class="other-recipe-item" category="resep-takjil-manis-tujuh-langkah">
+            <div class="other-recipe-img-container">
+                <img src="{{'assets/ramadhan2024/main-resep-thumbnail/[R5_SCM_Mirrored]-FESTIVE-Thumbnail-2024_Web-FF-372x189.jpg' | theme}}" alt="recipe-img">
+            </div>
+            <div class="card-bottom">
+                <div class="recipe-title">Inspirasi Resep Takjil</div>
+                <a href="/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu/resep-takjil-manis-tujuh-langkah" class="recipe-btn">Selengkapnya</a>
+            </div>
+        </div>
+        <!-- End Recipe -->
+        
+        <!-- Recipe -->
+        <div class="other-recipe-item" category="resep-ramadan-kue-kering-pilihan">
+            <div class="other-recipe-img-container">
+                <img src="{{'assets/ramadhan2024/main-resep-thumbnail/[FMP_Mirrored]-FESTIVE-Thumbnail-2024_Web-FF-372x189.jpg' | theme}}" alt="recipe-img">
+            </div>
+            <div class="card-bottom">
+                <div class="recipe-title">Inspirasi Resep Kue Kering</div>
+                <a href="/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu/resep-ramadan-kue-kering-pilihan" class="recipe-btn">Selengkapnya</a>
+            </div>
+        </div>
+        <!-- End Recipe -->
+        
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+   document.querySelector('.resep-kue').style.display= "none";         
+});
+</script>

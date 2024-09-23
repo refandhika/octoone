@@ -1,0 +1,155 @@
+description = "Layout for SerunyaMilky - Marvel Series"
+
+[staticPage]
+useContent = 1
+default = 0
+
+[subscriberform]
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "all"
+
+[SessionClose]
+load_js = 1
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+        <a data-fancybox href="https://www.youtube.com/watch?v=PAY_F8IBTOY">
+    	    <img src="{{ 'assets/img/serunyamilky/marvel_desktop.jpg'|theme }}" class="hidden-xs" />
+            <img src="{{ 'assets/img/serunyamilky/marvel_mobile.jpg'|theme }}" class="visible-xs" />
+        </a>  
+    </div>
+</div>
+
+<div class="container-menutab">
+    <div class="container-one">
+      <ul class="breadcrumb hidden-xs"> <!-- Desktop -->
+        <li class="tab_marvel">
+          <a href="{{ '/aktivitas-kami/serunya-milky/marvel-series' }}" class="active">
+            Marvel Series
+          </a>
+        </li>
+        <li class="tab_disney">
+          <a href="{{ '/aktivitas-kami/serunya-milky/disney-series' }}" class="">
+            Disney Series
+          </a>
+        </li>
+      </ul>
+      <ul class="breadcrumb visible-xs"> <!-- Mobile -->
+        <li class="visible-xs visible-sm tab_marvel">
+          <a href="{{ '/aktivitas-kami/serunya-milky/marvel-series' }}" class="active">
+            Marvel Series
+          </a>
+        </li>
+        <li class="visible-xs visible-sm tab_disney">
+          <a href="{{ '/aktivitas-kami/serunya-milky/disney-series' }}" class="">
+            Disney Series
+          </a>
+        </li>
+      </ul>
+    </div>
+</div>
+
+<div id='main-section' class="activities">
+    <section class="section section_activity text-center" style="padding: 60px 0">
+
+        <h4>Yuk tonton dulu</h4>
+        <h3>TEASER FILM GRATIS</h3>
+        <h3>MARVEL SUPER HERO ADVENTURES</h3>
+        <h4>dengan memindai QR Code ini</h4>
+        <br>        
+        <img src="{{ 'assets/img/serunyamilky/barcode_marvel.png'|theme }}" width="300" />
+        <br><br>
+        <h4>atau klik link ini</h4>
+        <br>
+        <a href="//bit.ly/2NK6vrN" target="_blank">
+            <img src="{{ 'assets/img/serunyamilky/marvel_button.png'|theme }}" width="320" />
+        </a>
+
+    </section>
+</div>
+
+<div id='main-section' class="activities" style="background-color: #00aeef;">
+    <section class="section section_activity text-center" style="padding: 30px 0">
+
+        <h3 style="color: #fff">YUK IKUTI LANGKAH BERIKUT</h3>
+        <h4 style="color: #fff">UNTUK MENONTON EPISODE LENGKAP</h4>
+        <h4 style="color: #fff">MARVEL SUPER HERO ADVENTURES</h4>
+
+    </section>
+</div>
+
+<div id='main-section' style="padding: 0;">
+  <img src="{{ 'assets/img/serunyamilky/marvel_point_1.jpg'|theme }}" width="100%" />
+  <img src="{{ 'assets/img/serunyamilky/marvel_point_2.jpg'|theme }}" width="100%" />
+  <img src="{{ 'assets/img/serunyamilky/marvel_point_3.jpg'|theme }}" width="100%" />
+</div>
+
+<style>
+.container-menutab::after,
+.container-menutab ul a.active::after {
+    display: none;
+}
+.container-menutab ul li:first-child {
+    border-left: 0 !important;
+}
+.container-menutab ul .tab_marvel a {
+    font-family: "Brevia-Black", Helvetica, Arial, sans-serif;
+    color: #fff;
+    text-align: center !important;
+}
+.container-menutab ul .tab_disney a {
+    font-family: "Brevia-Black", Helvetica, Arial, sans-serif;
+    color: #0054A0;
+    text-align: center !important;
+}
+.container-menutab ul a {
+    background: rgba(128, 130, 133, .6) !important;
+}
+.container-menutab ul a.active,
+.container-menutab ul a.hover {
+    background: rgba(128, 130, 133, .0) !important;
+}
+.tab_marvel {
+    background-image: url({{ 'assets/img/serunyamilky/marvel_left_tab.png'|theme }}), url({{ 'assets/img/serunyamilky/marvel_right_tab.png'|theme }});
+    background-position: center left, right;
+    background-repeat: no-repeat;
+    background-size: unset;
+}
+.tab_disney {
+    background-image: url({{ 'assets/img/serunyamilky/disney_right_tab.png'|theme }}), url({{ 'assets/img/serunyamilky/disney_left_tab.png'|theme }});
+    background-position: center right, left;
+    background-repeat: no-repeat;
+    background-size: unset;
+}
+@media (max-width: 767px) {
+    h3 {
+        font-size: 16px !important;
+        margin-bottom: 14px !important;
+    }
+    h4 {
+        font-size: 14px;
+        margin-top: 14px !important;
+        margin-bottom: 14px !important;
+    }
+    .header {
+        height: 80px;
+    }
+    .container-menutab ul li {
+        display: inline-block !important;
+        width: 50%;
+    }
+}
+</style>
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->{% component 'staticPage' %}

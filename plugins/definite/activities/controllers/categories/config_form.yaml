@@ -1,0 +1,10 @@
+name: Categories
+form: $/definite/activities/models/category/fields.yaml
+modelClass: Definite\Activities\Models\Category
+defaultRedirect: definite/activities/categories
+create:
+    redirect: 'definite/activities/categories/update/:id'
+    redirectClose: definite/activities/categories
+update:
+    redirect: definite/activities/categories
+    redirectClose: definite/activities/categories

@@ -1,0 +1,144 @@
+title = "News archive AMP"
+url = "/amp/perusahaan-kami/berita/years/:slug|^[0-9]+$/"
+layout = "basic-amp"
+meta_description = "Simak berita inspiratif seputar kegiatan positif Frisian Flag dalam usaha menyejahterakan karyawan dan mendukung kesehatan masyarakat."
+is_hidden = 0
+
+[builderList]
+modelClass = "Definite\News\Models\News"
+scope = "scopeArchiveAmp"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "news-single-amp"
+detailsKeyColumn = "slug"
+detailsUrlParameter = "slug"
+recordsPerPage = 8
+pageNumber = "{{ :page }}"
+sortColumn = "published_date"
+sortDirection = "desc"
+==
+<?php
+function onEnd() {
+  // get the post component
+  $this->page->title_en = "News";
+  $this->page->year = $this->controller->getRouter()->getParameters()['slug'];
+    $slugYear = $this->param('slug');
+  $records = $this->page->components["builderList"]->records;
+  $currentPage =  $this->page->p = Input::get('p', 1);
+  $this['currentPage'] = $currentPage;
+  $this->page->title = "Berita halaman ".$currentPage;
+  $this->page->meta_description = $this->page->title.". Ketahui berita seputar Frisian Flag seperti Frisian Flag pertama kalinya selenggarakan gerakan nusantara di Nusa Tenggara Timur dan masih banyak lagi.";
+  $currentYear =  $this->page->p = Input::get('y', 1);
+  $this['currentYear'] = $currentYear;
+  $products =  Definite\News\Models\News::offset(($currentPage - 1) * 8)->orderBy('created_at', 'desc')->limit(8)->whereYear('published_date', $slugYear)
+->get();
+  $this['totalnya'] =  $products;
+  $num_pgn = 5;
+  $space_pgn = 2;
+
+  $this->page->max_p = $records->currentPage() <=  $space_pgn ? $num_pgn : $records->currentPage() + $space_pgn;
+
+  if( $this->page->max_p > $records->lastPage() ){
+      $this->page->max_p = $records->lastPage();
+  }
+
+  $this->page->min_p = $this->page->max_p - ($num_pgn - 1);
+  if( $this->page->min_p < 1 ) $this->page->min_p = 1;
+}
+?>
+==
+{% set records = builderList.records %}
+{% set displayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsPage = builderList.detailsPage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
+
+<div class="cover">
+  <amp-img
+    src="{{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }}"
+    srcset="{{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }} 640w,
+    {{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }} 320w"
+    width="50"
+    height="50"
+    layout="responsive"
+    alt="an image">
+  </amp-img>
+</div>
+<amp-accordion class="title_home">
+  <section>
+    <h4 class="arrow_down"><a href="#" target="_self">{{'news'|_}}</a></h4>
+    <p>
+      <a href="{{'about-us'|page}}" target="_self">{{'tentang-kami'|_}}</a>
+      <a href="{{'news-amp'|page}}" target="_self">{{'berita'|_}}</a>
+      <a href="{{'galeri-amp'|page}}" target="_self">{{'galeri-foto'|_}}</a>
+      <a href="{{'press-release-amp'|page}}" target="_self">{{'siaran-pers'|_}}</a>
+      <a href="{{'our-purposes-amp'|page}}" target="_self">{{'tujuan-kami'|_}}</a>
+    </p>
+  </section>
+</amp-accordion>
+<div class="breadcrumb">
+  <a href="{{ 'home'|page }}">{{'beranda'|_}}</a> /
+  <a href="#">{{'berita'|_}}</a>
+</div>
+<div class="detail_text">
+  <h1>{{'berita'|_}}</h1>
+  <form action-xhr="#" method="post" target="_blank" class="search_plain">
+    <input type="text" placeholder="Search">
+  </form>
+  <br>
+  <amp-accordion class="title_home">
+    <section>
+      <h4 class="arrow_down"><a href="#" target="_self">{{ this.page.year ?? 'All'  }}</a></h4>
+      <p>
+        <a href="{{url('news-amp'|page ({"page":null})) }}" target="_self">All</a>
+        {% for years in records.first.year  %}
+        <a href="{{url('news-archive-amp'|page ({"slug":years.published_date, "page":null})) }}" {% if this.param.slug == years.published_date %}class="active"{% endif %} target="_self">{{ years.published_date }}</a>
+        {% endfor %}
+      </p>
+    </section>
+  </amp-accordion>
+</div>
+{% for news in totalnya %}
+<div class="list2 list2b">
+  <div class="img">
+    <amp-img
+      src="{{news.featured_image| mediathumb_resize('width', 100, 80) }}"
+      srcset="{{news.featured_image| mediathumb_resize('width', 640, 80) }} 640w,
+      {{news.featured_image| mediathumb_resize('width', 320, 80) }} 320w"
+      width="160"
+      height="90"
+      layout="responsive"
+      alt="an image">
+    </amp-img>
+  </div>
+  <div class="text">
+    <div class="info">
+      {{news.published_date|date('M d, Y')}}
+    </div>
+    <a href="{{ 'news-single-amp'|page({"slug": news.slug}) }}" target="_self"><h3>{{ trans_pick(news, 'title') }}</h3></a>
+  </div>
+  <div class="clearfix"></div>
+</div>
+{% else %}
+    <li class="no-data">{{ noRecordsMessage }}</p>
+{% endfor %}
+<!-- e:section list -->
+<!-- s:paging -->
+<div class="stylepaging">
+  {% if records.lastPage > 1 %}
+  <ul>
+    {% if currentPage > 1 %}
+    <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage-1) }) }}" class="{{ currentPage == 1 ? 'disable' : null }}">&laquo;</a></li>
+    {% endif %}
+    {% for page in this.page.min_p..this.page.max_p %}
+    <li><a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}?p={{ page }}" class="{{currentPage == page ? 'disable' : null }}">{{ page }}</a></li>
+    {% endfor %}
+    {% if records.lastPage > currentPage %}
+    <li><a href="{{ this.page.baseFileName|page({ (pageParam): (currentPage+1) }) }}?p={{ records.currentPage+1 }}">&raquo;</a></li>
+    {% endif %}
+  </ul>
+  {% endif %}
+  <div class="paging-info">{{ 'halaman'|_ }} {{currentPage}} {{ 'dari'|_ }} {{records.lastPage}}</div>
+</div>

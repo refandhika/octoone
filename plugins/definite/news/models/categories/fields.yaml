@@ -1,0 +1,20 @@
+fields:
+    title:
+        label: 'Title (id)'
+        oc.commentPosition: ''
+        span: full
+        required: 1
+        type: text
+    title_en:
+        label: 'Title (en)'
+        oc.commentPosition: ''
+        span: full
+        type: text
+    slug:
+        label: Slug
+        oc.commentPosition: ''
+        span: full
+        preset:
+            field: title
+            type: slug
+        type: text

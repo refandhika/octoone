@@ -1,0 +1,247 @@
+description = "Header without login feature"
+
+[viewBag]
+==
+<?php
+function onStart(){
+
+    // amp page for this page is exist
+    if($this->page->amp_url){
+        //check params
+           $inputString = Request::getRequestUri();
+           $query       = parse_str ( parse_url ( $inputString , PHP_URL_QUERY ) , $params );
+           
+            
+        // check user agent, will redirect to AMP page if mobile
+        if (!empty($_SERVER['HTTP_USER_AGENT'])) {
+            $useragent = $_SERVER['HTTP_USER_AGENT'];
+            $is_mobile = preg_match('@(iPad|iPod|iPhone|Android|BlackBerry|SymbianOS|SCH-M\d+|Opera Mini|Windows CE|Nokia|SonyEricsson|webOS|PalmOS)@', $useragent);
+        
+            if($is_mobile){
+               
+                if($params)
+                {
+                    $utm_campaign = http_build_query($params,'','&');
+                    header("Location: ".$this->page->amp_url."?".$utm_campaign); 
+                }else{
+                     header("Location: ".$this->page->amp_url); 
+                }    
+               
+                exit(); 
+            }
+        }
+
+        $this['amp_html_uri'] = $this->page->amp_url;        
+    }else{
+        $this['amp_html_uri'] = null;
+    }
+    $path        = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $this['full_url'] = (isset($_SERVER['HTTP_USESSL']) || isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]".$path;
+}
+?>
+==
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="google-site-verification" content="gQ0h-yuNjgrJH0SaIrsGvhLu6RC-WM2W8B3In7aD8BE" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="facebook-domain-verification" content="t2ubto7jn7dd9h6si4fk19a8gd88ks" />
+    <meta name="facebook-domain-verification" content="74hs9dbda87d9cawoguzz2w7pjviwl" />
+    
+    {% if this.page.title %}
+    <title>{{ this.page.title }} | Frisian Flag Indonesia</title>
+    {% else %}
+    <title>{{ this.page.meta_title }} | Frisian Flag Indonesia</title>
+    {% endif %}
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ 'assets/favicon/apple-touch-icon.png'|theme }}">
+    <link rel="icon" type="image/png" href="{{ 'assets/favicon/favicon-32x32.png'|theme }}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{ 'assets/favicon/favicon-16x16.png'|theme }}" sizes="16x16">
+    <link rel="manifest" href="{{ 'assets/favicon/manifest.json'|theme }}">
+    <link rel="mask-icon" href="{{ 'assets/favicon/safari-pinned-tab.svg'|theme }}" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff"> 
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c35734915acab41" async></script>
+    {% if this.page.meta_description %}
+    <meta name="description" content="{{ this.page.meta_description }}">
+    {% else %}
+    {% placeholder meta %}
+    {% endif %}
+    <meta name="keywords" content="{{ this.page.meta_keywords }}">
+    <meta name="author" content="Frisian Flag Indonesia">
+    <meta content="index,follow" name="googlebot">
+    <meta name="robots" content="index, follow">
+    <meta property="fb:app_id" content="872847836388420" />
+    <meta property="og:url"           content="{{ this.page.id | page }}" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="{{ this.page.title }}" />
+    <meta property="og:description"   content="{{ og_description }}" />
+    <meta name="twitter:title"        content="{{ this.page.title }}">
+    <meta name="twitter:description"  content="{{ og_description }}">
+    {% if og_image %}
+    <meta property="og:image"         content="https://www.frisianflag.com/storage/app/media/{{ og_image }}" />
+    <meta name="twitter:image"        content="https://www.frisianflag.com/storage/app/media/{{ og_image }}">  
+    {% else %}
+    <meta property="og:image"         content="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img/share-facebook.jpg"/>
+    {% endif %}
+    {% if amp_html_uri %}
+    <link rel="amphtml" href="{{ amp_html_uri }}">
+    {% endif %}
+    {% if this.page.fileName == 'home.htm' %}
+    <link rel="canonical" href="{{ 'home' | page }}">
+    {% elseif this.page.fileName == 'news-archive.htm' %}
+    <link rel="canonical" href="{{ 'home' | page }}/perusahaan-kami/berita/year/{{ this.param.slug }}">
+    {% elseif this.page.fileName == 'press-release-archive.htm' %}
+    <link rel="canonical" href="{{ 'home' | page }}/perusahaan-kami/siaran-pers-archive/year/{{ this.param.slug }}">
+    {% else %}
+    <link rel="canonical" href="{{ full_url }}">
+    {% endif %}
+    <link rel="stylesheet" href="{{ 'assets/css/app-ramadhan.css'|theme }}">
+    {% styles %}
+    <style>
+    .main-menu__list>a {
+        padding : 0 15px !important
+    }
+    </style>
+    <!-- Global site tag (gtag.js) - Google Analytics 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-9912630-22"></script> 
+    <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-9912630-22'); </script>  -->
+
+<script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "url": "https://www.frisianflag.com/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.frisianflag.com/pencarian?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PXZ46KJ');</script>
+    <!-- End Google Tag Manager -->
+    <!-- Facebook Pixel Code -->
+        <!-- <script>
+          !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', '1152867051533614');
+          fbq('track', 'PageView');
+        </script>
+        <noscript><img height="1" width="1" style="display:none"
+          src="https://www.facebook.com/tr?id=1152867051533614&ev=PageView&noscript=1" alt="Facebook Pixel"
+        /></noscript> -->
+        <!-- End Facebook Pixel Code -->
+    
+  </head>
+  <body>
+   <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PXZ46KJ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    	<!--
+	Start of DoubleClick Floodlight Tag: Please do not remove
+	Activity name of this tag: Frisian Flag - SCM Ramadhan
+	URL of the webpage where the tag is expected to be placed: https://www.frisianflag.com/aktivitas-kami/ramadhan
+	This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
+	Creation Date: 04/27/2018
+	-->
+	<script type="text/javascript">
+		var axel = Math.random() + "";
+		var a = axel * 10000000000000;
+		document.write('<iframe src="https://6614846.fls.doubleclick.net/activityi;src=6614846;type=frisi18;cat=frisi_sr;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=1;num=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+		</script>
+		<noscript>
+		<iframe src="https://6614846.fls.doubleclick.net/activityi;src=6614846;type=frisi18;cat=frisi_sr;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=1;num=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+		</noscript>
+		<!-- End of DoubleClick Floodlight Tag: Please do not remove -->
+
+    <header class="header">
+        <!-- without login -->
+        <!-- desktop menu -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-1 col-xs-4">
+                    <a href="{{ 'home'|page }}" class="logo">
+                        <div class="logo__default">
+                            <img src="{{ 'assets/img/logo.png'|theme }}" srcset="{{ 'assets/img/logo2x.png'|theme }} 2x" alt="Frisian Flag"/>
+                             <span>BUILDING<br/>STRONG FAMILIES<br/>SINCE 1871</span>
+                        </div>
+                        <div class="logo__small">
+                            <img src="{{ 'assets/img/logo-small.png'|theme }}" srcset="{{ 'assets/img/logo-small2x.png'|theme }} 2x" alt="Frisian Flag">
+                            <span>BUILDING<br/>STRONG FAMILIES<br/>SINCE 1871</span>
+                        </div>
+
+                    </a>
+                </div>
+
+                <div class="col-md-11 navigation hidden-xs hidden-sm hidden-md">
+                    <ul class="top-menu">
+                        <li class="top-menu__list">
+                            <a href="{{ 'contact-us'|page }}">{{'hubungi-kami'|_}}</a>
+                        </li>
+                        <li class="top-menu__list hide">
+                            <a href="javascript:;" class="lang-picker" data-lang="id">
+                                <img src="{{ 'assets/img/id.png'|theme }}" srcset="{{ 'assets/img/id2x.png'|theme }} 2x" alt="Indonesian">
+                            </a>
+                        </li>
+                        <li class="top-menu__list hide">
+                            <a href="javascript:;" class="lang-picker" data-lang="en">
+                                <img src="{{ 'assets/img/uk.png'|theme }}" srcset="{{ 'assets/img/uk2x.png'|theme }} 2x" alt="English">
+                            </a>
+                        </li>
+                       <li class="top-menu__list top-menu__list--button"><a href="javascript:;" class="searchbtn"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                    </ul>
+
+                    {% partial 'site/nav' %}
+
+                </div>
+                <div class="col-xs-8 col-sm-8 pull-right">
+                    <div class="bar-mobile">
+                        <div class="wrp-navbar">
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end of desktop menu -->
+
+        <!-- Mobile Menu -->
+        <div class="headermenu-xs">
+            <div class="wrp-headmenu-xs">
+
+                {% partial 'site/mobilemenu' %}
+
+                <div class="bottom">
+                    <ul>
+                        <li><a href="{{ 'contact-us'|page }}"><img src="{{ 'assets/img/contact-us.png'|theme }}" alt="Icon Hubungi Kami"/><span>{{'hubungi-kami'|_|uppercase}}</span></a></li>
+                        <li><a href="javascript:;" class="searchbtn"><img src="{{ 'assets/img/search.png'|theme }}" alt="Icon Search"/><span>SEARCH</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- end of mobile menu -->
+
+        <!-- search form -->
+        <div class="searchform">
+          <form action="{{ 'home'|page }}/pencarian" method="get">
+            <input name="q" id="search-result" type="search" placeholder="Masukkan kata kunci dan tekan enter">
+            <a class="closesearch"><i class="fa fa-close"></i> </a>
+          </form>
+        </div>
+    </header>

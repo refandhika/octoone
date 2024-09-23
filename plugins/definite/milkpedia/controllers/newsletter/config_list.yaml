@@ -1,0 +1,11 @@
+list: $/definite/milkpedia/models/milkpedia/columns.yaml
+modelClass: Definite\Milkpedia\Models\Milkpedia
+title: Newsletter
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

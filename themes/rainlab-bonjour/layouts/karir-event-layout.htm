@@ -1,0 +1,149 @@
+description = "Layout for Karir"
+
+[CareerMenu]
+
+[CareerEvent]
+==
+<?php
+function onEnd(){
+        
+        $vars     = $this->layout->components["CareerMenu"]->submenus;
+        $_desc    = $this->layout->components["CareerMenu"]->meta_description;
+        $_keys    = $this->layout->components["CareerMenu"]->meta_keywords;
+        
+        foreach($vars as $var){
+                
+                if( $var->id == 3 ){
+                    
+                    if(!empty($var->meta_description)){
+                        
+                             $this->page->meta_description = $var->meta_description;
+                        }
+                    else{
+                            $this->page->meta_description = $_desc;
+                        }    
+                    
+                    if(!empty($var->meta_keywords)){
+                        
+                            $this->page->meta_keywords = $var->meta_keywords;
+                        }
+                        
+                    else{
+                            
+                            $this->page->meta_keywords     = $_keys;
+                        }    
+                    
+                }    
+        }
+      
+    }
+?>
+==
+{% partial 'site/header-karir' %}
+
+<section>
+
+  	<div class="static-baner-pages">
+    	<div class="imgwrp"><img src="{{ 'assets/img/menukarir/home-desktop.jpg'|theme }}" alt="Karir | Frisian Flag Indonesia"></div>
+    	
+   	</div>
+<div class="container-menutab">
+    <div class="container-one">
+        <ul>
+            <li class="toggle visible-xs visible-sm"><a href="javascript:;" class="active">Event</a></li>
+            
+            {% if CareerMenu.submenus %}
+        		      {% set careermenus = CareerMenu.submenus %}
+                      {% for menu in careermenus %}
+                          
+                          	<li>
+                          	    {% if menu.id == 3 %}
+                          	    
+                          	    <a href="{{url('/karir')}}/{{menu.slug}}" class="active">{{menu.title}}</a>
+                          	    
+                          	     {% elseif menu.id == 1 %}
+                          	    
+                          	     <a href="{{url('/karir')}}">{{menu.title}}</a>
+                          	     
+                          	     {% else %}
+                          	     
+                          	     <a href="{{url('/karir')}}/{{menu.slug}}">{{menu.title}}</a>
+                          	     
+                          	    {% endif%}
+                          	    
+					        </li>
+                                         
+                      {% endfor %}
+                      {% endif%}
+        </ul>
+    </div>
+</div>
+
+<div id='main-section' class="container">
+    <div class="col-md-12">
+        <div class="breadcrumb">
+             
+                <ul>
+                    <li><a href="{{ 'home' | page }}">{{ 'beranda'|_ }}</a> </li>
+                    <li><a href="{{ 'main-karir' | page }}">{{ 'Karir'|_ }}</a> </li>
+                    <li><a href="javascript:;">{{ 'Event'|_ }}</a> </li>
+                    
+                </ul>
+               
+        </div>
+    </div>
+</div> 
+</section>
+
+<section id="main-section">
+<main class="enem l-career">
+   <div class="section clearfix">
+      <div class="container-fluid">
+         <div class="enem default-content gap-b-40">
+            <div class="container-two main-title">
+               <h1 style="font-size: 40px;">Event</h1>
+               <p class="enem gap-b-40">
+                  Frisian Flag will hold a recruitment event for new graduates and professionals in order to give more chances to grow together with us. Prepare yourself for the event!
+               </p>
+            </div>
+         </div>
+         
+         
+          <div class="enem container-fluid col-lg-12 no-padding">
+             <!----> 
+             <div class="enem wrapper-card-list">
+                {% if CareerEvent.events %}
+                {% set events = CareerEvent.events.take(4) %}
+                {% for event in events%}
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                      <div class="card card--large">
+                         <div title = "{{event.alt_img}}" data-mobile="{{ event.thumb_img | media}}" class="card__thumbnail card-ovl card__activity event" style="background-image: url('{{ event.thumb_img | media}}');">
+                            <div class="card__meta">
+                               <header class="card__head">
+                                  <h3>{{ event.title }}</h3>
+                                  <span class="date">{{event.start_date.format('d F ')}} - {{event.end_date.format('d F Y') }}</span>
+                               </header>
+                               <a href="{{url('karir/event')}}/{{event.slug}}" class="button">Lebih Lanjut</a>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                {% endfor%}
+                
+                {% endif %}
+             </div>
+             <!----> 
+             <div class="clearfix"></div>
+          </div>
+      </div>
+   </div>
+     
+</main>
+</section>
+
+{% partial 'site/footer-karir' %}
+{% framework %}
+
+<script>
+  "use strict";var date,start_date,end_date,alt,trim_start,limit=4;function checkVal(e){$.request("onCheckVar",{data:{limit:e}}).done(function(e){if(1!=e.status)return!1;$("<div class= 'btn-loadmore'><a class='button inverse medium loadseemore'>Muat Lebih</a></div>").insertAfter(".enem.wrapper-card-list")})}function getData(e){$(".loadseemore").prop("disabled",!0),$.request("onGetVar",{data:{limit:limit}}).done(function(e){getEvent(e)})}function getEvent(e){$.each(e.items,function(t,a){end_date=moment.locale("id"),trim(start_date=moment(a.start_date).format("LL")),end_date=moment(a.end_date).format("LL"),date=trim_start+"-"+end_date,null==(alt=a.alt_img)&&(alt="card-list"),$(".enem.wrapper-card-list").append("<div class='col-lg-6 col-md-12 col-sm-12'><div class='card card--large'><div title ='"+alt+"' data-mobile='url("+e.img_resource+a.thumb_img+")' class='card__thumbnail card-ovl card__activity event' style='background-image: url("+e.img_resource+a.thumb_img+");'><div class='card__meta'><header class='card__head'><h3>"+a.title+"</h3><span class='date'>"+date+"</span></header> <a href= '"+e.base_url+"/"+a.slug+"' class ='button'>Lebih Lanjut</a></div></div></div></div>")}),onProgress(),$(".loadseemore").remove()}function trim(e){return trim_start=e.substring(0,e.length-4)}function onProgress(){$(".loadseemore").text("MEMUAT LEBIH"),$(".loadseemore").removeClass("loading-button"),$(".loadseemore").prop("disabled",!1)}checkVal(limit),$(document).on("click",".loadseemore",function(){$(".loadseemore").addClass("loading-button"),$(".loadseemore").text("MEMUAT..."),getData()});
+</script>

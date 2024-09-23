@@ -1,0 +1,202 @@
+title = "Ramadan Istimewa | AMP"
+url = "/amp/aktivitas-kami/ramadan-istimewa"
+layout = "basic-amp"
+meta_description = "Yuk, intip ragam resep sahur dan resep takjil olahan Frisian Flag Fulll Cream di sini! Supaya Anda tidak kehabisan ide untuk menu saat berpuasa."
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/ramadan-istimewa-amp"
+==
+<?php
+function onStart(){
+        
+        $this['menus'] = "dont-allow";
+    
+    }
+?>
+==
+{% partial 'site/banner-ramadan-istimewa-amp' %}
+<div id="main-scroll">
+<amp-accordion class="title_home">
+    <section>
+        <h4 class="arrow_down"><a href="#" target="_self">RAMADAN ISTIMEWA</a></h4>
+        <p>
+            <a href="/aktivitas-kami/ramadan-istimewa/resep-sahur#main-scroll">{{'Resep Sahur Terbaikmu' |upper}}</a>
+            <a href="/aktivitas-kami/ramadan-istimewa/resep-takjil-istimewa#main-scroll" class="active">{{'Resep Takjil Istimewa'|upper}}</a>
+            <a href="/aktivitas-kami/ramadan-istimewa/resep-kue-kering-pilihan">{{'Resep Kue Kering Pilihan'|upper}}</a>
+            <a href="/aktivitas-kami/ramadan-istimewa/promo#main-scroll">{{'Promo Istimewa' |upper}}</a>
+          
+        </p>
+    </section>
+</amp-accordion>
+
+<div class="main-section center">
+
+     <section class="resep-sahur-terbaik light-blue padding-25">
+    
+        <div class="detail_text mt-10">
+            <h1>{{ 'Resep Sahur Terbaikmu'|_ }}</h1>   
+        </div>
+        
+        <div class="resep-1 mb-20">
+                <div class="detail_text mt-10">
+                    <h1 style="font-size:22px">OPOR AYAM KUAH SUSU: 5 PORSI</h1>   
+                </div>
+                <amp-img 
+                 class="round"
+                src="{{ 'ramadan-istimewa/rtd/RTD-Nilai-GijiOpor-Ayam-min.jpg'|media}}"
+                width="50"
+                height="50"
+                layout="responsive"
+                alt="Resep khas sumatera">
+                </amp-img>
+                 <div style="margin-bottom: 50px; margin-top: 20px;"><a href="/aktivitas-kami/ramadan-istimewa/resep-sahur/opor-ayam-kuah-susu-5-porsi#main-scroll" class=" btn-ramadan button navy-blue">LIHAT RESEP</a></div>
+        
+        </div>
+        
+        <div class="resep-2 mb-20">
+                <div class="detail_text mt-10">
+                    <h1 style="font-size:22px">COCONUT CHIA PUDDING: 1 PORSI</h1>   
+                </div>
+                <amp-img 
+                 class="round"
+                src="{{  'ramadan-istimewa/rtd/RTD-Nilai-GijiCoconut-Chia-Pudding-min.jpg'|media }}"
+                width="50"
+                height="50"
+                layout="responsive"
+                alt="Resep khas jawa bali nusa tenggara">
+                </amp-img>              
+                 <div style="margin-bottom: 50px; margin-top: 20px;"><a href="/aktivitas-kami/ramadan-istimewa/resep-sahur/coconut-chia-pudding-1-porsi#main-scroll" class=" btn-ramadan button navy-blue">LIHAT RESEP</a></div>       
+        </div>
+        
+        <div class="resep-3 mb-20">
+                <div class="detail_text mt-10">
+                    <h1 style="font-size:22px">CHICKEN KATSU : 4 PORSI</h1>   
+                </div>                    
+                <amp-img 
+                 class="round"
+                src="{{ 'ramadan-istimewa/rtd/RTD-Nilai-GijiChicken-Katsu-min.jpg'|media  }}"
+                width="50"
+                height="50"
+                layout="responsive"
+                alt="Resep khas kalimantan">
+                </amp-img>
+                 <div style="margin-bottom: 50px; margin-top: 20px;"><a href="/aktivitas-kami/ramadan-istimewa/resep-sahur/chicken-katsu-4-porsi#main-scroll" class=" btn-ramadan button navy-blue">LIHAT RESEP</a></div>       
+         </div>
+             <div class=" mb-10"><a href="/aktivitas-kami/ramadan-istimewa/resep-sahur" class=" btn-ramadan button navy-blue">LIHAT SELENGKAPNYA</a></div>    
+    </section>
+   <section class="resep-takjil-istimewa light-green padding-25">
+    
+        <div class="detail_text mt-10">
+            <h1>{{ 'Resep Takjil Istimewa'|_ }}</h1>   
+        </div>
+        
+        <div class="resep-1 mb-20">
+                <div class="detail_text mt-10">
+                    <h1 style="font-size:22px">RESEP PUDING JAGUNG</h1>   
+                </div>             				
+    			<amp-img 
+    			 class="round"
+                src="{{ 'ramadan-istimewa/scm/puding-jagung-min.jpg'|media }}"
+                srcset="{{ 'ramadan-istimewa/scm/puding-jagung-min.jpg'|media }} 640w,
+                       {{ 'ramadan-istimewa/scm/puding-jagung-min.jpg'|media }} 320w"
+                width="50"
+                height="50"
+                layout="responsive"
+                alt="Resep Pudding Jagung">
+                </amp-img>
+    	     <div style="margin-bottom: 50px; margin-top: 20px;"><a href="/amp/aktivitas-kami/ramadan-istimewa/resep-takjil-istimewa/resep-puding-jagung#main-scroll" class=" btn-ramadan button green">LIHAT RESEP</a></div>
+		</div>
+		
+		<div class="resep-2 mb-20">
+                <div class="detail_text mt-10">
+                    <h1 style="font-size:22px">RESEP BANANA KATSU</h1>   
+                </div>      
+    			<amp-img 
+    			 class="round"
+                src="{{ 'ramadan-istimewa/scm/banana-katsu-min.jpg'|media}}"
+                srcset="{{ 'ramadan-istimewa/scm/banana-katsu-min.jpg'|media}} 640w,
+                       {{ 'ramadan-istimewa/scm/banana-katsu-min.jpg'|media}} 320w"
+                width="50"
+                height="50"
+                layout="responsive"
+                alt="Resep Banana Katsu">
+                </amp-img>				
+    	     <div style="margin-bottom: 50px; margin-top: 20px;"><a href="/amp/aktivitas-kami/ramadan-istimewa/resep-takjil-istimewa/resep-banana-katsu#main-scroll" class=" btn-ramadan button green">LIHAT RESEP</a></div>
+		</div>
+		
+		<div class="resep-3 mb-20">
+                <div class="detail_text mt-10">
+                    <h1 style="font-size:22px">RESEP KOLAK COKLAT</h1>   
+                </div>      				
+    			<amp-img 
+    			 class="round"
+                src="{{ 'ramadan-istimewa/scm/kolak-min.jpg'|media }}"
+                srcset="{{ 'ramadan-istimewa/scm/kolak-min.jpg'|media }} 640w,
+                       {{ 'ramadan-istimewa/scm/kolak-min.jpg'|media }} 320w"
+                width="50"
+                height="50"
+                layout="responsive"
+                alt="Resep Kolak Coklat">
+                </amp-img>
+    	         <div style="margin-bottom: 50px; margin-top: 20px;"><a href="/amp/aktivitas-kami/ramadan-istimewa/resep-takjil-istimewa/resep-kolak-coklat#main-scroll" class=" btn-ramadan button green">LIHAT RESEP</a></div>
+         </div>
+                <div class=" mb-10"><a href="/amp/aktivitas-kami/ramadan-istimewa/resep-takjil-istimewa" class=" btn-ramadan button navy-blue">LIHAT SELENGKAPNYA</a></div>      
+    </section>
+    
+    
+      <section class="resep-kue-kering-pilihan light-cream padding-25">
+    
+        <div class="detail_text mt-10">
+            <h1>{{ 'Resep Kue Kering Pilihan'|_ }}</h1>   
+        </div>
+        
+         <div class="resep-1 mb-20">
+                <div class="detail_text mt-10">
+                    <h1 style="font-size:22px">CHOCO COOKIES</h1>   
+                </div>                          
+                <amp-img 
+                 class="round"
+                src="{{ 'ramadan-istimewa/bfc/choco_cookies-min.jpg'|media }}"
+                width="50"
+                height="50"
+                layout="responsive"
+                alt="Resep Pudding Jagung">
+                </amp-img>
+             <div style="margin-bottom: 50px; margin-top: 20px;"><a href="/aktivitas-kami/ramadan-istimewa//resep-kue-kering-pilihan/choco-cookies#main-scroll" class=" btn-ramadan button cream">LIHAT RESEP</a></div>
+        </div>
+        
+        <div class="resep-2 mb-20">
+                <div class="detail_text mt-10">
+                    <h1 style="font-size:22px">CORNFLAKES COOKIES</h1>   
+                </div>      
+                <amp-img 
+                 class="round"
+                src="{{ 'ramadan-istimewa/bfc/cornflakes_cookies-min.jpg'|media}}"
+                width="50"
+                height="50"
+                layout="responsive"
+                alt="Resep Banana Katsu">
+                </amp-img>              
+             <div style="margin-bottom: 50px; margin-top: 20px;"><a href="/aktivitas-kami/ramadan-istimewa/resep-kue-kering-pilihan/cornflakes-cookies#main-scroll" class=" btn-ramadan button cream">LIHAT RESEP</a></div>
+        </div>
+        
+        <div class="resep-3 mb-20">
+                <div class="detail_text mt-10">
+                    <h1 style="font-size:22px">NASTAR</h1>   
+                </div>                      
+                <amp-img 
+                 class="round"
+                src="{{ 'ramadan-istimewa/bfc/nastar-min.jpg'|media }}"
+                width="50"
+                height="50"
+                layout="responsive"
+                alt="Resep Kolak Coklat">
+                </amp-img>
+                 <div style="margin-bottom: 50px; margin-top: 20px;"><a href="/amp/aktivitas-kami/ramadan-istimewa/resep-kue-kering-pilihan/nastar#main-scroll" class=" btn-ramadan button cream">LIHAT RESEP</a></div>
+         </div>
+                <div class=" mb-10"><a href="/amp/aktivitas-kami/ramadan-istimewa/resep-kue-kering-pilihan" class=" btn-ramadan button navy-blue">LIHAT SELENGKAPNYA</a></div>     
+    </section>
+
+</div>
+</div>

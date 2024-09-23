@@ -1,0 +1,43 @@
+description = "Menu for Siap Puasa"
+
+[viewBag]
+==
+<?php
+function onStart() {
+    // Get Router
+    $router = $this->controller->getRouter();
+    $this->page['slug'] = $router->getURL();
+}
+?>
+==
+<div class="container-menutab">
+    <div class="container-one">
+      <ul>
+          <li class="toggle visible-xs visible-sm"><a href="javascript:;" class="active">
+          {% if ( this.page.slug == 'siappuasa' ) %}
+          Cara Mengikuti
+          {% elseif ( this.page.slug == 'siappuasa/syarat-dan-ketentuan' ) %}
+          Syarat dan ketentuan
+          {% else %}
+          Pemenang
+          {% endif %}
+          </a>
+        </li>
+        <li>
+          <a href="{{ '/siappuasa' }}" {{ (this.page.slug == 'siappuasa' ? 'class="active"' : '') }}>
+            Cara Mengikuti
+          </a>
+        </li>
+        <li>
+          <a href="{{ '/siappuasa/syarat-dan-ketentuan' }}" {{ (this.page.slug == 'siappuasa/syarat-dan-ketentuan' ? 'class="active"' : '') }}>
+            Syarat dan ketentuan
+          </a>
+        </li>
+        <li>
+          <a href="{{ '/siappuasa/pemenang' }}" {{ (this.page.slug == 'siappuasa/pemenang' ? 'class="active"' : '') }}>
+            Pemenang
+          </a>
+        </li>
+      </ul>
+    </div>
+</div>

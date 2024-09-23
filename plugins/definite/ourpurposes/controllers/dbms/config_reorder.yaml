@@ -1,0 +1,4 @@
+title: Dbms
+modelClass: Definite\Ourpurposes\Models\Dbms
+toolbar:
+    buttons: reorder_toolbar

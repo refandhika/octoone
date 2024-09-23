@@ -1,0 +1,88 @@
+description = "Layout for Sustainability Page"
+
+[staticPage]
+useContent = 1
+default = 0
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('sustainability/sustainability-lp-amp');
+    }
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp banner-lp" style='background:url({{ 'sustainability/BannerAsset_49@2x-100.jpg'|media  }})'>
+    	<div class="container">
+    	    
+        	<div class="banner-panel">
+        	    <div class="banner-description">
+        			<h2>Mewujudkan Indonesia yang Sehat, Sejahtera dan Selaras</h2>
+        		</div>
+        	</div>
+    	</div>
+    	
+    </div>
+</div>
+
+
+
+<div class="section">
+    <div id='main-section' class="container sustainability-pages">
+        <div class="row">
+            <div class="col-md-12 top-copy">
+            <p class="description">Frisian Flag Indonesia hadir untuk memenuhi kebutuhan nutrisi seluruh keluarga di Indonesia melalui produk susu Frisian Flag. Diproduksi dengan proses ‘Dari Rumput ke Gelas’ (From Grass to Glass), mensejahterakan kehidupan para peternak sapi perah Indonesia dan tetap berupaya menjaga kelestarian alam serta energi bumi untuk saat kini dan nanti.</p>
+            
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+            	<a href="{{ 'sustainability/sustainability-sehat-lp' | page }}">
+            	<div class="box sehat homepg">
+            		<img src="{{ 'sustainability/sehat_thumbnail@2x-100.jpg'|media  }}">
+            		<div class="box-desc">
+            		<h3>Sehat</h3>
+            		<p>Keluarga sehat<br>Indonesia kuat</p>
+            		<span class="cta-lanjut">Lebih Lanjut</span>
+            	    </div>
+            	</div>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <a href="{{ 'sustainability/sustainability-sejahtera-lp' | page }}">
+                <div class="box sejahtera homepg">
+            		<img src="{{ 'sustainability/sejahtera_thumbnail@2x-100.jpg'|media  }}">
+            		<div class="box-desc">
+            		<h3>Sejahtera</h3>
+            		<p>Mensejahterakan<br>peternak sapi Indonesia</p>
+            		<span class="cta-lanjut">Lebih Lanjut</span>
+            	    </div>
+            	</div>
+               </a>
+            </div>
+            <div class="col-sm-4">
+                <a href="{{ 'sustainability/sustainability-selaras-lp' | page }}">
+                
+            	<div class="box selara homepg">
+            		<img src="{{ 'sustainability/selaras_thumbnail@2x-100.jpg'|media  }}">
+            		<div class="box-desc">
+            		<h3>Selaras</h3>
+            		<p>Melestarikan energi bumi<br>untuk kini dan nanti</p>
+            		<span class="cta-lanjut">Lebih Lanjut</span>
+            		</div>
+            	</div>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="{{ 'assets/css/sustainability.css'|theme }}?v=32">
+
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

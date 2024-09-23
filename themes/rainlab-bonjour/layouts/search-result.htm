@@ -1,0 +1,201 @@
+description = "Layout for Search"
+
+[staticPage]
+[subscriberform]
+[account]
+paramCode = "code"
+forceSecure = 0
+[session]
+
+[SessionClose]
+load_js = 1
+==
+
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title') }}</h1>
+
+<script>
+  function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+      results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
+  var values = getParameterByName('keywords');
+</script>
+
+<div class="static-baner-pages">
+  <div class="imgwrp">
+    <img src="{{ 'assets/img/our-milkpedia.png'|theme }}" alt="Our Milkpedia" /> </div>
+</div>
+
+<div id='main-section' class="container" style="padding: 60px 0;">
+  <div class="col-md-12">
+    <div class="default-content">
+
+      <form class="searchresult__form" id="form-search" method="get">
+        <div class="form-group">
+          <div class="input-group">
+            <input name="keywords" type="search" class="form-control" placeholder="Search" id="search-result" value="">
+            <div class="input-group-addon">
+              <button type="button" id="search-submit">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <p>{{'menampilkan'|_}}
+        <span id="total">0</span> {{'laman-dengan-kata-pencarian'|_}}
+        <strong>“
+          <span id="search"></span>”</strong>
+      </p>
+
+      <div class="responsiveTabs">
+        <ul id="myTab" class="nav nav-tabs nav-tabs--50" role="tablist">
+          <li role="presentation" class="active">
+            <a href="#semua" aria-controls="semua" role="tab" data-toggle="tab">{{'semua'|_}}</a>
+          </li>
+          <li role="presentation">
+            <a href="#produk" aria-controls="produk" role="tab" data-toggle="tab">{{'produk'|_}}</a>
+          </li>
+          <li role="presentation">
+            <a href="#milkpedia" aria-controls="milkpedia" role="tab" data-toggle="tab">{{'milkpedia'|_}}</a>
+          </li>
+          <li role="presentation">
+            <a href="#aktivitas" aria-controls="aktivitas" role="tab" data-toggle="tab">{{'aktivitas'|_}}</a>
+          </li>
+          <li role="presentation">
+            <a href="#berita" aria-controls="berita" role="tab" data-toggle="tab">{{'berita'|_}}</a>
+          </li>
+          <li role="presentation">
+            <a href="#siaran-pers" aria-controls="siaran-pers" role="tab" data-toggle="tab">{{'siaran-pers'|_}}</a>
+          </li>
+          <li role="presentation">
+            <a href="#tentang-kami" aria-controls="tentang-kami" role="tab" data-toggle="tab">{{'tentang-kami'|_}}</a>
+          </li>
+        </ul>
+
+        <div id="myTabContent" class="tab-content" style="display: block;">
+          <div role="tabpanel" class="tab-pane active" id="semua">
+            <div class="searchresult__wrapper">
+              <h3>{{'dari-situs'|_}} frisianflag.com</h3>
+
+              <div id="frisianflag">
+
+              </div>
+            </div>
+
+            <div class="searchresult__wrapper">
+              <h3>{{'dari-situs'|_}} ibudanbalita.com</h3>
+              <div id="ibudanbalita">
+
+              </div>
+            </div>
+
+            <div class="searchresult__wrapper">
+              <h3>{{'dari-situs'|_}} friso.co.id</h3>
+              <div id="friso">
+
+              </div>
+            </div>
+
+          </div>
+          <div role="tabpanel" class="tab-pane" id="produk">
+            <div class="searchresult__wrapper">
+              <h3>{{'produk'|_}}</h3>
+              <div id="products">
+
+              </div>
+              <div class="text-center">
+                <div class="btn-loadmore">
+                  <button class="button medium loadseemore" id="buttonProduk">{{'tampilkan-lebih-banyak'|_}}</button>
+                </div>
+                <hr class="bolder" />
+              </div>
+            </div>
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="milkpedia">
+            <div class="searchresult__wrapper">
+              <h3>Milkpedia</h3>
+              <div id="milkpedias">
+
+              </div>
+              <div class="text-center">
+                <div class="btn-loadmore">
+                  <button class="button medium loadseemore" id="buttonMilkpedia">{{'tampilkan-lebih-banyak'|_}}</button>
+                </div>
+                <hr class="bolder" />
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="aktivitas">
+            <div class="searchresult__wrapper">
+              <h3>{{'aktivitas'|_}}</h3>
+              <div id="activity">
+
+              </div>
+              <div class="text-center">
+                <div class="btn-loadmore">
+                  <button class="button medium loadseemore" id="buttonAcitvity">{{'tampilkan-lebih-banyak'|_}}</button>
+                </div>
+                <hr class="bolder" />
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="berita">
+            <div class="searchresult__wrapper">
+              <h3>{{'berita'|_}}</h3>
+              <div id="news">
+
+              </div>
+              <div class="text-center">
+                <div class="btn-loadmore">
+                  <button class="button medium loadseemore" id="buttonNews">{{'tampilkan-lebih-banyak'|_}}</button>
+                </div>
+                <hr class="bolder" />
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="siaran-pers">
+            <div class="searchresult__wrapper">
+              <h3>{{'siaran-pers'|_}}</h3>
+              <div id="pers">
+
+              </div>
+              <div class="text-center">
+                <div class="btn-loadmore">
+                  <button class="button medium loadseemore" id="buttonPers">{{'tampilkan-lebih-banyak'|_}}</button>
+                </div>
+                <hr class="bolder" />
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="tentang-kami">
+            <div class="searchresult__wrapper">
+              <h3>{{'tentang-kami'|_}}</h3>
+              <div id="about">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+</div>
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

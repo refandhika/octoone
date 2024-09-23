@@ -1,0 +1,10 @@
+name: ArticleCategory
+form: $/definite/ramadhan2024/models/articlecategory/fields.yaml
+modelClass: Definite\Ramadhan2024\Models\ArticleCategory
+defaultRedirect: definite/ramadhan2024/articlecategory
+create:
+    redirect: 'definite/ramadhan2024/articlecategory/update/:id'
+    redirectClose: definite/ramadhan2024/articlecategory
+update:
+    redirect: definite/ramadhan2024/articlecategory
+    redirectClose: definite/ramadhan2024/articlecategory

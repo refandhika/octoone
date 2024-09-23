@@ -1,0 +1,18 @@
+fields:
+    key:
+        label: Key
+        oc.commentPosition: ''
+        span: full
+        type: text
+    value_en:
+        label: 'Value (en)'
+        size: large
+        oc.commentPosition: ''
+        span: full
+        type: textarea
+    value_id:
+        label: 'Value (id)'
+        size: large
+        oc.commentPosition: ''
+        span: full
+        type: textarea

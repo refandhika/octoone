@@ -1,0 +1,184 @@
+description = "Partial for flavour milk amp page"
+
+[viewBag]
+
+[builderDetails]
+modelClass = "Definite\Products\Models\Category"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+
+[milkpediaList]
+==
+<?php
+use \Definite\Products\Models\Category as Category;
+use \Definite\Products\Models\Product   as Product;
+
+function onEnd() {
+    
+    // get the post component
+    //$this->page->title = "Purefarm, Minuman Segar Susu Cair Penuh Gizi ";
+    //$this->page->meta_description = "Minuman segar susu cair dengan banyak pilihan rasa seru: Swiss Chocolate, Coconut Delight, Kacang Hijau, Strawberry, Full Cream, aneka varian Low Fat High Calcium";
+    $this->page->meta_keywords = "frisian flag purefarm, susu cair, harga susu cair, harga susu frisian flag cair, susu cair frisian flag, susu siap minum";
+    
+    
+    $data = Category::where('is_featured',1)->get();
+    
+    
+    if($data){
+        $this['categories'] = $data;
+        
+    }else{
+         $cmsController = new Cms\Classes\Controller;
+         return $cmsController->render("/404");
+    }
+    $this->page->title = $this->page->components["builderDetails"]->record->attributes["title"];
+    $this->page->meta_description = $this->page->components["builderDetails"]->record->attributes["meta_description"];
+    $this['cmstitle'] = $this->page->components["builderDetails"]->record->attributes["title"];
+    $this['cmscontent'] = $this->page->components["builderDetails"]->record->attributes["content"];
+    $detail = Product::where(['published' => 1,'parent_id' => 46 ])->orderBy('created_at','desc')->get();
+    
+     if($detail){
+         
+        $this['details'] = $detail;
+        
+    }else{
+         $cmsController = new Cms\Classes\Controller;
+         return $cmsController->render("/404");
+    }
+    
+
+}
+?>
+==
+<div class="cover">
+    <amp-img 
+        src="{{ 'assets/RTD_Product_2022_Mobile.jpg'|theme }}"
+        srcset="{{ 'assets/RTD_Product_2022_Mobile.jpg'|theme|replace({' ':'%20'}) }} 640w,
+        {{ 'assets/RTD_Product_2022_Mobile.jpg'|theme|replace({' ':'%20'}) }} 320w"
+        width="50"
+        height="50"
+        layout="responsive"
+        alt="Susu Siap Minum">
+    </amp-img>
+</div>
+
+<amp-accordion class="title_home">
+    <section>
+        <h4 class="arrow_down"><a href="#" target="_self">Susu Siap Minum</a></h4>
+        <p>
+            {% for category in categories %}
+                {% if category.parent_id == null %}
+                    <a href="{{ 'our-products-archive-amp'|page({'slug': category.slug }) }}" {% if category.slug == 'susu-siap-minum' %} class="active" {% endif %} target="_self">{{ category.title }}</a>
+                {% endif %}
+            {% endfor %}
+            <a href="https://www.susubendera.com/" target="_blank">
+                    Susu Bendera
+                </a>
+            <a href="https://www.friso.co.id/" target="_self">Friso</a>
+        </p>
+    </section>
+</amp-accordion>
+
+<div class="breadcrumb">
+    <a href="{{ 'home'|page }}">{{'beranda'|_}}</a> /
+    <a href="{{ 'our-products-amp'|page }}">{{'produk'|_}}</a> /
+    <a href="{{ 'our-products-archive-amp'|page({"slug": 'susu-siap-minum'}) }}">Susu Siap Minum</a> /
+    <a href="{{ 'our-products-single-amp'|page({'category-slug': 'susu-siap-minum',
+                            "slug": 'purefarm'}) }}">Purefarm</a> /
+     <a href="#">Purefarm Flavour Milk</a>
+</div>
+
+<div class="detail_text">
+  <h1>{{ cmstitle }}</h1>
+                {{ cmscontent |raw  }}
+    <!-- <h1>Purefarm Flavour Milk</h1>
+    <p>Susu Siap Minum Frisian Flag tersedia dalam merk Frisian Flag Purefarm Flavour. Susu Siap Minum Frisian Flag mengandung rangkaian zat gizi makro (zat gizi penting: protein, karbohidrat dan lemak) serta gizi mikro (multivitamin dan multimineral) dengan rasa yang enak dan lezat dan juga membantu kamu membentuk pola gaya hidup sehat. Susu Siap Minum Frisian Flag Purefarm Flavour tersedia dalam berbagai varian rasa seperti rasa Coconut Delight, Strawberry, Swiss Chocolate, Kacang Hijau  dan Sweet Delight yang siap menjadi moodbooster kamu.</p>     -->
+</div>
+
+{% for category in details %}
+    <div class="list2 list2a">
+        <div class="img">
+            {% if category.featured_image %}
+                <amp-img 
+                    src="{{ category.featured_image|media }}"
+                    srcset="{{ category.featured_image|media|replace({' ':'%20'}) }} 640w,
+                    {{ category.featured_image|media|replace({' ':'%20'}) }} 320w"
+                    width="160"
+                    height="160"
+                    layout="responsive"
+                    alt="{{ category.title }}">
+                </amp-img>
+            {% else %}
+                <amp-img 
+                    src="http://placehold.it/600x600/797979/666666?text=No+Image"
+                    srcset="http://placehold.it/600x600/797979/666666?text=No+Image 640w,
+                    http://placehold.it/600x600/797979/666666?text=No+Image 320w"
+                    width="160"
+                    height="160"
+                    layout="responsive"
+                    alt="Placeholder">
+                </amp-img>
+            {% endif %}
+        </div>
+        <div class="text">
+            <a href="{{ 'our-products-single-amp'|page({"category-slug": "purefarm", "slug": category.slug}) }}" target="_self">
+                <h3>{{ category.title }}</h3>
+            </a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+{% endfor %}
+
+ 
+    {% set milkpedias = milkpediaList.susu.take(3) %}
+
+
+    {% if milkpediaList.susu  %}
+    <div class="detail_text">
+        <h1>{{ 'manfaat-minum-susu'|_ }}</h1>
+       
+    </div>
+        <!-- s:milkpediaPost article -->
+		{% for milkpediaPost in milkpedias %}
+       <div class="list">
+            <div class="img">
+            {% if milkpediaPost.featured_image %}
+              <amp-img 
+                  src="{{ milkpediaPost.featured_image| mediathumb_resize('width', 720, 90)  }}"
+                  srcset="{{ milkpediaPost.featured_image| mediathumb_resize('width', 720, 90)  }} 640w,
+                         {{ milkpediaPost.featured_image| mediathumb_resize('width', 720, 90)  }} 320w"
+                  width="160"
+                  height="90"
+                  layout="responsive"
+                  alt="{{ milkpediaPost.title }}">
+              </amp-img>
+            {% else %}
+              <amp-img 
+                  src="http://placehold.it/703x545/797979/666666?text=No+Image"
+                  srcset="http://placehold.it/703x545/797979/666666?text=No+Image 640w,
+                         http://placehold.it/703x545/797979/666666?text=No+Image 320w"
+                  width="160"
+                  height="90"
+                  layout="responsive"
+                  alt="{{ milkpediaPost.title }}">
+              </amp-img>
+            {% endif %}
+            </div>
+            <div class="info">
+              <span class="label">Milkpedia</span>
+              | {{ milkpediaPost.created_at.format('d M Y') }}
+            </div>
+            <a href="{{ 'our-milkpedia-amp-single'|page({"category-slug": record.slug, "slug": milkpediaPost.slug}) }}" target="_self"><h3>{{ trans_pick(milkpediaPost, 'title') }}</h3></a>
+            <p>{{ trans_pick(milkpediaPost, 'excerpt')|raw }}</p>
+            <a href="{{ 'our-milkpedia-amp-single'|page({"category-slug": record.slug, "slug": milkpediaPost.slug}) }}" target="_self" class="btn_more">{{ 'lebih-lanjut'|_ }}</a>
+        </div>
+
+        <!-- e:milkpediaPost article -->
+		{% endfor %}
+    {% endif %}
+
+{% put footer %}
+    {{ record.additional_tags|raw }}
+{% endput %}

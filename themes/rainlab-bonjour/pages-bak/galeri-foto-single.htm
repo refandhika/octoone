@@ -1,0 +1,164 @@
+title = "Galeri Foto Single"
+url = "/perusahaan-kami/galeri-foto/:slug"
+layout = "default"
+is_hidden = 0
+
+[builderDetails]
+modelClass = "Definite\Gallery\Models\Post"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+
+[builderList]
+modelClass = "Definite\Gallery\Models\Post"
+scope = "-"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "galeri-foto-single"
+detailsKeyColumn = "slug"
+detailsUrlParameter = "slug"
+recordsPerPage = 5
+pageNumber = "{{ :page }}"
+sortColumn = "published_date"
+sortDirection = "desc"
+
+[builderList detailList]
+modelClass = "Definite\Gallery\Models\Detail"
+scope = "-"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+sortColumn = "id_post"
+sortDirection = "desc"
+==
+{% set records = builderList.records %}
+{% set record = builderDetails.record %}
+{% set images = detailList.records %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+
+
+
+<h1 aria-hidden="true" class="seo-heading">{{ record.title }} - Gallery Photo</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp"><img src="{{ 'assets/img/our-milkpedia.png'|theme }}" alt="Our Milkpedia"/> </div>
+</div>
+
+<div class="container-menutab">
+    <div class="container-one">
+        <ul>
+            <li class="toggle visible-xs visible-sm"><a href="javascript:;" class="active">{{'galeri-foto'|_}}</a></li>
+            <li><a href="{{'about-us'|page}}" class="{% if this.page.id == 'about-us' %}active{% endif %}">{{'tentang-kami'|_}}</a></li>
+            <li><a href="{{'news'|page}}" class="{% if this.page.id == 'news' %}active{% endif %}">{{'berita'|_}}</a></li>
+            <li><a href="{{'galeri-foto'|page}}" class="{% if this.page.id == 'galeri-foto-single' %}active{% endif %}">{{'galeri-foto'|_}}</a></li>
+            <li><a href="{{'press-release'|page}}" class="{% if this.page.id == 'press-release' %}active{% endif %}">{{'siaran-pers'|_}}</a></li>
+            <li><a href="{{'our-purposes'|page}}" class="{% if this.page.id == 'our-purposes' %}active{% endif %}">{{'tujuan-kami'|_}}</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id='main-section' class="container-fluid">
+
+{% if record %}
+    <div class="col-md-12">
+        <div class="breadcrumb">
+            <div class="container-two">
+                <ul>
+                    <li><a href="{{ 'home'|page }}">{{'beranda'|_}}</a> </li>
+                    <li><a href="{{ 'about-us'|page }}">{{'perusahaan-kami'|_}}</a> </li>
+                    <li><a href="{{ 'galeri-foto'|page }}">{{'galeri-foto'|_}}</a></li>
+                    <li><a href="javascript:;">{{trans_pick(record, 'title')}}</a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="default-content">
+            <div class="container-two">
+                <div class="content-halfborder">
+                    <div class="left">
+                        <div class="date">
+                            <label class="hide">{{ record.categories.pluck('title')|join (', ')}}</label>
+                            {{record.published_date|date('M d, Y')}}
+                        </div>
+                        <h3>{{ trans_pick(record, 'title') }}</h3>
+
+                        {{ trans_pick(record, 'description')|raw }}
+                        <br/>
+                        <div class="row">
+                        {% for gallery in record.images %}
+                        <div class="col-md-4 col-xs-12">
+                            <div class="wrp-itemnews noimg space-galeri-ff">
+                                <div class="contenttxt">                                    
+                                    {% set spaceout %}
+                                    <div data-target="#myModal" data-gal="{{gallery.id}}" data-toggle="modal">
+                                        <a data-slide-to="0" href="#{{gallery.id}}">
+                                            <img class="img-rounded thumbnail" width="100%" height="256px" src="{{gallery.path}}" alt="image{{gallery.id}}"/>
+                                        </a>       
+                                    </div>
+                                    {% endset %}
+                                    {{ spaceout|trim|raw }}                              
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        </div>
+                    </div>
+                    <div class="right">
+                        <h4>Other Gallery</h4>
+                        <ul>
+                         {% for other in records %}
+                            <div class="wrp-listthu">
+                            <a class="tab-galeri-ff" href="{{ 'galeri-foto-single'|page({"slug": other.slug}) }}">{{trans_pick(other, 'title')}}</a>
+                            
+                            </div>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    {{ notFoundMessage }}
+{% endif %}
+</div> <!-- end mainsection -->
+<div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="myModal" role="dialog" tabindex="-1" style="display: none;">
+	<div class="modal-dialog modal-lg" id="modal_position">
+		<div class="modal-content">
+			<button class="ff-button-close" data-dismiss="modal" title="Close" type="button"><span class="fa fa-close"></span></button>
+			<div class="modal-body"><!--begin carousel-->
+				<div class="carousel slide" data-interval="false" id="myGallery">
+					<div class="carousel-inner">
+						 {% for gallery in record.images %}
+						 <div class="item {{gallery.id}}">
+                            <img  width="100%" height="256px" src="{{gallery.path}}" alt="image{{gallery.id}}"/>
+                        </div>
+                        {% endfor %}			
+					</div>
+					<!--Begin Previous and Next buttons-->
+					<div id="ff-gallery-preview-left">
+					<a class="left carousel-control" data-slide="prev" href="#myGallery" role="button"><span class="fa fa-arrow-left"></span></a> 
+					</div>
+					<div id="ff-gallery-preview-right">
+					<a id="gallery-preview-right" class="right carousel-control" data-slide="next" href="#myGallery" role="button"><span class="fa fa-arrow-right"></span></a> 
+					</div>
+					<!--end myGallery-->
+				</div>
+				<br>
+				<div class="pull-left">{{ trans_pick(record, 'caption')|raw }}</div>
+				<br>
+				<!--end modal-body-->
+				</div>
+		<!--end modal-dialoge-->
+		</div>
+	<!--end myModal-->
+	</div>
+</div>

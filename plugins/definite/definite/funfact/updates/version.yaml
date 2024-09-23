@@ -1,0 +1,14 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table definite_funfact_funfact'
+    - builder_table_create_definite_funfact_funfact.php
+1.0.3:
+    - 'Updated table definite_funfact_funfact'
+    - builder_table_update_definite_funfact_funfact.php
+1.0.4:
+    - 'Fun Fact Table Seeder'
+    - fun_fact_table_seeder.php
+1.0.5:
+    - 'Updated table definite_funfact_funfact'
+    - builder_table_update_definite_funfact_funfact_2.php

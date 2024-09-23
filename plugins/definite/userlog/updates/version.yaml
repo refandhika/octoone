@@ -1,0 +1,8 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table definite_userlog_history'
+    - builder_table_create_definite_userlog_history.php
+1.0.3:
+    - 'Updated table definite_userlog_history'
+    - builder_table_update_definite_userlog_history.php

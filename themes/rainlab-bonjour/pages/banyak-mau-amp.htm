@@ -1,0 +1,51 @@
+title = "Banyak Mau | AMP"
+url = "/amp/banyakmau"
+layout = "basic-amp"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/banyak-mau-amp"
+==
+<?php
+function onEnd(){
+    $this->page->meta_description = "Mau upload foto dapat hadiah? Ikuti Siap Jadiin Banyak Mau Lo! bersama Frisian Flag. Lihat cara mengikutinya di sini.";
+}
+?>
+==
+<div class="cover">
+        <amp-img 
+            src="{{ 'banyakmau/banner-banyak-maumekanism-m.jpg'|media }}"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Banner Banyak Mau Mekanisme">
+        </amp-img>
+</div>
+<amp-accordion class="title_home">
+    <section>
+        <h4 class="arrow_down"><a href="#" target="_self">Cara Mengikuti</a></h4>
+        <p>
+            <a href="/banyakmau" class="active">Cara Mengikuti</a>
+            <a href="/banyakmau/syarat-dan-ketentuan">Syarat dan Ketentuan</a>
+            <a href="/banyakmau/pemenang">Pemenang</a>
+        </p>
+    </section>
+</amp-accordion>
+
+
+
+<!--s:event-->
+<section class="event">
+   <div class="detail_text mb-20 mt-20">
+       <div class="content mb-10">
+           <amp-img 
+            src="{{ 'banyakmau/mekanisme-banyak-mau-m.jpg'|media }}"
+            width="617"
+            height="1420"
+            layout="responsive"
+            alt="Mekanisme Banyak Mau">
+        </amp-img>
+       </div>       
+    </div>
+</section>
+<!--s:event-->

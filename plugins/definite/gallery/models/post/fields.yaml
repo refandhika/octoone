@@ -1,0 +1,53 @@
+fields:
+    title:
+        label: Title
+        oc.commentPosition: ''
+        span: full
+        required: 1
+        type: text
+    slug:
+        label: Slug
+        oc.commentPosition: ''
+        span: full
+        required: 1
+        type: text
+    poster:
+        label: Thumbnail
+        oc.commentPosition: ''
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        required: 1
+        type: fileupload
+    images:
+        label: Gallery
+        oc.commentPosition: ''
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: right
+        type: fileupload
+    description:
+        label: Description
+        size: ''
+        oc.commentPosition: ''
+        span: auto
+        type: richeditor
+    published_date:
+        label: 'Published Date'
+        oc.commentPosition: ''
+        mode: date
+        span: auto
+        yearRange: '[2000,2050]'
+        type: datepicker
+    caption:
+        label: Caption
+        size: ''
+        oc.commentPosition: ''
+        span: auto
+        type: richeditor

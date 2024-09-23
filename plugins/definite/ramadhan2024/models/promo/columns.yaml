@@ -1,0 +1,37 @@
+columns:
+    id:
+        label: id
+        type: number
+    title:
+        label: title
+        type: text
+    start_date:
+        label: start_date
+        type: text
+    end_date:
+        label: end_date
+        type: text
+    image:
+        label: image
+        type: text
+    content:
+        label: content
+        type: text
+    highlight:
+        label: highlight
+        type: text
+    created_at:
+        label: created_at
+        type: datetime
+    updated_at:
+        label: updated_at
+        type: datetime
+    excerpt:
+        label: excerpt
+        type: text
+    link:
+        label: link
+        type: text
+    order:
+        label: order
+        type: number

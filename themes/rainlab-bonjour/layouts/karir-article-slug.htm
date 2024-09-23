@@ -1,0 +1,148 @@
+description = "Layout for detail article"
+
+[CareerArticle]
+
+[CareerMenu]
+==
+{% partial 'site/header-karir' %}
+
+{% if CareerArticle.articles %}
+{% set articles = CareerArticle.articles  %}
+{% set page_slug = CareerArticle.page_slug %}
+{% for article in articles %}
+    {% if article.slug == page_slug %}                         
+    <section>
+  	<div class="static-baner-pages">
+    	<div class="imgwrp"><img src="{{ 'assets/img/menukarir/home-desktop.jpg'|theme }}" alt="Karir | Frisian Flag Indonesia">
+    	</div>	
+   	</div>
+<div class="container-menutab">
+    <div class="container-one">
+        <ul>
+            <li class="toggle visible-xs visible-sm"><a href="javascript:;" class="active">Artikel</a></li>
+            
+            {% if CareerMenu.submenus %}
+        		      {% set careermenus = CareerMenu.submenus %}
+                      {% for menu in careermenus %}
+                          	<li>
+                          	    {% if menu.id == 4%}
+                          	    
+                          	    <a href="{{url('/karir')}}/{{menu.slug}}" class="active">{{menu.title}}</a>
+                          	    
+                          	     {% elseif menu.id == 1 %}
+                          	    
+                          	     <a href="{{url('/karir')}}">{{menu.title}}</a>
+                          	     
+                          	     {% else %}
+                          	     
+                          	     <a href="{{url('/karir')}}/{{menu.slug}}">{{menu.title}}</a>
+                          	     
+                          	    {% endif%} 	    
+					        </li>                        
+            {% endfor %}
+            {% endif%}
+            
+        </ul>
+    </div>
+</div>
+
+<div id='main-section' class="container">
+    <div class="col-md-12">
+        <div class="breadcrumb">
+             
+                <ul>
+                    <li><a href="{{ 'home' | page }}">{{ 'beranda'|_ }}</a> </li>
+                    <li><a href="{{ 'main-karir' | page }}">{{ 'Karir'|_ }}</a> </li>
+                    <li><a href="{{ 'karir-artikel' | page }}">{{ 'Artikel'|_ }}</a> </li>
+                    <li><a href="javascript:;">{{ article.title }}</a> </li>
+                    
+                </ul>
+               
+        </div>
+    </div>
+</div> 
+</section>
+
+<main class="enem l-career l-career--article-detail">
+  
+   <section id="main-section" class="enem">
+     
+      <div class="section clearfix">
+         <div class="col-lg-12 o-career__event-detail">
+            <div class="enem default-content gap-b-40">
+               <div class="container-two event-detail__content">
+                  <div class="enem gap-b-20 o-career__date-first-top">
+                    {{article.created_at.format('d F Y')}}
+                  </div>
+                  <h1 style="font-size: 40px; margin-bottom: 30px; margin-top: 0;">{{article.title}}</h1 style="">
+                  <div class="enem textCenter content-image"><img src="{{article.img | media}}" alt="{{article.alt_img}}"></div>
+                  <div class="enem gap-b-40 ql-editor no-padding">
+                      {{article.description | raw}}
+                  </div>
+                  
+                  
+                  <div class="wrp-sharesocemd">
+                      <label>{{'Share This Entry'| title}}</label>
+                      <div class="addthis_inline_share_toolbox"
+                        data-url="{{ url('/karir/artikel')}}/{{article.slug}}" 
+                        data-title="{{ 'Karir' | _ }} - Frisian Flag Indonesia"
+                        data-description="Berkarirlah bersama PT Frisian Flag Indonesia. Jika Anda memerlukan informasi karir di PT Fririsan Flag Indonesia halaman ini menyediakan informasi tersebut untuk Anda">
+                        </div>
+                   </div>
+                   <script type="text/javascript" defer>
+                        var addthis_config = addthis_config||{};
+                        addthis_config.ui_email_note = "Berkarirlah bersama PT Frisian Flag Indonesia. Jika Anda memerlukan informasi karir di PT Fririsan Flag Indonesia halaman ini menyediakan informasi tersebut untuk Anda";
+                    </script>
+                    
+               </div>
+            </div>
+         </div>
+         <div class="clearfix"></div>
+         <div class="enem container-fluid">
+            <div class="enem default-content col-lg-12">
+               <div class="container-two">
+                  <h3 class="section__title">Artikel Lainnya</h3>
+               </div>
+            </div>
+            <div class="container-fluid enem col-lg-12 no-padding gap-b-60">
+               <div class="enem wrapper-card-list o-list-article">
+               
+               {% set relates = CareerArticle.article_page %}
+			   {% for relate in relates %}
+                  <div class="col-lg-4 col-md-12 col-sm-12 items">
+                     <div class="enem o-article__archive vertical">
+                        <div class="archive__container-image">
+                           <div title ="{{relate.alt_img}}" class="image-box" style="background-size: cover; background-position: center center; background-repeat: no-repeat; background-image: url('{{relate.thumb_img | media }}');"></div>
+                        </div>
+                        <div class="archive__container-content default-content">
+                           <span class="date">
+                           {{relate.created_at.format('d F Y')}}
+                           </span> 
+                           <h3 class="title"><a href="{{url('/karir/artikel')}}/{{relate.slug}}">
+                             {{relate.title}}
+                              </a>
+                           </h3>
+                           <div class="content-description">
+                              {{relate.excerpt | raw | raw}}
+                           </div>
+                         
+                           <a href="{{url('/karir/artikel')}}/{{relate.slug}}" class="button" >Lebih Lanjut</a>
+                        </div>
+                     </div>
+                  </div>
+              {% endfor %}
+                  <div class="clearfix"></div>
+               </div>
+            </div>
+            <div class="clearfix"></div>
+         </div>
+      </div>
+   </section>
+   <!---->
+</main>
+{% endif %}	  
+{% endfor%}
+{% endif %}
+
+{% partial 'site/footer-karir' %}
+{% framework %}

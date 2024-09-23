@@ -1,0 +1,94 @@
+title = "fb-callback"
+url = "/fb-callback"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+==
+<?php
+use RainLab\User\Models\User;
+
+function onStart(){
+	$fb = new Facebook\Facebook([
+		'app_id' => env('FB_APP_ID'),
+		'app_secret' => env('FB_APP_SECRET')
+	]);
+
+	$helper = $fb->getRedirectLoginHelper();
+	
+	$state = Input::get('state');
+	$helper->getPersistentDataHandler()->set('state', $state);
+
+	$next = null;
+	$act = null;
+	$show_registration_form = false;
+
+	try{
+		$objState = json_decode($state);
+		if(isset($objState->act)) $act = $objState->act;
+		if(isset($objState->next)) $next = $objState->next;
+		if(isset($objState->show_registration_form)) $show_registration_form = $objState->show_registration_form;
+	}catch(Exception $e){}
+
+	try {
+		$accessToken = $helper->getAccessToken();
+	} catch(Facebook\Exceptions\FacebookResponseException $e) {
+		//echo 'Graph returned an error: ' . $e->getMessage();
+	} catch(Facebook\Exceptions\FacebookSDKException $e) {
+  		//echo 'Facebook SDK returned an error: ' . $e->getMessage();
+  	}
+
+	$redirect_url = $next ? $next : url('/');
+	$fb_user = null;
+
+	if( isset($accessToken) ){
+		$response = $fb->get('/me?fields=first_name, last_name, gender, email, birthday', $accessToken);
+
+		$fb_user = $response->getDecodedBody();
+	}
+
+	// if request login
+	if ($act == 'login'){
+		$isLogin = false;
+		
+		if ($fb_user){
+		    try
+		    {
+		        if ($user = Auth::findUserByLogin($fb_user['email']) ){
+				Auth::login($user);
+    			}else{
+    				Session::put('login_alert', 'A user was not found with the given credentials.');
+    			}
+		    } catch (\October\Rain\Auth\AuthException $e) {
+		        Flash::error('Anda belum mengaktifkan akun ini.');
+		        $state = json_decode($_GET['state']);
+		        $next = $state->next;
+		        return Redirect::to($next, 301);
+		    }
+			
+		}
+
+		if(Auth::check()){
+			if ($redirect_url == url('/aktivitas-kami/promo-indomaret/login')) {
+				$redirect_url = url('/aktivitas-kami/promo-indomaret/main');
+			} else if ($redirect_url == url('/aktivitas-kami/promo-alfamart/login')) {
+				$redirect_url = url('/aktivitas-kami/promo-alfamart/main');
+			} else {
+				$redirect_url = 'user-dashboard';
+			}		
+		}else{
+			Session::put('show_login_form', true);
+		}
+	}
+	// if request registration
+	else if ($act == 'registration') {
+		if ( $fb_user ){
+			Session::put('fb_user', $response->getDecodedBody());
+		}
+
+		Session::put('show_registration_form', $show_registration_form);
+	}
+
+	return Redirect::to($redirect_url, 301);
+}
+?>
+==

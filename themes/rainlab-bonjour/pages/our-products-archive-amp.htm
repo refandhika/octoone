@@ -1,0 +1,315 @@
+title = "Our Products Archive | AMP"
+url = "/amp/produk/:slug"
+layout = "basic-amp"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/our-products-archive-amp"
+
+[builderDetails]
+modelClass = "Definite\Products\Models\Category"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+
+[milkpediaList]
+==
+<?php
+function onEnd() {
+    if( ! $this->builderDetails->record ){
+        $page = new CMS\Classes\Page;
+        return Redirect::to($page->url('our-products-amp'), 301);
+    }
+    
+    // get the post component
+    $_title = $this->page->components["builderDetails"]->record->attributes["title"];
+    $_meta_title = $this->page->components["builderDetails"]->record->attributes["meta_title"];
+    $_meta_description = $this->page->components["builderDetails"]->record->attributes["meta_description"];
+    $_meta_keywords = $this->page->components["builderDetails"]->record->attributes["meta_keywords"];
+    
+    if($_meta_title){
+         $this->page->meta_title = $_meta_title;
+         $this->page->title      = $_meta_title;
+    }else{
+        $this->page->meta_title  = $_title;
+        if($_title == "Susu Siap Minum"){
+            $this->page->title = "Susu Cair Siap Minum";
+        }elseif($_title == "Susu Ibu & Balita"){
+            $this->page->title = "Susu Ibu dan Balita";
+        }
+        elseif($_title == "Susu Kental Manis"){
+            $this->page->title = "Produk Susu Kental Manis Untuk Keluarga Indonesia";
+             $this->page->meta_title = "Produk Susu Kental Manis Untuk Keluarga Indonesia";
+        }else{
+            $this->page->title = $_title;
+            }
+    }
+
+    
+    $this->page->meta_description = $_meta_description;
+    $this->page->meta_keywords = $_meta_keywords;
+
+    $this->page->title_en = $this->page->components["builderDetails"]->record->attributes["title_en"];
+    $this->page->meta_title_en = $this->page->components["builderDetails"]->record->attributes["title_en"];
+    $this->page->meta_description_en = $this->page->components["builderDetails"]->record->attributes["meta_description_en"];
+    $this->page->meta_keywords_en = $this->page->components["builderDetails"]->record->attributes["meta_keywords_en"];
+}
+?>
+==
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+{% if record %}
+{% set category = record.categories().first %}
+
+<div class="cover">
+    {% if record.slug == 'susu-siap-minum' or record.slug == 'purefarm' or record.slug == 'kids' %}
+        <amp-img 
+            src="{{ 'assets/[R1]RTD-Product_2024_Mobile (1).jpg'|theme }}"
+            srcset="{{ 'assets/[R1]RTD-Product_2024_Mobile (1).jpg'|theme|replace({' ':'%20'}) }} 640w,
+                   {{ 'assets/[R1]RTD-Product_2024_Mobile (1).jpg'|theme|replace({' ':'%20'}) }} 320w"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="RTD Update Mobile Banner">
+        </amp-img>
+    {% elseif record.slug == 'susu-bubuk-keluarga' %}
+        {# susu-bubuk-m.jpg #}
+        <amp-img 
+            src="{{ 'assets/img/banner/FMP_SKU_2022_Mobile.jpg'|theme }}"
+            srcset="{{ 'assets/img/banner/FMP_SKU_2022_Mobile.jpg'|theme|replace({' ':'%20'}) }} 640w,
+                   {{ 'assets/img/banner/FMP_SKU_2022_Mobile.jpg'|theme|replace({' ':'%20'}) }} 320w"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="FMP Website SBK Mobile">
+        </amp-img>
+    {% elseif record.slug == 'susu-ibu-balita' %}
+        <amp-img 
+            src="{{ 'Banner/new-banner-susu-ibu-dan-balita-mobile.jpg'|media }}"
+            srcset="{{ 'Banner/new-banner-susu-ibu-dan-balita-mobile.jpg'|media|replace({' ':'%20'}) }} 640w,
+                   {{ 'Banner/new-banner-susu-ibu-dan-balita-mobile.jpg'|media|replace({' ':'%20'}) }} 320w"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Banner Susu Ibu">
+        </amp-img>
+    {% else %}
+        <amp-img 
+            src="{{ 'assets/img/SCM-Category-Website-Banner_Mobile.jpg'|theme }}"
+            srcset="{{ 'assets/img/SCM-Category-Website-Banner_Mobile.jpg'| theme }} 640w,
+                   {{ 'assets/img/SCM-Category-Website-Banner_Mobile.jpg'| theme }} 320w"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Product Header Mobile">
+        </amp-img>
+    {% endif %}
+</div>
+    {{key}}
+<amp-accordion class="title_home">
+    <section>
+        <h4 class="arrow_down"><a href="#" target="_self">{{ trans_pick(record, 'title') }}</a></h4>
+        <p>
+            {% for category in record.all %}
+                {% if category.parent_id == null %}
+                    <a href="{{ 'our-products-archive-amp'|page({'slug': category.slug }) }}" {% if category.slug == record.slug %} class="active" {% endif %} target="_self">{{ trans_pick(category, 'title') }}</a>
+                {% endif %}
+            {% endfor %}
+            <a href="https://www.susubendera.com/" target="_blank">
+                Susu Bendera
+            </a>
+            <a href="https://www.friso.co.id/" target="_blank">
+                Friso
+            </a>
+        </p>
+    </section>
+</amp-accordion>
+
+<div class="breadcrumb">
+    <a href="{{ 'home'|page }}">{{'beranda'|_}}</a> /
+    <a href="{{ 'our-products-amp'|page }}">{{'produk'|_}}</a> / 
+    <a href="{{ 'our-products-archive-amp'|page({"slug": rec}) }}">{{ trans_pick(record, 'title') }}</a> 
+</div>
+
+<div class="detail_text">
+    <h1>{{ trans_pick(record, 'title') }}</h1>
+    <div class="text">{{ trans_pick(record, 'description') | raw}}</div>    
+</div>
+
+{% if not record.childs is empty %}
+    {% for category in record.childs.sortBy('order') %}
+        <div class="list2 list2a">
+            <div class="img">
+                {% if category.featured_image %}                    
+                    <amp-img 
+                        src="{{ url(category.featured_image|media) }}"
+                        srcset="{{ category.featured_image|media|replace({' ':'%20'}) }} 640w,
+                        {{ category.featured_image|media|replace({' ':'%20'}) }} 320w"
+                        width="160"
+                        height="160"
+                        layout="responsive"
+                        alt="{{ trans_pick(category, 'title') }}">
+                    </amp-img>
+                {% else %}
+                    <amp-img 
+                        src="http://placehold.it/600x600/797979/666666?text=No+Image"
+                        srcset="http://placehold.it/600x600/797979/666666?text=No+Image 640w,
+                        http://placehold.it/600x600/797979/666666?text=No+Image 320w"
+                        width="160"
+                        height="160"
+                        layout="responsive"
+                        alt="No Image">
+                    </amp-img>
+                {% endif %}
+            </div>
+            <div class="text">
+                <a href="{{ 'our-products-single-amp'|page({"category-slug": record.slug, "slug": category.slug}) }}" target="_self"><h3>{{ trans_pick(category, 'title') }}</h3></a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    {% endfor %}
+{% else %}
+    {% for post in record.publishedProducts.sortBy('order') %}
+        <div class="list2 list2a">
+            <div class="img">
+                {% if post.featured_image %}
+                    <amp-img 
+                        src="{{ post.featured_image|media }}"
+                        srcset="{{ post.featured_image|media|replace({' ':'%20'}) }} 640w,
+                        {{ post.featured_image|media|replace({' ':'%20'}) }} 320w"
+                        width="160"
+                        height="160"
+                        layout="responsive"
+                        alt="{{ category.title }}">
+                    </amp-img>
+                {% else %}
+                    <amp-img 
+                        src="http://placehold.it/600x600/797979/666666?text=No+Image"
+                        srcset="http://placehold.it/600x600/797979/666666?text=No+Image 640w,
+                        http://placehold.it/600x600/797979/666666?text=No+Image 320w"
+                        width="160"
+                        height="160"
+                        layout="responsive"
+                        alt="No Image">
+                    </amp-img>
+                {% endif %}
+            </div>
+            <div class="text">
+                <a href="{{ 'our-products-single-amp'|page({"category-slug": record.slug, "slug": post.slug}) }}" target="_self"><h3>{{ post.title }}</h3></a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    {% endfor %}
+{% endif %}
+
+{% if record.slug == 'susu-kental-manis'%}
+	
+	{% set milkpedias = milkpediaList.cara_minum_susu.take(3) %}
+
+    {% if milkpediaList.cara_minum_susu  %}
+    <div class="detail_text">
+        <h1>{{ 'kapan-dan-bagaimana-cara-minum-susu'|_ }}</h1>
+       
+    </div>
+        <!-- s:milkpediaPost article -->
+		{% for milkpediaPost in milkpedias %}
+       <div class="list">
+            <div class="img">
+            {% if milkpediaPost.featured_image %}
+              <amp-img 
+                  src="{{ milkpediaPost.featured_image| mediathumb_resize('width', 720, 90)  }}"
+                  srcset="{{ milkpediaPost.featured_image| mediathumb_resize('width', 720, 90)  }} 640w,
+                         {{ milkpediaPost.featured_image| mediathumb_resize('width', 720, 90)  }} 320w"
+                  width="160"
+                  height="90"
+                  layout="responsive"
+                  alt="{{ milkpediaPost.title }}">
+              </amp-img>
+            {% else %}
+              <amp-img 
+                  src="http://placehold.it/703x545/797979/666666?text=No+Image"
+                  srcset="http://placehold.it/703x545/797979/666666?text=No+Image 640w,
+                         http://placehold.it/703x545/797979/666666?text=No+Image 320w"
+                  width="160"
+                  height="90"
+                  layout="responsive"
+                  alt="{{ milkpediaPost.title }}">
+              </amp-img>
+            {% endif %}
+            </div>
+            <div class="info">
+              <span class="label">Milkpedia</span>
+              | {{ milkpediaPost.created_at.format('d M Y') }}
+            </div>
+            {#<a href="{{ 'our-milkpedia-amp-single'|page({"category-slug": record.slug, "slug": milkpediaPost.slug}) }}" target="_self"><h3>{{ trans_pick(milkpediaPost, 'title') }}</h3></a>#}
+			<a href="{{ 'our-milkpedia-single'|page({"category-slug": record.slug, "slug": milkpediaPost.slug}) }}" target="_self"><h3>{{ trans_pick(milkpediaPost, 'title') }}</h3></a>
+            <p>{{ trans_pick(milkpediaPost, 'excerpt')|raw }}</p>
+            <a href="{{ 'our-milkpedia-single'|page({"category-slug": record.slug, "slug": milkpediaPost.slug}) }}" target="_self" class="btn_more">{{ 'lebih-lanjut'|_ }}</a>
+			{#<a href="{{ 'our-milkpedia-amp-single'|page({"category-slug": record.slug, "slug": milkpediaPost.slug}) }}" target="_self" class="btn_more">{{ 'lebih-lanjut'|_ }}</a>#}
+        </div>
+
+        <!-- e:milkpediaPost article -->
+		{% endfor %}
+    {% endif %}
+{% endif %}
+
+{% if record.slug == 'susu-bubuk-keluarga'%}
+	
+	{% set milkpedias = milkpediaList.nutrisi.take(3) %}
+
+    {% if milkpediaList.nutrisi  %}
+    <div class="detail_text">
+        <h1>{{ 'nutrisi-dan-kesehatan'|_ }}</h1>
+       
+    </div>
+        <!-- s:milkpediaPost article -->
+		{% for milkpediaPost in milkpedias %}
+       <div class="list">
+            <div class="img">
+            {% if milkpediaPost.featured_image %}
+              <amp-img 
+                  src="{{ milkpediaPost.featured_image| mediathumb_resize('width', 720, 90)  }}"
+                  srcset="{{ milkpediaPost.featured_image| mediathumb_resize('width', 720, 90)  }} 640w,
+                         {{ milkpediaPost.featured_image| mediathumb_resize('width', 720, 90)  }} 320w"
+                  width="160"
+                  height="90"
+                  layout="responsive"
+                  alt="{{ milkpediaPost.title }}">
+              </amp-img>
+            {% else %}
+              <amp-img 
+                  src="http://placehold.it/703x545/797979/666666?text=No+Image"
+                  srcset="http://placehold.it/703x545/797979/666666?text=No+Image 640w,
+                         http://placehold.it/703x545/797979/666666?text=No+Image 320w"
+                  width="160"
+                  height="90"
+                  layout="responsive"
+                  alt="{{ milkpediaPost.title }}">
+              </amp-img>
+            {% endif %}
+            </div>
+            <div class="info">
+              <span class="label">Milkpedia</span>
+              | {{ milkpediaPost.created_at.format('d M Y') }}
+            </div>
+            <a href="{{ 'our-milkpedia-amp-single'|page({"category-slug": record.slug, "slug": milkpediaPost.slug}) }}" target="_self"><h3>{{ trans_pick(milkpediaPost, 'title') }}</h3></a>
+            <p>{{ trans_pick(milkpediaPost, 'excerpt')|raw }}</p>
+            <a href="{{ 'our-milkpedia-amp-single'|page({"category-slug": record.slug, "slug": milkpediaPost.slug}) }}" target="_self" class="btn_more">{{ 'lebih-lanjut'|_ }}</a>
+        </div>
+
+        <!-- e:milkpediaPost article -->
+		{% endfor %}
+    {% endif %}
+{% endif %}
+
+
+{% put footer %}
+    {{ record.additional_tags|raw }}
+{% endput %}
+
+{% else %}
+    {% partial '404' %}
+{% endif %}

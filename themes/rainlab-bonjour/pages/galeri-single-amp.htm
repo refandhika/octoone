@@ -1,0 +1,111 @@
+title = "Gallery Single Amp"
+url = "/amp/perusahaan-kami/galeri-foto/:slug"
+layout = "basic-amp"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/gallery-single"
+
+[builderDetails]
+modelClass = "Definite\Gallery\Models\Post"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "id"
+notFoundMessage = "Record not found"
+
+[builderList]
+modelClass = "Definite\Gallery\Models\Post"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+recordsPerPage = 5
+pageNumber = "{{ page }}"
+sortColumn = "published_date"
+sortDirection = "desc"
+==
+<?php
+function onEnd() {
+
+    // get the post component
+    $this->page->title = "Galeri Foto";
+    $this->page->meta_description = "Lihat foto-foto terbaik dari galeri Frisian Flag seperti foto keluarga yang sedang menikmati produk susu.";
+    
+    if( is_null( $this->builderDetails->record )){
+        $page = new CMS\Classes\Page;
+        return Redirect::to($page->url('gallery'), 301);
+    }
+}
+?>
+==
+{% set record = builderDetails.record %}
+{% set records = builderList.records %}
+
+<div class="cover">
+    <amp-img 
+        src="{{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }}"
+        srcset="{{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }} 640w,
+               {{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }} 320w"
+        width="50"
+        height="50"
+        layout="responsive"
+        alt="an image">
+    </amp-img>
+</div>
+<amp-accordion class="title_home">
+    <section>
+        <h4 class="arrow_down"><a href="#" target="_self">{{'galeri-foto'|_}}</a></h4>
+        <p>
+            <a href="{{'about-us'|page}}" target="_self">{{'tentang-kami'|_}}</a>
+            <a href="{{'news-amp'|page}}" target="_self">{{'berita'|_}}</a>
+            <a href="{{'galeri-amp'|page}}" target="_self">{{'galeri-foto'|_}}</a>
+            <a href="{{'press-release-amp'|page}}" target="_self">{{'siaran-pers'|_}}</a>
+            <a href="{{'our-purposes-amp'|page}}" target="_self">{{'tujuan-kami'|_}}</a>
+        </p>
+    </section>
+</amp-accordion>
+
+<div class="breadcrumb">
+    <a href="{{ 'home'|page }}">{{'beranda'|_}}</a> /
+    <a href="{{ 'about-us'|page }}">{{'perusahaan kami'|_}}</a> /
+    <a href="{{ url('gallery' |page ({'page':''})) }}">{{'galeri foto'|_}}</a>
+</div>
+
+<div class="detail_text">
+    <h1>Galeri Foto</h1>
+    <form action-xhr="#" method="post" target="_blank" class="search_plain">
+        <input type="text" placeholder="Search">
+    </form>
+    <br>
+    <amp-accordion class="title_home">
+        <section>
+            <h4 class="arrow_down"><a href="#" target="_self">All</a></h4>
+            <p>
+                <a href="{{url('gallery'|page) }}" target="_self">All</a>
+                {% for years in records.first.year  %}
+                <a href="{{url('galeri-archive-amp'|page ({"slug":years.published_date, "page" : null})) }}">{{ years.published_date }}</a>
+                {% endfor %}
+            </p>
+        </section>
+    </amp-accordion>
+</div>
+
+<!-- s:detail -->
+<div class="detail_text">
+    <div class="date">{{ record.published_date }}</div>
+    <h1>{{record.title}}</h1>
+    <p>{{record.description|_}}</p>
+    <br>
+    {% for image in record.images %}
+    <amp-img lightbox
+        src="{{ image.path }}"
+        width="300"
+        height="200"
+        layout="responsive">    
+    </amp-img>
+    <br>
+    {% endfor %}
+</div>
+<!-- e:detail -->

@@ -1,0 +1,11 @@
+name: Products
+modelClass: Definite\Products\Models\Product
+form: $/definite/products/models/product/fields.yaml
+defaultRedirect: definite/products/products
+create:
+    redirect: 'definite/products/products/update/:id'
+    redirectClose: definite/products/products
+update:
+    redirect: definite/products/products
+    redirectClose: definite/products/products
+preview: {  }

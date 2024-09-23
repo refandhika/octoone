@@ -1,0 +1,171 @@
+<?php Block::put('breadcrumb') ?>
+<div class="row" style="margin-left: 10px;padding:5px 0">
+  <div class="col-md-3">
+    <span>Voucher SKM Alfamart: <?= $skm_mart ?></span>
+  </div>
+  <div class="col-md-3">
+    <span>Voucher RTD Alfamart: <?= $rtd_mart ?></span>
+  </div>  
+  <div class="col-md-3">
+    <span>Voucher SKM Alfamidi: <?= $skm_midi ?></span>
+  </div>  
+  <div class="col-md-3">
+    <span>Voucher RTD Alfamidi: <?= $rtd_midi ?></span>
+  </div>    
+
+</div>
+<?php Block::endPut() ?>
+<div data-control="toolbar" >
+	   
+       <button
+        class="btn btn-default oc-icon-trash-o"
+        disabled="disabled"
+        onclick="$(this).data('request-data', {
+            checked: $('.control-list').listWidget('getChecked')
+        })"
+        data-request="onDelete"
+        data-request-confirm="<?= e(trans('backend::lang.list.delete_selected_confirm')) ?>"
+        data-trigger-action="enable"
+        data-trigger=".control-list input[type=checkbox]"
+        data-trigger-condition="checked"
+        data-request-success="$(this).prop('disabled', true)"
+        data-stripe-load-indicator>
+        <?= e(trans('backend::lang.list.delete_selected')) ?>
+    </button>
+	<a href="http://frisianflag.com/aktivitas-kami/ramadan-istimewa/export/2020/2020/1/1" class="btn btn-default oc-icon-download">Export</a>
+
+     <!--<button class="btn btn-primary oc-icon-cloud-download" id="exportLeads">Export</button>-->
+</div>
+<script type="text/javascript">
+
+    $('#exportLeads').click(function(){
+        
+        //all vars.
+        var product, market, data = [], data_product = $('.list-cell-index-4').html() , data_market= $('.list-cell-index-5').html();
+        
+        $('.filter-setting').each(function (index, value) {
+                data.push($(this).html());
+        });
+
+        //data[0] = product, data[1] = market, data[2] = date.
+        var productData = data[0], marketData = data[1], filterSetting = data[2];
+
+      //check empty tabel 
+      if(data_product != null){
+        //product param
+        if (productData != 'semua' && productData != 'all')
+        {
+            if(data[0] == 2){
+                 product = 'all';
+            }else{
+
+                 data_product != null ? product = data_product.trim() : product = 'all';
+
+                 switch(product) {
+                      case 'SKM':
+                        product = 1;
+                        break;
+                      case 'RTD':
+                        product = 2;
+                        break;
+                      default:
+                        product = 'all'
+                    }                
+            }
+           
+        }else{
+            product = 'all';
+        }
+
+        //market param
+         if (marketData != 'semua' && marketData != 'all')
+        {
+            
+            if(data[1] == 2){
+                 market = 'all';
+            }else{
+
+                 data_market != null ? market = data_market.trim() : market = 'all';
+
+                 switch(market) {
+                      case 'Alfamart':
+                        market = 1;
+                        break;
+                      case 'Alfamidi':
+                        market = 2;
+                        break;
+                      default:
+                        market = 'all'
+                    }
+            }
+          
+        }else{
+            market = 'all';
+        }
+
+        //date param
+         if (filterSetting != 'all' && filterSetting != 'all periods') {
+
+            var settingFilt = data[2];
+
+            if (settingFilt.indexOf('datetime') != -1 ) {
+
+                datesAttr = $('[data-scope-name="created_at"]').attr('data-scope-data');
+                dateParse = $.parseJSON(datesAttr);
+                dateParse['dates'][0] != null ? start = dateParse['dates'][0] : start = 'all';
+                dateParse['dates'][1] != null ? end   = dateParse['dates'][1] : end   = 'all';
+        
+            } else {
+              
+                dateParse  = settingFilt.split(" → ");
+
+                if(dateParse[0] != "∞")
+                {
+                  year_start = dateParse[0].split("/");
+                  start      = numDate(year_start).split("/").reverse().join("-") +' 00:00:01';
+                }else{
+                  start      = 'all';
+                }
+
+                if(dateParse[1] != "∞")
+                {
+                  year_end   = dateParse[1].split("/");
+                  end        = numDate(year_end).split("/").reverse().join("-") +' 23:59:59';
+                }else{
+                  end        = 'all';
+                }
+            }
+
+        } else {
+            start = 'all';
+            end   = 'all';
+        }
+             
+        window.open("/aktivitas-kami/ramadan-istimewa/export/"+start+"/"+end+"/"+product+"/"+market, '_blank');
+     }else{
+            start   = null;
+            end     = null;
+            product = null;
+            market  = null;
+
+        window.open("/aktivitas-kami/ramadan-istimewa/export/"+start+"/"+end+"/"+product+"/"+market, '_blank');  
+     }
+
+    });
+
+    //add 0 if < 2 in day & month.
+    function numDate (year){
+
+       var day, month;
+
+       year[0].length < 2 ? day   = '0' + year[0] + '/' : day   = year[0] + '/';
+
+       year[1].length < 2 ? month = '0' + year[1] + '/' : month = year[1] + '/';
+
+       year = day + month + year[2];
+
+       return year;
+
+    };
+  
+</script>

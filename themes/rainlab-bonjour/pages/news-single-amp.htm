@@ -1,0 +1,154 @@
+title = "News single"
+url = "/amp/perusahaan-kami/berita/:slug*|([0-9].[a-z]+.*|[a-z]+.*)$"
+layout = "basic-amp"
+is_hidden = 0
+
+[builderDetails]
+modelClass = "Definite\News\Models\News"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+
+[builderList]
+modelClass = "Definite\News\Models\News"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "news-single"
+detailsKeyColumn = "slug"
+detailsUrlParameter = "slug"
+pageNumber = "{{ :page }}"
+==
+<?php
+function onStart()
+{
+  // if ($this->controller->getRouter()->getParameters()['slug'] === 'years') return Redirect::to('amp/perusahaan-kami/berita');
+}
+
+function onEnd() {
+  if (!$this->page->components["builderDetails"]->record) {
+    return;
+  }
+
+  // get the post component
+  $_title = $this->page->components["builderDetails"]->record->attributes["title"];
+  $this->page->title = $_title;
+  $this->page->meta_title = $this->page->components["builderDetails"]->record->attributes["meta_title"];
+  $this->page->meta_description = $this->page->components["builderDetails"]->record->attributes["meta_description"];
+
+  $_title_en = $this->page->components["builderDetails"]->record->attributes["title_en"];
+  $this->page->title_en = $_title_en;
+  $this->page->meta_title_en = $this->page->components["builderDetails"]->record->attributes["meta_title_en"];
+  $this->page->meta_description_en = $this->page->components["builderDetails"]->record->attributes["meta_description_en"];
+
+  
+}
+?>
+==
+{% set records = builderList.records %}
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+{% put head_scripts %}
+<script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+{% endput %}
+
+<div class="cover">
+  <amp-img
+    src="{{ 'assets/img/our-milkpedia.png'|theme }}"
+    srcset="{{ 'assets/img/our-milkpedia.png'|theme }} 640w,
+    {{ 'assets/img/our-milkpedia.png'|theme }} 320w"
+    width="140"
+    height="50"
+    layout="responsive"
+    alt="an image">
+  </amp-img>
+</div>
+<amp-accordion class="title_home">
+  <section>
+    <h4 class="arrow_down"><a href="#" target="_self">{{'news'|_}}</a></h4>
+    <p>
+      <a href="{{'about-us'|page}}" target="_self">{{'tentang-kami'|_}}</a>
+      <a href="{{'news-amp'|page}}" target="_self">{{'berita'|_}}</a>
+      <a href="{{'galeri-amp'|page}}" target="_self">{{'galeri-foto'|_}}</a>
+      <a href="{{'press-release-amp'|page}}" target="_self">{{'siaran-pers'|_}}</a>
+      <a href="{{'our-purposes-amp'|page}}" target="_self">{{'tujuan-kami'|_}}</a>
+    </p>
+  </section>
+</amp-accordion>
+{% if record %}
+  
+  <div class="breadcrumb">
+    <a href="{{ 'home'|page }}">{{'beranda'|_}}</a> /
+    <a href="{{'news-amp'|page}}">{{'berita'|_}}</a> /
+    <a href="#">{{ trans_pick(record, 'title') }}</a>
+  </div>
+  <div class="detail_text">
+    <h2>{{'berita'|_}}</h2>
+  </div>
+  <div class="detail_text">
+    <div class="date">{{record.published_date|date('M d, Y')}}</div>
+    <h1>{{ trans_pick(record, 'title') }}</h1>
+    <div class="img_detail">
+      <amp-img
+        src="{{record.featured_image| mediathumb_resize('width', 800, 80) }}"
+        srcset="{{record.featured_image| mediathumb_resize('width', 640, 80) }} 640w,
+        {{record.featured_image| mediathumb_resize('width', 320, 80) }} 320w"
+        width="360"
+        height="240"
+        layout="responsive"
+        alt="{{ record.title }}">
+      </amp-img>
+      <div class="text text_left">
+        <p>{{ trans_pick(record, 'description')|raw }}</p>
+      </div>
+      <br><br>
+    
+    <div class="share center mb-10">
+        
+        <p class="title-share">{{'Share This Entry'}}</p>
+        
+              <amp-social-share width="35"
+              height="35" class="rounded" type="facebook"
+              data-param-app_id="872847836388420"></amp-social-share>
+              <amp-social-share width="35"
+              height="35" class="rounded" type="twitter"></amp-social-share>
+              <amp-social-share width="35"
+              height="35" class="rounded" type="whatsapp"></amp-social-share>
+              <amp-social-share width="35"
+              height="35" class="rounded" type="line"></amp-social-share>
+        </div>
+
+    </div>
+    <!-- s:section list -->
+    <div class="title_page">{{ 'berita-lainnya'|_ }}</div>
+    {% for news in records.first.getByLatest %}
+    <div class="list2 list2b">
+      <div class="img">
+        <amp-img
+          src="{{news.featured_image| mediathumb_resize('width', 100, 80) }}"
+          srcset="{{news.featured_image| mediathumb_resize('width', 640, 80) }} 640w,
+          {{news.featured_image| mediathumb_resize('width', 320, 80) }} 320w"
+          width="160"
+          height="90"
+          layout="responsive"
+          alt="{{trans_pick(news, 'title')}}">
+        </amp-img>
+      </div>
+      <div class="text">
+        <div class="info">
+          {{news.published_date|date('M d, Y')}}
+        </div>
+        <a href="{{ 'news-single-amp'|page({'slug': news.slug}) }}" target="_self"><h3>{{trans_pick(news, 'title')}}</h3></a>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    {% endfor %}
+    <!-- e:section list -->
+  </div>
+{% else %}
+  {{ notFoundMessage }}
+{% endif %}

@@ -1,0 +1,67 @@
+columns:
+    id:
+        label: id
+        type: number
+        sortable: true
+    full_name:
+        label: 'Full Name'
+        type: text
+        sortable: true
+        relation: user
+        select: concat(name, ' ', surname)
+    email:
+        label: Email
+        type: text
+        searchable: true
+        select: email
+        relation: user
+    jenis_kelamin:
+        label: 'Jenis Kelamin'
+        type: text
+        relation: user
+        select: jk
+        sortable: false
+    tgl_lahir:
+        label: 'Tanggal Lahir'
+        type: text
+        relation: user
+        select: tgl_lahir
+        sortable: false
+    telephone:
+        label: 'Telepone'
+        type: text
+        relation: user
+        select: telp
+        sortable: false
+    province:
+        label: 'Province'
+        type: text
+        relation: user
+        select: prof
+        sortable: false
+    city:
+        label: 'City'
+        type: text
+        relation: user
+        select: kota
+        sortable: false
+    alamat:
+        label: 'Alamat'
+        relation: user
+        select: alamat
+        type: text
+        sortable: false
+    no_ponta:
+        label: 'Nomor Ponta'
+        type: text
+    alasan:
+        label: 'Rasa dan Alasan'
+        type: text
+    created_at:
+        label: 'Tanggal Submit'
+        type: datetime
+        sortable: true
+    action:
+        label: Action
+        type: text
+        sortable: false

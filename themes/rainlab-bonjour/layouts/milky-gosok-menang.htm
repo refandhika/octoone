@@ -1,0 +1,29 @@
+[staticPage]
+useContent = 1
+default = 0
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('milky-gosok-menang-amp');
+}
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+    	<img src="{{ 'milky-gosok-menang/milky-gosok-menang-d.jpg'|media }}" alt="banner gosok menang">
+    </div>
+</div>
+
+<div id='main-section' class="container" style="padding: 30px 15px;">
+    <div class="col-md-12">
+        <div class="default-content">
+            {{ trans_pick(page, 'markup')|raw }}
+        </div>
+    </div>
+</div>
+
+{% partial 'site/footer' %}

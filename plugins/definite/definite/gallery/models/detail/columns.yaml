@@ -1,0 +1,10 @@
+columns:
+    picture:
+        label: picture
+        type: text
+    caption:
+        label: caption
+        type: text
+    id_post:
+        label: id_post
+        type: number

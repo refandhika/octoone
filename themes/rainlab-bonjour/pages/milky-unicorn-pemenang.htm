@@ -1,0 +1,28 @@
+title = "Serunya Tambah Terus -  Pemenang"
+url = "/serunyatambahterus/pemenang"
+layout = "serunya-tambah-terus-pemenang"
+is_hidden = 0
+role = 0
+permission = 0
+anonymous_only = 0
+logged_only = 0
+
+[viewBag]
+localeUrl[en] = "/milky-unicorn-pemenang"
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('milky-unicorn-pemenang-amp');
+}
+?>
+==
+<!--s:event-->
+<section class="event">
+       <div class="detail-content">
+             <div class="center-img" style="text-align: center;margin-bottom:10px;">
+                <img src="{{ 'serunyatambahterus/serunyatambahterus-artboard-desktop.jpg'|media  }}" style="" class="hidden-xs">
+                <img src="{{ 'serunyatambahterus/serunyatambahterus-artboard-mobile.jpg'|media  }}" style="" class="visible-xs">
+            </div>
+        </div>
+</section>
+<!--s:event-->

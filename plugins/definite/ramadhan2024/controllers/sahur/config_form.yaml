@@ -1,0 +1,10 @@
+name: Sahur
+form: $/definite/ramadhan2024/models/sahur/fields.yaml
+modelClass: Definite\Ramadhan2024\Models\Sahur
+defaultRedirect: definite/ramadhan2024/sahur
+create:
+    redirect: 'definite/ramadhan2024/sahur/update/:id'
+    redirectClose: definite/ramadhan2024/sahur
+update:
+    redirect: definite/ramadhan2024/sahur
+    redirectClose: definite/ramadhan2024/sahur

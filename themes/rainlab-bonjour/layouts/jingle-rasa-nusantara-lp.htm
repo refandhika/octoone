@@ -1,0 +1,577 @@
+description = "Layout for Sustainability Page"
+
+[staticPage]
+useContent = 1
+default = 0
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('jingle-rasa-nusantara-amp');
+    }
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp banner-lp">
+    <img onclick="toDownload()" src="{{ 'jingle-rasa-nusantara/FF-RASANUSANTARA-WEB-BANNER-1117-Ds.jpg'|media  }}" style="width:100%;cursor:pointer;"/>
+    
+    	
+    </div>
+</div>
+
+    <div id="modalVideo1" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" onclick="$('#modalVideo1 video').trigger('pause')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <video width="320" height="240" controls>
+          <source src="{{ 'jingle-rasa-nusantara/RARA-CELLINA-FIX-3.mp4'|media  }}" type="video/mp4">
+          
+        Your browser does not support the video tag.
+        </video>
+      </div>
+      
+    </div>
+
+  </div>
+</div>
+<div id="modalVideo2" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" onclick="$('#modalVideo2 video').trigger('pause')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <video width="320" height="240" controls>
+          <source src="{{ 'jingle-rasa-nusantara/Frisian-Flag-3.mp4'|media  }}" type="video/mp4">
+          
+        Your browser does not support the video tag.
+        </video>
+      </div>
+      
+    </div>
+
+  </div>
+</div>
+        <div class="section-video">  
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="box-video" onclick="$('#modalVideo2').modal({backdrop: 'static'});setTimeout(function(){$('#modalVideo2 video').trigger('play');},1000)">
+                            <div class="video-overlay"></div>
+                            <img src="{{ 'jingle-rasa-nusantara/Thumb-video-Indomusikgram-new.png'|media  }}">
+                            <img class="play-button" src="{{ 'jingle-rasa-nusantara/Play-Button.png'|media  }}">
+                            <h3>Indomusikgram</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="box-video" onclick="$('#modalVideo1').modal({backdrop: 'static'});setTimeout(function(){$('#modalVideo1 video').trigger('play');},1000);">
+                            <div class="video-overlay"></div>
+                            <img src="{{ 'jingle-rasa-nusantara/Thumb-video-raracellina-new.png'|media  }}">
+                            <img class="play-button" src="{{ 'jingle-rasa-nusantara/Play-Button.png'|media  }}">
+                            <h3>Raracellina</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-caraikutan">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1><span class="dash-line"></span>Cara Ikutan<span class="dash-line"></span></h1>
+                    </div>  
+                    <div class="col-md-12">
+                        <ul class="list-cara">
+                            <li><img src="{{ 'jingle-rasa-nusantara/Caraikutan-new01.png'|media  }}" alt="tahap-1"></li>
+                            <li><img style="cursor:pointer" onclick="toSK()" src="{{ 'jingle-rasa-nusantara/Caraikutan-new02.png'|media  }}" alt="tahap-2"></li>
+                            <li><a href="{{ 'jingle-rasa-nusantara/Full-Material.zip'|media  }}" id="download-sini" download="Full Material Jingle Rasa Nusantara"><img src="{{ 'jingle-rasa-nusantara/Caraikutan-03--new-.png'|media  }}" alt="tahap-3"></a></li>
+                        </ul>
+                    </div>  
+                </div>
+            </div>
+        </div>
+        <div class="section-slider">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="tab-slider">
+                            <li class="active">Ketan Hitam</li>
+                            <li>Kacang Hijau</li>
+                            <li>Coconut Delight</li>
+                        </ul>
+                        <div class="product-slider">
+                            <div class="ps-item">
+                                <div class="left-col">
+                                    <a href="https://www.frisianflag.com/produk/purefarm/purefarm-flavour-milk-ketan-hitam"><img src="{{ 'jingle-rasa-nusantara/ketan-item.png'|media  }}" alt="Ketan Hitam"></a>
+                                </div>
+                                <div class="right-col">
+                                    <h3>Alasan Kenapa Kamu Harus Minum Susu Frisian Flag Ketan Hitam :</h3>
+                                    <ol>
+	<li>Susu UHT pertama dan satu-satunya di Indonesia Terbuat dari perpaduan susu segar dan bubuk ketan hitam, kombinasi rasanya MAKIN ASYIK!</li>
+	<li> Dengan Manfaat Ketan Hitam memberikan sumber serat pangan inulin, serap nutrisi baik bikin hari lancar terus!</li>
+	<li> Rasanya tidak hanya enak, namun juga diperkaya dengan kandungan 8 Vitamin (Vitamin A, D3, B1, B2, B3, B5, B6 dan B12), dan 5 mineral (Kalsium, Fosfor dan Iodium) serta 6 protein setara dengan satu butir telur</li>
+	<li> Dengan kemasan yang praktis cocok diminum kapan saja untuk membuat hari kamu Makin Asyik!</li>
+	<li> Manfaat ketan hitam juga biasa dipakai orang untuk mewarnai makanan, karena dengan menggunakan ketan hitam, makanan yang dikonsumsi pun sehat karena bahan yang dipakai adalah bahan alami.</li>
+	<li> Yang terakhir, manfaat ketan hitam juga bagus untuk melancarkan pencernaan. Ketan hitam termasuk ke dalam gandum utuh sehingga bisa dikatakan seratnya cukup tinggi. Bagi yang memiliki masalah pencernaan, mengonsumsi ketan hitam bisa kamu jadikan sebagai alternatif.</li>
+</ol>
+                                </div>
+                            </div>
+                            <div class="ps-item">
+                                <div class="left-col">
+                                    <a href="https://www.frisianflag.com/produk/purefarm/frisian-flag-purefarm-kacang-hijau"><img src="{{ 'jingle-rasa-nusantara/kacang-hijau.png'|media  }}" alt="Ketan Hijau"></a>
+                                </div>
+                                <div class="right-col">
+                                    <h3>Tiga Alasan Kenapa Kamu Harus Minum Susu Frisian Flag Kacang Hijau :</h3>
+                                    <ol>
+                                    	<li>Susu UHT pertama dan satu-satunya di Indonesia yang mengkombinasikan kebaikan manfaat susu segar dengan bubuk kacang hijau</li>
+                                    	<li>Rasanya yang gurih dan mengenyangkan juga mengandung berbagai nutrisi: protein, karbohidrat, lemak, <b>sumber 8 Vitamin (Vitamin A, D3, B1, B2, B3, B6, dan B12), Vitamin B5</b>, sumber 3 mineral (Kalsium, Fosfor dan Iodium)</li>
+                                    	<li>Cocok diminum di pagi hari sebagai pelengkap sarapan, mendukung kamu menjalani berbagai momen ekstra sepanjang hari.</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div class="ps-item">
+                                <div class="left-col">
+                                    <a href="https://www.frisianflag.com/produk/purefarm/purefarm-flavour-milk-coconut-delight"><img src="{{ 'jingle-rasa-nusantara/coconut-delight.png'|media  }}" alt="Coconut Delight"></a>
+                                </div>
+                                <div class="right-col">
+                                <h3>Tiga Alasan Kenapa Kamu Harus Minum Susu Frisian Flag Coconut Delight :</h3>
+<ol>
+	<li>Susu UHT pertama dan satu-satunya di Indonesia dengan paduan susu segar dan rasa kelapa muda, bikin lo adem, segar dan happy sepanjang hari!</li>
+	<li>Tidak hanya rasanya yang enak dan manis, tapi juga mengandung berbagai nutrisi: protein, karbohidrat, lemak, <b>sumber 7 Vitamin (Vitamin A, D3, B1, B2, B3, B6, dan B12)</b>, sumber 3 mineral (Kalsium, Fosfor dan Iodium)</li>
+	<li>Cocok diminum kapan saja terutama di siang dan sore hari untuk membantu boosting semangat untuk terus lanjut beraktivitas seharian</li>
+</ol>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                     
+                </div>
+            </div>
+        </div>
+        
+<a href="https://www.tokopedia.com/frisian-flag/etalase/susu-uht-225ml-collection"><img src="{{ 'jingle-rasa-nusantara/banner-desktop-product.jpg'|media  }}" alt="Banner" style="width:100%"></a>
+        <div class="section-syaratketentuan">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1><span class="dash-line"></span>Syarat Dan Ketentuan<span class="dash-line"></span></h1>
+                        <div class="box-sk">
+                            <div class="sk-content">
+                            <h2>SYARAT DAN KETENTUAN LOYALTY PROGRAM #FRISIANFLAGRASANUSANTARA</h2>
+                            <p>
+                            Program Frisian Flag Rasa Nusantara (“Program“) ini diselenggarakan oleh PT FRISIAN FLAG INDONESIA (FFI), berkantor di Jalan Raya Bogor KM.5 Jakarta 13760, Indonesia, untuk selanjutnya disebut sebagai “Penyelenggara” atau “FFI”.<br><br>
+Setiap orang yang terlibat dan mengikuti Program ini, dengan ini dianggap telah membaca dan memahami dengan baik, serta setuju tanpa syarat untuk patuh dan taat terhadap semua syarat dan ketentuan yang berlaku sebagaimana tercantum di bawah ini termasuk seluruh perubahannya jika ada. Keputusan Penyelenggara mengenai semua hal-hal yang terkait dengan Program ini bersifat final.
+ <br><br>
+HATI-HATI PENIPUAN<br><br>
+Program ini tidak dipungut biaya apapun. Biaya pengiriman hadiah, biaya administrasi dan pajak hadiah ditanggung oleh Penyelenggara. Apabila terdapat informasi atau permintaan yang mengarahkan peserta untuk membayar sejumlah biaya dalam nominal tertentu, maka dapat dipastikan hal tersebut bermotif penipuan. Informasi lebih lanjut silahkan kunjungi website resmi di <a href="https://www.frisianflag.com">www.frisianflag.com</a> atau menghubungi Call Centre promo Frisian Flag Indonesia (021) 80615181 pulsa berbayar atau Layanan Peduli Frisian Flag 0-80018-21-406 bebas pulsa.
+                            </p>
+                                <ol class="sk-list">
+                                    <li>PERIODE PROGRAM<br>15 Oktober hingga 30 November 2020.</li>
+                                    <li>PERSYARATAN PESERTA<br>
+                                        Peserta harus memenuhi persyaratan sebagai berikut:
+                                        <ul>
+                                        <li>Warga Negara Indonesia (WNI)</li>
+                                    	<li>Berusia minimal 15 (lima belas) tahun di tahun 2020. Peserta dengan usia di bawah usia 17 tahun harus sudah memperoleh persetujuan dari orang tua/wali. Bila diperlukan, peserta harus menunjukkan bukti persetujuan dari orang tua/wali tersebut kepada pihak Penyelenggara atau agensi yang ditunjuk Penyelenggara.</li>
+                                    	<li>Berdomisili di Wilayah Republik Indonesia.</li>
+                                    	<li>Memiliki Kartu Tanda Penduduk (KTP)/SIM/KK/Paspor/Kartu Pelajar yang masih berlaku.</li>
+                                    	<li>Bukan merupakan karyawan, keluarga inti karyawan (ayah/ibu/istri/suami/anak). Penyelenggara dan/atau pihak ketiga yang bekerja sama dengan Penyelenggara dalam penyelenggaraan activity ini termasuk namun tidak terbatas kepada para karyawan supplier kemasan, distributor, agen, pedagang (trader) dan agency dan karyawan pihak-pihak tersebut.</li>
+                                    	<li>Tidak pernah atau sedang terikat kontrak dan/atau pernah menjadi bintang iklan produsen susu selain PT Frisian Flag Indonesia.</li>
+                                    	<li>Penyelenggara berhak dan setiap saat, memiliki kewenangan mutlak untuk mendiskualifikasi peserta yang dianggap tidak beritikad baik, termasuk diantaranya:
+                                    	
+                                        	    <ol>
+                                                	
+	<li>Dikategorikan oleh Penyelenggara sebagai “pemburu hadiah/quiz hunter”</li>
+	<li>Mencemarkan nama baik, melanggar, memfitnah, merendahkan, melecehkan, mengancam Penyelenggara.</li>
+	<li>Melakukan kecurangan, penipuan, pemalsuan dan memberikan informasi yang tidak benar dan/atau menyesatkan</li>
+	<li>Melakukan tindakan yang menurut kebijakan Penyelenggara merupakan tindakan yang bertentangan dengan kesusilaan, kesopanan, kepatutan dan/atau kebiasaan baik yang berlaku; dan/atau</li>
+	<li>Melakukan tindakan yang melanggar atau bertentangan dengan ketentuan peraturan perundang-undangan yang berlaku di Indonesia.</li>
+                                                </ol>
+                                        	</li>
+                                        </ul>
+                                    </li>
+                                    <li>MEKANISME PROGRAM<br>
+                                        
+                                        <ol type="a">
+                                        	<li>Program berlaku di platform Instagram.</li>
+	<li>Peserta <b>diajak untuk menunjukkan kreativitas melalui postingan video menyanyi/joget/ekspresi, dengan jingle “Hingga Tetes Terakhir” versi Rasa Nusantara</b> yang disediakan oleh Penyelenggara. Materi jingle bisa diakses baik di Instagram official Penyelenggara @frisianflagid maupun website www.frisianflag.com/rasanusantarachallenge.</li>
+	<li>Peserta mengunggah video yang telah dibuat di Instagram Feed akun pribadi masing-masing, bukan di Instagram story, dan pastikan akun Instagram bersifat public/open (tidak private) agar bisa dilacak / di-tracking.</li>
+	<li>Peserta menggunakan hashtags yang ditentukan oleh Penyelenggara yaitu #FrisianFlagRasaNusantara #SekotakTiapHari & #HinggaTetesTerakhir dan tag akun Instagram official Penyelenggara @frisianflagid.</li>
+	<li>Peserta harus menggunakan produk susu Frisian Flag cair (UHT) 225ml varian Ketan Hitam atau Kacang Hijau atau Coconut Delight (yang selanjutnya disebut sebagai “Produk”) sebagai properti (misalnya sebagai “microphone” untuk membuat video challenge Frisian Flag Rasa Nusantara pada Program ini.</li>
+	<li>Penentuan 20 pemenang program dipilih berdasarkan kombinasi dari kreativitas yang dibuat oleh peserta dan jumlah likes di post masing-masing akun Instagram peserta</li>
+	<li>Penentuan pemenang sepenuhnya akan ditentukan oleh pihak Frisian Flag Indonesia dan tidak dapat diganggu gugat.</li>
+                                        </ol>
+                                    </li>
+                                    <li>HADIAH PROGRAM<br>
+                                    <ol type="a">
+                                        <li>Di akhir Periode Program, akan dipilih 20 orang dengan video post terbaik yang akan mendapatkan hadiah sebagai beriku:
+                                            <ul>
+                                            	<li>Pemenang utama sebanyak 3 orang akan mengikuti sesi coaching clinic bersama music composer yang akan terlibat dalam pembuatan official music video dari jingle Hingga Tetes Terakhir versi Rasa Nusantara.</li>
+	<li>Video post dari 20 pemenang yang terpilih akan diedit dan ditampilkan sebagai bagian dari official music video dari jingle Hingga Tetes Terakhir versi Rasa Nusantara.</li>
+	<li>20 pemenang terpilih akan mendapatkan gratis suplai susu cair Frisian Flag 225ml selama 6 bulan. Mekanisme pemberian suplai susu ini akan mengikuti ketentuan dari Penyelenggara.</li>
+                                            </ul>
+                                            *) dengan perhitungan yang ditentukan oleh Penyelenggara sebagai berikut:
+                                            <ul>
+                                            	<li>konsumsi per hari: 1 kotak susu cair</li>
+                                            	<li>konsumsi 1 bulan: 30 kotak susu cair</li>
+                                            	<li>konsumsi 6 bulan: 180 kotak susu cair atau setara dengan 5 karton (1 karton isi 36 kotak susu cair 225ml)</li>
+                                            </ul>
+                                        </li>
+                                        <li>Pengumuman 20 pemenang terpilih akan dilakukan selambatnya 15 Desember 2020 di website frisianflag.com dan akun Instagram @frisianflagid.</li>
+                                        <li>Ketentuan Hadiah Pemenang:
+                                        <ul>
+	<li>Peserta tidak dipungut biaya apapun</li>
+	<li>Pajak hadiah ditanggung oleh Penyelenggara. Hati-hati penipuan, Penyelenggara tidak menunjuk pihak manapun untuk meminta pembayaran apapun dari peserta Program. Apabila terdapat informasi atau permintaan yang mengarahkan peserta untuk membayar sejumlah biaya dalam nominal tertentu, maka dapat dipastikan hal tersebut bermotif penipuan. Informasi lebih lanjut silahkan kunjungi website resmi di www.frisianflag.com, atau menghubungi Layanan Peduli Frisian Flag 0-80018-21-406 bebas pulsa.</li>
+	<li>Hadiah tidak dapat dipindahtangankan, dialihkan kepada pihak lain atau ditukar dengan barang lain karena alasan apapun oleh pemenang.</li>
+	<li>Dalam kondisi yang tidak terduga atau di luar kuasa, Penyelenggara berhak untuk menawarkan hadiah pengganti dengan nilai yang sama atau lebih besar, tergantung kebijakan Penyelenggara.</li>
+	<li>Peserta dengan ini membebaskan Penyelenggara, afiliasinya, pihak agency yang ditunjuk, dan pihak ketiga lainnya yang bekerjasama dengan Penyelenggara termasuk Manajemen dan karyawannya dari segala bentuk kerugian dan atau tuntutan hukum dalam bentuk dan dasar apapun, termasuk terhadap penyelenggaraan Program ini dan/atau terhadap penipuan yang dilakukan oleh pihak-pihak manapun yang mengatasnamakan Penyelenggara melalui website palsu atau panggilan (telepon/sms) palsu kepada Peserta.</li>
+	<li>Dengan menerima hadiah, pemenang setuju untuk membebaskan Penyelenggara dan afiliasi terkait dari segala tuntutan dan tanggung jawab yang muncul terkait dengan hadiah atau penggunaan hadiah, penyalahgunaan, penukaran hadiah. Pertanggungjawaban Penyelenggara hanya terbatas pada penyediaan hadiah.</li>
+	<li>Penyelenggara dan/atau agensi yang ditunjuk Penyelenggara berhak melakukan validasi keabsahan pemenang.</li>
+	<li>Apabila dalam proses verifikasi tersebut Penyelenggara menyimpulkan bahwa pemenang tidak memenuhi persyaratan keabsahan peserta sesuai Syarat dan Ketentuan ini, maka Penyelenggara memiliki hak penuh untuk membatalkan status pemenang dan memilih pemenang lainnya.</li>
+	<li>Keputusan dari Penyelenggara adalah mutlak dan tidak dapat diganggu gugat. Penyelenggara berhak untuk menyelidiki hal yang terkait dengan kecurangan ataupun pelanggaran dan mendiskualifikasi peserta yang diduga melakukan kecurangan ataupun pelanggaran terhadap Syarat dan Kketentuan yang berlaku.</li>
+</ul>
+                                        </li>
+                                    </ol>
+                                    </li>
+                                </ol>
+                                <h3>KETENTUAN LAINNYA</h3>
+                                <ul>
+	<li>Program ini dilaksanakan berdasarkan hukum yang berlaku di Republik Indonesia.</li>
+	<li>Jika terdapat perbedaan pada detail syarat dan ketentuan yang tertera dalam website dan media promosi lainnya, maka detail syarat dan ketentuan yang akan berlaku adalah yang tercantum pada website resmi Penyelenggara di www.frisianflag.com</li>
+	<li>PT Frisian Flag Indonesia tidak bertanggung jawab terhadap hal-hal di luar wewenang/kemampuan PT Frisian Flag Indonesia termasuk namun tidak terbatas pada force majeure (antara lain bencana alam, perubahan peraturan pemerintah), penipuan atau tindak kriminal yang dilakukan oleh pihak lain, jaringan internet, sistem informasi, pengiriman yang dilakukan dengan menggunakan jasa pihak ketiga, kesalahan peserta dalam memberikan informasi, dan kesalahan/kelalaian pihak lainnya.</li>
+	<li>Peserta dengan ini membebaskan PT Frisian Flag Indonesia dan afiliasinya dari segala bentuk kerugian dan atau tuntutan hukum atas tuntutan pihak ketiga atau pihak - pihak lainnya, termasuk terhadap adanya motif penipuan yang dilakukan oleh pihak-pihak tidak bertanggung jawab yang mengatasnamakan FFI melalui website palsu atau panggilan (telepon/sms) palsu kepada peserta.</li>
+	<li>Seluruh perselisihan yang terkait dengan Program akan diselesaikan secara musyarawah. Apabila tidak tercapai penyelesaian secara kekeluargaan maka penyelesaian perselisihan dilakukan di Pengadilan Negeri Jakarta Timur atau badan peradilan lain yang ditentukan oleh PT Frisian Flag Indonesia.</li>
+	<li>Penyelenggara berhak untuk mengubah, membatalkan, menghapuskan,memperpendek atau memperpanjang, menunda Program atau Syarat dan Ketentuan sewaktu-waktu, dengan alasan apa pun, sebagian ataupun keseluruhan, tanpa pemberitahuan sebelumnya. Setiap perubahan pada Syarat dan ketentuan akan diinformasikan pada website resmi Penyelenggara di www.frisianflag.com.</li>
+	<li>Penyelenggara tidak bertanggung jawab terhadap hal-hal di luar wewenang/kemampuan Penyelenggara termasuk namun tidak terbatas pada force majeure (antara lain bencana alam, perubahan peraturan pemerintah), penipuan atau tindak kriminal yang dilakukan oleh pihak lain, jaringan internet, sistem informasi, kesalahan peserta dalam memberikan informasi, dan kesalahan/kelalaian pihak lainnya.</li>
+</ul>
+<BR>
+<h3>DATA PRIBADI</h3>
+<ol>
+	<li>Setiap data yang dikirimkan sebagai bagian dari Program akan disimpan dan diproses atas nama Penyelenggara oleh pengatur data sesuai dengan perundangan-undangan perlindungan data yang berlaku.</li>
+	<li>Dengan mengikuti Program ini, peserta/pemenang memberikan izin bagi FFI untuk mempergunakan materi post peserta/pemenang sesuai dengan kepentingan FFI yang terkait dengan Program ini tanpa membutuhkan kebijaksanaan dan pertimbangan dari peserta, termasuk untuk kepentingan iklan dan komersial. Hal ini termasuk namun tidak terbatas kepada liputan/dokumentasi terhadap sesi coaching clinic dan sesi proses pembuatan official music video yang akan melibatkan para pemenang. Untuk menghindari keraguan dan tanpa batasan, maka Penyelenggara akan menggunakan konten dari keikutertaan pada material komunikasi Penyelenggara (baik internal maupun eksternal).</li>
+	<li>Dalam hal ketentuan-ketentuan tersebut di atas, dengan mengikuti Program berarti Anda menyetujui untuk memberikan Penyelenggara konten non eksklusif, bebas royalti, terus menerus, dapat dipindahtangankan, memberikan lisensi di seluruh dunia untuk menggunakan, menampilkan, memproduksi ulang, memodifikasi, mengatur ulang dan mendistribusikan konten keikutsertaan Anda pada Program ini pada media apapun dari waktu ke waktu, termasuk namun tidak terbatas pada media sosial.</li>
+	<li>Pihak Penyelenggara berhak mempublikasikan nama dan keterangan pemenang untuk keperluan komunikasi atau materi iklan (termasuk testimoni) berkenaan dengan Program ini di berbagai media baik cetak, elektronik, maupun digital tanpa memberi kontribusi keuangan apapun kepada pemenang.</li>
+</ol>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+<style>
+.w-100{
+ width:100%;   
+}
+.banner-lp {
+    
+    position:relative;
+    overflow:hidden;
+    background-size: cover !important;
+    background-position:center !important;
+    background-repeat: no-repeat !important;
+}
+.section-video{
+margin-top:-50px;
+margin-bottom:50px;
+}
+.box-video{
+position:relative;
+border-radius: 50px;
+    overflow: hidden;
+cursor:pointer;
+box-shadow: 0px 25px 12px -15px #888;
+
+}
+.play-button{
+position:absolute;
+bottom:15%;
+left:5%;
+width:70px;
+}
+.box-video h3{
+position:absolute;
+right:5%;
+bottom:15%;
+color:#FFF;
+font-size:32px;
+font-weight:bold;
+}
+.video-overlay{
+width:100%;
+height:100%;
+position:absolute;
+top:0;
+left:0;
+background:#0007;
+}
+.section-caraikutan h1{
+text-align:center;
+color:#225DA4;
+font-weight:bold;
+margin-bottom:25px;
+font-size:42px;
+}
+.dash-line{
+width:36px;
+height:8px;
+background: #225DA4;
+display:inline-block;
+margin: 0 25px;
+margin-bottom:10px;
+}
+
+.section-caraikutan{
+background:url(/storage/app/media/jingle-rasa-nusantara/BG-Milk_Splash.png);
+background-repeat:no-repeat !important;
+background-size:100% !important;
+padding-bottom:5%;
+background-position:bottom;
+}
+ul.list-cara{
+padding:0;
+}
+.list-cara li{
+list-style:none;
+margin-right:50px;
+width:calc(33.33% - 37px);
+display:inline-block;
+position:relative;
+}
+.list-cara li:after{
+content:'';
+background:url(/storage/app/media/jingle-rasa-nusantara/arrow.png);
+width:20px;
+height:34px;
+background-size:100% !important;
+position:absolute;
+right:-40px;
+top:15px;
+bottom:0;
+margin:auto;
+z-index:5;
+}
+.list-cara li:last-child{
+margin-right:0;
+}
+.list-cara li:last-child:after{
+display:none;
+}
+.section-slider{
+background-image:linear-gradient(to bottom, #ebeef7, #addbf2);
+padding: 5% 0;
+}
+.product-slider{
+ border-radius: 30px;
+    overflow: hidden;   
+}
+.product-slider .slick-dots{
+ display:none !important;   
+}
+.ps-item{
+background:#FFF;
+overflow:hidden;
+padding:6% 10% 3%;
+border-radius:30px;
+}
+.product-slider.slick-slider .slick-arrow{
+ top:35%;   
+}
+.left-col{
+width:30%;
+float:left;
+}
+.left-col img{
+width:auto;
+height:400px;
+}
+.right-col{
+padding-top:25px;
+width:70%;
+float:left;
+}
+
+.right-col h2{
+color:#225DA4;
+font-size:42px;
+font-weight:bold;
+margin: 0 0 25px;
+}
+.right-col h3{
+    color:#225DA4;
+    font-size:30px;
+    font-weight:bold;
+    margin: 0 0 25px;
+}
+.right-col ol li{
+    font-size:20px;
+    margin-bottom:10px;
+}
+.right-col p{
+font-size:24px;
+font-weight:bold;
+}
+.tab-slider{
+padding:0 25px;
+margin:0;
+}
+
+.tab-slider li{
+list-style:none;
+display:inline-block;
+cursor:pointer;
+color:#02489e;
+padding:15px 25px 20px;
+width:33%;
+text-align:center;
+font-size:20px;
+font-weight:bold;
+transition:0.3;
+}
+.tab-slider li.active{
+background:#02489e;
+color:#FFF;
+border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+}
+.section-syaratketentuan{
+background:url(/storage/app/media/jingle-rasa-nusantara/BG-Milk_Splash.png);
+background-repeat:no-repeat !important;
+background-size:100% !important;
+padding:3% 0 5%;
+background-position:bottom;
+}
+.section-syaratketentuan h1 {
+    text-align: center;
+    color: #225DA4;
+    font-weight: bold;
+    font-size:42px;
+    margin-bottom: 30px;
+}
+.box-sk{
+background:#02489e;
+padding:50px;
+border-radius:40px;
+height:600px;
+overflow:hidden;
+}
+.sk-content{
+height:100%;
+overflow-y:auto;
+}
+.sk-content p{
+color:#FFF;
+margin-bottom:20px;
+font-size:18px;
+}
+.sk-content h2,.sk-content h5, .sk-content h3{
+ color:#FFF;   
+}
+.sk-content a{
+ color:orange;   
+}
+.sk-content ul li, .sk-content ol li{
+ color:#FFF;
+ font-size:17px;
+ margin-bottom:10px;
+}
+.sk-content ul li > ol, .sk-content ul li > ul, .sk-content ol li > ul, .sk-content ol li > ol{
+ margin-top:10px;   
+}
+.sk-content ul li>ol li, .sk-content ul li>ul li{
+ font-size:16px;   
+}
+.sk-list > li{
+ margin-bottom:25px !important;   
+}
+
+.modal-header{
+padding:0;
+text-align:right;
+background:#FFF;
+border:0;
+}
+.modal-body{
+background-color:#0a4b9c;
+}
+.modal-header .close{
+background-color:#000;
+border:0;
+border-radius:50%;
+position:absolute;
+right:-15px;
+top:-15px;
+width:30px;
+height:30px;
+text-align:center;
+padding:2px;
+z-index:55;
+font-size:24px;
+line-height:25px;
+padding-bottom:5px;
+}
+#modalVideo1 .modal-dialog, #modalVideo2 .modal-dialog{
+width:800px;
+}
+
+#modalVideo1 video{
+width:100%;
+height:450px;
+}
+
+#modalVideo2 video{
+width:100%;
+height:650px;
+}
+</style>
+
+<script>
+function toSK(){
+    $('html, body').animate({
+        scrollTop: $(".section-syaratketentuan").offset().top
+    }, 1000);
+}
+
+function toDownload(){
+    $('html, body').animate({
+        scrollTop: $("#download-sini").offset().top  - 200
+    }, 1000);
+}
+function checkJquery(){
+   if ( window.jQuery){
+      $(".product-slider").slick({
+          dots: true
+      });
+      $('.product-slider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+        var CurrentSlideDom=$(slick.$slides.get(currentSlide));
+        var NextSlideDom=$(slick.$slides.get(nextSlide));
+        $(".tab-slider li").removeClass("active");
+        $(".tab-slider li").eq(nextSlide).addClass("active");
+        console.log(nextSlide);
+        });
+        $(".tab-slider li").click(function(){
+            var index = $(this).index();
+            $(".tab-slider li").removeClass("active");
+            $(".tab-slider li").eq(index).addClass("active");
+            $(".product-slider .slick-dots li").eq(index).click();
+        });
+   }
+   else{
+      window.setTimeout("checkJquery();",500);
+   }
+}
+checkJquery();
+
+</script>
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

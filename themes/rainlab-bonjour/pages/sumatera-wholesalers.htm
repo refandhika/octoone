@@ -1,0 +1,148 @@
+title = "Sumatera Wholesalers"
+url = "/sumatera-wholesalers"
+layout = "wholesellers"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/sumatera-wholesalers"
+==
+<?php
+function onGetData() {
+        $path              = url('/themes/rainlab-bonjour/assets/wholesellers.json');
+        $cmsController     = new Cms\Classes\Controller;
+        $region = input('region');
+        $search = input('keyword');
+        
+        $data['data'] = [];
+        $data['region'] = [];
+    if(json_decode(file_get_contents($path, true))){
+            
+        $collection    = collect(json_decode(file_get_contents($path, true)));
+        $data['data'] = $collection;
+        if($region){
+            $data['data'] = $data['data']->where('provinsi' , $region);
+        }
+        if($search){
+            $data['data'] = $data['data']->filter(function($value) use ($search) {
+                return (
+                    strstr(strtolower($value->nama), strtolower($search)) || 
+                    strstr(strtolower($value->alamat), strtolower($search)) ||
+                    strstr(strtolower($value->kecamatan), strtolower($search)) ||
+                    strstr(strtolower($value->kode_pos), strtolower($search))
+                );
+            });
+        }
+        $data['data'] = $data['data']->values();
+        $data['region'] = $collection->unique('provinsi')->pluck('provinsi');
+        
+    } else {
+        return Response::make( $cmsController->render("/404"), 404);
+    }
+    return $data;  
+}
+
+function onStart() {
+    $data = $this->onGetData();
+    $this['data'] = $data['data'];
+    $this['region'] = $data['region'];
+}
+?>
+==
+<style>
+    .banner-img {
+        width : 100%;
+        max-width : 100%;
+    }
+    
+    table.table {
+        margin : 0px 0px 50px 0px;    
+    }
+    .overflow-x-scroll {
+        overflow-x : scroll;    
+    }
+    .filter-container {
+        margin-bottom : 20px;    
+    }
+    @media (max-width : 551px){
+        .keyword-filter {
+            margin-top : 20px
+        }
+    }
+    h4 {
+        margin-top : 50px    
+    }
+    
+</style>
+
+<img src="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img/our-milkpedia.png" class="banner-img" alt="">
+
+
+<div class="container">
+    <h4>List of Sumatera Wholesalers</h4>
+    
+    <div class="row filter-container">
+        <div class="col-sm-3">
+            <select onchange="filterDataWholesellers()" class="form-control region-filter" name="region-filter" id="">
+                <option value="">Pilih Region</option>
+                {% for item in region %}
+                    <option value="{{item}}">{{item}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-sm-4">
+            <input onchange="filterDataWholesellers()" placeholder="Search for ..." class="form-control keyword-filter" name="keyword-filter" id="">
+        </div>
+    </div>
+    <div class="overflow-x-scroll">
+        <table class="table">
+            <thead>
+                <th>No</th>
+                <th>Provinsi</th>
+                <th>Nama</th>
+                <th>Alamat</th>
+            </thead>
+            <tbody class="wholesellers-content">
+                {% for key , item in data %}
+                <tr>
+                    <td>{{ key + 1 }}</td>
+                    <td>{{item.provinsi}}</td>
+                    <td>{{item.nama}}</td>
+                    <td>{{item.alamat ~ ', ' ~item.kecamatan ~ item.kode_pos}}</td>
+                </tr>
+                {% endfor %}     
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+function filterDataWholesellers(e) {
+    var region = $('.region-filter').val();
+    var keyword = $('.keyword-filter').val();
+    $.request('onGetData' , {
+        data : {
+            'region' : region,
+            'keyword' : keyword,
+        },
+        success : function (res){
+            var target = $('.wholesellers-content');
+            var data = res.data;
+            console.log(data)
+            if(data.length > 0) {
+                target.html('');
+                data.forEach(function (item , key) {
+                    target.append(`
+                    <tr>
+                        <td>${key + 1 }</td>
+                        <td>${item.provinsi}</td>
+                        <td>${item.nama}</td>
+                        <td>${item.alamat} , ${item.kecamatan} , ${item.kode_pos}</td>
+                    </tr>`
+                    )
+                })
+            }
+        }
+    })
+}
+</script>

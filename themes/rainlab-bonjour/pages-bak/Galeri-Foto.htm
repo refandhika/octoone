@@ -1,0 +1,148 @@
+title = "Galeri Foto"
+url = "/perusahaan-kami/galeri-foto/:page?|^[0-9]+$"
+layout = "default"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[builderList]
+modelClass = "Definite\Gallery\Models\Post"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "galeri-foto-single"
+detailsKeyColumn = "slug"
+detailsUrlParameter = "slug"
+recordsPerPage = 9
+pageNumber = "{{ :page }}"
+sortColumn = "published_date"
+sortDirection = "desc"
+==
+{% set records = builderList.records %}
+{% set displayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
+
+<h1 aria-hidden="true" class="seo-heading">Gallery Photo</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp"><img src="{{ 'assets/img/our-milkpedia.png'|theme }}" alt="Our Milkpedia"/> </div>
+</div>
+
+<div class="container-menutab">
+    <div class="container-one">
+        <ul>
+            <li class="toggle visible-xs visible-sm"><a href="javascript:;" class="active">{{'galeri-foto'|_}}</a></li>
+            <li><a href="{{'about-us'|page}}" class="{% if this.page.id == 'about-us' %}active{% endif %}">{{'tentang-kami'|_}}</a></li>
+            <li><a href="{{'news'|page}}" class="{% if this.page.id == 'news' %}active{% endif %}">{{'berita'|_}}</a></li>
+            <li><a href="{{'galeri-foto'|page}}" class="{% if this.page.id == 'galeri-foto' %}active{% endif %}">{{'galeri-foto'|_}}</a></li>
+            <li><a href="{{'press-release'|page}}" class="{% if this.page.id == 'press-release' %}active{% endif %}">{{'siaran-pers'|_}}</a></li>
+            <li><a href="{{'our-purposes'|page}}" class="{% if this.page.id == 'our-purposes' %}active{% endif %}">{{'tujuan-kami'|_}}</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id='main-section' class="container-fluid">
+
+    <div class="container-two">
+      <div class="col-md-12">
+          <div class="breadcrumb">
+            <ul>
+                <ul>
+                    <li><a href="{{ 'home'|page }}">{{'beranda'|_}}</a> </li>
+                    <li><a href="{{ 'about-us'|page }}">{{'perusahaan-kami'|_}}</a> </li>
+                    <li><a href="{{ 'galeri-foto'|page }}">{{'galeri-foto'|_}}</a></li>
+                </ul>
+            </ul>
+          </div>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="default-content">
+            <div class="container-two">
+                <div class="row">
+                    <div class="col-md-7">
+                      <h3>{{'galeri-foto'|_}}</h3>
+                    </div>
+                    <div class="col-md-5">
+                      <input type="search" placeholder="Search" class="form-control" id="gallery-search" style="margin-bottom: 20px;">
+                    </div>
+                </div>
+                <div class="container-menutab container-menutab-news hidden-lg">
+                    <div class="container-one">
+                        <ul>
+                            <li class="toggle"><a href="javascript:;" class="active">All</a></li>
+                            <li><a href="#" class="active">All</a></li>
+                            {% for years in records.first.year  %}
+                            <li><a href=href="{{('galeri-foto-archive'|page ({"slug":years.published_date})) }}">{{ years.published_date }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="container-news">
+                    <div class="content">
+                        <div class="left">
+                            <div class="content">
+                                <div class="row">
+                                {% for gallery in records %}
+                                <div class="col-md-4 col-xs-12">
+                                    <div class="wrp-itemnews noimg space-galeri-ff">
+                                        <div class="contenttxt">
+                                            
+                                            {% set spaceout %}
+                                            <div class="galeri-ff"><a href="{{ 'galeri-foto-single'|page({"slug": gallery.slug}) }}">
+                                                <img class="img-rounded" width="100%" height="256px" src="{{gallery.poster.path}}" alt="{{gallery.poster.path}}"/>                                        
+                                                <h4>{{ trans_pick(gallery, 'title')}}</h4>
+                                                </a>
+                                            </div>
+                                            
+                                            {% endset %}
+                                            {{ spaceout|trim|raw }}
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                    {% else %}
+                                        <li class="no-data">{{ noRecordsMessage }}</li>
+                                {% endfor %}
+                                </div>
+                                 <div class="stylepaging">
+                                {% if records.lastPage > 1 %}
+                                    <ul>
+                                    {% if records.currentPage %}
+                                        <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage-1) }) }}" class="{{ records.currentPage == 1 ? 'disable' : null }}"><i class="fa fa-angle-double-left"></i></a> </li>
+                                    {% endif %}
+                                    {% for page in 1..records.lastPage %}
+                                        <li><a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}" class="{{ records.currentPage == page ? 'active' : null }}">{{ page }}</a> </li>
+                                    {% endfor %}
+                                    {% if records.lastPage > records.currentPage %}
+                                        <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage+1) }) }}"><i class="fa fa-angle-double-right"></i></a> </li>
+                                     {% endif %}
+                                    </ul>
+                                {% endif %}
+
+                                    <div class="paging-info">Page {{records.currentPage}} of {{records.lastPage}}</div>
+                                </div>
+                            </div>
+                        </div>
+                       <div class="right visible-lg">
+                            <div class="content">
+                                <ul class="yearright">
+                                {% for years in records.first.year  %}
+                                    <li class="{% if this.page.id == 'years.published_date' %}active{% endif %}"><a href="{{('galeri-foto-archive'|page ({"slug":years.published_date})) }}">{{ years.published_date }}</a></li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> <!-- end mainsection -->

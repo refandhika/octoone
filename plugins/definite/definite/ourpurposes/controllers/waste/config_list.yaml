@@ -1,0 +1,11 @@
+list: $/definite/ourpurposes/models/waste/columns.yaml
+modelClass: Definite\Ourpurposes\Models\Waste
+title: Waste
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'definite/ourpurposes/waste/update/:id'

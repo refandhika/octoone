@@ -1,0 +1,23 @@
+fields:
+    title:
+        label: Title
+        span: left
+        type: text
+    link:
+        label: Link
+        span: right
+        type: text
+    button_word:
+        label: 'Button Word'
+        span: left
+        type: text
+    image:
+        label: Image
+        span: right
+        mode: image
+        type: mediafinder
+    image_mobile:
+        label: 'Image Mobile'
+        span: left
+        mode: image
+        type: mediafinder

@@ -1,0 +1,799 @@
+description = "Omela Cooking Contest Page"
+
+[staticPage]
+useContent = 1
+default = 0
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('omela-cooking-contest-page-amp');
+    }
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">
+  {{ trans_pick(page, 'title')|raw }}
+</h1>
+
+<div class="section-syaratketentuan" style="margin-top : 100px">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>
+          <span class="dash-line"></span>Syarat Dan Ketentuan<span
+            class="dash-line"
+          ></span>
+        </h1>
+        <div class="box-sk">
+          <div class="sk-content">
+            <h2>
+              SYARAT DAN KETENTUAN PROMOSI FRISIAN FLAG Omela Cooking Contest
+              (“Promosi”)
+            </h2>
+            <p>
+              Program ini diselenggarakan oleh PT FRISIAN FLAG INDONESIA
+              (“FFI”), berkantor di Jalan Raya Bogor KM.5 Jakarta 13760,
+              Indonesia, yang bekerjasama dengan:
+            </p>
+            <ol>
+              <li><p>Jadi Baru Kebumen</p></li>
+              <li><p>Jadi Baru Cilacap</p></li>
+              <li><p>Luwes Kestalan</p></li>
+              <li><p>Luwes Gentan</p></li>
+              <li><p>Luwes Gading</p></li>
+              <li><p>Mutiara Cahaya Mejasem</p></li>
+              <li><p>Basa 30 Banjaran</p></li>
+              <li><p>Luwes Blora</p></li>
+              <li><p>Luwes Pati</p></li>
+              <li><p>Luwes Salatiga</p></li>
+            </ol>
+
+            <p>
+              Peserta yang terlibat dan mengikuti Promosi ini, dengan ini
+              dianggap telah membaca dan memahami dengan baik, serta setuju
+              tanpa syarat untuk patuh dan taat terhadap semua syarat &
+              ketentuan yang berlaku sebagaimana tercantum di bawah ini termasuk
+              seluruh perubahannya jika ada. Keputusan Penyelenggara mengenai
+              semua hal-hal yang terkait dengan Promosi ini bersifat final.
+            </p>
+
+            <h3><b>HATI-HATI PENIPUAN</b></h3>
+            <p>
+              Promosi ini tidak dipungut biaya apapun. Biaya pengiriman hadiah,
+              biaya administrasi dan pajak hadiah ditanggung oleh FFI. Apabila
+              terdapat informasi atau permintaan yang mengarahkan peserta untuk
+              membayar sejumlah biaya dalam nominal tertentu, maka dapat
+              dipastikan hal tersebut bermotif penipuan. Informasi lebih lanjut
+              silakan kunjungi website resmi FFI di www.frisianflag.com, atau
+              dapat juga menghubungi Call Centre Promo FFI (021) 80615181 pulsa
+              berbayar atau Layanan Peduli Frisian Flag 0-80018-21-406 bebas
+              pulsa untuk menanyakan informasi dan pengaduan seputar Promosi
+              ini.
+            </p>
+
+            <ol>
+              <li>
+                <h3><b>PERIODE PROMOSI</b></h3>
+                <p>29 November – 12 December</p>
+              </li>
+              <li>
+                <h3><b>PERSYARATAN PESERTA</b></h3>
+                <p>Peserta harus memenuhi persyaratan, sebagai berikut:</p>
+                <ol>
+                  <li>Warga Negara Indonesia (WNI)</li>
+                  <li>
+                    Berusia minimal 18 (delapan belas) tahun saat Periode
+                    Promosi
+                  </li>
+                  <li>Berdomisili di wilayah Republik Indonesia</li>
+                  <li>
+                    Memiliki Kartu Tanda Penduduk (KTP)/SIM/KK/Paspor yang masih
+                    berlaku
+                  </li>
+                  <li>Cakap untuk melakukan perbuatan hukum</li>
+                  <li>
+                    Bukan merupakan karyawan, keluarga inti karyawan
+                    (ayah/ibu/istri/suami/anak) FFI, “pemburu hadiah/quiz
+                    hunter” berdasarkan pengamatan Penyelenggara, dan/atau pihak
+                    ketiga yang bekerja sama dengan Penyelenggara yang terlibat
+                    dalam penyelenggara Promosi ini termasuk didalamnya supplier
+                    kemasan, distributor, agency dan karyawan dari pihak-pihak
+                    tersebut.
+                  </li>
+                  <li>
+                    Tidak pernah atau sedang terikat kontrak dan/atau pernah
+                    menjadi bintang iklan produsen susu selain FFI.
+                  </li>
+                  <li>
+                    FFI menyelenggarakan Promosi ini didasarkan atas itikad
+                    baik, peserta juga harus beritikad baik dalam berpartisipasi
+                    dalam Promosi ini. Untuk itu, FFI berhak dan setiap saat,
+                    memiliki kewenangan mutlak untuk mendiskualifikasikan
+                    peserta yang dianggap tidak beritikad baik, termasuk
+                    diantaranya:
+                    <ol type="a">
+                      <li>
+                        <p>
+                          Dikategorikan oleh FFI atau agency yang ditunjuk FFI
+                          sebagai “pemburu hadiah/quiz hunter”
+                        </p>
+                      </li>
+                      <li>
+                        <p>
+                          Mencemarkan nama baik, melanggar, memfitnah,
+                          merendahkan, melecehkan, mengancam FFI.
+                        </p>
+                      </li>
+                      <li>
+                        <p>
+                          Melakukan kecurangan, penipuan, pemalsuan dan
+                          memberikan informasi yang tidak benar dan/atau
+                          menyesatkan;
+                        </p>
+                      </li>
+                      <li>
+                        <p>
+                          Malakukan tindakan yang menurut kebijakan FFI
+                          merupakan tindakan yang bertentangan dengan
+                          kesusilaan, kesopanan, kepatutan, dan/atau kebiasaan
+                          baik yang berlaku; dan/atau
+                        </p>
+                      </li>
+                      <li>
+                        <p>
+                          Melakukan tindakan yang melanggar atau bertentangan
+                          dengan ketentuan peraturan perundang-undangan yang
+                          berlaku di Indonesia.
+                        </p>
+                      </li>
+                    </ol>
+                  </li>
+                </ol>
+              </li>
+              <li>
+                <h3><b>MEKANISME PROMOSI</b></h3>
+                <ol>
+                  <li>
+                    <p>
+                      Membeli produk OMELA minimal 1 kaleng di salah satu dari
+                      10 toko yang disebutkan di awal, sesuai periode kegiatan
+                      ini yaitu 29 November 2021 – 12 December 2021. Simpan
+                      struk pembeliannya.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Gunakan produk OMELA tersebut untuk membuat
+                      hidangan/masakan berdasarkan resep inspirasi OMELA, yang
+                      dapat dilihat di www.omela.com.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Post/unggah foto/video yang menunjukkan kaleng OMELA dan
+                      hasil masakan dengan resep insprasi OMELA tersebut di feed
+                      (bukan di story/reel) akun Instagram personal Anda.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Pastikan akun Instagram Anda tidak dikunci (tidak private)
+                      agar bisa kami tracking.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Post wajib untuk menyertakan hashtag #SaatnyaPakaiOmela
+                      dan wajib mention akun Instagram nama toko tempat membeli
+                      produk sesuai poin 3.1. Akun resmi masing-masing toko
+                      adalah sebagai berikut:
+                    </p>
+                    <ol>
+                      <li>Jadi Baru Kebumen: @toserbajadibaru</li>
+                      <li>Jadi Baru Cilacap: @jadibarukroya01</li>
+                      <li>Luwes Kestalan: @luweskestalan</li>
+                      <li>Luwes Gentan: @luwesgentan</li>
+                      <li>Luwes Gading: @luwesgading</li>
+                      <li>Mutiara Cahaya Mejasem: @mc.mutiaracahaya</li>
+                      <li>Basa 30 Banjaran: @basatoserba</li>
+                      <li>Luwes Blora: @luwes.blora</li>
+                      <li>Luwes Pati: @luwes.pati</li>
+                      <li>1Luwes Salatiga: @larisambarawa</li>
+                    </ol>
+                  </li>
+                  <li>
+                    <p>
+                      Di bagian caption, tulis nama resep/judul masakan dan
+                      testimonial pengalaman Anda memasak menggunakan OMELA.
+                    </p>
+                  </li>
+                </ol>
+              </li>
+              <li>
+                <h3><b>HADIAH PROMOSI </b></h3>
+                <ol>
+                  <li>
+                    <p>
+                      FFI menyediakan hadiah berikut bagi peserta yang terpilih
+                      dan dinyatakan sah sebagai Pemenang untuk tiap tokonya:
+                    </p>
+                    <ol type="a">
+                      <li>
+                        Pemenang Pertama: voucher senilai Rp 300,000 dan alat
+                        masak
+                      </li>
+                      <li>
+                        Pemenang Kedua: voucher senilai Rp 200,000 dan alat
+                        masak
+                      </li>
+                      <li>
+                        Pemenang Ketiga: voucher senilai Rp 100,000 dan alat
+                        masak
+                      </li>
+                    </ol>
+                  </li>
+                  <li>
+                    <p>Ketentuan hadiah:</p>
+                    <ol type="a">
+                      <li>
+                        <p>
+                          Hadiah hanya berlaku untuk masing-masing 1 orang
+                          pemenang tiap hadiahnya.
+                        </p>
+                      </li>
+                      <li>
+                        <p>
+                          Jika peserta yang sama memenangkan lebih dari satu
+                          hadiah pada saat penjurian maka FFI berhak menentukan
+                          hadiah dengan nilai tertinggi untuk pemenang tersebut
+                          (dan hadiah dengan nilai yang lebih rendah otomatis
+                          gugur)
+                        </p>
+                      </li>
+                      <li>
+                        <p>
+                          Hadiah berupa voucher belanja akan diputuskan sesuai
+                          dengan kebijakan FFI. Jenis voucher belanja akan
+                          disesuikan dengan jaringan toko yang ada di kota
+                          pemenang dan FFI berhak mengganti voucher dengan
+                          jaringan toko lain yang tersedia di kota pemenang
+                        </p>
+                      </li>
+                      <li>
+                        <p>
+                          Pemenang tidak dipungut biaya apapun (termasuk biaya
+                          pajak dan administrasi)
+                        </p>
+                      </li>
+                      <li>
+                        <p>
+                          Pajak Hadiah ditanggung oleh FFI. Hati-hati penipuan,
+                          FFI tidak menunjuk pihak manapun untuk meminta
+                          pembayaran apapun dari peserta Promosi.
+                        </p>
+                      </li>
+                      <li>
+                        <p>
+                          Hadiah tidak dapat dipindahtangankan, dialihkan kepada
+                          pihak selain pemenang, atau ditukar dengan barang lain
+                          karena alasan apapun. Namun demikian, pemenang dapat
+                          memberikan kuasa khusus dalam mengambil hadiah untuk
+                          dan atas nama pemenang dan untuk hal tersebut pemenang
+                          harus menunjukkan dan memberikan Surat Kuasa Khusus
+                          asli kepada FFI yang ditandatangani di atas meterai.
+                        </p>
+                      </li>
+                      <li>
+                        <p>
+                          Semua hadiah harus diambil oleh Pemenang di toko, dan
+                          penyerahan hadiah akan disaksikan oleh perwakilan FFI
+                          dan pihak toko.
+                        </p>
+                      </li>
+                    </ol>
+                  </li>
+                </ol>
+              </li>
+              <li>
+                <h3><b>PEMILIHAN DAN PENENTUAN PEMENANG</b></h3>
+                <p>Pemenang dipilih berdasarkan kriteria berikut:</p>
+                <ol>
+                  <li>
+                    Memenuhi semua persyaratan/mekanisme yang tercantum di poin
+                    3 tentang Mekanisme Promosi.
+                  </li>
+                  <li>
+                    Pemenang ditentukan berdasarkan =kualitas foto/video dan
+                    kualitas testimonial. Banyaknya jumlah likes juga dapat
+                    menjadi faktor pendukung.
+                  </li>
+                  <li>
+                    Keputusan juri dan/atau Penyelenggara bersifat final dan
+                    tidak bisa diganggu gugat.
+                  </li>
+                </ol>
+              </li>
+              <li>
+                <h3><b>PENGUMUMAN PEMENANG</b></h3>
+                <ol>
+                  <li>Periode pengumuman pemenang: December 2021</li>
+                  <li>
+                    Tanggal pengumuman pemenang dapat berubah sewaktu-waktu
+                    tanpa pemberitahuan sebelumnya.
+                  </li>
+                  <li>
+                    Pemenang yang telah memenuhi syarat dan terpilih akan
+                    diumumkan oleh Penyelenggara melalui akun Instragram resmi
+                    masing-masing toko
+                  </li>
+                  <li>
+                    Pemenang wajib mengirimkan pesan personal (direct message)
+                    ke akun sosial media Penyelenggara (Instagram sesuai poin
+                    6.3) untuk verifikasi data dan identitas diri maksimal 10
+                    hari kerja setelah pengumuman pemenang.
+                  </li>
+                  <li>
+                    Informasi data diri yang harus diberikan oleh pemenang
+                    berupa:
+                    <ol type="a">
+                      <li>Nama lengkap (sesuai KTP/Paspor/SIM/KK)</li>
+                      <li>Nomor identitas diri (KTP/Paspor/SIM/KK)</li>
+                      <li>Nomor HP yang dapat dihubungi</li>
+                      <li>Alamat lengkap</li>
+                    </ol>
+                  </li>
+                  <li>
+                    <p>
+                      <b
+                        >Jika dalam tenggang waktu 10 hari pemenang tidak dapat
+                        mengirimkan kelengkapan data, maka pemenang tersebut
+                        secara otomatis melepaskan haknya</b
+                      >
+                      untuk menerima hadiah sebagai pemenang dan akan
+                      membebaskan FFI dari segala permintaan, tuntutan, klaim
+                      dan/atau gugatan kepada FFI dalam bentuk apapun dan atas
+                      dasar apapun sehubungan dengan penyerahan hadiah di masa
+                      mendatang.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Penyelenggara berhak melakukan validasi data melalui
+                      telepon atas informasi data diri yang telah dikirimkan
+                      oleh pemenang di pesan personal akun sosial media
+                      Penyelenggara:
+                    </p>
+                    <ol type="a">
+                      <li>
+                        <p>
+                          Pastikan nomor handphone/telepon yang diberikan dapat
+                          dihubungi setiap waktu. Pihak Penyelenggara tidak
+                          bertanggung jawab apabila pemenang melakukan
+                          kekeliruan dalam memberikan informasi yang dibutuhkan
+                          yang mengakibatkan tidak dapat dihubungi.
+                        </p>
+                      </li>
+                      <li>
+                        <p>
+                          Pihak Penyelenggara akan mengkonfirmasi dan
+                          mencocokkan data calon pemenang dengan Kartu Identitas
+                          Diri
+                        </p>
+                      </li>
+                    </ol>
+                  </li>
+                  <li>
+                    <p>
+                      Pastikan data diri yang diberikan sudah benar. FFI tidak
+                      bertanggung jawab atas kesalahan pengiriman hadiah yang
+                      diakibatkan karena kesalahan penulisan data diri. Setiap
+                      peserta menjamin bahwa setiap informasi yang diberikan
+                      adalah benar dan tepat.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      FFI menurut pertimbangannya sendiri, berhak untuk
+                      mendiskualifikasikan Peserta maupun Pemenang yang tidak
+                      memenuhi dan/atau melanggar ketentuan ini dan FFI berhak
+                      untuk memberikan hadiah kepada peserta lainnya.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Jika karena alasan apapun pemberian hadiah tidak dapat
+                      berjalan sesuai rencana, FFI memiliki hak untuk
+                      memodifikasi ketentuan pemberian hadiah yang senilai
+                      dengan hadiah yang telah dijanjikan.
+                    </p>
+                  </li>
+                </ol>
+              </li>
+              <li>
+                <h3><b>KETENTUAN LAINNYA </b></h3>
+                <ol>
+                  <li>
+                    Promosi ini dilaksanakan berdasarkan hukum yang berlaku di
+                    Republik Indonesia.
+                  </li>
+                  <li>
+                    Jika terdapat perbedaan pada detail syarat dan ketentuan
+                    yang tertera dalam website dan media promosi lainnya, maka
+                    detail syarat dan ketentuan yang akan berlaku adalah yang
+                    tercantum pada website
+                    <a href="https://frisianflag.com">frisianflag.com.</a>
+                  </li>
+                  <li>
+                    FFI tidak bertanggung jawab terhadap hal-hal di luar
+                    wewenang/kemampuan FFI termasuk namun tidak terbatas pada
+                    force majeure (antara lain bencana alam, perubahan peraturan
+                    pemerintah), penipuan atau tindak kriminal yang dilakukan
+                    oleh pihak lain, jaringan internet, sistem informasi,
+                    pengiriman yang dilakukan dengan menggunakan jasa pihak
+                    ketiga, kesalahan peserta dalam memberikan informasi, dan
+                    kesalahan/kelalaian pihak lainnya.
+                  </li>
+                  <li>
+                    Peserta dengan ini membebaskan FFI dan afiliasinya dari
+                    segala bentuk kerugian dan atau tuntutan hukum atas tuntutan
+                    pihak ketiga atau pihak - pihak lainnya, termasuk terhadap
+                    adanya motif penipuan yang dilakukan oleh pihak-pihak tidak
+                    bertanggung jawab yang mengatasnamakan FFI melalui website
+                    palsu atau panggilan (telepon/sms) palsu kepada peserta.
+                  </li>
+                  <li>
+                    Seluruh perselisihan yang terkait dengan promosi akan
+                    diselesaikan secara musyarawah. Apabila tidak tercapai
+                    penyelesaian secara kekeluargaan maka penyelesaian
+                    perselisihan dilakukan di Pengadilan Negeri Jakarta Timur
+                    atau badan peradilan lain yang ditentukan oleh FFI.
+                  </li>
+                  <li>
+                    <p>
+                      FFI sepenuhnya berhak jika dalam keadaan memaksa (“Force
+                      Majeure”) harus membatalkan Promosi ini, memperpendek atau
+                      memperpanjang, menunda periode Promosi atau mengubah
+                      ketentuan ini secara wajar.
+                    </p>
+                    <p>DATA PRIBADI</p>
+                    <p>
+                      Setiap informasi yang diikutsertakan dan dikirimkan dalam
+                      Promosi ini menjadi hak milik FFI, dan FFI berhak untuk
+                      mempergunakan sesuai dengan kepentingan FFI.Pihak FFI
+                      berhak mempublikasikan nama dan keterangan pemenang untuk
+                      keperluan komunikasi atau materi iklan (termasuk
+                      testimoni) berkenaan dengan Promosi ini di berbagai media
+                      baik cetak, elektronik, maupun digital tanpa memberi
+                      kontribusi keuangan apapun pada pemenang.
+                    </p>
+                  </li>
+                </ol>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .w-100 {
+    width: 100%;
+  }
+  .banner-lp {
+    position: relative;
+    overflow: hidden;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+  }
+  .section-video {
+    margin-top: -50px;
+    margin-bottom: 50px;
+  }
+  .box-video {
+    position: relative;
+    border-radius: 50px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0px 25px 12px -15px #888;
+  }
+  .play-button {
+    position: absolute;
+    bottom: 15%;
+    left: 5%;
+    width: 70px;
+  }
+  .box-video h3 {
+    position: absolute;
+    right: 5%;
+    bottom: 15%;
+    color: #fff;
+    font-size: 32px;
+    font-weight: bold;
+  }
+  .video-overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #0007;
+  }
+  .section-caraikutan h1 {
+    text-align: center;
+    color: #225da4;
+    font-weight: bold;
+    margin-bottom: 25px;
+    font-size: 42px;
+  }
+  .dash-line {
+    width: 36px;
+    height: 8px;
+    background: #225da4;
+    display: inline-block;
+    margin: 0 25px;
+    margin-bottom: 10px;
+  }
+
+  .section-caraikutan {
+    background: url(/storage/app/media/jingle-rasa-nusantara/BG-Milk_Splash.png);
+    background-repeat: no-repeat !important;
+    background-size: 100% !important;
+    padding-bottom: 5%;
+    background-position: bottom;
+  }
+  ul.list-cara {
+    padding: 0;
+  }
+  .list-cara li {
+    list-style: none;
+    margin-right: 50px;
+    width: calc(33.33% - 37px);
+    display: inline-block;
+    position: relative;
+  }
+  .list-cara li:after {
+    content: "";
+    background: url(/storage/app/media/jingle-rasa-nusantara/arrow.png);
+    width: 20px;
+    height: 34px;
+    background-size: 100% !important;
+    position: absolute;
+    right: -40px;
+    top: 15px;
+    bottom: 0;
+    margin: auto;
+    z-index: 5;
+  }
+  .list-cara li:last-child {
+    margin-right: 0;
+  }
+  .list-cara li:last-child:after {
+    display: none;
+  }
+  .section-slider {
+    background-image: linear-gradient(to bottom, #ebeef7, #addbf2);
+    padding: 5% 0;
+  }
+  .product-slider {
+    border-radius: 30px;
+    overflow: hidden;
+  }
+  .product-slider .slick-dots {
+    display: none !important;
+  }
+  .ps-item {
+    background: #fff;
+    overflow: hidden;
+    padding: 6% 10% 3%;
+    border-radius: 30px;
+  }
+  .product-slider.slick-slider .slick-arrow {
+    top: 35%;
+  }
+  .left-col {
+    width: 30%;
+    float: left;
+  }
+  .left-col img {
+    width: auto;
+    height: 400px;
+  }
+  .right-col {
+    padding-top: 25px;
+    width: 70%;
+    float: left;
+  }
+
+  .right-col h2 {
+    color: #225da4;
+    font-size: 42px;
+    font-weight: bold;
+    margin: 0 0 25px;
+  }
+  .right-col h3 {
+    color: #225da4;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0 0 25px;
+  }
+  .right-col ol li {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .right-col p {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .tab-slider {
+    padding: 0 25px;
+    margin: 0;
+  }
+
+  .tab-slider li {
+    list-style: none;
+    display: inline-block;
+    cursor: pointer;
+    color: #02489e;
+    padding: 15px 25px 20px;
+    width: 33%;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    transition: 0.3;
+  }
+  .tab-slider li.active {
+    background: #02489e;
+    color: #fff;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+  }
+  .section-syaratketentuan {
+    background: url(/storage/app/media/jingle-rasa-nusantara/BG-Milk_Splash.png);
+    background-repeat: no-repeat !important;
+    background-size: 100% !important;
+    padding: 3% 0 5%;
+    background-position: bottom;
+  }
+  .section-syaratketentuan h1 {
+    text-align: center;
+    color: #225da4;
+    font-weight: bold;
+    font-size: 42px;
+    margin-bottom: 30px;
+  }
+  .box-sk {
+    background: #02489e;
+    padding: 50px;
+    border-radius: 40px;
+    height: 600px;
+    overflow: hidden;
+  }
+  .sk-content {
+    height: 100%;
+    overflow-y: auto;
+  }
+  .sk-content p {
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
+  .sk-content h2,
+  .sk-content h5,
+  .sk-content h3 {
+    color: #fff;
+  }
+  .sk-content a {
+    color: orange;
+  }
+  .sk-content ul li,
+  .sk-content ol li {
+    color: #fff;
+    font-size: 17px;
+    margin-bottom: 10px;
+  }
+  .sk-content ul li > ol,
+  .sk-content ul li > ul,
+  .sk-content ol li > ul,
+  .sk-content ol li > ol {
+    margin-top: 10px;
+  }
+  .sk-content ul li > ol li,
+  .sk-content ul li > ul li {
+    font-size: 16px;
+  }
+  .sk-list > li {
+    margin-bottom: 25px !important;
+  }
+
+  .modal-header {
+    padding: 0;
+    text-align: right;
+    background: #fff;
+    border: 0;
+  }
+  .modal-body {
+    background-color: #0a4b9c;
+  }
+  .modal-header .close {
+    background-color: #000;
+    border: 0;
+    border-radius: 50%;
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 2px;
+    z-index: 55;
+    font-size: 24px;
+    line-height: 25px;
+    padding-bottom: 5px;
+  }
+  #modalVideo1 .modal-dialog,
+  #modalVideo2 .modal-dialog {
+    width: 800px;
+  }
+
+  #modalVideo1 video {
+    width: 100%;
+    height: 450px;
+  }
+
+  #modalVideo2 video {
+    width: 100%;
+    height: 650px;
+  }
+</style>
+
+<script>
+  function toSK() {
+    $("html, body").animate(
+      {
+        scrollTop: $(".section-syaratketentuan").offset().top,
+      },
+      1000
+    )
+  }
+
+  function toDownload() {
+    $("html, body").animate(
+      {
+        scrollTop: $("#download-sini").offset().top - 200,
+      },
+      1000
+    )
+  }
+  function checkJquery() {
+    if (window.jQuery) {
+      $(".product-slider").slick({
+        dots: true,
+      })
+      $(".product-slider").on(
+        "beforeChange",
+        function (event, slick, currentSlide, nextSlide) {
+          var CurrentSlideDom = $(slick.$slides.get(currentSlide))
+          var NextSlideDom = $(slick.$slides.get(nextSlide))
+          $(".tab-slider li").removeClass("active")
+          $(".tab-slider li").eq(nextSlide).addClass("active")
+          console.log(nextSlide)
+        }
+      )
+      $(".tab-slider li").click(function () {
+        var index = $(this).index()
+        $(".tab-slider li").removeClass("active")
+        $(".tab-slider li").eq(index).addClass("active")
+        $(".product-slider .slick-dots li").eq(index).click()
+      })
+    } else {
+      window.setTimeout("checkJquery();", 500)
+    }
+  }
+  checkJquery()
+</script>
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

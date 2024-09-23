@@ -1,0 +1,229 @@
+[viewBag]
+==
+<?php
+use RainLab\User\Models\User;
+
+function onRegist() {
+    //$data['user'] = User::where('email' , input('email'))->first();
+    $email = input('email');
+    $user = User::where('email', $email)->first();
+    if($user){
+        if( $email == $user->email ){
+            if(!$user->fbid){
+                $user->fbid = input('fbid');
+                $user->save();
+                Auth::login($user);
+                $data['user'] = $user;
+            }
+        }
+    }
+    else{
+    
+        $user = Auth::register([
+                    'name' => input('name'),
+                    'surname' => input('surname'),
+                    'email' => input('email'),
+                    'password' => "testing123",
+                    'password_confirmation' => "testing123",
+                    'fbid' => input('fbid')  ? input('fbid') : "",
+                    'googleid' => input('googleid') ? input('googleid') : ""
+                ] , true);
+        
+                
+                Auth::login($user);
+                
+        $data['user'] = $user;
+    }
+    return $data;
+}
+?>
+==
+<div id="login" class="popup popup__login">
+	<div class="popup__login-heading">Frisian Flag Connect Test</div> <!--  .popup__login-heading -->
+	<div class="popup__login-body">
+		
+		<button  onclick="fbLogin(); return false;" class="button full-width sample"><i class="fa fa-facebook" aria-hidden="true"></i> masuk dengan facebook</button>
+		<button  class="button full-width g-signin2" id="g-click" data-auto_select="false" data-onsuccess="onSuccess" data-onload="false"><i class="fa fa-facebook" aria-hidden="true"></i> masuk dengan Google</button>
+		
+
+		<div class="separator separator__text"><span>atau</span></div> <!--  .separator .separator__text -->
+
+		<form class="form-primary"  data-request="onSignin" data-request-data="redirect: '/user-dashboard'">
+		
+			<div class="form-group"> 
+				<span for="email">Email</span> 
+				<input type="email" class="form-control" name="login" id="emails" placeholder="Email" required="required" autocomplete="off"> 
+			</div>
+			
+			<div class="form-group"> 
+				<span for="password">Password</span> 
+				<input type="password" class="form-control" name="password" id="passwords" placeholder="Password" required="required" autocomplete="off"> 
+			</div>
+			
+			<div class="row">
+				<div class="col-xs-6 col-sm-6">
+					<div class="checkbox"> 
+						<span><input type="checkbox"> Ingat Saya</span> 
+					</div>				
+				</div> <!--  .col-sm-6 -->
+				<div class="col-xs-6 col-sm-6">
+					<a href="javascript:;" class="link" id="click-forgot">Lupa password?</a>
+				</div> <!--  .col-sm-6 -->
+			</div> <!--  .row -->
+			
+			<div class="form-submit">
+				<input type="submit" class="button full-width" value="masuk" />				
+			</div> <!--  .form-submit -->
+		</form>
+
+		<hr />
+
+		<p class="popup-text">Belum punya akun?</p>
+
+		<a href="javascript:;" class="button full-width" id="click-register">daftar</a>
+
+	</div> <!--  .popup__login-body -->
+
+</div>
+
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+<script>
+window.onbeforeunload = function(e){
+  gapi.auth2.getAuthInstance().signOut();
+};
+
+window.fbAsyncInit = function() {
+    // FB JavaScript SDK configuration and setup
+    FB.init({
+      appId      : '617390536725868', // FB App ID
+      cookie     : true,  // enable cookies to allow the server to access the session
+      xfbml      : true,  // parse social plugins on this page
+      version    : 'v3.2' // use graph api version 2.8
+    });
+
+    // Check whether the user already logged in
+    
+                console.log('mau logout nih')
+    FB.getLoginStatus(function(response) {
+        console.log('response')
+                console.log(response)
+        if (response.status === 'connected') {
+            FB.logout(function(response) {
+                console.log(response)
+                console.log('logout FB')
+            });
+        }
+    });
+};
+
+// Load the JavaScript SDK asynchronously
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+// Facebook login with JavaScript SDK
+function fbLogin() {
+    console.log("loginfb loginnew")
+    FB.login(function (response) {
+        if (response.authResponse) {
+            // Get and display the user profile data
+            getFbUserData();
+        } else {
+            document.getElementById('status').innerHTML = 'User cancelled login or did not fully authorize.';
+        }
+    }, {scope: 'email'});
+}
+
+
+function getFbUserData(){
+    
+    FB.api('/me', {locale: 'en_US', fields: 'id,first_name,last_name,email,link,gender,locale,picture'},
+    function (response) {
+        response.first_name+' '+response.last_name;
+        response.email;
+        $.request('onRegist', {
+            data : {
+                'fbid' : response.id,
+                'email' : response.email,
+                'name' : response.first_name,
+                'surname' : response.last_name,
+            },
+            success : function (data){
+                alert("success");
+                window.location.href = "https://www.frisianflag.com/sample-vision";
+            },
+            error : function (jqxhr){
+                alert("fail");
+                console.log(jqxhr)    
+            },
+            
+        })
+        console.log(response.first_name)
+        console.log(response.last_name)
+        console.log(response.email)
+        console.log(response.id)
+       
+    });
+}
+
+
+function googleInit()
+{
+    gapi.load('auth2', function() {
+        auth2 = gapi.auth2.init({});
+        element = document.getElementById('googleBtn');
+        auth2.attachClickHandler(element, {}, onSuccess, onFailure);
+     });
+}
+googleInit();
+
+
+function onSuccess(googleUser)
+{
+    var authResponse = googleUser.getAuthResponse(true);
+      var profile = googleUser.getBasicProfile();
+      console.log(profile);
+      console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+      console.log('Name: ' + profile.getName());
+      console.log('Image URL: ' + profile.getImageUrl());
+      console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+     var name = profile.getName();
+     var email = profile.getEmail();
+     sessionStorage.setItem('hut_nama', name);
+     $('.login-nama').val(name);
+      sessionStorage.setItem('hut_email', email);
+     $('.login-email').val(email);
+         //document.location.href = "registpahlawan";
+        $.request('onRegist', {
+            data : {
+                'googleid' : profile.getId(),
+                'email' : profile.getEmail(),
+                'name' : profile.getName(),
+                'surname' : profile.getName(),
+            },
+            success : function (data){
+                window.location.href = "https://www.frisianflag.com/user-dashboard";
+            },
+            error : function (jqxhr){
+                console.log(jqxhr)    
+            },
+            
+        })
+}
+
+
+function onFailure(error)
+{
+}
+  function signOut() {
+      
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+</script>

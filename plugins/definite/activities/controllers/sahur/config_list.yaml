@@ -1,0 +1,12 @@
+list: $/definite/activities/models/menusahur/columns.yaml
+modelClass: Definite\Activities\Models\MenuSahur
+title: Sahur
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'definite/activities/sahur/update/:id'

@@ -1,0 +1,12 @@
+fields:
+    title:
+        label: Title
+        span: full
+        type: text
+    resep:
+        label: Resep
+        nameFrom: title
+        descriptionFrom: description
+        list: $/definite/activities/models/activity/columns.yaml
+        span: full
+        type: recordfinder

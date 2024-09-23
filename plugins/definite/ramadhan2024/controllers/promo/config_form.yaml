@@ -1,0 +1,10 @@
+name: Promo
+form: $/definite/ramadhan2024/models/promo/fields.yaml
+modelClass: Definite\Ramadhan2024\Models\Promo
+defaultRedirect: definite/ramadhan2024/promo
+create:
+    redirect: 'definite/ramadhan2024/promo/update/:id'
+    redirectClose: definite/ramadhan2024/promo
+update:
+    redirect: definite/ramadhan2024/promo
+    redirectClose: definite/ramadhan2024/promo

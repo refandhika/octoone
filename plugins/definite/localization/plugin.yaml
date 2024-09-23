@@ -1,0 +1,17 @@
+plugin:
+    name: 'definite.localization::lang.plugin.name'
+    description: 'definite.localization::lang.plugin.description'
+    author: Definite
+    icon: oc-icon-language
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: 'definite.localization::lang.plugin.name'
+        url: definite/localization/translations
+        icon: icon-language
+        permissions:
+            - manage_translasi
+permissions:
+    manage_translasi:
+        tab: Translasi
+        label: 'Manage Translasi'

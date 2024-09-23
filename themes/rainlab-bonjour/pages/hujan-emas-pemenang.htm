@@ -1,0 +1,57 @@
+title = "Hujan Emas Pemenang"
+url = "/aktivitas-kami/hujan-emas/pemenang"
+layout = "default"
+is_hidden = 1
+
+[viewBag]
+localeUrl[en] = "/hujan-emas-pemenang"
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('hujan-emas-pemenang-amp');
+    }
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+    	<img src="{{ 'hujan-emas/banner/static-banner-final.jpg'|media }}" class="hidden-xs" />
+        <img src="{{ 'hujan-emas/banner/static-banner-final-mobile-c.jpg'|media  }}" class="visible-xs" />
+    </div>
+</div>
+
+{% partial 'site/hujan-emas-menu' %}
+
+<div id='main-section' class="container" style="padding: 30px 15px;">
+    <div class="col-md-12">
+        <div class="default-content text-center">
+            <h3>Nantikan Pemenangnya....</h3>
+        </div>
+    </div>
+</div>
+
+<style>
+    .default-content h3 {
+        font-size: 22px;
+        line-height: 1.2;
+        
+    }
+
+    @media screen and (min-width: 767px) {
+        .default-content h3 {
+            font-size: 30px;
+        }
+    }
+
+  @media screen and (max-width: 767px) {
+    .m-bottom-15 {
+      margin-bottom: 15px;
+    }
+  }
+</style>
+
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

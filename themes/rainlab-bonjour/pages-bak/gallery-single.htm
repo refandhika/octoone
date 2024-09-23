@@ -1,0 +1,111 @@
+title = "Gallery"
+meta_description = ""
+meta_keywords = ""
+url = "/perusahaan-kami/single-galeri-foto"
+layout = "default"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+==
+{% set gallery = Gallery.records %}
+
+<h1 aria-hidden="true" class="seo-heading">Galeri Foto</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp hidden-xs"><img src="{{ 'assets/img/our-milkpedia.png'|theme }}" alt="Our Milkpedia"/> </div>
+    <div class="imgwrp visible-xs"><img src="{{ 'assets/img/staticbaner-xs.jpg'|theme }}" alt="Banner Static"/> </div>
+</div>
+
+<div class="container-menutab container-menutab_custom">
+    <div class="container-one">
+        <ul>
+            <li class="toggle hidden-lg"><a href="javascript:;" class="active">{{'galeri-foto'|_}}</a></li>
+            <li><a href="{{'about-us'|page}}" class="{% if this.page.id == 'about-us' %}active{% endif %}">{{'tentang-kami'|_}}</a></li>
+            <li><a href="{{'news'|page}}" class="{% if this.page.id == 'news-archive' %}active{% endif %}">{{'berita'|_}}</a></li>
+            <li><a href="{{'gallery'|page}}" class="{% if this.page.id == 'galeri-foto' %}active{% endif %}">{{'galeri-foto'|_}}</a></li>
+            <li><a href="{{'press-release'|page}}" class="{% if this.page.id == 'press-release' %}active{% endif %}">{{'siaran-pers'|_}}</a></li>
+            <li><a href="{{'our-purposes'|page}}" class="{% if this.page.id == 'our-purposes' %}active{% endif %}">{{'tujuan-kami'|_}}</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id='main-section' class="container-fluid">
+    <div class="container-two">
+      <div class="col-md-12">
+          <div class="breadcrumb">
+            <ul>
+                <li><a href="{{ 'home'|page }}">{{'beranda'|_}}</a> </li>
+                <li><a href="{{ 'tentang-kami'|page }}">{{'perusahaan kami'|_}}</a> </li>
+                <li><a href="javascript:;">{{'galeri foto'|_}}</a> </li>
+            </ul>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+        <div class="default-content">
+            <div class="container-two">
+                <div class="row">
+                    <div class="col-md-7">
+                      <h3>{{'galeri foto'|_}}</h3>
+                    </div>
+                    <div class="col-md-5">
+                      <input type="search" placeholder="Search" class="form-control" id="news-search" style="margin-bottom: 20px;">
+                    </div>
+                </div>
+                <div class="container-menutab container-menutab-news hidden-lg">
+                    <div class="container-one">
+                        <ul>
+                            <li class="toggle"><a href="javascript:;" class="active">All</a></li>
+                            <li><a href="{{url('news'|page) }}" class="active">All</a></li>
+                            {% for years in records.first.year  %}
+                            <li><a href="{{url('news-archive'|page ({"slug":years.published_date})) }}">{{ years.published_date }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="container-news">
+                    <div class="content">
+                        <div class="left">
+                            <div class="content">
+
+                            	<div class="row">
+																
+																<div class="col-sm-12">
+																	<label class="date">20 Jan 2018</label>
+                            			<h4>{{'frisian flag cafe'|_}}</h4>
+                            			<p>Bersamaan dengan peluncuran inovasi kemasan baru Frisian Flag, perusahaan susu ini juga mempersembahkan sebuah kafe untuk Anda dan keluarga bisa menikmati makanan dan minuman berbasis susu.</p>
+																	<p>Guna memperluas kampanye kemasan baru ini kepada lebih banyak keluarga, FFI juga menghadirkan Frisian Flag Mobile Cafe yang mengunjungi 27 titik di wilayah Jabodetabek. Sama seperti Frisian Flag Cafe, Frisian Flag Mobile Cafe akan memanjakan pengunjung dengan berbagai minuman dan makanan lezat secara gratis.</p>			
+																	<br />														
+																</div> <!--  .col-sm-12 -->
+                            		
+                            		<!-- lopping disini untuk dijadikan cms -->
+                            		<div class="col-xs-12 col-sm-6 col-md-4">    
+	                            		<a href="{{ 'assets/img/our-milkpedia.png'|theme }}" data-fancybox="images" data-caption="My caption">
+																		<div class="gallery__picture" style="background-image: url('{{ 'assets/img/our-milkpedia.png'|theme }}');"></div> <!--  .gallery__picture -->
+																	</a>
+                            		</div> <!--  .col-xs-12 .col-sm-6 .col-md-4 -->
+
+                            	</div> <!--  .row -->
+
+                            </div>
+                        </div>
+                        <div class="right visible-lg">
+                            <div class="content">
+                            		<h5 style="margin-left: 25px;">{{'galeri foto lainnya'|_}}</h5>
+	                            	<ul class="yearright yearright-custom">
+                                    <li class=""><a href="#">Family Fun Walk</a></li>
+                                    <li class=""><a href="#">Frisian Flag Purefarm Coconut Delight</a></li>
+                                    <li class=""><a href="#">Hari Susu Sedunia</a></li>
+                                    <li class=""><a href="#">Kemeriahan Ulang Tahun Frisian Flag ke-95</a></li>
+                                    <li class=""><a href="#">Pabrik Frisian Flag Susu Kental Manis</a></li>
+                                </ul>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

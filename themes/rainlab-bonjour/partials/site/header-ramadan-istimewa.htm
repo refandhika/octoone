@@ -1,0 +1,183 @@
+description = "header for Ramadan Istimewa"
+
+[viewBag]
+==
+{% put styles %}
+    <link rel="stylesheet" href="{{ 'assets/css/ramadan-istimewa.css'|theme }}"/>
+    <link rel="stylesheet" href="{{ 'assets/css/app.css'|theme }}">
+    <link rel="stylesheet" href="{{ 'assets/css/style.css'|theme }}">
+    
+    <meta name="facebook-domain-verification" content="t2ubto7jn7dd9h6si4fk19a8gd88ks" />
+    <meta name="facebook-domain-verification" content="74hs9dbda87d9cawoguzz2w7pjviwl" />
+    <meta name="ahrefs-site-verification" content="112d70195f4804d5ec8b0a26f6808e96afa04708dac83c5ded305ccf923cb44e">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.0/moment.min.js"></script>
+        <!-- Add fancyBox -->
+    <link rel="stylesheet" href="{{ 'assets/fancybox/jquery.fancybox.css'|theme }}" type="text/css" media="screen" />
+        <!-- Optionally add helpers - button, thumbnail and/or media -->
+    <link rel="stylesheet" href="{{ 'assets/fancybox/helpers/jquery.fancybox-buttons.css'|theme }}" type="text/css" media="screen" />    
+    <link rel="stylesheet" href="{{ 'assets/fancybox/helpers/jquery.fancybox-thumbs.css'|theme }}" type="text/css" media="screen" />
+    <style>
+        body{
+             font-size: 16px !important;   
+        }
+        .form-control{
+             font-size: 14px !important;   
+        }
+    </style>
+{% endput %}
+
+
+{% put scripts %}
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+  <script src="{{'assets/js/ramadan-istimewa.js'|theme}}"></script>
+{% endput %}
+
+
+{% partial 'site/header-without-login' %}
+
+<div id="main-slide" class="swiper-container main-slide">
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            
+                           
+                <div class="swiper-slide">
+                    <div id="slide-6" class="main-slide__bg slideshow ramadan-slideshow"
+                        data-image-desktop="{{ 'ramadan-istimewa/banner/takjil-dekstop.jpg'|media}}"
+                        data-image-mobile="{{ 'ramadan-istimewa/banner/takjil-mobile.jpg'|media  }}"
+                    >
+                        <div class="main-slide__caption">
+                            <div class="col-md-8">
+                                <a href="/aktivitas-kami/ramadan-istimewa"
+                                    class="button button--large">
+                                    Selengkapnya
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="swiper-slide">
+                    <div id="slide-1" class="main-slide__bg slideshow ramadan-slideshow"
+                        data-image-desktop="{{ 'ramadan-istimewa/banner/takjil-dekstop.jpg'|media}}"
+                        data-image-mobile="{{ 'ramadan-istimewa/banner/takjil-mobile.jpg'|media  }}"
+                    >
+                        <div class="main-slide__caption">
+                            <div class="col-md-8">
+                                <a href="/aktivitas-kami/ramadan-istimewa/resep-takjil-istimewa"
+                                    class="button button--large">
+                                    Selengkapnya
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="swiper-slide">
+                    <div id="slide-2" class="main-slide__bg slideshow ramadan-slideshow"
+                        data-image-desktop="{{ 'ramadan-istimewa/banner/takjil-dekstop.jpg'|media}}"
+                        data-image-mobile="{{ 'ramadan-istimewa/banner/takjil-mobile.jpg'|media  }}"
+                    >
+                        <div class="main-slide__caption">
+                            <div class="col-md-8">
+                                <a href="/aktivitas-kami/ramadan-istimewa/resep-sahur"
+                                    class="button button--large">
+                                    Selengkapnya
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           <!--      
+                <div class="swiper-slide">
+                    <div id="slide-3" class="main-slide__bg slideshow ramadan-slideshow"
+                        data-image-desktop="{{ 'ramadan-istimewa/banner/takjil-dekstop.jpg'|media}}"
+                        data-image-mobile="{{ 'ramadan-istimewa/banner/takjil-mobile.jpg'|media  }}"
+                    >
+                        <div class="main-slide__caption">
+                            <div class="col-md-8">
+
+                                <a href="/"
+                                    class="button button--large">
+                                    Selengkapnya
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                
+                <div class="swiper-slide">
+                    <div id="slide-4" class="main-slide__bg slideshow ramadan-slideshow"
+                        data-image-desktop="{{ 'ramadan-istimewa/banner/takjil-dekstop.jpg'|media}}"
+                        data-image-mobile="{{ 'ramadan-istimewa/banner/takjil-mobile.jpg'|media  }}"
+                    >
+                        <div class="main-slide__caption">
+                            <div class="col-md-8">
+                                <a href="/aktivitas-kami/ramadan-istimewa/promo"
+                                    class="button button--large">
+                                    Selengkapnya
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+            <a class="main-slide__arrow to-section">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAiCAYAAAA3WXuFAAAAAXNSR0IArs4c6QAAAyBJREFUWAntl81rE0EUwGfSbJKm1CTiIQbBCl70poJHbeIHIib1EkHBolTryYN614DgTRG8JWpByaWFHhItSIv4B6j1ZFMphWDbbDRoY9uYtMmOb5JM3M1ks5tNIgidy9t57817v33zdncWozbGkdH3wmL60xkiSQMsDDHhlEBMbzKxkTWma0XiVpzlvrsCz/qLpPSOIHRYrqfXGOEkEvDx1clryXqb1tyk5aBmLyLpTiMY6k8Q2Uu2yAO1tc30hoEgK1eZukSH6ua6poaBoArmphkwEpraVYyGgVTita3eBtIq4XaF/rsKcY/u/ptT1szXpQOCIIjfJ66KWndk1O64FHWhfGGfrc88n345vMHiKHrIeT4ymEkuL5ISmt3MF1ec/vCjUIgofNjCdqQzEL6N1nMi2ip+KGTzyy5/5CKLV0vm8Ed8SCJThBBPxUgwfBpuPf74dKyTUM5AJEQIeogIsdA8cO2QEIpC/hE6LwPtHHp+ECMSB2MvVcoHAA53CqoCQ+7J41euCf3IR1xDkbNloJJUugvVsPOOVfcOQKnDsKywIxK5XwbCGFW3iRl52U6ltGGqN46wh/XQNI/Aa4xA6YWh2aBtpssHNHryWxBnX0OHneIxeA3G+AXAucFymrdWNRgvQPAo+DXoGX4V7NLnvh7rsTIQNQ9cGbP9/FGM6YWC25HgTMQq3CCDhl2xAs9ZMfJ+i11P14CofU9wvHetsApQ6KTCv6uTvzA0jQKIKv4tlBKG5udKvjRx4Xe/1RkA1Bnq0L2B5yw2s49ukzwHVyFmpJVaz2fjcFQ9wXQdlAmLTfA2+laqAtHkXYJShaE5mwJ1AaopjC6gGlQh+wreKT46Nzg0YWhczQqx5OXtMwqF8bxgtnkzk5dTLJ6a5J4yNUf69Nndbj+8pd+q+TTUtwBD1+uuEEvmGY3bc6IIRxUd29cijCEguqgClYKeQl4GykkDMDRGyxViiZtCYfwFemZQT8+weEzq7iG2gMmVsD9nd+8+16CnEgIy6WpgFksuDVeIBQkGx3tmNn/dgJ46CkeIhGWH9Yn8L4L56ZV/AM8HY6Gign9xAAAAAElFTkSuQmCC" width="19px">
+            </a>
+    </div>
+
+     <style>
+         .ramadan-slideshow{
+              height: 432px;   
+         }
+         .main-slide{
+             margin-bottom: 0;
+         }
+        #slide-1 {
+            background-image: url("{{ 'ramadan-istimewa/banner/takjil-dekstop.jpg' |media  }}");
+        }
+        #slide-2 {
+            background-image: url("{{ 'ramadan-istimewa/banner/sahur-terbaik-desktop.jpg' |media  }}");
+        }
+        #slide-3 {
+            background-image: url("{{ 'ramadan-istimewa/banner/kue-kering-desktop.jpg' |media  }}");
+        }
+        #slide-4 {
+            background-image: url("{{ 'static_banner_ramadan_promo_desktop.jpg' |media  }}");
+        }  
+        #slide-6 {
+            background-image: url("{{ 'ramadan-istimewa/banner/static_banner_ramadan_istimewa.jpg' |media  }}");
+        }  
+        @media (max-width: 768px) {
+            #slide-1 {
+                background-image: url("{{ 'ramadan-istimewa/banner/takjil-mobile.jpg' |media  }}");
+            }
+            #slide-2 {
+                background-image: url("{{ 'ramadan-istimewa/banner/sahur-terbaik-mobile.jpg' |media  }}");
+            }
+            #slide-3 {
+                background-image: url("{{ 'ramadan-istimewa/banner/kue-kering-mobile.jpg' |media  }}");
+            } 
+            #slide-4 {
+                background-image: url("{{ 'static_banner_ramadan_promo_desktop.jpg' |media  }}");
+            } 
+            #slide-6 {
+                  background-image: url("{{ 'ramadan-istimewa/banner/static_banner_ramadan_istimewa_mobile.jpg' |media  }}");
+            }  
+        }
+    </style>
+    
+    
+<!--s:menu-tab-->
+</div>
+    
+<!--e:menu-tab-->

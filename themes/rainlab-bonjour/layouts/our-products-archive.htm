@@ -1,0 +1,161 @@
+[builderDetails]
+modelClass = "Definite\Products\Models\Category"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "all"
+
+[SessionClose]
+load_js = 1
+==
+<?php
+function onEnd() {
+
+    // get the post component
+    $_title = $this->page->components["builderDetails"]->record->attributes["title"];
+    $_meta_description = $this->page->components["builderDetails"]->record->attributes["meta_description"];
+    $_meta_keywords = $this->page->components["builderDetails"]->record->attributes["meta_keywords"];
+    if($_title == "Susu Siap Minum"){
+        $this->page->title = "Susu Cair Siap Minum";
+    }elseif($_title == "Susu Ibu & Balita"){
+        $this->page->title = "Susu Ibu dan Balita";
+    }
+    else{
+        $this->page->title = $_title;
+    }
+    $this->page->meta_title = $_title;
+    $this->page->meta_description = $_meta_description;
+    $this->page->meta_keywords = $_meta_keywords;
+
+    $this->page->title_en = $this->page->components["builderDetails"]->record->attributes["title_en"];
+    $this->page->meta_title_en = $this->page->components["builderDetails"]->record->attributes["title_en"];
+    $this->page->meta_description_en = $this->page->components["builderDetails"]->record->attributes["meta_description_en"];
+    $this->page->meta_keywords_en = $this->page->components["builderDetails"]->record->attributes["meta_keywords_en"];
+
+}
+?>
+==
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+{% if record %}
+{% set category = record.categories().first %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ record.title }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp hidden-xs"><img src="{{ 'assets/img/our-milkpedia.png'|theme }}" alt="Our Milkpedia"/> </div>
+    <div class="imgwrp visible-xs"><img src="{{ 'assets/img/staticbaner-xs.jpg'|theme }}" alt="Static Banner"/> </div>
+</div>
+
+<div class="container-menutab container-menutab--five">
+    <div class="container-one">
+        <ul>
+            <li class="toggle visible-xs visible-sm"><a href="javascript:;" class="active">{{ trans_pick(record, 'title') }}</a></li>
+            {% for category in record.all %}
+                {% if category.parent_id == null %}
+                    <li>
+                        <a href="{{ 'our-products-archive'|page({'slug': category.slug }) }}"
+                        {% if category.slug == record.slug %}
+                            class="active"
+                        {% endif %}
+                        >
+                            {{ trans_pick(category, 'title') }}
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<div id='main-section' class="container-fluid">
+    <div class="col-md-12">
+        <div class="breadcrumb">
+            <div class="container-two">
+                <ul>
+                   <li><a href="{{ 'home'|page }}">{{'beranda'|_}}</a> </li>
+                    <li><a href="{{ 'our-products'|page }}">{{'produk'|_}}</a> </li>
+                    <li><a href="{{ 'our-products-archive'|page({"slug": rec}) }}">{{ trans_pick(record, 'title') }}</a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="default-content">
+            <div class="container-two">
+                <h3>{{ trans_pick(record, 'title') }}</h3>
+                <p>{{ trans_pick(record, 'description') | raw}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section section_card clearfix leverate_section_product">
+        {% if not record.childs is empty %}
+            {% for category in record.childs.sortBy('order') %}
+                <div class="col-sm-4 itemhomefade">
+                        <div class="card card_featured card_product">
+                            <div class="card__thumbnail">
+                                <div class="card__image card__thumbnail--blue" data-adaptive-background data-ab-css-background>
+                                     {% if category.featured_image %}
+                                        <img src="{{ category.featured_image|media }}" alt="{{ trans_pick(category, 'title') }}"/>
+                                    {% else %}
+                                         <img src="http://placehold.it/600x600/797979/666666?text=No+Image" alt="No Image"/>
+                                    {% endif %}
+                                </div>
+
+                                <div class="card__meta">
+                                    <header class="card__head">
+                                        <h3><a href="{{ 'our-products-single'|page({"category-slug": record.slug, "slug": category.slug}) }}">
+                                            {{ trans_pick(category, 'title') }}
+                                        </a></h3>
+                                    </header>
+                                    <a href="{{ 'our-products-single'|page({"category-slug": record.slug, "slug": category.slug}) }}" class="button button-dark hidden-xs">{{'selengkapnya'|_}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            {% endfor %}
+        {% else %}
+            {% for post in record.publishedProducts.sortBy('order') %}
+                <div class="col-sm-4 itemhomefade">
+                        <div class="card card_featured card_product">
+                            <div class="card__thumbnail card__thumbnail--blue">
+                                <div class="card__image" data-adaptive-background data-ab-css-background>
+                                     {% if post.featured_image %}
+                                        <img src="{{ post.featured_image|media }}" alt="{{ category.title }}"/>
+                                    {% else %}
+                                         <img src="http://placehold.it/600x600/797979/666666?text=No+Image" alt="No Image"/>
+                                    {% endif %}
+                                </div>
+
+                                <div class="card__meta">
+                                    <header class="card__head">
+                                        <h3><a href="{{ 'our-products-single'|page({"category-slug": record.slug, "slug": post.slug}) }}">{{ post.title }}</a></h3>
+                                    </header>
+                                    <a href="{{ 'our-products-single'|page({"category-slug": record.slug, "slug": post.slug}) }}" class="button button-dark hidden-xs">{{ 'selengkapnya'|_ }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div> <!-- end mainsection -->
+
+{% put footer %}
+    {{ record.additional_tags|raw }}
+{% endput %}
+
+{% else %}
+    {{ notFoundMessage }}
+{% endif %}

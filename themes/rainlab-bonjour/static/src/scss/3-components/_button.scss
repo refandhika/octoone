@@ -1,0 +1,56 @@
+.button {
+	-webkit-appearance : none;
+	height: 40px;
+	border: 0;
+	@include border-radius (25px);
+	font-size: 14px;
+	font-family: $font-semibold;
+	background-color: $blue-light;
+	background-image: url(../img/nav-bg-fill-blue.png);
+	color: white;
+	padding: 0 30px;
+	display: inline-block;
+	line-height: 38px;
+	text-transform: uppercase;
+	transition: all .75s ease-in-out;
+	background-position: 0 -50%;
+    background-repeat: repeat-x;
+    margin-bottom: 20px;
+
+	&:hover,
+	&:focus {
+		 background-position: 100% 50%;
+		 color: white;
+		 text-decoration: none;
+	}
+
+
+	&--large {
+		height: 50px;
+		line-height: 48px;
+	}
+    &.medium {
+        height: 50px;
+        line-height: 50px;
+        padding: 0 50px;
+    }
+
+	// White
+	&-white {
+		background-color: white;
+		color: $blue-light;
+	}
+
+	// Dark
+	&-dark {
+		background-color: $blue;
+		background-image: url(../img/nav-bg-fill-white.png);
+
+		&:hover,
+		&:focus {
+			 background-position: 100% 50%;
+			 color: $blue;
+			 text-decoration: none;
+		}
+	}
+}

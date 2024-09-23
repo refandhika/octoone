@@ -1,0 +1,133 @@
+description = "Product Life Layout"
+
+[staticPage]
+useContent = 1
+default = 0
+
+[milkpediaList]
+
+[milkpediaCategories]
+
+[productCategories]
+
+[NewsList]
+
+[NewsCategories]
+
+[subscriberform]
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "all"
+
+[SessionClose]
+load_js = 1
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title') }}</h1>
+
+<div class="swiper-container main-slide" id="main-slide">
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide">
+            <div class="main-slide__bg slideshow" data-image-desktop="https://www.frisianflag.com/storage/app/media/slider/1.jpg" data-image-mobile="https://www.frisianflag.com/storage/app/media/membangun-keluarga-kuat-notext-m.jpg" id="slide-2">
+                <div class="main-slide__caption">
+                    <div class="col-md-8">
+                        <h2>{{ 'membangun-keluarga-yang-kuat'|_|uppercase }}</h2>
+                        <p></p>
+                        <p>{{'peternakan-kuat-milik-keluarga'|_}}</p>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    <a class="main-slide__arrow to-section"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAiCAYAAAA3WXuFAAAAAXNSR0IArs4c6QAAAyBJREFUWAntl81rE0EUwGfSbJKm1CTiIQbBCl70poJHbeIHIib1EkHBolTryYN614DgTRG8JWpByaWFHhItSIv4B6j1ZFMphWDbbDRoY9uYtMmOb5JM3M1ks5tNIgidy9t57817v33zdncWozbGkdH3wmL60xkiSQMsDDHhlEBMbzKxkTWma0XiVpzlvrsCz/qLpPSOIHRYrqfXGOEkEvDx1clryXqb1tyk5aBmLyLpTiMY6k8Q2Uu2yAO1tc30hoEgK1eZukSH6ua6poaBoArmphkwEpraVYyGgVTita3eBtIq4XaF/rsKcY/u/ptT1szXpQOCIIjfJ66KWndk1O64FHWhfGGfrc88n345vMHiKHrIeT4ymEkuL5ISmt3MF1ec/vCjUIgofNjCdqQzEL6N1nMi2ip+KGTzyy5/5CKLV0vm8Ed8SCJThBBPxUgwfBpuPf74dKyTUM5AJEQIeogIsdA8cO2QEIpC/hE6LwPtHHp+ECMSB2MvVcoHAA53CqoCQ+7J41euCf3IR1xDkbNloJJUugvVsPOOVfcOQKnDsKywIxK5XwbCGFW3iRl52U6ltGGqN46wh/XQNI/Aa4xA6YWh2aBtpssHNHryWxBnX0OHneIxeA3G+AXAucFymrdWNRgvQPAo+DXoGX4V7NLnvh7rsTIQNQ9cGbP9/FGM6YWC25HgTMQq3CCDhl2xAs9ZMfJ+i11P14CofU9wvHetsApQ6KTCv6uTvzA0jQKIKv4tlBKG5udKvjRx4Xe/1RkA1Bnq0L2B5yw2s49ukzwHVyFmpJVaz2fjcFQ9wXQdlAmLTfA2+laqAtHkXYJShaE5mwJ1AaopjC6gGlQh+wreKT46Nzg0YWhczQqx5OXtMwqF8bxgtnkzk5dTLJ6a5J4yNUf69Nndbj+8pd+q+TTUtwBD1+uuEEvmGY3bc6IIRxUd29cijCEguqgClYKeQl4GykkDMDRGyxViiZtCYfwFemZQT8+weEzq7iG2gMmVsD9nd+8+16CnEgIy6WpgFksuDVeIBQkGx3tmNn/dgJ46CkeIhGWH9Yn8L4L56ZV/AM8HY6Gign9xAAAAAElFTkSuQmCC"
+            width="19px" alt="Arrow to section"></a>
+</div>
+<style>
+    .main-slide .swiper-pagination,
+    .swiper-button-prev, .swiper-button-next,
+    .main-slide__arrow{
+        display: none;
+    }
+
+    #slide-2 {
+        background-image: url('https://www.frisianflag.com/storage/app/media/slider/1.jpg');
+    }
+
+    @media (max-width: 768px) {
+        #slide-2 {
+            background-image: url('https://www.frisianflag.com/storage/app/media/membangun-keluarga-kuat-notext-m.jpg');
+            background-position: center;
+            background-size: cover;
+        }
+    }
+
+    @media screen and (min-width: 767px) {
+        .main-slide__bg {
+            height: 70vh;
+        }
+    }
+
+</style>
+
+<div class="container">
+    <div class="section-leftright clearfix">
+        <div class="col-md-6 mh bg-blue" style="background-image: url({{ 'assets/img/buildingstrong/1.png'|theme }});"></div>
+        <div class="col-md-6 mh bg-blue bg-blue--content">
+            <div class="col-md-12">
+                <!-- {{'content-selama-95-tahun-frisian-flag'|_}} -->
+                <p>Selama 95 tahun, Frisian Flag Indonesia berkomitmen untuk menyediakan berbagai produk yang kaya gizi dan lezat untuk keluarga Indonesia. Saat ini merek yang dipasarkan oleh Frisian Flag Indonesia adalah Frisian Flag, Friso dan Omela, dalam bentuk susu kental manis, krimer, susu cair dan susu bubuk. Seluruh produk Frisian Flag Indonesia di produksi di dua lokasi pabrik yang dilengkapi dengan fasilitas modern menggunakan sistem jaminan mutu dan keamanan produk untuk menghasilkan standar produk sesuai dengan regulasi yang berlaku.</p>
+                <br />
+                <p>Sebagai bagian dari Royal FrieslandCampina, salah satu koperasi peternak sapi perah terbesar di dunia yang berpusat di Belanda, Frisian Flag Indonesia mengacu pada pengalaman global dan kemitraan jangka panjang dengan peternak sapi perah lokal agar dapat menghadirkan sumber gizi terbaik yang terkandung dalam susu.</p>
+                <br />
+                <p>Melalui produk-produk berkualitas dan jalinan program kemitraan dengan berbagai pihak, Frisian Flag Indonesia berperan aktif dalam program  peningkatan status gizi keluarga Indonesia, serta mensosialisasikan gaya hidup sehat aktif  dalam rangka membangun ikatan keluarga kuat Indonesia.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix">
+    <div class="col-xs-12 activities__information">
+        <div class="container-fluid">
+            <div class="text-center default-content">
+                <h3>{{'product-life-stages'|_}}</h3><br>
+
+                <div class="stage-timeline">
+                    <img class="visible-lg" src="{{ 'assets/img/buildingstrong/timeline/stages.png'|theme }}" srcset="{{ 'assets/img/buildingstrong/timeline/stages2x.png'|theme }} 2x" alt="Buildstrong timeline Desktop">
+                    <img class="visible-xs visible-sm visible-md" src="{{ 'assets/img/buildingstrong/timeline/stages-mobile.png'|theme }}" srcset="{{ 'assets/img/buildingstrong/timeline/stages-mobile2x.png'|theme }} 2x" alt="Buildstrong timeline Mobile" width="100%">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="section-leftright clearfix">
+        <div class="col-md-6 mh bg-blue col-md-push-6" style="background-image: url({{ 'assets/img/buildingstrong/2.jpg'|theme }});"></div>
+        <div class="col-md-6 mh bg-blue col-md-pull-6 bg-blue--content">
+            <div class="col-md-12">
+               <h2>{{'ayo-jadi-bagian-keluarga-minum-susu'|_}} <br class="hidden-xs"> Frisian Flag</h2>
+               <p>{{'temukan-produk-yang-tepat-bagi-keluarga'|_}}</p>
+               <a href="https://www.frisianflag.com/produk" class="button button-white">{{'lihat-produk'|_}}</a>
+               <br> <br>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

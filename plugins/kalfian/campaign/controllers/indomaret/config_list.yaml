@@ -1,0 +1,12 @@
+list: $/kalfian/campaign/models/indomaretquiz/columns.yaml
+modelClass: Kalfian\Campaign\Models\IndomaretQuiz
+title: Indomaret
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+filter: config_filter.yaml
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

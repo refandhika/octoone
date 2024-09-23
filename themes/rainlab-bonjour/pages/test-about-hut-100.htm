@@ -1,0 +1,435 @@
+title = "Tentang 100 Tahun Frisian Flag"
+url = "/100tahun/tentang"
+layout = "aniversary"
+meta_description = "Telah 100 tahun Frisian Flag Indonesia berdiri dan terus berinovasi. Simak cerita di balik Frisian Flag dan partisipasinya terhadap Indonesia di sini!"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/test-about-hut-100"
+==
+{% put meta %}
+    <meta name="description" content="">
+{% endput %}
+<style>
+@media(min-width : 769px){
+    .hut-about{
+        height: auto;    
+    }    
+    .hut-about .hut-about-1{
+        position: relative;
+        height: auto;
+    }
+    .hut-about .hut-about-1 .hut-bg{
+        width: 100%;
+        height: auto;
+        object-fit: fill;
+    }
+    .hut-about .hut-about-1 .hut-position{
+        position: absolute;
+        bottom: -225px;
+        left: 0;
+    }
+    .hut-about .hut-about-1 .hut-position .hut-desc{
+        width: 85%;
+        margin: 0 auto;
+    }
+    .hut-about .hut-about-1 .hut-position .hut-desc .hut-description{
+        color: #003F7C;
+        font-size: 24px;
+        line-height: 1.5;
+        font-family: 'Brevia-semibold';
+    }
+    .hut-about .hut-about-2{
+        width: 100%;
+        height: auto;
+        background: linear-gradient(180deg, #E4F5FD,#E4F5FD 25%, #FFF 100%);
+        display: flex;
+        flex-direction: column;
+    }
+    .hut-about .hut-about-2 .hut-section1{
+        height: 300px;
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        padding: 0 7.5%;
+        margin: 250px auto 100px
+    }
+    .hut-about .hut-about-2 .hut-section1 .about-wrapper{
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .hut-about .hut-about-2 .hut-section1 .about-wrapper .logo-wrapper{
+        height: 100%;
+        width: 100%;
+        object-fit: fill;
+    }
+    .hut-about .hut-about-2 .hut-section1 .about-wrapper:nth-child(2) .logo-wrapper{
+        width: 400px !important;    
+    }
+    .hut-about .hut-about-2 .hut-section2{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 0 7.5%;
+        grid-gap: 50px;
+    }
+    .hut-about .hut-about-2 .text-wrap{
+            padding: 50px 7.5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;    
+    }
+    .hut-about .hut-about-2 .desc{
+        color: #003F7C;
+        font-size: 16px;
+    }
+    .hut-about .hut-about-2 .btn-back{
+        width: fit-content;
+        display: flex;
+        text-align: center;
+        height: 40px;
+        background: #277AD6;
+        color: #fff;
+        align-items: center;
+        justify-content: center;
+        border-radius: 40px;
+        box-shadow: 1px 1px 1px #1c5799;
+        font-family: 'Brevia-Bold';
+        padding: 5px 140px;
+        font-size: 18px;
+        margin-top: 75px;
+    }
+    .hut-about .hut-about-2 .btn-daftar{
+        padding: 20px 45px;
+        color: #0f4d9a;
+        background: #f7ba44;
+        border-radius: 50px;
+        height: 40px;
+        box-shadow: 1px 1px 1px #0c386e;
+        font-family: 'Brevia-Bold';
+        display: flex;
+        margin-bottom: 50px;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        width: max-content;
+        margin-top: 30px;
+    }
+    .hut-about .hut-about-2 .hut-section2 .wrapper{
+        height: auto;
+        margin: 20px 0;
+        display: flex;
+        min-height: 15vh;
+    }
+    .hut-about .hut-about-2 .hut-section2 .wrapper .img-wrapper{
+        width: 30%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .hut-about .hut-about-2 .hut-section2 .wrapper .img-wrapper .hut-single-logo{
+            height: 120px;
+    }
+    .hut-about .hut-about-2 .hut-section2 .wrapper .desc-wrapper{
+        width: 70%;    
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        padding-left: 2.5%;
+    }
+    .hut-about .hut-about-2 .hut-section2 .wrapper .desc-wrapper .title{
+        color: #003F7C;
+        font-size: 24px;
+        margin-top: unset;
+        font-family: 'Brevia-Bold';
+    }
+    .hut-about .hut-about-2 .hut-section2 .wrapper .desc-wrapper .desc{
+        color: #003F7C;
+        font-size: 16px;
+    }    
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px){
+    .hut-about .hut-about-1 .hut-position {
+        position: absolute;
+        bottom: -65px;
+        left: 0;
+    }
+    .hut-about .hut-about-1 .hut-bg {
+    width: 100% !important;
+    height: 100% !important;
+    background: #E4F5FD !important;
+    }    
+    .hut-about .hut-about-1 {
+    position: relative;
+    height: auto !important;
+    padding-bottom: 300px !important;
+    background: #E4F5FD !important;
+    }
+    .hut-about .hut-about-2 .hut-section2 .wrapper .desc-wrapper {
+        width: 70% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important;
+        padding-left: 7.5% !important;
+    }
+    .hut-about .hut-about-2 .hut-section2 .wrapper .img-wrapper .hut-single-logo {
+    height: 100px !important;
+    }
+    .hut-about .hut-about-2 .hut-section2 .wrapper .desc-wrapper .desc {
+        color: #003F7C !important;
+        font-size: 13px !important;
+    }
+    .hut-about .hut-about-2 .hut-section2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr !important;
+        padding: 0 7.5% !important;
+        grid-gap: 20px !important;
+    }
+    .hut-about .hut-about-2 .hut-section1 {
+        height: 300px !important;
+        width: 80% !important;
+        display: flex !important;
+        flex-direction: row !important;
+        padding: 0 7.5% !important;
+        margin: 50px auto !important;
+    }
+    .hut-secondsection {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: auto !important;
+        background: linear-gradient(#e4f5fd, #fbfeff) !important;
+        padding: 50px 5% !important;
+    }
+}
+
+@media(max-width : 768px){
+    .hut-about{
+        height: auto;    
+    }    
+    .hut-about .hut-about-1{
+        position: relative;
+        height: auto;
+    }
+    .hut-about .hut-about-1 .hut-bg{
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+    }
+    .hut-about .hut-about-1 .hut-position{
+        position: absolute;
+        bottom: -325px;
+        left: 0;
+    }
+    .hut-about .hut-about-1 .hut-position .hut-desc{
+        width: 90%;
+        margin: 0 auto;
+    }
+    .hut-about .hut-about-1 .hut-position .hut-desc .hut-description{
+        color: #003F7C;
+        font-size: 17px;
+        line-height: 1.5;
+        font-family: 'Brevia-semibold';
+    }
+    .hut-about .hut-about-2{
+        width: 100%;
+        height: auto;
+        background: linear-gradient(180deg, #E4F5FD,#E4F5FD 80%, #FFF 100%);
+        display: flex;
+        flex-direction: column;
+        padding-top: 300px;
+    }
+    .hut-about .hut-about-2 .hut-section1{
+        height: 240px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+    .hut-about .hut-about-2 .hut-section1 .about-wrapper{
+        width: 50%;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+    }
+    .hut-about .hut-about-2 .hut-section1 .about-wrapper .logo-wrapper{
+         height: 100px;      
+    }
+    .hut-about .hut-about-2 .hut-section1 .about-wrapper:nth-child(1) .logo-wrapper{
+        height: 200px;    
+    }
+    .hut-about .hut-about-2 .hut-section2{
+        display: flex;
+        flex-direction: column;
+        padding: 0 5%;
+    }   
+    .hut-about .hut-about-2 .text-wrap{
+        padding: 0 7.5% 50px;
+    }
+    .hut-about .hut-about-2 .desc{
+        color: #003F7C;
+        font-size: 12px;
+        padding-bottom: 40px;
+    }
+    .hut-about .hut-about-2  .btn-back{
+        width: 100%;
+        display: flex;
+        text-align: center;
+        height: 40px;
+        background: #277AD6;
+        color: #fff;
+        align-items: center;
+        justify-content: center;
+        border-radius: 40px;
+        box-shadow: 1px 1px 1px #1c5799;
+        font-family: 'Brevia-Bold';
+    }
+    .hut-about .hut-about-2  .btn-daftar{
+        color: #0f4d9a;
+        background: #f7ba44;
+        border-radius: 50px;
+        height: 40px;
+        box-shadow: 1px 1px 1px #0c386e;
+        margin-top: 20px;
+        width: 100%;
+        font-family: 'Brevia-Bold';
+        display: flex;
+        margin-bottom: 50px;
+        justify-content: center;
+        align-items: center;
+        font-size: 15px;
+    
+    }
+    .hut-about .hut-about-2 .hut-section2 .wrapper{
+        height: auto;
+        margin: 20px 0;
+        display: flex;
+        min-height: 15vh;
+    }
+    .hut-about .hut-about-2 .hut-section2 .wrapper .img-wrapper{
+        width: 30%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .hut-about .hut-about-2 .hut-section2 .wrapper .img-wrapper .hut-single-logo{
+            
+    }
+    .hut-about .hut-about-2 .hut-section2 .wrapper .desc-wrapper{
+        width: 70%;    
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        padding-left: 2.5%;
+    }
+    .hut-about .hut-about-2 .hut-section2 .wrapper .desc-wrapper .title{
+        color: #003F7C;
+        font-size: 18px;
+        margin-top: unset;
+        font-family: 'Brevia-Bold';
+    }
+    .hut-about .hut-about-2 .hut-section2 .wrapper .desc-wrapper .desc{
+        color: #003F7C;
+        font-size: 12px;
+    }    
+}    
+</style>
+
+<div class="hut-about">
+    <div class="hut-about-1">
+        <picture>
+            <source media="(max-width: 768px)" srcset="https://www.frisianflag.com/storage/app/media/hut100/mainbanner_mobile.jpg">
+            <source media="(min-width: 769px)" srcset="https://www.frisianflag.com/storage/app/media/hut100/hutdesktop/mainbanner_desktop.jpg">
+            <img src="https://www.frisianflag.com/storage/app/media/hut100/hutdesktop/mainbanner_desktop.jpg" class="hut-bg" loading='lazy' alt="1">
+        </picture>
+        
+        
+        <div class="hut-position">
+            <div class="hut-desc">
+                <h1 class="hut-description">Selama 100 tahun, Frisian Flag Indonesia telah berinovasi dan akan terus berkontribusi dalam membangun Indonesia yang lebih sehat, lebih sejahtera, dan lebih hijau.</h1>
+                <br>
+                <p class="hut-description">Pesan ini diperkuat melalui logo yang menjadi simbol semangat Melaju Kuat Bersama dan pilar 3S (Sehat, Sejahtera, & Selaras) Frisian Flag.</p>
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="hut-about-2">
+        <div class="hut-section1">
+            <div class="about-wrapper">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="https://www.frisianflag.com/storage/app/media/hut100/ff-logo-about@3x.png">
+                    <source media="(min-width: 769px)" srcset="https://www.frisianflag.com/storage/app/media/hut100/hutdesktop/logo@2x.png">
+                    <img src="https://www.frisianflag.com/storage/app/media/hut100/bannerx.png" class="logo-wrapper">
+                </picture>
+                
+            </div>
+            <div class="about-wrapper">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="https://www.frisianflag.com/storage/app/media/hut100/button1.png">
+                    <source media="(min-width: 769px)" srcset="https://www.frisianflag.com/storage/app/media/hut100/hutdesktop/100@2x.png">
+                    <img src="https://www.frisianflag.com/storage/app/media/hut100/hutdesktop/100@2x.png" class="logo-wrapper">
+                </picture>
+            </div>            
+        </div>
+        
+        <div class="hut-section2">
+            <div class="wrapper">
+                <div class="img-wrapper">
+                    <img src="https://www.frisianflag.com/storage/app/media/hut100/satu.png" class="hut-single-logo">
+                </div>
+                <div class="desc-wrapper">
+                    <h2 class="title">Sehat</h2>
+                    <p class="desc">Angka 1 mewakili kontribusi Frisian Flag untuk keluarga Indonesia demi Indonesia yang lebih sehat.</p>
+                </div>
+            </div>
+            <div class="wrapper">
+                <div class="img-wrapper">
+                    <img src="https://www.frisianflag.com/storage/app/media/hut100/0_1.png" class="hut-single-logo">
+                </div>
+                <div class="desc-wrapper">
+                    <h2 class="title">Sejahtera</h2>
+                    <p class="desc">Angka 0 di tengah menggambarkan semangat kolaboratif Frisian Flag dalam membangun Indonesia yang lebih sejahtera, baik untuk peternak sapi perah maupun keluarga Indonesia.</p>
+                </div>                
+            </div>
+            <div class="wrapper">
+                <div class="img-wrapper">
+                    <img src="https://www.frisianflag.com/storage/app/media/hut100/0_2.png" class="hut-single-logo">
+                </div>
+                <div class="desc-wrapper">
+                    <h2 class="title">Selaras</h2>
+                    <p class="desc">Angka 0 di kanan melambangkan komitmen Frisian Flag untuk bersinergi bersama alam demi Indonesia yang lebih hijau.</p>
+                </div>                
+            </div>
+            
+
+        </div>
+        <div class="text-wrap">
+                <p class="desc">
+                    PT Frisian Flag Indonesia (FFI) merupakan salah satu produsen produk bergizi berbasis susu terbesar di Indonesia. Perjalanan FFI bermula dari diimportnya produk dengan merek Frische Vlag ke Indonesia 100 tahun yang lalu dari Cooperative Condens Fabriek, Belanda pada tahun 1922 dan terus berkembang menjadi merek produk susu yang sangat dikenal oleh keluarga Indonesia hingga saat ini. Sebagai bagian dari FrieslandCampina, salah satu koperasi peternak sapi perah terbesar di dunia yang berpusat di Belanda, FFI hadir di Indonesia  dengan merek FRISIAN FLAG®, SUSU BENDERA®, dan OMELA®. Hingga saat ini, FFI mengoperasikan fasilitas produksi di Pasar Rebo dan Ciracas, Jakarta Timur, dengan portofolio produk terlengkap, yaitu susu cair, susu bubuk, dan susu kental manis.
+<br><br>
+Perjalanan Frisian Flag selama 100 tahun di Indonesia tak luput dari partisipasi keluarga Indonesia untuk terus #MelajuKuatBersama. FFI percaya bahwa dalam upaya menuju masyarakat yang sehat, sejahtera dan selaras dengan lingkungan harus dimulai dengan adanya semangat untuk terus maju dari setiap keluarga di Indonesia. Melalui semangat kemajuan tersebut, FFI terus berkomitmen untuk menyediakan gizi yang baik dan terjangkau bagi seluruh lapisan masyarakat.
+             
+                </p>
+                <a class="btn-back" href="https://www.frisianflag.com/perusahaan-kami/tentang-kami">Sejarah Kami</a>
+                <a href="https://www.frisianflag.com/100tahun/pahlawan" class="btn-daftar">
+                     Daftarkan Pahlawanmu Sekarang!
+                </a>
+            </div>
+            
+            <picture>
+                <source media="(max-width: 768px)" srcset="https://www.frisianflag.com/storage/app/media/hut100/farm.png">
+                <source media="(min-width: 769px)" srcset="https://www.frisianflag.com/storage/app/media/hut100/hutdesktop/aboutfarm@2x.png">
+                <img src="https://www.frisianflag.com/storage/app/media/hut100/bannerx.png" class="bottom-logo">
+            </picture>
+            
+    </div>    
+</div>
+
+{% partial 'site/footer' %}
+
+<script>
+$('a[href*="friso"]').css('display', 'none');
+$('.sites-list').css('width', '30%');
+</script>

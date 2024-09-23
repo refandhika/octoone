@@ -1,0 +1,113 @@
+title = "Gallery"
+meta_description = ""
+meta_keywords = ""
+url = "/perusahaan-kami/galeri-foto"
+layout = "default"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+==
+{% set gallery = Gallery.records %}
+
+<h1 aria-hidden="true" class="seo-heading">Galeri Foto</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp hidden-xs"><img src="{{ 'assets/img/our-milkpedia.png'|theme }}" alt="Our Milkpedia"/> </div>
+    <div class="imgwrp visible-xs"><img src="{{ 'assets/img/staticbaner-xs.jpg'|theme }}" alt="Banner Static"/> </div>
+</div>
+
+<div class="container-menutab container-menutab_custom">
+    <div class="container-one">
+        <ul>
+            <li class="toggle hidden-lg"><a href="javascript:;" class="active">{{'galeri-foto'|_}}</a></li>
+            <li><a href="{{'about-us'|page}}" class="{% if this.page.id == 'about-us' %}active{% endif %}">{{'tentang-kami'|_}}</a></li>
+            <li><a href="{{'news'|page}}" class="{% if this.page.id == 'news-archive' %}active{% endif %}">{{'berita'|_}}</a></li>
+            <li><a href="{{'gallery'|page}}" class="{% if this.page.id == 'galeri-foto' %}active{% endif %}">{{'galeri-foto'|_}}</a></li>
+            <li><a href="{{'press-release'|page}}" class="{% if this.page.id == 'press-release' %}active{% endif %}">{{'siaran-pers'|_}}</a></li>
+            <li><a href="{{'our-purposes'|page}}" class="{% if this.page.id == 'our-purposes' %}active{% endif %}">{{'tujuan-kami'|_}}</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id='main-section' class="container-fluid">
+    <div class="container-two">
+      <div class="col-md-12">
+          <div class="breadcrumb">
+            <ul>
+                <li><a href="{{ 'home'|page }}">{{'beranda'|_}}</a> </li>
+                <li><a href="{{ 'tentang-kami'|page }}">{{'perusahaan kami'|_}}</a> </li>
+                <li><a href="javascript:;">{{'galeri foto'|_}}</a> </li>
+            </ul>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+        <div class="default-content">
+            <div class="container-two">
+                <div class="row">
+                    <div class="col-md-7">
+                      <h3>{{'galeri foto'|_}}</h3>
+                    </div>
+                    <div class="col-md-5">
+                      <input type="search" placeholder="Search" class="form-control" id="news-search" style="margin-bottom: 20px;">
+                    </div>
+                </div>
+                <div class="container-menutab container-menutab-news hidden-lg">
+                    <div class="container-one">
+                        <ul>
+                            <li class="toggle"><a href="javascript:;" class="active">All</a></li>
+                            <li><a href="{{url('news'|page) }}" class="active">All</a></li>
+                            {% for years in records.first.year  %}
+                            <li><a href="{{url('news-archive'|page ({"slug":years.published_date})) }}">{{ years.published_date }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="container-news">
+                    <div class="content">
+                        <div class="left">
+                            <div class="content">
+
+                            	<div class="row">
+                            		
+                            		<!-- lopping disini untuk dijadikan cms -->
+                            		<div class="col-xs-12 col-sm-6 col-md-4">                            			
+                            			<a href="single-galeri-foto">
+                            				<div class="gallery__picture" style="background-image: url('{{ 'assets/img/our-milkpedia.png'|theme }}');">
+                            					<p>Lorem ipsum dolor</p>
+                            				</div> <!--  .gallery__picture -->
+                            			</a>             		
+                            		</div> <!--  .col-xs-12 .col-sm-6 .col-md-4 -->
+
+                            	</div> <!--  .row -->
+
+                            	<div class="stylepaging">
+																	<ul>
+																		<li><a href="#" class="disable"><i class="fa fa-angle-double-left"></i></a> </li>
+																		<li><a href="#" class="active">1</a> </li>
+																		<li><a href="#" class="">2</a> </li>
+																		<li><a href="#" class="">3</a> </li>
+																		<li><a href="#"><i class="fa fa-angle-double-right"></i></a> </li>
+																	</ul>
+                                  <div class="paging-info">Halaman 1 Dari 3</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right visible-lg">
+                            <div class="content">
+	                            	<ul class="yearright">
+                                    <li class=""><a href="#">2018</a></li>
+                                    <li class=""><a href="#">2017</a></li>
+                                    <li class=""><a href="#">2016</a></li>
+                                    <li class=""><a href="#">2015</a></li>
+                                </ul>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

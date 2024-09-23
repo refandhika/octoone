@@ -1,0 +1,14 @@
+title = "kuekeringpilihan"
+url = "/kuekeringpilihan"
+is_hidden = 0
+==
+<?php
+function onEnd(){
+    
+            $this->page->amp_url = $this->pageUrl('amp/aktivitas-kami/resep-ramadan-kaya-rasa-dirumahaja/resep-kue-kering-pilihan?utm_source=Offline&utm_medium=POSM&utm_campaign=Local-Activation&utm_term=QR-Code&utm_content=resep-kue-kering-pilihan');
+            header("location: https://www.frisianflag.com/aktivitas-kami/resep-ramadan-kaya-rasa-dirumahaja/resep-kue-kering-pilihan?utm_source=Offline&utm_medium=POSM&utm_campaign=Local-Activation&utm_term=QR-Code&utm_content=resep-kue-kering-pilihan", false, 301);
+            //membuat kode di bawah header tidak diproses oleh website sehingga lebih aman
+            exit();   
+}
+?>
+==

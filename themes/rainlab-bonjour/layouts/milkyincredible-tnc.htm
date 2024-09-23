@@ -1,0 +1,78 @@
+description = "Layout for MilkyIncredible - Syarat dan Ketentuan"
+
+[staticPage]
+[subscriberform]
+[account]
+paramCode = "code"
+forceSecure = 0
+[session]
+
+[SessionClose]
+load_js = 1
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+    	<img src="{{ 'assets/img/milkiincridibles/header-desktop.jpg'|theme }}" class="hidden-xs" />
+      <img src="{{ 'assets/img/milkiincridibles/header-mobile.jpg'|theme }}" class="visible-xs" />
+    </div>
+</div>
+
+<div class="container-menutab">
+    <div class="container-one">
+        <ul class="list-custom">
+            <li class="toggle visible-xs visible-sm"><a href="javascript:;" class="active">Syarat dan Ketentuan</a></li>
+              <li>
+                <a href="{{ '/aktivitas-kami/milky-incredibles' }}">
+                  <span>Keluarga Incredibles</span>
+                </a>
+              </li>
+             <li>
+                <a href="{{ '/aktivitas-kami/milky-incredibles/aturan-main' }}">
+                  <span>{{ 'Cara bermain'|_ }}</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ '/aktivitas-kami/milky-incredibles/syarat-dan-ketentuan' }}" class="active">
+                  <span>{{ 'Syarat dan Ketentuan #KeluargaIncrediblesFF'|_ }}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div id='main-section' class="container" style="padding: 60px 0;">
+    <div class="col-md-12">
+        <div class="default-content">
+
+					{{ trans_pick(page, 'markup')|raw }}
+
+        </div>
+    </div>
+</div>
+
+<style>
+	.default-content h3 {
+	    font-size: 22px;
+	    line-height: 1.2;
+	}
+
+	@media screen and (min-width: 767px) {
+		.default-content h3 {
+			font-size: 30px;
+		}
+	}
+
+  @media screen and (max-width: 767px) {
+    .m-bottom-15 {
+      margin-bottom: 15px;
+    }
+  }
+</style>
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

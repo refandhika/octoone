@@ -1,0 +1,733 @@
+description = "Layout for NikmatiCokelatnya"
+
+[staticPage]
+[subscriberform]
+[account]
+paramCode = "code"
+forceSecure = 0
+[session]
+
+[SessionClose]
+load_js = 1
+==
+<?php
+function onEnd(){
+    $this->page->og_image = "/nikmat-cokelatnya.jpg";
+    $this->page->og_description ="Mau tahu bagaimana caranya supaya anggota keluargamu tetap semangat dengan Frisian Flag kental manis cokelat? Ayo lihat dan coba resep-resep berikut ini. Cari, nikmati dan raih semangatnya dengan Frisian Flag kental manis cokelat!";
+    $this->page->amp_url = $this->pageUrl('nikmatnyacokelat-amp');
+}
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+      <img src="{{ 'assets/img/nikmaticokelatenya/masthead-nikmaticokelatnya.jpg'|theme }}" class="hidden-xs" />
+        <img src="{{ 'assets/img/nikmaticokelatenya/masthead-nikmaticokelatnya-mobile.jpg'|theme }}" class="visible-xs" />
+    </div>
+</div>
+<div class="container-menutab container-menutab--five">
+    <div class="container-one">
+        <ul class="breadcrumb">
+            <!-- <li class="toggle visible-xs visible-sm"><a href="javascript:;" class="active">{{'cara-menikmati-kental-manis-coklat'|_}}</a></li> -->
+            <li class="toggle visible-xs visible-sm"><a href="javascript:;" class="active">Cara Menikmati Kental Manis Cokelat</a></li>
+             <li>
+                  <a href="{{ 'nikmatcokelatnya' }}" class="active">
+                    Cara Menikmati Kental Manis Cokelat
+                    <!-- {{'cara-menikmati-kental-manis-coklat'|_}} -->
+                  </a>
+              </li>
+              <!-- <li>
+                  <a href="{{ 'nikmatcokelatnya/kenapaharuskentalmaniscokelat' }}"  >
+                    Kenapa Harus Kental Manis Cokelat -->
+                    <!-- {{'kenapa-harus-kental-manis-coklat'|_}} -->
+                  <!-- </a>
+              </li> -->
+        </ul>
+    </div>
+</div>
+
+<div id='main-section' class="container" style="padding: 20px 0;">
+    <div class="col-md-12">
+        <div class="default-content recipe">
+           <div class="row" style="padding: 10px 0;">
+
+             <div class="col-md-12 text-center">
+               <h2 style="margin-top: 0; color: #4a4a4a;">CARA MENIKMATI KENTAL MANIS COKELAT</h2>
+               <p>Mau tahu bagaimana caranya supaya anggota keluargamu tetap semangat dengan Frisian Flag kental manis cokelat? Ayo lihat dan coba resep-resep berikut ini. Cari, nikmati dan raih semangatnya dengan Frisian Flag kental manis cokelat!</p>
+               <!-- <h2 style="margin-top: 0; color: #4a4a4a;">{{'cara-menikmati-kental-manis-coklat'|_|uppercase}}</h2>
+               <p>{{'mau-tahu-bagaimana-menikmati-kental-manis'|_}}</p> -->
+             </div>
+
+           </div>
+
+           <div class="row" style="padding-top: 10px;">
+
+             <div class="col-sm-12 col-md-6">
+                <h4 style="margin-bottom: 5px;">Resep Pisang Co'e Ternate</h4>
+                <a href="https://www.youtube.com/watch?v=OfjtqNG-hAQ" data-fancybox="images">
+                    <img src="{{ 'assets/img/nikmaticokelatenya/Resep-Pisang-Coe-Ternate.png'|theme }}" />
+                </a>
+                <div class="text-center" style="padding: 15px 0;">
+
+                  <!-- <a data-fancybox data-src="#pisang-coe-ternate" href="javascript:;" class="button">{{'lihat-resepnya'|_}}</a> -->
+                  <a data-fancybox data-src="#pisang-coe-ternate" href="javascript:;" class="button">Lihat Resepnya</a>
+
+                  <a href="#"
+                     class="prettySocial button"
+                     data-title="Resep Pisang Co'e Ternate"
+                     data-url="https://www.frisianflag.com/aktivitas-kami/nikmatcokelatnya"
+                     data-media="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo.png"
+                     data-type="facebook"
+                     data-description="Kembalikan semangat keluarga dengan menikmati berbagai macam padu padan Frisian Flag kental manis cokelat. Yuk cobain Resep Pisang Co'e Ternate !">Bagikan <i class="fa fa-facebook" aria-hidden="true"></i></a>
+
+                  <a href="#"
+                     class="prettySocial button"
+                     data-url="https://www.frisianflag.com/aktivitas-kami/nikmatcokelatnya"
+                     data-media="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo.png"
+                     data-type="twitter"
+                     data-description="Cobain berbagai kreasi Frisian Flag Kental Manis Cokelat Resep Pisang Co'e Ternate untuk sekeluarga. https://goo.gl/f1AQG7">Tweet <i class="fa fa-twitter" aria-hidden="true"></i></a>
+
+                </div>
+
+                <div class="popup" id="pisang-coe-ternate">
+                  <div class="popup-recipe">
+                                        <h2 class="title"><strong>Resep Pisang Co'e Ternate</strong></h2>
+                    <p>&nbsp;</p>
+                    <p><strong>Resep Description :</strong></p>
+                    <p><strong>Bahan I:</strong></p>
+                    <ul>
+                    <li>5 bh pisang raja matang (450 g), potong kotak</li>
+                    <li>100 g tepung terigu protein sedang</li>
+                    <li>100 ml <strong>Susu Kental Manis Frisian Flag</strong></li>
+                    <li>&frac14; sdt garam</li>
+                    <li>350 ml santan</li>
+                    <li>50 g kenari, sangrai, iris tipis panjang</li>
+                    </ul>
+                    <p><strong>Bahan II:</strong></p>
+                    <ul>
+                    <li>75 g tepung terigu protein sedang</li>
+                    <li>&frac34; sdt garam</li>
+                    <li>400 ml santan</li>
+                    <li>50 g kenari, disangrai, diiris panjang untuk taburan</li>
+                    </ul>
+                    <p><strong>Cara Membuat:</strong></p>
+                    <ol>
+                    <li>Bahan I: Campur tepung terigu, <strong>Susu Kental Manis Frisian Flag</strong>, dan garam sampai rata.</li>
+                    <li>Tuang santan sedikit-sedikit sambil diaduk sampai rata.</li>
+                    <li>Masukkan pisang raja dan kenari, aduk rata.</li>
+                    <li>Tuang ke loyang 20x20x4 cm yang dialas plastik.</li>
+                    <li>Kukus 30 menit sampai setengah matang.</li>
+                    <li>Bahan II: Campur tepung terigu, garam, dan santan sampai rata. Tuang ke atas bahan I. Tabur kenari. Kukus 30 menit sampai matang.</li>
+                    </ol>
+                    <p>&nbsp;</p>
+                    <p><strong>Estimasi Total Penyajian:</strong></p>
+                    <p><strong>10 potong</strong></p>
+                    <p><strong>&nbsp;</strong></p>
+                    <p><strong>Estimasi Waktu Penyajian:</strong></p>
+                    <p><strong>40 menit</strong></p>
+
+                    <!-- <h2 class="title"><strong>{{'resep-pisang-coe-ternate'|_}}</strong></h2>
+                      {{'content-resep-pisang-coe-ternate'|_}} -->
+                  </div>
+                </div>
+             </div>
+
+             <div class="col-sm-12 col-md-6">
+                <!-- <h4 style="margin-bottom: 5px;">{{'resep-pulut-berinti'|_}}</h4> -->
+                <h4 style="margin-bottom: 5px;">Resep Pulut Berinti</h4>
+                <a href="https://www.youtube.com/watch?v=q6F7PfpZULA" data-fancybox="images">
+                    <img src="{{ 'assets/img/nikmaticokelatenya/Resep-Pulut-Berinti.png'|theme }}" />
+                </a>
+                <div class="text-center" style="padding: 15px 0;">
+                  
+                  <a data-fancybox data-src="#pulut-berinti" href="javascript:;" class="button">Lihat Resepnya</a>
+                  <!-- <a data-fancybox data-src="#pulut-berinti" href="javascript:;" class="button">{{'lihat-resepnya'|_}}</a> -->
+
+                  <a href="#"
+                     class="prettySocial button"
+                     data-title="Resep Pulut Berinti"
+                     data-url="https://www.frisianflag.com/aktivitas-kami/nikmatcokelatnya"
+                     data-media="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo.png"
+                     data-type="facebook"
+                     data-description="Kembalikan semangat keluarga dengan menikmati berbagai macam padu padan Frisian Flag kental manis cokelat. Yuk cobain Resep Pulut Berinti !">Bagikan <i class="fa fa-facebook" aria-hidden="true"></i></a>
+
+                 <a href="#"
+                    class="prettySocial button"
+                    data-url="https://www.frisianflag.com/aktivitas-kami/nikmatcokelatnya"
+                    data-media="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo.png"
+                    data-type="twitter"
+                    data-description="Cobain berbagai kreasi Frisian Flag Kental Manis Cokelat Resep Pulut Berinti untuk sekeluarga. https://goo.gl/f1AQG7">Tweet <i class="fa fa-twitter" aria-hidden="true"></i></a>
+
+                </div>
+
+                <div class="popup" id="pulut-berinti">
+                  <div class="popup-recipe">
+                    <h2 class="title"><strong>Resep Pulut Berinti</strong></h2>
+                    <p>&nbsp;</p>
+                    <p><strong>Resep Description :</strong></p>
+
+                    <p><strong>Bahan :</strong></p>
+                    <ul>
+                    <li>200gr Beras ketan, rendam selama 2 jam &amp; kukus 15 menit</li>
+                    <li>150ml Santan dari &frac12; btr kelapa</li>
+                    <li>50ml Susu kental manis Frisian Flag Cokelat</li>
+                    <li>2 lembar Daun pandan</li>
+                    <li>Daun pisang untuk membungkus</li>
+                    </ul>
+                    <p><strong>Bahan Isi :</strong></p>
+                    <ul>
+                    <li>250gr Kelapa parut muda</li>
+                    <li>100gr Daging duren</li>
+                    <li>50gr Gula merah, iris halus</li>
+                    <li>100ml Susu kental manis Frisian Flag Cokelat</li>
+                    </ul>
+                    <p><strong>Cara Membuat :</strong></p>
+                    <ol>
+                    <li>Isi : campur bahan isi, masak di atas api kecil hingga mengering sambil terus diaduk.</li>
+                    <li>Ketan : Panaskan santan, susu kental manis Frisian Flag Cokelat dan daun pandan hingga mendidih, siramkan pada beras ketan yang sudah dikukus (selagi panas) aduk rata. Kukus selama 30 menit hingga matang.</li>
+                    <li>Ambil 1 kepal adonan ketan, bentuk seperti shusi, tabur bagian atasnya dengan adonan isi, lalu gulung padat. Kemudian potong-potong. Sajikan</li>
+                    </ol>
+
+                    <!-- <h2 class="title"><strong>{{'resep-pulut-berinti'|_}}</strong></h2>
+                     {{'content-resep-pulut-berinti'|_}} -->
+                  </div>
+                </div>
+             </div>
+
+           </div>
+
+           <div class="row">
+
+             <div class="col-sm-12 col-md-6">
+                <h4 style="margin-bottom: 5px;">Resep Wedang Ronde</h4>
+                <!-- <h4 style="margin-bottom: 5px;">{{'resep-wedang-ronde'|_}}</h4> -->
+                <a href="https://www.youtube.com/watch?v=uHnyflK3KJQ" data-fancybox="images">
+                    <img src="{{ 'assets/img/nikmaticokelatenya/Resep-Wedang-Ronde.png'|theme }}" />
+                </a>
+                <div class="text-center" style="padding: 15px 0;">
+                  <a data-fancybox data-src="#wedang-ronde" href="javascript:;" class="button">Lihat Resepnya</a>
+                  <!-- <a data-fancybox data-src="#wedang-ronde" href="javascript:;" class="button">{{'lihat-resepnya'|_}}</a> -->
+
+                  <a href="#"
+                     class="prettySocial button"
+                     data-title="Resep Wedang Ronde"
+                     data-url="https://www.frisianflag.com/aktivitas-kami/nikmatcokelatnya"
+                     data-media="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo.png"
+                     data-type="facebook"
+                     data-description="Kembalikan semangat keluarga dengan menikmati berbagai macam padu padan Frisian Flag kental manis cokelat. Yuk cobain Resep Wedang Ronde !">Bagikan <i class="fa fa-facebook" aria-hidden="true"></i></a>
+
+                  <a href="#"
+                     class="prettySocial button"
+                     data-url="https://www.frisianflag.com/aktivitas-kami/nikmatcokelatnya"
+                     data-media="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo.png"
+                     data-type="twitter"
+                     data-description="Cobain berbagai kreasi Frisian Flag Kental Manis Cokelat Resep Wedang Ronde untuk sekeluarga. https://goo.gl/f1AQG7">Tweet <i class="fa fa-twitter" aria-hidden="true"></i></a>
+
+                </div>
+
+                <div class="popup" id="wedang-ronde">
+                  <div class="popup-recipe">
+                                        <h2 class="title"><strong>Resep Wedang Ronde</strong></h2>
+                    </ol>
+                    <p><strong>Resep Description :</strong></p>
+                    <p><strong>Bahan Kulit Ronde :</strong></p>
+                    <ul>
+                    <li>125gr Tepung ketan putih</li>
+                    <li>50ml Air daun pandan + suji</li>
+                    <li>50ml Santan kental hangat</li>
+                    <li>1sdm Minyak sayur</li>
+                    <li>&frac12; sdt Garam</li>
+                    </ul>
+                    <p><strong>Bahan Isi Ronde :</strong></p>
+                    <ul>
+                    <li>100gr Kacang tanah kupas goreng, haluskan</li>
+                    <li>1Sdm Selai kacang</li>
+                    <li>50ml Susu kental manis Frisian Flag Cokelat</li>
+                    <li>&frac12;sdm Maizena</li>
+                    </ul>
+                    <p><strong>Bahan Kuah :</strong></p>
+                    <ul>
+                    <li>100gr Jahe</li>
+                    <li>200gr Gula pasir</li>
+                    <li>2 lembar Daun pandan</li>
+                    <li>&frac14; sdt Garam</li>
+                    <li>1 ltr Air</li>
+                    <li>&frac12; kaleng Susu kental manis Frisian Flag Cokelat</li>
+                    </ul>
+                    <p><strong>Bahan Pelengkap :</strong></p>
+                    <ul>
+                    <li>6 lembar Roti tawar</li>
+                    <li>100gr Kacang tanah goreng</li>
+                    </ul>
+                    <p><strong>Cara Membuat :</strong></p>
+                    <ol>
+                    <li>Kulit : campur 50 gr tepung ketan dengan santan, minyak goreng dan air daun pandan, aduk rata, panaskan di atas api kecil. Aduk hingga mengental, angkat, masukkan sisa tepung, uleni hingga kalis dan dapat dibentuk.</li>
+                    <li>Isi : Campur bahan isi, aduk rata.</li>
+                    <li>Kuah : rebus bahan kuah hingga matang dan air sedikit menyusut, aduk terus.</li>
+                    <li>Ambil adonan kulit, pipihkan, isi dengan bahan isi, bulatkan menyerupai kelereng, rebus dalam air mendidih hingga terapung dan matang, angkat.</li>
+                    <li>Siapkan gelas saji, atur ronde, potongan roti tawar dan kacang tanah, siram dengan kuah. Sajikan selagi hangat.</li>
+                    </ol>
+                    <!-- <h2 class="title"><strong>{{'resep-wedang-ronde'|_}}</strong></h2>
+                     {{'content-resep-wedang-ronde'|_}} -->
+                  </div>
+                </div>
+             </div>
+
+             <div class="col-sm-12 col-md-6">
+                <h4 style="margin-bottom: 5px;">Resep Es Barnebon</h4>
+                <!-- <h4 style="margin-bottom: 5px;">{{'resep-es-barnebon'|_}}</h4> -->
+                <a href="https://www.youtube.com/watch?v=My1_GoTkRpg" data-fancybox="images">
+                    <img src="{{ 'assets/img/nikmaticokelatenya/Resep-Es-Barnebon.png'|theme }}" />
+                </a>
+                <div class="text-center" style="padding: 15px 0;">
+
+                  <a data-fancybox data-src="#es-barnebon" href="javascript:;" class="button">Lihat Resepnya</a>
+                  <!-- <a data-fancybox data-src="#es-barnebon" href="javascript:;" class="button">{{'lihat-resepnya'|_}}</a> -->
+
+                  <a href="#"
+                     class="prettySocial button"
+                     data-title="Resep Es Barnebon"
+                     data-url="https://www.frisianflag.com/aktivitas-kami/nikmatcokelatnya"
+                     data-media="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo.png"
+                     data-type="facebook"
+                     data-description="Kembalikan semangat keluarga dengan menikmati berbagai macam padu padan Frisian Flag kental manis cokelat. Yuk cobain Resep Es Barnebon !">Bagikan <i class="fa fa-facebook" aria-hidden="true"></i></a>
+
+                  <a href="#"
+                     class="prettySocial button"
+                     data-url="https://www.frisianflag.com/aktivitas-kami/nikmatcokelatnya"
+                     data-media="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo.png"
+                     data-type="twitter"
+                     data-description="Cobain berbagai kreasi Frisian Flag Kental Manis Cokelat Resep Es Barnebon untuk sekeluarga. https://goo.gl/f1AQG7">Tweet <i class="fa fa-twitter" aria-hidden="true"></i></a>
+
+                </div>
+
+                <div class="popup" id="es-barnebon">
+                  <div class="popup-recipe">
+                    <h2 class="title"><strong>Resep Es Barnebon</strong></h2>
+
+                    <p><strong>Resep Description :</strong></p>
+
+                    <p><strong>Bahan Isi :</strong></p>
+                    <ul>
+                    <li>200gr Kacang merah</li>
+                    <li>1ltr Air</li>
+                    <li>2 btg Kayu manis</li>
+                    <li>3 lmbr Daun pandan</li>
+                    </ul>
+                    <p><strong>Bahan Kuah :</strong></p>
+                    <ul>
+                    <li>250gr Gula pasir</li>
+                    <li>300ml Air</li>
+                    <li>&frac14; sdt Garam</li>
+                    <li>1 btg Kayu manis</li>
+                    </ul>
+                    <p><strong>Bahan Pelengkap :</strong></p>
+                    <ul>
+                    <li>200 ml Susu kental manis Frisian Flag Cokelat</li>
+                    <li>100gr Pacar cina (siap pakai)</li>
+                    <li>Secukupnya Es batu</li>
+                    </ul>
+                    <p><strong>Cara Membuat :</strong></p>
+                    <ol>
+                    <li>Rebus bahan isi hingga kacang empuk, dinginkan.</li>
+                    <li>Kuah : rebus gula hingga larut bersama air, kayu manis dan garam, dinginkan.</li>
+                    <li>Siapkan gelas hidang atur es batu, kacang merah, pacar cina, kuah, siram dengan susu kental manis Frisian Flag Cokelat. Sajikan.</li>
+                    </ol>
+                    <!-- <h2 class="title"><strong>{{'resep-es-barnebon'|_}}</strong></h2>
+                    {{'content-resep-es-barnebon'|_}} -->
+                  </div>
+                </div>
+             </div>
+
+           </div>
+
+           <div class="row">
+
+             <div class="col-sm-12 col-md-6">
+                <h4 style="margin-bottom: 5px;">Resep Kue Ombus-Ombus</h4>
+                <!-- <h4 style="margin-bottom: 5px;">{{'resep-kue-ombus-ombus'}}</h4> -->
+                <a href="https://www.youtube.com/watch?v=ocNrnSFzEXw" data-fancybox="images">
+                    <img src="{{ 'assets/img/nikmaticokelatenya/Resep-Kue-Ombus-Ombus.png'|theme }}" />
+                </a>
+                <div class="text-center" style="padding: 15px 0;">
+
+                  <a data-fancybox data-src="#kue-ombus-ombus" href="javascript:;" class="button">Lihat Resepnya</a>
+                  <!-- <a data-fancybox data-src="#kue-ombus-ombus" href="javascript:;" class="button">{{'lihat-resepnya'|_}}</a> -->
+
+                  <a href="#"
+                     class="prettySocial button"
+                     data-title="Resep Kue Ombus-Ombus"
+                     data-url="https://www.frisianflag.com/aktivitas-kami/nikmatcokelatnya"
+                     data-media="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo.png"
+                     data-type="facebook"
+                     data-description="Kembalikan semangat keluarga dengan menikmati berbagai macam padu padan Frisian Flag kental manis cokelat. Yuk cobain Resep Kue Ombus-Ombus !">Bagikan <i class="fa fa-facebook" aria-hidden="true"></i></a>
+
+                  <a href="#"
+                     class="prettySocial button"
+                     data-url="https://www.frisianflag.com/aktivitas-kami/nikmatcokelatnya"
+                     data-media="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo.png"
+                     data-type="twitter"
+                     data-description="Cobain berbagai kreasi Frisian Flag Kental Manis Cokelat Resep Kue Ombus-Ombus untuk sekeluarga. https://goo.gl/f1AQG7">Tweet <i class="fa fa-twitter" aria-hidden="true"></i></a>
+
+                </div>
+
+                <div class="popup" id="kue-ombus-ombus">
+                  <div class="popup-recipe">
+                    <h2 class="title"><strong>Resep Kue Ombus-Ombus</strong></h2>
+                    <p><strong>Resep Description :</strong></p>
+                    <p><strong>BAHAN KULIT</strong></p>
+                    <ul>
+                    <li>200 GR TEPUNG KETAN PUTIH</li>
+                    <li>150 GR KELAPA PARUT MUDA</li>
+                    <li>&frac12; SDT GARAM</li>
+                    </ul>
+                    <p><strong>BAHAN ISI :</strong></p>
+                    <ul>
+                    <li>100GR DAGING KURMA CINCANG</li>
+                    <li>5 SDM SUSU KENTAL MANIS FRISIAN FLAG COKELAT</li>
+                    </ul>
+                    <p><strong>BAHAN PELENGKAP :</strong></p>
+                    <ul>
+                    <li>DAUN PANDAN</li>
+                    <li>DAUN PISANG</li>
+                    </ul>
+                    <p><strong>CARA MEMBUAT :</strong></p>
+                    <ol>
+                    <li>CAMPUR BAHAN KULIT HINGGA TERCAMPUR RATA.</li>
+                    <li>CAMPUR BAHAN ISI HINGGA RATA.</li>
+                    <li>SIAPKAN KUKUSAN. SIAPKAN DAUN PISANG BENTUK MENYERUPAI TEROMPET, MASUKKAN ADONAN KULIT, ADONAN ISI KEMUDIAN TUTUP KEMBALI ADONAN KULIT, POTONGAN DAUN PANDAN. RAPIHKAN (TUTUP) DENGAN SISA DAUN PISANG. KUKUS HINGGA MATANG.</li>
+                    <li>SAJIKAN SELAGI HANGAT.</li>
+                    </ol>
+                    <!-- <h2 class="title"><strong>{{'resep-kue-ombus-ombus'|_}}</strong></h2>
+                    {{'content-resep-kue-ombus-ombus'|_}} -->
+                  </div>
+                </div>
+             </div>
+
+             <div class="col-sm-12 col-md-6">
+                <h4 style="margin-bottom: 5px;">Resep Sundrek Cendol</h4>
+                <!-- <h4 style="margin-bottom: 5px;">{{'resep-sundrek-cendol'|_}}</h4> -->
+                <a href="https://www.youtube.com/watch?v=FnOXyAQuC54" data-fancybox="images">
+                    <img src="{{ 'assets/img/nikmaticokelatenya/Resep-Sundrek-Cendol.png'|theme }}" />
+                </a>
+                <div class="text-center" style="padding: 15px 0;">
+
+                  <a data-fancybox data-src="#resep-sundrek-cendol" href="javascript:;" class="button">Lihat Resepnya</a>
+                  <!-- <a data-fancybox data-src="#resep-sundrek-cendol" href="javascript:;" class="button">{{'lihat-resepnya'|_}}</a> -->
+
+                  <a href="#"
+                     class="prettySocial button"
+                     data-title="Resep Sundrek Cendol"
+                     data-url="https://www.frisianflag.com/aktivitas-kami/nikmatcokelatnya"
+                     data-media="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo.png"
+                     data-type="facebook"
+                     data-description="Kembalikan semangat keluarga dengan menikmati berbagai macam padu padan Frisian Flag kental manis cokelat. Yuk cobain Resep Sundrek Cendol !">Bagikan <i class="fa fa-facebook" aria-hidden="true"></i></a>
+
+                  <a href="#"
+                     class="prettySocial button"
+                     data-url="https://www.frisianflag.com/aktivitas-kami/nikmatcokelatnya"
+                     data-media="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo.png"
+                     data-type="twitter"
+                     data-description="Cobain berbagai kreasi Frisian Flag Kental Manis Cokelat Resep Sundrek Cendol untuk sekeluarga. https://goo.gl/f1AQG7">Tweet <i class="fa fa-twitter" aria-hidden="true"></i></a>
+
+                </div>
+
+                <div class="popup" id="resep-sundrek-cendol">
+                  <div class="popup-recipe">
+
+                    <h2 class="title"><strong>Resep Sundrek Cendol</strong></h2>
+                    <p><strong>Resep Description :</strong></p>
+                    <p><strong>Bahan Kuah :</strong></p>
+                    <ul>
+                    <li>250gr Jahe, bakar</li>
+                    <li>3 btg Serai</li>
+                    <li>10 buah Cengkeh</li>
+                    <li>3 btg Kayu manis</li>
+                    <li>2 ltr Air</li>
+                    <li>500 gr Gula aren merah</li>
+                    <li>Bahan Pelengkap :</li>
+                    <li>1 klg Susu kental manis putih Frisian Flag Gold</li>
+                    <li>100gr Kelapa kerok agak muda</li>
+                    <li>200gr Cendol</li>
+                    </ul>
+                    <p><strong>Cara Membuat :</strong></p>
+                    <ol>
+                    <li>Kuah : geprak jahe dan serai, campur bahan kuah, masak dengan api kecil hingga matang dan air sedikit menyusut. Masukkan susu kental manis putih Frisian Flag Gold, aduk rata.</li>
+                    <li>Siapkan gelas hidang, masukkan cendol dan kelapa muda kerok, siram dengan kuah. Sajikan selagi hangat.</li>
+                    </ol>
+
+                  </div>
+                </div>
+             </div>
+
+           </div>
+
+           <div class="row">
+             <div class="col-sm-12 col-md-6">
+                <h4 style="margin-bottom: 5px;">Resep Tiliaya</h4>
+                <!-- <h4 style="margin-bottom: 5px;">{{'resep-tiliaya'|_}}</h4> -->
+                <a href="https://www.youtube.com/watch?v=BLLN4pUwCB0" data-fancybox="images">
+                    <img src="{{ 'assets/img/nikmaticokelatenya/Resep-Tiliaya.png'|theme }}" />
+                </a>
+                <div class="text-center" style="padding: 15px 0;">
+                  <a data-fancybox data-src="#tiliaya" href="javascript:;" class="button">Lihat Resepnya</a>
+                  <!-- <a data-fancybox data-src="#tiliaya" href="javascript:;" class="button">{{'lihat-resepnya'|_}}</a> -->
+
+                  <a href="#"
+                     class="prettySocial button"
+                     data-title="Resep Tiliaya"
+                     data-url="https://www.frisianflag.com/aktivitas-kami/nikmatcokelatnya"
+                     data-media="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo.png" 
+                     data-type="facebook"
+                     data-description="Kembalikan semangat keluarga dengan menikmati berbagai macam padu padan Frisian Flag kental manis cokelat. Yuk cobain Resep Tiliaya !">Bagikan <i class="fa fa-facebook" aria-hidden="true"></i></a>
+
+                  <a href="#"
+                     class="prettySocial button"
+                     data-url="https://www.frisianflag.com/aktivitas-kami/nikmatcokelatnya"
+                     data-media="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo.png"
+                     data-type="twitter"
+                     data-description="Cobain berbagai kreasi Frisian Flag Kental Manis Cokelat Resep Tiliaya untuk sekeluarga. https://goo.gl/f1AQG7">Tweet <i class="fa fa-twitter" aria-hidden="true"></i></a>
+
+                </div>
+
+                <div class="popup" id="tiliaya">
+                  <div class="popup-recipe">
+                    <h2 class="title"><strong>Resep Tiliaya</strong></h2>
+                    <p><strong>Resep Description :</strong></p>
+                    <p><strong>Bahan :</strong></p>
+                    <ul>
+                    <li>6btr Telur</li>
+                    <li>300gr Gula merah</li>
+                    <li>100gr Susu kental manis Frisian Flag Cokelat</li>
+                    <li>300ml Santan kental dari 1 butir kelapa</li>
+                    <li>50gr Tepung beras</li>
+                    </ul>
+                    <p><strong>Cara Membuat :</strong></p>
+                    <ol>
+                    <li>Siapkan loyang ukuran 18x18cm, olesi dengan margarin, alasi dengan daun pisang yang tealah dioles dengan margarin. Panaskan kukusan.</li>
+                    <li>Kocok telur dan gula merah hingga gula larut. Masukkan susu kental manis Frisian Flag Cokelat, aduk rata.</li>
+                    <li>Tambahkan santan dan tepung beras, aduk rata kembali.</li>
+                    <li>Tuangkan adonan ke dalam loyang berukuran 18x18cm. Kukus hingga matang, dinginkan.</li>
+                    <li>Potong sesuai selera, sajikan setelah dingin.</li>
+                    </ol>
+
+                    <!-- <h2 class="title"><strong>{{'resep-tiliaya'|_}}</strong></h2>
+                    {{'content-resep-tiliaya'|_}} -->
+                  </div>
+                </div>
+             </div>
+
+             <div class="col-sm-12 col-md-6">
+                <h4 style="margin-bottom: 5px;">Resep Sarikaya</h4>
+                <!-- <h4 style="margin-bottom: 5px;">{{'resep-sarikaya'|_}}</h4> -->
+                <a href="https://www.youtube.com/watch?v=hkEqCxzyCVU" data-fancybox="images">
+                    <img src="{{ 'assets/img/nikmaticokelatenya/Resep-Sarikaya.png'|theme }}" />
+                </a>
+                <div class="text-center" style="padding: 15px 0;">
+  
+                  <a data-fancybox data-src="#sarikaya" href="javascript:;" class="button">Lihat Resepnya</a>
+                  <!-- <a data-fancybox data-src="#sarikaya" href="javascript:;" class="button">{{'lihat-resepnya'|_}}</a> -->
+
+                  <a href="#"
+                     class="prettySocial button"
+                     data-title="Resep Sarikaya"
+                     data-url="https://www.frisianflag.com/aktivitas-kami/nikmatcokelatnya"
+                     data-media="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo.png"
+                     data-type="facebook"
+                     data-description="Kembalikan semangat keluarga dengan menikmati berbagai macam padu padan Frisian Flag kental manis cokelat. Yuk cobain Resep Sarikaya !">Bagikan <i class="fa fa-facebook" aria-hidden="true"></i></a>
+
+                  <a href="#"
+                     class="prettySocial button"
+                     data-url="https://www.frisianflag.com/aktivitas-kami/nikmatcokelatnya"
+                     data-media="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo.png"
+                     data-type="twitter"
+                     data-description="Cobain berbagai kreasi Frisian Flag Kental Manis Cokelat Resep Sarikaya untuk sekeluarga. https://goo.gl/f1AQG7">Tweet <i class="fa fa-twitter" aria-hidden="true"></i></a>
+
+                </div>
+
+                <div class="popup" id="sarikaya">
+                  <div class="popup-recipe">
+                    <h2 class="title"><strong>Resep Sarikaya</strong></h2>
+                    <p><strong>Resep Description :</strong></p>
+                    <p><strong>Bahan :</strong></p>
+                    <ul>
+                    <li>4btr Telur</li>
+                    <li>150gr Gula pasir</li>
+                    <li>150ml Susu kental manis Frisian Flag Cokelat</li>
+                    <li>500ml Santan kental dari 1 btr kelapa</li>
+                    <li>&frac12;sdt Pasta mocca</li>
+                    </ul>
+                    <p><strong>Cara Membuat :</strong></p>
+                    <ol>
+                    <li>Siapkan mangkuk alumunium foil kecil/gelas kecil tahan panas. Panaskan kukusan.</li>
+                    <li>Kocok telur dan gula hingga mengembang, masukkan sisa bahan lainnya.</li>
+                    <li>Tuangkan adonan ke dalam cetakan. Kukus hingga matang.</li>
+                    </ol>
+
+                    <!-- <h2 class="title"><strong>{{'resep-sarikaya'|_}}</strong></h2>
+                    {{'content-resep-sarikaya'|_}} -->
+                  </div>
+                </div>
+             </div>
+           </div>
+
+           <div class="row" style="padding-bottom: 10px;">
+
+             <div class="col-sm-12 col-md-6">
+                <h4 style="margin-bottom: 5px;">Resep Pisang Owol</h4>
+                <!-- <h4 style="margin-bottom: 5px;">{{'resep-pisang-owol'}}</h4> -->
+                <a href="https://www.youtube.com/watch?v=IkTQE_SXBzY" data-fancybox="images">
+                    <img src="{{ 'assets/img/nikmaticokelatenya/Resep-Pisang-Owol.png'|theme }}" />
+                </a>
+                <div class="text-center" style="padding: 15px 0;">
+
+                  <a data-fancybox data-src="#pisang-owol" href="javascript:;" class="button">Lihat Resepnya</a>
+                  <!-- <a data-fancybox data-src="#pisang-owol" href="javascript:;" class="button">{{'lihat-resepnya'|_}}</a> -->
+
+                  <a href="#"
+                     class="prettySocial button"
+                     data-title="Resep Pisang Owol"
+                     data-url="https://www.frisianflag.com/aktivitas-kami/nikmatcokelatnya"
+                     data-media="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo.png"
+                     data-type="facebook"
+                     data-description="Kembalikan semangat keluarga dengan menikmati berbagai macam padu padan Frisian Flag kental manis cokelat. Yuk cobain Resep Pisang Owol !">Bagikan <i class="fa fa-facebook" aria-hidden="true"></i></a>
+
+                  <a href="#"
+                     class="prettySocial button"
+                     data-url="https://www.frisianflag.com/aktivitas-kami/nikmatcokelatnya"
+                     data-media="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo.png"
+                     data-type="twitter"
+                     data-description="Cobain berbagai kreasi Frisian Flag Kental Manis Cokelat Resep Pisang Owol untuk sekeluarga. https://goo.gl/f1AQG7">Tweet <i class="fa fa-twitter" aria-hidden="true"></i></a>
+
+                </div>
+
+                <div class="popup" id="pisang-owol">
+                  <div class="popup-recipe">
+                    
+                    <h2 class="title"><strong>Resep Pisang Owol</strong></h2>
+                    <p><strong>Resep Description :</strong></p>
+                    <p><strong>Bahan:</strong></p>
+                    <ul>
+                    <li>6 bh pisang raja</li>
+                    <li>2 sdm mentega</li>
+                    <li>2 sdm cokelat meses</li>
+                    <li>50 g keju cheddar, parut</li>
+                    <li>100 ml <strong>Susu Kental Manis Frisian Flag Cokelat</strong></li>
+                    </ul>
+                    <p><strong>Cara Membuat :</strong></p>
+                    <ol>
+                    <li>Panaskan mentega, goreng pisang yang sudah dipipihkan hingga agak kering dibagian luarnya atau menjadi berwarna coklat.</li>
+                    <li>Angkat dan sajikan di piring saji,</li>
+                    <li>Siram dengan <strong>Susu Kental Manis Frisian Flag Cokelat</strong>.</li>
+                    <li>Taburi keju dan cokelat meses hingga merata.</li>
+                    </ol>
+                    <p><strong>Estimasi Total Penyajian:</strong></p>
+                    <p><strong>6 porsi</strong></p>
+                    <p><strong>&nbsp;</strong></p>
+                    <p><strong>Estimasi Waktu Penyajian:</strong></p>
+                    <p><strong>10 menit</strong></p>
+                    <!-- <h2 class="title"><strong>{{'resep-pisang-owol'}}</strong></h2>
+                    {{'content-resep-pisang-owol'|_}} -->
+                  </div>
+                </div>
+             </div>
+
+             <div class="col-sm-12 col-md-6">
+                <h4 style="margin-bottom: 5px;">Resep Rujak Es Krim</h4>
+                <!-- <h4 style="margin-bottom: 5px;">{{'resep-rujak-es-krim'|_}}</h4> -->
+                <a href="https://www.youtube.com/watch?v=6zxVq774i8g" data-fancybox="images">
+                    <img src="{{ 'assets/img/nikmaticokelatenya/Resep-Rujak-Es-Krim.png'|theme }}" />
+                </a>
+                <div class="text-center" style="padding: 15px 0;">
+    
+                  <a data-fancybox data-src="#rujak-es-krim" href="javascript:;" class="button">Lihat Resepnya</a>
+                  <!-- <a data-fancybox data-src="#rujak-es-krim" href="javascript:;" class="button">{{'lihat-resepnya'|_}}</a> -->
+
+                  <a href="#"
+                     class="prettySocial button"
+                     data-title="Resep Rujak Es Krim"
+                     data-url="https://www.frisianflag.com/aktivitas-kami/nikmatcokelatnya"
+                     data-media="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo.png"
+                     data-type="facebook"
+                     data-description="Kembalikan semangat keluarga dengan menikmati berbagai macam padu padan Frisian Flag kental manis cokelat. Yuk cobain Resep Rujak Es Krim !">Bagikan <i class="fa fa-facebook" aria-hidden="true"></i></a>
+
+                  <a href="#"
+                     class="prettySocial button"
+                     data-url="https://www.frisianflag.com/aktivitas-kami/nikmatcokelatnya"
+                     data-media="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo.png"
+                     data-type="twitter"
+                     data-description="Cobain berbagai kreasi Frisian Flag Kental Manis Cokelat Resep Rujak Es Krim untuk sekeluarga. https://goo.gl/f1AQG7">Tweet <i class="fa fa-twitter" aria-hidden="true"></i></a>
+
+                </div>
+
+                <div class="popup" id="rujak-es-krim">
+                  <div class="popup-recipe">
+                                        <h2 class="title"><strong>Resep Rujak Es Krim</strong></h2>
+                    <p><strong>Resep Description :</strong></p>
+                    <p><strong>Bahan:</strong></p>
+                    <ul>
+                    <li>200 g nanas, iris korek api</li>
+                    <li>200 g pepaya mengkal, iris korek api</li>
+                    <li>200 g mangga muda, iris korek api</li>
+                    <li>200 g mentimun, buang biji, iris korek api</li>
+                    <li>400 g gula pasir</li>
+                    <li>1 &frac12; l air</li>
+                    <li>600 g es krim</li>
+                    <li>200 ml <strong>Susu Kental Manis Frisian Flag Cokelat</strong></li>
+                    </ul>
+                    <p><strong>Bumbu Rujak:</strong></p>
+                    <ul>
+                    <li>5 bh cabai rawit merah</li>
+                    <li>&frac12; sdt terasi goreng</li>
+                    <li>1 sdm asam jawa</li>
+                    <li>&frac34; sdt garam</li>
+                    <li>2 sdm air jeruk nipis</li>
+                    </ul>
+                    <p><strong>Cara Membuat:</strong></p>
+                    <ol>
+                    <li>Didihkan air. Masukkan bumbu rujak. Rebus sampai harum.</li>
+                    <li>Masukkan gula pasir, aduk rata. Masak sampai larut. Angkat.</li>
+                    <li>Tambahkan nanas, pepaya, mangga, dan mentimun, aduk rata.</li>
+                    <li>Masukkan air jeruk nipis. Dinginkan.</li>
+                    <li>Sajikan dengan es krim dan siraman <strong>Susu Kental Manis Frisian Flag Cokelat</strong>.</li>
+                    </ol>
+                    <p><strong>Estimasi Total Penyajian:</strong></p>
+                    <p><strong>10 porsi</strong></p>
+                    <p><strong>&nbsp;</strong></p>
+                    <p><strong>Estimasi Waktu Penyajian:</strong></p>
+                    <p><strong>30 menit</strong></p>
+
+                    <!-- <h2 class="title"><strong>{{'resep-rujak-es-krim'|_}}</strong></h2>
+                    {{'content-resep-rujak-es-krim'|_}} -->
+                  </div>
+                </div>
+             </div>
+
+           </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .default-content h3 {
+        font-size: 22px;
+        line-height: 1.2;
+    }
+
+    .recipe a img {
+      width: 120%;
+    }
+
+    @media screen and (min-width: 767px) {
+        .default-content h3 {
+            font-size: 30px;
+        }
+    }
+</style>
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

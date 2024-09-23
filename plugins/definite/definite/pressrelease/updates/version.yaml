@@ -1,0 +1,23 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table definite_pressrelease_categories'
+    - builder_table_create_definite_pressrelease_categories.php
+1.0.3:
+    - 'Created table definite_pressrelease_post'
+    - builder_table_create_definite_pressrelease_post.php
+1.0.4:
+    - 'Created table definite_pressrelease_post_categories'
+    - builder_table_create_definite_pressrelease_post_categories.php
+1.0.5:
+    - 'Drop table definite_pressrelease_'
+    - builder_table_delete_definite_pressrelease_.php
+1.0.6:
+    - 'Updated table definite_pressrelease_post'
+    - builder_table_update_definite_pressrelease_post.php
+1.0.7:
+    - 'Updated table definite_pressrelease_categories'
+    - builder_table_update_definite_pressrelease_categories.php
+1.0.8:
+    - 'Updated table definite_pressrelease_post'
+    - builder_table_update_definite_pressrelease_post2.php

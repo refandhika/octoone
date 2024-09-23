@@ -1,0 +1,119 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table definite_ramadhan2024_'
+    - builder_table_create_definite_ramadhan2024_.php
+1.0.3:
+    - 'Updated table definite_ramadhan2024_'
+    - builder_table_update_definite_ramadhan2024_.php
+1.0.4:
+    - 'Updated table definite_ramadhan2024_'
+    - builder_table_update_definite_ramadhan2024__2.php
+1.0.5:
+    - 'Updated table definite_ramadhan2024_'
+    - builder_table_update_definite_ramadhan2024__3.php
+1.0.6:
+    - 'Updated table definite_ramadhan2024_'
+    - builder_table_update_definite_ramadhan2024__4.php
+1.0.7:
+    - 'Updated table definite_ramadhan2024_'
+    - builder_table_update_definite_ramadhan2024__5.php
+1.0.8:
+    - 'Created table definite_ramadhan2024_banner'
+    - builder_table_create_definite_ramadhan2024_banner.php
+1.0.9:
+    - 'Created table definite_ramadhan2024_sahur'
+    - builder_table_create_definite_ramadhan2024_sahur.php
+1.0.10:
+    - 'Updated table definite_ramadhan2024_sahur'
+    - builder_table_update_definite_ramadhan2024_sahur.php
+1.0.11:
+    - 'Updated table definite_ramadhan2024_sahur'
+    - builder_table_update_definite_ramadhan2024_sahur_2.php
+1.0.12:
+    - 'Created table definite_ramadhan2024_takjil'
+    - builder_table_create_definite_ramadhan2024_takjil.php
+1.0.13:
+    - 'Created table definite_ramadhan2024_kuekering'
+    - builder_table_create_definite_ramadhan2024_kuekering.php
+1.0.14:
+    - 'Created table definite_ramadhan2024_staticbanner'
+    - builder_table_create_definite_ramadhan2024_staticbanner.php
+1.0.15:
+    - 'Created table definite_ramadhan2024_promo'
+    - builder_table_create_definite_ramadhan2024_promo.php
+1.0.16:
+    - 'Updated table definite_ramadhan2024_banner'
+    - builder_table_update_definite_ramadhan2024_banner.php
+1.0.17:
+    - 'Created table definite_ramadhan2024_mainmenus'
+    - builder_table_create_definite_ramadhan2024_mainmenus.php
+1.0.18:
+    - 'Updated table definite_ramadhan2024_mainmenus'
+    - builder_table_update_definite_ramadhan2024_mainmenus.php
+1.0.19:
+    - 'Created table definite_ramadhan2024_promobanner'
+    - builder_table_create_definite_ramadhan2024_promobanner.php
+1.0.20:
+    - 'Created table definite_ramadhan2024_whatsappbtn'
+    - builder_table_create_definite_ramadhan2024_whatsappbtn.php
+1.0.21:
+    - 'Updated table definite_ramadhan2024_promobanner'
+    - builder_table_update_definite_ramadhan2024_promobanner.php
+1.0.22:
+    - 'Updated table definite_ramadhan2024_staticbanner'
+    - builder_table_update_definite_ramadhan2024_staticbanner.php
+1.0.23:
+    - 'Updated table definite_ramadhan2024_sahur'
+    - builder_table_update_definite_ramadhan2024_sahur_3.php
+1.0.24:
+    - 'Updated table definite_ramadhan2024_sahur'
+    - builder_table_update_definite_ramadhan2024_sahur_4.php
+1.0.25:
+    - 'Updated table definite_ramadhan2024_sahur'
+    - builder_table_update_definite_ramadhan2024_sahur_5.php
+1.0.26:
+    - 'Updated table definite_ramadhan2024_takjil'
+    - builder_table_update_definite_ramadhan2024_takjil.php
+1.0.27:
+    - 'Updated table definite_ramadhan2024_takjil'
+    - builder_table_update_definite_ramadhan2024_takjil_2.php
+1.0.28:
+    - 'Updated table definite_ramadhan2024_takjil'
+    - builder_table_update_definite_ramadhan2024_takjil_3.php
+1.0.29:
+    - 'Updated table definite_ramadhan2024_kuekering'
+    - builder_table_update_definite_ramadhan2024_kuekering.php
+1.0.30:
+    - 'Updated table definite_ramadhan2024_kuekering'
+    - builder_table_update_definite_ramadhan2024_kuekering_2.php
+1.0.31:
+    - 'Created table definite_ramadhan2024_article'
+    - builder_table_create_definite_ramadhan2024_article.php
+1.0.32:
+    - 'Updated table definite_ramadhan2024_article'
+    - builder_table_update_definite_ramadhan2024_article.php
+1.0.33:
+    - 'Updated table definite_ramadhan2024_promo'
+    - builder_table_update_definite_ramadhan2024_promo.php
+1.0.34:
+    - 'Updated table definite_ramadhan2024_promo'
+    - builder_table_update_definite_ramadhan2024_promo_2.php
+1.0.35:
+    - 'Updated table definite_ramadhan2024_promo'
+    - builder_table_update_definite_ramadhan2024_promo_3.php
+1.0.36:
+    - 'Updated table definite_ramadhan2024_promo'
+    - builder_table_update_definite_ramadhan2024_promo_4.php
+1.0.37:
+    - 'Updated table definite_ramadhan2024_banner'
+    - builder_table_update_definite_ramadhan2024_banner_2.php
+1.0.38:
+    - 'Updated table definite_ramadhan2024_promo'
+    - builder_table_update_definite_ramadhan2024_promo_5.php
+1.0.39:
+    - 'Updated table definite_ramadhan2024_article'
+    - builder_table_update_definite_ramadhan2024_article_2.php
+1.0.40:
+    - 'Created table definite_ramadhan2024_articlecategory'
+    - builder_table_create_definite_ramadhan2024_articlecategory.php

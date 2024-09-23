@@ -1,0 +1,10 @@
+name: Articel
+form: $/leverate/careers/models/article/fields.yaml
+modelClass: Leverate\Careers\Models\Article
+defaultRedirect: leverate/careers/articel
+create:
+    redirect: 'leverate/careers/articel/update/:id'
+    redirectClose: leverate/careers/articel
+update:
+    redirect: leverate/careers/articel
+    redirectClose: leverate/careers/articel

@@ -1,0 +1,38 @@
+title = "Event"
+url = "/karir/event/:slug"
+layout = "karir-event-slug"
+is_hidden = 0
+
+[builderDetails event]
+modelClass = "Leverate\Careers\Models\Event"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "slug"
+notFoundMessage = "Record not found"
+==
+<?php
+function onEnd() {
+    
+     // get the post component
+    $_title = $this->page->components["event"]->record->attributes["title"];
+    $desc   = $this->page->components["event"]->record->attributes["meta_description"];
+    $keys   = $this->page->components["event"]->record->attributes["meta_keywords"];
+    $img    = $this->page->components["event"]->record->attributes["thumb_img"];
+    
+    $this->page->title            = $_title;
+    $this->page->meta_description = $desc;
+    $this->page->meta_keywords    = $keys;
+    $this->page->og_image         = $img;
+    $this->page->og_description   = $desc;
+    $this->page->amp_url = $this->pageUrl('karir-event-detail-amp');
+}
+
+function onStart() {
+    if(isset($_GET['isDev'])){
+        $this['isDev'] = 'true';  
+    } else {
+        $this['isDev'] = 'false';
+    }
+}
+?>
+==

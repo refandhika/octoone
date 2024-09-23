@@ -1,0 +1,141 @@
+title = "Event Detail AMP"
+url = "/amp/karir/event/:slug"
+layout = "basic-amp"
+is_hidden = 0
+
+[builderDetails event]
+modelClass = "Leverate\Careers\Models\Event"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "slug"
+notFoundMessage = "Record not found"
+
+[CareerMenu]
+
+[CareerEvent]
+==
+<?php
+function onEnd(){
+    $_title = $this->page->components["event"]->record->attributes["title"];
+    $this->page->set_rule = "disable";
+    $this->page->title    =  $_title;
+
+}
+?>
+==
+{% set events = CareerEvent.events  %}
+{% set page_slug = CareerEvent.page_slug %}
+{% for event in events %}
+    {% if event.slug == page_slug %}
+        <div class="cover">
+        <amp-img 
+            src="{{ 'assets/img/menukarir/home-mobile.jpg'|theme }}"
+            srcset="{{ 'assets/img/menukarir/home-mobile.jpg'|theme }} 640w,
+                  {{ 'assets/img/menukarir/home-mobile.jpg'|theme }} 320w"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Home Mobile">
+        </amp-img>
+</div>
+<amp-accordion class="title_home">
+    <section class="menus">
+        <h4 class="arrow_down"><a href="#" target="_self">{{ 'Event' }}</a></h4>
+        <p>
+          {% set careermenus = CareerMenu.submenus %}
+                {% for menu in careermenus %}
+                    {% if menu.id == 3 %}
+                          	    
+                          	    <a href="{{url('/karir')}}/{{menu.slug}}" class="active">{{menu.title}}</a>
+                          	    
+                          	     {% elseif menu.id == 1 %}
+                          	    
+                          	     <a href="{{url('/karir')}}">{{menu.title}}</a>
+                          	     
+                          	     {% else %}
+                          	     
+                          	     <a href="{{url('/karir')}}/{{menu.slug}}">{{menu.title}}</a>
+                    {% endif %}      	     
+                {% endfor %}
+         
+        </p>
+    </section>
+</amp-accordion>
+
+<!--s:breadcrumb-->
+<div class="breadcrumb">
+    <a href="{{ 'home'|page }}">{{ 'beranda'|_ }}</a> /
+    <a href="{{ 'karir'|page }}">{{ 'Karir' }}</a> /
+    <a href="{{ 'karir-event'|page }}">{{ 'Event' }}</a> /
+    <a href="#">{{ event.title }}</a>
+</div>
+<!--s:breadcrumb-->
+
+<section class="event">
+ <div class="detail_text">
+   <amp-img 
+            src="{{ event.img | media}}"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="{{ event.alt_img}}">
+    </amp-img>
+    <div class="content-desc">		  
+	   <p><i class="fas fa-map-marker-alt"></i> {{event.regencies.name | title}}</p>
+	   <p><i class="far fa-calendar-alt"></i>{{event.start_date.format('d F ') }} - {{event.end_date.format('d F Y')}}</p>
+	</div>
+	
+	<div class="desc">
+	    <h1 style="font-size:16px;">Description</h1>
+	    <p>{{event.description | raw}}</p>
+	</div>
+ </div>
+ 
+ <!--s:share-->
+   <div class="share center mb-20 mt-20">
+        
+        <p class="title-share">{{'Share This Entry'}}</p>
+        
+              <amp-social-share width="35"
+              height="35" class="rounded" type="facebook"
+              data-param-app_id="872847836388420"></amp-social-share>
+              <amp-social-share width="35"
+              height="35" class="rounded" type="twitter"></amp-social-share>
+              <amp-social-share width="35"
+              height="35" class="rounded" type="whatsapp"></amp-social-share>
+              <amp-social-share width="35"
+              height="35" class="rounded" type="line"></amp-social-share>
+    </div>
+    <!--s:share-->
+</section>
+
+<!-- s:another-articles-->
+<section class="event">
+    <div class="detail_text center ">
+            <h1 style="margin-top:20px;">EVENT TERKAIT</h1>
+    </div>
+    
+   <div class="detail_text ">
+      {% set events = CareerEvent.events.take(2) %}
+      {% for event in events%}
+      <div class="card--large">
+               <div title ="{{event.alt_img}}" data-mobile="{{ event.thumb_img | media}}" class="card__thumbnail card-ovl card__activity event" style="background-image: url('{{ event.thumb_img | media}}');">
+                  <div class="card__meta">
+                     <div class="card__head event">
+                        <!--
+                        <h3>{{ event.title }}</h3>
+                        <span class="date">{{event.start_date.format('d F ') }} - {{event.end_date.format('d F Y')}}</span>
+                        -->
+                     </div>
+                     <a style="top: 8px;position: relative;" href="{{url('karir/event')}}/{{event.slug}}" class="button button-content">Lebih Lanjut</a>
+                  </div>
+               </div>
+        </div>
+        {% endfor %}
+    
+    </div>
+    
+</section>
+<!-- s:another-articles-->
+    {% endif%}
+{% endfor %}

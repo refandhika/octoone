@@ -1,0 +1,315 @@
+title = "Our Products Sub Single"
+url = "/amp/produk/:category-slug/:sub-category-slug/:slug"
+layout = "basic-amp"
+is_hidden = 0
+
+[builderDetails]
+modelClass = "Definite\Products\Models\Product"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+
+[milkpediaList]
+==
+<?php
+use \Definite\Products\Models\Product   as Product;
+
+function onStart() {
+    $currentPath = $_SERVER['REQUEST_URI'];
+    
+    if ($currentPath == '/produk/susu-siap-minum/kids/junio') {
+        return Redirect::to('/produk');    
+    }
+}
+
+function onEnd() {
+    
+    $cmsController     = new Cms\Classes\Controller;
+    $slug         = $this->param('slug');
+    $detail = Product::where(['slug' => $slug ])->first();
+    if($slug == 'milky-uht'){
+          return Redirect::to("/produk/susu-siap-minum/kids/milky-kotak-zuzhu-zhaza" , 301);
+    }
+    if($slug == 'milky-botol-zuzhu-zhaza'){
+          return Redirect::to("/produk/susu-siap-minum/kids" , 301);
+    }
+    if($slug == 'milky-kotak-zuzhu-zhaza'){
+          return Redirect::to("/produk/susu-siap-minum/kids/milky-kotak-zuzhu-zazha" , 301);
+    }
+    if($slug == 'milky-kotak-zuzhu-zhaza-rasa-coklat'){
+          return Redirect::to("/produk/susu-siap-minum/kids/milky-kotak-zuzhu-zazha-rasa-coklat" , 301);
+    }
+    if($slug == 'milky-kotak-zuzhu-zhaza-rasa-strawberry'){
+          return Redirect::to("/produk/susu-siap-minum/kids/milky-kotak-zuzhu-zazha-rasa-strawberry" , 301);
+    }
+    if($detail && $detail->published == 0){
+          return $cmsController->render("/404");
+    }
+    
+     if (!$this->page->components["builderDetails"]->record) {
+        return;
+    }
+
+      //get slug
+    $router = $this->controller->getRouter();
+    $this->page['slug'] = $router->getURL();
+    
+
+    // get the post component
+    $_title = $this->page->components["builderDetails"]->record->attributes["title"];
+    $this->page->title = $_title;
+    $this->page->meta_title = $_title;
+    
+    $_title_en = $this->page->components["builderDetails"]->record->attributes["title_en"];
+    $this->page->title_en = $_title_en;
+    $this->page->meta_title_en = $_title_en;
+
+    $this->page->addthis_allowed = $this->builderDetails->record;
+}
+?>
+==
+{# Template file for single product of sub category #}
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+{% put head_scripts %}
+<script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+{% endput %}
+
+{% if ( this.page.slug == 'amp/produk/susu-siap-minum/purefarm/purefarm-flavour-milk' ) %}
+  
+  {% partial 'site/our-product-purefarm-amp' %}
+
+{% else %}
+
+{% if record %}
+
+{% set category = record.categories().first %}
+{% if ( this.page.slug == 'amp/produk/susu-siap-minum/kids/junio' ) %}
+
+    <div class="cover">
+        <amp-img 
+            src="{{ 'assets/img/banner/junio-hd-m.jpg'|theme }}"
+            srcset="{{ 'assets/img/banner/junio-hd-m.jpg'|theme|replace({' ':'%20'}) }} 640w,
+            {{ 'assets/img/banner/junio-hd-m.jpg'|theme|replace({' ':'%20'}) }} 320w"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Juni HD">
+        </amp-img>
+    </div>
+{% else %}
+<div class="cover ">
+    {% if category.slug == 'susu-siap-minum' or record.slug == 'purefarm-full-cream' or this.page.slug =='amp/produk/susu-siap-minum/minuman-susu-cokelat-kemasan-botol/chocolate-hazelnut'%}
+        <!-- <amp-img 
+            src="{{ 'assets/All_RTD_MobileVer.png'|theme }}"
+            srcset="{{ 'assets/All_RTD_MobileVer.png'|theme|replace({' ':'%20'}) }} 640w,
+            {{ 'assets/All_RTD_MobileVer.png'|theme|replace({' ':'%20'}) }} 320w"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Banner RTD Update Mobile">
+        </amp-img> -->
+        <amp-img 
+            src="{{ 'assets/[R1]RTD-Product_2024_Mobile (1).jpg'|theme }}"
+            srcset="{{ 'assets/[R1]RTD-Product_2024_Mobile (1).jpg'|theme|replace({' ':'%20'}) }} 640w,
+            {{ 'assets/[R1]RTD-Product_2024_Mobile (1).jpg'|theme|replace({' ':'%20'}) }} 320w"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Banner RTD Update Mobile">
+        </amp-img>
+    {% else %}
+        <amp-img 
+            src="{{ 'assets/img/product-header-mobile.png'|theme }}"
+            srcset="{{ 'assets/img/product-header-mobile.png'|theme }} 640w,
+            {{ 'assets/img/product-header-mobile.png'|theme }} 320w"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Product Header Mobile">
+        </amp-img>
+    {% endif %}
+</div>
+{% endif %}
+    {{key}}
+
+<div class="breadcrumb">
+    <a href="{{ 'home'|page }}">{{'beranda'|_}}</a> /
+    <a href="{{ 'our-products-amp'|page }}">{{'produk'|_}}</a> /
+    <a href="{{ 'our-products-archive-amp'|page({"slug": category.slug}) }}">{{ trans_pick(category, 'title') }}</a> /
+    <a href="{{ 'our-products-single-amp'|page({"category-slug": category.slug,"slug": record.slug}) }}">{{ trans_pick(record, 'title') }}</a>
+</div>
+
+<div class="detail_text">
+    <h1>{{ trans_pick(record, 'title') }}</h1>
+    <div class="img_detail">
+        <amp-carousel
+            width="360"
+            height="360"
+            layout="responsive"
+            autoplay
+            type="slides"
+            delay="1000">
+            {% for image in record.image_gallery %}
+            <amp-img 
+                src="{{ image.image|media }}"
+                srcset="{{ image.image|media|replace({' ':'%20'}) }} 640w,
+                {{ image.image|media|replace({' ':'%20'}) }} 320w"
+                width="360"
+                height="360"
+                layout="responsive"
+                alt="Image Gallery">
+            </amp-img>
+            {% endfor %}
+        </amp-carousel>
+
+        {% if not record.childs.isEmpty or record.parent %}
+                            {# calculating variants #}
+                            {% if record.isParent %}
+                                {% set variants = record.childs %}
+                            {% else %}
+                                {% set variants = record.siblingsVariants  %}
+                            {% endif %}
+
+                            <h3 class="heading heading_variant" style="color: #0F4D9A">{{'tersedia-dalam-rasa-lain'|_}}</h3>
+                            <div class="variant" style="display:flex;flex-wrap:wrap;align-items: flex-end;
+    justify-content: center;">
+<!-- variant -->
+                        {% for product in variants %}
+                            {% if product.id != record.id %}
+                                <div class="imgproduct" style="width: 33%;">
+                                    <a href="{{ 'our-products-single'|page({
+                                        'category-slug': product.category.slug,
+                                        'slug': product.slug
+                                    }) }}">
+                                        {% if product.isParent %}
+                                            {% set img = product.image_gallery[0].image %}
+                                        {% else %}
+                                            {% set img = product.featured_image %}
+                                        {% endif %}
+                                        <amp-img width="100" height="100" src="{{ img | mediathumb_resize('width', 150, 100) }}" alt="{{ product.title }}" layout="responsive"></amp-img>
+
+                                        <h6 style="color: #0F4D9A;width: 80%;margin: 0 auto;">{{ trans_pick(product, 'title') }}</h6>
+                                    </a>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+
+        <div class="text">
+            {{ trans_pick(record, 'content') | raw }}
+            <div class="clearfix"></div>
+            {% if record.link_e_commerce %}
+        <div class="wrp-marketplace">
+            <h4>{{'beli-disini'|_}}</h4>
+            {% for shop in record.link_e_commerce %}
+                <ul>
+                    <li>
+                        <a href ="{{ shop.link }}">
+                               <amp-img 
+                                    src="{{ shop.image|media }}"
+                                    srcset="{{ shop.image|media|replace({' ':'%20'}) }} 640w,
+                                    {{ shop.image|media|replace({' ':'%20'}) }} 320w"
+                                    width="125"
+                                    height="50"
+                                    alt="{{ shop.image|media }}">
+                                </amp-img>
+                        </a>
+                    </li>
+
+                </ul>
+             
+            {% endfor %}
+        </div>
+        {% endif %}
+
+            <div class="title_inside">{{'tabel-nutrisi'|_}}</div>
+
+            {%for ringkasan in record.ringkasan_gizi %}
+                <div class="wrp-sectiongray">
+                    <h4 class="subtitle">{{ trans_pick(ringkasan, 'title') }}</h4>
+                    {{ trans_pick(ringkasan, 'description') | raw }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="share center mb-10">
+        
+        <p class="title-share">{{'Share This Entry'}}</p>
+        
+              <amp-social-share width="35"
+              height="35" class="rounded" type="facebook"
+              data-param-app_id="872847836388420"></amp-social-share>
+              <amp-social-share width="35"
+              height="35" class="rounded" type="twitter"></amp-social-share>
+              <amp-social-share width="35"
+              height="35" class="rounded" type="whatsapp"></amp-social-share>
+              <amp-social-share width="35"
+              height="35" class="rounded" type="line"></amp-social-share>
+</div>
+
+{% if record.slug == 'milky-uht'%}
+	
+	{% set milkpedias = milkpediaList.susu.take(3) %}
+
+
+    {% if milkpediaList.susu  %}
+    <div class="detail_text">
+        <h1>{{ 'manfaat-minum-susu'|_ }}</h1>
+       
+    </div>
+        <!-- s:milkpediaPost article -->
+		{% for milkpediaPost in milkpedias %}
+       <div class="list">
+            <div class="img">
+            {% if milkpediaPost.featured_image %}
+              <amp-img 
+                  src="{{ milkpediaPost.featured_image| mediathumb_resize('width', 720, 90)  }}"
+                  srcset="{{ milkpediaPost.featured_image| mediathumb_resize('width', 720, 90)  }} 640w,
+                         {{ milkpediaPost.featured_image| mediathumb_resize('width', 720, 90)  }} 320w"
+                  width="160"
+                  height="90"
+                  layout="responsive"
+                  alt="{{ milkpediaPost.title }}">
+              </amp-img>
+            {% else %}
+              <amp-img 
+                  src="http://placehold.it/703x545/797979/666666?text=No+Image"
+                  srcset="http://placehold.it/703x545/797979/666666?text=No+Image 640w,
+                         http://placehold.it/703x545/797979/666666?text=No+Image 320w"
+                  width="160"
+                  height="90"
+                  layout="responsive"
+                  alt="{{ milkpediaPost.title }}">
+              </amp-img>
+            {% endif %}
+            </div>
+            <div class="info">
+              <span class="label">Milkpedia</span>
+              | {{ milkpediaPost.created_at.format('d M Y') }}
+            </div>
+            <a href="{{ 'our-milkpedia-amp-single'|page({"category-slug": record.slug, "slug": milkpediaPost.slug}) }}" target="_self"><h3>{{ trans_pick(milkpediaPost, 'title') }}</h3></a>
+            <p>{{ trans_pick(milkpediaPost, 'excerpt')|raw }}</p>
+            <a href="{{ 'our-milkpedia-amp-single'|page({"category-slug": record.slug, "slug": milkpediaPost.slug}) }}" target="_self" class="btn_more">{{ 'lebih-lanjut'|_ }}</a>
+        </div>
+
+        <!-- e:milkpediaPost article -->
+		{% endfor %}
+    {% endif %}
+{% endif %}
+
+{% put footer %}
+    {{ record.additional_tags|raw }}
+{% endput %}
+
+{% else %}
+    {% partial 'site/our-products-sub-archive-amp' %}
+{% endif %}
+{% endif %}

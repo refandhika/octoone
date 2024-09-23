@@ -1,0 +1,158 @@
+title = "Press Release"
+url = "/amp/perusahaan-kami/siaran-pers"
+layout = "basic-amp"
+meta_title = "Siaran Pers | Frisian Flag Indonesia"
+meta_description = "Simak siaran pers Frisian Flag sebagai salah satu pemimpin industri susu di Indonesia yang selalu memberikan kontribusi yang positif bagi masyarakat."
+is_hidden = 0
+
+[builderList PressRelease]
+modelClass = "Definite\Pressrelease\Models\PressRelease"
+scope = "scopeIndex"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "press-release-single"
+detailsKeyColumn = "slug"
+detailsUrlParameter = "slug"
+recordsPerPage = 8
+pageNumber = "{{ :page }}"
+sortColumn = "published_date"
+sortDirection = "desc"
+==
+<?php
+function onEnd() {
+
+    // get the post component
+    $currentPage =  $this->page->p = Input::get('p', 1);
+    $this->page->title = "Siaran Pers";
+    $this->page->title_en = "Pers Release";
+
+    $records = $this->page->components["PressRelease"]->records;
+    $this['currentPage'] = $currentPage;
+    $products =  Definite\Pressrelease\Models\Pressrelease::offset(($currentPage - 1) * 8)->orderBy('published_date', 'desc')->limit(8)->get();
+ 
+   $total =  Definite\Pressrelease\Models\Pressrelease::get();
+      // $products = Definite\News\Models\News::where('pages', 0)->limit(3)->offset((2) * 1)->get();
+    $this['totalnya'] =  $products;
+    $this['lengthProduct'] = count($total);
+    $totalv2 = count($total);
+        $count = count($products);
+    if($count === 0) {
+                    $cmsController = new Cms\Classes\Controller;
+            return Response::make( $cmsController->render("/404"), 404);
+        }
+        
+        
+        //pagination
+     $this->page->p = Input::get('p', 1);
+    if( ! is_numeric($this->page->p)){
+      $this->page->p = 1;
+    }else if($this->page->p < 1){
+      $this->page->p = 1;
+    }
+
+    $num_pgn = 5;
+    $space_pgn = 2;
+
+    $this->page->total_page = $totalv2 / 10;
+    $this->page->total_page = (int) ceil($this->page->total_page);
+  
+    $this->page->max_p = $this->page->p <= $space_pgn ? $num_pgn : $this->page->p + $space_pgn;
+
+  if( $this->page->max_p > $records->lastPage() ){
+    $this->page->max_p = $records->lastPage();
+  }
+
+  $this->page->min_p = $this->page->max_p - ($num_pgn - 1);
+  if( $this->page->min_p < 1 ) $this->page->min_p = 1;
+}
+?>
+==
+{% set records = PressRelease.records %}
+{% set displayColumn = PressRelease.displayColumn %}
+{% set noRecordsMessage = PressRelease.noRecordsMessage %}
+{% set detailsPage = PressRelease.detailsPage %}
+{% set detailsKeyColumn = PressRelease.detailsKeyColumn %}
+{% set detailsUrlParameter = PressRelease.detailsUrlParameter %}
+
+<div class="cover">
+    <amp-img 
+        src="{{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }}"
+        srcset="{{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }} 640w,
+               {{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }} 320w"
+        width="50"
+        height="50"
+        layout="responsive"
+        alt="an image">
+    </amp-img>
+</div>
+
+<amp-accordion class="title_home">
+    <section>
+        <h4 class="arrow_down"><a href="#" target="_self">{{'siaran-pers'|_}}</a></h4>
+        <p>
+          <a href="{{'about-us'|page}}" target="_self">{{'tentang-kami'|_}}</a>
+          <a href="{{'news-amp'|page}}" target="_self">{{'berita'|_}}</a>
+          <a href="{{'galeri-amp'|page}}" target="_self">{{'galeri-foto'|_}}</a>
+          <a href="{{'press-release-amp'|page}}" target="_self">{{'siaran-pers'|_}}</a>
+          <a href="{{'our-purposes'|page}}" target="_self">{{'tujuan-kami'|_}}</a>
+        </p>
+    </section>
+</amp-accordion>
+
+<div class="breadcrumb">
+    <a href="{{ 'home'|page }}">{{'beranda'|_}}</a> /
+    <a href="#">{{'siaran-pers'|_}}</a>
+</div>
+
+<div class="detail_text">
+    <h3>{{'siaran-pers'|_}}</h3>
+    <form action-xhr="#" method="post" target="_blank" class="search_plain">
+      <input type="text" placeholder="Search">
+    </form>
+    <br>
+      <amp-accordion class="title_home">
+      <section>
+        <h4 class="arrow_down"><a href="#" target="_self">All</a></h4>
+        <p>
+            <a href="{{url('press-release-amp'|page ({"page":null})) }}" target="_self">All</a>
+            {% for years in records.first.year  %}
+            <a href="{{url('press-release-archive-amp'|page ({"slug":years.published_date, "page": null})) }}" target="_self">{{ years.published_date }}</a>
+            {% endfor %}
+        </p>
+      </section>
+  </amp-accordion>
+</div>
+<!-- s:section list -->
+{% for press in totalnya %}
+<div class="list_text">
+    <div class="text">
+      <div class="info">
+          {{press.published_date|date('M d, Y')}}
+      </div>
+      <a href="{{ 'press-release-single-amp'|page({'slug': press.slug}) }}" target="_self"><h3>{{ trans_pick(press, 'title') }}</h3></a>
+      <a href="{{ press.file_upload | media}}" class="download">Download</a>
+    </div>
+    <div class="clearfix"></div>
+</div>
+{% endfor %}
+<!-- e:section list -->
+<!-- s:paging -->
+ <div class="stylepaging" attr-test="{{currentPage}}">
+      <ul>
+        {% if this.page.p != 1 %}
+          <li><a href="{{ this.page.baseFileName|page({ "page": this.page.p }) }}?p={{ this.page.p - 1 }}">&laquo;</a></li>
+        {% endif %}
+        {% for i in this.page.min_p..this.page.max_p %}
+          <li>
+            <a href="{{ this.page.baseFileName|page({ "page": i }) }}?p={{ i }}" {{ i == currentPage ? 'class="disable"' : 'class="active"' }}>
+              {{ i }}
+            </a>
+          </li>
+        {% endfor %}
+        {% if this.page.p != this.page.total_page %}
+          <li><a href="{{ this.page.baseFileName|page({ "page": page }) }}?p={{ this.page.p + 1 }}">&raquo;</a></li>
+        {% endif %}
+      </ul>                       
+      <div class="paging-info">{{ 'halaman'|_ }} {{currentPage}} {{ 'dari'|_ }} {{records.lastPage}}</div>
+</div>

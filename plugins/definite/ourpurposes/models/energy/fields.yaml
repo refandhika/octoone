@@ -1,0 +1,26 @@
+fields:
+    title:
+        label: Title
+        oc.commentPosition: ''
+        span: full
+        type: text
+    description:
+        label: Description
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: textarea
+    image:
+        label: Image
+        oc.commentPosition: ''
+        prompt: 'Add new item'
+        span: full
+        type: repeater
+        form:
+            fields:
+                images:
+                    label: Image
+                    oc.commentPosition: ''
+                    mode: file
+                    span: auto
+                    type: mediafinder

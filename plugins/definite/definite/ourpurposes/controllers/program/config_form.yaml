@@ -1,0 +1,10 @@
+name: Program
+form: $/definite/ourpurposes/models/program/fields.yaml
+modelClass: Definite\Ourpurposes\Models\Program
+defaultRedirect: definite/ourpurposes/program
+create:
+    redirect: 'definite/ourpurposes/program/update/:id'
+    redirectClose: definite/ourpurposes/program
+update:
+    redirect: definite/ourpurposes/program
+    redirectClose: definite/ourpurposes/program

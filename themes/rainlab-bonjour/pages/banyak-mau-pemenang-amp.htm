@@ -1,0 +1,52 @@
+title = "Banyak Mau - Pemenang | AMP"
+url = "/amp/banyakmau/pemenang"
+layout = "basic-amp"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/banyak-mau-pemenang-amp"
+==
+<?php
+function onEnd(){
+    $this->page->meta_description = "Selamat! Ini pengumuman pemenang Siap Jadiin Banyak Mau Lo! Apakah kamu salah satu pemenangnya? Cek di sini!";
+}
+?>
+==
+<div class="cover">
+        <amp-img 
+            src="{{ 'banyakmau/banner-banyak-maumobile-winner-m.jpg'|media }}"
+            srcset="{{ 'banyakmau/banner-banyak-maumobile-winner-m.jpg'|media }} 640w,
+                  {{ 'banyakmau/banner-banyak-maumobile-winner-m.jpg'|media }} 320w"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Banner Banyak Mau Mobile">
+        </amp-img>
+</div>
+<amp-accordion class="title_home">
+    <section>
+        <h4 class="arrow_down"><a href="#" target="_self">Pemenang</a></h4>
+        <p>
+            <a href="/banyakmau" >Cara Mengikuti</a>
+            <a href="/banyakmau/syarat-dan-ketentuan">Syarat dan Ketentuan</a>
+            <a href="/banyakmau/pemenang"class="active">Pemenang</a>
+        </p>
+    </section>
+</amp-accordion>
+
+
+<!--s:event-->
+<section class="event">
+   <div class="detail_text mb-20 mt-20">
+       <div class="content mb-10">
+           <amp-img 
+            src="{{ 'winner-mobile.jpg'|media }}"
+            width="650"
+            height="3000"
+            layout="responsive"
+            alt="Winner Mobile">
+        </amp-img>
+       </div>       
+    </div>
+</section>
+<!--s:event-->

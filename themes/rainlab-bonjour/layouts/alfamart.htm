@@ -1,0 +1,73 @@
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+        <img src="{{ 'assets/img/alfamart/homepage/home-header-desktop.png'|theme }}" class="hidden-xs" />
+      <img src="{{ 'assets/img/alfamart/homepage/home-header-mobile.png'|theme }}" class="visible-xs" />
+    </div>
+</div>
+
+{% partial 'site/alfamart-menu' %}
+
+<div id='main-section' class="container" style="padding: 30px 15px;">
+    <h1 style="display: none;">Alfamart | Frisian Flag Indonesia</h1>
+    <div class="col-md-12">
+        <div class="default-content">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 card card--small" style="margin-bottom: 15px;">
+                    <div class="card__thumbnail card__thumbnail--blue" style="background-size: cover; background-position: top; background-image: url('{{ 'assets/img/alfamart/homepage/daftar.png'|theme }}');  border-color: #eee;" data-adaptive-background data-ab-css-background>
+                        <div class="card__meta card__meta--small">
+                            <a href="{{ '/aktivitas-kami/promo-alfamart/main' }}" class="button button--small">KLIK DI SINI</a>
+                        </div>
+                    </div>
+                </div> <!--  .col-sm-12 col-md-4 -->
+                <div class="col-sm-12 col-md-3 card card--small" style="margin-bottom: 15px;">
+                    <div class="card__thumbnail card__thumbnail--blue" style="background-size: cover; background-position: top; background-image: url('{{ 'assets/img/alfamart/homepage/tnc.png'|theme }}');  border-color: #eee;" data-adaptive-background data-ab-css-background>
+                        <div class="card__meta card__meta--small">
+                            <a href="{{ '/aktivitas-kami/promo-alfamart/cara-mengikuti' }}" class="button button--small">SELENGKAPNYA</a>
+                        </div>
+                    </div>
+                </div> <!--  .col-sm-12 col-md-4 -->
+                <div class="col-sm-12 col-md-3 card card--small" style="margin-bottom: 15px;">
+                    <div class="card__thumbnail card__thumbnail--blue" style="background-size: cover; background-position: top; background-image: url('{{ 'assets/img/alfamart/homepage/hadiah.png'|theme }}');  border-color: #eee;" data-adaptive-background data-ab-css-background>
+                        <div class="card__meta card__meta--small">
+                            <a href="{{ '/aktivitas-kami/promo-alfamart/hadiah' }}" class="button button--small">KLIK DI SINI</a>
+                        </div>
+                    </div>
+                </div> <!--  .col-sm-12 col-md-4 -->
+                <div class="col-sm-12 col-md-3 card card--small" style="margin-bottom: 15px;">
+                    <div class="card__thumbnail card__thumbnail--blue" style="background-size: cover; background-position: top; background-image: url('{{ 'assets/img/alfamart/homepage/pemenang.png'|theme }}');  border-color: #eee;" data-adaptive-background data-ab-css-background>
+                        <div class="card__meta card__meta--small">
+                            <a href="{{ '/aktivitas-kami/promo-alfamart/pemenang' }}" class="button button--small">KLIK DI SINI</a>
+                        </div>
+                    </div>
+                </div> <!--  .col-sm-12 col-md-4 -->
+            </div> <!--  .row -->
+        </div>
+    </div>
+</div>
+
+<style>
+    .default-content h3 {
+        font-size: 22px;
+        line-height: 1.2;
+    }
+
+    @media screen and (min-width: 767px) {
+        .default-content h3 {
+            font-size: 30px;
+        }
+    }
+
+  @media screen and (max-width: 767px) {
+    .m-bottom-15 {
+      margin-bottom: 15px;
+    }
+  }
+</style>
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

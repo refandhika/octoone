@@ -1,0 +1,10 @@
+name: History
+form: $/definite/aboutus/models/history/fields.yaml
+modelClass: Definite\Aboutus\Models\History
+defaultRedirect: definite/aboutus/history
+create:
+    redirect: 'definite/aboutus/history/update/:id'
+    redirectClose: definite/aboutus/history
+update:
+    redirect: definite/aboutus/history
+    redirectClose: definite/aboutus/history

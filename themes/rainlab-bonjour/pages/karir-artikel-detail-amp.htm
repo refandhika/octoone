@@ -1,0 +1,145 @@
+title = "Artikel Detail AMP"
+url = "/amp/karir/artikel/:slug"
+layout = "basic-amp"
+is_hidden = 0
+
+[builderDetails artikel]
+modelClass = "Leverate\Careers\Models\Article"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "slug"
+notFoundMessage = "Record not found"
+
+[CareerMenu]
+
+[CareerArticle]
+==
+<?php
+function onEnd(){
+    $_title = $this->page->components["artikel"]->record->attributes["title"];
+    $this->page->set_rule = "disable";
+    $this->page->title    =   $_title;
+}
+?>
+==
+{% put head_scripts %}
+<script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+{% endput %}
+
+{% set articles = CareerArticle.articles  %}
+{% set page_slug = CareerArticle.page_slug %}
+{% for article in articles %}
+    {% if article.slug == page_slug %}
+        <div class="cover">
+        <amp-img 
+            src="{{ 'assets/img/menukarir/home-mobile.jpg'|theme }}"
+            srcset="{{ 'assets/img/menukarir/home-mobile.jpg'|theme }} 640w,
+                  {{ 'assets/img/menukarir/home-mobile.jpg'|theme }} 320w"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Home Mobile">
+        </amp-img>
+</div>
+<amp-accordion class="title_home">
+    <section class="menus">
+        <h4 class="arrow_down"><a href="#" target="_self">{{ 'Artikel' }}</a></h4>
+        <p>
+          {% set careermenus = CareerMenu.submenus %}
+                {% for menu in careermenus %}
+                    {% if menu.id == 4 %}
+                          	    
+                          	    <a href="{{url('/karir')}}/{{menu.slug}}" class="active">{{menu.title}}</a>
+                          	    
+                          	     {% elseif menu.id == 1 %}
+                          	    
+                          	     <a href="{{url('/karir')}}">{{menu.title}}</a>
+                          	     
+                          	     {% else %}
+                          	     
+                          	     <a href="{{url('/karir')}}/{{menu.slug}}">{{menu.title}}</a>
+                    {% endif %}      	     
+                {% endfor %}
+         
+        </p>
+    </section>
+</amp-accordion>
+
+<!--s:breadcrumb-->
+<div class="breadcrumb">
+    <a href="{{ 'home'|page }}">{{ 'beranda'|_ }}</a> /
+    <a href="{{ 'karir'|page }}">{{ 'Karir' }}</a> /
+    <a href="{{ 'karir-artikel'|page }}">{{ 'Artikel' }}</a> /
+    <a href="#">{{ article.title }}</a>
+</div>
+<!--s:breadcrumb-->
+
+<section class="event">
+
+<div class="detail_text mb-10">
+   <p class="published">{{article.created_at.format('d F Y')}}</p> 
+   <h1>{{article.title | title}}</h1>
+ </div>
+
+ <div class="detail_text">
+   <amp-img 
+            src="{{ article.img | media}}"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="{{ article.alt_img}}">
+    </amp-img>
+    <div class="article-desc mt-10">
+    {{article.description | raw}}
+    </div>
+	
+ </div>
+ 
+ <!--s:share-->
+   <div class="share center mb-20 mt-20">
+        
+        <p class="title-share">{{'Share This Entry'}}</p>
+        
+              <amp-social-share width="35"
+              height="35" class="rounded" type="facebook"
+              data-param-app_id="872847836388420"></amp-social-share>
+              <amp-social-share width="35"
+              height="35" class="rounded" type="twitter"></amp-social-share>
+              <amp-social-share width="35"
+              height="35" class="rounded" type="whatsapp"></amp-social-share>
+              <amp-social-share width="35"
+              height="35" class="rounded" type="line"></amp-social-share>
+    </div>
+    <!--s:share-->
+</section>
+
+<!-- s:another-articles-->
+<section class="event mb-25">
+    <div class="detail_text center">
+            <h1 style="margin-top:20px;">ARTIKEL LAINNYA</h1>
+    </div>
+    
+    {% set relates = CareerArticle.article_page %}
+			 {% for relate in relates %}
+        <div class="list-article">
+            <div class="detail_text"  style="padding: 10px 20px;">
+                  <div class="article__archive" style="margin-bottom :0;">
+                   <div class="archive__container-image">
+                   <div title="Bikin Anda Lebih Diperhitungkan Di Kantor" class="image-box" style="background-size: cover; background-position: center center; background-repeat: no-repeat; background-image: url('https://www.frisianflag.com/storage/app/media/{{relate.img}}');">
+                   </div>
+                   </div>
+               
+               <div class="archive__container-content default-content">
+               <span class="published">{{relate.created_at.format('d F Y')}}</span>
+                   <h3 class="title"><a style="color:#337ab7;" href="{{url('/karir/artikel')}}/{{relate.slug}}">{{relate.title}}</a>
+                   </h3>
+              </div>
+                </div> 
+            </div>
+        </div>
+        {% endfor %}
+        
+</section>
+<!-- s:another-articles-->
+    {% endif%}
+{% endfor %}

@@ -1,0 +1,16 @@
+columns:
+    key:
+        label: Key
+        type: text
+        searchable: true
+        sortable: true
+    trans_id:
+        label: 'Translation (id)'
+        type: text
+        searchable: true
+        sortable: true
+    trans_en:
+        label: 'Translation (en)'
+        type: text
+        searchable: true
+        sortable: true

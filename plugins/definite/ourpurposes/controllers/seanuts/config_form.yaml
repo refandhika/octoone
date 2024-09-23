@@ -1,0 +1,10 @@
+name: Seanuts
+form: $/definite/ourpurposes/models/seanuts/fields.yaml
+modelClass: Definite\Ourpurposes\Models\Seanuts
+defaultRedirect: definite/ourpurposes/seanuts
+create:
+    redirect: 'definite/ourpurposes/seanuts/update/:id'
+    redirectClose: definite/ourpurposes/seanuts
+update:
+    redirect: definite/ourpurposes/seanuts
+    redirectClose: definite/ourpurposes/seanuts

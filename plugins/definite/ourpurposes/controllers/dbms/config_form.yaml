@@ -1,0 +1,10 @@
+name: Dbms
+form: $/definite/ourpurposes/models/dbms/fields.yaml
+modelClass: Definite\Ourpurposes\Models\Dbms
+defaultRedirect: definite/ourpurposes/dbms
+create:
+    redirect: 'definite/ourpurposes/dbms/update/:id'
+    redirectClose: definite/ourpurposes/dbms
+update:
+    redirect: definite/ourpurposes/dbms
+    redirectClose: definite/ourpurposes/dbms

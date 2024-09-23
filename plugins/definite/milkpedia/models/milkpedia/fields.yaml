@@ -1,0 +1,117 @@
+fields:
+    title:
+        label: 'Title (id)'
+        oc.commentPosition: ''
+        span: full
+        required: 1
+        type: text
+    title_en:
+        label: 'Title (en)'
+        oc.commentPosition: ''
+        span: full
+        type: text
+    slug:
+        label: Slug
+        oc.commentPosition: ''
+        span: full
+        preset:
+            field: title
+            type: slug
+        required: 1
+        type: text
+    published:
+        label: Published
+        span: auto
+        type: switch
+    content:
+        label: 'Content (id)'
+        size: ''
+        span: full
+        required: 1
+        type: richeditor
+    content_en:
+        label: 'Content (en)'
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: richeditor
+    excerpt:
+        label: 'Excerpt (id)'
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        required: 1
+        type: textarea
+    excerpt_en:
+        label: 'Excerpt (en)'
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: textarea
+    featured_image:
+        label: 'Featured Image'
+        mode: image
+        span: auto
+        required: 1
+        type: mediafinder
+    categories:
+        label: Categories
+        nameFrom: title
+        descriptionFrom: description
+        span: auto
+        required: 1
+        type: relation
+    products:
+        label: 'Produk Terkait'
+        nameFrom: title
+        descriptionFrom: description
+        span: full
+        emptyOption: 'Cari produk terkait'
+        type: relation
+tabs:
+    fields:
+        meta_description:
+            label: 'Meta Description'
+            size: ''
+            oc.commentPosition: ''
+            span: auto
+            type: textarea
+            tab: 'Meta Tag (id)'
+        meta_keywords:
+            label: 'Meta Keywords'
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            tab: 'Meta Tag (id)'
+        meta_title:
+            label: 'Meta Title'
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            tab: 'Meta Tag (id)'
+        created_at:
+            label: 'Published Date'
+            mode: datetime
+            span: auto
+            required: 1
+            type: datepicker
+            tab: 'Meta Tag (id)'
+        meta_description_en:
+            label: 'Meta Description (en)'
+            size: ''
+            oc.commentPosition: ''
+            span: auto
+            type: textarea
+            tab: 'Meta Tag (en)'
+        meta_keywords_en:
+            label: 'Meta Keywords (en)'
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            tab: 'Meta Tag (en)'
+        meta_title_en:
+            label: 'Meta Title (en)'
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            tab: 'Meta Tag (en)'

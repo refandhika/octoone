@@ -1,0 +1,109 @@
+title = "return-json-infinity"
+url = "/return-json-infinity"
+is_hidden = 0
+==
+<?php
+function onStart(){
+    $title = Input::get('title');
+    $sort = Input::get('sort');
+    $category = Input::get('category');
+    $index    = intval(Input::get('index'));
+    $sortvar = 'definite_activities_activity.updated_at';
+    $this['populer'] = 0;
+    if($sort == "populer"){
+        $this['populer'] = 1;
+        $sortvar = 'definite_activities_like.total';
+        $sort = 'desc';
+    }
+    
+    $limit = 2;
+    if($category != "all"){
+        $limit = 6;
+    }
+    if($title == ""){
+        if($category == "all" || $category == "SCM")
+        {
+            $scm = Definite\Activities\Models\Activity::leftJoin('definite_activities_categories_activities', 'definite_activities_categories_activities.activity_id', '=', 'definite_activities_activity.id')->
+        leftJoin('definite_activities_like', 'definite_activities_like.activity_id', '=', 'definite_activities_activity.id')->
+        leftJoin('definite_activities_category', 'definite_activities_category.id', '=', 'definite_activities_categories_activities.category_id')->whereRaw('definite_activities_category.id = ? AND ( definite_activities_activity.title like ? OR definite_activities_activity.description like ?)', [ 22, '%'.$title.'%', '%'.$title.'%' ] )->
+                select(DB::raw('IFNULL(definite_activities_like.total,0) as total_likes'), 'definite_activities_category.slug as slug_category','definite_activities_activity.title', 'definite_activities_activity.slug', 'definite_activities_activity.featured_image');
+            if(Input::get('sort') == "populer"){
+                $scm = $scm->orderBy($sortvar, $sort)->offset($index)->limit($limit)->get();
+            }else{
+                $scm = $scm->orderBy('definite_activities_activity.sort_top', "desc")->orderBy($sortvar, $sort)->get();
+            }
+        }
+    
+    
+        if($category == "all" || $category == "RTD")
+        {
+            $rtd = Definite\Activities\Models\Activity::leftJoin('definite_activities_categories_activities', 'definite_activities_categories_activities.activity_id', '=', 'definite_activities_activity.id')->
+        leftJoin('definite_activities_like', 'definite_activities_like.activity_id', '=', 'definite_activities_activity.id')->
+        leftJoin('definite_activities_category', 'definite_activities_category.id', '=', 'definite_activities_categories_activities.category_id')->whereRaw('definite_activities_category.id = ? AND ( definite_activities_activity.title like ? OR definite_activities_activity.description like ?)', [ 19, '%'.$title.'%', '%'.$title.'%' ] )->
+                select(DB::raw('IFNULL(definite_activities_like.total,0) as total_likes'), 'definite_activities_category.slug as slug_category','definite_activities_activity.title', 'definite_activities_activity.slug', 'definite_activities_activity.featured_image');
+            if(Input::get('sort') == "populer"){
+                $rtd = $rtd->orderBy($sortvar, $sort)->offset($index)->limit($limit)->get();
+            }else{
+                $rtd = $rtd->orderBy('definite_activities_activity.sort_top', "desc")->orderBy($sortvar, $sort)->get();
+            }
+        }
+    
+    
+        if($category == "all" || $category == "FMP")
+        {
+            $fmp = Definite\Activities\Models\Activity::leftJoin('definite_activities_categories_activities', 'definite_activities_categories_activities.activity_id', '=', 'definite_activities_activity.id')->
+        leftJoin('definite_activities_like', 'definite_activities_like.activity_id', '=', 'definite_activities_activity.id')->
+        leftJoin('definite_activities_category', 'definite_activities_category.id', '=', 'definite_activities_categories_activities.category_id')->whereRaw('definite_activities_category.id = ? AND ( definite_activities_activity.title like ? OR definite_activities_activity.description like ?)', [ 21, '%'.$title.'%', '%'.$title.'%' ] )->
+                select(DB::raw('IFNULL(definite_activities_like.total,0) as total_likes'), 'definite_activities_category.slug as slug_category','definite_activities_activity.title', 'definite_activities_activity.slug', 'definite_activities_activity.featured_image');
+            if(Input::get('sort') == "populer"){
+                $fmp = $fmp->orderBy($sortvar, $sort)->offset($index)->limit($limit)->get();
+            }else{
+                $fmp = $fmp->orderBy('definite_activities_activity.sort_top', "desc")->orderBy($sortvar, $sort)->get();
+            }
+        }
+    
+            
+        header('Content-Type: application/json');
+        
+        if($category == "SCM"){
+            $this['result'] = $scm;
+        }
+        elseif($category == "RTD")
+        {
+            $this['result'] = $rtd;
+        }
+        elseif($category == "FMP")
+        {
+            $this['result'] = $fmp;
+        }else{
+            $collection = collect($rtd);
+            $merged     = $collection->merge($scm)->merge($fmp);
+            $this['result'] = $merged;
+        }
+    
+    }else{
+        $limit = 6;
+        
+        
+        $allquery = Definite\Activities\Models\Activity::leftJoin('definite_activities_categories_activities', 'definite_activities_categories_activities.activity_id', '=', 'definite_activities_activity.id')->
+    leftJoin('definite_activities_like', 'definite_activities_like.activity_id', '=', 'definite_activities_activity.id')->
+    leftJoin('definite_activities_category', 'definite_activities_category.id', '=', 'definite_activities_categories_activities.category_id')->whereRaw('(definite_activities_category.id = 19 AND ( definite_activities_activity.title like ? OR definite_activities_activity.description like ?)) or (definite_activities_category.id = 21 AND ( definite_activities_activity.title like ? OR definite_activities_activity.description like ?)) or (definite_activities_category.id = 22 AND ( definite_activities_activity.title like ? OR definite_activities_activity.description like ?))', [ '%'.$title.'%', '%'.$title.'%', '%'.$title.'%', '%'.$title.'%', '%'.$title.'%', '%'.$title.'%' ] )->
+            select('definite_activities_like.total as total_likes','definite_activities_category.slug as slug_category','definite_activities_activity.title', 'definite_activities_activity.slug', 'definite_activities_activity.featured_image');
+    if($sortvar == 'definite_activities_activity.updated_at'){
+        $allquery = $allquery->orderByRaw(" CASE
+    WHEN definite_activities_activity.title LIKE '%".$title."%' THEN 1
+    WHEN definite_activities_activity.description LIKE '%".$title."%' THEN 2
+    ELSE 3
+  END, definite_activities_activity.updated_at ".$sort)->get();
+    }else{
+     $allquery = $allquery->orderBy($sortvar, $sort)->get();
+    }
+    $this['result'] = $allquery;
+        
+    }
+        
+        
+}
+?>
+==
+{"items":{{ result | raw  }}}

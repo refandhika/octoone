@@ -1,0 +1,920 @@
+title = "Resep khas sulawesi amp"
+url = "/amp/aktivitas-kami/resep-nusantara/resep-khas-sulawesi-maluku-papua"
+layout = "default-amp"
+is_hidden = 0
+
+==
+<?php
+function onEnd(){
+   $this->page->title = "Resep Nusantara Khas Sulawesi, Maluku & Papua";
+}
+?>
+==
+<div class="cover">
+        <amp-img 
+            src="{{ 'assets/img-ramadhan/banner/recipe page_sulawesi_mobile.jpg'|theme }}"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Resep khas Sulawesi,Maluku & papua">
+        </amp-img>
+</div>
+<amp-accordion class="title_home">
+    <section>
+      <h4 class="arrow_down" style="font-size:14px;"><a href="#" target="_self">Resep Khas Sulawesi, Maluku &AMP; Papua</a></h4>
+      <p>
+          <a href="{{ 'resep-nusantara-amp'|page }}" target="_self"> {{'Resep Nusantara'| _}}</a>
+          <a href="{{ 'resep-khas-sumatera-amp'|page }}" target="_self"> {{'Resep Khas Sumatera'| _}}</a>
+          <a href="{{ 'resep-khas-jawa-amp'|page }}" target="_self">{{'Resep Khas Jawa, Bali &amp; Nusa Tenggara'|_}}</a>
+          <a href="{{ 'resep-khas-kalimantan-amp'|page }}" target="_self">{{'Resep Khas Kalimantan'|_}}</a>
+          <a href="{{ 'resep-khas-sulawesi-amp'|page }}">{{'Resep Khas Sulawesi, Maluku &amp; Papua'|_}}</a>
+      </p>
+    </section>
+</amp-accordion>
+
+<div class="main-section center padding-15">
+
+    <div class="section">
+    
+        <div class="resep-1">
+            
+            <div class="detail_text mt-10">
+                <h1 style="font-size:22px">{{ 'Resep Es Pisang Cocopandan Khas Sulawesi Selatan'|upper  }}</h1>   
+            </div>
+            <amp-youtube
+                    data-videoid="KNkuKlNz7R4"
+                    layout="responsive"
+                    width="480" 
+                    height="270">
+                    <amp-img
+                      src="{{ 'assets/img-ramadhan/card/resep/11. Es Pisang Cocopandan.png'|theme }}"
+                      placeholder
+                      layout="fill"
+                      />
+            </amp-youtube>
+            
+            <amp-lightbox scrollable id="resep-es-pisang"
+              layout="nodisplay">
+              <div class="lightbox"
+                on="tap:resep-es-pisang.close"
+                role="button"
+                tabindex="0">
+                <div class="main-resep padding-10">
+                    <h2 class="font-24 title-khas "><strong>Resep Es Pisang Cocopandan Khas Sulawesi Selatan</strong></h2>
+                        <div class="list-resep">
+                            <p><strong>Bahan:</strong></p>
+						    <p>550 ml santan</p>
+							<p>250 ml air</p>
+							<p>125 gr tepung beras</p>
+							<p>125 gr tepung terigu</p>
+							<p>100 ml Frisian Flag Cocopandan</p>
+							<p>Pisang raja</p>
+							<p>2 sdm tepung beras</p>
+							<p>50 gr gula pasir</p>
+							<p>2 lembar daun pandan</p>
+							<p>Es batu</p>
+							<p><strong>Cara Membuat:</strong></p>
+							<ol>
+								<li>Campur 250 ml santan, air, tepung beras, tepung terigu dan Frisian Flag Cocopandan, aduk rata dan kukus hingga matang.</li>
+								<li>Bungkus pisang raja ke dalam adonan dan kukus selama 10 sampai 15 menit.</li>
+								<li>Masak 300 ml santan, tepung beras, gula pasir dan daun pandan hingga mengental.</li>
+								<li>Letakkan potongan pisang ke dalam mangkuk.</li>
+								<li>Tambahkan es batu secukupnya, campuran santan yang telah dimasak hingga mengental dan Frisian Flag Cocopandan sesuai selera.</li>
+								<li>Es Pisang Cocopandan nikmat siap disajikan.</li>
+							</ol>	
+						
+						</div>
+                </div>
+               
+              </div>
+            </amp-lightbox>
+          
+             <a  class="button-resep-pink" on="tap:resep-es-pisang"><p class="share-resep">LIHAT RESEPNYA</p></a>
+                  <amp-social-share class ="button-resep-pink" type="facebook"
+                     width="90"
+                     height="35"
+                     data-param-app_id="872847836388420"
+                     data-param-attribution="AMPhtml">
+                     <p class="share-resep">BAGIKAN <i class="fab fa-facebook-f ml-5"></i></p>
+                 </amp-social-share>
+            
+                  <amp-social-share  class ="button-resep-pink" type="twitter"
+                     width="90"
+                     height="35"
+                     data-param-text="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Es Pisang Cocopandan Khas Sulawesi Selatan untuk sekeluarga."
+                     data-param-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                     data-param-attribution="AMPhtml">
+                      <p  class ="share-resep">TWEET <i class="fab fa-twitter ml-5"></i></p>
+                  </amp-social-share> 
+             
+		</div>
+		
+		 <div class="resep-2">
+		 
+		    <div class="detail_text mt-10">
+                <h1 style="font-size:22px">{{ 'RESEP PUDING ROTI KHAS SULAWESI UTARA'|upper }}</h1>   
+            </div>
+            
+            <amp-youtube
+                    data-videoid="OVoApeLnfQw"
+                    layout="responsive"
+                    width="480" 
+                    height="270">
+                    <amp-img
+                      src="{{ 'assets/img-ramadhan/card/resep/2. Puding Roti.png'|theme }}"
+                      placeholder
+                      layout="fill"
+                      />
+            </amp-youtube>
+            
+            <amp-lightbox scrollable id="resep-puding"
+              layout="nodisplay">
+              <div class="lightbox"
+                on="tap:resep-puding.close"
+                role="button"
+                tabindex="0">
+                <div class="main-resep padding-10">
+                    <h2 class="font-24 title-khas "><strong>RESEP PUDING ROTI KHAS SULAWESI UTARA</strong></h2>
+                        <div class="list-resep">
+                            <p><strong>Bahan:</strong></p>
+						    <p>60 gr gula pasir</p>
+							<p>80 ml santan</p>
+							<p>1 sdm vanila</p>
+							<p>80 ml air</p>
+							<p>4 butir telur ayam</p>
+							<p>150 ml Frisian Flag Cocopandan</p>
+							<p>10 lembar roti tawar</p>
+							<p>Kelapa kering secukupnya</p>
+												
+							<p><strong>Cara Membuat:</strong></p>
+							<ol>
+								<li>Campur gula pasir, santan, vanila, air, telur ayam dan Frisian Flag Cocopandan sebagai adonan, aduk hingga rata.</li>
+								<li>Potong kotak roti tawar, campur dengan kelapa kering secukupnya.</li>
+								<li>Tuang adonan ke campuran roti dan kelapa kering, panggang dengan suhu 175° celcius hingga matang.</li>
+							</ol></br></br>
+							<p class="break-2x"></p>
+						</div>
+                </div>
+               
+              </div>
+            </amp-lightbox>
+          
+             <a  class="button-resep-pink" on="tap:resep-puding"><p class="share-resep">LIHAT RESEPNYA</p></a>
+                  <amp-social-share class ="button-resep-pink" type="facebook"
+                     width="90"
+                     height="35"
+                     data-param-app_id="872847836388420"
+                     data-param-attribution="AMPhtml">
+                     <p class="share-resep">BAGIKAN <i class="fab fa-facebook-f ml-5"></i></p>
+                 </amp-social-share>
+            
+                  <amp-social-share  class ="button-resep-pink" type="twitter"
+                     width="90"
+                     height="35"
+                     data-param-text="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Puding Roti Khas Sulawesi Utara untuk sekeluarga."
+                     data-param-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                     data-param-attribution="AMPhtml">
+                      <p  class ="share-resep">TWEET <i class="fab fa-twitter ml-5"></i></p>
+                  </amp-social-share> 
+             
+		</div>
+		
+		<div class="resep-3">
+		 
+		    <div class="detail_text mt-10">
+                <h1 style="font-size:22px">{{ 'RESEP TILIAYA KHAS GORONTALO'|upper }}</h1>   
+            </div>
+            
+            <amp-youtube
+                    data-videoid="BLLN4pUwCB0"
+                    layout="responsive"
+                    width="480" 
+                    height="270">
+                    <amp-img
+                      src="{{ 'assets/img-ramadhan/card/resep/tilaya.jpg'|theme }}"
+                      placeholder
+                      layout="fill"
+                      />
+            </amp-youtube>
+            
+            <amp-lightbox scrollable id="resep-tiliaya"
+              layout="nodisplay">
+              <div class="lightbox"
+                on="tap:resep-tiliaya.close"
+                role="button"
+                tabindex="0">
+                <div class="main-resep padding-10">
+                    <h2 class="font-24 title-khas "><strong>RESEP TILIAYA KHAS GORONTALO</strong></h2>
+                        <div class="list-resep">
+                            <p><strong>Bahan :</strong></p>
+						    <p>6 btr Telur</p>
+							<p>300 gr Gula merah</p>
+							<p>100 gr Susu kental manis Frisian Flag Cokelat</p>
+							<p>300 ml Santan kental dari 1 butir kelapa</p>
+							<p>50 gr Tepung beras</p>
+								
+							<p><strong>Cara Membuat:</strong></p>
+							<ol>
+								<li>1.Siapkan loyang ukuran 18x18cm, olesi dengan margarin, alasi dengan daun pisang yang tealah dioles dengan margarin. Panaskan kukusan.</li>
+								<li>Kocok telur dan gula merah hingga gula larut. Masukkan susu kental manis Frisian Flag Cokelat, aduk rata.</li>
+								<li>Tambahkan santan dan tepung beras, aduk rata kembali.</li>
+								<li>Tuangkan adonan ke dalam loyang berukuran 18x18cm. Kukus hingga matang, dinginkan.</li>
+								<li>Potong sesuai selera, sajikan setelah dingin.</li>
+							</ol>
+						    <p class="break-3x"></p>
+						</div>
+                </div>
+               
+              </div>
+            </amp-lightbox>
+          
+             <a  class="button-resep-blue" on="tap:resep-tiliaya"><p class="share-resep">LIHAT RESEPNYA</p></a>
+                  <amp-social-share class ="button-resep-blue" type="facebook"
+                     width="90"
+                     height="35"
+                     data-param-app_id="872847836388420"
+                     data-param-attribution="AMPhtml">
+                     <p class="share-resep">BAGIKAN <i class="fab fa-facebook-f ml-5"></i></p>
+                 </amp-social-share>
+            
+                  <amp-social-share  class ="button-resep-blue" type="twitter"
+                     width="90"
+                     height="35"
+                     data-param-text="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Tiliya Khas Gorontalo untuk sekeluarga."
+                     data-param-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                     data-param-attribution="AMPhtml">
+                      <p  class ="share-resep">TWEET <i class="fab fa-twitter ml-5"></i></p>
+                  </amp-social-share> 
+             
+		</div>
+		
+		<div class="resep-4">
+		 
+		    <div class="detail_text mt-10">
+                <h1 style="font-size:22px">{{ 'RESEP ES MANADO EXOTICA KHAS SULAWESI UTARA'|upper }}</h1>   
+            </div>
+            
+            <amp-youtube
+                    data-videoid="4PZURZ8TnWs"
+                    layout="responsive"
+                    width="480" 
+                    height="270">
+                    <amp-img
+                      src="{{ 'assets/img-ramadhan/card/resep/es-manado-exotica.jpg'|theme }}"
+                      placeholder
+                      layout="fill"
+                      />
+            </amp-youtube>
+            
+            <amp-lightbox scrollable id="resep-es-manado"
+              layout="nodisplay">
+              <div class="lightbox"
+                on="tap:resep-es-manado.close"
+                role="button"
+                tabindex="0">
+                <div class="main-resep padding-10">
+                    <h2 class="font-24 title-khas "><strong>RESEP ES MANADO EXOTICA KHAS SULAWESI UTARA</strong></h2>
+                        <div class="list-resep">
+                            <p><strong>Bahan Kuah :</strong></p>
+								<p>500 gr Buah sirsak matang tanpa biji</p>
+    							<p>300 ml Air</p>
+    							<p>½ klg Susu kental manis putih Frisian Flag Gold</p>
+							
+							<p><strong>Bahan Isi:</strong></p>
+    							<p>50 gr Kiwi, potong kotak</p>
+    							<p>50 gr Anggur merah, potong kotak</p>
+    							<p>50 gr Strawberry, potong kotak</p>
+    							<p>2 sdt Selasih</p>
+    							<p>Secukupnya Es batu</p>
+						
+							<p><strong>Cara Membuat:</strong></p>
+							<ol>
+						    	<li>Kuah : blender bahan kuah hingga halus, saring.</li>
+								<li>Siapkan mangkuk saji, atur es batu, kiwi, anggur, strawberry, biji selasih, kemudian siram dengan bahan kuah, siram kembali dengan susu kental manis putih Frisian Flag Gold. Sajikan dingin</li>
+							</ol>
+							 <p class="break-3x"></p>
+						</div>
+                </div>
+               
+              </div>
+            </amp-lightbox>
+          
+             <a  class="button-resep-blue" on="tap:resep-es-manado"><p class="share-resep">LIHAT RESEPNYA</p></a>
+                  <amp-social-share class ="button-resep-blue" type="facebook"
+                     width="90"
+                     height="35"
+                     data-param-app_id="872847836388420"
+                     data-param-attribution="AMPhtml">
+                     <p class="share-resep">BAGIKAN <i class="fab fa-facebook-f ml-5"></i></p>
+                 </amp-social-share>
+            
+                  <amp-social-share  class ="button-resep-blue" type="twitter"
+                     width="90"
+                     height="35"
+                     data-param-text="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Es Manado Exotica Khas Sulawesi Utara untuk sekeluarga."
+                     data-param-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                     data-param-attribution="AMPhtml">
+                      <p  class ="share-resep">TWEET <i class="fab fa-twitter ml-5"></i></p>
+                  </amp-social-share> 
+             
+		    </div>
+	    
+	    	<div class="resep-5">
+		 
+		    <div class="detail_text mt-10">
+                <h1 style="font-size:22px">{{ 'RESEP BARONGKO KHAS SULAWESI TENGAH'|upper }}</h1>   
+            </div>
+            
+            <amp-youtube
+                    data-videoid="X-sNYCS1dnQ"
+                    layout="responsive"
+                    width="480" 
+                    height="270">
+                    <amp-img
+                      src="{{ 'assets/img-ramadhan/card/resep/barongko.jpg'|theme }}"
+                      placeholder
+                      layout="fill"
+                      />
+            </amp-youtube>
+            
+            <amp-lightbox scrollable id="resep-barongko"
+              layout="nodisplay">
+              <div class="lightbox"
+                on="tap:resep-barongko.close"
+                role="button"
+                tabindex="0">
+                <div class="main-resep padding-10">
+                    <h2 class="font-24 title-khas "><strong>RESEP BARONGKO KHAS SULAWESI TENGAH</strong></h2>
+                        <div class="list-resep">
+                            <p><strong>Bahan Kuah :</strong></p>
+    							<p>3 butir Telur</p>
+    							<p>100 gr Gula pasir</p>
+    							<p>150 ml Santan kental</p>
+    							<p>½ klg Susu Kental Manis putih Frisian Flag Gold</p>
+    							<p>½ sdt Vainilla essence</p>
+    							<p>½ sdt Garam</p>
+    							<p>3 buah Pisang kepok</p>
+    							<p>Secukupnya Daun pisang</p>
+							<p><strong>Cara Membuat:</strong></p>
+							<ol>
+								<li>Panaskan kukusan.</li>
+								<li>Campur semua bahan kecuali daun pisang ke dalam blender, haluskan.</li>
+								<li>Siapkan cup aluminium foil, masukkan adonan yang telah dihaluskan, kemudian kukus hingga matang sekitar 30-45 menit.</li>
+								<li>Dapat disajikan selagi hangat atau dingin.</li>
+							</ol>
+						    <p class="break-3x"></p>
+						</div>
+                </div>
+               
+              </div>
+            </amp-lightbox>
+          
+             <a  class="button-resep-blue" on="tap:resep-barongko"><p class="share-resep">LIHAT RESEPNYA</p></a>
+                  <amp-social-share class ="button-resep-blue" type="facebook"
+                     width="90"
+                     height="35"
+                     data-param-app_id="872847836388420"
+                     data-param-attribution="AMPhtml">
+                     <p class="share-resep">BAGIKAN <i class="fab fa-facebook-f ml-5"></i></p>
+                 </amp-social-share>
+            
+                  <amp-social-share  class ="button-resep-blue" type="twitter"
+                     width="90"
+                     height="35"
+                     data-param-text="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Barongko Khas Sulawesi Tengah untuk sekeluarga."
+                     data-param-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                     data-param-attribution="AMPhtml">
+                      <p  class ="share-resep">TWEET <i class="fab fa-twitter ml-5"></i></p>
+                  </amp-social-share> 
+             
+		</div>
+		
+			<div class="resep-6">
+		 
+		    <div class="detail_text mt-10">
+                <h1 style="font-size:22px">{{ 'RESEP KUE TETU PISANG KHAS SULAWESI BARAT'|upper }}</h1>   
+            </div>
+            
+            <amp-youtube
+                    data-videoid="oKWjdKdZAko"
+                    layout="responsive"
+                    width="480" 
+                    height="270">
+                    <amp-img
+                      src="{{ 'assets/img-ramadhan/card/resep/kue-tetu.jpg'|theme }}"
+                      placeholder
+                      layout="fill"
+                      />
+            </amp-youtube>
+            
+            <amp-lightbox scrollable id="resep-tetu"
+              layout="nodisplay">
+              <div class="lightbox"
+                on="tap:resep-tetu.close"
+                role="button"
+                tabindex="0">
+                <div class="main-resep padding-10">
+                    <h2 class="font-24 title-khas "><strong>RESEP KUE TETU PISANG KHAS SULAWESI BARAT</strong></h2>
+                        <div class="list-resep">
+                            <p><strong>Bahan I :</strong></p>
+        						<p>400 gr Terigu</p>
+    							<p>800 ml Santan cair</p>
+    							<p>200 ml Susu kental manis putih Frisian Flag Gold</p>
+    							<p>50 gr Gula pasir</p>
+													
+							<p><strong>Bahan II :</strong></p>
+    							<p>2 buah Pisang kepok, iris tipis</p>
+    							<p>100 gr Kelapa parut muda</p>		
+												
+							<p><strong>Bahan III :</strong></p>
+    							<p>200 ml Santan kental</p>
+    							<p>100 ml Susu kental manis putih Frisian Flag Gold</p>
+    							<p>½ sdm Maizena</p>
+    							<p>½ sdt Garam</p>		
+							<p><strong>Cara Membuat:</strong></p>
+							<ol>
+								<li>Siapkan daun pisang yang dibentuk takir kotak, beri daun pandan pada dasar takir. Siapkan kukusan.</li>
+								<li>Campur bahan I, aduk rata, saring. Tuangkan adonan hingga ½ bagian takir, kukus selama 10 menit.</li>
+								<li>Atur pisang dibagian atas adonan I yang telah dikukus setengah matang. Kemudian siram dengan bahan III yang telah dicampur rata. Kukus kembali hingga matang sekitar 30-45 menit.</li>
+								<li>Sajikan selagi hangat atau setelah dingin.</li>
+							</ol>
+						
+						</div>
+                </div>
+               
+              </div>
+            </amp-lightbox>
+          
+             <a  class="button-resep-blue" on="tap:resep-tetu"><p class="share-resep">LIHAT RESEPNYA</p></a>
+                  <amp-social-share class ="button-resep-blue" type="facebook"
+                     width="90"
+                     height="35"
+                     data-param-app_id="872847836388420"
+                     data-param-attribution="AMPhtml">
+                     <p class="share-resep">BAGIKAN <i class="fab fa-facebook-f ml-5"></i></p>
+                 </amp-social-share>
+            
+                  <amp-social-share  class ="button-resep-blue" type="twitter"
+                     width="90"
+                     height="35"
+                     data-param-text="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Kue Tetu Pisang Khas Sulawesi Barat untuk sekeluarga."
+                     data-param-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                     data-param-attribution="AMPhtml">
+                      <p  class ="share-resep">TWEET <i class="fab fa-twitter ml-5"></i></p>
+                  </amp-social-share> 
+             
+		</div>
+		
+			<div class="resep-7">
+		 
+		    <div class="detail_text mt-10">
+                <h1 style="font-size:22px">{{ 'RESEP SANGGARA COKELAT KEJU KHAS SULAWESI TENGGARA'|upper }}</h1>   
+            </div>
+            
+            <amp-youtube
+                    data-videoid="RqunkHobjAA"
+                    layout="responsive"
+                    width="480" 
+                    height="270">
+                    <amp-img
+                      src="{{ 'assets/img-ramadhan/card/resep/sanggara-coklat.jpg'|theme }}"
+                      placeholder
+                      layout="fill"
+                      />
+            </amp-youtube>
+            
+            <amp-lightbox scrollable id="resep-sanggara"
+              layout="nodisplay">
+              <div class="lightbox"
+                on="tap:resep-sanggara.close"
+                role="button"
+                tabindex="0">
+                <div class="main-resep padding-10">
+                    <h2 class="font-24 title-khas "><strong>RESEP SANGGARA COKELAT KEJU KHAS SULAWESI TENGGARA</strong></h2>
+                        <div class="list-resep">
+                            <p><strong>Bahan :</strong></p>
+        						<p>5 buah Pisang</p>
+							<p>1 btr Telur</p>
+												
+							<p><strong>Bahan Isi :</strong></p>
+    							<p>100 gr Kacang tanah, sangrai, kupas, cincang</p>
+    							<p>50 gr Meises</p>
+    							<p>50 gr Gula pasir</p>
+    							<p>50 ml Susu kental manis putih Frisian Flag Gold</p>
+    							<p>1 sdm Margarin</p>
+													
+							<p><strong>Bahan Saus :</strong></p>
+    							<p>100 ml Susu kental manis putih Frisian Flag Gold</p>
+    							<p>50 gr Keju parut</p>
+    							<p>½ sdm Maizena</p>
+    							<p>100 ml Air</p>		
+								
+							<p><strong>Cara Membuat:</strong></p>
+							<ol>
+							    <li>Campur bahan isi, aduk rata.</li>
+								<li>Saus : campur bahan saus, masak di atas api kecil hingga mengental. Dinginkan.</li>
+								<li>Goreng pisang hingga matang tiriskan.</li>
+								<li>Buat turihan memanjang pada pisang yang telah digoreng, isi dengan adonan isi. Celupkan pisang pada telur, goreng kembali hingga matang lapisan telurnya.</li>
+								<li>Sajikan bersama saus keju dan taburan keju.</li>
+							</ol>
+						
+						</div>
+                </div>
+               
+              </div>
+            </amp-lightbox>
+          
+             <a  class="button-resep-blue" on="tap:resep-sanggara"><p class="share-resep">LIHAT RESEPNYA</p></a>
+                  <amp-social-share class ="button-resep-blue" type="facebook"
+                     width="90"
+                     height="35"
+                     data-param-app_id="872847836388420"
+                     data-param-attribution="AMPhtml">
+                     <p class="share-resep">BAGIKAN <i class="fab fa-facebook-f ml-5"></i></p>
+                 </amp-social-share>
+            
+                  <amp-social-share  class ="button-resep-blue" type="twitter"
+                     width="90"
+                     height="35"
+                     data-param-text="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Sanggara Cokelat Keju Khas Sulawesi Tenggara untuk sekeluarga."
+                     data-param-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                     data-param-attribution="AMPhtml">
+                      <p  class ="share-resep">TWEET <i class="fab fa-twitter ml-5"></i></p>
+                  </amp-social-share> 
+             
+		</div>
+		
+		<div class="resep-8">
+		 
+		    <div class="detail_text mt-10">
+                <h1 style="font-size:22px">{{ 'RESEP PISANG EPE LUMPUR KHAS SULAWESI SELATAN'|upper }}</h1>   
+            </div>
+            
+            <amp-youtube
+                    data-videoid="ApE2qHzRdfM"
+                    layout="responsive"
+                    width="480" 
+                    height="270">
+                    <amp-img
+                      src="{{ 'assets/img-ramadhan/card/resep/pisang-epe.jpg'|theme }}"
+                      placeholder
+                      layout="fill"
+                      />
+            </amp-youtube>
+            
+            <amp-lightbox scrollable id="resep-pisang"
+              layout="nodisplay">
+              <div class="lightbox"
+                on="tap:resep-pisang.close"
+                role="button"
+                tabindex="0">
+                <div class="main-resep padding-10">
+                    <h2 class="font-24 title-khas "><strong>RESEP PISANG EPE LUMPUR KHAS SULAWESI SELATAN</strong></h2>
+                        <div class="list-resep">
+                            <p><strong>Bahan :</strong></p>
+        					  <p>5 buah Pisang kepok setengah matang</p>
+													
+							<p><strong>Bahan Saus :</strong></p>
+    							<p>100 ml Santan kental</p>
+    							<p>100 ml Susu kental manis putih Frisian Flag Gold</p>
+    							<p>100 gr Gula aren, iris halus</p>
+    							<p>½ sdm Maizena</p>
+    							<p>150 ml Air</p>
+													
+							<p><strong>Bahan Taburan :</strong></p>
+    							<p>50 gr Kurma, potong kotak</p>
+    							<p>50 gr Kismis</p>
+    							<p>50 gr Kacang tanah sangrai, cincang kasar</p>
+							
+							<p><strong>Cara Membuat:</strong></p>
+							<ol>
+							   	<li>Saus : campur bahan saus, masak di atas api kecil hingga kental. Dinginkan.</li>
+								<li>Bakar pisang (diatas grill pan) hingga permukaan pisang matang dan gosong, pipihkan. Bakar kembali hingga matang.</li>
+								<li>Sajikan selagi hangat dengan saus dan taburan bahan taburan.</li>
+							</ol>
+						    <p class="break-2x"></p>
+						</div>
+                </div>
+               
+              </div>
+            </amp-lightbox>
+          
+             <a  class="button-resep-blue" on="tap:resep-pisang"><p class="share-resep">LIHAT RESEPNYA</p></a>
+                  <amp-social-share class ="button-resep-blue" type="facebook"
+                     width="90"
+                     height="35"
+                     data-param-app_id="872847836388420"
+                     data-param-attribution="AMPhtml">
+                     <p class="share-resep">BAGIKAN <i class="fab fa-facebook-f ml-5"></i></p>
+                 </amp-social-share>
+            
+                  <amp-social-share  class ="button-resep-blue" type="twitter"
+                     width="90"
+                     height="35"
+                     data-param-text="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Pisang Epe Lumpur Khas Sulawesi Selatan untuk sekeluarga."
+                     data-param-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                     data-param-attribution="AMPhtml">
+                      <p  class ="share-resep">TWEET <i class="fab fa-twitter ml-5"></i></p>
+                  </amp-social-share> 
+             
+		</div>
+		
+		<div class="resep-9">
+		 
+		    <div class="detail_text mt-10">
+                <h1 style="font-size:22px">{{ 'RESEP KOPI RAROBANG KHAS MALUKU'|upper }}</h1>   
+            </div>
+            
+            <amp-youtube
+                    data-videoid="gR68A5YgJZE"
+                    layout="responsive"
+                    width="480" 
+                    height="270">
+                    <amp-img
+                      src="{{ 'assets/img-ramadhan/card/resep/kopi-rarobang.jpg'|theme }}"
+                      placeholder
+                      layout="fill"
+                      />
+            </amp-youtube>
+            
+            <amp-lightbox scrollable id="resep-kopi"
+              layout="nodisplay">
+              <div class="lightbox"
+                on="tap:resep-kopi.close"
+                role="button"
+                tabindex="0">
+                <div class="main-resep padding-10">
+                    <h2 class="font-24 title-khas "><strong>RESEP KOPI RAROBANG KHAS MALUKU</strong></h2>
+                        <div class="list-resep">
+                            <p><strong>Bahan :</strong></p>
+        					    <p>750 ml Air</p>
+    							<p>3 sdm Kopi bubuk hitam</p>
+    							<p>50 gr Jahe, memarkan</p>
+    							<p>1 btg Kayu manis</p>
+    							<p>3 butir Cengkeh</p>
+    							<p>1 lembar Daun pandan</p>
+    							<p>75 gr Gula pasir</p>
+    							<p>150 ml Susu kental manis putih Frisian Flag</p>
+    							<p>100 gr Kenari sangrai, cincang kasar</p>
+												
+							<p><strong>Cara Membuat:</strong></p>
+							<ol>
+							    <li>Campur kopi bubuk, jahe, kayu manis, cengkih, daun pandan, dan gula pasir. Rebus bersama air hingga mendidih dan air sedkit menyusut.</li>
+								<li>Angkat air rebusan, saring. Masukkan susu kental manis putih Frisian Flag Gold, aduk rata.</li>
+								<li>Siapkan gelas saji, tuangkan kopi tabur dengan kenari cincang. Sajikan selagi panas</li>
+							</ol>
+						    <p class="break-3x"></p>
+						</div>
+                </div>
+               
+              </div>
+            </amp-lightbox>
+          
+             <a  class="button-resep-blue" on="tap:resep-kopi"><p class="share-resep">LIHAT RESEPNYA</p></a>
+                  <amp-social-share class ="button-resep-blue" type="facebook"
+                     width="90"
+                     height="35"
+                     data-param-app_id="872847836388420"
+                     data-param-attribution="AMPhtml">
+                     <p class="share-resep">BAGIKAN <i class="fab fa-facebook-f ml-5"></i></p>
+                 </amp-social-share>
+            
+                  <amp-social-share  class ="button-resep-blue" type="twitter"
+                     width="90"
+                     height="35"
+                     data-param-text="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Kopi Parobang Khas Maluku untuk sekeluarga."
+                     data-param-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                     data-param-attribution="AMPhtml">
+                      <p  class ="share-resep">TWEET <i class="fab fa-twitter ml-5"></i></p>
+                  </amp-social-share> 
+             
+		</div>
+		
+			<div class="resep-10">
+		 
+		    <div class="detail_text mt-10">
+                <h1 style="font-size:22px">{{ "RESEP PISANG CO'E TERNATE KHAS MALUKU UTARA"|upper }}</h1>   
+            </div>
+            
+            <amp-youtube
+                    data-videoid="OfjtqNG-hAQ"
+                    layout="responsive"
+                    width="480" 
+                    height="270">
+                    <amp-img
+                      src="{{ "assets/img-ramadhan/card/resep/pisang-co\'e.jpg"|theme }}"
+                      placeholder
+                      layout="fill"
+                      />
+            </amp-youtube>
+            
+            <amp-lightbox scrollable id="resep-pisang-co"
+              layout="nodisplay">
+              <div class="lightbox"
+                on="tap:resep-pisang-co.close"
+                role="button"
+                tabindex="0">
+                <div class="main-resep padding-10">
+                    <h2 class="font-24 title-khas "><strong>RESEP PISANG CO'E TERNATE KHAS MALUKU UTARA</strong></h2>
+                        <div class="list-resep">
+                            
+                            <p><strong>Bahan I :</strong></p>
+    							<p>5 bh pisang raja matang (450 g), potong kotak</p>
+    							<p>100 g tepung terigu protein sedang</p>
+    							<p>100 ml Susu Kental Manis Frisian Flag</p>
+    							<p>¼ sdt garam</p>
+    							<p>350 ml santan</p>
+    							<p>50 g kenari, sangrai, iris tipis panjang</p>
+												
+							<p><strong>Bahan II :</strong></p>
+    							<p>75 g tepung terigu protein sedang</p>
+    							<p>¾ sdt garam</p>
+    							<p>400 ml santan</p>
+    							<p>50 g kenari, disangrai, diiris panjang untuk taburan</p>
+						
+							<p><strong>Cara Membuat:</strong></p>
+							<ol>
+							    <li>Bahan I: Campur tepung terigu, Susu Kental Manis Frisian Flag, dan garam sampai rata.</li>
+								<li>Tuang santan sedikit-sedikit sambil diaduk sampai rata.</li>
+								<li>Masukkan pisang raja dan kenari, aduk rata.</li>
+								<li>Tuang ke loyang 20x20x4 cm yang dialas plastik.</li>
+								<li>Kukus 30 menit sampai setengah matang.</li>
+								<li>Bahan II: Campur tepung terigu, garam, dan santan sampai rata. Tuang ke atas bahan I. Tabur kenari. Kukus 30 menit sampai matang.</li>
+							</ol>
+						    	<p><strong>10 potong</strong></p>				
+							    <p><strong>40 menit</strong></p>	
+						</div>
+                </div>
+               
+              </div>
+            </amp-lightbox>
+          
+             <a  class="button-resep-blue" on="tap:resep-pisang-co"><p class="share-resep">LIHAT RESEPNYA</p></a>
+                  <amp-social-share class ="button-resep-blue" type="facebook"
+                     width="90"
+                     height="35"
+                     data-param-app_id="872847836388420"
+                     data-param-attribution="AMPhtml">
+                     <p class="share-resep">BAGIKAN <i class="fab fa-facebook-f ml-5"></i></p>
+                 </amp-social-share>
+            
+                  <amp-social-share  class ="button-resep-blue" type="twitter"
+                     width="90"
+                     height="35"
+                     data-param-text="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Pisang Co'e Ternate Khas Maluku Utara untuk sekeluarga."
+                     data-param-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                     data-param-attribution="AMPhtml">
+                      <p  class ="share-resep">TWEET <i class="fab fa-twitter ml-5"></i></p>
+                  </amp-social-share> 
+             
+		</div>
+		
+			<div class="resep-11">
+		 
+		    <div class="detail_text mt-10">
+                <h1 style="font-size:22px">{{ "RESEP KUE LONTAR SUSU KHAS PAPUA"|upper }}</h1>   
+            </div>
+            
+            <amp-youtube
+                    data-videoid="VxDKclfFDm0"
+                    layout="responsive"
+                    width="480" 
+                    height="270">
+                    <amp-img
+                      src="{{ 'assets/img-ramadhan/card/resep/kue-lontar.jpg'|theme }}"
+                      placeholder
+                      layout="fill"
+                      />
+            </amp-youtube>
+            
+            <amp-lightbox scrollable id="resep-lontar"
+              layout="nodisplay">
+              <div class="lightbox"
+                on="tap:resep-lontar.close"
+                role="button"
+                tabindex="0">
+                <div class="main-resep padding-10">
+                    <h2 class="font-24 title-khas "><strong>RESEP KUE LONTAR SUSU KHAS PAPUA</strong></h2>
+                        <div class="list-resep">
+                            
+                            <p><strong>Bahan Kulit :</strong></p>
+    						<p>100 g margarin</p>
+							<p>150 g tepung terigu</p>
+							<p>½ sdt vanili</p>
+											
+							<p><strong>Bahan Isi :</strong></p>
+    							<p>385 ml (1 kaleng) Susu Kental Manis Frisian Flag Full Cream</p>
+    							<p>8 btr kuning telur, kocok lepas</p>
+    							<p>300 ml air panas</p>
+    							<p>1 sdt rhum	</p>							
+					
+							<p><strong>Cara Membuat:</strong></p>
+							<ol>
+							   <li>Kulit: Campur semua bahan dan aduk hingga merata. Giling tipis kemudian pindahkan ke piring lontar yang terlebih dahulu sudah diolesi dengan margarin dan kemudian sisihkan.</li>
+								<li>Isi: Campur semua bahan, aduk rata. Saring langsung ke dalam kulit atau piring.</li>
+								<li>Oven adonan pada suhu 180 derajat Celcius selama 15 menit kemudian turunkan suhunya hingga 160 derajat Celcius selama sekitar 45 menit, angkat dan dinginkan. Sajikan.</li>
+							</ol>
+						    	<p><strong>10 potong</strong></p>				
+							    <p><strong>70 menit</strong></p>	
+						</div>
+                </div>
+               
+              </div>
+            </amp-lightbox>
+          
+             <a  class="button-resep-blue" on="tap:resep-lontar"><p class="share-resep">LIHAT RESEPNYA</p></a>
+                  <amp-social-share class ="button-resep-blue" type="facebook"
+                     width="90"
+                     height="35"
+                     data-param-app_id="872847836388420"
+                     data-param-attribution="AMPhtml">
+                     <p class="share-resep">BAGIKAN <i class="fab fa-facebook-f ml-5"></i></p>
+                 </amp-social-share>
+            
+                  <amp-social-share  class ="button-resep-blue" type="twitter"
+                     width="90"
+                     height="35"
+                     data-param-text="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Kue Lontar Susu Khas Papua untuk sekeluarga."
+                     data-param-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                     data-param-attribution="AMPhtml">
+                      <p  class ="share-resep">TWEET <i class="fab fa-twitter ml-5"></i></p>
+                  </amp-social-share> 
+             
+		</div>
+		
+			<div class="resep-12">
+		 
+		    <div class="detail_text mt-10">
+                <h1 style="font-size:22px">{{ "RESEP EGG TART KHAS PAPUA BARAT"|upper }}</h1>   
+            </div>
+            
+            <amp-youtube
+                    data-videoid="gn6gCGF8kY4"
+                    layout="responsive"
+                    width="480" 
+                    height="270">
+                    <amp-img
+                      src="{{ 'assets/img-ramadhan/card/resep/egg-tart.jpg'|theme }}"
+                      placeholder
+                      layout="fill"
+                      />
+            </amp-youtube>
+            
+            <amp-lightbox scrollable id="resep-egg"
+              layout="nodisplay">
+              <div class="lightbox"
+                on="tap:resep-egg.close"
+                role="button"
+                tabindex="0">
+                <div class="main-resep padding-10">
+                    <h2 class="font-24 title-khas "><strong>RESEP EGG TART KHAS PAPUA BARAT</strong></h2>
+                        <div class="list-resep">
+                            
+                            <p><strong>Bahan Kulit :</strong></p>
+    						<p>150 gr Terigu</p>
+							<p>100 gr Margarine</p>
+						
+							<p><strong>Bahan Isi : </strong></p>
+							<p>8 btr Kuning telur</p>
+							<p>1 klg Susu kental manis putih Frisian Flag Gold</p>
+							<p>100 ml Air panas</p>
+							<p>½ sdt Vanilla essence</p>
+							
+							<p><strong>Cara Membuat:</strong></p>
+							<ol>
+							    <li>Siapkan cetakan pie berdiameter 18 cm. Olesi dengan margarin. Panaskan oven.</li>
+							 	<li>Campur bahan kulit, aduk rata.</li>
+								<li>Campur bahan isi, aduk rata.</li>
+								<li>Pipihkan adonan kulit, cetak kedalam cetakan pie, tusuk dengan garpu, tuangkan adonan isi. Panggang dalam oven selama 45 menit.</li>
+								<li>Sajikan selagi hangat atau setelah dingin.</li>
+							</ol>
+						    <p class="break-3x"></p>		
+						</div>
+                </div>
+               
+              </div>
+            </amp-lightbox>
+          
+             <a  class="button-resep-blue" on="tap:resep-egg"><p class="share-resep">LIHAT RESEPNYA</p></a>
+                  <amp-social-share class ="button-resep-blue" type="facebook"
+                     width="90"
+                     height="35"
+                     data-param-app_id="872847836388420"
+                     data-param-attribution="AMPhtml">
+                     <p class="share-resep">BAGIKAN <i class="fab fa-facebook-f ml-5"></i></p>
+                 </amp-social-share>
+            
+                  <amp-social-share  class ="button-resep-blue" type="twitter"
+                     width="90"
+                     height="35"
+                     data-param-text="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Egg Tart Khas Papua Barat untuk sekeluarga."
+                     data-param-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                     data-param-attribution="AMPhtml">
+                      <p  class ="share-resep">TWEET <i class="fab fa-twitter ml-5"></i></p>
+                  </amp-social-share> 
+             
+		</div>
+		
+    </div>
+    
+</div>

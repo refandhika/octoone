@@ -1,0 +1,111 @@
+title = "Our Milkpedia FAQ"
+url = "/amp/milkpedia/faq"
+layout = "basic-amp"
+meta_description = "Berikut ini fakta dan pertanyaan tentang susu yang sering ditanyakan secara umum. Baca dan pelajari fakta dan pertanyaan tentang susu berikut ini."
+is_hidden = 0
+
+[builderList]
+modelClass = "Definite\Milkpedia\Models\Faq"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+sortColumn = "created_at"
+sortDirection = "desc"
+==
+<?php
+function onStart() {
+    $this['categories'] = Definite\Milkpedia\Models\Category::all();
+    $this['faqCategory'] = $this['categories']->where('slug', 'faq')->first();
+    $this['faqURL'] = url('/amp/milkpedia/faq');
+    $keyword = "";
+
+    if (isset($_GET['keyword']) && !empty($_GET['keyword'])) { 
+      $keyword = $_GET['keyword'];
+      $this['faqResult'] = Definite\Milkpedia\Models\Faq::where('title', 'like', '%' . $keyword . '%')->get();
+    }
+
+    $this['keyword'] = $keyword;
+    
+    $domain_url = (isset($_SERVER['HTTP_USESSL']) || isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+    header("Content-type: application/json");
+    header("Access-Control-Allow-Credentials: true");
+    header("Access-Control-Allow-Origin: ". str_replace('.', '-', $this['faqURL']) .".cdn.ampproject.org");
+    header("AMP-Access-Control-Allow-Source-Origin: " . $domain_url);
+    header("Access-Control-Expose-Headers: AMP-Access-Control-Allow-Source-Origin");
+    header("AMP-Redirect-To: ".$this["faqURL"]."?keyword=".$keyword);
+    header("Access-Control-Expose-Headers: AMP-Redirect-To, AMP-Access-Control-Allow-Source-Origin");
+}
+
+function onEnd() {
+    // get the post component
+    $this->page->title = "Fakta dan Pertanyaan Tentang Susu";
+    $this->page->title_en = "Facts and Questions about Milk";
+    $this['records'] = [];
+}
+?>
+==
+{% set records = builderList.records %}
+{% set displayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsPage = builderList.detailsPage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
+
+<div class="cover">
+    <amp-img 
+        src="{{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }}"
+        srcset="{{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }} 640w,
+               {{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }} 320w"
+        width="50"
+        height="50"
+        layout="responsive"
+        alt="Banner 95 Tahun Frisian Flag Mobile">
+    </amp-img>
+</div>
+
+<amp-accordion class="title_home">
+    <section>
+      <h4 class="arrow_down"><a href="#" target="_self">{{ 'FAQ' | _ }}</a></h4>
+      <p>
+        {% for category in categories %}
+          <a href="{{ category.slug }}" target="_self" {% if category.slug == 'faq' %}class="active"{% endif %}>{{ trans_pick(category, 'title') }}</a>
+        {% endfor %}
+        <a href="{{ 'our-milkpedia-faq-amp'|page }}">FAQ</a>
+      </p>
+    </section>
+</amp-accordion>
+
+<div class="breadcrumb">
+    <a href="{{ 'home'|page }}">{{ 'beranda'|_ }}</a> /
+    <a href="#">Milkpedia</a> /
+    <a href="{{ 'our-milkpedia-faq'|page }}">{{ 'FAQ' | _ }}</a>
+</div>
+
+<!-- s:faq -->
+<div class="faq-section">
+  <form action-xhr="{{ faqURL }}" method="GET" target="_top" action="{{ faqURL }}" class="search">
+     <input type="search" name="keyword" value="{{ keyword }}" placeholder="Search" class="form-control" id="faq-search-amp" />
+  </form>
+  <amp-accordion class="faq_list">
+    {% if faqResult and faqResult is not empty %}
+      {% for faq in faqResult %}
+        <section class="item-accordion">
+          <h4  class="arrow_down">{{ trans_pick(faq, 'title') }}</h4>
+          {{ trans_pick(faq, 'description')|replace({'<p></p>':' '})|raw }}
+        </section>
+      {% endfor %}
+    {% else %} 
+      {% for faq in records %}
+        <section class="item-accordion">
+          <h4  class="arrow_down">{{ trans_pick(faq, 'title') }}</h4>
+          {{ trans_pick(faq, 'description')|replace({'<p></p>':' '})|raw }}
+        </section>
+      {% endfor %}
+    {% endif %}
+  </amp-accordion>
+</div>
+<!-- e:faq -->

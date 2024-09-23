@@ -1,0 +1,10 @@
+name: Newsletter
+form: $/definite/milkpedia/models/milkpedia/fields.yaml
+modelClass: Definite\Milkpedia\Models\Milkpedia
+defaultRedirect: definite/milkpedia/newsletter
+create:
+    redirect: 'definite/milkpedia/newsletter/update/:id'
+    redirectClose: definite/milkpedia/newsletter
+update:
+    redirect: definite/milkpedia/newsletter
+    redirectClose: definite/milkpedia/newsletter

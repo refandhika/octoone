@@ -1,0 +1,12 @@
+title = "testinghut"
+url = "/testinghut"
+layout = "aniversary"
+is_hidden = 0
+==
+<?php
+function onStart(){
+     $this['data'] = Definite\News\Models\Aniversary::where('status' , true)->get();
+     dd($this['data']);
+}
+?>
+==

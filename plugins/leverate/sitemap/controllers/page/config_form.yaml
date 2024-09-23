@@ -1,0 +1,10 @@
+name: Page
+form: $/leverate/sitemap/models/page/fields.yaml
+modelClass: Leverate\Sitemap\Models\Page
+defaultRedirect: leverate/sitemap/page
+create:
+    redirect: 'leverate/sitemap/page/update/:id'
+    redirectClose: leverate/sitemap/page
+update:
+    redirect: leverate/sitemap/page
+    redirectClose: leverate/sitemap/page

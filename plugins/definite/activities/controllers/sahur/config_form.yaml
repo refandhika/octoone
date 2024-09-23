@@ -1,0 +1,10 @@
+name: Sahur
+form: $/definite/activities/models/menusahur/fields.yaml
+modelClass: Definite\Activities\Models\MenuSahur
+defaultRedirect: definite/activities/sahur
+create:
+    redirect: 'definite/activities/sahur/update/:id'
+    redirectClose: definite/activities/sahur
+update:
+    redirect: definite/activities/sahur
+    redirectClose: definite/activities/sahur

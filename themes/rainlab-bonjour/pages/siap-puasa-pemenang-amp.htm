@@ -1,0 +1,51 @@
+title = "Siap Puasa - Pemenang | AMP"
+url = "/amp/siappuasa/pemenang"
+layout = "basic-amp"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/siap-puasa-pemenang"
+==
+<?php
+function onStart(){
+    $this->page->meta_description = "Selamat! Ini pengumuman pemenang #SiapPuasa bersama Frisian Flag. Apakah kamu salah satu pemenangnya? Cek di sini!";
+}
+?>
+==
+<div class="cover">
+        <amp-img 
+            src="{{ 'kreasi-takjil-mobile.jpg'|media }}"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Kreasi Takjil">
+        </amp-img>
+</div>
+<amp-accordion class="title_home">
+    <section>
+        <h4 class="arrow_down"><a href="#" target="_self">Cara Mengikuti</a></h4>
+        <p>
+            <a href="/siappuasa">Cara Mengikuti</a>
+            <a href="/siappuasa/syarat-dan-ketentuan" class="active">Syarat dan ketentuan</a>
+            <a href="/siappuasa/pemenang">Pemenang</a>
+        </p>
+    </section>
+</amp-accordion>
+
+
+
+<!--s:event-->
+<section class="event">
+   <div class="detail_text mb-20 mt-20">
+       <div class="content mb-10">
+           <amp-img 
+            src="{{ '/siappuasa/siappuasa-pemenang-mobile.jpeg'|media  }}"
+            width="480"
+            height="1300"
+            layout="responsive"
+            alt="Siap Puasa Pemenang">
+        </amp-img>        
+    </div>
+    </div>
+</section>
+<!--s:event-->

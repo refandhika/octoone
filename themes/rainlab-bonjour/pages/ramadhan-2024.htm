@@ -1,0 +1,49 @@
+title = "Ramadhan 2024"
+url = "/ramadhan-2024"
+layout = "ramadhan2024"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/ramadhan-2024"
+
+[builderList banner]
+modelClass = "Definite\Ramadhan2024\Models\Banner"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList sahurku]
+modelClass = "Definite\Ramadhan2024\Models\Sahurku"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+<?php
+function onStart () {
+    $data = DB::table('definite_ramadhan2024_sahur')->get();
+    $resepIds = [];
+    
+    foreach ($data as $item) {
+        $resepIds[] = $item->resep_id;
+    }
+    
+    $resep = DB::table('definite_activities_activity')->whereIn('id', $resepIds)->get();
+    $this['resep'] = $resep;
+}
+?>
+==
+{% partial 'ramadhan2024-banner' %}
+
+{% partial 'ramadhan2024-recipes' %}
+
+{% partial 'ramadhan2024-tips-2' %}
+
+{% partial 'ramadhan2024-promo-2' %}

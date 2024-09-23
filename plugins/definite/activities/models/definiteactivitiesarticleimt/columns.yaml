@@ -1,0 +1,15 @@
+columns:
+    id:
+        label: id
+        type: number
+    article:
+        label: article
+        type: text
+        select: title
+        relation: article
+    imt_label:
+        label: 'Kategori IMT'
+        type: text
+    fr_label:
+        label: 'Kategori Food Recall'
+        type: text

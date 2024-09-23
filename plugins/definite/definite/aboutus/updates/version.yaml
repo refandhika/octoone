@@ -1,0 +1,107 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table definite_aboutus_'
+    - builder_table_create_definite_aboutus_.php
+1.0.3:
+    - 'Created table definite_aboutus_frisian_flag'
+    - builder_table_create_definite_aboutus_frisian_flag.php
+1.0.4:
+    - 'Drop table definite_aboutus_'
+    - builder_table_delete_definite_aboutus_.php
+1.0.5:
+    - 'Created table definite_aboutus_post'
+    - builder_table_create_definite_aboutus_post.php
+1.0.6:
+    - 'Drop table definite_aboutus_'
+    - builder_table_delete_definite_aboutus__2.php
+1.0.7:
+    - 'Created table definite_aboutus_frisian'
+    - builder_table_create_definite_aboutus_frisian.php
+1.0.8:
+    - 'Updated table definite_aboutus_frisian'
+    - builder_table_update_definite_aboutus_frisian.php
+1.0.9:
+    - 'Updated table definite_aboutus_frisian'
+    - builder_table_update_definite_aboutus_frisian_2.php
+1.0.10:
+    - 'Updated table definite_aboutus_frisian'
+    - builder_table_update_definite_aboutus_frisian_3.php
+1.0.11:
+    - 'Updated table definite_aboutus_frisian'
+    - builder_table_update_definite_aboutus_frisian_4.php
+1.0.12:
+    - 'Updated table definite_aboutus_frisian'
+    - builder_table_update_definite_aboutus_frisian_5.php
+1.0.13:
+    - 'Updated table definite_aboutus_frisian'
+    - builder_table_update_definite_aboutus_frisian_6.php
+1.0.14:
+    - 'Created table definite_aboutus_award'
+    - builder_table_create_definite_aboutus_award.php
+1.0.15:
+    - 'Created table definite_aboutus_history'
+    - builder_table_create_definite_aboutus_history.php
+1.0.16:
+    - 'Updated table definite_aboutus_award'
+    - builder_table_update_definite_aboutus_award.php
+1.0.17:
+    - 'Updated table definite_aboutus_award'
+    - builder_table_update_definite_aboutus_award_2.php
+1.0.18:
+    - 'Updated table definite_aboutus_award'
+    - builder_table_update_definite_aboutus_award_3.php
+1.0.19:
+    - 'Updated table definite_aboutus_award'
+    - builder_table_update_definite_aboutus_award_4.php
+1.0.20:
+    - 'Updated table definite_aboutus_award'
+    - builder_table_update_definite_aboutus_award_5.php
+1.0.21:
+    - 'Updated table definite_aboutus_history'
+    - builder_table_update_definite_aboutus_history.php
+1.0.22:
+    - 'Updated table definite_aboutus_history'
+    - builder_table_update_definite_aboutus_history_2.php
+1.0.23:
+    - 'Updated table definite_aboutus_history'
+    - builder_table_update_definite_aboutus_history_3.php
+1.0.24:
+    - 'Updated table definite_aboutus_award'
+    - builder_table_update_definite_aboutus_award_6.php
+1.0.25:
+    - 'Updated table definite_aboutus_history'
+    - builder_table_update_definite_aboutus_history_4.php
+1.0.26:
+    - 'Updated table definite_aboutus_post'
+    - builder_table_update_definite_aboutus_post.php
+1.0.27:
+    - 'Updated table definite_aboutus_award'
+    - builder_table_update_definite_aboutus_award_7.php
+1.0.28:
+    - 'Updated table definite_aboutus_post'
+    - builder_table_update_definite_aboutus_post2.php
+1.0.29:
+    - 'Created table definite_aboutus_logo'
+    - builder_table_create_definite_aboutus_logo.php
+1.0.30:
+    - 'Updated table definite_aboutus_logo'
+    - builder_table_update_definite_aboutus_logohistory.php
+1.0.31:
+    - 'Updated table definite_aboutus_logohistory'
+    - builder_table_update_definite_aboutus_logo.php
+1.0.32:
+    - 'Created table definite_aboutus_business_safety'
+    - builder_table_create_definite_aboutus_business_safety.php
+1.0.33:
+    - 'Updated table definite_aboutus_business_safety'
+    - builder_table_update_definite_aboutus_business_safety.php
+1.0.34:
+    - 'removing attachment since it is unused'
+    - builder_table_update_definite_aboutus_business_safety_2.php
+1.0.35:
+    - 'add slug for clarity purposes'
+    - builder_table_update_definite_aboutus_business_safety_3.php
+1.0.36:
+    - 'Updated table definite_aboutus_business_safety'
+    - builder_table_update_definite_aboutus_business_safety_4.php

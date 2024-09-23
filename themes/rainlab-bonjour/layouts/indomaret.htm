@@ -1,0 +1,100 @@
+description = "Layout for Indomaret"
+
+[staticPage]
+useContent = 1
+default = 0
+
+[account]
+paramCode = "code"
+forceSecure = 0
+[session]
+
+[SessionClose]
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+    	<img src="{{ 'assets/img/indomaret/header-desktop.jpg'|theme }}" class="hidden-xs" />
+      <img src="{{ 'assets/img/indomaret/header-mobile.jpg'|theme }}" class="visible-xs" />
+    </div>
+</div>
+
+{% partial 'site/indomaret-menu' %}
+
+<div id='main-section' class="container" style="padding: 60px 0;">
+    <div class="col-md-12">
+        <div class="default-content">
+			<div class="row">
+				<div class="col-sm-12 col-md-6" style="margin-bottom: 15px;">
+                    <div class="card__thumbnail card__thumbnail--blue" style="background-size: cover; background-position: top; background-image: url('{{ 'assets/img/indomaret/card-1.jpg'|theme }}');  border-color: #eee;" data-adaptive-background data-ab-css-background>
+                        <div class="card__meta">
+                            <header class="card__head">
+                                <h2>DAFTAR SEKARANG!</h2>
+                            </header>
+                            <a href="{{ '/aktivitas-kami/promo-indomaret/main' }}" class="button">Klik di Sini</a>
+                        </div>
+                    </div>
+				</div> <!--  .col-sm-12 col-md-4 -->
+                <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;">
+                    <div class="card__thumbnail card__thumbnail--blue" style="background-size: cover; background-position: top; background-image: url('{{ 'assets/img/indomaret/card-2.jpg'|theme }}');  border-color: #eee;" data-adaptive-background data-ab-css-background>
+                        <div class="card__meta">
+                            <header class="card__head">
+                                <h2>CARA MENGIKUTI<br>SYARAT DAN KETENTUAN</h2>
+                            </header>
+                            <a href="{{ '/aktivitas-kami/promo-indomaret/cara-mengikuti' }}" class="button">SELENGKAPNYA</a>
+                        </div>
+                    </div>
+                </div> <!--  .col-sm-12 col-md-4 -->
+			</div> <!--  .row -->
+
+            <div class="row">
+                <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;">
+                    <div class="card__thumbnail card__thumbnail--blue" style="background-size: cover; background-position: top; background-image: url('{{ 'assets/img/indomaret/card-3.jpg'|theme }}');  border-color: #eee;" data-adaptive-background data-ab-css-background>
+                        <div class="card__meta">
+                            <header class="card__head">
+                                <h2>HADIAHNYA</h2>
+                            </header>
+                            <a href="{{ '/aktivitas-kami/promo-indomaret/hadiah' }}" class="button">CARI TAHU</a>
+                        </div>
+                    </div>
+                </div> <!--  .col-sm-12 col-md-4 -->
+                <div class="col-sm-12 col-md-6" style="margin-bottom: 15px;">
+                    <div class="card__thumbnail card__thumbnail--blue" style="background-size: cover; background-position: top; background-image: url('{{ 'assets/img/indomaret/card-4.jpg'|theme }}');  border-color: #eee;" data-adaptive-background data-ab-css-background>
+                        <div class="card__meta">
+                            <header class="card__head">
+                                <h2>LIHAT PEMENANG</h2>
+                            </header>
+                            <a href="{{ '/aktivitas-kami/promo-indomaret/pemenang' }}" class="button">KLIK DI SINI</a>
+                        </div>
+                    </div>
+                </div> <!--  .col-sm-12 col-md-4 -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+	.default-content h3 {
+	    font-size: 22px;
+	    line-height: 1.2;
+	}
+
+	@media screen and (min-width: 767px) {
+		.default-content h3 {
+			font-size: 30px;
+		}
+	}
+
+  @media screen and (max-width: 767px) {
+    .m-bottom-15 {
+      margin-bottom: 15px;
+    }
+  }
+</style>
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

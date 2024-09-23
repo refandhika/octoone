@@ -1,0 +1,322 @@
+[viewBag]
+
+[builderList mainmenu]
+modelClass = "Definite\Ramadhan2024\Models\MainMenus"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+<style>
+.recipes{
+    /*max-width: 1536px;*/
+    margin: 0 auto 10rem auto;
+    width: 100%;
+    min-height: 80rem;
+    background-image: url('https://www.frisianflag.com/themes/rainlab-bonjour/assets/ramadhan2024/Rectangle%206120@2x.png');
+    background-size: cover;
+    background-position: center;
+}
+.lamp-decoration{
+    max-width: 1536px;
+    margin: 0 auto;
+    width: 100%;
+    height: 40rem;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    margin-top: -10rem;   
+}
+.lamps{
+    width: 20%;
+    display: flex;
+    justify-content: space-around;
+}
+.lamp_short{
+    margin-top: -4rem;
+    width: 100%; 
+    height:100%;
+}
+.lamp-long-container{
+    height:40rem;    
+}
+.lamp-short-container{
+    height: 35rem;    
+}
+.cta-wa{
+    width: 60%;
+    height:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cta-wa-btn{
+    width: 65%;
+    height: 7rem;
+    background-color: white;
+    border-radius: 999px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #4B4B4B;
+}
+.cta-wa-btn:hover{
+    color: #4B4B4B;
+}
+.recipes-section{
+    width: 80%;
+    margin: -30px auto 0 auto;
+}
+.recipe-headline{
+    color: #224C95;
+    font-family: Uni-Sans !important;
+    font-weight: 800;
+    /*font-family: Amino-Black;*/
+    font-size: 32px !important;
+    margin-bottom: 3rem;
+}
+.recipe{
+    width: 30%;
+    margin:1rem;
+}
+.recipe-img-container{
+    width: 100%; 
+}
+.recipe-img-container img{
+    width:100%; 
+    height: 100%; 
+    object-fit: cover;
+    border-radius: 20px;
+}
+.recipe-title{
+    margin-top: 2rem;
+    width: 100%;
+    font-size: 30px;
+    color: #224C95;
+    font-weight: 800;
+    /*font-family: Amino-Black;*/
+    font-family: Uni-Sans !important;
+    text-align: center;
+    padding: 0px;
+}
+.card-bottom{
+    width: 100%;
+    min-height: 13rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.recipe-btn{
+    width: 100%;
+    height: 5rem;
+    background-image: linear-gradient(rgb(216,178,93),rgb(251,242,171),rgb(216,178,93));
+    color: #224C95;
+    border-radius: 9999px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    font-weight: 600;
+    /*font-family: Amino-Black;*/
+    font-family: Uni-Sans !important;
+}
+.recipe-btn:hover{
+    color: white;
+}
+.cta-wa-btn-text{
+    font-size: 25px; 
+    font-weight:600;
+}
+.all-recipes-container{
+    height: 0;
+}
+.cta-wa-logo{
+    width: 90px;   
+    height:auto;
+}
+
+@media only screen and (min-width: 770px) and (max-width: 1025px){
+    .cta-wa-btn-text{
+        font-size: 17px;
+    }
+    .cta-wa-btn {
+        height: 5rem;
+    }
+    .cta-wa-logo{
+        width: 75px;   
+        height:auto;
+    }
+    .lamps{
+        width: 25%;
+    }
+    .recipe-title {
+        padding: 0 10px;
+    }
+}
+
+@media only screen and (min-width: 432px) and (max-width: 769px){
+    .lamp-long-container{
+        height: 30rem;
+    }
+    .lamp-short-container{
+        height: 25rem;
+    }
+    .lamps{
+        width: 25%;
+    }
+    .cta-wa-btn {
+        height: 5rem;    
+    }
+    .cta-wa-logo{
+        width: 60px; 
+        height:auto;
+    }
+    .cta-wa-btn-text{
+        font-size: 12px;
+    }
+    .recipes-section{
+        width: 100%;
+        padding-left: 4rem;
+    }
+    .recipe-img-container {
+        width: 100%;
+        height: fit-content;
+    }
+}
+
+@media only screen and (max-width: 431px){
+    .recipes{
+        margin: 0rem auto 2rem auto;
+    }
+    .lamp-decoration {
+        margin-top: 0rem;
+        height: 15rem;
+    }
+    .lamp-short-container, .lamp-long-container {
+        height: 12rem;
+    }
+    .cta-wa-button{
+        width: 90%;
+    }
+    .cta-wa-logo{
+        width: 40px;   
+        left: -2px !important;
+        height:auto;
+    }
+    .cta-wa-btn-text{
+        font-size: 10px;
+    }
+    .cta-wa-btn{
+        width: 65%;
+        height: 4rem;
+    }
+    .wa-btn-hdn{
+        width: 40px;   
+        height:auto;
+    }
+    .recipes{
+        background-position: 0px -300px;
+        background-repeat: no-repeat;   
+        min-height: 50rem;
+    }
+    .recipe-headline {
+        font-size: 22px !important;   
+        margin-bottom: 2rem;
+    }
+    .recipe-img-container{
+        width: 100%; 
+        height: fit-content;
+    }
+    .recipe-title {
+        font-size: 20px;
+        padding: 0;
+    }
+    .recipe-btn {
+        font-size: 16px;
+        height: 4rem;
+    }
+    .card-bottom{
+        min-height: 10rem;    
+    }
+    .recipes-section {
+        width: 100%; 
+        padding-left: 4rem;
+    }
+}
+</style>
+
+<section class="recipes mt-min-3">
+    <div class="lamp-decoration">
+        <div class="lamps">
+            <div class="lamp-long-container"><img style="width: 100%; height:100%;" src="{{'assets/ramadhan2024/lamp_long.png' | theme}}" alt="lamp"></div>
+            <div class="lamp-short-container"><img class="lamp_short"src="{{'assets/ramadhan2024/lamp_short.png' | theme}}" alt="lamp"></div>
+        </div>
+        <div class="cta-wa" style="">
+            <a href="https://wa.me/message/WW2VULAESZB5H1" target="_BLANK" class="cta-wa-btn">
+                <img class="wa-btn-hdn" style="visibility: hidden;" width="50" height="0" src="{{'assets/ramadhan2024/wa-logo.png' | theme}}" alt="whatsapp">
+                <span class="cta-wa-btn-text" style="padding: 0 10px;">Yuk langganan resep di sini</span>
+                <img class="cta-wa-logo" width="90" height="20" style="position: absolute; left:0" src="{{'assets/ramadhan2024/wa-logo.png' | theme}}" alt="whatsapp">
+            </a>
+        </div>
+        <div class="lamps">
+            <div class="lamp-short-container"><img class="lamp_short"src="{{'assets/ramadhan2024/lamp_short.png' | theme}}" alt="lamp"></div>
+            <div class="lamp-long-container"><img style="width: 100%; height:100%;" src="{{'assets/ramadhan2024/lamp_long.png' | theme}}" alt="lamp"></div>
+        </div>
+    </div>
+    <div class="recipes-section">
+        <h2 class="recipe-headline">Inspirasi Resep Ramadan 30 Hari Nikmat Bernutrisi</h2>
+        <div class="all-recipes-container">
+            
+            {% for item in mainmenu.records %}
+            <!-- Recipe -->
+            <a href="{{item.link}}" class="recipe">
+                <div class="recipe-img-container">
+                    <img src="{{item.image | media}}" alt="{{item.title}}">
+                </div>
+                <div class="card-bottom">
+                    <div class="recipe-title">{{item.title}}</div>
+                    <div class="recipe-btn">{{item.button_word}}</div>
+                </div>
+            </a>
+            <!-- End Recipe -->
+            {% endfor %}
+            
+            <!-- Recipe -->
+            <div class="recipe" style="visibility: hidden;">
+                <div class="recipe-img-container">
+                    <img src="{{'assets/ramadhan2024/produk/Resep Nastar Keju Lembut Lumer di Mulut Anti Retak Buat Lebaran.png' | theme}}" alt="recipe-img">
+                </div>
+                <div class="card-bottom">
+                    <div class="recipe-title">Inspirasi Resep Kue Kering</div>
+                    <a href="#" class="recipe-btn">Selengkapnya</a>
+                </div>
+            </div>
+            <!-- End Recipe -->
+            
+        </div>
+    </div>
+</section>
+
+<script>
+$(document).ready(function(){
+  $('.all-recipes-container').slick({
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      arrows: false,
+      responsive: [
+        {
+          breakpoint: 1000,
+          settings: {
+            slidesToShow: 1.5,
+            slidesToScroll: 1,
+            infinite: false,
+          }
+        }
+      ]
+  });
+});
+</script>

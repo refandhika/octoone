@@ -1,0 +1,46 @@
+title = "Ramadan - Thank you"
+url = "/amp/aktivitas-kami/ramadan-istimewa/thank-you"
+layout = "default-amp"
+is_hidden = 0
+role = 0
+permission = 0
+anonymous_only = 0
+logged_only = 0
+
+[viewBag]
+localeUrl[en] = "/ramadan-thank-you"
+==
+<?php
+function onStart(){
+        
+        if (session::get('data')) {
+            
+            $this['data'] = session::get('data');
+        }else{
+            return redirect()->to(url('/amp/home'));    
+        }
+        
+        $this['menus'] = "dont-allow";
+    
+    }
+?>
+==
+<!--s:carousel-banner-->
+{% partial 'site/banner-ramadan-istimewa-amp' %}
+<!--e:carousel-banner-->
+
+<!--s:body-->
+<div id='main-section' style="padding: 20px 0" class="center">
+       <div class="detail_text">
+      <h3 class="text-code">{{data.messages}}</h3>
+    </div>
+    
+      <div class="main-code">
+          <h1  class="main-code__code">{{data.code}}</h1>
+      </div>
+      <div class="detail_text">
+          <h4 class="text-code">Tunjukkan kode kupon ini saat melakukan pembayaran di kasir. Kode kupon juga telah kami kirimkan ke email Anda.</h4>
+        </div>
+</div> 
+
+<!--e:body-->

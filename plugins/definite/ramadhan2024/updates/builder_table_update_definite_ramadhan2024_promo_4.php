@@ -1,0 +1,25 @@
+<?php namespace Definite\Ramadhan2024\Updates;
+
+use Schema;
+use October\Rain\Database\Updates\Migration;
+
+class BuilderTableUpdateDefiniteRamadhan2024Promo4 extends Migration
+{
+    public function up()
+    {
+        Schema::table('definite_ramadhan2024_promo', function($table)
+        {
+            $table->string('excerpt', 255)->nullable()->change();
+            $table->string('link', 255)->nullable()->change();
+        });
+    }
+    
+    public function down()
+    {
+        Schema::table('definite_ramadhan2024_promo', function($table)
+        {
+            $table->string('excerpt', 255)->nullable(false)->change();
+            $table->string('link', 255)->nullable(false)->change();
+        });
+    }
+}

@@ -1,0 +1,4 @@
+title: Categories
+modelClass: Definite\Pressrelease\Models\Categories
+toolbar:
+    buttons: reorder_toolbar

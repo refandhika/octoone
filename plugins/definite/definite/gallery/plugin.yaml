@@ -1,0 +1,27 @@
+plugin:
+    name: 'definite.gallery::lang.plugin.name'
+    description: 'definite.gallery::lang.plugin.description'
+    author: Definite
+    icon: oc-icon-picture-o
+    homepage: ''
+navigation:
+    Gallery:
+        label: 'definite.gallery::lang.plugin.name'
+        url: /definite/gallery/post
+        icon: icon-picture-o
+        permissions:
+            - manage_gallery_post
+        sideMenu:
+            Gallery:
+                label: 'definite.gallery::lang.plugin.name'
+                url: definite/gallery/post
+                icon: icon-sitemap
+                permissions:
+                    - manage_gallery_post
+permissions:
+    manage_gallery_post:
+        tab: Galeri
+        label: 'Manage Menu Galeri Post'
+    manage_gallery_detail:
+        tab: Galeri
+        label: 'Manage Menu Galeri Detail'

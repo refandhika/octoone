@@ -1,0 +1,122 @@
+title = "Our Activities Single Amp"
+url = "/amp/aktivitas-kami/:category-slug/:slug"
+layout = "default-amp"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/our-activities-single-amp"
+
+[activityCategories]
+
+[builderDetails]
+modelClass = "Definite\Activities\Models\Activity"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+==
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+{% if record %}
+
+<h1 aria-hidden="true" class="seo-heading" style="display: none">{{ record.title }}</h1>
+
+<div class="static-baner-pages">
+    {% if record.category.slug == 'keluargaminumsusu' %}
+        <amp-img src="{{ 'assets/img/keluargaminumsusu/FF-perayaan-susu-480x480.jpg'|theme }}" alt="Welcome" height="400" width="400" layout="responsive"></amp-img>        
+     {% elseif record.category.slug == 'jr-nba' %}
+        <amp-img src="{{ 'assets/img/activities/JrNBA-mobile.jpg'|theme }}" alt="Welcome" height="400" width="400" layout="responsive"></amp-img>        
+     {% elseif record.category.slug == 'gerakan-nusantara' %}
+        <amp-img src="{{ 'assets/img/activities/Gerakan-Nusantara-mobile.jpg'|theme }}" alt="Welcome" height="400" width="400" layout="responsive"></amp-img>
+     {% else %}
+        <amp-img src="{{ 'assets/img/staticbaner-xs.jpg'|theme }}" alt="Welcome" height="400" width="400" layout="responsive"></amp-img>
+    {% endif %}
+</div>
+<!--
+<amp-accordion class="title_home">
+    <section>
+        <h4 class="arrow_down"><a href="#" target="_self">{{ record.title }}</a></h4>
+        <p>
+          {% for category in record.all %}
+          {% if category.title %}
+            <a href="/aktivitas-kami/gerakan-nusantara/{{ category.slug }}" {% if category.slug == record.slug %} class="active" {% endif %} target="_self">{{ trans_pick(category, 'title') }}</a>
+          {% endif %}
+          {% endfor %}
+        </p>
+    </section>
+</amp-accordion>
+-->
+<div class="breadcrumb">
+    <a href="{{ 'home'|page }}">{{ 'beranda'|_ }}</a> /
+    <a href="#">Aktivitas Kami</a> /
+    <a href="{{ 'our-activities-archive'|page({'slug': record.category.slug}) }}">{{ record.category.title }}</a> /
+     <a href="{{ 'our-activities-single'|page({
+        'category-slug': record.category.slug,
+        'slug': record.slug
+    }) }}">{{ record.title }}</a>
+</div>
+
+<div id='main-section'>
+  <div class="date-main" style="margin: 0 15px">
+      <label>{{ record.category.title }}</label>
+      <span> | {{ record.created_at.format('d M Y') }}</span>
+  </div>
+</div>
+
+
+  <div class="default-content detail_text">
+      <div class="container-two">
+          <h1 class="post__title">{{ record.title }}</h1>
+
+          <div class="imgwrp">
+              <amp-img src="{{ record.image_banner|media }}" width="314" height="215" layout="responsive" alt="{{ record.title }}"></amp-img>
+          </div>
+
+            {{ record.description|raw }}
+
+
+            <div class="row activities__gallery-thumbnail hide" style="display: none">
+              <div class="col-xs-12 col-sm-4 item">
+                <amp-img src="{{ 'assets/img/activities/thumbnail/01.png'|theme }}" width="314" height="215" alt="Thumbnail 1"></amp-img>
+              </div>
+              <div class="col-xs-12 col-sm-4 item">
+                <amp-img src="{{ 'assets/img/activities/thumbnail/02.png'|theme }}" width="314" height="215" alt="Thumbnail 2"></amp-img>
+              </div>
+              <div class="col-xs-12 col-sm-4 item">
+                <amp-img src="{{ 'assets/img/activities/thumbnail/03.png'|theme }}" width="314" height="215" alt="Thumbnail 3"></amp-img>
+              </div>
+            </div>
+
+              <div class="share center mb-10">
+                
+                <!---<p class="title-share">{{'Share'}}</p>
+                
+                      <amp-social-share width="35"
+                      height="35" class="rounded" type="facebook"
+                      data-param-app_id="872847836388420"></amp-social-share>
+                      <amp-social-share width="35"
+                      height="35" class="rounded" type="twitter"></amp-social-share>s
+                      <amp-social-share width="35"
+                      height="35" class="rounded" type="whatsapp"></amp-social-share>
+                      <amp-social-share width="35"
+                      height="35" class="rounded" type="line"></amp-social-share>-->
+            </div>
+      </div>
+  </div>
+
+  <div class="col-xs-12 activities__information" style="margin: 20px">
+    <div class="container" style="    font-family: Brevia-Black,Helvetica,Arial,sans-serif;
+    color: #0F4D9A;">
+      <div class="text-center default-content" style="text-align: center">
+        <h3 style="font-size: 25px;line-height: 1.1;">Untuk informasi lebih lanjut, yuk klik disini</h3>
+        <a href="{{ 'our-activities-archive'|page({'slug': record.category.slug}) }}/galeri" class="btn_more">Find Out More</a>
+      </div>
+    </div>
+  </div>
+
+</div> <!-- end mainsection -->
+{% else %}
+    {% partial '404' %}
+{% endif %}

@@ -1,0 +1,158 @@
+title = "Artikel AMP"
+url = "/amp/karir/artikel"
+layout = "basic-amp"
+is_hidden = 0
+
+[CareerMenu]
+
+[CareerArticle]
+==
+<?php
+function onEnd(){
+    $vars     = $this->page->components["CareerArticle"]->articles;
+    $this['total'] = count($vars);
+    $this->page->set_rule = "disable";
+    $this->page->title    =  "Artikel";
+    $total = $this->page->components["CareerArticle"]->total;
+       // pagination
+    $this->page->p = Input::get('p', 1);
+    if( ! is_numeric($this->page->p)){
+      $this->page->p = 1;
+    }else if($this->page->p < 1){
+      $this->page->p = 1;
+    }
+
+    $num_pgn = 5;
+    $space_pgn = 2;
+
+    $this->page->total_page = $total / 5;
+    $this->page->total_page = (int) ceil($this->page->total_page);
+  
+    $this->page->max_p = $this->page->p <= $space_pgn ? $num_pgn : $this->page->p + $space_pgn;
+
+    if( $this->page->max_p > $this->page->total_page ){
+        $this->page->max_p = $this->page->total_page;
+    }
+
+    $this->page->min_p = $this->page->max_p - ($num_pgn - 1);
+    if( $this->page->min_p < 1 )
+        $this->page->min_p = 1;
+}
+?>
+==
+<div class="cover">
+        <amp-img 
+            src="{{ 'assets/img/menukarir/home-mobile.jpg'|theme }}"
+            srcset="{{ 'assets/img/menukarir/home-mobile.jpg'|theme }} 640w,
+                  {{ 'assets/img/menukarir/home-mobile.jpg'|theme }} 320w"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Home Mobile">
+        </amp-img>
+</div>
+
+<amp-accordion class="title_home">
+    <section class="menus">
+        <h4 class="arrow_down"><a href="#" target="_self">{{ 'Artikel' }}</a></h4>
+        <p>
+          {% set careermenus = CareerMenu.submenus %}
+                {% for menu in careermenus %}
+                    {% if menu.id == 4 %}
+                                
+                                <a href="{{url('/karir')}}/{{menu.slug}}" class="active">{{menu.title}}</a>
+                                
+                                 {% elseif menu.id == 1 %}
+                                
+                                 <a href="{{url('/karir')}}">{{menu.title}}</a>
+                                 
+                                 {% else %}
+                                 
+                                 <a href="{{url('/karir')}}/{{menu.slug}}">{{menu.title}}</a>
+                    {% endif %}            
+                {% endfor %}
+         
+        </p>
+    </section>
+</amp-accordion>
+
+<!--s:breadcrumb-->
+<div class="breadcrumb">
+    <a href="{{ 'home'|page }}">{{ 'beranda'|_ }}</a> /
+    <a href="{{ 'karir'|page }}">{{ 'Karir' }}</a> /
+    <a href="{{ 'karir-artikel'|page }}">{{ 'Artikel' }}</a>
+</div>
+<!--s:breadcrumb-->
+<div class="detail_text">
+{% set articles = CareerArticle.articles.take(1) %}
+
+{% for article in articles%}
+    <div class="main-image" style="padding : 16px;">
+       <amp-img 
+            src="{{article.thumb_img | media }}"
+            width="50"
+            height="70"
+            layout="responsive"
+            alt="{{ article.alt_img}}">
+        </amp-img>
+        <p class="published">{{article.created_at.format('d F Y')}}</p> 
+        <h1 class="title" style="line-height: 40px;"><a href="https://www.frisianflag.com/amp/karir/artikel/{{article.slug}}"  style="color:#337ab7">{{article.title}}</a></h1>
+        <div class="excerpt">
+            {{article.excerpt | raw}}
+        </div>
+        
+         <a href="{{url('/karir/artikel')}}/{{article.slug}}" class="button button-content">Lebih Lanjut</a>
+       
+    </div>    
+{% endfor %}    
+</div>
+
+<div class="list-article">
+ <amp-list  src="{{ url('/api/article') }}?page={{ this.page.p }}&is_amp=1"
+      height="750"
+      items="data.data"
+      class="m1">
+      <template type="amp-mustache">
+      {% verbatim %}
+
+          <div class="detail_text" style="padding:5px 15px">
+               <div class="article__archive">
+               <div class="archive__container-image">
+                   <div title="{{title}}" class="image-box" style="background-size: cover; background-position: center center; background-repeat: no-repeat; background-image: url('https://www.frisianflag.com/storage/app/media/{{img}}');">
+                   </div>
+               </div>
+               
+               <div class="archive__container-content default-content">
+               <span class="published">{{time}}</span>
+                   <h3 class="title"><a style="color:#337ab7;" href="https://www.frisianflag.com/amp/karir/artikel/{{slug}}">{{title}}</a>
+                   </h3>
+              </div>
+            </div>
+        </div>
+        {% endverbatim %}    
+      </template>
+    </amp-list>
+</div>
+         <!-- s:paging -->
+    <div class="stylepaging mt-10" style="padding:0px;">
+      <ul>
+        {% if this.page.p != 1 %}
+          <li><a href="{{ 'karir-artikel-amp'|page }}?p={{ this.page.p - 1 }}">&laquo;</a></li>
+        {% endif %}
+        {% for i in this.page.min_p..this.page.max_p %}
+          <li>
+            <a href="{{ 'karir-artikel-amp'|page }}?p={{ i }}" {{ i == this.page.p ? 'class="disable"' : '' }}>
+              {{ i }}
+            </a>
+          </li>
+        {% endfor %}
+        {% if this.page.p != this.page.total_page %}
+          <li><a href="{{ 'karir-artikel-amp'|page}}?p={{ this.page.p - 1 }}">&raquo;</a></li>
+        {% endif %}
+      </ul>                       
+      <div class="paging-info mb-10">Halaman {{ this.page.p }} Dari {{ this.page.total_page }}</div>
+    </div>
+     <!-- s:paging -->
+
+    
+</div>

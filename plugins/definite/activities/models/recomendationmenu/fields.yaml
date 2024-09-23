@@ -1,0 +1,988 @@
+fields:
+    periode_1:
+        label: 'Periode 1 Text'
+        span: auto
+        type: text
+    periode_2:
+        label: 'Periode 2 Text'
+        span: auto
+        type: text
+    periode_3:
+        label: 'Periode 3 Text'
+        span: auto
+        type: text
+    periode_4:
+        label: 'Periode 4 Text'
+        span: auto
+        type: text
+    periode_5:
+        label: 'Periode 5 Text'
+        span: auto
+        type: text
+tabs:
+    fields:
+        tier_1:
+            label: 'Tier 1 Menu Recomendation'
+            prompt: '-'
+            span: full
+            type: repeater
+            tab: 'Tier 1'
+            form:
+                fields:
+                    periode_1_menu:
+                        label: 'Periode 1 Menu'
+                        prompt: 'Add new item'
+                        span: full
+                        type: repeater
+                        form:
+                            fields:
+                                name:
+                                    label: Name
+                                    span: full
+                                    type: text
+                                berat:
+                                    label: Berat
+                                    span: full
+                                    type: text
+                                kalori:
+                                    label: Kalori
+                                    span: full
+                                    type: text
+                                protein:
+                                    label: Protein
+                                    span: full
+                                    type: text
+                                karbohidrat:
+                                    label: Karbohidrat
+                                    span: full
+                                    type: text
+                                lemak:
+                                    label: Lemak
+                                    span: full
+                                    type: text
+                                image:
+                                    label: 'Image Menu'
+                                    oc.commentPosition: ''
+                                    mode: image
+                                    span: full
+                                    type: mediafinder
+                    periode_2_menu:
+                        label: 'Periode 2 Menu'
+                        prompt: 'Add new item'
+                        span: full
+                        type: repeater
+                        form:
+                            fields:
+                                name:
+                                    label: Name
+                                    span: full
+                                    type: text
+                                berat:
+                                    label: Berat
+                                    span: full
+                                    type: text
+                                kalori:
+                                    label: Kalori
+                                    span: full
+                                    type: text
+                                protein:
+                                    label: Protein
+                                    span: full
+                                    type: text
+                                karbohidrat:
+                                    label: Karbohidrat
+                                    span: full
+                                    type: text
+                                lemak:
+                                    label: Lemak
+                                    span: full
+                                    type: text
+                                image:
+                                    label: 'Image Menu'
+                                    oc.commentPosition: ''
+                                    mode: image
+                                    span: full
+                                    type: mediafinder
+                    periode_3_menu:
+                        label: 'Periode 3 Menu'
+                        prompt: 'Add new item'
+                        span: full
+                        type: repeater
+                        form:
+                            fields:
+                                name:
+                                    label: Name
+                                    span: full
+                                    type: text
+                                berat:
+                                    label: Berat
+                                    span: full
+                                    type: text
+                                kalori:
+                                    label: Kalori
+                                    span: full
+                                    type: text
+                                protein:
+                                    label: Protein
+                                    span: full
+                                    type: text
+                                karbohidrat:
+                                    label: Karbohidrat
+                                    span: full
+                                    type: text
+                                lemak:
+                                    label: Lemak
+                                    span: full
+                                    type: text
+                                image:
+                                    label: 'Image Menu'
+                                    oc.commentPosition: ''
+                                    mode: image
+                                    span: full
+                                    type: mediafinder
+                    periode_4_menu:
+                        label: 'Periode 4 Menu'
+                        prompt: 'Add new item'
+                        span: full
+                        type: repeater
+                        form:
+                            fields:
+                                name:
+                                    label: Name
+                                    span: full
+                                    type: text
+                                berat:
+                                    label: Berat
+                                    span: full
+                                    type: text
+                                kalori:
+                                    label: Kalori
+                                    span: full
+                                    type: text
+                                protein:
+                                    label: Protein
+                                    span: full
+                                    type: text
+                                karbohidrat:
+                                    label: Karbohidrat
+                                    span: full
+                                    type: text
+                                lemak:
+                                    label: Lemak
+                                    span: full
+                                    type: text
+                                image:
+                                    label: 'Image Menu'
+                                    oc.commentPosition: ''
+                                    mode: image
+                                    span: full
+                                    type: mediafinder
+                    periode_5_menu:
+                        label: 'Periode 5 Menu'
+                        prompt: 'Add new item'
+                        span: full
+                        type: repeater
+                        form:
+                            fields:
+                                name:
+                                    label: Name
+                                    span: full
+                                    type: text
+                                berat:
+                                    label: Berat
+                                    span: full
+                                    type: text
+                                kalori:
+                                    label: Kalori
+                                    span: full
+                                    type: text
+                                protein:
+                                    label: Protein
+                                    span: full
+                                    type: text
+                                karbohidrat:
+                                    label: Karbohidrat
+                                    span: full
+                                    type: text
+                                lemak:
+                                    label: Lemak
+                                    span: full
+                                    type: text
+                                image:
+                                    label: 'Image Menu'
+                                    oc.commentPosition: ''
+                                    mode: image
+                                    span: full
+                                    type: mediafinder
+        tier_2:
+            label: 'Tier 2 Menu Recomendation'
+            prompt: '-'
+            span: full
+            type: repeater
+            tab: 'Tier 2'
+            form:
+                fields:
+                    periode_1_menu:
+                        label: 'Periode 1 Menu'
+                        prompt: 'Add new item'
+                        span: full
+                        type: repeater
+                        form:
+                            fields:
+                                name:
+                                    label: Name
+                                    span: full
+                                    type: text
+                                berat:
+                                    label: Berat
+                                    span: full
+                                    type: text
+                                kalori:
+                                    label: Kalori
+                                    span: full
+                                    type: text
+                                protein:
+                                    label: Protein
+                                    span: full
+                                    type: text
+                                karbohidrat:
+                                    label: Karbohidrat
+                                    span: full
+                                    type: text
+                                lemak:
+                                    label: Lemak
+                                    span: full
+                                    type: text
+                                image:
+                                    label: 'Image Menu'
+                                    oc.commentPosition: ''
+                                    mode: image
+                                    span: full
+                                    type: mediafinder
+                    periode_2_menu:
+                        label: 'Periode 2 Menu'
+                        prompt: 'Add new item'
+                        span: full
+                        type: repeater
+                        form:
+                            fields:
+                                name:
+                                    label: Name
+                                    span: full
+                                    type: text
+                                berat:
+                                    label: Berat
+                                    span: full
+                                    type: text
+                                kalori:
+                                    label: Kalori
+                                    span: full
+                                    type: text
+                                protein:
+                                    label: Protein
+                                    span: full
+                                    type: text
+                                karbohidrat:
+                                    label: Karbohidrat
+                                    span: full
+                                    type: text
+                                lemak:
+                                    label: Lemak
+                                    span: full
+                                    type: text
+                                image:
+                                    label: 'Image Menu'
+                                    oc.commentPosition: ''
+                                    mode: image
+                                    span: full
+                                    type: mediafinder
+                    periode_3_menu:
+                        label: 'Periode 3 Menu'
+                        prompt: 'Add new item'
+                        span: full
+                        type: repeater
+                        form:
+                            fields:
+                                name:
+                                    label: Name
+                                    span: full
+                                    type: text
+                                berat:
+                                    label: Berat
+                                    span: full
+                                    type: text
+                                kalori:
+                                    label: Kalori
+                                    span: full
+                                    type: text
+                                protein:
+                                    label: Protein
+                                    span: full
+                                    type: text
+                                karbohidrat:
+                                    label: Karbohidrat
+                                    span: full
+                                    type: text
+                                lemak:
+                                    label: Lemak
+                                    span: full
+                                    type: text
+                                image:
+                                    label: 'Image Menu'
+                                    oc.commentPosition: ''
+                                    mode: image
+                                    span: full
+                                    type: mediafinder
+                    periode_4_menu:
+                        label: 'Periode 4 Menu'
+                        prompt: 'Add new item'
+                        span: full
+                        type: repeater
+                        form:
+                            fields:
+                                name:
+                                    label: Name
+                                    span: full
+                                    type: text
+                                berat:
+                                    label: Berat
+                                    span: full
+                                    type: text
+                                kalori:
+                                    label: Kalori
+                                    span: full
+                                    type: text
+                                protein:
+                                    label: Protein
+                                    span: full
+                                    type: text
+                                karbohidrat:
+                                    label: Karbohidrat
+                                    span: full
+                                    type: text
+                                lemak:
+                                    label: Lemak
+                                    span: full
+                                    type: text
+                                image:
+                                    label: 'Image Menu'
+                                    oc.commentPosition: ''
+                                    mode: image
+                                    span: full
+                                    type: mediafinder
+                    periode_5_menu:
+                        label: 'Periode 5 Menu'
+                        prompt: 'Add new item'
+                        span: full
+                        type: repeater
+                        form:
+                            fields:
+                                name:
+                                    label: Name
+                                    span: full
+                                    type: text
+                                berat:
+                                    label: Berat
+                                    span: full
+                                    type: text
+                                kalori:
+                                    label: Kalori
+                                    span: full
+                                    type: text
+                                protein:
+                                    label: Protein
+                                    span: full
+                                    type: text
+                                karbohidrat:
+                                    label: Karbohidrat
+                                    span: full
+                                    type: text
+                                lemak:
+                                    label: Lemak
+                                    span: full
+                                    type: text
+                                image:
+                                    label: 'Image Menu'
+                                    oc.commentPosition: ''
+                                    mode: image
+                                    span: full
+                                    type: mediafinder
+        tier_3:
+            label: 'Tier 3 Menu Recomendation'
+            prompt: '-'
+            span: full
+            type: repeater
+            tab: 'Tier 3'
+            form:
+                fields:
+                    periode_1_menu:
+                        label: 'Periode 1 Menu'
+                        prompt: 'Add new item'
+                        span: full
+                        type: repeater
+                        form:
+                            fields:
+                                name:
+                                    label: Name
+                                    span: full
+                                    type: text
+                                berat:
+                                    label: Berat
+                                    span: full
+                                    type: text
+                                kalori:
+                                    label: Kalori
+                                    span: full
+                                    type: text
+                                protein:
+                                    label: Protein
+                                    span: full
+                                    type: text
+                                karbohidrat:
+                                    label: Karbohidrat
+                                    span: full
+                                    type: text
+                                lemak:
+                                    label: Lemak
+                                    span: full
+                                    type: text
+                                image:
+                                    label: 'Image Menu'
+                                    oc.commentPosition: ''
+                                    mode: image
+                                    span: full
+                                    type: mediafinder
+                    periode_2_menu:
+                        label: 'Periode 2 Menu'
+                        prompt: 'Add new item'
+                        span: full
+                        type: repeater
+                        form:
+                            fields:
+                                name:
+                                    label: Name
+                                    span: full
+                                    type: text
+                                berat:
+                                    label: Berat
+                                    span: full
+                                    type: text
+                                kalori:
+                                    label: Kalori
+                                    span: full
+                                    type: text
+                                protein:
+                                    label: Protein
+                                    span: full
+                                    type: text
+                                karbohidrat:
+                                    label: Karbohidrat
+                                    span: full
+                                    type: text
+                                lemak:
+                                    label: Lemak
+                                    span: full
+                                    type: text
+                                image:
+                                    label: 'Image Menu'
+                                    oc.commentPosition: ''
+                                    mode: image
+                                    span: full
+                                    type: mediafinder
+                    periode_3_menu:
+                        label: 'Periode 3 Menu'
+                        prompt: 'Add new item'
+                        span: full
+                        type: repeater
+                        form:
+                            fields:
+                                name:
+                                    label: Name
+                                    span: full
+                                    type: text
+                                berat:
+                                    label: Berat
+                                    span: full
+                                    type: text
+                                kalori:
+                                    label: Kalori
+                                    span: full
+                                    type: text
+                                protein:
+                                    label: Protein
+                                    span: full
+                                    type: text
+                                karbohidrat:
+                                    label: Karbohidrat
+                                    span: full
+                                    type: text
+                                lemak:
+                                    label: Lemak
+                                    span: full
+                                    type: text
+                                image:
+                                    label: 'Image Menu'
+                                    oc.commentPosition: ''
+                                    mode: image
+                                    span: full
+                                    type: mediafinder
+                    periode_4_menu:
+                        label: 'Periode 4 Menu'
+                        prompt: 'Add new item'
+                        span: full
+                        type: repeater
+                        form:
+                            fields:
+                                name:
+                                    label: Name
+                                    span: full
+                                    type: text
+                                berat:
+                                    label: Berat
+                                    span: full
+                                    type: text
+                                kalori:
+                                    label: Kalori
+                                    span: full
+                                    type: text
+                                protein:
+                                    label: Protein
+                                    span: full
+                                    type: text
+                                karbohidrat:
+                                    label: Karbohidrat
+                                    span: full
+                                    type: text
+                                lemak:
+                                    label: Lemak
+                                    span: full
+                                    type: text
+                                image:
+                                    label: 'Image Menu'
+                                    oc.commentPosition: ''
+                                    mode: image
+                                    span: full
+                                    type: mediafinder
+                    periode_5_menu:
+                        label: 'Periode 5 Menu'
+                        prompt: 'Add new item'
+                        span: full
+                        type: repeater
+                        form:
+                            fields:
+                                name:
+                                    label: Name
+                                    span: full
+                                    type: text
+                                berat:
+                                    label: Berat
+                                    span: full
+                                    type: text
+                                kalori:
+                                    label: Kalori
+                                    span: full
+                                    type: text
+                                protein:
+                                    label: Protein
+                                    span: full
+                                    type: text
+                                karbohidrat:
+                                    label: Karbohidrat
+                                    span: full
+                                    type: text
+                                lemak:
+                                    label: Lemak
+                                    span: full
+                                    type: text
+                                image:
+                                    label: 'Image Menu'
+                                    oc.commentPosition: ''
+                                    mode: image
+                                    span: full
+                                    type: mediafinder
+        tier_4:
+            label: 'Tier 4 Menu Recomendation'
+            prompt: '-'
+            span: full
+            type: repeater
+            tab: 'Tier 4'
+            form:
+                fields:
+                    periode_1_menu:
+                        label: 'Periode 1 Menu'
+                        prompt: 'Add new item'
+                        span: full
+                        type: repeater
+                        form:
+                            fields:
+                                name:
+                                    label: Name
+                                    span: full
+                                    type: text
+                                berat:
+                                    label: Berat
+                                    span: full
+                                    type: text
+                                kalori:
+                                    label: Kalori
+                                    span: full
+                                    type: text
+                                protein:
+                                    label: Protein
+                                    span: full
+                                    type: text
+                                karbohidrat:
+                                    label: Karbohidrat
+                                    span: full
+                                    type: text
+                                lemak:
+                                    label: Lemak
+                                    span: full
+                                    type: text
+                                image:
+                                    label: 'Image Menu'
+                                    oc.commentPosition: ''
+                                    mode: image
+                                    span: full
+                                    type: mediafinder
+                    periode_2_menu:
+                        label: 'Periode 2 Menu'
+                        prompt: 'Add new item'
+                        span: full
+                        type: repeater
+                        form:
+                            fields:
+                                name:
+                                    label: Name
+                                    span: full
+                                    type: text
+                                berat:
+                                    label: Berat
+                                    span: full
+                                    type: text
+                                kalori:
+                                    label: Kalori
+                                    span: full
+                                    type: text
+                                protein:
+                                    label: Protein
+                                    span: full
+                                    type: text
+                                karbohidrat:
+                                    label: Karbohidrat
+                                    span: full
+                                    type: text
+                                lemak:
+                                    label: Lemak
+                                    span: full
+                                    type: text
+                                image:
+                                    label: 'Image Menu'
+                                    oc.commentPosition: ''
+                                    mode: image
+                                    span: full
+                                    type: mediafinder
+                    periode_3_menu:
+                        label: 'Periode 3 Menu'
+                        prompt: 'Add new item'
+                        span: full
+                        type: repeater
+                        form:
+                            fields:
+                                name:
+                                    label: Name
+                                    span: full
+                                    type: text
+                                berat:
+                                    label: Berat
+                                    span: full
+                                    type: text
+                                kalori:
+                                    label: Kalori
+                                    span: full
+                                    type: text
+                                protein:
+                                    label: Protein
+                                    span: full
+                                    type: text
+                                karbohidrat:
+                                    label: Karbohidrat
+                                    span: full
+                                    type: text
+                                lemak:
+                                    label: Lemak
+                                    span: full
+                                    type: text
+                                image:
+                                    label: 'Image Menu'
+                                    oc.commentPosition: ''
+                                    mode: image
+                                    span: full
+                                    type: mediafinder
+                    periode_4_menu:
+                        label: 'Periode 4 Menu'
+                        prompt: 'Add new item'
+                        span: full
+                        type: repeater
+                        form:
+                            fields:
+                                name:
+                                    label: Name
+                                    span: full
+                                    type: text
+                                berat:
+                                    label: Berat
+                                    span: full
+                                    type: text
+                                kalori:
+                                    label: Kalori
+                                    span: full
+                                    type: text
+                                protein:
+                                    label: Protein
+                                    span: full
+                                    type: text
+                                karbohidrat:
+                                    label: Karbohidrat
+                                    span: full
+                                    type: text
+                                lemak:
+                                    label: Lemak
+                                    span: full
+                                    type: text
+                                image:
+                                    label: 'Image Menu'
+                                    oc.commentPosition: ''
+                                    mode: image
+                                    span: full
+                                    type: mediafinder
+                    periode_5_menu:
+                        label: 'Periode 5 Menu'
+                        prompt: 'Add new item'
+                        span: full
+                        type: repeater
+                        form:
+                            fields:
+                                name:
+                                    label: Name
+                                    span: full
+                                    type: text
+                                berat:
+                                    label: Berat
+                                    span: full
+                                    type: text
+                                kalori:
+                                    label: Kalori
+                                    span: full
+                                    type: text
+                                protein:
+                                    label: Protein
+                                    span: full
+                                    type: text
+                                karbohidrat:
+                                    label: Karbohidrat
+                                    span: full
+                                    type: text
+                                lemak:
+                                    label: Lemak
+                                    span: full
+                                    type: text
+                                image:
+                                    label: 'Image Menu'
+                                    oc.commentPosition: ''
+                                    mode: image
+                                    span: full
+                                    type: mediafinder
+        tier_5:
+            label: 'Tier 5 Menu Recomendation'
+            prompt: '-'
+            span: full
+            type: repeater
+            tab: 'Tier 5'
+            form:
+                fields:
+                    periode_1_menu:
+                        label: 'Periode 1 Menu'
+                        prompt: 'Add new item'
+                        span: full
+                        type: repeater
+                        form:
+                            fields:
+                                name:
+                                    label: Name
+                                    span: full
+                                    type: text
+                                berat:
+                                    label: Berat
+                                    span: full
+                                    type: text
+                                kalori:
+                                    label: Kalori
+                                    span: full
+                                    type: text
+                                protein:
+                                    label: Protein
+                                    span: full
+                                    type: text
+                                karbohidrat:
+                                    label: Karbohidrat
+                                    span: full
+                                    type: text
+                                lemak:
+                                    label: Lemak
+                                    span: full
+                                    type: text
+                                image:
+                                    label: 'Image Menu'
+                                    oc.commentPosition: ''
+                                    mode: image
+                                    span: full
+                                    type: mediafinder
+                    periode_2_menu:
+                        label: 'Periode 2 Menu'
+                        prompt: 'Add new item'
+                        span: full
+                        type: repeater
+                        form:
+                            fields:
+                                name:
+                                    label: Name
+                                    span: full
+                                    type: text
+                                berat:
+                                    label: Berat
+                                    span: full
+                                    type: text
+                                kalori:
+                                    label: Kalori
+                                    span: full
+                                    type: text
+                                protein:
+                                    label: Protein
+                                    span: full
+                                    type: text
+                                karbohidrat:
+                                    label: Karbohidrat
+                                    span: full
+                                    type: text
+                                lemak:
+                                    label: Lemak
+                                    span: full
+                                    type: text
+                                image:
+                                    label: 'Image Menu'
+                                    oc.commentPosition: ''
+                                    mode: image
+                                    span: full
+                                    type: mediafinder
+                    periode_3_menu:
+                        label: 'Periode 3 Menu'
+                        prompt: 'Add new item'
+                        span: full
+                        type: repeater
+                        form:
+                            fields:
+                                name:
+                                    label: Name
+                                    span: full
+                                    type: text
+                                berat:
+                                    label: Berat
+                                    span: full
+                                    type: text
+                                kalori:
+                                    label: Kalori
+                                    span: full
+                                    type: text
+                                protein:
+                                    label: Protein
+                                    span: full
+                                    type: text
+                                karbohidrat:
+                                    label: Karbohidrat
+                                    span: full
+                                    type: text
+                                lemak:
+                                    label: Lemak
+                                    span: full
+                                    type: text
+                                image:
+                                    label: 'Image Menu'
+                                    oc.commentPosition: ''
+                                    mode: image
+                                    span: full
+                                    type: mediafinder
+                    periode_4_menu:
+                        label: 'Periode 4 Menu'
+                        prompt: 'Add new item'
+                        span: full
+                        type: repeater
+                        form:
+                            fields:
+                                name:
+                                    label: Name
+                                    span: full
+                                    type: text
+                                berat:
+                                    label: Berat
+                                    span: full
+                                    type: text
+                                kalori:
+                                    label: Kalori
+                                    span: full
+                                    type: text
+                                protein:
+                                    label: Protein
+                                    span: full
+                                    type: text
+                                karbohidrat:
+                                    label: Karbohidrat
+                                    span: full
+                                    type: text
+                                lemak:
+                                    label: Lemak
+                                    span: full
+                                    type: text
+                                image:
+                                    label: 'Image Menu'
+                                    oc.commentPosition: ''
+                                    mode: image
+                                    span: full
+                                    type: mediafinder
+                    periode_5_menu:
+                        label: 'Periode 5 Menu'
+                        prompt: 'Add new item'
+                        span: full
+                        type: repeater
+                        form:
+                            fields:
+                                name:
+                                    label: Name
+                                    span: full
+                                    type: text
+                                berat:
+                                    label: Berat
+                                    span: full
+                                    type: text
+                                kalori:
+                                    label: Kalori
+                                    span: full
+                                    type: text
+                                protein:
+                                    label: Protein
+                                    span: full
+                                    type: text
+                                karbohidrat:
+                                    label: Karbohidrat
+                                    span: full
+                                    type: text
+                                lemak:
+                                    label: Lemak
+                                    span: full
+                                    type: text
+                                image:
+                                    label: 'Image Menu'
+                                    oc.commentPosition: ''
+                                    mode: image
+                                    span: full
+                                    type: mediafinder

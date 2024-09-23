@@ -1,0 +1,158 @@
+title = "World Milk Day"
+url = "/bc-wmd"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/world-milk-day"
+==
+<?php
+function onStart(){
+        $this->page->amp_url = $this->pageUrl('sample-milkdayamp');
+}
+?>
+==
+{% partial 'site/header' %}
+<style>
+    body{
+        background: #55B8FC !important;
+        }
+    .my-5{
+            margin: 2.5rem auto !important;
+        }
+        .main-wrap{
+            margin: 150px 0;    
+        }
+        .wrapper{
+            margin: 50px 0;    
+            display: flex;
+            justify-content: space-around;
+        }
+        .image-milk-day{
+            width: 40%;
+            overflow: hidden;
+            height: auto;
+            box-shadow: 7px 10px 10px #014e91a6;
+            border-radius: 15px;
+        }
+        .image-milk-day img{
+            height: 100%;
+            width: 100%;
+        }
+        .desc-wrapper{
+            width: 60%;
+            align-self:center;
+        }
+        .desc-milk-day{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            height: auto;
+            padding:5%;
+            background: #fff;
+            
+        }
+        .br-1{
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+        }
+        .br-2{
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+        .desc-milk-day p{
+            color: #0f4d9a; 
+            margin-bottom: 15px;
+        }
+        .desc-milk-day .cta-buy{
+            padding: 10px 30px;
+            background: #55B8FC;
+            width: fit-content;
+            border-radius: 25px;
+            color: #fff;   
+            align-self: center;
+        }
+        .ud{
+            text-decoration: underline;    
+        }
+        .desc-gizi{
+            display: flex;
+            margin-bottom: 15px;
+            width: 100%;
+            justify-content: space-between;
+        }
+        .desc-gizi div{
+            width: 30%;
+        }
+        .desc-gizi h2{
+            color: #55B8FC !important;
+            text-align: center;
+        }
+        .desc-gizi p{
+            text-align: justify;
+        }
+        .title{
+            color: #fff;    
+            text-align: center;
+        }
+        .title-desc{
+            color: #fff;    
+            font-size: 15px;
+            text-align: center;
+        }        
+        .h-1000{
+            height: 1000px;
+        }
+        .my-50{
+            margin: 50px 0;
+        }
+        .image-milk-wrap{
+            width: 100%;
+            text-align: center;
+        }
+        .sd{
+            box-shadow: 7px 10px 10px #014e91a6;
+        }
+        .mt-5{
+            margin-top: 50px;    
+        }
+</style>
+<div class="container my-5">
+    <div class="d-flex main-wrap">
+        <h1 class="title">TENTANG HARI SUSU SEDUNIA</h1>
+        <p class="title-desc">Setiap tahun, 1 Juni diperingati sebagai Hari Susu Sedunia, sebuah inisiatif dari Organisasi Pangan Dunia, FAO. Perhatian seluruh masyarakat dunia akan berpusat pada peranan di mana susu turut andil di dalam kehidupan sehari-hari kita.</p>
+        <div class="image-milk-wrap">
+                <img src="https://www.frisianflag.com/storage/app/media/worldmilk-potrait.jpg" alt="milkday" title="milkday" class="h-1000 my-50 sd">
+        </div>
+        
+        <div class="d-flex wrapper">
+            <div class="image-milk-day">
+                <img src="https://www.frisianflag.com/storage/app/media/world-milk-day.jpg" alt="milkday" title="milkday" class="h-100">
+            </div>
+            <div class="desc-wrapper">
+                <div class="desc-milk-day br-2">
+                    <div class="desc-gizi">
+                        <div>
+                            <h2>KALSIUM</h2>
+                            <p>Kalsium di dalam susu berperan penting dalam menjaga tulang dan gigi yang kuat. Tidak hanya untuk anak-anak dan kawula muda, tetapi juga orang tua yang ingin hidup sehat.</p>
+                        </div>
+                        <div>
+                            <h2>PROTEIN</h2>
+                            <p>Protein merupakan blok bangunan dari tubuh. Setiap hari otot di dalam tubuh diperbaharui dan membutuhkan protein dalam prosesnya. Anak-anak, lansia, dan atlet membutuhkan protein tambahan.</p>
+                        </div>                        
+                        <div>
+                            <h2>Vitamin</h2>
+                            <p>Vitamin B2 dan B12 sangat penting untuk melepaskan energi di dalam tubuh yang dapat digunakan oleh otot. Kedua vitamin ini juga membantu dalam mengurangi kelelahan</p>
+                        </div>                        
+                                                                        
+                    </div>
+                    <!-- <a href="https://www.klikindomaret.com/frisianflag-susu-bubuk?utm_medium=display&utm_source=websiteffi&utm_campaign=ffisusububuk-websiteffi-250522" class="cta-buy" id="cta-2">Beli Sekarang</a> -->
+                </div>
+            </div>
+        </div> 
+        
+        <img src="https://www.frisianflag.com/storage/app/media/worldmilk-landscape.jpg" alt="milkday" title="milkday" class="h-auto sd mt-5">
+    </div>
+</div>
+
+{% partial 'site/footer' %}

@@ -1,0 +1,13 @@
+fields:
+    article_slug:
+        label: 'Article Slug'
+        span: full
+        type: text
+    link:
+        label: Link
+        span: full
+        type: text
+    category:
+        label: Category
+        span: auto
+        type: text

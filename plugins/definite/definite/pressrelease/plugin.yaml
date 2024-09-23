@@ -1,0 +1,36 @@
+plugin:
+    name: 'definite.pressrelease::lang.plugin.name'
+    description: 'definite.pressrelease::lang.plugin.description'
+    author: Definite
+    icon: oc-icon-wordpress
+    homepage: ''
+navigation:
+    PressRelease:
+        label: 'Siaran Pers'
+        url: definite/pressrelease/pressrelease
+        icon: icon-wordpress
+        permissions:
+            - manage_pers_menu
+        sideMenu:
+            PressRelease_post:
+                label: 'Siaran Pers'
+                url: definite/pressrelease/pressrelease
+                icon: icon-link
+                permissions:
+                    - manage_pers_content
+            PressRelease_categories:
+                label: 'Kategori Siaran Pers'
+                url: definite/pressrelease/categories
+                icon: icon-sitemap
+                permissions:
+                    - manage_pers_category
+permissions:
+    manage_pers_menu:
+        tab: 'Siaran Pers'
+        label: 'Manage Siaran Pers Menu'
+    manage_pers_content:
+        tab: 'Siaran Pers'
+        label: 'Manage Siaran Pers Content'
+    manage_pers_category:
+        tab: 'Siaran Pers'
+        label: 'Manage Siaran Pers Category'

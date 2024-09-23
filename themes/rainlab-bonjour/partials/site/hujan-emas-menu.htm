@@ -1,0 +1,35 @@
+[viewBag]
+==
+<?php
+function onStart() {
+    // Get Router
+    $router = $this->controller->getRouter();
+    $this->page['slug'] = $router->getURL();
+}
+?>
+==
+<div class="container-menutab">
+    <div class="container-one">
+      <ul>
+          <li class="toggle visible-xs visible-sm"><a href="javascript:;" class="active">
+          {% if ( this.page.slug == 'aktivitas-kami/hujan-emas' ) %}
+           Pemenang
+          {% elseif ( this.page.slug == 'aktivitas-kami/hujan-emas/pemenang' ) %}
+           Pemenang
+          {% endif %}
+          </a>
+        </li>
+        <li>
+          <a href="{{ '/aktivitas-kami/hujan-emas' }}" {{ (this.page.slug == 'aktivitas-kami/hujan-emas' ? 'class="active"' : '') }} style="font-size:20px;">
+             Pemenang
+          </a>
+        </li>
+        <!--<li>
+          <a href="{{ '/aktivitas-kami/hujan-emas/pemenang' }}" {{ (this.page.slug == 'aktivitas-kami/hujan-emas/pemenang' ? 'class="active"' : '') }}>
+            Pemenang
+          </a>
+        </li>-->
+ 
+      </ul>
+    </div>
+</div>

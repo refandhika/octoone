@@ -1,0 +1,214 @@
+.container-menutab {
+    clear: left;
+    background: $color-silver;
+    overflow: hidden;
+    position: relative;
+    // z-index: 10000;
+
+    &_custom {
+        ul {
+            li {
+                width: 20% !important;
+
+                @media (max-width: 1024px) {
+                    width: 100% !important;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: $screen-md) {
+        margin-bottom: 20px;
+        z-index: 999;
+
+        .menu-open &{
+            z-index: -1;
+        }
+
+    }
+
+    &::after {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid white;
+        bottom: 0;
+        left: 16px;
+        content: '';
+    }
+
+    @media (min-width: $screen-md) {
+        &::after {
+            display: none;
+        }
+    }
+
+    ul {
+        margin: 0;
+        font-family: $font-semibold;
+        padding: 0;
+        list-style: none inside;
+        text-align: center;
+        a {
+            display: block;
+            border-right: $color-silver-dark solid 1px;
+            color: $color-silver-dark-old;
+            text-align: center;
+            font-size: 15px;
+            padding: 25px 5px;
+            position: relative;
+
+             @media screen and (max-width: $screen-md) {
+                font-size: 14px;
+             }
+
+            &.active,
+            &:hover {
+                color: $color-blue;
+                text-decoration: none;
+                background: #ececec;
+            }
+            &.active {
+                &::after {
+                    content: "\f0d8";
+                    font-family: 'FontAwesome';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    color: #fff;
+                    margin-bottom: -12.9px;
+                    font-size: 25px;
+                }
+            }
+        }
+        li {
+            // float: left;
+            display: inline-block;
+            margin-right: -4px;
+            width: 25%;
+            &:first-child {
+                border-left: $color-silver-dark solid 1px;
+            }
+
+           @media screen and (min-width: 767px) {
+                &:last-child{
+                  display: inline-block !important;
+                }
+           }
+        }
+    }
+
+    &--five {
+        ul {
+            li {
+                width: 20%;
+            }
+        }
+    }
+
+    // News
+    &-news {
+      margin-left: -23px;
+      margin-right: -23px;
+
+      .toggle {
+        a .active {
+          &::after {
+            top: 20px !important;
+          }
+        }
+      }
+    }
+}
+
+.container-menutab.tab-5 {
+    ul {
+        text-align: center;
+        li {
+            float: none;
+            width: 25%;
+            margin-right: -4px;
+            display: inline-block;
+            vertical-align: top;
+
+            > a {
+                height: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .container-menutab {
+        .container-one {
+            padding: 0;
+        }
+        ul {
+            a {
+                text-align: left;
+                padding: 20px;
+                &.active,
+                &:hover {
+                    color: $color-blue;
+                    text-decoration: none;
+                    background: #ececec;
+
+                    &::after {
+                        display: none;
+                    }
+                }
+            }
+
+            .toggle {
+                .active {
+                    &::after {
+                        display: block;
+                        content: "\f107";
+                        font-family: 'FontAwesome';
+                        color: $blue;
+                        right: 15px;
+                        bottom: initial;
+                        top: 10px;
+                        text-align: right;
+                    }
+
+                    &.opened {
+                        &::after {
+                            content: '\f106';
+                        }
+                    }
+                }
+            }
+
+            li {
+                border: none;
+                display: block;
+                width: 100%;
+            }
+            li:first-child {
+                border: none;
+            }
+            li:not(.toggle) {
+                display: none;
+            }
+        }
+    }
+    .container-menutab.tab-5 ul li {
+        width: 100%;
+    }
+}
+
+.wrp-listimg > div{
+  display: inline-block !important;
+
+  .imgwrp{
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 240px;
+    width: 100%;
+  }
+}

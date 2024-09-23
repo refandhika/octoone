@@ -1,0 +1,118 @@
+description = "Layout for karir challenge prizes"
+
+[staticPage]
+useContent = 1
+default = 0
+
+[subscriberform]
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "all"
+
+[SessionClose]
+load_js = 1
+==
+{% partial 'site/header-karir' %}
+
+	<section>
+
+  	<div class="static-baner-pages">
+    	<div class="imgwrp hidden-xs"><img src="{{ 'assets/img/karir/campus-challenge.jpeg'|theme }}" alt="Campus Challenge Desktop"></div>
+    	<div class="imgwrp visible-xs"><img src="{{ 'assets/img/karir/campus-challenge-mobile.jpg'|theme }}" alt="Campus Challenge Mobile"></div>
+   	</div>
+		<div class="container-menutab">
+			<div class="container-one">
+				<ul class="menutab-full">
+					<li class="toggle visible-xs visible-sm">
+						<a href="javascript:;" class="active">Prizes</a>
+					</li>
+					
+					<li>
+					    <a href="{{'/karir/FFCC2019/about'}}"><img class="icon--" src="{{ 'assets/img/karir/about.svg'|theme }}" alt="About" >About</a>
+					</li>
+					
+					<li>
+						<a href="{{'/karir/FFCC2019/how-to-join' }}"><img class="icon--" src="{{ 'assets/img/karir/how-to-join.svg'|theme }}" alt="Prizes" >How to Join</a>
+					</li>
+					
+					<li>
+						<a href="{{'/karir/FFCC2019/prizes'}}" class="active" ><img class="icon--" src="{{ 'assets/img/karir/prizes.svg'|theme }}" alt="Prizes"  >Prizes</a>
+					</li>
+					
+					<li>
+						<a href="{{ '/karir/FFCC2019/the-winner' }}"><img class="icon--" src="{{ 'assets/img/karir/teams.svg'|theme }}" alt="Top 7 Teams" >The Winner</a>
+					</li>
+					
+					<li>
+						<a href="{{'/karir/FFCC2019/faq'}}"><img class="icon--" src="{{ 'assets/img/karir/faq.svg'|theme }}" alt="Faq">FAQ</a>
+					</li>
+				
+				</ul>
+			</div>
+		</div>
+	<div class="container-fluid prizes">		
+	    <div class="container view">
+	      <img class="icon---" src="{{ 'assets/img/karir/prizes.svg'|theme }}" alt="About"><h1 class="title--"> Prizes</h1>
+	    
+	        <div class ="row p-row">
+	             
+    	            <div class="col-md-4 cpt">
+    	               
+    	                  <div class= circle->
+    	                       <div class="award-one"></div>
+        	                <div class="circle--">
+        	                
+        	                   <img  class="award-" src="{{ 'assets/img/karir/prize-1.png'|theme }}" alt="Golden Pass">
+        	                  <div class="title-circle"><p class="capt">Golden Pass to FFI Traineeship Program</p></div>
+        	                      
+        	                </div>
+        	                      
+        	              </div>
+    	            </div>
+    	             <div class="col-md-4 cpt">
+    	              <div class= circle->
+    	                <div class="award-two"></div>
+        	                <div class="circle--">
+        	                <img  class="award--" src="{{ 'assets/img/karir/prize-2.png'|theme }}" alt="Youtube Invitation">
+        	                    <div class="title-circle"><p>SPECIAL GRAND PRIZE</p></div>
+        	                </div>
+        	                      
+        	              </div>
+    	            </div>
+    	             <div class="col-md-4 cpt">
+    	             <div class= circle->
+    	              <div class="award-three"></div>
+        	                <div class="circle--">
+        	                <img class="award---" src="{{ 'assets/img/karir/prize-3.png'|theme }}" alt="Laptop">
+        	                  <div class="title-circle"><p>Laptop 14 inch</p></div>
+        	                    
+        	                </div>
+        	                       
+        	              </div>
+    	            </div>
+    	           
+	         </div>
+	         
+    	  <div class="terms">       
+    	         <h1 class="title---">Terms and Condition</h1>
+    	         
+    	        
+    	  </div>
+    	   <ul class="term-lists">
+                      <li class="term-lists--"><span>Only one team as the winner of Frisian Flag Campus Challenge 2019 who will get a Golden Pass for FFI Traineeship Program, laptop 14 inch for each team member, and special grand prize.</span></li>
+                      <li class="term-lists--"><span>All materials submitted to FFI will be kept by FFI. The winners should release their rights over the materials to FFI and permit FFI to implement the program at its sole discretion.  Decision of the jury is final and binding, therefore cannot be contested. No correspondence will be entertained created to the decision.</span></li>
+                      <li class="term-lists--"><span>This competition is free of charge. Tax will be borne by Frisian Flag Indonesia. Be careful of fraud.</span></li>
+                </ul>
+	</div>
+  </section>
+  <style>
+ .circle--,.cpt{text-align:center}.top-menu__list a{color:#0F4D9A}body{font-family:Brevia-Regular,Helvetica,Arial,sans-serif}.container-menutab::after,div.container-menutab.container-menutab--five:after{border-bottom:10px solid #00AEEE!important}h1{font-family:Brevia-Black,Helvetica,Arial,sans-serif}.container-menutab{margin-bottom:0}.container-menutab ul a.active::after,.container-menutab::after{color:#00AEEE}.award-one,.award-three,.award-two{height:75px;width:75px;background-repeat:no-repeat;background-size:contain;position:relative;left:0;right:0;margin:-45px auto 30px}.award-one{background-image:url("{{ 'assets/img/karir/award-one.png'|theme }}")}.award-two{background-image:url("{{ 'assets/img/karir/award-two.png'|theme }}")}.award-three{background-image:url("{{ 'assets/img/karir/award-three.png'|theme }}")}.icon--{margin-top:-3px;margin-right:20px;width:25px}.icon---{margin-top:-10px;margin-right:5px;margin-bottom:40px;width:45px}.p-row{margin-top:50px}.title-circle{font-size:13px;position:absolute;bottom:-15px;left:0;right:0;margin-left:auto;margin-right:auto;height:100px;width:200px;color:#FFF}.prizes{background-image:url("{{ 'assets/img/karir/prize-bg.svg'|theme }}");background-repeat:no-repeat;background-size:cover;background-color:#00AEEE}.container.view{background-color:transparent;margin-top:35px;margin-bottom:50px}.circle--{display:inline-block;width:275px;height:275px;border-radius:50%;font-size:16px;font-weight:700;color:#1A1643;background-color:#0098EC;margin-top:-10px}.title--{display:inline;position:relative;top:-12px}.title---{margin-top:105px;margin-bottom:30px}.title--,.title---{font-size:40px;font-weight:700;color:#0F4D9A}.term-lists .term-lists-- span{font-size:17px}.term-lists--{margin-bottom:10px;text-align:justify;font-size:27px;color:#FFF}.award-{height:185px;width:215px}.award--{margin-top:20px;margin-left:25px;height:165px;width:165px}.award---{margin-top:25px;margin-left:22px;height:150px;width:175px}@media (min-width:320px) and (max-width:1023px){.container-fluid.view,.prizes{background-image:none}.cpt{margin-bottom:40px}.container.view{margin-bottom:25px}.icon---{margin-top:-10px;margin-bottom:30px;width:35px}.icon--{margin-top:-3px;margin-right:15px;width:17px}.prizes{padding:0}.title--,.title---{font-size:22px}.title--{display:inline;top:-15px;position:relative:}.title---{margin-top:15px;margin-bottom:20px}.award-one,.award-three,.award-two{height:50px;width:50px;margin:-15px auto -30px 45px}.circle--{width:200px;height:200px}.title-circle{bottom:-40px;font-size:10px;width:150px}.award-{height:140px;width:165px}.award--{margin-top:15px;height:125px;width:125px}.award---{margin-top:20px;height:115px;width:135px}.term-lists .term-lists-- span{font-size:14px}.term-lists--{margin-left:-25px;font-size:18px}}
+  </style>
+
+{% partial 'site/footer-karir' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

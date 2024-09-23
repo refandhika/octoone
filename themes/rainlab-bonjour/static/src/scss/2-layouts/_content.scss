@@ -1,0 +1,119 @@
+.content{
+	&-fullhalf {
+	    // padding:0 5px;
+
+		@media screen and (min-width: $screen-sm) {
+			padding-left: 20px;
+		}
+
+	    p {
+	        margin-bottom: 30px;
+	    }
+
+        h3 {
+            font-size: 40px;
+            font-family: $font-black;
+            color: $blue;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+	}
+}
+
+// == Default Content
+.default-content {
+    line-height: 1.8;
+
+    ul, ol {
+        padding-left: 15px;
+    }
+
+    img {
+        height: auto;
+    }
+
+    h4 {
+        a {
+            color: $blue;
+
+            &:hover {
+                color: lighten($blue, 25%);
+            }
+        }
+    }
+
+    h3 {
+        font-size: 25px;
+        font-family: $font-black;
+        color: $blue;
+        margin-top: 0;
+        margin-bottom: 30px;
+
+        @media screen and (min-width: $screen-md) {
+        	font-size: 40px;
+        }
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: $font-black;
+        color: $blue;
+    }
+
+    .imgwrp {
+        margin-bottom: 20px;
+    }
+    p {
+        // margin-bottom: 25px;
+    }
+
+    // h5 {
+    //     background: url("../img/line-custom.png") no-repeat center bottom;
+    //     padding-bottom: 60px;
+    //     color: $blue;
+    //     font-size: 20px;
+    //     font-family: $font-semibold;
+    //     font-style: italic;
+    //     line-height: 27px;
+    // }
+}
+
+// Desktop screen
+@media screen and (min-width: $screen-md) {
+    .accordion.accordion_product-detail {
+        padding-left: 30px;
+    }
+
+    .default-content {
+        ul, ol {
+            padding-left: 40px;
+        }
+    }
+}
+
+#article.default-content .imgwrp {
+	// max-height: 350px;
+	overflow-y: hidden;
+
+	p{
+		strong{
+			display: block;
+			margin-top: 15px;
+		}
+	}
+
+	@media (min-width: 768px) {
+		display: inline-block;
+		float: left;
+		margin-right: -4px;
+		padding-right: 30px;
+		width: 60%;
+
+		+ p {
+			display: inline-block;
+			width: 40%;
+			// padding-left: 20px;
+			margin-right: -4px;
+			vertical-align: top;
+		}
+	}
+}

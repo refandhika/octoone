@@ -1,0 +1,37 @@
+fields:
+    title:
+        label: 'Title (id)'
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    title_en:
+        label: 'Title (en)'
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    description:
+        label: 'Description (id)'
+        size: large
+        oc.commentPosition: ''
+        span: full
+        type: richeditor
+    description_en:
+        label: 'Description (en)'
+        size: large
+        oc.commentPosition: ''
+        span: full
+        type: richeditor
+    image:
+        label: Image
+        oc.commentPosition: ''
+        prompt: 'Add new item'
+        span: auto
+        type: repeater
+        form:
+            fields:
+                images:
+                    label: Image
+                    oc.commentPosition: ''
+                    mode: file
+                    span: auto
+                    type: mediafinder

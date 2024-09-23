@@ -1,0 +1,262 @@
+title = "Sustainability Sehat - Protein Page | AMP"
+url = "/amp/previewsustainability-sehat-protein"
+layout = "basic-amp"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/previewsustainability-sehat-protein"
+==
+<div class="cover banner-lp">
+       <div class="banner-title">
+           <h2>Protein dan<br> Hidup Aktif</h2>
+       </div>
+</div>
+
+
+
+<section class="event">
+   <div class="detail_text padding-25">
+       <div class="content mb-10 top-copy">
+        <p class="description">Protein adalah zat terpenting yang berfungsi sebagai pembangunan jaringan dan sel dalam tubuh. Semua sel tubuh akan diperbarui setiap harinya; kita butuh protein untuk membangun sel baru setiap harinya. Dan karena susu adalah salah satu sumber protein, ayo kita minum susu setiap hari!</p>
+        </div>
+    </div>
+    <div class="padding-25 sustainability-content">
+            
+            	
+        <amp-selector class="tabs-with-flex"
+  role="tablist"
+  keyboard-select-mode="focus">
+  <div id="tab1"
+    role="tab"
+    aria-controls="tabpanel1"
+    option
+    selected>Tentang Protein</div>
+  <div id="tabpanel1"
+    role="tabpanel"
+    aria-labelledby="tab1">
+    <h2 class="tab-title">APA ITU PROTEIN?</h2>
+    <amp-img src="{{'sustainability/mobile/sehat/Protein@2x.png'|media }}"  width="641" height="3151" layout="responsive"alt="Protein"></amp-img> 
+    </div>
+  <div id="tab2"
+    role="tab"
+    aria-controls="tabpanel2"
+    option>Hidup Sehat</div>
+  <div id="tabpanel2"
+    role="tabpanel"
+    aria-labelledby="tab2">
+    <h2 class="tab-title">3 Tips Hidup Sehat</h2>
+    <amp-img src="{{'sustainability/mobile/sehat/hidup_aktif_1@2x.png'|media }}" class="img-tab"  width="642" height="2925" layout="responsive"alt="Tips Hidup Sehat"></amp-img> 
+    
+    <amp-img src="{{'sustainability/mobile/sehat/hidup_aktif_2@2x.png'|media }}" class="img-tab"  width="640" height="1637" layout="responsive"alt="Tips Hidup Sehat"></amp-img> 
+    
+    <amp-img src="{{'sustainability/mobile/sehat/jajan-sehat@2x.png'|media }}" class="img-tab" width="640" height="7346" layout="responsive"alt="Tips Hidup Sehat"></amp-img> 
+    </div>
+  
+</amp-selector>
+    </div>
+</section>
+
+      
+<style amp-custom>
+.sustainability-content *{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.card-amp-img {
+	position:relative;
+}
+.img-sehat{
+    margin: auto;  
+}
+.tab-title{
+    color:#0F4D9A;
+    text-align:center;
+    margin-bottom:30px;
+}
+.detail_text {
+	padding: 30px 25px 0px
+}
+
+amp-img.contain img {
+	object-fit: contain
+}
+
+.top-copy {
+	text-align: left
+}
+
+footer {
+	padding-top: 30px
+}
+
+.banner-lp{
+    background:url("{{ 'sustainability/mobile/sehat/protein_dan_hidup_aktif@2x-100.jpg'|media  }}");
+	background-size: cover!important;
+    height:100vw;
+    width:100%;
+    background-size: 100% !important;
+    position:relative;
+}
+.banner-title{
+     position:absolute;
+     bottom:30px;
+     left:0;
+     right:0;
+     margin:auto;
+     padding:0 25px;
+}
+.banner-title h2{
+    color: #FFF;
+    font-size: 5.8vw;
+    text-align: center;
+    line-height: 1.5em;
+}
+
+.box-title {
+	background-color: #ff717ecc;
+	position: absolute;
+	bottom: -85px;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	width: 80%;
+	height: 160px;
+	padding-top: 35px;
+	border-radius: 50%;
+}
+.box h3{
+    color:#0F4D9A;
+    font-size:calc(0.8em + 1vw);
+    text-transform:uppercase;
+    position:absolute;
+    top:30px;
+    left:0;
+    right:0;
+    margin:auto;
+    text-align:center;
+}
+.box.article h3{
+    text-align: left;
+    left: 30px;
+    line-height: 20px;   
+}
+.box .button{
+    position:absolute;
+    font-size:calc(0.7em + 0.5vw);
+    bottom:25px;
+    padding:12px;
+    font-family: Brevia-SemiBold, Arial;
+    left:0;
+    right:0;
+    text-align:center;
+    text-transform:capitalize;
+    width:200px;
+    margin:auto;
+    border-radius:10px;
+    border:0;
+}
+.box.article .button{
+    left:30px;
+    right:auto;
+    width:180px;
+}
+
+.sustainability-content .box{
+	padding: 0px;
+	border: 0;
+	border-radius: 26px;
+	text-align: center;
+	color: #fff;
+	position: relative;
+	overflow: hidden;
+	margin-bottom:25px;
+}
+
+.sustainability-content .box.sehat h3, .sustainability-content .box.sejahtera h3, .sustainability-content .box.selaras h3 {
+	font-weight: bold;
+	font-family: Brevia-SemiBold, Arial;
+	font-size: 4.2vw;
+	text-transform:inherit;
+}
+/*selector*/
+.img-tab{
+ margin-bottom:30px;   
+}
+:root {
+      --color-primary: #005AF0;
+      --space-1: .5rem;  /* 8px */
+      --space-4: 2rem;   /* 32px */
+    }
+
+    /* Styles for the flex layout based tabs */
+    amp-selector[role=tablist].tabs-with-flex {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    amp-selector[role=tablist].tabs-with-flex [role=tab] {
+        flex-grow: 1;
+        /* custom styling, feel free to change */
+        text-align: center;
+        padding: var(--space-1);
+        background-color:#E5E5E5;
+        width:100%;
+        margin-bottom:15px;
+        border-radius:20px;
+        padding:25px;
+        color:#326CBE;
+        text-transform:uppercase;
+        font-family:Brevia-SemiBold, Arial;
+    }
+    .tab-title{
+     color:#0F4D9A;   
+    }
+    amp-selector[role=tablist].tabs-with-flex [role=tab][selected] {
+        outline: none;
+        /* custom styling, feel free to change */
+        border-bottom: 2px solid var(--color-primary);
+        background-color:#326CBE;
+        color:#fff;
+    }
+    amp-selector[role=tablist].tabs-with-flex [role=tabpanel] {
+        display: none;
+        width: 100%;
+        order: 1; /* must be greater than the order of the tab buttons to flex to the next line */
+        /* custom styling, feel free to change */
+        
+    }
+    amp-selector[role=tablist].tabs-with-flex [role=tab][selected] + [role=tabpanel] {
+        display: block;
+        padding:25px 0;
+    }
+
+    /* Styles for the selector based tabs */
+    amp-selector[role=tablist].tabs-with-selector {
+        display: flex;
+    }
+    amp-selector[role=tablist].tabs-with-selector [role=tab][selected] {
+        outline: none;
+        /* custom styling, feel free to change */
+        border-bottom: 2px solid var(--color-primary);
+    }
+    amp-selector[role=tablist].tabs-with-selector {
+        display: flex;
+    }
+    amp-selector[role=tablist].tabs-with-selector [role=tab] {
+      /* custom styling, feel free to change */
+      width: 100%;
+      text-align: center;
+      padding: var(--space-1);
+    }
+    amp-selector.tabpanels [role=tabpanel] {
+      display: none;
+      /* custom styling, feel free to change */
+      padding: var(--space-4);
+    }
+    amp-selector.tabpanels [role=tabpanel][selected] {
+      outline: none;
+      display: block;
+    }
+    </style>
+    <script async custom-element="amp-selector" src="https://cdn.ampproject.org/v0/amp-selector-0.1.js"></script>
+<!--s:event-->

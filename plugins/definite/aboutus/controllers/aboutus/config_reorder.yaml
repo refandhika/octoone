@@ -1,0 +1,4 @@
+title: AboutUs
+modelClass: Definite\Aboutus\Models\AboutUs
+toolbar:
+    buttons: reorder_toolbar

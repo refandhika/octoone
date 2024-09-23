@@ -1,0 +1,143 @@
+title = "Gallery Single"
+url = "/perusahaan-kami/galeri-foto/:slug"
+layout = "default"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/gallery-single"
+
+[builderDetails]
+modelClass = "Definite\Gallery\Models\Post"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "id"
+notFoundMessage = "Record not found"
+
+[builderList]
+modelClass = "Definite\Gallery\Models\Post"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+recordsPerPage = 5
+pageNumber = "{{ page }}"
+sortColumn = "published_date"
+sortDirection = "desc"
+==
+<?php
+function onEnd() {
+
+    // get the post component
+    $this->page->title = "Galeri Foto | ".$this->builderDetails->record->title;
+    $this->page->meta_description = "Lihat foto-foto terbaik dari galeri ".$this->builderDetails->record->title." Frisian Flag seperti foto keluarga yang sedang menikmati produk susu.";
+    $this['get_titile'] =$this->builderDetails->record->title;
+    
+    if( is_null( $this->builderDetails->record )){
+        $page = new CMS\Classes\Page;
+        return Redirect::to($page->url('gallery'), 301);
+    }
+
+    $this->page->amp_url = $this->pageUrl('galeri-single-amp', ['slug' => $this->param('slug')]);
+}
+?>
+==
+{% set record = builderDetails.record %}
+{% set records = builderList.records %}
+
+<h1 aria-hidden="true" class="seo-heading">Galeri Foto</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp hidden-xs"><img src="{{ 'assets/img/our-milkpedia.png'|theme }}" alt="Our Milkpedia"/> </div>
+    <div class="imgwrp visible-xs"><img src="{{ 'assets/img/staticbaner-xs.jpg'|theme }}" alt="Banner Static Mobile"/> </div>
+</div>
+
+<div class="container-menutab container-menutab_custom">
+    <div class="container-one">
+        <ul>
+            <li class="toggle hidden-lg"><a href="javascript:;" class="active">{{'galeri-foto'|_}}</a></li>
+            <li><a href="{{'about-us'|page}}" class="{% if this.page.id == 'about-us' %}active{% endif %}">{{'tentang-kami'|_}}</a></li>
+            <li><a href="{{'news'|page}}" class="{% if this.page.id == 'news-archive' %}active{% endif %}">{{'berita'|_}}</a></li>
+            <li><a href="{{'gallery'|page}}" class="{% if this.page.id == 'galeri-foto' %}active{% endif %}">{{'galeri-foto'|_}}</a></li>
+            <li><a href="{{'press-release'|page}}" class="{% if this.page.id == 'press-release' %}active{% endif %}">{{'siaran-pers'|_}}</a></li>
+            <li><a href="{{'our-purposes'|page}}" class="{% if this.page.id == 'our-purposes' %}active{% endif %}">{{'tujuan-kami'|_}}</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id='main-section' class="container-fluid">
+    <div class="container-two">
+      <div class="col-md-12">
+          <div class="breadcrumb">
+            <ul>
+                <li><a href="{{ 'home'|page }}">{{'beranda'|_}}</a> </li>
+                <li><a href="{{ 'about-us'|page }}">{{'perusahaan kami'|_}}</a> </li>
+                <li><a href="{{ url('gallery' |page ({'page':''})) }}">{{'galeri foto'|_}}</a> </li>
+            </ul>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+        <div class="default-content">
+            <div class="container-two">
+                <div class="row">
+                    <div class="col-md-7">
+                      <h3>{{'galeri foto'|_}}</h3>
+                    </div>
+                    <div class="col-md-5 hidden">
+                      <input type="search" placeholder="Search" class="form-control" id="news-search" style="margin-bottom: 20px;">
+                    </div>
+                </div>
+                <div class="container-menutab container-menutab-news hidden-lg">
+                    <div class="container-one">
+                        <ul>
+                            <li class="toggle"><a href="javascript:;" class="active">All</a></li>
+                            <li><a href="{{url('news'|page) }}" class="active">All</a></li>
+                            {% for years in records.first.year  %}
+                            <li><a href="{{url('news-archive'|page ({"slug":years.published_date})) }}">{{ years.published_date }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="container-news">
+                    <div class="content">
+                        <div class="left">
+                            <div class="content">
+                            	<div class="row">
+                                    <div class="col-sm-12">
+                                        <label class="date">{{ record.published_date }}</label>
+                            			<h4>{{record.title}}</h4>
+                            			{{record.description|_}}	
+                                        <br />					
+                                    </div> <!--  .col-sm-12 -->
+                            		
+                            		<!-- lopping disini untuk dijadikan cms -->
+                            		{% for image in record.images %}
+                            		<div class="col-xs-12 col-sm-6 col-md-4">    
+	                            		<a href="{{ image.path }}" data-fancybox="images" data-caption="My caption">
+                                            <div class="gallery__picture" style="background-image: url('{{ image.thumb(600, 600) }}');"></div> <!--  .gallery__picture -->
+                                        </a>
+                            		</div> <!--  .col-xs-12 .col-sm-6 .col-md-4 -->
+                            		{% endfor %}
+                            	</div> <!--  .row -->
+
+                            </div>
+                        </div>
+                        <div class="right visible-lg">
+                            <div class="content">
+                            		<h5 style="margin-left: 25px;">{{'galeri foto lainnya'|_}}</h5>
+	                            	<ul class="yearright yearright-custom">
+                                    {% for record in records %}
+                                    <li class=""><a href="{{ 'gallery-single'|page ({'slug' : record.slug})}}">{{ record.title }}</a></li>
+                                    {% endfor %}
+                                </ul>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

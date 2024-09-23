@@ -1,0 +1,72 @@
+[viewBag]
+==
+<div id="slick-banner" class="swiper-container">
+
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            
+            {% for slider in sliders %}
+            <div class="swiper-slide">
+                <div id="slide-1" class="main-slide__bg">
+                    <div class="main-slide__caption">
+                        <div class="col-md-8">
+                            <h2>{{ slider.title|raw }}</h2>
+                            <p>{{ slider.description | raw }}</p>
+                            <!-- <a href="javascript:;" class="button button--large">{{ 'selengkapnya'|_ }}</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+            <a class="main-slide__arrow to-section">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAiCAYAAAA3WXuFAAAAAXNSR0IArs4c6QAAAyBJREFUWAntl81rE0EUwGfSbJKm1CTiIQbBCl70poJHbeIHIib1EkHBolTryYN614DgTRG8JWpByaWFHhItSIv4B6j1ZFMphWDbbDRoY9uYtMmOb5JM3M1ks5tNIgidy9t57817v33zdncWozbGkdH3wmL60xkiSQMsDDHhlEBMbzKxkTWma0XiVpzlvrsCz/qLpPSOIHRYrqfXGOEkEvDx1clryXqb1tyk5aBmLyLpTiMY6k8Q2Uu2yAO1tc30hoEgK1eZukSH6ua6poaBoArmphkwEpraVYyGgVTita3eBtIq4XaF/rsKcY/u/ptT1szXpQOCIIjfJ66KWndk1O64FHWhfGGfrc88n345vMHiKHrIeT4ymEkuL5ISmt3MF1ec/vCjUIgofNjCdqQzEL6N1nMi2ip+KGTzyy5/5CKLV0vm8Ed8SCJThBBPxUgwfBpuPf74dKyTUM5AJEQIeogIsdA8cO2QEIpC/hE6LwPtHHp+ECMSB2MvVcoHAA53CqoCQ+7J41euCf3IR1xDkbNloJJUugvVsPOOVfcOQKnDsKywIxK5XwbCGFW3iRl52U6ltGGqN46wh/XQNI/Aa4xA6YWh2aBtpssHNHryWxBnX0OHneIxeA3G+AXAucFymrdWNRgvQPAo+DXoGX4V7NLnvh7rsTIQNQ9cGbP9/FGM6YWC25HgTMQq3CCDhl2xAs9ZMfJ+i11P14CofU9wvHetsApQ6KTCv6uTvzA0jQKIKv4tlBKG5udKvjRx4Xe/1RkA1Bnq0L2B5yw2s49ukzwHVyFmpJVaz2fjcFQ9wXQdlAmLTfA2+laqAtHkXYJShaE5mwJ1AaopjC6gGlQh+wreKT46Nzg0YWhczQqx5OXtMwqF8bxgtnkzk5dTLJ6a5J4yNUf69Nndbj+8pd+q+TTUtwBD1+uuEEvmGY3bc6IIRxUd29cijCEguqgClYKeQl4GykkDMDRGyxViiZtCYfwFemZQT8+weEzq7iG2gMmVsD9nd+8+16CnEgIy6WpgFksuDVeIBQkGx3tmNn/dgJ46CkeIhGWH9Yn8L4L56ZV/AM8HY6Gign9xAAAAAElFTkSuQmCC" width="19px">
+            </a>
+    </div>
+
+    <style>
+        {% for slider in sliders %}
+        {% if Agent.isDesktop() %}
+            #slide-{{ _key + 1  }} {
+                background-image: url('{{ slider.image|media  }}');
+            }
+
+        {% endif %}
+        @media (max-width: 768px) {
+            #slide-{{ _key + 1 }} {
+                background-image: url('{{ slider.image_mobile|media }}');
+                background-position: center;
+                background-size: cover;
+            }
+
+        }
+        {% endfor %}
+
+
+        @media (max-width: 768px) {
+            {% for slider in sliders %}
+            {% if Agent.isDesktop() %}
+                #slide-{{ _key + 1  }} {
+                    background-image: url('{{ slider.image|media  }}');
+                }
+    
+            {% endif %}
+            @media (max-width: 768px) {
+                #slide-{{ _key + 1 }} {
+                    background-image: url('{{ slider.image_mobile|media }}');
+                    background-position: center;
+                    background-size: cover;
+                }
+    
+            }
+        {% endfor %}
+        
+    </style>

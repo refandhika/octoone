@@ -1,0 +1,10 @@
+name: Category
+form: $/definite/products/models/category/fields.yaml
+modelClass: Definite\Products\Models\Category
+defaultRedirect: definite/products/category
+create:
+    redirect: 'definite/products/category/update/:id'
+    redirectClose: definite/products/category
+update:
+    redirect: definite/products/category
+    redirectClose: definite/products/category

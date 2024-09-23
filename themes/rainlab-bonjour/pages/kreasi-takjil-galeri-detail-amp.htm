@@ -1,0 +1,136 @@
+title = "Kreasi Takjil galeri detail amp"
+url = "/amp/aktivitas-kami/kreasi-takjil/galeri/:slug?"
+layout = "default-amp"
+is_hidden = 0
+role = 0
+permission = 0
+anonymous_only = 0
+logged_only = 0
+
+[viewBag]
+localeUrl[en] = "/kreasi-takjil-galeri-detail-amp"
+==
+<?php
+function onStart(){
+    $this->page->amp_url = $this->pageUrl('kreasi-takjil-galeri-detail-amp');
+    //get slug
+    $slug        = $this->param('slug');
+    
+    //get json data
+    //$path              = "https://www.frisianflag.com/themes/rainlab-bonjour/assets/ramadan-istimewa/recipes.json";
+    $path              = url('/themes/rainlab-bonjour/assets/kreasi-takjil/gallery.json');
+    $cmsController     = new Cms\Classes\Controller;
+    $arrContextOptions =array(
+        "ssl"=>array(
+            "verify_peer"=>false,
+            "verify_peer_name"=>false,
+        ),
+    );
+        
+    if(json_decode(file_get_contents($path, false, stream_context_create($arrContextOptions)))){
+            $collection    = collect(json_decode(file_get_contents($path, false, stream_context_create($arrContextOptions))));
+            $data          = $collection->where('slug', $slug );
+    }
+    else{
+        
+        return $cmsController->render("/404");
+    }
+    
+    if(count($data) == 0){
+        return $cmsController->render("/404");
+    }
+    
+    $this['images']   = $data;
+    
+    switch ($slug) {
+        case "yayasan-darul-rahmah-ragunan":
+            $title           = "Yayasan Darul Rahmah Ragunan";
+            $date           = "14 Mei 2019";
+            break;
+        case "yatim-piatu-amanah-pondok-labu":
+            $title           = "Yatim Piatu Amanah Pondok Labu";
+            $date           = "20 Mei 2019";
+            break;  
+        case "yayasan-bangun-kecerdasan-bangsa-pasar-rebo":
+            $title           = "Yayasan Bangun Kecerdasan Bangsa Pasar Rebo";
+            $date           = "28 Mei 2019";
+            break;                                      
+    }
+
+    $this->page->title = "Galeri Kreasi Takjil ".$title;
+    $this->page->meta_description = "Lihat foto-foto terbaik dari galeri ".$title ." dengan donasi kreasi takjil dari Frisian Flag Indonesia.";
+    
+    if (session::get('data')) {
+        
+        $this['messages'] = session::get('data');
+    }
+    $this['title']          = $title;
+    $this['date']           = $date;
+}
+?>
+==
+{% set record = builderDetails.record %}
+{% set records = builderList.records %}
+
+<div class="cover">
+    <amp-img 
+        src="{{ 'kreasi-takjil/banner/kreasi-takjil-mobile.png'|media }}"
+        width="50"
+        height="50"
+        layout="responsive"
+        alt="an image">
+    </amp-img>
+</div>
+<amp-accordion class="title_home">
+    <section>
+        <h4 class="arrow_down"><a href="#" target="_self">{{'galeri-foto'|_}}</a></h4>
+        <p>
+            <a href="/aktivitas-kami/kreasi-takjil">Cara Mengikuti</a>
+            <a href="/aktivitas-kami/kreasi-takjil/syarat-dan-ketentuan" class="active">Syarat dan ketentuan</a>
+            <a href="/aktivitas-kami/kreasi-takjil/galeri">Galeri</a>
+            <a href="/aktivitas-kami/kreasi-takjil/pemenang">Pemenang</a>                  
+        </p>
+    </section>
+</amp-accordion>
+
+<div class="breadcrumb">
+    <a href="{{ 'home'|page }}">{{'beranda'|_}}</a> /
+    <a href="{{ 'kreasi-takjil'|page }}">{{'kreasi takjil'|_}}</a> /
+    <a href="{{'ramadan-istimewa-kontes-galeri' | page }}">{{'galeri'|_}}</a>
+</div>
+
+<div class="detail_text">
+    <h1>Galeri Foto</h1>
+   <!--  <form action-xhr="#" method="post" target="_blank" class="search_plain">
+       <input type="text" placeholder="Search">
+   </form> -->
+    <br>
+    <amp-accordion class="title_home">
+        <section>
+            <h4 class="arrow_down"><a href="#" target="_self">{{title}}</a></h4>
+            <p>
+                <a href="/aktivitas-kami/kreasi-takjil/galeri/yayasan-darul-rahmah-ragunan">Yayasan Darul Rahmah Ragunan</a>
+                <a href="/aktivitas-kami/kreasi-takjil/galeri/yatim-piatu-amanah-pondok-labu">Yatim Piatu Amanah Pondok Labu</a>
+                <a href="/aktivitas-kami/kreasi-takjil/galeri/yayasan-bangun-kecerdasan-bangsa-pasar-rebo">Yayasan Bangun Kecerdasan Bangsa Pasar Rebo</a>
+            </p>
+        </section>
+    </amp-accordion>
+</div>
+
+<!-- s:detail -->
+<div class="detail_text">
+    <div class="date">{{ date }}</div>
+    <h1>{{title}}</h1>
+    <p>{{record.description|_}}</p>
+    <br>
+    {% for image in images %}
+    <amp-img lightbox
+        src="{{ image.url | media }}"
+        width="300"
+        height="200"
+        layout="responsive">    
+    </amp-img>
+    <br>
+    {% endfor %}
+</div>
+<!-- e:detail -->

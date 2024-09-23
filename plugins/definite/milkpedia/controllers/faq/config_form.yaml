@@ -1,0 +1,10 @@
+name: FAQ
+form: $/definite/milkpedia/models/faq/fields.yaml
+modelClass: Definite\Milkpedia\Models\Faq
+defaultRedirect: definite/milkpedia/faq
+create:
+    redirect: 'definite/milkpedia/faq/update/:id'
+    redirectClose: definite/milkpedia/faq
+update:
+    redirect: definite/milkpedia/faq
+    redirectClose: definite/milkpedia/faq

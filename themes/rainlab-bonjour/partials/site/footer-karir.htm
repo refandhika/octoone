@@ -1,0 +1,128 @@
+[viewBag]
+
+[builderList]
+modelClass = "Definite\FunFact\Models\FunFact"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "description"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+<footer class="footer clearfix">
+    <div class="footerblue">
+           <div class="footer__top text-center">
+             <div class="newsletter">
+               <div class="newsletter__meta">
+                    <h3>{{'subscribe-to-frisian-flag-newsletter'|_}}</h3>
+                    <p>{{'be-the-first-to-get-update'|_}}</p>
+                </div>
+                <div class="newsletter__form">
+                    <form data-request="subscriberform::onSaveKalfian" data-request-validate data-request-flash>
+                        <input type="email" name="email" placeholder="Your email here" required>
+                        <button type="submit" class="newsletter__form__btn" disabled><i class="fa fa-angle-right" aria-hidden="true" ></i></button>
+                        <div id="result"></div>
+                        <div data-validate-for="email"></div>
+                        {% flash success %}
+                            <p>{{ message }}</p>
+                        {% endflash %}
+                    </form>
+                </div>
+            </div>
+       </div>
+
+        <div class="footer__widget text-center clearfix">
+            <div class="col-md-4 footer__widget__box">
+                <div class="col-md-12">
+                    <h3 class="footer__widget__title">{{'situs-kami-yang-lain'|_}}</h3>
+                    <a href="https://www.frieslandcampina.com" class="sites-list" target="_blank">
+                        <img src="{{ 'assets/img/other-sites/friesland.png'|theme }}"
+                             srcset="{{ 'assets/img/other-sites/friesland2x.png'|theme }} 2x" alt="Friesland">
+                    </a>
+
+                    <a href="https://www.ibudanbalita.com/" class="sites-list" target="_blank">
+                        <img src="{{ 'assets/img/other-sites/ibu-balita.png'|theme }}"
+                             srcset="{{ 'assets/img/other-sites/ibu-balita2x.png'|theme }} 2x" alt="Ibu & Balita">
+                    </a>
+
+                  <!--   <a href="https://www.friso.co.id/" class="sites-list" target="_blank">
+                      <img src="{{ 'assets/img/other-sites/friso.png'|theme }}"
+                           srcset="{{ 'assets/img/other-sites/friso2x.png'|theme }} 2x" alt="Friso">
+                  </a> -->
+
+                    <a href="https://www.omela.com" class="sites-list" target="_blank">
+                        <img src="{{ 'assets/img/other-sites/omela.png'|theme }}"
+                             srcset="{{ 'assets/img/other-sites/omela2x.png'|theme }} 2x" alt="Omela">
+                    </a>
+                  <!--   <a href="https://www.susubendera.com" class="sites-list" target="_blank">
+                              <img src="{{ 'assets/img/other-sites/Logo_Susu_Bendera.png'|theme }}"
+                           alt="Susu Bendera">
+                          </a> -->
+                </div>
+            </div>
+            
+            {% if not records.isEmpty %}
+                {% set funfact = records.random %}
+                    <div class="col-md-4 footer__widget__box">
+                        <div class="col-md-12">
+                        <h3 class="footer__widget__title">{{'fakta-seru'|_}} #{{ funfact.no }}</h3>
+                            {{ trans_pick(funfact, 'description') | raw }}
+                        </div>
+                    </div>
+            {% endif %}
+
+            <div class="col-md-4 footer__widget__box">
+            <div class="col-md-12">
+                <h3 class="footer__widget__title">{{'temukan-kami'|_}}</h3>
+                <div class="social-follow">
+                    <a href="https://www.facebook.com/FrisianFlagID" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/FrisianFlagID" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <a href="https://www.instagram.com/frisianflagid/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    <a href="https://www.youtube.com/user/frisianflagger" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="footer__address text-center">
+            <p>Jl. Raya Bogor KM 5,  Pasar Rebo, Jakarta Timur, Indonesia 13760 <a href="https://www.google.co.id/maps/place/PT.+Frisian+Flag+Indonesia/@-6.3122231,106.8617656,15z/data=!4m5!3m4!1s0x2e69ed0827ec9d73:0x8a08cc1af1e6ef0e!8m2!3d-6.3050945!4d106.8642973" target="_blank">Map</a> &nbsp; &nbsp; Telp +62 21 8410945 | PO BOX  4074 Jakarta 13760 Indonesia <br> Toll Free Layanan Peduli Frisian Flag 0-80018-21-406; Senin - Jumat, 08:00 - 16:30 WIB, E-mail: layanan.peduli@frieslandcampina.com</p>
+        </div>
+
+        <div class="footer__copyright">
+            <div class="col-md-7">
+                <p>Frisian Flag Indonesia is a subsidiary of Royal FrieslandCampina N.V. Copyright &copy; 2017. All rights reserved.</p>
+            </div>
+
+            <div class="col-md-5">
+                <ul class="footer__menu">
+                   <!--  <li><a href="">Site Map</a></li> -->
+                    <li><a href="{{ 'home' | page }}/syarat-ketentuan">{{'syarat-ketentuan'|_}}</a></li>
+                    <li><a href="{{ 'home' | page }}/kebijakan-cookie">{{'kebijakan-cookie'|_}}</a></li>
+                    <li><a class="optanon-toggle-display" style="cursor: pointer;">Pengaturan Cookie</a></li>
+                     <li><a href="{{ 'home' | page }}/kebijakan-privasi">{{'Kebijakan Privasi'}}</a></li>
+                    <!-- <li><a href="">Terms of Use</a></li> -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</footer>
+    <script src="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/js/app.min.js"></script>
+    <!-- <script src="{{ 'assets/js/app.js'|theme }}"></script> -->
+    {% placeholder footer %}
+    {% framework extras %}
+    {% scripts %}
+    <script>
+        // this for temporary
+        jQuery(document).ready(function($) {
+            $('.container-menutab a:contains("Tujuan Kami")').parent().hide();
+            $('.val-submenu a:contains("Tujuan Kami")').parent().hide();
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+        
+    </body>
+</html>

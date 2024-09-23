@@ -1,0 +1,8 @@
+tabs:
+    fields:
+        title:
+            label: Kategori
+            span: auto
+            required: 1
+            type: text
+            tab: 'Informasi Detail'

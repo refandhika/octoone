@@ -1,0 +1,12 @@
+list: $/definite/ramadhan2024/models/sahur/columns.yaml
+modelClass: Definite\Ramadhan2024\Models\Sahur
+title: Sahur
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'definite/ramadhan2024/sahur/update/:id'

@@ -1,0 +1,137 @@
+title = "Our Milkpedia FAQ"
+url = "/milkpedia/faq"
+layout = "default"
+meta_description = "Berikut ini fakta dan pertanyaan tentang susu yang sering ditanyakan secara umum. Baca dan pelajari fakta dan pertanyaan tentang susu berikut ini."
+is_hidden = 0
+
+[builderList]
+modelClass = "Definite\Milkpedia\Models\Faq"
+scope = "-"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+sortColumn = "created_at"
+sortDirection = "desc"
+==
+<?php
+function onStart() {
+    $this['categories'] = Definite\Milkpedia\Models\Category::all();
+    $this['faqCategory'] = $this['categories']->where('slug', 'faq')->first();
+}
+
+function onEnd() {
+    if (is_null($this->components['builderDetails']->record)) return $this->controller->run('404');
+    
+    // get the post component
+    $this->page->title = "Fakta dan Pertanyaan Tentang Susu";
+    $this->page->title_en = "Facts and Questions about Milk";
+}
+?>
+==
+{% set records = builderList.records %}
+{% set displayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsPage = builderList.detailsPage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
+
+<h1 aria-hidden="true" class="seo-heading">Fakta dan Pertanyaan Tentang Susu - FAQ</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp hidden-xs"><img src="{{ 'assets/img/95-TAHUN-FF_desktop-banner.jpg'|theme }}" alt="Banner 95 Tahun Frisian Flag Desktop"/> </div>
+    <div class="imgwrp visible-xs"><img src="{{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }}" alt="Banner 95 Tahun Frisian Flag Mobile"/> </div>
+</div>
+
+<div class="container-menutab">
+    <div class="container-one">
+        <ul>
+            <li class="toggle visible-xs visible-sm">
+                <a href="javascript:;" class="active">{{ record.title }}</a>
+            </li>
+            {% for category in categories %}
+            <li>
+                <a href="{{ category.slug }}" {% if category.slug == 'faq' %}class="active"{% endif %}>
+                    {{ trans_pick(category, 'title') }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<div id='main-section' class="clearfix">
+        <div class="col-md-12">
+            <div class="breadcrumb">
+                <div class="container-two">
+                    <ul>
+                        <li>
+                            <a href="{{ 'home'|page }}">{{ 'beranda'|_ }}</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Milkpedia</a>
+                        </li>
+                        <li>
+                            <a href="{{ 'our-milkpedia-faq'|page }}">
+                                {{trans_pick(faqCategory, 'title')}}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="default-content">
+                <div class="container-two">
+                    <h3>{{trans_pick(faqCategory, 'title')}}</h3>
+                    <p>{{ trans_pick(faqCategory, 'description') }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 container-fullblue">
+            <div class="default-content">
+                <div class="container-two clearfix search search_faq">
+                    <div class="col-md-4 pull-right search__group">
+                        <input type="search" placeholder="Search" class="form-control" id="faq-search" />
+                    </div>
+                </div>
+                <div class="container-two">
+                    <div class="wrp-accordion">
+                        <div class="accordion">
+                        {% for faq in records %}
+                            <div class="item-accordion" {% if loop.index0 > 9 %} style="display: none;" {% endif %}>
+                                <h3>{{ trans_pick(faq, 'title') }}</h3>
+                                <div class="pane">
+                                    {{ trans_pick(faq, 'description')|raw }}
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </div>
+                        <div class="btn-loadmore"><a class="button medium loadseemore">
+                            {{ 'muat-lebih'|_ }}
+                        </a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script>
+        document.addEventListener( 'DOMContentLoaded', function() {
+            (function($) {
+                'use strict';
+
+                $('.loadseemore').click(function () {
+                    $('.item-accordion[style="display: none;"]').slice(0, 10).fadeIn();
+
+                    var show = $('.item-accordion[style="display: none;"]');
+
+                    if(typeof show[0] === 'undefined'){
+                        $('.loadseemore').hide();
+                    }
+                });
+
+            })(jQuery);
+          });
+    </script>
+</div>

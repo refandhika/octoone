@@ -1,0 +1,13 @@
+.bg {
+  background-color: initial;
+
+  &_bl {
+    background-color: $blue-light;
+    color: white;
+  }
+
+  &_gray {
+    background-color: $gray;
+  }
+
+}

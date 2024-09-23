@@ -1,0 +1,32 @@
+scopes :
+
+  product_category_id :
+
+    label: Product Category
+
+    modelClass : Leverate\Ramadan\Models\Category
+
+    conditions : id and (select id leverate_ramadan_users where product_category_id in (:filtered))
+
+    nameFrom : name
+
+  market_place_id :
+
+    label: Market Place
+
+    modelClass : Leverate\Ramadan\Models\Market
+
+    conditions : id and (select id leverate_ramadan_users where market_place_id in (:filtered))
+
+    nameFrom : name
+    
+
+  created_at :
+  
+    label : Date Range  
+
+    type : daterange
+
+    conditions : created_at >= ':after' AND created_at <= ':before'
+
+  

@@ -1,0 +1,47 @@
+name: 'Main Menu'
+items:
+    -
+        title: Home
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: home
+        reference: home
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'Our Milkpedia'
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: languages
+        reference: our-milkpedia
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+        items:
+            -
+                title: 'Nutrisi & Kesehatan'
+                type: url
+                url: our-milkpedia/nutrisi-dan-kesehatan
+                code: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Manfaat Minum Susu'
+                type: url
+                url: our-milkpedia/manfaat-minum-susu
+                code: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'

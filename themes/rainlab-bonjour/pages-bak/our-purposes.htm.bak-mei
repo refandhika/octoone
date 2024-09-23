@@ -1,0 +1,348 @@
+title = "Tujuan Kami"
+url = "/tujuan-kami"
+layout = "default"
+meta_description = "Frisian Flag Indonesia bertujuan untuk menyediakan produk berbasis susu yang berkualitas terbaik dan pendidikan mengenai gaya hidup sehat bagi masyarakat Indonesia."
+is_hidden = 0
+
+[builderList Seanuts]
+modelClass = "Definite\Ourpurposes\Models\Seanuts"
+scope = "scopeIndex"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList Dmbs]
+modelClass = "Definite\Ourpurposes\Models\Dbms"
+scope = "scopeIndex"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList Program]
+modelClass = "Definite\Ourpurposes\Models\Program"
+scope = "scopeIndex"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList Farmer]
+modelClass = "Definite\Ourpurposes\Models\Farmer"
+scope = "scopeIndex"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList Young]
+modelClass = "Definite\Ourpurposes\Models\Young"
+scope = "scopeIndex"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList Fdov]
+modelClass = "Definite\Ourpurposes\Models\Fdov"
+scope = "scopeIndex"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList Ddp]
+modelClass = "Definite\Ourpurposes\Models\Ddp"
+scope = "scopeIndex"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList Waste]
+modelClass = "Definite\Ourpurposes\Models\Waste"
+scope = "scopeIndex"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList Energy]
+modelClass = "Definite\Ourpurposes\Models\Energy"
+scope = "scopeIndex"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+{% set seanuts = Seanuts.records %}
+{% set dmbs = Dmbs.records %}
+{% set program = Program.records %}
+{% set farmer = Farmer.records %}
+{% set young =  Young.records %}
+{% set fdov = Fdov.records %}
+{% set ddp = Ddp.records %}
+{% set waste = Waste.records %}
+{% set energy = Energy.records %}
+{% set displayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsPage = builderList.detailsPage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
+
+<h1 aria-hidden="true" class="seo-heading">Tujuan Kami</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp hidden-xs"><img src="{{'assets/img/our-milkpedia.png'|theme}}" alt="Our Milkpedia"/> </div>
+    <div class="imgwrp visible-xs"><img src="{{'assets/img/staticbaner-xs.jpg'|theme}}" alt="Banner Static"/> </div>
+</div>
+
+<div class="container-menutab">
+    <div class="container-one">
+        <ul>
+            <li class="toggle visible-xs visible-sm"><a href="javascript:;" class="active">{{'tujuan-kami'|trans}}</a></li>
+            <li><a href="{{'about-us'|page}}" class="{% if this.page.id == 'about-us' %}active{% endif %}">{{'tentang-kami'|trans}}</a></li>
+            <li><a href="{{'news'|page}}" class="{% if this.page.id == 'news' %}active{% endif %}">{{'berita'|trans}}</a></li>
+            <li><a href="{{'press-release'|page}}" class="{% if this.page.id == 'press-release' %}active{% endif %}">{{'siaran-pers'|trans}}</a></li>
+            <li><a href="{{'our-purposes'|page}}" class="{% if this.page.id == 'our-purposes' %}active{% endif %}">{{'tujuan-kami'|trans}}</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id='main-section' class="container-fluid" style="margin-bottom: 30px;">
+
+    <div class="col-md-12">
+        <div class="breadcrumb">
+            <div class="container-two">
+                <ul>
+                    <li><a href="{{ 'home'|page }}">{{'beranda'|trans}}</a> </li>
+                    <li><a href="javascript:;">{{'tujuan-kami'|trans}}</a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="container-two">
+          <ul class="link-tab">
+              <li><a href="javascript:;" class="active" id="tab-one">Nutrition For Indonesia</a> </li>
+              <li><a href="javascript:;" class="" id="tab-two">Local Farmer Programs</a> </li>
+              <li><a href="javascript:;" class="sustainability-tab-head" id="tab-three">Sustainability</a></li>
+          </ul>
+      </div>
+    </div>
+
+    <div class="col-md-12 tab-one">
+        <div class="default-content">
+            <div class="container-two">
+                <h3>Nutrition For Indonesia</h3>
+                <div class="container-purposes">
+                    <div class="content">
+                        <div class="wrp-tableft">
+                            <div class="left">
+                                <ul class="tabs">
+                                    <li class="tab-link current" data-tab="tab-1">Seanuts</li>
+                                    <li class="tab-link " data-tab="tab-2">DMBS</li>
+                                    <li class="tab-link" data-tab="tab-3">{{'program-komunitas'|trans}}</li>
+                                </ul>
+                            </div>
+
+                            <div class="right">
+
+                                <div id="tab-1" class="tab-content current">
+                                    <h3>{{trans_pick(seanuts.first, 'title')}}</h3>
+
+                                    {{trans_pick(seanuts.first, 'description')|raw}}
+
+                                    <div class="wrp-listimg">
+                                      {%  for seanuts_image in seanuts.first.image %}
+                                        <div class="itemhomefade">
+                                          <div class="imgwrp" style="background-image: url('{{ seanuts_image.images|media }}')"></div>
+                                        </div>
+                                      {% endfor %}
+                                        <!-- <div class="loadseemore button">Load more</div> -->
+                                    </div>
+                                </div>
+                                <!-- end seanuts -->
+
+                                <div id="tab-2" class="tab-content ">
+                                  <h3>{{trans_pick(dmbs.first, 'title')}}</h3>
+
+                                  {{trans_pick(dmbs.first, 'description')|raw}}
+
+                                  <div class="wrp-listimg">
+                                    {%  for dmbs_image in dmbs.first.image %}
+                                      <div class="itemhomefade">
+                                        <div class="imgwrp" style="background-image: url('{{ dmbs_image.images|media }}')"></div>
+                                      </div>
+                                    {% endfor %}
+                                  </div>
+                                </div>
+                                <!-- end Drink Move Be Strong -->
+
+                                <div id="tab-3" class="tab-content">
+                                  <h3>{{trans_pick(program.first, 'title')}}</h3>
+
+                                  {{trans_pick(program.first, 'description')|raw}}
+
+                                  <div class="wrp-listimg">
+                                    {%  for program_image in program.first.image %}
+                                      <div class="itemhomefade">
+                                        <div class="imgwrp" style="background-image: url('{{ program_image.images|media }}')"></div>
+                                      </div>
+                                    {% endfor %}
+                                </div>
+                              </div>
+                                <!-- end Program -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12 tab-two" style="display: none;">
+        <div class="default-content">
+            <div class="container-two">
+                <h3>Local Farmer Programs</h3>
+                <div class="container-purposes">
+                    <div class="content">
+                      <strong>Kesejahteraan Peternak Lokal </strong>
+                        <p>Untuk memenuhi kebutuhan produksi susunya, FrieslandCampina berusaha untuk memperoleh suplai susu segar dalam jumlah yang memadai, terutama di negara-negara yang memiliki fasilitas produksi susu yang baik dan berkualitas. Melalui Dairy Development Program (Program Pengembangan Produksi Susu), FrieslandCampina memberikan dukungan kepada para peternak kecil di beberapa negara Asia dan Afrika, yaitu Indonesia, Vietnam, Malaysia, Thailand, dan Nigeria. </p>
+                        <p>Tujuan utama dari program ini adalah untuk meningkatkan kualitas dan kuantitas produksi susu, pengelolaan peternak sapi, dan pemberdayaan komunitas masyarakat setempat. Untuk itu, kerja sama yang berkesinambungan antara peternak susu, pemerintah daerah, koperasi susu, komunitas, dan peternak harus bisa berjalan dengan baik dan harmonis. Dalam hal ini, FrieslandCampina berkontribusi dalam bidang pengembangan peternakan susu lokal dan perekonomian dari komunitas setempat.</p>
+                        <p>Di Indonesia, Frisian Flag Indonesia sebagai bagian dari FrieslandCampina, telah menjalankan Dairy Development Program sejak Juni 2009. Berkontribusi dalam memberikan pendidikan, pelatihan, dan bantuan langsung kepada peternak sapi perah lokal, Frisian Flag Indonesia kini sudah bermitra dengan 14 koperasi susu di seluruh pulau Jawa. Dan pada 2017, para peternak berhasil mencapai target menaikkan kualitas susu segar (TPC) hasil sapi perah mereka hingga kurang dari 1 juta cfu/ml, atau sesuai Standar Nasional Indonesia (SNI).</p>
+                        <p>Bentuk dukungan Frisian Flag Indonesia melalui Program Pengembangan Peternakan Susu, dengan memberikan beragam pendidikan dan pelatihan mengenai teknik peternakan yang lebih baik, manajemen peternakan, dan memproduksi susu segar dengan kualitas terbaik dalam jumlah yang lebih besar, bertujuan untuk peningkatan kesejahteraan peternak. Program ini juga didukung oleh para ahli di bidang nutrisi hewan, perkandangan, perawatan, pembibitan, reproduksi, dan pemeliharaan pedet (anak sapi). Selain itu, FrieslandCampina juga menyediakan beberapa fasilitas yang memadai, salah satunya peralatan pemeriksaan kualitas susu.</p>
+                        <p>Dengan adanya program ini, Frisian Flag Indonesia berharap bisa memberikan sedikit sumbangsih, tidak hanya bagi komunitas peternak yang telah menjadi mitra bisnis setia perusahaan, namun juga bagi bangsa, demi peningkatan kualitas hidup masyarakat secara berkesinambungan. Sehingga, baik FrieslandCampina maupun bangsa Indonesia bisa berkembang dan sukses bersama, menuju hari esok yang lebih baik.</p>
+                        <div class="wrp-tableft">
+                            <div class="left">
+                                <ul class="tabs">
+                                    <li class="tab-link current" data-tab="tab-4">{{trans_pick(farmer.first, 'title')}}</li>
+                                    <li class="tab-link" data-tab="tab-5">{{trans_pick(young.first, 'title')}}</li>
+                                    <li class="tab-link" data-tab="tab-6">{{trans_pick(fdov.first, 'title')}}</li>
+                                    <li class="tab-link" data-tab="tab-7">{{trans_pick(ddp.first, 'title')}}</li>
+                                </ul>
+                            </div>
+
+                            <div class="right">
+
+                                <div id="tab-4" class="tab-content current">
+                                    <strong>{{trans_pick(farmer.first, 'title')}}</strong>
+                                    {{trans_pick(farmer.first, 'description')|raw}}
+                                    <div class="wrp-listimg">
+                                      {%  for farmer_image in farmer.first.image %}
+                                        <div class="itemhomefade">
+                                          <div class="imgwrp" style="background-image: url('{{ farmer_image.images|media }}')"></div>
+                                        </div>
+                                      {% endfor %}
+                                    </div>
+                                </div>
+                                <!-- end Farmer -->
+
+                                <div id="tab-5" class="tab-content ">
+                                    <strong>{{trans_pick(young.first, 'title')}}</strong>
+                                    {{trans_pick(young.first, 'description')|raw}}
+                                    <div class="wrp-listimg">
+                                      {% for young_image in young.first.image %}
+                                        <div class="itemhomefade">
+                                          <div class="imgwrp" style="background-image: url('{{ young_image.images|media }}')"></div>
+                                        </div>
+                                      {% endfor %}
+                                    </div>
+                                </div>
+                                <!-- end young -->
+
+                                <div id="tab-6" class="tab-content">
+                                     <strong>{{trans_pick(fdov.first, 'title')}}</strong>
+                                    {{trans_pick(fdov.first, 'description')|raw}}
+                                     <div class="wrp-listimg">
+                                         {%  for fdov_image in fdov.first.image %}
+                                         <div class="itemhomefade">
+                                           <div class="imgwrp" style="background-image: url('{{ fdov.images|media }}')"></div>
+                                         </div>
+                                         {% endfor %}
+                                     </div>
+                                </div>
+                                <!-- end FDOV -->
+
+                                <div id="tab-7" class="tab-content">
+                                  <strong>{{trans_pick(ddp.first, 'title')}}</strong>
+                                  {{trans_pick(ddp.first, 'description')|raw}}
+                                  <div class="wrp-listimg">
+                                    {%  for ddp_image in ddp.first.image %}
+                                      <div class="itemhomefade">
+                                        <div class="imgwrp" style="background-image: url('{{ ddp.images|media }}')"></div>
+                                      </div>
+                                    {% endfor %}
+                                  </div>
+                                </div>
+                                <!-- end DDP -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12 tab-three" style="display: none;">
+        <div class="default-content">
+            <div class="container-two">
+                <h3>Sustainability</h3>
+                <div class="container-purposes">
+                    <div class="content">
+                        <div class="wrp-tableft">
+                            <div class="left">
+                                <ul class="tabs">
+                                    <li class="tab-link current active" data-tab="tab-8">{{trans_pick(waste.first, 'title')}}</li>
+                                    <li class="tab-link" data-tab="tab-9">{{energy.first.title}}</li>
+                                </ul>
+                            </div>
+
+                            <div class="right">
+                                <div id="tab-8" class="tab-content current active">
+                                  <strong>{{trans_pick(waste.first, 'title')}}</strong>
+                                  {{trans_pick(waste.first, 'description')|raw}}
+                                    <div class="wrp-listimg">
+                                      {%  for waste_image in waste.first.image %}
+                                        <div class="itemhomefade">
+                                          <div class="imgwrp" style="background-image: url('{{ waste.images|media }}')"></div>
+                                        </div>
+                                      {% endfor %}
+                                    </div>
+                                </div>
+                                <!-- end waste -->
+
+                                <div id="tab-9" class="tab-content ">
+                                  <strong>{{energy.first.title}}</strong>
+                                  {{energy.first.description|raw}}
+                                    <div class="wrp-listimg">
+                                      {%  for energy_image in energy.first.image %}
+                                        <div class="itemhomefade">
+                                          <div class="imgwrp" style="background-image: url('{{ energy_image.images|media }}')"></div>
+                                        </div>
+                                      {% endfor %}
+                                    </div>
+                                </div>
+                                <!-- end energy -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> <!-- end mainsection -->

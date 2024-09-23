@@ -1,0 +1,18 @@
+[viewBag]
+==
+{% for ct in result %}
+    <div class="main__recipe" style="width:48%">
+                <a href="{{'testing-amp'|page}}/{{ct.slug_category}}/{{ct.slug}}">
+               <amp-img 
+                class=""
+                src="{{ct.featured_image|media }}"
+                width="50"
+                height="50"
+                layout="responsive"
+                alt="{{ct.title | title}}">
+                </amp-img>
+                </a>
+         <div style="margin-bottom: 30px; margin-top: 20px;"><a href="{{'testing-amp'|page}}/{{ct.slug_category}}/{{ct.slug}}#main-scroll" class="button gradient-orange ">lihat resepnya</a></div>        
+        
+	    </div>
+	 {% endfor%}

@@ -1,0 +1,704 @@
+title = "Resep Kami Kategori"
+url = "/resep-kami/:category"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/resep-kami-kategori"
+==
+<?php
+function onStart(){
+    $this->page->amp_url = $this->pageUrl('resep-kami-kategori-page');
+    
+    $title = Input::get('title') ? Input::get('title') : "";
+    $this["title"] = $title;
+    $sort = "desc";
+    $category = "";
+    $category_id = "";
+    if($this->param('category') == "resep-dengan-susu-bubuk"){
+        $pages = Definite\Activities\Models\Category::where('slug',$this->param('category'))->get()->first();
+        $category = "FMP";
+        $category_id = 21;
+        $this->page->title = "Resep Nikmat Bergizi dengan Susu Bubuk Frisian Flag";
+        $this->page->meta_description = $pages->meta_description;
+    }
+    elseif($this->param('category') == "resep-dengan-susu-cair")
+    {
+        $pages = Definite\Activities\Models\Category::where('slug',$this->param('category'))->get()->first();
+        $category = "RTD";
+        $category_id = 19;
+        $this->page->title = "Resep Praktis Bergizi dengan Susu Cair Frisian Flag";
+        $this->page->meta_description = $pages->meta_description;
+    }
+    elseif($this->param('category') == "resep-dengan-kental-manis")
+    {
+        $pages = Definite\Activities\Models\Category::where('slug',$this->param('category'))->get()->first();
+        $category = "SCM";
+        $category_id = 22;
+        $this->page->title = "Resep MANTUL Frisian Flag Kental Manis MAnis Nikmat TUjuh Langkah";
+        $this->page->meta_description = $pages->meta_description;
+    }
+    
+    //$category     = $this->param('category');
+    $this["category"] = $category;
+    $index    = 0;
+    
+    $limit = 9;
+    
+    $query = Definite\Activities\Models\Activity::leftJoin('definite_activities_categories_activities', 'definite_activities_categories_activities.activity_id', '=', 'definite_activities_activity.id')->
+    leftJoin('definite_activities_category', 'definite_activities_category.id', '=', 'definite_activities_categories_activities.category_id')->whereRaw('definite_activities_category.id = ? AND ( definite_activities_activity.title like ? OR definite_activities_activity.description like ?)', [ $category_id, '%'.$title.'%', '%'.$title.'%' ] )->
+            select('definite_activities_category.slug as slug_category','definite_activities_activity.title', 'definite_activities_activity.slug', 'definite_activities_activity.featured_image')->orderBy('definite_activities_activity.sort_top', "desc")->orderBy('definite_activities_activity.updated_at', $sort)->offset($index)->limit($limit)->get();
+
+    $this['result'] = $query;
+   
+}
+
+function onHandleForm()
+{
+    
+    $title = Input::get('title');
+    $sort = Input::get('sort');
+    $category = Input::get('category');
+    $index    = intval(Input::get('index'));
+    
+    $limit = 9;
+    
+    $category_id = "";
+    if($category == "FMP"){
+        $category_id = 21;
+    }
+    elseif($category == "RTD")
+    {
+        $category_id = 19;
+    }
+    elseif($category == "SCM")
+    {
+        $category_id = 22;
+    }
+    $this['populer'] = 0;
+    $sortvar = 'definite_activities_activity.updated_at';
+    if($sort == "populer"){
+        $this['populer'] = 1;
+        $sortvar = 'definite_activities_like.total';
+        $sort = 'desc';
+    }
+    
+    $query = Definite\Activities\Models\Activity::leftJoin('definite_activities_categories_activities', 'definite_activities_categories_activities.activity_id', '=', 'definite_activities_activity.id')->
+    leftJoin('definite_activities_like', 'definite_activities_like.activity_id', '=', 'definite_activities_activity.id')->
+    leftJoin('definite_activities_category', 'definite_activities_category.id', '=', 'definite_activities_categories_activities.category_id')->whereRaw('definite_activities_category.id = ? AND ( definite_activities_activity.title like ? OR definite_activities_activity.description like ?)', [ $category_id, '%'.$title.'%', '%'.$title.'%' ] )->
+            select('definite_activities_like.total as total_likes', 'definite_activities_category.slug as slug_category','definite_activities_activity.title', 'definite_activities_activity.slug', 'definite_activities_activity.featured_image');
+    if(Input::get('sort') == "populer"){
+        $query = $query->orderBy($sortvar, $sort)->offset($index)->limit($limit)->get();
+    }else{
+        $query = $query->orderBy('definite_activities_activity.sort_top', "desc")->orderBy($sortvar, $sort)->offset($index)->limit($limit)->get();
+    }
+   
+    $this['result'] = $query;
+   
+    
+}
+
+
+
+function onHandleFormCheck()
+{
+    
+    $title = Input::get('title');
+    $sort = Input::get('sort');
+    $category = Input::get('category');
+    
+    $category_id = "";
+    if($category == "FMP"){
+        $category_id = 21;
+    }
+    elseif($category == "RTD")
+    {
+        $category_id = 19;
+    }
+    elseif($category == "SCM")
+    {
+        $category_id = 22;
+    }
+    
+    $sortvar = 'definite_activities_activity.updated_at';
+    if($sort == "populer"){
+        $sortvar = 'definite_activities_like.total';
+        $sort = 'desc';
+    }
+    
+    $limit = 9;
+    $next = 9;
+
+    $index    = intval(Input::get('index'));
+    
+    $query = Definite\Activities\Models\Activity::leftJoin('definite_activities_categories_activities', 'definite_activities_categories_activities.activity_id', '=', 'definite_activities_activity.id')->
+    leftJoin('definite_activities_like', 'definite_activities_like.activity_id', '=', 'definite_activities_activity.id')->
+    leftJoin('definite_activities_category', 'definite_activities_category.id', '=', 'definite_activities_categories_activities.category_id')->whereRaw('definite_activities_category.id = ? AND ( definite_activities_activity.title like ? OR definite_activities_activity.description like ?)', [ $category_id, '%'.$title.'%', '%'.$title.'%' ] )->
+            select('definite_activities_category.slug as slug_category','definite_activities_activity.title', 'definite_activities_activity.slug', 'definite_activities_activity.featured_image');
+    if(Input::get('sort') == "populer"){
+        $query = $query->orderBy($sortvar, $sort)->offset($index)->limit($limit)->get();
+    }else{
+        $query = $query->orderBy('definite_activities_activity.sort_top', "desc")->orderBy($sortvar, $sort)->offset($index)->limit($limit)->get();
+    }
+    $count = 0;
+   if(!$query->isEmpty()) $count += 1;
+   
+    $this['result'] = $count;    
+    
+}
+?>
+==
+{% partial 'site/header' %}
+
+<style>
+.title-cat{
+    font-size:30px;
+}
+@media(min-width : 769px){
+    .container, .container-fluid{
+        padding-left : 25px !important;
+        padding-right : 25px !important;
+    }    
+}
+.bg-blue{
+ background-color:#5AC9F7;   
+ position : relative ;
+ width : 100%;
+}.bg-orange{
+ background-color:#fd9e02;   
+}
+.disresult{
+    padding:50px 0;   
+}
+.item-thumb{
+    position : relative !important;
+    margin-bottom:30px;
+}
+.item-thumb-img{
+    padding-top:100%;   
+    position:relative;
+    border-radius : 30px;
+    background:#CCC;
+    margin-bottom:20px;
+}
+.item-thumb-img a img{
+    border-radius : 30px;
+}
+.loading{
+    display:none;
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    z-index:9999;
+}
+.loading-button:before, .loading:before {
+    display: block;
+    background: hsla(0,0%,100%,.8);
+    content: "";
+    position: absolute;
+}
+.loading:before {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 4;
+}
+.loading:after{
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    margin:auto;
+}
+
+.image-object {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.search-container{
+    height : 55px;
+    width : 100%;  
+    display : flex;
+    position : relative;    
+    border : none;
+}
+
+.search-container input{
+    height : 100%;
+    background : linear-gradient(to bottom, #00AAF6 ,#009DE0) !important;
+    width : 100%;    
+    padding-left : 60px;
+    font-size : 18pt;
+    border-radius : 30px;    
+    border : none;
+}
+.search-container input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+.search-container input:focus{
+    outline: none;
+}
+.search-container button{
+    position : absolute;
+    width : 60px; 
+    height : 100%;
+    border : none;
+    background : transparent;
+    left : 0;
+    top : 0;
+}
+.search-container button:focus{
+    outline: none;
+}
+.search-container button i{
+    color : #FFD77F;
+    font-size : 18pt;
+}
+
+.filter-container{
+     margin-top : 60px;
+     position : relative;       
+}
+.filter-container h3{
+        text-align : left;
+        font-weight : 900;
+}
+.filter-container .sort {
+    position : absolute;
+    right : 0;
+    cursor : pointer;
+    top : 0;
+    width : 200px;
+}
+
+
+.sort select::after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+.sort-modal {
+    min-height : 250px;
+    background-color : #FFE69C;
+    position : fixed;
+    bottom : 0;
+    z-index : 1000;
+    border-radius : 20px 20px 0px 0px;
+    left : 0;
+    transition : 0.3s;
+    width : inherit;
+    transform : translateY(320px);
+}
+.sort-modal.show {
+    transition : 0.3s;
+    transform : translateY(0px);
+}
+button.btn-filter{
+    border-radius : 30px;
+    border : white 2px solid;
+    padding : 10px 30px;
+    margin-top : 20px;
+    margin-right : 10px;
+    font-weight : 800;
+}
+button.btn-filter:focus{
+    outline : none;
+}
+button.btn-filter:nth-child(1){
+    background : linear-gradient(to bottom, #00AAF6 ,#009DE0) !important;
+}
+button.btn-filter:nth-child(2){
+    background : linear-gradient(to bottom, #FA1701 ,#DE0202) !important;
+}
+button.btn-filter:nth-child(3){
+    background : linear-gradient(to bottom, #008ECC ,#016E9C) !important;
+}
+
+.mt-5{margin-top : 50px}
+
+
+.btn-filter-floating{
+    position : fixed;
+    top : 25%;
+    right : 5%;
+    cursor : pointer;
+    border : solid 4px #FFD77F;
+    border-radius : 50px;
+    width : 60px;
+    height : 60px;
+    z-index : 1500;
+}
+.btn-filter-floating.active{
+    border : solid 4px blue;
+}
+
+.btn-filter-floating:nth-child(1){
+    transform : translateY(70px);
+}
+.btn-filter-floating:nth-child(2){
+    transform : translateY(140px);
+}
+.btn-filter-floating:nth-child(3){
+    transform : translate(0px , 210px); 
+}
+#susu-kental-manis:hover:after{
+    width : 100px;
+    text-align : center;
+    content : 'Susu Kental Manis';
+    position : absolute;
+    bottom : -20px;
+    z-index : 2000;
+    right : 50%;
+    padding : 10px;
+    border-radius : 10px;
+    background : black;
+    color : white;
+}
+#susu-bubuk:hover:after{
+    width : 100px;
+    content : 'Susu Bubuk';
+    text-align : center;
+    position : absolute;
+    top : -40px;
+    z-index : 2000;
+    right : 50%;
+    padding : 10px;
+    border-radius : 10px;
+    background : black;
+    color : white;
+}
+#susu-fullcream:hover:after{
+    width : 100px;
+    content : 'Susu Cair';
+    text-align : center;
+    position : absolute;
+    top : 0;
+    right : 50%;
+    z-index : 2000;
+    padding : 10px;
+    border-radius : 10px;
+    background : black;
+    color : white;
+}
+.btn-filter-floating img{
+    border-radius : 50px;
+}
+
+.item-thumb .text-center{
+    position : relative;
+    margin : auto;
+    width : 90%;
+}
+
+.item-thumb .text-center a{
+    width : 100%;
+     background-color: #008BC7;  
+}
+.noresult{
+ margin: 75px 0;   
+}
+
+.total--likes{
+    position:absolute;
+    right:15px;
+    bottom:15px;
+    color:red;
+    background:#FFF;
+    padding:5px 25px;
+    border-radius:15px;
+    border: 2px solid #ffd77e;
+}
+</style>
+
+<div class=" bg-blue">
+
+
+<div class="btn-filter-floating" style="background-image : url({{ 'susu-1.png' | media}}); background-size : 127%; background-position : center !important" onclick="window.location.href='/resep-kami/resep-dengan-susu-cair'" id="susu-fullcream">
+</div>
+<div class="btn-filter-floating" style="background-image : url({{ 'susu-2-new.png' | media}}); background-size : 90%; background-position : center !important" onclick="window.location.href='/resep-kami/resep-dengan-kental-manis'" id="susu-kental-manis">
+</div>
+<div class="btn-filter-floating" style="background-image : url({{ 'susu-3.png' | media}}); background-size : 127%; background-position : center !important" onclick="window.location.href='/resep-kami/resep-dengan-susu-bubuk'" id="susu-bubuk">
+</div>
+
+<div class="container">
+    <div class="row justify-content-center" style="margin-top:250px; justify-content : center !important">
+        <div class="col-md-12 text-center">
+            <h1 class="title-cat"><b>
+            {% if this.page.title == "Resep Nikmat Bergizi dengan Susu Bubuk Frisian Flag" %}
+            Resep Nikmat Bergizi <i>dengan</i> Susu Bubuk Frisian Flag
+            {% elseif this.page.title == "Resep Praktis Bergizi dengan Susu Cair Frisian Flag" %}
+                Resep Praktis Bergizi <i>dengan</i> Susu Cair Frisian Flag
+            {% elseif this.page.title == "Resep MANTUL Frisian Flag Kental Manis MAnis Nikmat TUjuh Langkah" %}
+            Resep MANTUL Frisian Flag Kental Manis<br>MAnis Nikmat TUjuh Langkah
+            {% else %}
+                {{ this.page.title }}
+            {% endif %}
+            </b></h1>
+        </div>
+    </div> 
+    <div class="row" style="margin-top: 50px;">
+        <div class="col-md-12">
+            <div class="search-container">
+                    <input type="text" onfocusout="redirect()" onkeypress="handle(event)" value="{{ title }}" name="searchresep" placeholder="Ketik Resep atau Bahan" id="searchresep"><button type="button" id="btn-search"><i class="fa fa-search text-warning"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="filter-container">
+                <h3>Resep Pilihan Hari Ini</h3>
+                <style>
+                .filter-container .sort .select{
+                    margin-top : -10px;
+                    height : 45px;  
+                    width : 100%;
+                    background : #00ACF4;
+                    display : flex;
+                    justify-content : flex-start;
+                    align-items : center;
+                    align-content : center;
+                    position : relative; 
+                    border : solid white 2px;
+                    border-radius : 50px;
+                    padding-left : 20px;
+                   -webkit-appearance: none;
+                   -moz-appearance: none;
+                   appearance: none;
+                }
+                .filter-container .dropdown-item{
+                    display : none;
+                    background : #00ACF4;
+                    padding : 5px 0px;
+                    border-radius : 20px;
+                    position : absolute;
+                    width : 100%;
+                    transition : 0.3s;
+                    top : 50px;
+                    z-index : 10;
+                    border : 2px white solid;
+                    left : 0;
+                }
+                .filter-container .dropdown-item.show{
+                    display : block;
+                }
+                
+                .dropdown-item ul{
+                    margin-left : -20px;
+                }
+                .dropdown-item ul li{
+                    list-style : none;    
+                    color : white;
+                    margin : 5px 0px;
+                }
+                </style>
+                <div class="sort">
+                    <div class="select" onclick="openSort()">
+                        <span class="filterValue">Semua Resep</span>
+                        <div class="dropdown-item">
+                            <ul>
+                                <li onclick="chooseSort('', 'Semua Resep')">Semua Resep</li>
+                                <li onclick="chooseSort('desc','Resep Terbaru')">Resep Terbaru</li>
+                                <li onclick="chooseSort('asc' , 'Resep Terlama')">Resep Terlama</li>
+                                <li onclick="chooseSort('populer' , 'Resep Terpopuler')">Resep Terpopuler</li>
+                            </ul>
+                        </div>
+                        <span onclick="dropdownClick()" style="position : absolute; right : 10%; color : white; z-index : 1;"><i class="fa fa-chevron-down"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+ 
+    </div>
+            <select id="sortresep" hidden onchange="changeResep()">
+                <option value="desc">Terbaru</option>
+                <option value="asc">Terlama</option>
+                <option value="populer">Terpopuler</option>
+            </select>
+            <select id="categoryresep" value="{{category}}" hidden onchange="changeResep()">
+                <option {%if category == 'all' %} selected {% endif %} value="all">All</option>
+                <option {%if category == 'SCM' %} selected {% endif %}value="SCM">SCM</option>
+                <option {%if category == 'RTD' %} selected {% endif %}value="RTD">RTD</option>
+                <option {%if category == 'FMP' %} selected {% endif %}value="FMP">FMP</option>
+            </select>
+<div class="disresult row">
+{% if result.count > 0  %}
+
+
+{% for ct in result %}
+
+    <div class="col-sm-6 col-md-4 item-thumb">
+        <div class="item-thumb-img">
+            <a href="/resep-kami/{{ct.slug_category}}/{{ct.slug}}">
+             <img src="{{ct.featured_image | media}}" class="image-object" alt ="{{ct.title | title}}" />
+            </a>
+        </div>
+        <div class="text-center">
+        <a  href="/resep-kami/{{ct.slug_category}}/{{ct.slug}}" class="button bg-orange" >lihat resepnya</a>
+        </div>
+     </div> 
+{%endfor%}
+
+{% else %}
+<h2 class='noresult'>Hasil pencarian tidak di temukan</h2>
+{% endif %}
+</div>
+
+</div>
+
+
+</div>
+<div class="loading">
+
+</div>
+{% partial 'site/footer-without-login' %}
+
+<script>
+var loadstatus = 0;
+$(window).scroll(function() {
+    
+    if($(window).scrollTop() > $(".footer").offset().top - 650 ) {
+        
+           // ajax call get data from server and append to the div
+           if(loadstatus == 0){
+               loadstatus = 1;
+               search();
+               console.log("tirgger");
+           }
+           
+           
+    }
+});
+
+
+$(document).ready(function(){
+    var category = $("#categoryresep").val();
+    if(category == 'SCM'){
+        $('#susu-kental-manis').addClass('active')
+    }else if(category == 'FMP'){
+        $('#susu-bubuk').addClass('active')
+    }else if(category == 'RTD'){
+        $('#susu-fullcream').addClass('active')
+    }
+    //$('<li class="main-menu__list menu-item-237 menu-item-level-0 has-child"><a href="https://www.frisianflag.com/resep-kami" title="" target="_self">Resep Kami <i class="fa fa-angle-down" aria-hidden="true"></i></a><ul class="val-submenu"><li class=""><a href="https://www.frisianflag.com/resep-kami?category=FMP" title="" target="_self">Susu Bubuk</a></li><li class=""><a href="https://www.frisianflag.com/resep-kami?category=SCM" title="" target="_self">Susu Kental Manis</a></li><li class=""><a href="https://www.frisianflag.com/resep-kami?category=RTD" title="" target="_self">Susu Fullcream</a></li></ul></li>').insertAfter('li.main-menu__list:nth-child(1)')
+   
+    setTimeout(function(){
+                checkNext();    
+            },100);
+});
+var indexresep = 9;
+function changeResep(){
+ indexresep = 0;
+ loadstatus = 0;
+ $(".disresult").empty();
+ search();
+}
+function redirect(){
+    $(".loading").fadeIn();
+    var title = $("#searchresep").val();
+    window.location.href = "/resep-kami?q="+title;
+}
+function handle(e){
+    if(e.keyCode === 13){
+        e.preventDefault(); 
+         //changeResep();
+         redirect();
+    }
+}
+function openSort(){
+    $('.dropdown-item').toggleClass('show')
+}
+function chooseCategory(e,category){
+    $('.btn-filter-floating').removeClass('active')
+    $(e).addClass('active')
+    console.log(e)
+     $("#categoryresep").val(category)
+     changeResep();
+}
+function chooseSort(sort , name){
+     $("#sortresep").val(sort)
+     $(".filterValue").html(name)
+     changeResep();
+     $('.dropdown-item').toggleClass('show')
+}
+function search(){
+    $(".loading").fadeIn();
+    var title = $("#searchresep").val();
+    var sort = $("#sortresep").val();
+    var category = $("#categoryresep").val();
+    console.log(title,sort,category,indexresep)
+    $.request('onHandleForm',                       
+    {
+        data : {
+            title : title,
+            sort : sort,
+            category : category,
+            index : indexresep
+        },
+        update: {'testpartial': '.disresults'},
+        beforeUpdate: function(data) { 
+            if( data.testpartial ){
+                $(".noresult").remove();
+                $(".disresult").append(data.testpartial);
+                $(".loading").hide();
+                
+                indexresep += 9;
+                
+                setTimeout(function(){
+                    checkNext();    
+                },100);
+            }else{
+                $(".noresult").remove();
+                if($(".disresult .item-thumb").length < 1)
+                    $(".disresult").append("<h2 class='noresult'>Hasil pencarian tidak di temukan</h2>");
+                $(".loading").hide();
+            }
+            
+        }
+    });  
+}
+
+function checkNext(){
+    
+    var title = $("#searchresep").val();
+    var sort = $("#sortresep").val();
+    var category = $("#categoryresep").val();
+    console.log(title,sort,category)
+    $.request('onHandleFormCheck',                       
+    {
+        data : {
+            title : title,
+            sort : sort,
+            category : category,
+            index : indexresep
+        },
+        update: {'checkresult': '.disresults1'},
+        beforeUpdate: function(data) { 
+            
+            $("#noresult").remove();
+            console.log("checknext",data.checkresult);
+            if(data.checkresult != "0"){
+                loadstatus = 0;
+            }else{
+                loadstatus = 1;
+            }
+            
+        }
+    });  
+}
+
+// custom select
+
+
+</script>

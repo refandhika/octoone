@@ -1,0 +1,10 @@
+name: Farmer
+form: $/definite/ourpurposes/models/farmer/fields.yaml
+modelClass: Definite\Ourpurposes\Models\Farmer
+defaultRedirect: definite/ourpurposes/farmer
+create:
+    redirect: 'definite/ourpurposes/farmer/update/:id'
+    redirectClose: definite/ourpurposes/farmer
+update:
+    redirect: definite/ourpurposes/farmer
+    redirectClose: definite/ourpurposes/farmer

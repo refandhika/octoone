@@ -1,0 +1,141 @@
+[viewBag]
+
+[builderList banner]
+modelClass = "Definite\Ramadhan2024\Models\Banner"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+<?php
+function onStart(){
+    $this['home_banners'] = Db::table('definite_ramadhan2024_banner')->orderBy('order')->get();
+}
+?>
+==
+<style>
+.slick-dots{
+    bottom: 3rem !important;    
+}
+.ramadhan-banner{
+    width: 100%;
+    /*max-width: 1536px;*/
+    margin: 0 auto;
+    display: block;
+}
+.banner-item{
+    width:100%; 
+    position: relative;
+    cursor: pointer;
+}
+.banner-item-mobile{
+    width:100%; 
+    position: relative;
+}
+.btn-klik{
+    position: absolute; 
+    bottom: 3rem; 
+    right:35rem; 
+    width: 20rem; 
+    height:4rem; 
+    background-image: linear-gradient(rgb(216,178,93),rgb(251,242,171),rgb(216,178,93));
+    color: #224C95;
+    border-radius: 999px; 
+    font-size: 20px; 
+    font-weight: 600; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;   
+    font-family: Uni-Sans !important;
+}
+.btn-klik:hover{
+    color: white;
+}
+.ramadhan-banner-mobile{
+    display: none;
+}
+
+@media only screen and (max-width: 431px){
+    .ramadhan-banner{
+        display: none !important;    
+    }  
+    .btn-klik{
+        bottom: 0rem;
+        right: 0rem;
+    }
+    .ramadhan-banner-mobile{
+        display: block;
+    }
+    .btn-klik{
+        bottom: 3rem;
+        right: 4rem;
+        width: 10rem;
+        height: 3rem;
+        font-size: 10px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+}
+
+@media only screen and (min-width: 432px) and (max-width: 1025px){
+    .btn-klik{
+        bottom: 3rem;
+        right: 12rem;
+    }
+}
+
+@media only screen and (min-width: 1280px) and (max-width:1400px){
+    .btn-klik{
+        bottom: 8rem;
+        right: 30rem;
+    }
+}
+</style>
+
+<section class="ramadhan-banner">
+
+    {% for item in home_banners %}
+      <div class="banner-item" onclick="handleRedirect(this)" href="{{item.link}}">
+          <img style="width:100%; height:100%; object-fit:cover;" src="{{item.image_desktop | media}}" alt="{{item.title}}">
+          <a href="{{item.link}}" class="btn-klik">Selengkapnya</a>
+      </div>
+    {% endfor %}
+  
+</section>
+
+<section class="ramadhan-banner-mobile">
+    {% for item in home_banners %}
+      <div class="banner-item-mobile" onclick="handleRedirect(this)" href="{{item.link}}">
+          <img style="width:100%; height:100%; object-fit:cover;" src="{{item.image_mobile | media}}" alt="{{item.title}}">
+          <a href="{{item.link}}" class="btn-klik">Selengkapnya</a>
+      </div>
+    {% endfor %}
+</section>
+
+<script>
+$(document).ready(function(){
+    document.querySelector('.banner-item:nth-child(1) a').style.display="none";
+    document.querySelector('.banner-item-mobile:nth-child(1) a').style.display="none";
+  $('.ramadhan-banner').slick({
+      dots: true,
+      infinite: true,
+      autoplay: true,
+      autoplaySpeed: 4000,
+      arrows: false
+  });
+  
+  $('.ramadhan-banner-mobile').slick({
+      dots: false,
+      infinite: true,
+      autoplay: true,
+      autoplaySpeed: 4000,
+      arrows: false
+  });
+});
+
+function handleRedirect(e){
+    window.location.href = e.getAttribute('href');    
+}
+</script>

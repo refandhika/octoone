@@ -1,0 +1,6 @@
+plugin:
+    name: 'definite.contact::lang.plugin.name'
+    description: 'definite.contact::lang.plugin.description'
+    author: definite
+    icon: oc-icon-phone
+    homepage: ''

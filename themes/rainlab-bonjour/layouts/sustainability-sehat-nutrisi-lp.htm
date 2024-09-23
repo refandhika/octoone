@@ -1,0 +1,135 @@
+description = "Layour for Sustainability Sehat Page"
+
+[staticPage]
+useContent = 1
+default = 0
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('sustainability/sustainability-sehat-nutrisi-amp');
+    }
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp banner-lp" style="background:url({{ 'sustainability/sehat/Nutrisi-Terjangkau.png'|media  }})">
+    	<div class="container">
+        	<div class="banner-panel">
+        	    <div class="banner-description">
+        			<h2>Nutrisi<br>Terjangkau</h2>
+        		</div>
+        	</div>
+    	</div>
+    </div>
+</div>
+
+
+<div class="section">
+    <div id='main-section' class="container sustainability-pages">
+        <div class="row">
+            
+            <div class="col-md-12 top-copy">
+            <p class="description mb-2">
+            Produk susu bubuk keluarga <b>Frisian Flag KOMPLETA</b> dan susu bubuk pertumbuhan anak <b>SUSU BENDERA</b> merupakan produk inovasi dari Frisian Flag Indonesia yang berkualitas, bergizi tinggi dengan harga terjangkau bagi seluruh lapisan masyarakat Indonesia.<br>
+Produk susu ini diluncurkan Frisian Flag Indonesia sebagai bagian dari corporate purpose : Better Nutrition (Memberikan Gizi Yang Lebih Baik) serta komitmen perusahaan dalam membantu upaya pemerintah Indonesia dalam mengatasi malnutrisi (gizi buruk).
+</p>
+
+
+
+            
+            </div>
+            <div class="col-md-12 top-copy">
+  
+                <h2 class="tab-title">APA ITU MALNUTRISI?</h2>
+                <p class="description">Malnutrisi (gizi buruk) adalah kondisi kesehatan akibat seseorang tidak menerima asupan gizi secara seimbang sesuai kebutuhannya. Berdasarkan Riskesdas 2018 dan Survey Status Gizi Balita Indonesia (SSGBI) 2019, Indonesia masih mengalami 3 beban gizi buruk (triple burden of malnutrition).<br></p>
+                <div class="mb-2">
+                           <img src="{{ 'sustainability/sehat/3_beban_gizi_.png'|media  }}">
+                        </div>
+                <p class="description">
+                Susu merupakan makanan yang memiliki banyak kandungan zat gizi yang dibutuhkan untuk kesehatan tubuh, termasuk zat gizi makro dan zat gizi mikro yang dapat membantu mengatasi masalah malnutrisi.<br><br>
+Contoh zat gizi makro yang terkandung dalam susu adalah protein hewani yang bermanfaat untuk pertumbuhan sel-sel tubuh dan mudah diserap oleh tubuh manusia.<br><br>
+Contoh zat gizi mikro adalah berbagai vitamin dan mineral, di antaranya kalsium yang membantu untuk pertumbuhan tulang dan gigi, serta zat besi untuk membantu mencegah anemia.  
+
+                </p>
+                <h2 class="tab-title">APA ITU STUNTING?</h2>
+                <p class="description">
+                Stunting adalah kondisi gagal tumbuh pada anak balita akibat dari kekurangan gizi kronis, sehingga anak terlalu pendek untuk standard usianya.<br><br>
+
+Kondisi ini disebabkan kekurangan gizi yang terjadi sejak bayi dalam kandungan dan pada masa awal setelah bayi lahir. Akan tetapi, kondisi stunting baru nampak setelah bayi berusia 2 tahun. Balita pendek (stunted) dan sangat pendek (severely stunted) adalah balita dengan panjang badan (PB/U) atau tinggi badan (TB/U) menurut umurnya dibandingkan dengan standar baku WHO-MGRS (Multicentre Growth Reference Study) 2006. Sedangkan definisi stunting menurut Kementerian Kesehatan (Kemenkes) adalah anak balita dengan nilai z-scorenya kurang dari -2SD/standar deviasi (stunted) dan kurang dari
+-3SD (severely stunted).<br><br>
+Sumber : Buku 100 Kabupaten/kota Prioritas Untuk Intervensi Anak Kerdil (Stunting)TNP2K, Sekretariat Wakil Presiden Republik Indonesia 
+
+                </p>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="grid-box">
+                            <a href="https://www.frisianflag.com/perusahaan-kami/berita/frisian-flag-indonesia-luncurkan-indonesiasiap-untuk-edukasi-gizi">
+                            <div class="box-article">
+                                <img src="{{ 'sustainability/sehat/banner_malnutrisi_dan_susu.png'|media  }}"/>
+                                <div class="article-description">
+                                    <div class="valign-middle">
+                                    <h3>Malnutrisi dan<br>Susu</h3>
+                                    <span  class="button">Baca Artikel</span>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        <div class="grid-box">
+                           <img src="{{ 'sustainability/sehat/konten_nutrisi_ternagnkau.png'|media  }}">
+                        </div>
+                        <div class="grid-box">
+                            <a href="https://www.frisianflag.com/perusahaan-kami/siaran-pers/frisian-flag-indonesia-luncurkan-susu-bubuk-pertumbuhan-susu-bendera-dan-gerakan-ibu-sekarangsemuabisa">
+                            <div class="box-article">
+                                <img src="{{ 'sustainability/sehat/Banner_stunting_dan_susu.png'|media  }}"/>
+                                <div class="article-description">
+                                    <div class="valign-middle">
+                                    <h3>Stunting dan<br>Susu</h3>
+                                    <span  class="button">Baca Artikel</span>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 pr-md-2">
+                        <div class="grid-box">
+                            <a href="https://www.susubendera.com/" target="_blank">
+                            <div class="box-product">
+                                <h3>Tentang Susu Bendera</h3>
+                                <img src="{{ 'sustainability/sehat/Tentang-susu-bendera.png'|media  }}"/>
+                                
+                                    <span class="button">Selengkapnya</span>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 pl-md-2">
+                        <div class="grid-box">
+                            <a href="https://www.frisianflag.com/produk/susu-bubuk-keluarga">
+                            <div class="box-product">
+                                <h3>Tentang Kompleta</h3>
+                                <img src="{{ 'sustainability/sehat/tentang-Kompleta.png'|media  }}"/>
+                                
+                                    <span class="button">Selengkapnya</span>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                </div>
+  
+            </div>
+        </div>
+    </div>
+        
+</div>
+<link rel="stylesheet" href="{{ 'assets/css/sustainability.css'|theme }}?v=3">
+
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

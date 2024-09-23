@@ -1,0 +1,4 @@
+title: Seanuts
+modelClass: Definite\Ourpurposes\Models\Seanuts
+toolbar:
+    buttons: reorder_toolbar

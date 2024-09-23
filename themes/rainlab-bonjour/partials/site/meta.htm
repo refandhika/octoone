@@ -1,0 +1,23 @@
+[viewBag]
+==
+<meta charset="utf-8">
+{% if this.page.meta_title %}
+    <title>{{ trans_pick(page, 'meta_title') }} - {{ 'site.name'|_ }}</title>
+    <meta name="title" content="{{ trans_pick(page, 'meta_title') }}">
+{% else %}
+    <title>{{ trans_pick(page, 'title') }} - {{ 'site.name'|_ }}</title>
+{% endif %}
+{% if this.page.meta_description %}
+    <meta name="description" content="{{ trans_pick(page, 'meta_description') }}">
+{% endif %}
+<meta name="author" content="OctoberCMS">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="OctoberCMS">
+
+<meta name="facebook-domain-verification" content="t2ubto7jn7dd9h6si4fk19a8gd88ks" />
+
+<link rel="icon" type="image/png" href="{{ 'assets/images/october.png'|theme }}" />
+{% styles %}
+<link href="{{ [
+    'assets/css/theme.css'
+]|theme }}" rel="stylesheet">

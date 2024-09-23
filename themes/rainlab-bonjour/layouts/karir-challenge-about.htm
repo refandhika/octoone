@@ -1,0 +1,146 @@
+description = "Layout for karir challenge about"
+
+[staticPage]
+useContent = 1
+default = 0
+
+[subscriberform]
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "all"
+
+[SessionClose]
+load_js = 1
+==
+{% partial 'site/header-karir' %}
+
+	<section>
+
+  	<div class="static-baner-pages">
+    	<div class="imgwrp hidden-xs"><img src="{{ 'assets/img/karir/campus-challenge.jpeg'|theme }}" alt="Campus Challenge Desktop"></div>
+    	<div class="imgwrp visible-xs"><img src="{{ 'assets/img/karir/campus-challenge-mobile.jpg'|theme }}" alt="Campus Challenge Mobile"></div>
+   	</div>
+		<div class="container-menutab">
+			<div class="container-one">
+				<ul class="menutab-full">
+					<li class="toggle visible-xs visible-sm">
+						<a href="javascript:;" class="active">About</a>
+					</li>
+					
+					<li>
+					    <a href="{{ '/karir/FFCC2019/about' }}" class="active"><img class="icon--" src="{{ 'assets/img/karir/about.svg'|theme }}" alt="About" >About</a>
+					</li>
+					
+					<li>
+						<a href="{{ '/karir/FFCC2019/how-to-join' }}"><img class="icon--" src="{{ 'assets/img/karir/how-to-join.svg'|theme }}" alt="Prizes" >How to Join</a>
+					</li>
+					
+					<li>
+						<a href="{{ '/karir/FFCC2019/prizes' }}"><img class="icon--" src="{{ 'assets/img/karir/prizes.svg'|theme }}" alt="Prizes" >Prizes</a>
+					</li>
+					
+					<li>
+						<a href="{{ '/karir/FFCC2019/the-winner' }}"><img class="icon--" src="{{ 'assets/img/karir/teams.svg'|theme }}" alt="Top 7 Teams" >The Winner</a>
+					</li>
+					
+					<li>
+						<a href="{{ '/karir/FFCC2019/faq' }}"><img class="icon--" src="{{ 'assets/img/karir/faq.svg'|theme }}" alt="Faq">FAQ</a>
+					</li>
+				
+				</ul>
+			</div>
+		</div>
+		
+	<div class="container-fluid view view-md view-sm">
+	     <div class="container view">
+	    
+	         <img class="icon---" src="{{ 'assets/img/karir/about.svg'|theme }}" alt="About"><h1 class="title--"> Frisian Flag Campus Challenge 2019</h1>
+	         
+	       
+	         <div class="row">
+				<div class="col-sm-12">
+					<br /><br />
+					<a data-fancybox href="https://youtu.be/RMYLw4kqje8">
+						<img src="{{ 'assets/img/karir/karir_video.jpeg'|theme }}" alt="Karir Video" />								
+					</a>
+				</div> 
+			</div>
+	      
+	     
+			<br />
+			<br />
+	         <p class="p--" >
+	             Win a chance to get a Golden Pass to our Traineeship Program by joining Frisian Flag Campus Challenge.
+	            
+	         </p>
+	         
+	          <p class="p--" >
+	           Sign up for this challenge and experience working in a multinational company with a great purpose - NOURISHING BY NATURE.
+	            
+	         </p>
+	         
+	         <p class="p--">
+	          Not only you are going to experience a real business situations, you will also be The Project Leader, crafting your own business proposal then implement them for real!
+	         </p>
+	         
+	         <h1 class="title---">Get the opportunities to</h1>
+	         
+	        
+	           <div class="oppurtunities">
+	           
+	              <div class= number->
+	                <div class="number--">1
+	                </div>
+	                <p class="p---">Learn from the expert with Frisian Flag Board of Directors.</p>
+	              </div>
+	              
+	              <div class= number->
+	                <div class="number--">2
+	                </div>
+	                <p class="p---">Experience incredible challenges given by The Marketing Director of Frisian Flag Indonesia.</p>
+	              </div>
+	              
+	               
+	              <div class= number->
+	                <div class="number--">3
+	                </div>
+	                <p class="p---">Curated Program of :</p>
+	                  <div class="order" ><span class="sub-order">A).</span>
+	                   <p class="sub-p--"><b>Creative Workshop</b>, learn more about marketing in FMCG from creative perspective and deep dive into 360 degree marketing campaign.</p>
+	                  </div>
+	                   
+	                 <div class="order" ><span class="sub-order">B).</span>
+	                   <p class="sub-p--"><b>Digital Content Strategy Workshop</b>, with focus to identify the key components of social content strategy and develop content that is authentic, interactive, and meaningful with consistent message and targeted to the right audience using the right platform.</p>
+	                  </div>
+	              
+	              </div>
+	              
+	             <div class= number->
+	                <div class="number--">4
+	                </div>
+	                <p class="p---">Broaden your connection with other students across Indonesia.</p>
+	              </div>
+	              
+	                 
+	             <div class= number->
+	                <div class="number--">5
+	                </div>
+	                <p class="p---">Get Milk Supply for your campus.</p>
+	              </div>
+	              
+	           </div>
+	       
+	     </div>
+	</div>
+  </section>
+  <style>
+ body{font-family:Brevia-Regular,Helvetica,Arial,sans-serif}.top-menu__list a{color:#0F4D9A}.container-menutab::after,div.container-menutab.container-menutab--five:after{border-bottom:10px solid #00AEEE!important}h1{font-family:Brevia-Black,Helvetica,Arial,sans-serif}.container-menutab ul a.active::after,.container-menutab::after{color:#00AEEE}.view{background:#00AEEE}.container-menutab{margin-bottom:0}.icon--{margin-top:-3px;margin-right:20px;width:25px}.icon---{margin-top:-10px;margin-right:5px;margin-bottom:40px;width:45px}.container-fluid.view{background-image:url("{{ 'assets/img/karir/pattern-about.svg'|theme }}");background-repeat:no-repeat;background-position-y:100%;background-size:cover}.container.view{background-color:transparent;margin-top:35px;margin-bottom:100px}.order{margin-top:15px;margin-left:44px}.title--{display:inline;position:relative;top:-16px}.number--,.sub-p--{display:inline-block}.title---{margin-top:45px;margin-bottom:40px}.title--,.title---{font-size:40px;font-weight:700;color:#0F4D9A}.order,.p--,.sub-p--{color:#FFF;font-size:17px;text-align:justify}.p--{margin-left:10px;margin-top:5px}.sub-p--{margin-top:-24px;margin-left:26px}.number-{margin-bottom:15px}.number--{width:25px;line-height:25px;border-radius:50%;text-align:center;font-size:16px;font-weight:700;color:#0F4D9A;background-color:#FFF;margin-right:10px}.p---{display:inline;color:#FFF;font-size:17px}@media (max-width:768px){.container-fluid.view{background-image:none}.container.view{margin-bottom:25px}.p---{text-align:justify;display:block;color:#FFF;margin:-21px 0 0 30px}.icon---,.title---{margin-bottom:30px}.icon--{margin-top:-3px;margin-right:15px;width:17px}.icon---{margin-left:0;margin-top:10px;width:35px}.view-sm{padding:0;margin-top:-20px}.title--,.title---{font-size:22px}.number--,.p--,.p---,.sub-order,.sub-p--{font-size:14px}.title--{display:inherit;margin-top:-52px;margin-left:50px}.title---{margin-top:25px}.order{margin-top:10px;margin-left:30px}.number-{margin-bottom:10px}.number--{display:inline-block;width:20px;line-height:20px}.p--{margin-left:0}.sub-p--{margin-top:-22px}}
+  </style>
+
+{% partial 'site/footer-karir' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

@@ -1,0 +1,10 @@
+name: Translations
+form: $/definite/localization/models/translation/fields.yaml
+modelClass: Definite\Localization\Models\Translation
+defaultRedirect: definite/localization/translations
+create:
+    redirect: 'definite/localization/translations/update/:id'
+    redirectClose: definite/localization/translations
+update:
+    redirect: definite/localization/translations
+    redirectClose: definite/localization/translations

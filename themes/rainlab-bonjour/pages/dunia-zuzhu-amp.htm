@@ -1,0 +1,68 @@
+title = "Dunia Zuzhu"
+url = "/amp/aktivitas-kami/duniazuzhu"
+layout = "basic-amp"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/dunia-zuzhu"
+==
+<?php
+function onEnd(){
+     $this->page->set_rule = "disable";
+}
+?>
+==
+<div class="cover" style="position: relative;">
+    <div class="overlay" style="position: absolute;width: 100%;height: 100%; z-index: 1;">
+        <a href="https://www.frisianflag.com/aktivitas-kami/duniazuzhu/e-comic/explore" class="button-amp button button--larg" style="position: absolute; left: 50%; transform: translateX(-50%); bottom: 0;height:initial;">
+            Baca Yuk
+        </a>
+    </div>
+    <amp-img 
+        src="{{ 'duniazuzhu/banner/static-mobile-1.jpg'|media }}"
+        srcset="{{ 'duniazuzhu/banner/static-mobile-1.jpg'|media }} 640w,
+              {{ 'duniazuzhu/banner/static-mobile-1.jpg'|media }} 320w"
+        width="50"
+        height="50"
+        layout="responsive"
+        alt="Banner Static Mobile">
+    </amp-img>
+
+</div>
+<amp-accordion class="title_home">
+    <section>
+        <h4 class="arrow_down"><a href="#" target="_self">DUNIA ZUZHU</a></h4>
+        <p>
+            <a href="/aktivitas-kami/duniazuzhu" class="active">DUNIA ZUZHU</a>
+            <a href="/aktivitas-kami/duniazuzhu/e-comic">E-COMIC</a>
+            <a href="https://www.frisianflag.com/games">GAMES</a>   
+            <a href="https://www.frisianflag.com/amp/aktivitas-kami/duniazuzhu/ff-milky-colouring-and-drawing-competition">Lomba Mewarnai 2022</a>
+            <a href="https://www.frisianflag.com/aktivitas-kami/duniazuzhu/kartu-seru-milky">Kartu Seru Milky</a>
+        </p>
+    </section>
+</amp-accordion>
+
+<!--s:event-->
+<section class="event" style="position: relative">
+                      <amp-img 
+            src="{{ 'duniazuzhu/asset/whole-duniazhuzhu-mobile-01.jpg'|media }}"
+             srcset="{{ 'duniazuzhu/asset/whole-duniazhuzhu-mobile-01.jpg'|media }} 640w,
+                  {{ 'duniazuzhu/asset/whole-duniazhuzhu-mobile-01.jpg'|media }} 320w"
+            width="900"
+            height="3200"
+            layout="responsive"
+            alt="Whole Dunia Zhuzhu">
+        </amp-img>
+         <a href="/aktivitas-kami/duniazuzhu/e-comic" class="button-zuzhu">
+             <amp-img 
+                    src="{{ 'duniazuzhu/asset/button-1.png'|media }}"
+                     srcset="{{ 'duniazuzhu/asset/button-1.png'|media }} 640w,
+                          {{ 'duniazuzhu/asset/button-1.png'|media }} 320w"
+                    width="150"
+                    height="35"
+                    layout="fixed"
+                    alt="Button">
+            </amp-img>
+        </a>
+</section>
+<!--s:event-->

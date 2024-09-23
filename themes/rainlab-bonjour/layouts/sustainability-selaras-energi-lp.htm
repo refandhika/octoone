@@ -1,0 +1,68 @@
+description = "Layour for Sustainability Sehat Page"
+
+[staticPage]
+useContent = 1
+default = 0
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('sustainability/sustainability-selaras-energi-amp');
+    }
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp banner-lp" style="background:url({{ 'sustainability/selaras/Efisiensi_Energi-100.jpg'|media  }})">
+    	<div class="container">
+        	<div class="banner-panel">
+        	    <div class="banner-description">
+        			<h2>Efisiensi<br>Energi</h2>
+        		</div>
+        	</div>
+    	</div>
+    </div>
+</div>
+
+
+<div class="section">
+    <div id='main-section' class="container sustainability-pages">
+        <div class="row">
+            
+            <div class="col-md-12 top-copy">
+            <p class="description">Sejak beberapa tahun lalu, FrieslandCampina sebagai induk perusahaan dari Frisian Flag Indonesia telah melakukan upaya efisiensi energi di semua fasilitas produksinya di seluruh dunia, termasuk Indonesia. Sampai tahun ini, sebanyak 94% konsumsi listrik di semua pabrik tersebut telah menggunakan energi listrik yang ramah lingkungan.</p>
+            
+            </div>
+            <div class="col-md-12 top-copy">
+  
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="grid-box">
+                           <img src="{{ 'sustainability/selaras/Asset_9.png'|media  }}">
+                        </div>
+                        <div class="grid-box">
+                           <img src="{{ 'sustainability/selaras/Asset_10.png'|media  }}">
+                           <a href="https://www.frieslandcampina.com/sustainability/ " target="_blank" class="btn-bottom button">Baca Lebih Lanjut</a>
+                        </div>
+                        <div class="grid-box">
+                           <img src="{{ 'sustainability/selaras/Asset_11.png'|media  }}">
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+  
+            </div>
+        </div>
+    </div>
+        
+</div>
+<link rel="stylesheet" href="{{ 'assets/css/sustainability.css'|theme }}?v=1">
+
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

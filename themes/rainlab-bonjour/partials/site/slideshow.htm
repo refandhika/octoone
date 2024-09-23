@@ -1,0 +1,154 @@
+[viewBag]
+==
+<div id="main-slide" class="swiper-container main-slide">
+
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide">
+                <div id="slide-1" class="main-slide__bg">
+                    <div class="main-slide__caption">
+                        <div class="col-md-8">
+                            <h2>Membangun Keluarga yang kuat</h2>
+                            <p>Peternakan kami yang dimiliki oleh keluarga dari tahun 1870, berkomitmen untuk memberikan kebaikan susu yang penuh dengan nutrisi dan vitamin bagi anda dan keluarga.</p>
+                            <!-- <a href="javascript:;" class="button button--large">{{ 'selengkapnya'|_ }}</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div id="slide-2" class="main-slide__bg">
+                    <div class="main-slide__caption">
+                        <div class="col-md-8">
+                            <h2>Penuhi Nutrisi, <br />Hadapi Pagi</h2>
+                            <p>Ajak keluarga Anda untuk minum susu setiap hari dan rasakan manfaatnya.</p>
+                            <!-- <a href="javascript:;" class="button button--large">{{ 'selengkapnya'|_ }}</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="swiper-slide">
+                <div id="slide-3" class="main-slide__bg">
+                    <div class="main-slide__caption">
+                        <div class="col-md-8">
+                            <h2>Kesegaran Coconut Delight</h2>
+                            <p>Temukan kelezatan yang menyegarkan dalam Frisian Flag UHT COCONUT DELIGHT. Susu rasa kelapa muda pertama di Indonesia!</p>
+                            <a href="{{ home | page }}/produk/purefarm/purefarm-flavour-milk" class="button button--large">{{ 'selengkapnya'|_ }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           <div class="swiper-slide">
+                <div id="slide-4" class="main-slide__bg">
+                    <div class="main-slide__caption">
+                        <div class="col-md-8">
+                            <h2>AWALI DENGAN NUTRISI <br /> AKHIRI DENGAN MANIS</h2>
+                            <p>Keluarga Indonesia, selamat menjalankan ibadah! <br  class="hidden-xs" /> Jangan lupa berbagi kebaikan selama Ramadhan ya!</p>
+                            <a href="//www.frisianflag.com/ramadan" class="button button--large" target="_blank">{{ 'selengkapnya'|_ }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<!--            <div class="swiper-slide">
+                <div id="slide-5" class="main-slide__bg">
+                    <div class="main-slide__caption">
+                        <div class="col-md-8">
+                            <h2>#GAMBARIDOLAMUNYATA</h2>
+                            <p>Dapatkan susu Frisian Flag edisi Disney, mainkan aplikasinya dan menangkan kesempatan menjadi pembawa acara The Wonderful World of Disney di Global TV.</p>
+                            <a href="blackberryizm.com" class="button button--large">{{ 'selengkapnya'|_ }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+            <a class="main-slide__arrow to-section">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAiCAYAAAA3WXuFAAAAAXNSR0IArs4c6QAAAyBJREFUWAntl81rE0EUwGfSbJKm1CTiIQbBCl70poJHbeIHIib1EkHBolTryYN614DgTRG8JWpByaWFHhItSIv4B6j1ZFMphWDbbDRoY9uYtMmOb5JM3M1ks5tNIgidy9t57817v33zdncWozbGkdH3wmL60xkiSQMsDDHhlEBMbzKxkTWma0XiVpzlvrsCz/qLpPSOIHRYrqfXGOEkEvDx1clryXqb1tyk5aBmLyLpTiMY6k8Q2Uu2yAO1tc30hoEgK1eZukSH6ua6poaBoArmphkwEpraVYyGgVTita3eBtIq4XaF/rsKcY/u/ptT1szXpQOCIIjfJ66KWndk1O64FHWhfGGfrc88n345vMHiKHrIeT4ymEkuL5ISmt3MF1ec/vCjUIgofNjCdqQzEL6N1nMi2ip+KGTzyy5/5CKLV0vm8Ed8SCJThBBPxUgwfBpuPf74dKyTUM5AJEQIeogIsdA8cO2QEIpC/hE6LwPtHHp+ECMSB2MvVcoHAA53CqoCQ+7J41euCf3IR1xDkbNloJJUugvVsPOOVfcOQKnDsKywIxK5XwbCGFW3iRl52U6ltGGqN46wh/XQNI/Aa4xA6YWh2aBtpssHNHryWxBnX0OHneIxeA3G+AXAucFymrdWNRgvQPAo+DXoGX4V7NLnvh7rsTIQNQ9cGbP9/FGM6YWC25HgTMQq3CCDhl2xAs9ZMfJ+i11P14CofU9wvHetsApQ6KTCv6uTvzA0jQKIKv4tlBKG5udKvjRx4Xe/1RkA1Bnq0L2B5yw2s49ukzwHVyFmpJVaz2fjcFQ9wXQdlAmLTfA2+laqAtHkXYJShaE5mwJ1AaopjC6gGlQh+wreKT46Nzg0YWhczQqx5OXtMwqF8bxgtnkzk5dTLJ6a5J4yNUf69Nndbj+8pd+q+TTUtwBD1+uuEEvmGY3bc6IIRxUd29cijCEguqgClYKeQl4GykkDMDRGyxViiZtCYfwFemZQT8+weEzq7iG2gMmVsD9nd+8+16CnEgIy6WpgFksuDVeIBQkGx3tmNn/dgJ46CkeIhGWH9Yn8L4L56ZV/AM8HY6Gign9xAAAAAElFTkSuQmCC" width="19px">
+            </a>
+    </div>
+
+    <style>
+        #slide-1 {
+            background-image: url({{ 'assets/img/hero/1.jpg'|theme }});
+        }
+
+        #slide-2 {
+            background-image: url({{ 'assets/img/hero/2.jpg'|theme }});
+        }
+
+        #slide-3 {
+            background-image: url({{ 'assets/img/hero/3.jpg'|theme }});
+        }
+
+
+         #slide-4 {
+           background-image: url({{ 'assets/img/hero/desktopSCM.jpg'|theme }});
+           
+        }
+        
+        /*#slide-1 {
+            background-image: url({{ 'assets/img/hero/image-1.webp'|theme }});
+        }
+
+        #slide-2 {
+            background-image: url({{ 'assets/img/hero/image-2.webp'|theme }});
+        }
+
+        #slide-3 {
+            background-image: url({{ 'assets/img/hero/image-3.webp'|theme }});
+        }
+
+
+         #slide-4 {
+           background-image: url({{ 'assets/img/hero/image-4.webp'|theme }});
+           
+        }*/
+
+        #slide-5 {
+            background-image: url({{ 'assets/img/hero/RTD.jpg'|theme }});
+        }
+
+
+        @media (max-width: 768px) {
+            
+            .swiper-button-next, .swiper-button-prev {
+                display: none !important;
+            }
+            .main-slide__arrow{
+                display: none !important;
+            }
+    
+        
+            #slide-1 {
+                background-image: url({{ 'assets/img/hero/1-m.jpg'|theme }});
+                background-position: bottom;
+                background-size: 100%;
+                background-color: #0083BB;
+            }
+
+
+            #slide-2 {
+                background-image: url({{ 'assets/img/hero/2-m.jpg'|theme }});
+                background-position: bottom;
+                background-size: 100%;
+                background-color: #55C4F2;
+              }
+
+            #slide-3 {
+                background-image: url({{ 'assets/img/hero/3-m.jpg'|theme }});
+                background-position: bottom;
+                background-size: 100%;
+                background-color: #0086B3;
+              }
+        }
+    </style>

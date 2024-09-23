@@ -1,0 +1,249 @@
+title = "Sustainability Detail Sub AMP Page"
+url = "/amp/sustainability/:category/:slug/:detail"
+layout = "basic-amp"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/sustainability-detail-sub-amp-page"
+==
+<?php
+function onStart(){
+    
+        $slug         = $this->param('slug');
+        $category = $this->param('category');
+        $detail = $this->param('detail');
+        $pageslug = $category."/".$slug."/".$detail;
+         
+        $cmsController     = new Cms\Classes\Controller;
+         $arrContextOptions =array(
+            "ssl"=>array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
+        );
+
+        
+        $pages = Definite\Activities\Models\Activity::whereHas('categories',function($query) {
+           $query->where('id', 23);
+        })->where('slug',$pageslug)->get()->first();
+        
+        if($pages){
+          
+          
+          $this['content'] = $pages;
+          $this['pageid'] = $pages->id;
+          $this['title'] = $pages->title;
+          $this['image_banner'] = $pages->featured_image;
+          
+          $this['description'] = $pages->description_amp;
+          
+          $this->page->title = ucwords(strtolower($pages->title));
+          $this->page->meta_title = $pages->meta_title;
+          $this->page->meta_description = $pages->meta_description;
+          $this->page->og_image = $pages->featured_image;
+          $this->page->og_description = $pages->meta_description;
+
+        
+        }else{
+          return $cmsController->render("/404");
+        }
+
+}
+?>
+==
+{% put styles%}
+.content-container {
+	padding: 15px;
+}
+
+.content-container,
+.content-container * {
+	box-sizing: border-box;
+}
+
+.content-container p {
+	line-height: 1.6;
+}
+
+.tab-links {
+	margin: 30px 0;
+}
+
+.tab-links a {
+	width: 100%;
+	display: inline-block;
+	padding: 20px 15px;
+	border-radius: 18px;
+	text-align: center;
+	background-color: #BCE1FB;
+	color: #FFF;
+	font-size: 24px;
+	font-weight: bold;
+	font-family: Brevia-black, Arial;
+	margin: 5px 0;
+}
+
+.tab-links a.active {
+	background-color: #7AC3F8;
+}
+
+.peduli-lingkungan {
+	text-align: center;
+	margin: 25px 0;
+}
+
+.peduli-lingkungan h2 {
+	margin: 20px 0 15px;
+	color: #A4DD7E;
+	font-family: Brevia-black, Arial;
+	line-height: 1.4;
+	font-size: 18px;
+}
+
+.peduli-lingkungan p {
+	font-family: Brevia-SemiBold, Arial;
+	margin-bottom: 30px;
+	color: #444;
+}
+
+.section-faq {
+	background-color: #F4F4F4;
+	padding: 40px 15px;
+}
+
+.section-faq>h2 {
+	color: #FC7A7C;
+	font-size: 18px;
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+.section-faq .i-amphtml-accordion-header:after {
+	content: '';
+	position: absolute;
+	right: 10px;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	display: inline-block;
+	width: 13px;
+	height: 13px;
+	padding: 0px;
+}
+
+.section-faq .i-amphtml-accordion-header[aria-expanded="false"]:after {
+	background: linear-gradient(#FC7A7C, #FC7A7C), linear-gradient(#FC7A7C, #FC7A7C), #0000;
+	background-position: center;
+	background-size: 100% 2.5px, 2.5px 100%;
+	background-repeat: no-repeat;
+}
+
+.section-faq .i-amphtml-accordion-header[aria-expanded="true"]:after {
+	background: linear-gradient(#FC7A7C, #FC7A7C), linear-gradient(#FC7A7C, #FC7A7C), #0000;
+	background-position: center;
+	background-size: 100% 2.5px, 0px 100%;
+	background-repeat: no-repeat;
+}
+
+.section-faq amp-accordion section {
+	border-bottom: 1px solid #CCC;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.section-faq .i-amphtml-accordion-header:active,
+.section-faq .i-amphtml-accordion-header:focus {
+	outline: none;
+	box-shadow: none;
+}
+
+.section-faq .i-amphtml-accordion-header {
+	border: 0;
+	text-align: left;
+	background: none;
+	margin-bottom: 0px;
+	font-family: Brevia-semibold, Arial;
+	color: #444;
+	font-size: 15px;
+	padding: 0 25px 0 10px;
+	line-height:1.2;
+}
+
+.section-faq .i-amphtml-accordion-content {
+	font-size: 14px;
+	color: #444;
+	line-height: 1.4;
+	font-family: Brevia-Regular, Helvetica, Arial, sans-serif;
+	padding: 10px 10px 0;
+}
+.section-faq amp-accordion section:last-child{
+ border-bottom:0;   
+}
+.box-utube{
+ background:#EEE;
+ width:100%;
+ height:50vw;
+ border-radius:8px;
+}
+.mb-3{
+ margin-bottom:35px;   
+}
+
+ .section-syaratketentuan{
+
+background-repeat:no-repeat !important;
+background-size:100% !important;
+padding:25px;
+background-position:bottom;
+}
+.box-sk{
+background:#02489e;
+padding:25px;
+border-radius:40px;
+height:600px;
+overflow:hidden;
+}
+.sk-content{
+height:100%;
+overflow-y:auto;
+}
+.sk-content p{
+color:#FFF;
+margin-bottom:20px;
+font-size:16px;
+}
+.sk-content a{
+ color:orange;   
+}
+.sk-content h2,.sk-content h5, .sk-content h3{
+ color:#FFF;   
+}
+.sk-content ul li, .sk-content ol li{
+ color:#FFF;
+ font-size:16px;
+ margin-bottom:10px;
+ line-height:22px;
+}
+.sk-content ul li > ol, .sk-content ul li > ul, .sk-content ol li > ul, .sk-content ol li > ol{
+ margin-top:10px;   
+}
+.sk-content ul li>ol li, .sk-content ul li>ul li{
+ font-size:15px;   
+}
+.sk-list > li{
+ margin-bottom:20px !important;   
+}
+{% endput %}
+{% put scripts%}
+<script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+{% endput %}
+
+<div class="banner-image">
+{% if this.page.title == "Sedotan Kertas" %}
+<amp-img src="{{image_banner|media }}"   alt="PAPER STRAW" width="600" height="1563" layout="responsive" ></amp-img>
+{% else %}
+<amp-img src="{{image_banner|media }}"   alt="Waste Collection" width="375" height="470" layout="responsive" ></amp-img>
+{% endif %}
+</div>
+
+{{ description | raw }}

@@ -1,0 +1,10 @@
+name: Aniversary
+form: $/definite/news/models/aniversary/fields.yaml
+modelClass: Definite\News\Models\Aniversary
+defaultRedirect: definite/news/aniversary
+create:
+    redirect: 'definite/news/aniversary/update/:id'
+    redirectClose: definite/news/aniversary
+update:
+    redirect: definite/news/aniversary
+    redirectClose: definite/news/aniversary

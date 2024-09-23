@@ -1,0 +1,54 @@
+description = "Layout for Syarat Ketentuan Slurpee"
+
+[staticPage]
+[subscriberform]
+[account]
+paramCode = "code"
+forceSecure = 0
+[session]
+
+[SessionClose]
+load_js = 1
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title') }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+      <img src="{{ 'assets/img/slurpeee/desktop/masthead-sluurprise.jpg'|theme }}" class="hidden-xs" />
+        <img src="{{ 'assets/img/slurpeee/mobile/masthead-sluurprise.png'|theme }}" class="visible-xs" />
+    </div>
+</div>
+
+
+<div class="container-menutab container-menutab--five">
+    <div class="container-one">
+        <ul class="breadcrumb">
+            <li class="toggle visible-xs visible-sm"><a href="javascript:;" class="active">Sluurprise</a></li>
+               <li>
+                    <a href=" {{ '../sluurprise' }} ">
+                        Sluurprise
+                    </a>
+                </li>
+                <li>
+                    <a href=" {{ 'sluurprise/syarat-ketentuan' }} " class="active">
+                        {{ 'syarat-&-ketentuan'|_ }}
+                    </a>
+                </li>
+        </ul>
+    </div>
+</div>
+
+<div id='main-section' class="container" style="padding: 60px 0;">
+    <div class="col-md-12">
+        <div class="default-content">
+            <h3>{{ trans_pick(page, 'title') }}</h3>
+             {{ trans_pick(page, 'markup')|raw }}
+        </div>
+    </div>
+</div>
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

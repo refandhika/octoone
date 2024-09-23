@@ -1,0 +1,10 @@
+name: Campaign
+form: $/kalfian/campaign/models/campaign/fields.yaml
+modelClass: Kalfian\Campaign\Models\Campaign
+defaultRedirect: kalfian/campaign/campaign
+create:
+    redirect: 'kalfian/campaign/campaign/update/:id'
+    redirectClose: kalfian/campaign/campaign
+update:
+    redirect: kalfian/campaign/campaign
+    redirectClose: kalfian/campaign/campaign

@@ -1,0 +1,150 @@
+title = "News archive Backup"
+url = "/perusahaan-kami-backup/berita-backup/years/:slug|^[0-9]+$/"
+layout = "default"
+meta_description = "Simak berita inspiratif seputar kegiatan positif Frisian Flag dalam usaha menyejahterakan karyawan dan mendukung kesehatan masyarakat."
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/news-archive-backup"
+
+[builderList]
+modelClass = "Definite\News\Models\News"
+scope = "scopeArchive"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "news-single"
+detailsKeyColumn = "slug"
+detailsUrlParameter = "slug"
+recordsPerPage = 8
+pageNumber = "{{ :page }}"
+sortColumn = "published_date"
+sortDirection = "desc"
+==
+<?php
+function onEnd() {
+
+    // get the post component
+    $this->page->title = "Berita";
+    $this->page->title_en = "News";
+    $this['slug'] = $this->param('slug');
+    $this->page->amp_url = $this->pageUrl('news-archive-amp', ['slug' => $this->param('slug'), 'page' => $this->param('page')]);
+}
+?>
+==
+{% set records = builderList.records %}
+{% set displayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsPage = builderList.detailsPage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
+
+<h1 aria-hidden="true" class="seo-heading">Arsip Berita</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp"><img src="{{ 'assets/img/our-milkpedia.png'|theme }}" alt="Our Milkpedia"/> </div>
+</div>
+
+<div class="container-menutab">
+    <div class="container-one">
+        <ul>
+          <li class="toggle hidden-lg"><a href="javascript:;" class="active">{{'news'|_}}</a></li>
+          <li><a href="{{'about-us'|page}}" class="{% if this.page.id == 'about-us' %}active{% endif %}">{{'tentang-kami'|_}}</a></li>
+          <li><a href="{{'news'|page}}" class="active">{{'berita'|_}}</a></li>
+          <li><a href="{{'gallery'|page}}" class="{% if this.page.id == 'galeri-foto' %}active{% endif %}">{{'galeri-foto'|_}}</a></li>
+          <li><a href="{{'press-release'|page}}" class="{% if this.page.id == 'press-release-single' %}active{% endif %}">{{'siaran-pers'|_}}</a></li>
+          <li><a href="{{'our-purposes'|page}}" class="{% if this.page.id == 'our-purposes' %}active{% endif %}">{{'tujuan-kami'|_}}</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id='main-section' class="container-fluid">
+    <div class="col-md-12">
+        <div class="breadcrumb">
+            <div class="container-two">
+                <ul>
+                    <li><a href="{{ 'home'|page }}">{{'beranda'|_}}</a> </li>
+                    <li><a href="javascript:;">{{'berita'|_}}</a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="default-content">
+            <div class="container-two">
+                <h3>{{'berita'|_}}</h3>
+                <div class="container-menutab container-menutab-news hidden-lg">
+                    <div class="container-one">
+                        <ul>
+                            <li class="toggle"><a href="javascript:;" class="active">{{ this.param.slug }}</a></li>
+                            <li><a href="{{url('news'|page) }}">All</a></li>
+                            {% for years in records.first.year  %}
+                            <li><a href="{{url('news-archive'|page ({"slug":years.published_date})) }}" {% if this.param.slug == years.published_date %}class="active"{% endif %}>{{ years.published_date }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="container-news">
+                    <div class="content">
+                        <div class="left">
+                            <div class="content">
+                            {% for news in records %}
+                                <div class="wrp-itemnews">
+                                    <div class="imgwrp">
+                                        <a href="{{ 'news-single'|page({"slug": news.slug}) }}">
+                                            <img src="{{news.featured_image| mediathumb_resize('width', 100, 80) }}" alt="{{ news.title }}"/>
+                                        </a>
+                                    </div>
+                                    <div class="contenttxt">
+                                        <div class="date">{{news.published_date|date('M d, Y')}}</div>
+                                    {% set spaceout %}
+                                        <h4><a href="{{ 'news-single'|page({"slug": news.slug}) }}">{{ trans_pick(news, 'title') }}</a></h4>
+                                    {% endset %}
+                                    {{ spaceout|trim|raw }}
+                                        {{ html_limit(trans_pick(news, 'description'), 150)|raw }}
+                                        <a href="{{ 'news-single'|page({"slug": news.slug}) }}" class="button">{{'selengkapnya'|_}}</a>
+                                    </div>
+                                </div>
+                                {% else %}
+                                    <li class="no-data">{{ noRecordsMessage }}</li>
+                            {% endfor %}
+                                <div class="stylepaging">
+
+                                {% if records.lastPage > 1 %}
+                                    <ul>
+                                    {% if records.currentPage %}
+                                        <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage()-1) }) }}" class="{{ records.currentPage() == 1 ? 'disable' : null }}"><i class="fa fa-angle-double-left"></i></a> </li>
+                                    {% endif %}
+                                    {% for page in 1..records.lastPage %}
+                                        <li><a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}" class="{{ records.currentPage == page ? 'active' : null }}">{{ page }}</a> </li>
+                                    {% endfor %}
+                                    {% if records.lastPage > nerecordsws.currentPage %}
+                                        <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage()+1) }) }}"><i class="fa fa-angle-double-right"></i></a> </li>
+                                     {% endif %}
+                                    </ul>
+                                {% endif %}
+
+                                    <div class="paging-info">{{ 'halaman'|_ }} {{records.currentPage}} {{ 'dari'|_ }} {{records.lastPage}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right visible-lg">
+                            <div class="content">
+                                 <ul class="yearright">
+                                {% for years in records.first.year  %}
+                                 {% if slug  == years.published_date %}
+                                      <li class="active"><a href="{{url('news-archive'|page ({"slug":years.published_date})) }}">{{ years.published_date }}</a></li>
+                                 {% else %}
+                                   <li ><a href="{{url('news-archive'|page ({"slug":years.published_date})) }}">{{ years.published_date }}</a></li>
+                                 {% endif %}
+                                  
+                                {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- end mainsection -->

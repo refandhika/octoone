@@ -1,0 +1,105 @@
+title = "Resep Nusantara Detail"
+url = "/aktivitas-kami/resep-nusantara/:category/:slug"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/resep-nusantara-detail"
+==
+<?php
+function onStart(){
+        
+        //get slug
+        $category           = $this->param('category');
+        $slug               = $this->param('slug');
+        
+        if($category == 'resep-khas-jawa-bali-nusa-tenggara' && $slug == 'resep-pie-susu-khas-bali'){
+            return redirect('/resep-kami' , 301);
+        }
+        $this['page_slug']  = $category;
+        //get json data
+        $path              = url('/themes/rainlab-bonjour/assets/resep-nusantara/resep-nusantara.json');
+        $cmsController     = new Cms\Classes\Controller;
+        $arrContextOptions =array(
+            "ssl"=>array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
+        );
+
+         if(json_decode(file_get_contents($path, true))){
+                 $collection    = collect(json_decode(file_get_contents($path, true)));
+                 $data          = $collection->where('category',$category)->where('slug',$slug)->first();
+            }
+         else{
+               
+                return Response::make( $cmsController->render("/404"), 404);
+           }
+          if(!$data){
+                return Response::make( $cmsController->render("/404"), 404);
+            }   
+          switch ($category) {
+             case 'resep-khas-sumatera':
+                 $this['content']    = ['banner_desktop'=>'assets/img-ramadhan/banner/recipe page_sumatera_desktop.jpg','banner_mobile'=>'assets/img-ramadhan/banner/recipe page_sumatera_mobile.jpg','name'=>'RESEP KHAS SUMATERA'];
+                  $this->page->title  = 'Resep Khas Sumatera';
+                 break;
+             case 'resep-khas-jawa-bali-nusa-tenggara':
+                 $this['content']    = ['banner_desktop'=>'assets/img-ramadhan/banner/recipe page_jawa_desktop.jpg','banner_mobile'=>'assets/img-ramadhan/banner/recipe page_jawa_mobile.jpg','name'=>'RESEP KHAS JAWA, BALI & NUSA TENGGARA'];
+                   $this->page->title  = 'Resep Khas Jawa, Bali & Nusa Tenggara';
+                 break; 
+             case 'resep-khas-kalimantan':
+                 $this['content']    = ['banner_desktop'=>'assets/img-ramadhan/banner/recipe page_kalimantan_desktop.jpg','banner_mobile'=>'assets/img-ramadhan/banner/recipe page_kalimantan_mobile.jpg','name'=>'RESEP KHAS KALIMANTAN'];
+                   $this->page->title  = 'Resep Khas Kalimantan';
+                 break;  
+             case 'resep-khas-sulawesi-maluku-papua':
+                 $this['content']    = ['banner_desktop'=>'assets/img-ramadhan/banner/recipe page_sulawesi_desktop.jpg','banner_mobile'=>'assets/img-ramadhan/banner/recipe page_sulawesi_mobile.jpg','name'=>'RESEP KHAS SULAWESI, & PAPUA'];
+                   $this->page->title  = 'Resep Puding Khas Nusantara';
+                 break;       
+        }
+        
+          $this['recipe']       = $data;
+          $this->page->amp_url = $this->pageUrl('resep-nusantara-archive-amp');
+          $this->page->set_rule = "disable";
+          
+       $pages = Definite\Activities\Models\Activity::where('slug',$category.'/'.$slug)->get()->first();
+		if($pages){
+         $this->page->title    = $pages->title;
+        } else {
+            $this->page->title  = ucwords(strtolower($data->title));    
+        }
+          $this->page->meta_title      = ucwords(strtolower($data->title));
+          $this->page->meta_description = $data->desc;
+}
+?>
+==
+{% partial 'site/header-resep' %}
+	<section>
+  	{% partial 'site/banner-resep-nusantara' %}
+		<div class="container">
+		   <div class="main-content">
+		      <div class="row">
+				<div class="col-sm-12">
+				    <div class="recipe" style="text-align:center">
+					<a data-fancybox href="https://youtu.be/{{recipe.data_video}}" class="images">
+						<img src="{{ recipe.img |theme }}" alt="{{recipe.title | title}}" />
+					</a>
+					</div>
+				 	
+					<div class="default-content" attr="{{ ini_titile }}">
+					    <h1>{{recipe.title | title}}</h1>
+					        {{recipe.recipe_details | raw}}
+					</div>
+					 <div class="wrp-sharesocemd">
+                        <label>{{'share'|_}}</label>
+                        <div class="addthis_inline_share_toolbox"></div>
+                     </div>
+                   
+				    
+				  </div>
+			    </div>
+			</div>
+		</div> <!--  .container -->
+  </section>
+
+{% partial 'site/footer-resep' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

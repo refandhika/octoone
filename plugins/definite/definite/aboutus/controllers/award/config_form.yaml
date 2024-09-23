@@ -1,0 +1,10 @@
+name: Award
+form: $/definite/aboutus/models/award/fields.yaml
+modelClass: Definite\Aboutus\Models\Award
+defaultRedirect: definite/aboutus/award
+create:
+    redirect: 'definite/aboutus/award/update/:id'
+    redirectClose: definite/aboutus/award
+update:
+    redirect: definite/aboutus/award
+    redirectClose: definite/aboutus/award

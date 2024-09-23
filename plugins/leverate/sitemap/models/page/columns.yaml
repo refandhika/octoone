@@ -1,0 +1,21 @@
+columns:
+    slug:
+        label: 'URL Slug'
+        type: text
+        searchable: true
+        sortable: true
+    priority:
+        label: Priority
+        type: text
+        searchable: true
+        sortable: true
+    change_frequency:
+        label: 'Change Frequency'
+        type: text
+        searchable: true
+        sortable: true
+    created_at:
+        label: Published
+        type: datetime
+        searchable: true
+        sortable: true

@@ -1,0 +1,6 @@
+1.0.1:
+    - Initialize plugin.
+    - add_new_field.php
+1.0.2:
+    - Add field source.
+    - add_new_field_source.php

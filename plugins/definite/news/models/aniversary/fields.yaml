@@ -1,0 +1,47 @@
+fields:
+    status:
+        label: Status
+        span: auto
+        placeholder: 'Status Placeholder'
+        type: switch
+        comment: 'Status Comment'
+    photo_source:
+        label: 'File upload'
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: full
+        disabled: 0
+        type: fileupload
+    narasi:
+        label: Narasi
+        size: ''
+        span: full
+        disabled: 0
+        type: textarea
+    short_desc:
+        label: 'Deskripsi Singkat'
+        size: ''
+        span: full
+        type: textarea
+    nama_kandidat:
+        label: 'Nama Kandidat'
+        span: auto
+        disabled: 0
+        type: text
+        tab: 'Identitas Kandidat'
+    nama_pengirim:
+        label: 'Nama Pengirim (Jika ada)'
+        span: auto
+        disabled: 0
+        type: text
+    pilar:
+        label: Pilar
+        options:
+            'Pilar Sejahtera': 'Pilar Sejahtera'
+            'Pilar Sehat': 'Pilar Sehat'
+            'Pilar Selaras': 'Pilar Selaras'
+        span: auto
+        type: dropdown

@@ -1,0 +1,50 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table leverate_careers_career'
+    - builder_table_create_leverate_careers_career.php
+1.0.3:
+    - 'Created table leverate_careers_category'
+    - builder_table_create_leverate_careers_category.php
+1.0.4:
+    - 'Created table leverate_careers_careercenter'
+    - builder_table_create_leverate_careers_careercenter.php
+1.0.5:
+    - 'Created table leverate_careers_event'
+    - builder_table_create_leverate_careers_event.php
+1.0.6:
+    - 'Drop table leverate_careers_careercenter'
+    - builder_table_delete_leverate_careers_careercenter.php
+1.0.7:
+    - 'Drop table leverate_careers_event'
+    - builder_table_delete_leverate_careers_event.php
+1.0.8:
+    - 'Drop table leverate_careers_category'
+    - builder_table_delete_leverate_careers_category.php
+1.0.9:
+    - 'Drop table leverate_careers_career'
+    - builder_table_delete_leverate_careers_career.php
+1.0.10:
+    - 'Created table leverate_careers_career'
+    - builder_table_create_leverate_careers_career_2.php
+1.0.11:
+    - 'Updated table leverate_careers_career'
+    - builder_table_update_leverate_careers_career.php
+1.0.12:
+    - 'Created table leverate_careers_category'
+    - builder_table_create_leverate_careers_category_2.php
+1.0.13:
+    - 'Created table leverate_careers_careercenter'
+    - builder_table_create_leverate_careers_careercenter_2.php
+1.0.14:
+    - 'Created table leverate_careers_event'
+    - builder_table_create_leverate_careers_event_2.php
+1.0.15:
+    - 'Created table leverate_careers_article'
+    - builder_table_create_leverate_careers_article.php
+1.0.16:
+    - 'Created table leverate_careers_location'
+    - builder_table_create_leverate_careers_location.php
+1.0.17:
+    - 'Created table leverate_careers_status'
+    - builder_table_create_leverate_careers_status.php

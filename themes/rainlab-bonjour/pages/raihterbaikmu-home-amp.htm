@@ -1,0 +1,52 @@
+title = "raihterbaikmu"
+url = "/amp/raihterbaikmu"
+layout = "basic-amp"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/raih"
+==
+<?php
+function onEnd(){
+    $this->page->meta_description = "Bagikan momen keberhasilan anak, yuk Bu! Ikuti Photo Competition #RaihTerbaikmu bersama Frisian Flag. Lihat cara mengikutinya di sini.";
+}
+?>
+==
+<div class="cover">
+    <amp-img 
+        src="{{ 'raihterbaikmu/raihterbaikmu-sb-mobile.jpg'|media }}"
+        srcset="{{ 'raihterbaikmu/raihterbaikmu-sb-mobile.jpg'|media }} 640w,
+              {{ 'raihterbaikmu/raihterbaikmu-sb-mobile.jpg'|media }} 320w"
+        width="50"
+        height="50"
+        layout="responsive"
+        alt="Raih Terbaikmu Mobile">
+    </amp-img>
+</div>
+<amp-accordion class="title_home">
+    <section>
+        <h4 class="arrow_down"><a href="#" target="_self">Cara Mengikuti</a></h4>
+        <p>
+            <a href="/raihterbaikmu" class="active">Cara Mengikuti</a>
+            <a href="/raihterbaikmu/syarat-dan-ketentuan">Syarat dan ketentuan</a>
+            <a href="/raihterbaikmu/pemenang">Pemenang</a>              
+        </p>
+    </section>
+</amp-accordion>
+
+<!--s:event-->
+<section class="event">
+   <div class="detail_text mb-20 mt-20">
+       <div class="content mb-10">
+           <amp-img 
+            src="{{ 'raihterbaikmu/raihterbaikmu-content-mobile.jpeg'|media }}"
+            width="617"
+            height="1280"
+            layout="responsive"
+            alt="Raih Terbaikmu Content">
+        </amp-img>
+       </div>
+          
+    </div>
+</section>
+<!--s:event-->

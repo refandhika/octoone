@@ -1,0 +1,13 @@
+<?xml-stylesheet type='text/xsl' href="{{ url('/themes/rainlab-bonjour/assets/src/style.xsl') }}"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+    {% for page in pages %}
+        <url>
+            <loc>{{ page.slug }}</loc>
+            <lastmod>{{ page.created_at|date('c') }}</lastmod>
+            <changefreq>{{page.change_frequency}}</changefreq>
+            <priority>{{page.priority}}</priority>
+        </url>
+    {% endfor %}
+
+</urlset>

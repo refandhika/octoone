@@ -1,0 +1,137 @@
+description = "Layour for Sustainability Sehat Page"
+
+[staticPage]
+useContent = 1
+default = 0
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('sustainability/sustainability-sehat-protein-amp');
+    }
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp banner-lp" style="background:url({{ 'sustainability/sehat/Protein-dan-hidup-aktif.png'|media  }})">
+    	<div class="container">
+        	<div class="banner-panel">
+        	    <div class="banner-description">
+        			<h2>Protein dan<br> Hidup Aktif</h2>
+        		</div>
+        	</div>
+    	</div>
+    </div>
+</div>
+
+
+<div class="section">
+   <div id='main-section' class="container sustainability-pages">
+      <div class="row">
+         <div class="col-md-12 top-copy">
+            <p class="description">Protein adalah zat terpenting yang berfungsi sebagai pembangunan jaringan dan sel dalam tubuh. Semua sel tubuh akan diperbarui setiap harinya; kita butuh protein untuk membangun sel baru setiap harinya. Dan karena susu adalah salah satu sumber protein, ayo kita minum susu setiap hari!</p>
+         </div>
+         <div class="col-md-12 top-copy">
+            <ul class="nav nav-pills nav-justified">
+               <li class="active"><a data-toggle="tab" href="#home">Tentang Protein</a></li>
+               <li><a data-toggle="tab" href="#menu1">Hidup Sehat</a></li>
+            </ul>
+            <div class="tab-content" style="display:block;">
+               <div id="home" class="tab-pane fade in active">
+                  <h1 class="tab-title">APA ITU PROTEIN?</h1>
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="grid-box">
+                           <img src="{{ 'sustainability/sehat/Asset_28.png'|media  }}">
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div id="menu1" class="tab-pane fade">
+                  <h1 class="tab-title">3 Tips Hidup Sehat</h1>
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="grid-box">
+                           <img src="{{ 'sustainability/sehat/Asset_33.png'|media  }}">
+                        </div>
+                        <div class="grid-box">
+                            <a href="https://www.frisianflag.com/produk/susu-siap-minum/purefarm/purefarm-full-cream">
+                            <div class="box-article">
+                                <img src="{{ 'sustainability/sehat/Asset_32.png'|media  }}"/>
+                                <div class="article-description right-half">
+                                    <div class="valign-middle">
+                                    <h3>Lengkapi Lezatnya Sarapan Penuh Nutrisi Dengan Susu Cair Segar Bergizi.</h3>
+                                    <span  class="button">Selengkapnya</span>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        <div class="grid-box">
+                           <img src="{{ 'sustainability/sehat/Asset_31.png'|media  }}">
+                        </div>
+                        <div class="grid-box">
+                            <a href="https://www.frisianflag.com/produk/susu-siap-minum/kids/milky-kotak-zuzhu-zhaza">
+                            <div class="box-article">
+                                <img src="{{ 'sustainability/sehat/Asset_30.png'|media  }}"/>
+                                <div class="article-description right-half">
+                                    <div class="valign-middle">
+                                    <h3>Jajanan Sehat Penyemangat si Kecil Beraktivitas</h3>
+                                    <span  class="button">Selengkapnya</span>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        <div class="grid-box">
+                           <img src="{{ 'sustainability/sehat/Asset_29.png'|media  }}">
+                        </div>
+                        <!-- <div class="grid-box">                
+                           <img src="{{ 'sustainability/sehat/hidup-sehat-2.png'|media  }}">
+                        </div>
+                        <div class="grid-box">
+                           <img src="{{ 'sustainability/sehat/jajan_sehat_baru1.png'|media  }}">
+                        </div> -->
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<style>
+
+
+</style>
+<link rel="stylesheet" href="{{ 'assets/css/sustainability.css'|theme }}?v=3">
+<script>
+function checkVariable(){
+   if ( window.jQuery){
+       $(document).ready(function(){
+           setTimeout(function(){
+            $(".banner-slider").slick({
+                rows: 0,
+                dots:true,
+                arrows:false
+            });console.log("ready");
+            },800);
+       });
+       
+       
+      
+   }
+   else{
+      window.setTimeout("checkVariable();",100);
+   }
+}
+checkVariable();
+
+</script>
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

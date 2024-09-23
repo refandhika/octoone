@@ -1,0 +1,206 @@
+[viewBag]
+
+[builderList propinsi]
+modelClass = "Definite\Cities\Models\Propinsi"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "city_name"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList city]
+modelClass = "Definite\Cities\Models\Cities"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "city_name"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+<?php
+function onStart(){
+	if($fb_user = Session::pull('fb_user', null)){
+		$this->page['first_name'] = $fb_user['first_name'];
+		$this->page['last_name'] = $fb_user['last_name'];
+		$this->page['email'] = $fb_user['email'];
+		//$this->page['birthday'] = $fb_user['birthday'];
+		//$this->page['female_selected'] = ' seleted';
+		$this->page['hide_button_fb'] = true;
+	}else{
+		$this->page['first_name'] = '';
+		$this->page['last_name'] = '';
+		$this->page['email'] = '';
+		$this->page['birthday'] = '';
+		$this->page['female_selected'] = '';
+		$this->page['hide_button_fb'] = false;
+	}
+}
+?>
+==
+<div id="register" class="popup popup__login">
+	<div class="popup__login-heading">Frisian Flag Connect</div> <!--  .popup__login-heading -->
+	<div class="popup__login-body">
+
+		{% if this.page.hide_button_fb == false %}
+			<a href="{{ this.page.fb_registration_url }}" class="button full-width"><i class="fa fa-facebook" aria-hidden="true"></i> daftar dengan facebook</a>
+
+			<div class="separator separator__text" style="line-height: 35px;">
+				<span>atau</span>
+			</div> <!--  .separator .separator__text -->
+
+			<p class="popup-text">Daftar dengan email</p>
+		{% endif %}
+
+		<form data-request="onRegister" data-request-data="redirect: '/user-dashboard'" id="register-form" class="form-primary">
+			<div class="row">
+				<div class="col-sm-12 col-md-6">
+					<div class="form-group"> 
+						<span for="firstname">Nama Depan</span> 
+						<input type="text" class="form-control" name="name" id="firstname" placeholder="Nama Depan" value="{{ this.page.first_name }}" required autocomplete="off">
+					</div>
+				</div> <!--  .col-sm-12 col-md-6 -->
+
+				<div class="col-sm-12 col-md-6">
+					<div class="form-group"> 
+						<span for="lastname">Nama Belakang</span> 
+						<input type="text" class="form-control" name="surname" id="lastname" placeholder="Nama Belakang" value="{{ this.page.last_name }}" required autocomplete="off"> 
+					</div>
+				</div> <!--  .col-sm-12 col-md-6 -->
+			</div> <!--  .row -->
+
+			<div class="row">
+				
+				<div class="col-sm-12 col-md-6">
+					<div class="form-group"> 
+						<span for="gender">Jenis Kelamin</span> 
+						<select class="form-control" name="jk" required>
+						  <option>Laki-laki</option>
+						  <option{{ this.page.female_selected }}>Perempuan</option>
+						</select>
+					</div>
+				</div> <!--  .col-sm-12 col-md-6 -->
+				<div class="col-sm-12 col-md-6">
+					<div class="form-group"> 
+						<span for="dob">Tanggal Lahir</span> 
+						<input type="text" class="form-control" name="tgl_lahir" id="dob" placeholder=" " value="{{ this.page.birthday }}" required autocomplete="off"> 
+					</div>
+				</div> <!--  .col-sm-12 col-md-6 -->
+				
+			</div> <!--  .row -->
+
+			<div class="row">
+				
+				<div class="col-sm-12 col-md-12">
+					<div class="form-group"> 
+						<span for="phone">Nomor Telepon</span> 
+						<input type="text" class="form-control" name="telp" id="phone" placeholder="Nomor Telepon" required autocomplete="off"> 
+					</div>
+				</div> <!--  .col-sm-12 col-md-12 -->
+				
+			</div> <!--  .row -->
+
+			<div class="row">
+				
+				<div class="col-sm-12 col-md-6">
+					<div class="form-group"> 
+						<span for="province">Provinsi</span> 
+						<select id="province" class="form-control" name="prof" required>
+						  <option>Pilih Provinsi</option>
+						  {% set records = propinsi.records %}
+							{% set displayColumn = propinsi.displayColumn %}
+							{% set noRecordsMessage = propinsi.noRecordsMessage %}
+							{% set detailsPage = propinsi.detailsPage %}
+							{% set detailsKeyColumn = propinsi.detailsKeyColumn %}
+							{% set detailsUrlParameter = propinsi.detailsUrlParameter %}
+							{% for record in records %}
+							<option data-id="{{ record.id }}" value="{{record.province_slug}}">
+								{{record.province_name}}
+							</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div> <!--  .col-sm-12 col-md-6 -->
+				<div class="col-sm-12 col-md-6">
+					<div class="form-group"> 
+						<span for="city">Kota</span> 
+						<select class="form-control" name="kota" required>
+						  <option>Pilih Kota</option>	
+						  {% set records = city.records %}
+							{% set displayColumn = city.displayColumn %}
+							{% set noRecordsMessage = city.noRecordsMessage %}
+							{% set detailsPage = city.detailsPage %}
+							{% set detailsKeyColumn = city.detailsKeyColumn %}
+							{% set detailsUrlParameter = city.detailsUrlParameter %}
+							{% for record in records %}
+							<option data-id="{{ record.province_id }}" value="{{record.city_slug}}" style="display:none">
+								{{record.city_name}}
+							</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div> <!--  .col-sm-12 col-md-6 -->
+
+			</div> <!--  .row -->
+
+			<div class="row">
+				
+				<div class="col-sm-12 col-md-12">
+					<div class="form-group"> 
+						<span for="address">Alamat</span> 
+						<input type="text" class="form-control" name="alamat" id="address" placeholder="Alamat" required autocomplete="off"> 
+					</div>
+				</div> <!--  .col-sm-12 col-md-12 -->
+				
+			</div> <!--  .row -->
+
+			<div class="row">
+				
+				<div class="col-sm-12 col-md-12">
+					<div class="form-group"> 
+						<span for="email">Email</span> 
+						<input type="email" class="form-control" name="email" id="email" placeholder="Email" value="{{ this.page.email }}" required autocomplete="off"> 
+					</div>
+				</div> <!--  .col-sm-12 col-md-6 -->
+				
+
+			</div> <!--  .row -->
+
+			<div class="row">
+	            <div class="col-sm-12 col-md-6">
+	              <div class="form-group"> 
+	                <span for="password2">Password</span> 
+	                <input type="password" class="form-control" name="password" id="password" placeholder="Password" required autocomplete="off"> 
+	              </div>
+	            </div> <!--  .col-sm-12 col-md-6 -->
+	            <div class="col-sm-12 col-md-6">
+	              <div class="form-group"> 
+	                <span for="password2">Retype Password</span> 
+	                <input type="password" class="form-control" name="repassword" id="repassword" placeholder="Retype Password" required autocomplete="off"> 
+	              </div>
+	            </div> <!--  .col-sm-12 col-md-6 -->
+	         </div>
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="checkbox">
+						<span for="agreement"><input data-msg="" name="agreement" id="agreement" type="checkbox"> Dengan mendaftar akun di situs ini, Anda setuju dengan <a target="_blank" href="https://www.frisianflag.com/syarat-ketentuan">syarat dan ketentuan</a> dan <a target="_blank" href="https://www.frisianflag.com/kebijakan-cookie">Kebijakan Privasi</a> di situs ini</span>
+					</div>				
+				</div> <!--  .col-sm-6 -->
+			</div> <!--  .row -->
+
+			<div class="form-submit">
+				<input type="submit" class="button full-width" value="buat akun">
+			</div> <!--  .form-submit -->
+		</form>
+		
+		<hr />
+
+		<p class="popup-text">Sudah punya akun?</p>
+
+		<a href="javascript:;" class="button full-width" id="click-login">masuk</a>
+
+	</div>
+</div>

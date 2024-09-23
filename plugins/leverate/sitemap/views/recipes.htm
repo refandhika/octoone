@@ -1,0 +1,14 @@
+<?xml-stylesheet type='text/xsl' href="{{ url('/themes/rainlab-bonjour/assets/src/style.xsl') }}"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    {% for recipe in recipes %}
+        {% if (recipe.categories.last().slug != 'sustainability') and (recipe.categories.last().slug != '') %}
+        <url>
+            <loc>{{url('/resep-kami')}}/{{recipe.categories.last().slug}}/{{ recipe.slug }}</loc>
+            <lastmod>{{ recipe.created_at|date('c') }}</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+        </url>
+        {% endif %}
+    {% endfor %}
+
+</urlset>

@@ -1,0 +1,60 @@
+description = "Konsumen Cerdas, Bijak Membeli"
+
+[staticPage]
+useContent = 1
+default = 0
+==
+<?php
+function onEnd(){
+    $this->page->title = "Konsumen Cerdas, Bijak Membeli";
+    $this->page->meta_description = "Seluruh produk Frisian Flag diproduksi sesuai Cara Pembuatan Pangan Olahan yang Baik, memperoleh nomor izin edar BPOM, dan bersertifikat halal LPPOM MUI.";
+    $this->page->meta_keywords = "";
+    $this->page->amp_url = $this->pageUrl('artikel/konsumen-cerdas-bijak-membeli-amp');
+}
+?>
+==
+{% partial 'site/header-d-opt' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pa{% component 'staticPage' %}ges">
+    <div class="imgwrp">
+    	<img src="{{ 'Article/rev-1071x625-website-banner-01-min.jpg'|media }}" class="hidden-xs" />
+    	<img src="{{ 'Article/rev-259x625-website-banner-02.jpg'|media }}" class="visible-xs" />
+    </div>
+</div>
+
+{# partial 'site/rayuan-si-susu-cokelat' #}
+
+<div id='main-section' class="container" style="padding: 30px 15px;">
+    <div class="col-md-12">
+        <div class="default-content">
+        {% page %}
+           
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .default-content h3 {
+        font-size: 22px;
+        line-height: 1.2;
+    }
+
+    @media screen and (min-width: 767px) {
+        .default-content h3 {
+            font-size: 30px;
+        }
+    }
+
+  @media screen and (max-width: 767px) {
+    .m-bottom-15 {
+      margin-bottom: 15px;
+    }
+  }
+</style>
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

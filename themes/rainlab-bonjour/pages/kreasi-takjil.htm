@@ -1,0 +1,52 @@
+title = "Kreasi Takjil | AMP"
+url = "/amp/aktivitas-kami/kreasi-takjil"
+layout = "basic-amp"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/kreasi-takjil"
+==
+<?php
+function onStart(){
+    $this->page->meta_description = "Bagikan kreasi resepmu di Frisian Flag Ramadan Istimewa. Lihat cara mengikutinya di sini dan menangkan hadiahnya!";
+}
+?>
+==
+<div class="cover">
+        <amp-img 
+            src="{{ 'ramdan-istimewa-promo-banner-sm-mobile.png'|media }}"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Banner Ramadhan Istimewa Promo">
+        </amp-img>
+</div>
+<amp-accordion class="title_home">
+    <section>
+        <h4 class="arrow_down"><a href="#" target="_self">Cara Mengikuti</a></h4>
+        <p>
+            <a href="/aktivitas-kami/kreasi-takjil">Cara Mengikuti</a>
+            <a href="/aktivitas-kami/kreasi-takjil/syarat-dan-ketentuan" class="active">Syarat dan ketentuan</a>
+            <a href="/aktivitas-kami/kreasi-takjil/galeri">Galeri</a>
+          <a href="/aktivitas-kami/kreasi-takjil/pemenang">Pemenang</a>                  
+        </p>
+    </section>
+</amp-accordion>
+
+
+
+<!--s:event-->
+<section class="event">
+   <div class="detail_text mb-20 mt-20">
+       <div class="content mb-10">
+           <amp-img 
+            src="{{ 'kreasi_takjil_mobile_Infographic_baru.jpg'|media }}"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Kreasi Takjil Mobile">
+        </amp-img>        
+    </div>
+    </div>
+</section>
+<!--s:event-->

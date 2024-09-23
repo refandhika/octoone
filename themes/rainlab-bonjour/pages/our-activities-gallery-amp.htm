@@ -1,0 +1,187 @@
+title = "Our Activities Gallery Amp"
+url = "/bc/amp/aktivitas-kami/gerakan-nusantara/galeri"
+layout = "default-amp"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/our-activities-gallery-amp"
+
+[activityCategories]
+
+[filtergallery]
+
+[builderDetails]
+modelClass = "Definite\Activities\Models\Category"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+
+[builderDetails builderGallery]
+modelClass = "Definite\Activities\Models\Gallery"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+==
+<?php
+function onEnd() {
+    // get the post component
+    $_title = $this->page->components["builderDetails"]->record["attributes"]["title"];
+    $this->page->title = $_title;
+    
+    $_title_en = $this->page->components["builderDetails"]->record["attributes"]["title_en"];
+    $this->page->title_en = $_title_en;
+
+    $this->page->meta_description = "Lihat foto-foto terbaik dari berbagai aktivitas yang diadakan oleh Frisian Flag seperti pembagian susu ke anak-anak sekolah.";
+
+}
+?>
+==
+{% set record = builderDetails.record %}
+{% set recordGallery = builderGallery.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+<amp-state id="jsonGallery">
+  <script type="application/json">
+    {{recordGallery.image_gallery|json_encode|raw}}
+  </script>
+</amp-state>
+
+<h1 aria-hidden="true" class="seo-heading" style="display: none">{{ record.title }}</h1>
+
+<div class="static-baner-pages">
+    {% if record.slug == 'jr-nba' %}
+        <amp-img 
+            src="{{ 'assets/img/activities/JrNBA-mobile.jpg'|theme }}"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="JrNBA Mobile">
+        </amp-img>
+    {% elseif record.slug == 'keluargaminumsusu' %}
+         <amp-img 
+            src="{{ 'assets/img/keluargaminumsusu/FF-perayaan-susu-480x480.jpg'|theme }}"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Frisian Flag Perayaan Susu">
+        </amp-img>
+    {% elseif record.slug == 'gerakan-nusantara' %}
+         <amp-img 
+            src="{{ 'assets/img/activities/Gerakan-Nusantara-mobile.jpg'|theme }}"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Gerakan Nusantara Mobile">
+        </amp-img>
+       
+    {% else %}
+          <amp-img 
+            src="{{ 'assets/img/our-milkpedia.png'|theme }}"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Milkpedia">
+        </amp-img>
+    {% endif %}
+</div>
+
+<amp-accordion class="title_home">
+    <section>
+        <h4 class="arrow_down"><a href="#" target="_self">{{ record.title }}</a></h4>
+        <p>
+          {% for category in record.all %}
+            <a href="/aktivitas-kami/{{ category.slug }}" {% if category.slug == record.slug %} class="active" {% endif %} target="_self">{{ trans_pick(category, 'title') }}</a>
+          {% endfor %}
+        </p>
+    </section>
+</amp-accordion>
+
+
+<div class="breadcrumb">
+    <a href="{{ 'home'|page }}">{{ 'beranda'|_ }}</a> /
+    <a href="#">Aktivitas Kami</a> /
+    <a href="{{ 'our-activities-archive'|page({'slug': record.slug}) }}">{{ record.title|raw }}</a> /
+    <a href="#">Gallery</a>
+</div>
+
+
+
+
+<div id='main-section'>
+    <div class="default-content detail_text"> 
+        <div class="container-two">
+            <h3>Gallery</h3>
+          <div class="row gallery">
+                <div class="col-xs-12">
+                    <br><br>
+                    <form method="post"
+                        id="galeriSearch"
+                        action-xhr="/api/aktivitas-kami/galeri"
+                        target="_top"
+                        on="submit-success:AMP.setState({ data : event.response }),wait.hide,load-content.hide, not-found.show"/>
+                          <label for="country">Sort by:</label>
+                          <select id="country"
+                            class="select-category"
+                            name="year">
+                              <option></option>
+                              <option value="2019">2019</option>
+                              <option value="2018">2018</option>
+                              <option value="2017">2017</option>
+                              <option value="2016">2016</option>
+                              <option value="2015">2015</option>
+                              <option value="2014">2014</option>
+                              <option value="2013">2013</option>
+                              <option value="2012">2012</option>
+                              <option value="2011">2011</option>
+                              <option value="2010">2010</option>
+                          </select>
+                          
+                          <select
+                            name="category"
+                            class="select-category">
+                               <option value="">A-Z</option>
+                              {% if record.slug != 'rtd' and record.slug != 'scm' %}
+                                  {% for post in record.activities %}
+                                  <option value="{{post.title}}">{{post.title}}</option>
+                                  {% endfor %}
+                              {% endif %}
+                          </select>
+                    <input  class="button mb-20" type="submit" value="CARI" on="tap:wait.show,load-content.show,gallery-first.hide, not-found.hide" role="button" tabindex="0">
+                
+                    <p id ="wait" class="wait" hidden>Memuat Data...</p>
+                          <!-- Show message when request API-->
+                    <div id="load-content" style="height:200px;" hidden></div>
+                </form>
+                </div>
+
+                <div id="gallery-first" class="url-entry">
+                    {% for gallery in recordGallery.image_gallery %}
+                      <amp-img style="margin: 10px 0" src="/storage/app/media{{ gallery.image }}"  width="320" height="320" layout="responsive"></amp-img>
+                    {% endfor %}
+                </div>
+                
+                
+                 <amp-list width="auto" height="0" [src]="data.items" [height]="data.total * 350" [hidden]="data.total == 0">
+                      <template type="amp-mustache">
+                        <div class="url-entry">
+                            {% verbatim %}
+                              <amp-img style="margin: 10px 0" [src]="/storage/app/media{{ image }}" src="/storage/app/media{{ image }}"  width="320" height="320" layout="responsive"></amp-img>
+                              {% endverbatim %}
+                        </div>
+                      </template>
+                </amp-list>
+                
+        <div id="not-found" class="detail_text">    
+             <div class="not-found" hidden [hidden] = "data.total != 0 " >
+                <h3 style="margin-top: 30px;">Maaf tidak dapat menemukan data yang di inginkan.</h3>
+             </div>  
+        </div>     
+                            
+
+                      
+        </div>
+    </div>
+</div> <!-- end mainsection -->

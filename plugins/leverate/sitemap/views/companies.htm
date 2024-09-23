@@ -1,0 +1,59 @@
+<?xml-stylesheet type='text/xsl' href="{{ url('/themes/rainlab-bonjour/assets/src/style.xsl') }}"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+	   {% for submenu in submenus %}
+        <url>
+            <loc>{{ submenu.url}}</loc>
+            <lastmod>{{ submenu.created_at|date('c') }}</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.3</priority>
+        </url>
+        {% endfor %}
+        {% for gallery_year in gallery_years %}
+        <url>
+            <loc>{{url('/perusahaan-kami/galeri-foto/year')}}/{{gallery_year.published_date}}</loc>
+            <lastmod>{{ gallery_year.created_at|date('c') }}</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.3</priority>
+        </url>
+        {% endfor %}
+        {% for gallery in galleries %}
+        <url>
+            <loc>{{url('/perusahaan-kami/galeri-foto')}}/{{gallery.slug}}</loc>
+            <lastmod>{{ gallery.created_at|date('c') }}</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+        </url>
+        {% endfor %}
+        {% for new_year in new_years %}
+        <url>
+            <loc>{{url('/perusahaan-kami/berita/years/')}}/{{new_year.published_date}}</loc>
+            <lastmod>{{ new_year.created_at|date('c') }}</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.3</priority>
+        </url>
+        {% endfor %}
+        {% for new in news %}
+        <url>
+            <loc>{{url('/perusahaan-kami/berita')}}/{{new.slug}}</loc>
+            <lastmod>{{ new.created_at|date('c') }}</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+        </url>
+        {% endfor %}
+        {% for pers_year in pers_years %}
+        <url>
+            <loc>{{url('/perusahaan-kami/siaran-pers-archive/year/')}}/{{pers_year.published_date}}</loc>
+            <lastmod>{{ pers_year.created_at|date('c') }}</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.3</priority>
+        </url>
+        {% endfor %}
+        {% for per in pers %}
+        <url>
+            <loc>{{url('/perusahaan-kami/siaran-pers')}}/{{per.slug}}</loc>
+            <lastmod>{{ per.created_at|date('c') }}</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+        </url>
+        {% endfor %}
+</urlset>

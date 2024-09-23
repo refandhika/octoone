@@ -1,0 +1,1131 @@
+jQuery(document).ready(function($) {
+  var $loadMore = $( '#buttonFrisian' ).hide();
+  var $loadMoreProduk = $( '#buttonProduk' ).hide();
+  var $loadMoreMilkPedia = $( '#buttonMilkpedia' ).hide();
+  var $loadMoreActivity = $( '#buttonAcitvity' ).hide();
+  var $loadMoreNews = $( '#buttonNews' ).hide();
+  var $loadMorePers = $( '#buttonPers' ).hide();
+  var $loadMoreAbout = $( '#buttonAbout' ).hide();
+
+  var form = $('#form-contact');
+
+
+  $('#form-search').on('submit', function(e) {
+
+    // window.location.replace("search");
+
+    e.preventDefault();
+    var $search = $('#search-result').val();
+    var total = 0;
+    var friso = $('#friso');
+    var ibu = $('#ibudanbalita')
+    var frisian = $('#frisianflag');
+    var produk = $('#products');
+    var milk = $('#milkpedias');
+    var activity = $('#activity');
+    var news  = $('#news');
+    var pers  = $('#pers');
+    var about  = $('#about');
+
+    $('#search').text($search);
+
+    frisian.empty();
+    about.empty();
+
+    $.get('all/milkpedia?keyword=' + $search, function(resp) {
+      var data = resp;
+      total+= data.length;
+      $('#total').text(total);
+
+
+        $.each(data, function(i, row) {
+
+          var aa = 0 ;
+          frisian.append(
+            $("<div class='searchresult__item' >"+
+              "<h4><a href=milkpedia/"+row.categories[aa++].slug+"/"+row.slug+">"+row.title+"</a></h4>"+
+              "<div class='date'>"+
+              "<label>Milkpedia</label> |"+moment(row.created_at).format("DD MMM YYYY")+""+
+              "</div>"+
+              "<p>"+row.content.substr(0,200)+"... <a href=milkpedia/"+row.categories[aa++].slug+"/"+row.slug+" class='searchresult__more'>lebih lanjut</a></p>"+
+              "<hr />"+
+              "</div>")
+            );
+
+        });
+
+    });
+
+
+    $.get('all/product?keyword=' + $search, function(resp) {
+      var data = resp;
+      total+= data.length;
+      $('#total').text(total);
+
+
+
+      $.each(data, function(i, row) {
+
+
+        var ab= 0 ;
+        frisian.append(
+          $("<div class='searchresult__item' >"+
+            "<h4><a href=milkpedia/"+row.categories[ab++].slug+"/"+row.slug+">"+row.title+"</a></h4>"+
+            "<div class='date'>"+
+            "<label>Product</label> |"+moment(row.created_at).format("DD MMM YYYY")+""+
+            "</div>"+
+            "<p>"+row.content.substr(0,200)+"... <a href=milkpedia/"+row.categories[ab++].slug+"/"+row.slug+" class='searchresult__more'>lebih lanjut</a></p>"+
+            "<hr />"+
+            "</div>")
+          );
+
+      });
+
+
+    });
+
+    $.get('all/activity?keyword=' + $search, function(resp) {
+      var data = resp;
+      total+= data.length;
+      $('#total').text(total);
+
+
+
+      $.each(data, function(i, row) {
+
+
+        var ac = 0 ;
+        frisian.append(
+          $("<div class='searchresult__item'>"+
+            "<h4><a href=aktifitas-kami/"+row.categories[ac++].slug+"/"+row.slug+">"+row.title+"</a></h4>"+
+            "<div class='date'>"+
+            "<label>Aktivitas</label> |"+moment(row.created_at).format("DD MMM YYYY")+""+
+            "</div>"+
+            "<p>"+row.description.substr(0,200)+"... <a href=aktifitas-kami/"+row.categories[ac++].slug+"/"+row.slug+" class='searchresult__more'>lebih lanjut</a></p>"+
+            "<hr />"+
+            "</div>")
+          );
+
+      });
+
+
+    });
+
+    $.get('all/news?keyword=' + $search, function(resp) {
+      var data = resp;
+      total+= data.length;
+      $('#total').text(total);
+
+
+
+      $.each(data, function(i, row) {
+
+        frisian.append(
+          $("<div class='searchresult__item'>"+
+            "<h4><a href=perusahaan-kami/berita/"+row.slug+">"+row.title+"</a></h4>"+
+            "<div class='date'>"+
+            "<label>Berita</label> |"+moment(row.created_at).format("DD MMM YYYY")+""+
+            "</div>"+
+            "<p>"+row.description.substr(0,200)+"... <a href=perusahaan-kami/berita/"+row.slug+" class='searchresult__more'>lebih lanjut</a></p>"+
+            "<hr />"+
+            "</div>")
+          );
+
+      });
+
+
+    });
+
+    $.get('all/pressrelease?keyword=' + $search, function(resp) {
+      var data = resp;
+      total+= data.length;
+      $('#total').text(total);
+
+
+
+      $.each(data, function(i, row) {
+
+        frisian.append(
+          $("<div class='searchresult__item'>"+
+            "<h4><a href=perusahaan-kami/siaran-pers/"+row.slug+">"+row.title+"</a></h4>"+
+            "<div class='date'>"+
+            "<label>Siaran Pers</label> |"+moment(row.created_at).format("DD MMM YYYY")+""+
+            "</div>"+
+            "<p>"+row.description.substr(0,200)+"... <a href=perusahaan-kami/siaran-pers/"+row.slug+" class='searchresult__more'>lebih lanjut</a></p>"+
+            "<hr />"+
+            "</div>")
+          );
+
+      });
+
+
+    });
+
+    $.get('all/aboutUs?keyword=' + $search, function(resp) {
+      var data = resp;
+      total+= data.length;
+      $('#total').text(total);
+
+
+        $.each(data, function(i, row) {
+          frisian.append(
+            $("<div class='searchresult__item'>"+
+            "<h4><a href=perusahaan-kami/tentan-kami>"+row.title+"</a></h4>"+
+            "<div class='date'>"+
+            "<label>Tentang Kami</label> |"+moment(row.created_at).format("DD MMM YYYY")+""+
+            "</div>"+
+            "<p>"+row.description.substr(0,200)+"... <a href=perusahaan-kami/tentan-kami class='searchresult__more'>lebih lanjut</a></p>"+
+            "<hr />"+
+            "</div>")
+          );
+
+        });
+    });
+
+    $.get('all/frisian-flag?keyword=' + $search, function(resp) {
+      var data = resp;
+      total+= data.length;
+      $('#total').text(total);
+
+        $.each(data, function(i, row) {
+          frisian.append(
+            $("<div class='searchresult__item'>"+
+            "<h4><a href=perusahaan-kami/tentan-kami>"+row.title+"</a></h4>"+
+            "<div class='date'>"+
+            "<label>Tentang Kami</label> |"+moment(row.created_at).format("DD MMM YYYY")+""+
+            "</div>"+
+            "<hr />"+
+            "</div>")
+          );
+
+        });
+
+
+
+    });
+
+    $.get('all/award?keyword=' + $search, function(resp) {
+      var data = resp;
+      total+= data.length;
+      $('#total').text(total);
+        $.each(data, function(i, row) {
+          frisian.append(
+            $("<div class='searchresult__item'>"+
+            "<h4><a href=perusahaan-kami/tentan-kami>"+row.title+"</a></h4>"+
+            "<div class='date'>"+
+            "<label>Tentang Kami</label> |"+moment(row.created_at).format("DD MMM YYYY")+""+
+            "</div>"+
+            "<p>"+row.description.substr(0,200)+"... <a href=perusahaan-kami/tentan-kami class='searchresult__more'>lebih lanjut</a></p>"+
+            "<hr />"+
+            "</div>")
+          );
+
+        });
+
+    });
+
+
+    $.get('all/history?keyword=' + $search, function(resp) {
+      var data = resp;
+      total+= data.length;
+      $('#total').text(total);
+
+        $.each(data, function(i, row) {
+          frisian.append(
+            $("<div class='searchresult__item'>"+
+            "<h4><a href=perusahaan-kami/tentan-kami>"+row.title+"</a></h4>"+
+            "<div class='date'>"+
+            "<label>Tentang Kami</label> |"+moment(row.created_at).format("DD MMM YYYY")+""+
+            "</div>"+
+            "<p>"+row.description.substr(0,200)+"... <a href=perusahaan-kami/tentan-kami class='searchresult__more'>lebih lanjut</a></p>"+
+            "<hr />"+
+            "</div>")
+          );
+
+        });
+
+    });
+
+
+
+
+    // Search ke friso
+    $.get('api/search?type=friso&keyword=' + $search, function(resp) {
+      var data = JSON.parse(resp);
+      total+= data.length;
+      $('#total').text(total);
+
+      friso.empty();
+
+      if (data.length > 0 ) {
+
+        $.each(data, function(i, row) {
+
+          friso.append(
+            $("<div class='searchresult__item'>"+
+              "<h4><a href="+row.link+">"+row.title+"</a></h4>"+
+              "<div class='date'>"+
+              "<label>https://www.friso.co.id</label> |"+moment(row.created_at).format("DD MMM YYYY")+""+
+              "</div>"+
+              "<p>"+row.description.substr(0,200)+"... <a href="+row.link+" class='searchresult__more'>lebih lanjut</a></p>"+
+              "<hr />"+
+              "</div>")
+            );
+
+        });
+
+      } else {
+
+          friso.append(
+            $("<div class='searchresult__item' >"+
+              "<p>Maaf, hasil pencarian "+$search+" tidak ditemukan</p>"+
+              "</div>")
+          );
+
+      }
+
+    });
+
+    // Search ke ibu
+    $.get('api/search?type=ibu&keyword=' + $search, function(resp) {
+      var data = JSON.parse(resp);
+
+      total+= data.results.length;
+      $('#total').text(total);
+
+      ibu.empty();
+
+      if (data.results.length > 0 ) {
+
+        $.each(data.results, function(i, row) {
+
+
+          ibu.append(
+            $("<div class='searchresult__item'>"+
+              "<h4><a href="+row.link+">"+row.title+"</a></h4>"+
+              "<div class='date'>"+
+              "<label>https://www.ibudanbalita.com</label> |"+moment(row.created_at).format("DD MMM YYYY")+""+
+              "</div>"+
+              "<p>"+row.description.substr(0,200)+"... <a href="+row.link+" class='searchresult__more'>lebih lanjut</a></p>"+
+              "<hr />"+
+              "</div>")
+          );
+
+        });
+
+      } else {
+
+          ibu.append(
+            $("<div class='searchresult__item' >"+
+              "<p>Maaf, hasil pencarian "+$search+" tidak ditemukan</p>"+
+              "</div>")
+          );
+
+      }
+
+
+    });
+
+    // Search ke frisian
+    $.get('api/search?type=milkipedia&keyword=' + $search, function(resp) {
+      var data = resp;
+      total+= data.length;
+      $('#total').text(total);
+
+
+      milk.empty();
+
+      if (data.length > 0 ) {
+
+        $.each(data, function(i, row) {
+
+          if (i > 3 ) {
+            $loadMoreMilkPedia.show();
+          } else {
+            $loadMoreMilkPedia.hide();
+          }
+
+
+          var ad = 0 ;
+          milk.append(
+            $("<div class='searchresult__item' >"+
+              "<h4><a href=milkpedia/"+row.categories[ad++].slug+"/"+row.slug+">"+row.title+"</a></h4>"+
+              "<div class='date'>"+
+              "<label>Milkpedia</label> |"+moment(row.created_at).format("DD MMM YYYY")+""+
+              "</div>"+
+              "<p>"+row.content.substr(0,200)+"... <a href=milkpedia/"+row.categories[ad++].slug+"/"+row.slug+" class='searchresult__more'>lebih lanjut</a></p>"+
+              "<hr />"+
+              "</div>")
+            );
+
+        });
+
+      } else {
+
+          milk.append(
+            $("<div class='searchresult__item' >"+
+              "<p>Maaf, hasil pencarian "+$search+" tidak ditemukan</p>"+
+              "</div>")
+          );
+
+      }
+
+
+    });
+
+    ////// produk
+    $.get('api/product?keyword=' + $search, function(resp) {
+      var data = resp;
+      total+= data.length;
+      $('#total').text(total);
+
+      produk.empty();
+
+      if (data.length > 0 ) {
+
+        $.each(data, function(i, row) {
+
+          if (i > 3) {
+            $loadMoreProduk.show();
+          } else {
+            $loadMoreProduk.hide();
+          }
+
+          var ae = 0;
+          produk.append(
+            $("<div class='searchresult__item'>"+
+            "<h4><a href=produk/"+row.categories[ae++].slug+"/"+row.slug+">"+row.title+"</a></h4>"+
+            "<div class='date'>"+
+            "<label>Produk</label> |"+moment(row.created_at).format("DD MMM YYYY")+""+
+            "</div>"+
+            "<p>"+row.content.substr(0,200)+"... <a href=produk/"+row.categories[ae++].slug+"/"+row.slug+" class='searchresult__more'>lebih lanjut</a></p>"+
+            "<hr />"+
+            "</div>")
+          );
+
+        });
+
+      } else {
+
+          produk.append(
+            $("<div class='searchresult__item' >"+
+              "<p>Maaf, hasil pencarian "+$search+" tidak ditemukan</p>"+
+              "</div>")
+          );
+
+      }
+
+    });
+
+    ///// aktivitas
+
+    $.get('api/activity?keyword=' + $search, function(resp) {
+      var data = resp;
+      total+= data.length;
+      $('#total').text(total);
+
+      activity.empty();
+
+      if (data.length > 0 ) {
+
+        $.each(data, function(i, row) {
+
+
+          if (i > 3) {
+            $loadMoreActivity.show();
+          } else {
+            $loadMoreActivity.hide();
+          }
+
+          var af = 0;
+
+          activity.append(
+            $("<div class='searchresult__item'>"+
+            "<h4><a href=aktifitas-kami/"+row.categories[af++].slug+"/"+row.slug+">"+row.title+"</a></h4>"+
+            "<div class='date'>"+
+            "<label>Aktivitas</label> |"+moment(row.created_at).format("DD MMM YYYY")+""+
+            "</div>"+
+            "<p>"+row.description.substr(0,200)+"... <a href=aktifitas-kami/"+row.categories[af++].slug+"/"+row.slug+" class='searchresult__more'>lebih lanjut</a></p>"+
+            "<hr />"+
+            "</div>")
+          );
+
+        });
+
+      } else {
+
+          activity.append(
+            $("<div class='searchresult__item' >"+
+              "<p>Maaf, hasil pencarian "+$search+" tidak ditemukan</p>"+
+              "</div>")
+          );
+
+      }
+
+    });
+    //////
+
+    ///// news
+
+    $.get('api/news?keyword=' + $search, function(resp) {
+      var data = resp;
+      total+= data.length;
+      $('#total').text(total);
+
+      news.empty();
+
+      if (data.length > 0 ) {
+
+        $.each(data, function(i, row) {
+
+          if (i > 3) {
+            $loadMoreNews.show();
+          } else {
+            $loadMoreNews.hide();
+          }
+
+          news.append(
+            $("<div class='searchresult__item'>"+
+              "<h4><a href=perusahaan-kami/berita/"+row.slug+">"+row.title+"</a></h4>"+
+              "<div class='date'>"+
+              "<label>Berita</label> |"+moment(row.created_at).format("DD MMM YYYY")+""+
+              "</div>"+
+              "<p>"+row.description.substr(0,200)+"... <a href=perusahaan-kami/berita/"+row.slug+" class='searchresult__more'>lebih lanjut</a></p>"+
+              "<hr />"+
+              "</div>")
+            );
+
+        });
+
+      } else {
+
+          news.append(
+            $("<div class='searchresult__item' >"+
+              "<p>Maaf, hasil pencarian "+$search+" tidak ditemukan</p>"+
+              "</div>")
+          );
+
+      }
+
+    });
+    //////
+
+    ///// pers
+
+    $.get('api/pressrelease?keyword=' + $search, function(resp) {
+      var data = resp;
+      total+= data.length;
+      $('#total').text(total);
+
+      pers.empty();
+
+      if (data.length > 0 ) {
+
+        $.each(data, function(i, row) {
+
+          if (i > 3) {
+            $loadMorePers.show();
+          } else {
+            $loadMorePers.hide();
+          }
+
+
+          pers.append(
+            $("<div class='searchresult__item'>"+
+              "<h4><a href=perusahaan-kami/siaran-pers/"+row.slug+">"+row.title+"</a></h4>"+
+              "<div class='date'>"+
+              "<label>Siaran Pers</label> |"+moment(row.created_at).format("DD MMM YYYY")+""+
+              "</div>"+
+              "<p>"+row.description.substr(0,200)+"... <a href=perusahaan-kami/siaran-pers/"+row.slug+" class='searchresult__more'>lebih lanjut</a></p>"+
+              "<hr />"+
+              "</div>")
+            );
+
+        });
+
+      } else {
+
+          pers.append(
+            $("<div class='searchresult__item' >"+
+              "<p>Maaf, hasil pencarian "+$search+" tidak ditemukan</p>"+
+              "</div>")
+          );
+
+      }
+
+    });
+
+    ///// about
+
+    $.get('api/aboutUs?keyword=' + $search, function(resp) {
+      var data = resp;
+      total+= data.length;
+      $('#total').text(total);
+
+
+        $.each(data, function(i, row) {
+          about.append(
+            $("<div class='searchresult__item'>"+
+            "<h4><a href=perusahaan-kami/tentan-kami>"+row.title+"</a></h4>"+
+            "<div class='date'>"+
+            "<label>Tentang Kami</label> |"+moment(row.created_at).format("DD MMM YYYY")+""+
+            "</div>"+
+            "<p>"+row.description.substr(0,200)+"... <a href=perusahaan-kami/tentan-kami class='searchresult__more'>lebih lanjut</a></p>"+
+            "<hr />"+
+            "</div>")
+          );
+
+        });
+    });
+
+    $.get('api/frisian-flag?keyword=' + $search, function(resp) {
+      var data = resp;
+      total+= data.length;
+      $('#total').text(total);
+
+        $.each(data, function(i, row) {
+          about.append(
+            $("<div class='searchresult__item'>"+
+            "<h4><a href=perusahaan-kami/tentan-kami>"+row.title+"</a></h4>"+
+            "<div class='date'>"+
+            "<label>Tentang Kami</label> |"+moment(row.created_at).format("DD MMM YYYY")+""+
+            "</div>"+
+            "<hr />"+
+            "</div>")
+          );
+
+        });
+
+
+
+    });
+
+    $.get('api/award?keyword=' + $search, function(resp) {
+      var data = resp;
+      total+= data.length;
+      $('#total').text(total);
+        $.each(data, function(i, row) {
+          about.append(
+            $("<div class='searchresult__item'>"+
+            "<h4><a href=perusahaan-kami/tentan-kami>"+row.title+"</a></h4>"+
+            "<div class='date'>"+
+            "<label>Tentang Kami</label> |"+moment(row.created_at).format("DD MMM YYYY")+""+
+            "</div>"+
+            "<p>"+row.description.substr(0,200)+"... <a href=perusahaan-kami/tentan-kami class='searchresult__more'>lebih lanjut</a></p>"+
+            "<hr />"+
+            "</div>")
+          );
+
+        });
+
+    });
+
+
+    $.get('api/history?keyword=' + $search, function(resp) {
+      var data = resp;
+      total+= data.length;
+      $('#total').text(total);
+
+        $.each(data, function(i, row) {
+          about.append(
+            $("<div class='searchresult__item'>"+
+            "<h4><a href=perusahaan-kami/tentan-kami>"+row.title+"</a></h4>"+
+            "<div class='date'>"+
+            "<label>Tentang Kami</label> |"+moment(row.created_at).format("DD MMM YYYY")+""+
+            "</div>"+
+            "<p>"+row.description.substr(0,200)+"...</p>"+
+            "<hr />"+
+            "</div>")
+          );
+
+        });
+
+    });
+
+
+//-------------------------------LOADMORE FUNCTION--------------------------------------------------------------------------------------------------///
+
+
+      var options = $.extend( {
+        url: 'frisian/loadmore?keyword='+$search+'',
+        totalData: 0,
+        perPage: 5
+      } );
+
+      var $loadMore = $( '#buttonFrisian' );
+      var page = 1;
+      var totalPage = Math.ceil( options.totalData / options.perPage ) + 1;
+      var data = {
+          'last_page': 2,
+          'current_page': 1
+      };
+
+      var loadMore = function( e ) {
+        e.preventDefault();
+
+        // Increase page
+        page++;
+
+        // Call the "loadData" function
+        loadData();
+
+
+      };
+
+      var loadData = function() {
+          $.get( options.url, { page: page }, null, 'json' )
+              .then( setData )
+              .then( renderHTML );
+      };
+
+      var setData = function( resp ) {
+        data = resp;
+
+        // Show loadmore first
+        $loadMore.show();
+
+        console.log(data);
+        // Hide the loadmore if page is same as total page
+        if ( data.current_page === data.last_page ) $loadMore.hide();
+
+      };
+
+      var renderHTML = function() {
+            // Loop the data
+        $.each( data.data, function( i, row ) {
+
+          if ( i < options.perPage ) {
+
+            var a = 0;
+
+            frisian.append(
+            $("<div class='searchresult__item'>"+
+              "<h4><a href=milkpedia/"+row.categories[a++].slug+"/"+row.slug+">"+row.title+"</a></h4>"+
+              "<div class='date'>"+
+              "<label>Milkpedia</label> |"+moment(row.created_at).format("DD MMM YYYY")+""+
+              "</div>"+
+              "<p>"+row.content.substr(0,200)+"... <a href=milkpedia/"+row.categories[a++].slug+"/"+row.slug+" class='searchresult__more'>lebih lanjut</a></p>"+
+              "<hr />"+
+              "</div>")
+            );
+          }
+
+          // Before loader, append it
+          // $loader.before( $html ).prev().fadeIn();
+
+        } );
+
+        // Re-Resize Window
+        $( window ).resize();
+      }
+
+      if ( data.current_page === data.last_page ) $loadMore.hide();
+
+      // Loadmore click
+      $loadMore.on( 'click', loadMore );
+
+///--------------------------- END LOADMORE FRISIAN ---------------------------------------///
+
+      var optionsProduk = $.extend( {
+        url1: 'product/loadmore?keyword='+$search+'',
+        totalData: 0,
+        perPage: 5
+      } );
+
+      var $loadMoreProduk = $( '#buttonProduk' );
+      var p = 1;
+      var totalPage = Math.ceil( optionsProduk.totalData / optionsProduk.perPage ) + 1;
+      var datas = {
+          'last_page': 2,
+          'current_page': 1
+      };
+
+      var loadMoreProduk = function( e ) {
+          e.preventDefault();
+
+          // Increase page
+          p++;
+
+          // Call the "loadData" function
+          loadDataProduk();
+
+
+      };
+
+      var loadDataProduk = function() {
+          $.get( optionsProduk.url1, { page: p }, null, 'json' )
+              .then( setDataProduk )
+              .then( renderHTMLProduk );
+      };
+
+      var setDataProduk = function( resp ) {
+          datas = resp;
+
+          // Show loadmore first
+          $loadMoreProduk.show();
+
+          console.log(datas);
+          // Hide the loadmore if page is same as total page
+          if ( datas.current_page === datas.last_page ) $loadMoreProduk.hide();
+
+      };
+
+      var renderHTMLProduk = function() {
+              // Loop the data
+          $.each( datas.data, function( i, row ) {
+
+            if ( i < optionsProduk.perPage ) {
+
+            var b = 0;
+            produk.append(
+              $("<div class='searchresult__item'>"+
+                "<h4><a href=produk/"+row.categories[b++].slug+"/"+row.slug+">"+row.title+"</a></h4>"+
+                "<div class='date'>"+
+                "<label>Produk</label> |"+moment(row.created_at).format("DD MMM YYYY")+""+
+                "</div>"+
+                "<p>"+row.content.substr(0,200)+"... <a href=produk/"+row.categories[b++].slug+"/"+row.slug+-" class='searchresult__more'>lebih lanjut</a></p>"+
+                "<hr />"+
+                "</div>")
+              );
+            }
+
+            // Before loader, append it
+            // $loader.before( $html ).prev().fadeIn();
+
+          });
+      }
+      if ( datas.current_page === datas.last_page ) $loadMoreProduk.hide();
+
+          // Loadmore click
+      $loadMoreProduk.on( 'click', loadMoreProduk );
+
+///----------------------- END LOADMORE PRODUK --------------------------------- ///
+
+
+
+
+      var optionsMilk = $.extend( {
+        url2: 'milkpedia/loadmore?keyword='+$search+'',
+        totalData: 0,
+        perPage: 5
+      } );
+
+      var $loadMoreMilkPedia = $( '#buttonMilkpedia' );
+      var pages = 1;
+      var totalPage = Math.ceil( optionsMilk.totalData / optionsMilk.perPage ) + 1;
+      var data = {
+          'last_page': 2,
+          'current_page': 1
+      };
+
+      var loadMoreMilk = function( e ) {
+        e.preventDefault();
+
+        // Increase page
+        pages++;
+
+        // Call the "loadData" function
+        loadDataMilk();
+
+
+      };
+
+      var loadDataMilk = function() {
+          $.get( optionsMilk.url2, { page: pages }, null, 'json' )
+              .then( setDataMilk )
+              .then( renderHTMLMilk );
+      };
+
+      var setDataMilk = function( resp ) {
+        data = resp;
+
+        // Show loadmore first
+        $loadMoreMilkPedia.show();
+
+        console.log(data);
+        // Hide the loadmore if page is same as total page
+        if ( data.current_page === data.last_page ) $loadMoreMilkPedia.hide();
+
+      };
+
+      var renderHTMLMilk = function() {
+            // Loop the data
+        $.each( data.data, function( i, row ) {
+
+          if ( i < optionsMilk.perPage ) {
+
+            var c = 0;
+
+            milk.append(
+            $("<div class='searchresult__item'>"+
+              "<h4><a href=milkpedia/"+row.categories[c++].slug+"/"+row.slug+">"+row.title+"</a></h4>"+
+              "<div class='date'>"+
+              "<label>Milkpedia</label> |"+moment(row.created_at).format("DD MMM YYYY")+""+
+              "</div>"+
+              "<p>"+row.content.substr(0,200)+"... <a href=milkpedia/"+row.categories[c++].slug+"/"+row.slug+" class='searchresult__more'>lebih lanjut</a></p>"+
+              "<hr />"+
+              "</div>")
+            );
+          }
+
+          // Before loader, append it
+          // $loader.before( $html ).prev().fadeIn();
+
+        } );
+
+        // Re-Resize Window
+        $( window ).resize();
+      }
+
+      if ( data.current_page === data.last_page ) $loadMoreMilkPedia.hide();
+
+      // Loadmore click
+      $loadMoreMilkPedia.on( 'click', loadMoreMilk );
+
+///------------------------------ END LOADMORE MILKPEDIA ---------------------------- ///
+
+
+
+      var optionsActivity = $.extend( {
+        url3: 'activity/loadmore?keyword='+$search+'',
+        totalData: 0,
+        perPage: 5
+      } );
+
+      var $loadMoreActivity = $( '#buttonAcitvity' );
+      var pag = 1;
+      var totalPage = Math.ceil( optionsActivity.totalData / optionsActivity.perPage ) + 1;
+      var data = {
+          'last_page': 2,
+          'current_page': 1
+      };
+
+      var loadMoreActivity = function( e ) {
+        e.preventDefault();
+
+        // Increase page
+        pag++;
+
+        // Call the "loadData" function
+        loadDataActivity();
+
+
+      };
+
+      var loadDataActivity = function() {
+          $.get( optionsActivity.url3, { page: pag }, null, 'json' )
+              .then( setDataActivity )
+              .then( renderHTMLActivity );
+      };
+
+      var setDataActivity = function( resp ) {
+        data = resp;
+
+        // Show loadmore first
+        $loadMoreActivity.show();
+
+        console.log(data);
+        // Hide the loadmore if page is same as total page
+        if ( data.current_page === data.last_page ) $loadMoreActivity.hide();
+
+      };
+
+      var renderHTMLActivity = function() {
+            // Loop the data
+        $.each( data.data, function( i, rows ) {
+
+          if ( i < optionsActivity.perPage ) {
+
+          var d = 0;
+          activity.append(
+            $("<div class='searchresult__item'>"+
+              "<h4><a href=aktifitas-kami/"+rows.categories[d++].slug+"/"+rows.slug+">"+rows.title+"</a></h4>"+
+              "<div class='date'>"+
+              "<label>Aktivitas</label> |"+moment(rows.created_at).format("DD MMM YYYY")+""+
+              "</div>"+
+              "<p>"+rows.description.substr(0,200)+"... <a href=aktifitas-kami/"+rows.categories[d++].slug+"/"+rows.slug+" class='searchresult__more'>lebih lanjut</a></p>"+
+              "<hr />"+
+              "</div>")
+            );
+
+          }
+
+          // Before loader, append it
+          // $loader.before( $html ).prev().fadeIn();
+
+        } );
+
+        // Re-Resize Window
+        $( window ).resize();
+      }
+
+      if ( data.current_page === data.last_page ) $loadMoreActivity.hide();
+
+      // Loadmore click
+      $loadMoreActivity.on( 'click', loadMoreActivity );
+
+/// ------------------------------- END LOADMORE ACTIVITY ------------------------- ///
+
+
+      var optionsNews = $.extend( {
+        url4: 'news/loadmore?keyword='+$search+'',
+        totalData: 0,
+        perPage: 5
+      } );
+
+      var $loadMoreNews = $( '#buttonNews' );
+      var pa = 1;
+      var totalPage = Math.ceil( optionsNews.totalData / optionsNews.perPage ) + 1;
+      var data = {
+          'last_page': 2,
+          'current_page': 1
+      };
+
+      var loadMoreNews = function( e ) {
+        e.preventDefault();
+
+        // Increase page
+        pa++;
+
+        // Call the "loadData" function
+        loadDataNews();
+
+
+      };
+
+      var loadDataNews = function() {
+          $.get( optionsNews.url4, { page: pa }, null, 'json' )
+              .then( setDataNews )
+              .then( renderHTMLNews );
+      };
+
+      var setDataNews = function( resp ) {
+        data = resp;
+
+        // Show loadmore first
+        $loadMoreNews.show();
+
+        console.log(data);
+        // Hide the loadmore if page is same as total page
+        if ( data.current_page === data.last_page ) $loadMoreNews.hide();
+
+      };
+
+      var renderHTMLNews = function() {
+            // Loop the data
+        $.each( data.data, function( i, row ) {
+
+          if ( i < optionsNews.perPage ) {
+
+
+
+            news.append(
+            $("<div class='searchresult__item'>"+
+              "<h4><a href=milkpedia/"+row.slug+">"+row.title+"</a></h4>"+
+              "<div class='date'>"+
+              "<label>Berita</label> |"+moment(row.created_at).format("DD MMM YYYY")+""+
+              "</div>"+
+              "<p>"+row.description.substr(0,200)+"... <a href=milkpedia/"+row.slug+" class='searchresult__more'>lebih lanjut</a></p>"+
+              "<hr />"+
+              "</div>")
+            );
+          }
+
+          // Before loader, append it
+          // $loader.before( $html ).prev().fadeIn();
+
+        } );
+
+        // Re-Resize Window
+        $( window ).resize();
+      }
+
+      if ( data.current_page === data.last_page ) $loadMoreNews.hide();
+
+      // Loadmore click
+      $loadMoreNews.on( 'click', loadMoreNews );
+
+///----------------------------------------- END LOADMORE NEWS ---------------------- ///
+
+
+      var optionsPers = $.extend( {
+        url5: 'pressrelease/loadmore?keyword='+$search+'',
+        totalData: 0,
+        perPage: 5
+      } );
+
+      var $loadMorePers = $( '#buttonPers' );
+      var hal = 1;
+      var totalPage = Math.ceil( optionsPers.totalData / optionsPers.perPage ) + 1;
+      var data = {
+          'last_page': 2,
+          'current_page': 1
+      };
+
+      var loadMorePers = function( e ) {
+        e.preventDefault();
+
+        // Increase page
+        hal++;
+
+        // Call the "loadData" function
+        loadDataPers();
+
+
+      };
+
+      var loadDataPers = function() {
+          $.get( optionsPers.url5, { page: hal }, null, 'json' )
+              .then( setDataPers )
+              .then( renderHTMLPers );
+      };
+
+      var setDataPers = function( resp ) {
+        data = resp;
+
+        // Show loadmore first
+        $loadMorePers.show();
+
+        console.log(data);
+        // Hide the loadmore if page is same as total page
+        if ( data.current_page === data.last_page ) $loadMorePers.hide();
+
+      };
+
+      var renderHTMLPers = function() {
+            // Loop the data
+        $.each( data.data, function( i, row ) {
+
+          if ( i < optionsPers.perPage ) {
+
+
+            pers.append(
+            $("<div class='searchresult__item'>"+
+              "<h4><a href=perusahaan-kami/siaran-pers/"+row.slug+">"+row.title+"</a></h4>"+
+              "<div class='date'>"+
+              "<label>Siaran Pers</label> |"+moment(row.created_at).format("DD MMM YYYY")+""+
+              "</div>"+
+              "<p>"+row.description.substr(0,200)+"... <a href=perusahaan-kami/siaran-pers/"+row.slug+" class='searchresult__more'>lebih lanjut</a></p>"+
+              "<hr />"+
+              "</div>")
+            );
+          }
+
+          // Before loader, append it
+          // $loader.before( $html ).prev().fadeIn();
+
+        } );
+
+        // Re-Resize Window
+        $( window ).resize();
+      }
+
+      if ( data.current_page === data.last_page ) $loadMorePers.hide();
+
+      // Loadmore click
+      $loadMorePers.on( 'click', loadMorePers );
+
+///-------------------------------- END LOADMORE PRESSRELEASE ------------------------- ///
+
+  });
+});

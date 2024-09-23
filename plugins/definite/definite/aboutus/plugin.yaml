@@ -1,0 +1,72 @@
+plugin:
+    name: 'definite.aboutus::lang.plugin.name'
+    description: 'definite.aboutus::lang.plugin.description'
+    author: Definite
+    icon: oc-icon-info
+    homepage: ''
+navigation:
+    AboutUs:
+        label: 'definite.aboutus::lang.plugin.name'
+        url: definite/aboutus/aboutus
+        icon: icon-info
+        permissions:
+            - manage_tentang_kami_menu
+        sideMenu:
+            AboutUsList:
+                label: 'Tentang Kami'
+                url: definite/aboutus/aboutus
+                icon: icon-sitemap
+                permissions:
+                    - manage_tentang_kami_kontent
+            AboutUsFrisianFlagList:
+                label: 'Frisian Flag'
+                url: definite/aboutus/frisianflag
+                icon: icon-sitemap
+                permissions:
+                    - manage_tentang_kami_frisian_flag
+            AboutUsAwardList:
+                label: 'Penghargaan Frisian Flag'
+                url: definite/aboutus/award
+                icon: icon-sitemap
+                permissions:
+                    - manage_tentang_kami_penghargaan
+            AboutUsHistoryList:
+                label: 'Sejarah Perusahaan'
+                url: definite/aboutus/history
+                icon: icon-sitemap
+                permissions:
+                    - manage_tentang_kami_sejarah
+            logo-history:
+                label: 'Perubahan Logo'
+                url: definite/aboutus/logohistory
+                icon: icon-sitemap
+                permissions:
+                    - manage_tentang_kami_logo
+            side-menu-item:
+                label: 'Business Principles & Safety Policy'
+                url: definite/aboutus/businesssafety
+                icon: icon-sitemap
+                permissions:
+                    - manage_tentang_kami_bisnis
+permissions:
+    manage_tentang_kami_menu:
+        tab: 'Tentang Kami'
+        label: 'Manage Tentang Kami Menu'
+    manage_tentang_kami_kontent:
+        tab: 'Tentang Kami'
+        label: 'Manage Tentang Kami Kontent'
+    manage_tentang_kami_frisian_flag:
+        tab: 'Tentang Kami'
+        label: 'Manage Tentang Kami Frisian Flag'
+    manage_tentang_kami_penghargaan:
+        tab: 'Tentang Kami'
+        label: 'Manage Tentang Kami Penghargaan'
+    manage_tentang_kami_sejarah:
+        tab: 'Tentang Kami'
+        label: 'Manage Tentang Kami Sejarah'
+    manage_tentang_kami_logo:
+        tab: 'Tentang Kami'
+        label: 'Manage Tentang Kami Logo'
+    manage_tentang_kami_bisnis:
+        tab: 'Tentang Kami'
+        label: 'Manage Tentang Kami Bisnis'

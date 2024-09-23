@@ -1,0 +1,50 @@
+title = "test hut100ffamp"
+url = "/amp/test/hut100ff"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/test-hut100ff"
+==
+{% partial 'site/header-amp-hut100' %}
+
+<div class="hut-firstsection">
+    <amp-selector id="carouselWithPreviewSelector" class="carousel-preview hut-selector" on="select:carouselWithPreview.goToSlide(index=event.targetOption)" layout="container">
+      <div option="0" selected class="hutcarousel-dots"></div>
+      <div option="1" class="hutcarousel-dots"></div>      
+      <div option="2" class="hutcarousel-dots"></div>      
+      <div option="3"class="hutcarousel-dots"></div>      
+    </amp-selector>
+    <amp-carousel id="carouselWithPreview" width="400" height="650" layout="responsive" type="slides" on="slideChange:carouselWithPreviewSelector.toggle(index=event.index, value=true)">
+      <amp-img class="hutcarousel-img" width="400" height="650" src="https://unsplash.it/400/650?image=10" layout="responsive" alt="a sample image"></amp-img>
+      <amp-img class="hutcarousel-img" width="400" height="650" src="https://unsplash.it/400/650?image=11" layout="responsive" alt="a sample image"></amp-img>
+      <amp-img class="hutcarousel-img" width="400" height="650" src="https://unsplash.it/400/650?image=12" layout="responsive" alt="a sample image"></amp-img>
+      <amp-img class="hutcarousel-img" width="400" height="650" src="https://unsplash.it/400/650?image=13" layout="responsive" alt="a sample image"></amp-img>
+    </amp-carousel>
+</div>
+
+<div class="hut-secondsection">
+    <amp-img class="seconsection-img" width="400" height="650" src="https://unsplash.it/400/650?image=17" layout="responsive" alt="a sample image"></amp-img>
+</div>
+
+<div class="hut-thirdsection">
+    <amp-img class="seconsection-img" width="400" height="550" src="https://unsplash.it/400/650?image=18" layout="responsive" alt="a sample image"></amp-img>
+</div>
+
+<div class="hut-forthsection">
+    <div class="fourthsection-content">
+        <div class="content-1">
+        
+        </div>
+        
+        <button class="hut-btn-regist">Yuk Daftar Sekarang!</button>
+        <button class="hut-btn-syarat">Syarat Dan Ketentuan</button>
+    </div>
+</div>
+
+<div class="hut-fifthsection">
+
+</div>
+
+{% partial 'hut100form' %}
+
+{% partial 'site/footer-amp' %}

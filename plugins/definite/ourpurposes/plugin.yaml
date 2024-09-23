@@ -1,0 +1,99 @@
+plugin:
+    name: 'definite.ourpurposes::lang.plugin.name'
+    description: 'definite.ourpurposes::lang.plugin.description'
+    author: Definite
+    icon: oc-icon-arrow-circle-right
+    homepage: ''
+navigation:
+    ourpurposes:
+        label: 'Tujuan Kami'
+        url: definite/ourpurposes/seanuts
+        icon: icon-arrow-right
+        permissions:
+            - manage_tujuan_kami_menu
+        sideMenu:
+            Seanuts:
+                label: Seanuts
+                url: definite/ourpurposes/seanuts
+                icon: icon-child
+                permissions:
+                    - manage_seanuts
+            Dbms:
+                label: DBMS
+                url: /definite/ourpurposes/dbms
+                icon: icon-beer
+                permissions:
+                    - manage_dbms
+            Program:
+                label: 'Program Komunitas'
+                url: definite/ourpurposes/program
+                icon: icon-sitemap
+                permissions:
+                    - manage_program_komunitas
+            Farmer:
+                label: Farmer2Farmer
+                url: definite/ourpurposes/farmer
+                icon: icon-archive
+                permissions:
+                    - manage_farmer_to_farmer
+            Young:
+                label: 'Young Farmer Academy'
+                url: definite/ourpurposes/young
+                icon: icon-street-view
+                permissions:
+                    - manage_young_farmer
+            FDOV:
+                label: FDOV
+                url: definite/ourpurposes/fdov
+                icon: icon-slideshare
+                permissions:
+                    - manage_fdov
+            DDP:
+                label: 'DDP Communication'
+                url: definite/ourpurposes/ddp
+                icon: icon-users
+                permissions:
+                    - manage_ddp_communication
+            Waste:
+                label: 'Waste Water Treatment'
+                url: definite/ourpurposes/waste
+                icon: icon-sitemap
+                permissions:
+                    - manage_waste_water
+            Energy:
+                label: 'Energy Saving Project'
+                url: definite/ourpurposes/energy
+                icon: icon-lightbulb-o
+                permissions:
+                    - manage_energy_saving
+permissions:
+    manage_tujuan_kami_menu:
+        tab: 'Tujuan Kami'
+        label: 'Manage Tujuan Kami Menu'
+    manage_seanuts:
+        tab: 'Tujuan Kami'
+        label: 'Manage Seanuts'
+    manage_dbms:
+        tab: 'Tujuan Kami'
+        label: 'Manage DBMS'
+    manage_program_komunitas:
+        tab: 'Tujuan Kami'
+        label: 'Manage Program Komunitas'
+    manage_farmer_to_farmer:
+        tab: 'Tujuan Kami'
+        label: 'Manage Farmer to Farmer'
+    manage_young_farmer:
+        tab: 'Tujuan Kami'
+        label: 'Manage Young Farmer'
+    manage_fdov:
+        tab: 'Tujuan Kami'
+        label: 'Manage FDOV'
+    manage_ddp_communication:
+        tab: 'Tujuan Kami'
+        label: 'Manage DDP Communication'
+    manage_waste_water:
+        tab: 'Tujuan Kami'
+        label: 'Manage Waste Water'
+    manage_energy_saving:
+        tab: 'Tujuan Kami'
+        label: 'Manage Energy Saving'

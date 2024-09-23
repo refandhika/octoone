@@ -1,0 +1,32 @@
+.searchresult {
+	&__wrapper {
+		margin: 80px 0;
+
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+
+	&__form {
+		.input-group-addon {
+			background-color: white;
+			border-left: 1px solid transparent;
+
+			button {
+				// -webkit-appearance: none;
+				background-color: white;
+				border: 0;
+			}
+		}
+
+		.form-control {
+			height: 50px;
+			border-right: 0;
+    		box-shadow: none;
+
+    		&:focus {
+    			border: 1px solid #ccc;
+    		}
+		}
+	}
+}

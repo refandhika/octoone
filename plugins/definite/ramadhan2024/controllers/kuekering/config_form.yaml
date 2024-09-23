@@ -1,0 +1,10 @@
+name: Kuekering
+form: $/definite/ramadhan2024/models/kuekering/fields.yaml
+modelClass: Definite\Ramadhan2024\Models\Kuekering
+defaultRedirect: definite/ramadhan2024/kuekering
+create:
+    redirect: 'definite/ramadhan2024/kuekering/update/:id'
+    redirectClose: definite/ramadhan2024/kuekering
+update:
+    redirect: definite/ramadhan2024/kuekering
+    redirectClose: definite/ramadhan2024/kuekering

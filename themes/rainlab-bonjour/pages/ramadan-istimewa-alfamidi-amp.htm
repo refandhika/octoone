@@ -1,0 +1,128 @@
+title = "ramadan-istimewa-alfamidi-amp"
+url = "/amp/aktivitas-kami/ramadan-istimewa/alfamidi/:category?"
+layout = "default-amp"
+is_hidden = 0
+==
+<?php
+function onStart(){
+        
+        //get slug
+        $category        = $this->param('category');
+        
+        //get json data
+        //$path              = "https://www.frisianflag.com/themes/rainlab-bonjour/assets/ramadan-istimewa/recipes.json";
+        $path              = url('/themes/rainlab-bonjour/assets/ramadan-istimewa/ramadan-recipes.json');
+        $cmsController     = new Cms\Classes\Controller;
+        $arrContextOptions =array(
+            "ssl"=>array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
+        );
+
+         if(json_decode(file_get_contents($path, true))){
+                 $collection    = collect(json_decode(file_get_contents($path, true)));
+                 $data          = $collection->where('category', $category );
+            }
+         else{
+               
+                return $cmsController->render("/404");
+           }
+      
+        
+        if(count($data) == 0){
+            
+             return $cmsController->render("/404");
+        }
+         if (session::get('data')) {
+          
+           $this['messages'] = session::get('data');
+        }
+        $this['recipes']   = $data;
+        $this['category']   = $category;
+        
+        switch ($category) {
+            case "skm":
+                $this['product'] = 1;
+                $this['market']  = 2;
+                $this->page->title ="Ramadan Istimewa Promo SKM Alfamidi";
+                break;
+            case "rtd":
+                $this['product'] = 2;
+                $this['market']  = 2;
+                $this->page->title ="Ramadan Istimewa Promo RTD Alfamidi";
+                break;
+                   
+        }
+        $this['menus'] = "dont-allow";
+}
+?>
+==
+<!--s:carousel-banner-->
+{% partial 'site/banner-ramadan-istimewa-amp' %}
+<!--e:carousel-banner-->
+
+    <div class="mb-20"></div>
+    <section>
+ 
+         <div class="detail_text">
+         
+              {% if category == "rtd"%}
+                <amp-img 
+                    src="{{ 'ramadan-alfamidi-rtd-mobile.jpg' |media }}"
+                    width="50"
+                    height="50"
+                    layout="responsive"
+                    alt="{{ct.title | title}}">
+                    </amp-img>
+                {% else %}
+                    <amp-img 
+                        src="{{ 'ramadan-alfamidi-skm-mobile.jpg' |media }}"
+                        width="50"
+                        height="50"
+                        layout="responsive"
+                        alt="{{ct.title | title}}">
+                        </amp-img>
+                {% endif %}
+                
+             <div class="mb-20 p-20"></div>
+{% if messages %}    
+      <div id="message" style="color: #721c24;background-color: #f8d7da;border-color: #f5c6cb;position:relative;padding:12px;">
+      {%if messages.first('email') == 'wrong' or  messages.first('phone') == 'wrong'%}
+         <p style="font-size:16px;">Maaf, format Nomor Hp / Alamat email yang Anda masukkan tidak valid, mohon isi kembali dengan data yang benar.</p>
+      {%else%}
+         <p style="font-size:16px;">Maaf, permintaan redeem kupon tidak dapat kami proses, karena permintaan Anda telah melebihi ketentuan yang telah di tetapkan sesuai dengan Syarat dan Ketetuan yang berlaku.</p>
+      {%endif%}
+         
+         <button on="tap:message.hide" style="position: absolute;right: 0;top: 0;background-color:transparent;border:none">x</button>
+      </div>   
+{%endif%}
+
+         </div>
+    </section>
+
+
+<div class="main-section center {{color}}">
+
+    <div class="resep-takjil-istimewa  padding-25">
+     {% for ct in recipes%}
+        <div class="main__recipe">
+            <div class="detail_text mt-10">
+                <h1 style="font-size:22px">{{ct.title | title}}</h1>   
+            </div>
+                   <amp-img 
+                    class="round"
+                    src="{{ct.img|media }}"
+                    width="50"
+                    height="50"
+                    layout="responsive"
+                    alt="{{ct.title | title}}">
+                    </amp-img>
+                    
+             <div style="margin-bottom: 50px; margin-top: 20px;"><a href="{{'ramadan-istimewa-archive-amp'|page}}/{{ct.slug}}" class=" btn-ramadan button green">LIHAT RESEP</a></div>        
+            
+		    </div>
+		 {% endfor%}   
+	    </div>	
+	</div>
+</div>

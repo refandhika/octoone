@@ -1,0 +1,14 @@
+fields:
+    title:
+        label: Title
+        span: left
+        type: text
+    link:
+        label: Link
+        span: right
+        type: text
+    icon:
+        label: Icon
+        span: auto
+        mode: image
+        type: mediafinder

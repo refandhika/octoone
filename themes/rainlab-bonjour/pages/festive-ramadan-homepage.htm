@@ -1,0 +1,252 @@
+title = "Resep Ramadan Kaya Rasa di Rumah Aja BACKUP"
+url = "/aktivitas-kami/resep-ramadan-kaya-rasa-dirumahaja-backup"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/resep-ramadan-kaya-rasa-dirumahaja"
+
+[staticPage]
+useContent = 1
+default = 0
+==
+<?php
+function onStart(){
+    return redirect()->to($this->pageUrl('amp-festive-homepage'));
+$cmsController     = new Cms\Classes\Controller;
+$pages = Definite\Activities\Models\Activity::where('id',209)->get()->first();
+if($pages){
+	$this['title'] = $pages->title;
+    $this->page->title = $pages->title;
+    $this->page->meta_title = $pages->meta_title;
+    $this->page->meta_description = $pages->meta_description;
+
+	$resepmanis = Definite\Activities\Models\Activity::whereHas('categories',function($query) {
+           $query->where('id', 22);
+        })->select('title', 'slug', 'featured_image')->
+	whereIn('id',[256,231,230])->
+	orderBy('created_at', 'desc')->take(3)->get();
+
+	$this['resepmanis'] = $resepmanis;
+
+	$kuekering = Definite\Activities\Models\Activity::whereHas('categories',function($query) {
+           $query->where('id', 21);
+        })->select('title', 'slug', 'featured_image')->
+	whereIn('id',[218,292,273])->
+	orderBy('created_at', 'asc')->take(3)->get();
+	$this['kuekering'] = $kuekering;
+
+$this['promo'] = [
+            'festive-ramadan/promo/Alfamart-rtd2.png' => 'https://www.frisianflag.com/resepsahurterbaik/promo-terbaik',
+            'festive-ramadan/promo/Blibli-rtd.png' => 'https://www.frisianflag.com/resepsahurterbaik/promo-terbaik',
+            'festive-ramadan/promo/Jdiid-rtd.png' => 'https://www.frisianflag.com/resepsahurterbaik/promo-terbaik'];
+}else{
+  return $cmsController->render("/404");
+}
+
+
+//$this->page->amp_url = $this->pageUrl('festive-ramadan-amp');
+$this->page->amp_url = $this->pageUrl('amp-festive-homepage');
+}
+?>
+==
+<!--s:static-banner-->
+
+{% partial 'site/banner-festive' %}
+
+<!--e:static-banner-->
+
+<div class="main-detail">
+
+
+<!--s:resep sahur terbaik-->	
+<section class="resep-sahur-terbaik navy-blue pb-3">
+	<div class="lentern-big">
+		<img src="{{ 'festive-ramadan/lentern-big.png'|media }}" alt="Lentera" />
+	</div>
+	<div class="lentern-small">
+		<img src="{{ 'festive-ramadan/lentern-small.png'|media }}" alt="Lentera" />
+	</div>
+         <div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<h2 class="section__title">{{'Resep Sahur Terbaikmu' | upper}}</h2>
+				</div> 
+			</div>
+          
+          <div class="row">
+				<div class="col-xs-12 col-sm-4 item-thumb  text-center">
+						<a href="https://www.frisianflag.com/resepsahurterbaik/resep-terbaik/ayam-geprek-saus-keju">
+						<img src="{{ 'festive-ramadan/resep-sahur/ayam-geprek.png'|media }}" alt="Ayam Geprek" />
+						</a>
+						 <div class="content-ramadan text-center">
+    	        
+                	       <a href="https://www.frisianflag.com/resepsahurterbaik/resep-terbaik/ayam-geprek-saus-keju" class="button gradient-orange">Lihat Resepnya</a>
+                	      
+            	        </div>
+				</div> 
+				<div class="col-xs-12 col-sm-4 item-thumb  text-center">
+                        <a href="https://www.frisianflag.com/resepsahurterbaik/resep-terbaik/soto-ayam">
+						<img src="{{ 'festive-ramadan/resep-sahur/soto-ayam.jpg'|media}}" alt="Resep Soto Ayam" />
+						</a>
+				         <div class="content-ramadan text-center">
+    	        
+                	       <a href="https://www.frisianflag.com/resepsahurterbaik/resep-terbaik/soto-ayam" class="button gradient-orange">Lihat Resepnya</a>
+                	      
+            	        </div>
+				</div> 
+				<div class="col-xs-12 col-sm-4 item-thumb  text-center">
+					<a href="https://www.frisianflag.com/resepsahurterbaik/resep-terbaik/telur-dadar-padang">	
+						<img src="{{ 'festive-ramadan/resep-sahur/telur-dadar.png'|media }}" alt="Resep Kolak" />
+						</a>
+						 <div class="content-ramadan text-center">
+    	        
+                	       <a href="https://www.frisianflag.com/resepsahurterbaik/resep-terbaik/telur-dadar-padang" class="button gradient-orange">Lihat Resepnya</a>
+                	      
+            	        </div>
+				</div>
+			</div> 
+			</div>
+			
+			
+			 <div class="content-ramadan text-center">
+    	        
+    	       <a href ="https://www.frisianflag.com/resepsahurterbaik/resep-terbaik" class="button gradient-blue selengkapnya">Lihat Selengkapnya</a>
+    	      
+	        </div>
+	
+</section>
+<!--s:resep sahur terbaik-->	
+
+
+<!--s:resep-manis-7-langkah-->	
+<section class="resep-manis-7-langkah light-blue">
+    <div class="lentern-big">
+		<img src="{{ 'festive-ramadan/lentern-big.png'|media }}" alt="Lentera" />
+	</div>
+	<div class="lentern-small">
+		<img src="{{ 'festive-ramadan/lentern-small.png'|media }}" alt="Lentera" />
+	</div>
+
+	<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<h2 class="section__title">{{'Resep Manis 7 Langkah' | upper}}</h2>
+				</div> 
+			</div>
+          
+			<div class="row">
+				{% for ct in resepmanis %}
+				<div class="col-xs-12 col-sm-4 item-thumb text-center">
+						<a href="{{'festive-ramadan-homepage'|page}}/{{ct.slug}}">				
+							<img src="{{ ct.featured_image |media }}" alt="{{ct.title}}" />
+						</a>
+						 <div class="content-ramadan text-center">
+    	        
+                	       <a href="{{'festive-ramadan-homepage'|page}}/{{ct.slug}}" class="button gradient-orange">Lihat Resepnya</a>
+                	      
+            	        </div>
+				</div> 
+
+				{% endfor %}
+			
+				
+			</div> 
+	</div> 
+	        
+	        <div class="content-ramadan text-center">
+    	        
+    	       <a href="{{'festive-ramadan-homepage'|page}}/resep-manis-7-langkah" class="button gradient-blue selengkapnya">Lihat Selengkapnya</a>
+    	      
+	        </div>
+</section>
+
+<!--s:resep kue kering pilihan-->	
+<section class="resep-kue-kering-pilihan navy-blue">
+    <div class="lentern-big">
+		<img src="{{ 'festive-ramadan/lentern-big.png'|media }}" alt="Lentera" />
+	</div>
+	<div class="lentern-small">
+		<img src="{{ 'festive-ramadan/lentern-small.png'|media }}" alt="Lentera" />
+	</div>
+
+	<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<h2 class="section__title">{{'Resep Kue Kering Pilihan' | upper}}</h2>
+				</div> 
+			</div>
+          
+			<div class="row">
+				{% for ct in kuekering %}
+					<div class="col-xs-12 col-sm-4 item-thumb text-center">
+							<a href="{{'festive-ramadan-homepage'|page}}/{{ct.slug}}">				
+								<img src="{{ ct.featured_image |media }}" alt="{{ct.title}}" />
+							</a>
+							 <div class="content-ramadan text-center">
+	    	        
+	                	       <a href="{{'festive-ramadan-homepage'|page}}/{{ct.slug}}" class="button gradient-orange">Lihat Resepnya</a>
+	                	      
+	            	        </div>
+					</div> 
+
+				{% endfor %}
+			
+			</div> 
+    </div>
+	        <div class="content-ramadan text-center">
+    	        
+    	       <a href="{{'festive-ramadan-homepage'|page}}/resep-kue-kering-pilihan" class="button gradient-blue selengkapnya ">Lihat Selengkapnya</a>
+    	      
+	        </div>
+	
+</section>
+<!--s:resep kue kering pilihan-->	
+
+
+<!--s:promo-ramadan-->	
+{#
+<section class="promo-ramadan light-blue ">	
+	<div class="lentern-big">
+		<img src="{{ 'festive-ramadan/lentern-big.png'|media }}" alt="Lentera" />
+	</div>
+	<div class="lentern-small">
+		<img src="{{ 'festive-ramadan/lentern-small.png'|media }}" alt="Lentera" />
+	</div>
+	<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<h2 class="section__title">{{'Promo Ramadan' | upper}}</h2>
+				</div> 
+			</div>
+          
+			<div class="row">
+
+				{% for key, value in promo %}
+				
+					<div class="col-xs-12 col-sm-4 item-thumb text-center">
+						<a href="{{ value }}" >
+							<img src="{{ key | media }}" alt="Promo" />
+						</a>
+						 <div class="content-ramadan text-center">
+    	        
+                	       <a href="{{ value }}" class="button gradient-orange">Lihat Promonya</a>
+                	      
+            	        </div>
+				
+					</div> 
+				{% endfor %}
+			
+			</div> 
+	</div>
+	        
+	        <div class="content-ramadan text-center">
+    	        
+    	       <a href="{{'festive-ramadan-homepage'|page}}/promo-ramadan" class="button gradient-blue selengkapnya ">Lihat Selengkapnya</a>
+    	      
+	        </div>
+</section>
+#}
+<!--s:rangkaian produk-->
+</div>
+
+{% partial 'site/footer-without-login' %}

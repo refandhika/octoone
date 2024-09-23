@@ -1,0 +1,11 @@
+list: $/definite/activities/models/category/columns.yaml
+modelClass: Definite\Activities\Models\Category
+title: Categories
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'definite/activities/categories/update/:id'

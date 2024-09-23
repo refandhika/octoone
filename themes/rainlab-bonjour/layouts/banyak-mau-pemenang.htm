@@ -1,0 +1,54 @@
+description = "Layout Banyak Mau Pemenang"
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('banyak-mau-pemenang-amp');
+    }
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+    	<img src="{{ 'banyakmau/Banyak-MauWinner.jpg'|media }}" class="hidden-xs" />
+        <img src="{{ 'banyakmau/banner-banyak-mauwinner-m.jpg'|media  }}" class="visible-xs" />
+    </div>
+</div>
+
+{% partial 'site/banyak-mau-menu' %}
+
+
+<div id='main-section' class="container" style="padding: 30px 15px;">
+    <div class="col-md-12">
+        <div class="default-content">
+            <div class="center-img" style="text-align: center;margin-bottom:10px;">
+                <img src="{{ 'winner-web.jpg'|media  }}" style="" class="hidden-xs">
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .default-content h3 {
+        font-size: 22px;
+        line-height: 1.2;
+    }
+
+    @media screen and (min-width: 767px) {
+        .default-content h3 {
+            font-size: 30px;
+        }
+    }
+
+  @media screen and (max-width: 767px) {
+    .m-bottom-15 {
+      margin-bottom: 15px;
+    }
+  }
+</style>
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

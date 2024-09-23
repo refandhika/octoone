@@ -1,0 +1,63 @@
+description = "Menu for ramadan istimewa"
+
+[viewBag]
+==
+<?php
+function onStart() {
+    // Get Router
+    $router             = $this->controller->getRouter();
+    $this->page['slug'] = $router->getURL();
+    $this['category']   = $this->param('category');
+}
+?>
+==
+<div class="container-menutab container-menutab--five">
+	<div class="container-one">
+	    <ul>
+          <li class="toggle visible-xs visible-sm"><a href="javascript:;" class="active">
+          
+          {% if ( this.page.slug == "aktivitas-kami/ramadan-istimewa/resep-takjil-istimewa" or category == "resep-takjil-istimewa" ) %}
+          {{'resep takjil istimewa' | upper}}
+          
+          {# {% elseif ( this.page.slug == "aktivitas-kami/ramadan-istimewa/resep-sahur" or category == "resep-sahur") %}
+          
+          {{'resep sahur terbaik' | upper}}
+          
+          {% elseif ( this.page.slug == "aktivitas-kami/ramadan-istimewa/resep-kue-kering-pilihan" or category == "resep-kue-kering-pilihan") %}
+          
+          {{'resep kue kering pilihan' | upper}}
+          
+           {% elseif ( this.page.slug == 'aktivitas-kami/ramadan-istimewa/daftar' ) %}
+          
+          {{'resep kue kering pilihan' | upper}}--> 
+          
+          #}
+          
+          {% endif %}
+          
+          </a>
+        </li>
+        <li>
+          <a href="{{ '/aktivitas-kami/ramadan-istimewa/resep-takjil-istimewa' }}" {{ (this.page.slug == "aktivitas-kami/ramadan-istimewa/resep-takjil-istimewa" or category == "resep-takjil-istimewa" ? 'class="active"' : '') }}>
+                {{'resep takjil istimewa' | upper}}
+          </a>
+        </li>
+        <!--<li>
+          <a href="{{ '/aktivitas-kami/ramadan-istimewa/resep-sahur' }}" {{ (this.page.slug == "aktivitas-kami/ramadan-istimewa/resep-sahur" or category == "resep-sahur" ? 'class="active"' : '') }}>
+                {{'resep sahur terbaik' | upper}}
+          </a>
+        </li>
+       
+        <li>
+          <a href="{{ '/aktivitas-kami/ramadan-istimewa/resep-kue-kering-pilihan' }}" {{ (this.page.slug == "aktivitas-kami/ramadan-istimewa/resep-kue-kering-pilihan" or category == "resep-kue-kering-pilihan" ? 'class="active"' : '') }}>
+                {{'resep kue kering pilihan' | upper}}
+          </a>
+        </li>
+       <li>
+  <a href="{{ '/aktivitas-kami/ramadan-istimewa/daftar' }}" {{ (this.page.slug == '/aktivitas-kami/ramadan-istimewa/daftar' ? 'class="active"' : '') }}>
+    Pemenang
+  </a>
+</li> -->
+      </ul>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+list: $/definite/ourpurposes/models/fdov/columns.yaml
+modelClass: Definite\Ourpurposes\Models\Fdov
+title: Fdov
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'definite/ourpurposes/fdov/update/:id'

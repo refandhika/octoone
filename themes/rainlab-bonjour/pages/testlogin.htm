@@ -1,0 +1,447 @@
+title = "testlogin-bc"
+url = "/testlogin"
+layout = "home"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/testlogin-bc"
+==
+{% put meta %}
+<meta name="google-signin-client_id" content="685966576634-rvl0hlb8oahpa454nq36i2rdgdltghrg.apps.googleusercontent.com">
+{% endput %}
+<style>
+    @media(min-width : 769px){
+        .login{
+            background: #e4f5fd;
+            padding: 70px 5%;
+            width: 100%;
+        }
+        .login .wrapper{
+            padding-top: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .login .login-top{
+            padding: 50px 0;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            width: 45%;
+            position: relative;
+        }
+        .login .login-top form{
+            align-self: center;
+            width: 70%;
+        }
+        .login .login-top label{
+            color: #0A3260;
+            font-size: 12.5px;
+        }
+        .login .login-top input {
+            width: 100%;
+            height: 35pt;
+            border: 2pt solid #42B4E7;
+            margin-bottom: 10px;
+            background: transparent;
+            color:#42B4E7;
+            border-radius: 7.5px;
+            outline: none;
+            padding-left: 20px;
+        }
+        .login .login-top input.error{
+            border: 2px solid red;    
+        }
+        .login .login-top .login-submit{
+            width: 100%;
+            height: 35pt;
+            border: unset;
+            background: linear-gradient(290deg, #FFBA00, #F0CF17);
+            border-radius: 50px;
+            margin-top: 20px;
+            color: #0F4D9A;
+            font-size: 20px;
+            box-shadow: 1px 1px 1px #8b9a0f;
+        }
+        .login .login-top::after{
+                content: "";
+                height: 100%;
+                background: #42B4E7;
+                width: 1px;
+                position: absolute;
+                top: 0;
+                right: -5%;
+        }
+        
+        .login .login-mid{
+            display: none;
+            grid-template-columns: 2fr 1.35fr 2fr;
+            margin-bottom: 50px;
+        }
+
+        .login .login-mid .text{
+            text-align: center;
+            color: #003F7C;
+            font-size: 17px;
+        }
+        .login .login-mid .line-1, .login .login-mid .line-2{
+            height: 10%;
+            align-self: center;
+            background: #42b4e7b5;    
+        } 
+        .login .login-bottom {
+            display: flex;
+            flex-direction: column;
+            width: 45%;
+            align-items: center;
+            margin-top: 75px;;
+            position: relative;
+        }
+        .login .login-bottom::before{
+            content: "Atau";
+            color: #003F7C;
+            margin-bottom: 30px;
+            font-size: 33px;
+            font-family: 'Brevia-Bold';
+        }
+        .login .login-bottom button{ 
+            height: 70px;
+            width: 70%;
+            background: #277AD6;
+            color: #fff;
+            border: unset;
+            font-size: 17.5px;
+            border-radius: 10px;
+            box-shadow: 1px 1px 1px #21466e;
+            font-family: 'Brevia-Bold';
+        }
+        .login .login-bottom button:nth-child(1){
+            margin-bottom: 20px;
+        }
+        input:invalid {
+          border-color: red;
+        }
+        label.error{
+        color: red !important;
+        display: flex;    
+        }
+        .g-signin2{
+            height: 70px;
+            width: 70%;
+            background: #277AD6;
+            color: #fff;
+            border: unset;
+            font-size: 17.5px;
+            border-radius: 10px;
+            box-shadow: 1px 1px 1px #21466e;
+            font-family: 'Brevia-Bold';    
+            margin-bottom: 20px;
+        }
+        .abcRioButtonLightBlue {
+            background-color: transparent;
+            color: #FFF;
+            height: 100% !important;
+            width: 100% !important;
+            box-shadow: unset;
+        }
+        .abcRioButtonContentWrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .abcRioButtonIcon{
+            display: none;    
+        }
+        .abcRioButtonContents {
+            font-size: 17.5px !important;
+            font-family: 'Brevia-Bold' !important;    
+        }
+        .abcRioButton:hover {
+         box-shadow: unset !important;
+        }
+    }
+
+    @media(max-width : 768px){
+        .login{
+            background: #e4f5fd;
+            padding: 70px 5%;
+            width: 100%;
+        }
+        .login .wrapper{
+            padding-top: 20px;    
+        }
+        .login .login-top{
+            padding: 50px 0;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+        }
+        .login .login-top label{
+            color: #0A3260;
+            font-size: 12.5px;
+        }
+        .login .login-top input {
+            width: 100%;
+            height: 35pt;
+            border: 2pt solid #42B4E7;
+            margin-bottom: 10px;
+            background: transparent;
+            color:#42B4E7;
+            border-radius: 7.5px;
+            outline: none;
+            padding-left: 20px;
+        }
+        .login .login-top input.error{
+            border: 2px solid red;    
+        }
+        .login .login-top .login-submit{
+            width: 100%;
+            height: 35pt;
+            border: unset;
+            background: linear-gradient(290deg, #FFBA00, #F0CF17);
+            border-radius: 50px;
+            margin-top: 20px;
+            color: #0F4D9A;
+            font-size: 20px;
+            box-shadow: 1px 1px 1px #8b9a0f;
+        }
+        
+        .login .login-mid{
+            display: grid;
+            grid-template-columns: 2fr 1.35fr 2fr;
+            margin-bottom: 50px;
+        }
+        .login .login-mid .text{
+            text-align: center;
+            color: #003F7C;
+            font-size: 17px;
+        }
+        .login .login-mid .line-1, .login .login-mid .line-2{
+            height: 10%;
+            align-self: center;
+            background: #42b4e7b5;    
+        } 
+        .login .login-bottom {
+            display: flex;
+            flex-direction: column;
+        }
+        .login .login-bottom button{ 
+            height: 70px;
+            width: 100%;
+            background: #277AD6;
+            color: #fff;
+            border: unset;
+            font-size: 17.5px;
+            border-radius: 10px;
+            box-shadow: 1px 1px 1px #21466e;
+            font-family: 'Brevia-Bold';
+        }
+        .login .login-bottom button:nth-child(1){
+            margin-bottom: 20px;
+        }
+        input:invalid {
+          border-color: red;
+        }
+        label.error{
+        color: red !important;
+        display: flex;    
+        }
+        .g-signin2{
+            height: 70px;
+            width: 100%;
+            background: #277AD6;
+            color: #fff;
+            border: unset;
+            font-size: 17.5px;
+            border-radius: 10px;
+            box-shadow: 1px 1px 1px #21466e;
+            font-family: 'Brevia-Bold';    
+            margin-bottom: 20px;
+        }
+        .abcRioButtonLightBlue {
+            background-color: transparent;
+            color: #FFF;
+            height: 100% !important;
+            width: 100% !important;
+        }
+        .abcRioButtonContentWrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .abcRioButtonIcon{
+            display: none;    
+        }
+        .abcRioButtonContents {
+            font-size: 17.5px !important;
+            font-family: 'Brevia-Bold' !important;    
+        }
+        .abcRioButton:hover {
+         box-shadow: unset !important;
+        }
+    }
+</style>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<div class="login">
+    <div class="wrapper">
+        <div class="login-top">
+            <form id="hut-login" method="post">
+                <label>Nama</label><br>
+                <input type="text" class="login-nama" onkeypress="return /[0-9a-zA-Z-@\s]/i.test(event.key)" id="loginname" name="loginname">
+                <label>No Telepon Pengirim</label><br>
+                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" class="login-telp" id="logintelp" name="logintelp" maxlength="14">
+                <label>Email Pengirim</label><br>
+                <input type="email" class="login-email" id="loginemail" name="loginemail" onkeypress="return /[0-9a-zA-Z-@.]/i.test(event.key)">
+                <button type="submit" class="login-submit"><strong>Daftar</strong></button>
+            </form>
+        </div>
+        
+        <div class="login-mid">
+            <div class="line-1"></div>
+            <div class="text"><strong>Atau</strong></div>
+            <div class="line-2"></div>
+        </div>
+        
+        <div class="login-bottom">
+            
+            <div class="g-signin2" id="g-click" data-auto_select="false" data-onsuccess="onSignIn" data-onload="false"></div>
+            <button  class="login-fb" onclick="fbLogin(); return false;" type="button">Daftar Via Facebook</button>
+            
+        </div>
+        
+        
+        <a href="#" onclick="signOut();" style="margin-top: 250px;">Sign out</a>
+        
+        
+    </div>
+</div>
+
+
+{% partial 'site/footer' %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+<script>
+window.onbeforeunload = function(e){
+  gapi.auth2.getAuthInstance().signOut();
+};
+
+window.fbAsyncInit = function() {
+    // FB JavaScript SDK configuration and setup
+    FB.init({
+      appId      : '617390536725868', // FB App ID
+      cookie     : true,  // enable cookies to allow the server to access the session
+      xfbml      : true,  // parse social plugins on this page
+      version    : 'v3.2' // use graph api version 2.8
+    });
+
+    // Check whether the user already logged in
+    
+                console.log('mau logout nih')
+    FB.getLoginStatus(function(response) {
+        console.log('response')
+                console.log(response)
+        if (response.status === 'connected') {
+            FB.logout(function(response) {
+                console.log(response)
+                console.log('logout FB')
+            });
+        }
+    });
+};
+
+// Load the JavaScript SDK asynchronously
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+// Facebook login with JavaScript SDK
+function fbLogin() {
+    FB.login(function (response) {
+        if (response.authResponse) {
+            // Get and display the user profile data
+            getFbUserData();
+        } else {
+            document.getElementById('status').innerHTML = 'User cancelled login or did not fully authorize.';
+        }
+    }, {scope: 'email'});
+}
+
+  function signOut() {
+      
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+
+function getFbUserData(){
+    
+    FB.api('/me', {locale: 'en_US', fields: 'id,first_name,last_name,email,link,gender,locale,picture'},
+    function (response) {
+        response.first_name+' '+response.last_name;
+        response.email;
+        $.request('onRegist', {
+            data : {
+                'fbid' : response.id,
+                'email' : response.email,
+                'name' : response.first_name,
+                'surname' : response.last_name,
+            },
+            success : function (data){
+                window.location.href = "https://www.frisianflag.com/user-dashboard";
+            },
+            error : function (jqxhr){
+                console.log(jqxhr)    
+            },
+            
+        })
+        console.log(response.first_name)
+        console.log(response.last_name)
+        console.log(response.email)
+        console.log(response.id)
+       
+    });
+}
+
+
+    var ses_name = sessionStorage.getItem("hut_nama");
+    if( ses_name != null ) {
+        //document.location.href = "registpahlawan";
+    } 
+    
+    function onSignIn(googleUser) {
+      alert("google");
+      var profile = googleUser.getBasicProfile();
+      console.log(profile);
+      console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+      console.log('Name: ' + profile.getName());
+      console.log('Image URL: ' + profile.getImageUrl());
+      console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+     var name = profile.getName();
+     var email = profile.getEmail();
+     sessionStorage.setItem('hut_nama', name);
+     $('.login-nama').val(name);
+      sessionStorage.setItem('hut_email', email);
+     $('.login-email').val(email);
+         //document.location.href = "registpahlawan";
+        $.request('onRegist', {
+            data : {
+                'googleid' : profile.getId(),
+                'email' : profile.getEmail(),
+                'name' : profile.getName(),
+                'surname' : profile.getName(),
+            },
+            success : function (data){
+                window.location.href = "https://www.frisianflag.com/user-dashboard";
+            },
+            error : function (jqxhr){
+                console.log(jqxhr)    
+            },
+            
+        })
+    }
+</script>

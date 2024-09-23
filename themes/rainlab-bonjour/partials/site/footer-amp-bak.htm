@@ -1,0 +1,159 @@
+[viewBag]
+==
+<!-- s:footer -->
+    <footer>
+    
+      <div class="newsletter">
+        <strong>{{'subscribe-to-frisian-flag-newsletter'|_}}</strong>
+        <span>{{'be-the-first-to-get-update'|_}}</span>
+        <form action-xhr="//www.frisianflag.com/subscribe" method="post">
+          <input type="text" name="email" placeholder="Your email here" required>
+          <input type="submit" value="" disabled>
+          <div submit-success>
+                          <template type="amp-mustache">
+                            <p>Thankyou for Subscribe!</p>
+                          </template>
+                        </div>
+                        <div submit-error>
+                          <template type="amp-mustache">
+                            <p>Isian email sudah ada sebelumnya.</p>
+                          </template>
+          </div>
+        </form>
+      </div>
+       
+      <div class="situs">
+        <strong>{{'situs-kami-yang-lain'|_}}</strong>
+        <a href="https://www.frieslandcampina.com/en/"  target="_blank">
+          <amp-img 
+              src="{{ 'assets/img/other-sites/friesland.png'|theme }}"
+              srcset="{{ 'assets/img/other-sites/friesland2x.png'|theme }} 640w,
+                     {{ 'assets/img/other-sites/friesland2x.png'|theme }} 320w"
+              width="84"
+              height="36"
+              alt="an image">
+          </amp-img>
+        </a>
+        <a href="https://www.ibudanbalita.com/"  target="_blank">
+          <amp-img 
+              src="{{ 'assets/img/other-sites/ibu-balita.png'|theme }}"
+              srcset="{{ 'assets/img/other-sites/ibu-balita.png'|theme }} 640w,
+                     {{ 'assets/img/other-sites/ibu-balita.png'|theme }} 320w"
+              width="72"
+              height="30"
+              alt="an image">
+          </amp-img>
+        </a>
+       <!--  <a href="https://www.friso.co.id/"  target="_blank">
+         <amp-img 
+             src="{{ 'assets/img/other-sites/friso.png'|theme }}"
+             srcset="{{ 'assets/img/other-sites/friso2x.png'|theme }} 640w,
+                    {{ 'assets/img/other-sites/friso2x.png'|theme }} 320w"
+             width="68"
+             height="29"
+             alt="an image">
+         </amp-img>
+       </a> -->
+        <a href="https://www.frisianflag.com/milkpedia/manfaat-minum-susu/omela-krimer-lezat-untuk-franchise-thai-tea-anda"  target="_blank">
+          <amp-img 
+              src="{{ 'assets/img/other-sites/omela.png'|theme }}"
+              srcset="{{ 'assets/img/other-sites/omela2x.png'|theme }} 640w,
+                     {{ 'assets/img/other-sites/omela2x.png'|theme }} 320w"
+              width="94"
+              height="30"
+              alt="an image">
+          </amp-img>
+        </a>
+      </div>
+      <div class="clearfix"></div>
+      <!-- s:fakta -->
+      {% if not records.isEmpty %}
+          {% set funfact = records.random %}
+          <div class="title_page title_page_white">{{'fakta-seru'|_}} #{{ funfact.no }}</div>
+          <div class="fakta">
+            {{ trans_pick(funfact, 'description') | raw }}
+          </div>
+      {% endif %}
+      <!-- e:fakta -->
+      <!-- s:sosmed -->
+      <div class="title_page title_page_white">Temukan Kami</div>
+      <div class="sosmed">
+        <a href="https://www.facebook.com/FrisianFlagID" target="_blank">
+          <amp-img 
+              src="{{ 'assets/img/ico_fb.svg'|theme }}"
+              srcset="{{ 'assets/img/ico_fb.svg'|theme }} 640w,
+                     {{ 'assets/img/ico_fb.svg'|theme }} 320w"
+              width="30"
+              height="30"
+              alt="an image">
+          </amp-img>
+        </a>
+        <a href="https://twitter.com/FrisianFlagID" target="_blank">
+          <amp-img 
+              src="{{ 'assets/img/ico_tw.svg'|theme }}"
+              srcset="{{ 'assets/img/ico_tw.svg'|theme }} 640w,
+                     {{ 'assets/img/ico_tw.svg'|theme }} 320w"
+              width="30"
+              height="30"
+              alt="an image">
+          </amp-img>
+        </a>
+        <a href="https://www.instagram.com/frisianflagid/" target="_blank">
+          <amp-img 
+              src="{{ 'assets/img/ico_ig.svg'|theme }}"
+              srcset="{{ 'assets/img/ico_ig.svg'|theme }} 640w,
+                     {{ 'assets/img/ico_ig.svg'|theme }} 320w"
+              width="30"
+              height="30"
+              alt="an image">
+          </amp-img>
+        </a>
+        <a href="https://www.youtube.com/user/frisianflagger" target="_blank">
+          <amp-img 
+              src="{{ 'assets/img/ico_yt.svg'|theme }}"
+              srcset="{{ 'assets/img/ico_yt.svg'|theme }} 640w,
+                     {{ 'assets/img/ico_yt.svg'|theme }} 320w"
+              width="30"
+              height="30"
+              alt="an image">
+          </amp-img>
+        </a>
+      </div>
+      <div class="clearfix"></div>
+      <!-- e:sosmed -->
+      <!-- s:address -->
+      <div class="address">
+        <p>Jl. Raya Bogor KM 5,  Pasar Rebo, Jakarta Timur, Indonesia 13760 <a href="https://www.google.co.id/maps/place/PT.+Frisian+Flag+Indonesia/@-6.3122231,106.8617656,15z/data=!4m5!3m4!1s0x2e69ed0827ec9d73:0x8a08cc1af1e6ef0e!8m2!3d-6.3050945!4d106.8642973" target="_blank">Map</a> &nbsp; &nbsp; Telp +62 21 8410945 | PO BOX  4074 Jakarta 13760 Indonesia <br> Toll Free Layanan Peduli Frisian Flag 0-80018-21-406; Senin - Jumat, 08:00 - 16:30 WIB, E-mail: layanan.peduli@frieslandcampina.com</p>
+      </div>
+      <!-- e:address -->
+      <!-- s:credit -->
+      <div class="credit">
+        <p>Frisian Flag Indonesia is a subsidiary of Royal FrieslandCampina N.V. Copyright © 2017. All rights reserved.</p>
+        <a href="https://www.frisianflag.com/syarat-ketentuan">Syarat &amp; Ketentuan</a> |
+        <a href="https://www.frisianflag.com/kebijakan-cookie">Kebijakan Cookie</a>
+        <a href="https://www.frisianflag.com/kebijakan-privasi">Kebijakan Privasi</a>
+      </div>
+      <!-- e:credit -->
+
+    </footer>
+    <!-- e:footer -->
+    {% flash success %}
+        {% if (message == 'An activation email has been sent to your email address.') %}
+
+        <script>
+        (function($) {
+            $.fancybox.open({
+                src  : '#thank-you'                
+            });
+        })(jQuery);
+        </script>
+
+        {% else %}
+        <p data-control="flash-message" data-interval="5" class="success">
+            {{ message }}
+        </p>
+        {% endif %}
+    {% endflash %}
+        
+    </body>
+</html>

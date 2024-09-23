@@ -1,0 +1,31 @@
+fields:
+    title:
+        label: Title
+        span: left
+        type: text
+    image:
+        label: Image
+        mode: image
+        span: auto
+        type: mediafinder
+    order:
+        label: Order
+        span: left
+        type: number
+    content:
+        label: Content
+        size: giant
+        span: full
+        type: richeditor
+    highlight:
+        label: Highlight
+        span: auto
+        type: switch
+    excerpt:
+        label: Excerpt
+        span: full
+        type: text
+    link:
+        label: Link
+        span: full
+        type: text

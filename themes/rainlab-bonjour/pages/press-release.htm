@@ -1,0 +1,199 @@
+title = "Press Release - New"
+url = "/perusahaan-kami/siaran-pers/"
+layout = "default"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/testpresrelease"
+
+[builderList PressRelease]
+modelClass = "Definite\Pressrelease\Models\PressRelease"
+scope = "scopeIndex"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "press-release-single"
+detailsKeyColumn = "slug"
+detailsUrlParameter = "slug"
+recordsPerPage = 8
+pageNumber = "{{ :page }}"
+sortColumn = "published_date"
+sortDirection = "desc"
+==
+<?php
+function onEnd() {
+
+    // get the post component
+    $currentPage =  $this->page->p = Input::get('p', 1);
+    $this->page->title = "Siaran Pers halaman ".$currentPage;
+    $this->page->title_en = "Pers Release";
+
+    $this->page->amp_url = $this->pageUrl('press-release-amp', ['page'=>$this->param('page')]);
+    
+    $records = $this->page->components["PressRelease"]->records;
+    
+
+    $this['currentPage'] = $currentPage;
+    $products =  Definite\Pressrelease\Models\Pressrelease::offset(($currentPage - 1) * 8)->orderBy('published_date', 'desc')->limit(8)->get();
+ 
+   $total =  Definite\Pressrelease\Models\Pressrelease::get();
+      // $products = Definite\News\Models\News::where('pages', 0)->limit(3)->offset((2) * 1)->get();
+    $this['totalnya'] =  $products;
+    $this['lengthProduct'] = count($total);
+    $totalv2 = count($total);
+        $count = count($products);
+    if($count === 0) {
+                    $cmsController = new Cms\Classes\Controller;
+            return Response::make( $cmsController->render("/404"), 404);
+        }
+        
+        
+        //pagination
+     $this->page->p = Input::get('p', 1);
+    if( ! is_numeric($this->page->p)){
+      $this->page->p = 1;
+    }else if($this->page->p < 1){
+      $this->page->p = 1;
+    }
+
+    $num_pgn = 5;
+    $space_pgn = 2;
+
+    $this->page->total_page = $totalv2 / 10;
+    $this->page->total_page = (int) ceil($this->page->total_page);
+  
+    $this->page->max_p = $this->page->p <= $space_pgn ? $num_pgn : $this->page->p + $space_pgn;
+
+  if( $this->page->max_p > $records->lastPage() ){
+    $this->page->max_p = $records->lastPage();
+  }
+
+  $this->page->min_p = $this->page->max_p - ($num_pgn - 1);
+  if( $this->page->min_p < 1 ) $this->page->min_p = 1;
+}
+?>
+==
+{% set records = PressRelease.records %}
+{% set displayColumn = PressRelease.displayColumn %}
+{% set noRecordsMessage = PressRelease.noRecordsMessage %}
+{% set detailsPage = PressRelease.detailsPage %}
+{% set detailsKeyColumn = PressRelease.detailsKeyColumn %}
+{% set detailsUrlParameter = PressRelease.detailsUrlParameter %}
+
+<h1 aria-hidden="true" class="seo-heading">Press Release</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp hidden-xs"><img src="{{ 'assets/img/95-TAHUN-FF_desktop-banner.jpg'|theme }}" alt="DesktopBanner"/> </div>
+    <div class="imgwrp visible-xs"><img src="{{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }}" alt="MobileBanner"/> </div>
+</div>
+
+<div class="container-menutab">
+    <div class="container-one">
+        <ul>
+          <li class="toggle hidden-lg"><a href="javascript:;" class="active">{{'siaran-pers'|_}}</a></li>
+          <li><a href="{{'about-us'|page}}" class="{% if this.page.id == 'about-us' %}active{% endif %}">{{'tentang-kami'|_}}</a></li>
+          <li><a href="{{'news'|page}}" class="{% if this.page.id == 'news' %}active{% endif %}">{{'berita'|_}}</a></li>
+          <li><a href="{{'gallery'|page}}" class="{% if this.page.id == 'galeri-foto' %}active{% endif %}">{{'galeri-foto'|_}}</a></li>
+          <li><a href="{{'press-release'|page}}" class="active">{{'siaran-pers'|_}}</a></li>
+          <li><a href="{{'our-purposes'|page}}" class="{% if this.page.id == 'our-purposes' %}active{% endif %}">{{'tujuan-kami'|_}}</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id='main-section' class="container-fluid">
+
+    <div class="container-two">
+      <div class="col-md-12">
+          <div class="breadcrumb">
+            <ul>
+                <li>
+                    <a href="{{ 'home'|page }}">{{'beranda'|_}}</a>
+                </li>
+                <li>
+                    <a href="{{'press-release'|page}}">{{'siaran-pers'|_}}</a>
+                </li>
+            </ul>
+          </div>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="default-content">
+            <div class="container-two">
+                <div class="row">
+                    <div class="col-md-7">
+                      <h3>{{'siaran-pers'|_}}</h3>
+                    </div>
+                    <div class="col-md-5">
+                      <input type="search" placeholder="Search" class="form-control" id="pers-search" style="margin-bottom: 20px;">
+                    </div>
+                </div>
+                <div class="container-menutab container-menutab-news hidden-lg">
+                    <div class="container-one">
+                        <ul>
+                            <li class="toggle"><a href="javascript:;" class="active">All</a></li>
+                            <li><a href="{{url('press-release'|page) }}" class="active">All</a></li>
+                            {% for years in records.first.year  %}
+                            <li><a href="{{url('press-release-archive'|page ({"slug":years.published_date})) }}">{{ years.published_date }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="container-news">
+                    <div class="content">
+                        <div class="left">
+                            <div class="content">
+                            {% for press in totalnya %}
+
+                                <div class="wrp-itemnews noimg">
+                                    <div class="contenttxt">
+                                        <div class="date">{{press.published_date|date('M d, Y')}}</div>
+                                        {% set spaceout %}
+                                        <h4><a href="{{ 'press-release-single'|page({"slug": press.slug}) }}">{{ trans_pick(press, 'title') }}</a></h4>
+                                        {% endset %}
+                                        {{ spaceout|trim|raw }}
+                                        {{ html_limit(trans_pick(press, 'description'), 150)|raw }}
+                                        {% if press.file_upload and press.file_upload != '/_mediathumbs' %}
+                                        <a href="{{ press.file_upload | media}}" class="readmore" download>Download <i class="fa fa-download" aria-hidden="true"></i></a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% else %}
+                                    <li class="no-data">{{ noRecordsMessage }}</li>
+                            {% endfor %}
+                                                                 <div class="stylepaging">
+      <ul>
+        {% if this.page.p > 1 %}
+          <li><a href="{{ this.page.baseFileName|page({ "page": this.page.p }) }}?p={{ this.page.p - 1 }}">&laquo;</a></li>
+        {% endif %}
+        {% for i in this.page.min_p..this.page.max_p %}
+          <li>
+            <a href="{{ this.page.baseFileName|page({ "page": i }) }}?p={{ i }}" {{ i != currentPage ? 'class="disable"' : 'class="active"' }}>
+              {{ i }}
+            </a>
+          </li>
+        {% endfor %}
+        {% if this.page.p < this.page.total_page %}
+          <li><a href="{{ this.page.baseFileName|page({ "page": page }) }}?p={{ this.page.p + 1 }}">&raquo;</a></li>
+        {% endif %}
+      </ul>                       
+      <div class="paging-info">{{ 'halaman'|_ }} {{currentPage}} {{ 'dari'|_ }} {{records.lastPage}}</div>
+    </div>
+                            </div>
+                        </div>
+                       <div class="right visible-lg">
+                            <div class="content">
+                                <ul class="yearright">
+                                {% for years in records.first.year  %}
+                                    <li class="{% if this.page.id == 'years.published_date' %}active{% endif %}"><a href="/perusahaan-kami/siaran-pers-archive/year/{{years.published_date}}">{{ years.published_date }}</a></li></li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- end mainsection -->

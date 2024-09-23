@@ -1,0 +1,159 @@
+[viewBag]
+
+[productList]
+
+[productCategories]
+==
+<li class="main-menu__list mgmenu">
+    <a href="{{ 'our-products'|page }}">
+        {{'produk kami'|_}} <i class="fa fa-angle-down" aria-hidden="true"></i>
+    </a>
+    <div class="megamenu">
+        <div class="content-megamenu">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="item-megamenu">
+                        <h5>
+                            <a href="{{ 'our-products-archive'|page({'slug': 'susu-kental-manis'}) }}">{{'susu-kental-manis'|_|uppercase|_}}</a></h5>
+                        <ul>
+                            {% for product in productList.getByCategories(['susu-kental-manis']) %}
+                            <li>
+                                <a href="{{
+                                    'our-products-single'|page({
+                                        'category-slug': 'susu-kental-manis',
+                                        'slug': product.slug
+                                    })
+                                }}">
+                                    <div class="imgprod"><img src="https://d5r0s9boode1v.cloudfront.net/storage/app/media{{ product.small_packshot_image }}" alt="{{ product.title }}"/></div>
+                                    {{ product.title }}
+                                    <span>{{ product.subtitle }}</span>
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="item-megamenu">
+                        <h5>
+                            <a href="{{ 'our-products-archive'|page({'slug': 'susu-siap-minum'}) }}">{{'susu-siap-minum'|_|uppercase|_}}</a>
+                        </h5>
+                        <ul>
+                            {% for category in productCategories.getChild('susu-siap-minum') %}
+                            <li>
+                                <a href="{{
+                                    'our-products-single'|page({
+                                        'category-slug': 'susu-siap-minum',
+                                        'slug': category.slug
+                                    })
+                                }}">
+                                    <div class="imgprod"><img src="https://d5r0s9boode1v.cloudfront.net/storage/app/media{{ category.small_packshot_image }}" alt="{{ category.title }}"/></div>
+                                    {{ category.title }}
+                                    <span>{{ category.subtitle }}</span>
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="item-megamenu">
+                        <h5>
+                            <a href="{{ 'our-products-archive'|page({'slug': 'susu-bubuk-keluarga'}) }}">{{'susu-bubuk-keluarga'|_|uppercase|_}}</a>
+                        </h5>
+                        <ul>
+                            {% for product in productList.getByCategories(['susu-bubuk-keluarga']) %}
+                            <li>
+                                <a href="{{
+                                    'our-products-single'|page({
+                                        'category-slug': 'susu-bubuk-keluarga',
+                                        'slug': product.slug
+                                    })
+                                }}">
+                                    <div class="imgprod"><img src="https://d5r0s9boode1v.cloudfront.net/storage/app/media{{ product.small_packshot_image }}" width="37"  height="37" alt="{{ product.title }}"/></div>
+                                        {{ product.title }}
+                                        <span>{{ product.subtitle }}</span>
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <!-- <div class="item-megamenu">
+                        <h5>
+                            <a href="https://www.susubendera.com/" target="_blank">Susu Bendera "Produk Baru!"</a>
+                        </h5>
+                        <ul>
+                            <li>
+                                <a href="https://www.susubendera.com/produk/1plus" target="_blank">
+                                 <span> </span>
+                                <div class="imgprod">
+                                    <img width="37" height="37" src="{{ 'FF-POUCH_1PLUS_600GR.jpg'|media }}" alt="Susu Bendera 1Plus">
+                                </div>Susu Bendera 1Plus<br><span>Anak Usia 1-3 tahun</span></a>
+                            </li>
+                            <li>
+                                <a href="https://www.susubendera.com/produk/3plus" target="_blank">
+                                <span> </span>
+                                <div class="imgprod">
+                                    <img width="37" height="37" src="{{ 'FF-POUCH_3PLUS_600GR.jpg'|media }}" alt="Susu Bendera 3Plus">
+                                </div>Susu Bendera 3Plus<br><span>Anak Usia 4-6 tahun</span></a>
+                            </li>
+                        </ul>
+                    </div> -->
+                    <div class="item-megamenu">
+                        <h5>
+                            <a href="{{ 'our-products-archive'|page({'slug': 'susu-ibu-balita'}) }}">{{'susu-ibu-dan-balita'|_}}</a>
+                        </h5>
+                        <ul>
+                            {% for category in productList.getByCategories(['susu-ibu-balita']) %}
+                            <li>
+                                <a href="{{
+                                    'our-products-single'|page({
+                                        'category-slug': 'susu-ibu-balita',
+                                        'slug': category.slug
+                                    })
+                                }}">
+                                    <div class="imgprod">
+                                        <img width="37" height="37" src="{{ category.small_packshot_image|media }}" alt="{{ category.title }}"/></div>
+                                        {{ category.title }}
+                                        <span>{{ category.subtitle }}</span>
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <!-- <div class="item-megamenu">
+                        <h5>
+                            <a href="https://www.friso.co.id/" target="_blank">FRISO</a>
+                        </h5>
+                        <ul>
+                            <li>
+                                <a href="https://www.friso.co.id/produk/frisomum-gold" target="_blank">
+                                <div class="imgprod">
+                                    <img width="37" height="37" src="{{ 'FRISO-MOM_small.jpg'|media }}" alt="Frisomum Gold">
+                                </div>
+                                Frisomum Gold<span>{{'ibu-hamil-dan-menyusui'|_}}</span></a>
+                            </li>
+                            <li>
+                                <a href="https://www.friso.co.id/produk/friso-gold-3" target="_blank">
+                                <div class="imgprod">
+                                    <img width="37" height="37" src="{{ 'FRISO-gold-1-3_small.jpg'|media }}" alt="Friso Gold 3">
+                                </div>
+                                Friso Gold 3<span>{{'anak-usia-1-3-tahun'|_}}</span></a>
+                            </li>
+                            <li>
+                                <a href="https://www.friso.co.id/produk/friso-gold-4" target="_blank">
+                                <div class="imgprod">
+                                    <img width="37" height="37" src="{{ 'FRISO-gold-4_small.jpg'|media }}" alt="Friso Gold 4"></div>
+                                    Friso Gold 4 <span>{{'anak-usia-3-12-tahun'|_}}</span></a>
+                            </li>
+                        </ul>
+                    </div> -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</li>

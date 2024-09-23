@@ -1,0 +1,19 @@
+{
+  "name": "dev-template",
+  "version": "1.1.0",
+  "dependencies": {
+    "bootstrap-sass": "~3.3.7",
+    "font-awesome": "~4.6.3",
+    "fancybox": "^3.1.20",
+    "adaptive.background": "^1.0.3",
+    "slick-carousel": "^1.6.0",
+    "matchHeight": "matchheight#^0.7.2",
+    "jquery": "2.1.0",
+    "jquery-ui": "^1.12.1",
+    "jquery-mask-plugin": "jQuery-Mask-Plugin#^1.14.11"
+  },
+  "devDependencies": {
+    "swiper": "^3.4.2",
+    "jquery-validation": "^1.17.0"
+  }
+}

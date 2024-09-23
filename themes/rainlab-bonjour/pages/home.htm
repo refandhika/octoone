@@ -1,0 +1,188 @@
+title = "Home"
+url = "/"
+layout = "home"
+is_hidden = 0
+
+[milkpediaList]
+
+[milkpediaCategories]
+
+[NewsList]
+
+[NewsCategories]
+==
+<h1 aria-hidden="true" class="seo-heading">{{ this.page.meta_title|_ }}</h1>
+
+<div id='main-section' class="container-fluid">
+
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="slide-homesmall">
+                <div class="item-homesmall">
+                    <div class="card__thumbnail card__thumbnail--blue" style="background-image: url('{{ '/KV SCM Packshot 500x500.jpg'| mediathumb_resize('width', 350, 90)  }}');" data-adaptive-background data-ab-css-background>
+                        <div class="card__meta">
+                            <header class="card__head">
+                                <h2>SUSU<br>KENTAL<br>MANIS.</h2>
+                            </header>
+                            <a href="{{ 'our-products-archive'|page({'slug': 'susu-kental-manis'}) }}" style="background-color: #124a9d;" class="button">{{ 'selengkapnya'|_ }}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-homesmall">
+                    <div class="card__thumbnail card__thumbnail--blue" style="background-image: url('{{ '/KV RTD Packshot 500x500.jpg'| mediathumb_resize('width', 350, 90) }}');" data-adaptive-background data-ab-css-background>
+                        <div class="card__meta">
+                            <header class="card__head">
+                                <h2>MINUMAN<br>SIAP<br>MINUM</h2>
+                            </header>
+                            <a href="{{ 'our-products-archive'|page({'slug': 'minuman-siap-minum'}) }}" style="background-color: #124a9d;" class="button">{{ 'selengkapnya'|_ }}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-homesmall">
+                    <div class="card__thumbnail card__thumbnail--blue" style="background-image: url('{{ 'fullcream.png'| mediathumb_resize('width', 350, 90)  }}');" data-adaptive-background data-ab-css-background>
+                        <div class="card__meta">
+                            <header class="card__head">
+                                <h2>SUSU<br>BUBUK<br>KELUARGA</h2>
+                            </header>
+                            <a href="{{ 'our-products-archive'|page({'slug': 'susu-bubuk-keluarga'}) }}" style="background-color: #124a9d;" class="button">{{ 'selengkapnya'|_ }}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-homesmall">
+                    <div class="card__thumbnail card__thumbnail--blue" style="background-image: url('{{ 'KV Packshot Purefarm.jpg'| mediathumb_resize('width', 350, 90) }}');" data-adaptive-background data-ab-css-background>
+                        <div class="card__meta">
+                            <header class="card__head">
+                                <h2>PUREFARM</h2>
+                            </header>
+                            <a href="{{ 'our-products'|page({'slug': 'purefarm'}) }}" style="background-color: #124a9d;" class="button">{{ 'selengkapnya'|_ }}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-homesmall">
+                    <div class="card__thumbnail card__thumbnail--blue" style="background-image: url('{{ 'Kids Kid.jpg'| mediathumb_resize('width', 350, 90)  }}');" data-adaptive-background data-ab-css-background>
+                        <div class="card__meta">
+                            <header class="card__head">
+                                <h2>KIDS</h2>
+                            </header>
+                            <a href="{{ 'our-products'|page({'slug': 'kids'}) }}" style="background-color: #124a9d;" class="button">{{ 'selengkapnya'|_ }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        {% if milkpediaList.records %}
+        {% set milkpedias = milkpediaList.records.take(1) %}
+        {% for milkpediaPost in milkpedias %}
+        <div class="card">
+            <div class="card__thumbnail card-ovl" style="background-image: url('{{ milkpediaPost.featured_image | mediathumb_resize('width', 640, 90)  }}');">
+                <a href="{{ 'our-milkpedia'|page({"slug": milkpediaPost.categories.first().slug}) }}" class="category">Milkpedia</a>
+                <div class="card__meta">
+                    <header class="card__head">
+                        <h3>{{trans_pick(milkpediaPost, 'title')}}</h3>
+                    </header>
+                    <a href="{{ 'our-milkpedia-single'|page({"category-slug": milkpediaPost.categories.first().slug, "slug": milkpediaPost.slug}) }}" class="button">{{'lebih-lanjut'|_}}</a>
+                </div>
+            </div>
+        </div>
+         {% endfor %}
+        {% endif %}
+    </div>
+
+    <div class="col-sm-4">
+        {% if NewsList.records %}
+            {% set News = NewsList.records %}
+            {% for NewsPost in News %}
+            <div class="card">
+                <div class="card__thumbnail card-ovl" style="background-image: url('{{ NewsPost.featured_image | mediathumb_resize('width', 640, 90)  }}');">
+                    <a href="{{'news'|page}}" class="category">Berita</a>
+                    <div class="card__meta">
+                        <header class="card__head">
+                            <h3>{{NewsPost.title}}</h3>
+                        </header>
+                        <a href="{{ 'news-single'|page({"slug": NewsPost.slug}) }}" class="button">{{'lebih-lanjut'|_}}</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+
+    <div class="section clearfix">
+        <h2 class="section__title">Aktivitas Kami</h2>
+    
+        <div class="col-sm-6">
+            <div class="card card--large">
+                <div class="card__thumbnail card-ovl" style="background-image: url('{{ 'assets/img/hero/SCM.jpg'|theme }}');">
+                    <div class="card__meta">
+                        <header class="card__head">
+                            <h3>Awali Dengan Nutrisi,<br /> Akhiri Dengan Manis</h3>
+                        </header>
+                        <a href="/ramadan" target="_blank" class="button">Mulai</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-sm-6">
+            <div class="card card--large">
+                <div class="card__thumbnail card-ovl" style="background-image: url('{{ 'assets/img/activity-coconut-delight.jpg'|theme }}');">
+                    <div class="card__meta">
+                        <header class="card__head">
+                            <h3>Coconut Delight</h3>
+                        </header>
+                        <a href="{{ home | page }}/produk/purefarm/purefarm-flavour-milk" class="button">Mulai</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+            <div class="col-sm-4 a">
+                <div class="card">
+                    <div class="card__thumbnail card-ovl" style="background-image: url('{{ 'assets/img/activities/3.jpg'|theme }}');">
+                        <div class="card__meta">
+                            <header class="card__head">
+                                <h3>#JRNBA</h3>
+                            </header>
+                            <a href="{{ 'home' | page }}/404" class="button">{{'lebih-lanjut'|_}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card__thumbnail card-ovl" style="background-image: url('{{ 'assets/img/activities/4.jpg'|theme }}');">
+                        <div class="card__meta">
+                            <header class="card__head">
+                                <h3>#Gerakan<br>Nusantara</h3>
+                            </header>
+                            <a href="{{ 'home' | page }}/404" class="button">{{'lebih-lanjut'|_}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card__thumbnail card-ovl" style="background-image: url('{{ 'assets/img/activities/5.jpg'|theme }}');">
+                        <div class="card__meta">
+                            <header class="card__head">
+                                <h3>#Ibu&amp;Balita</h3>
+                            </header>
+                            <a href="https://www.ibudanbalita.com/" target="_blank" class="button">{{'lebih-lanjut'|_}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+    </div>
+</div> <!-- end mainsection -->
+
+<script>
+// console.log('test')
+// console.log('test')
+</script>

@@ -1,0 +1,10 @@
+name: Category
+form: $/leverate/careers/models/category/fields.yaml
+modelClass: Leverate\Careers\Models\Category
+defaultRedirect: leverate/careers/category
+create:
+    redirect: 'leverate/careers/category/update/:id'
+    redirectClose: leverate/careers/category
+update:
+    redirect: leverate/careers/category
+    redirectClose: leverate/careers/category

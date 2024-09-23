@@ -1,0 +1,17 @@
+plugin:
+    name: 'kalfian.subscriber::lang.plugin.name'
+    description: 'kalfian.subscriber::lang.plugin.description'
+    author: Kalfian
+    icon: oc-icon-envelope-o
+    homepage: ''
+navigation:
+    subscriber-menu:
+        label: 'kalfian.subscriber::lang.plugin.name'
+        url: kalfian/subscriber/subscriber
+        icon: icon-envelope-o
+        permissions:
+            - manage_subscriber
+permissions:
+    manage_subscriber:
+        tab: Subscriber
+        label: 'Manage Subscriber'

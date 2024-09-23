@@ -1,0 +1,11 @@
+name: LogoHistory
+modelClass: Definite\Aboutus\Models\LogoHistory
+form: $/definite/aboutus/models/logohistory/fields.yaml
+defaultRedirect: definite/aboutus/logohistory
+create:
+    redirect: 'definite/aboutus/logohistory/update/:id'
+    redirectClose: definite/aboutus/logohistory
+update:
+    redirect: definite/aboutus/logohistory
+    redirectClose: definite/aboutus/logohistory
+preview: {  }

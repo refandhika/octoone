@@ -1,0 +1,764 @@
+title = "Festive Category"
+url = "/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu/:category"
+layout = "ramadhan2024"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/festive-category"
+
+[builderList resepSahur]
+modelClass = "Definite\Ramadhan2024\Models\Sahurku"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList resepActivity]
+modelClass = "Definite\Activities\Models\Activity"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "id"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList articleList]
+modelClass = "Definite\Ramadhan2024\Models\Article"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList milkpedia]
+modelClass = "Definite\Milkpedia\Models\Milkpedia"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList promos]
+modelClass = "Definite\Ramadhan2024\Models\Promo"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList articleCategory]
+modelClass = "Definite\Ramadhan2024\Models\ArticleCategory"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+<?php
+function onStart(){
+    $this['category'] = $this->param('category');
+    $this['headline2'] = "Inspirasi Resep Lainnya";
+    if($this->param('category') == 'resep-sahur'){
+        $this['headline'] = "Resep 30 Hari Sahur Nikmat Bernutrisi";
+        $this->page->title = "30 Ide Resep Sahur Bernutrisi Lengkap dengan Informasi Gizi";
+        $this->page->description = "Bingung mau sahur apa? Frisian Flag sudah menyiapkan resep 30 hari sahur nikmat bernutrisi untuk Anda. Yuk, intip menu, resep, dan informasi nutrisinya!";
+        $this->page->meta_description = "Bingung mau sahur apa? Frisian Flag sudah menyiapkan resep 30 hari sahur nikmat bernutrisi untuk Anda. Yuk, intip menu, resep, dan informasi nutrisinya!";
+    } else if($this->param('category') == 'resep-takjil-manis-tujuh-langkah'){
+        $this['headline'] = "30 Hari Resep Takjil Nikmat";
+        $this->page->title = "30 Ide Resep Takjil Mudah dan Lengkap dengan Info Gizi";
+        $this->page->description = "Kembalikan energi selama berpuasa dengan 30 ide resep takjil nikmat dari Frisian Flag. Mulai dari salad buah, puding korean stroberi, hingga es campur praktis.";
+        $this->page->meta_description = "Kembalikan energi selama berpuasa dengan 30 ide resep takjil nikmat dari Frisian Flag. Mulai dari salad buah, puding korean stroberi, hingga es campur praktis.";
+    } else if($this->param('category') == 'resep-ramadan-kue-kering-pilihan'){
+        $this['headline'] = "Resep Ramadan Kue Kering Nikmat Bernutrisi";
+        $this->page->title = "30 Ide Sajian Lebaran dan Hampers Idul Fitri yang Nikmat";
+        $this->page->description = "Bosan dengan sajian lebaran yang itu-itu saja? Yuk, intip ragam idenya! Ada ragam kue kering hingga dessert box yang bisa jadikan sebagai hampers lho.";
+        $this->page->meta_description = "Bosan dengan sajian lebaran yang itu-itu saja? Yuk, intip ragam idenya! Ada ragam kue kering hingga dessert box yang bisa jadikan sebagai hampers lho.";
+    } else if($this->param('category') == 'tips-spesial-ramadan'){
+        $this['headline'] = "Tips Penuh Nutrisi Menangkan Ramadan";
+        $this['headline2'] = "Promo Menangkan Ramadan";
+        $this->page->title = "Lengkap, Ini Kumpulan Tips Puasa Agar tetap Sehat dan Kuat";
+        $this->page->description = "Ingin puasa Anda lancar sebulan penuh? Pastikan Anda tahu apa saja hal yang perlu diperhatikan. Mulai dari asupan nutrisi, hingga mitos-fakta seputar puasa.";
+        $this->page->meta_description = "Ingin puasa Anda lancar sebulan penuh? Pastikan Anda tahu apa saja hal yang perlu diperhatikan. Mulai dari asupan nutrisi, hingga mitos-fakta seputar puasa.";
+    } else if($this->param('category') == 'promo-spesial-ramadan'){
+        $this['headline'] = "Promo Menangkan Ramadan";
+        $this->page->title = "Cek Promo Spesial Ramadan Produk Frisian Flag dan Hadiahnya";
+        $this->page->description = "Dapatkan Produk Frisian Flag dengan harga spesial dan hadiah gratis dari Frisian Flag, sekarang. Ada bundle seru yang bisa dijadikan hampers juga lho!";
+        $this->page->meta_description = "Dapatkan Produk Frisian Flag dengan harga spesial dan hadiah gratis dari Frisian Flag, sekarang. Ada bundle seru yang bisa dijadikan hampers juga lho!";
+    }
+
+    $this['sahur'] = Db::table('definite_ramadhan2024_sahur')->orderBy('day')->get();
+    $this['takjil'] = Db::table('definite_ramadhan2024_takjil')->orderBy('day')->get();
+    $this['kue_kering'] = Db::table('definite_ramadhan2024_kuekering')->orderBy('day')->get();
+    $this['article'] = Db::table('definite_milkpedia_post')->get();
+    $this['promo_items'] = Db::table('definite_ramadhan2024_promo')->orderBy('order')->get();
+}
+?>
+==
+<head>
+    <link href="{{ 'assets/css/ramadhan2024-detail.css'|theme }}" rel="stylesheet">
+</head>
+
+{% if category == "resep-sahur" %}
+    {% set bannerDesktop = 'assets/ramadhan2024/banner/[R3_RTD]-FESTIVE-KV-2024_Web-FF-1440x600.webp' | theme %}
+    {% set bannerMobile = 'assets/ramadhan2024/banner/[RTD]-FESTIVE-KV-2024_Web-FF-500x500.webp' | theme %}
+    {% set link = "https://google.com" %}
+{% elseif category == "resep-takjil-manis-tujuh-langkah" %}
+    {% set bannerDesktop = 'assets/ramadhan2024/banner/[R4_SCM]-FESTIVE-KV-2024_Web-FF-1440x600.webp' | theme %}
+    {% set bannerMobile = 'assets/ramadhan2024/banner/[SCM]-FESTIVE-KV-2024_Web-FF-500x500.webp' | theme %}
+    {% set link = "https://google.com" %}
+{% elseif category == "resep-ramadan-kue-kering-pilihan" %}
+    {% set bannerDesktop = 'assets/ramadhan2024/banner/[R1_FMP]-FESTIVE-KV-2024_Web-FF-1440x600.webp' | theme %}
+    {% set bannerMobile = 'assets/ramadhan2024/banner/[FMP]-FESTIVE-KV-2024_Web-FF-500x500.webp' | theme %}
+    {% set link = "https://google.com" %}
+{% elseif category == "tips-spesial-ramadan" %}
+    {% set bannerDesktop = 'assets/ramadhan2024/banner/tips-banner-desktop.jpg' | theme %}
+    {% set bannerMobile = 'assets/ramadhan2024/banner/tips-banner-mobile.jpg' | theme %}
+    {% set link = "https://google.com" %}
+{% elseif category == "promo-spesial-ramadan" %}
+    {% set bannerDesktop = 'assets/ramadhan2024/banner/[R3_MASTERBRAND_PROMO]-FESTIVE-KV-2024_Web-FF-1440x600 (1).jpg' | theme %}
+    {% set bannerMobile = 'assets/ramadhan2024/banner/[R1_MASTERBRAND_PROMO]-FESTIVE-KV-2024_Web-FF-500x500 (2).jpg' | theme %}
+    {% set link = "https://google.com" %}
+{% endif %}
+
+<!-- Banner -->
+<section class="ramadhan-banner">
+  <div class="banner-item">
+      <img style="width:100%; height:100%; object-fit:cover;" src="{{bannerDesktop}}" alt="banner-desktop">
+  </div>
+  <a href="/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu" class="banner-item">
+      <img style="width:100%; height:100%; object-fit:cover;" src="{{'/assets/ramadhan2024/banner/[R1_MASTERBRAND]-FESTIVE-KV-2024_Web-FF-1440x600.webp' | theme}}" alt="banner-desktop">
+      <div class="btn-category">Kembali ke beranda</div>
+  </a>
+</section>
+
+<section class="ramadhan-banner-mobile">
+  <div class="banner-item-mobile">
+      <img style="width:100%; height:100%; object-fit:cover;" src="{{bannerMobile}}" alt="banner-mobile">
+  </div>
+  <a href="/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu" class="banner-item-mobile">
+      <img style="width:100%; height:100%; object-fit:cover;" src="{{'/assets/ramadhan2024/banner/[MASTERBRAND]-FESTIVE-KV-2024_Web-FF-500x500.webp'|theme}}" alt="banner-mobile">
+      <div class="btn-category-mobile">
+          <div>Kembali ke beranda</div>
+      </div>
+  </a>
+</section>
+<!-- End Banner -->
+
+<!-- Recipe Content -->
+<section class="recipes">
+    <div class="lamp-decoration">
+        <div class="lamps">
+            <div class="lamp-long-container"><img style="width: 100%; height:100%;" src="{{'assets/ramadhan2024/lamp_long.png' | theme}}" alt="lamp"></div>
+            <div class="lamp-short-container"><img class="lamp_short"src="{{'assets/ramadhan2024/lamp_short.png' | theme}}" alt="lamp"></div>
+        </div>
+        <div class="cta-wa" style="">
+            <a href="https://wa.me/message/WW2VULAESZB5H1" target="_BLANK" class="cta-wa-btn">
+                <img class="wa-btn-hdn" style="visibility: hidden;" width="50" src="{{'assets/ramadhan2024/wa-logo.png' | theme}}" alt="whatsapp">
+                <span class="cta-wa-btn-text" style="padding: 0 10px;">Yuk langganan resep di sini</span>
+                <img class="cta-wa-logo" width="90" style="position: absolute; left:0" src="{{'assets/ramadhan2024/wa-logo.png' | theme}}" alt="whatsapp">
+            </a>
+        </div>
+        <div class="lamps">
+            <div class="lamp-short-container"><img class="lamp_short"src="{{'assets/ramadhan2024/lamp_short.png' | theme}}" alt="lamp"></div>
+            <div class="lamp-long-container"><img style="width: 100%; height:100%;" src="{{'assets/ramadhan2024/lamp_long.png' | theme}}" alt="lamp"></div>
+        </div>
+    </div>
+    
+    {% if category == "resep-sahur" or category == "resep-takjil-manis-tujuh-langkah" or category == "resep-ramadan-kue-kering-pilihan" %}
+    <div class="recipes-section">
+        <h1 class="recipe-headline">{{headline}}</h1>
+        
+        <div class="promo-sort">
+            <div style="display: flex;">
+            
+                <style>
+                    select {
+
+                      /* styling */
+                      background-color: white;
+                      border: thin solid #224C95;
+                      border-radius: 4px;
+                      display: inline-block;
+                      font: inherit;
+                      line-height: 1.5em;
+                      padding: 0.5em 3.5em 0.5em 1em;
+                    
+                      /* reset */
+                    
+                      margin: 0;      
+                      -webkit-box-sizing: border-box;
+                      -moz-box-sizing: border-box;
+                      box-sizing: border-box;
+                      -webkit-appearance: none;
+                      -moz-appearance: none;
+                    }
+                    
+                    
+                    /* arrows */
+                    
+                    select.classic {
+                      background-image:
+                        linear-gradient(45deg, transparent 50%, white 50%),
+                        linear-gradient(135deg, white 50%, transparent 50%),
+                        linear-gradient(to right, #224C95, #224C95);
+                      background-position:
+                        calc(100% - 20px) calc(1em + 2px),
+                        calc(100% - 15px) calc(1em + 2px),
+                        100% 0;
+                      background-size:
+                        5px 5px,
+                        5px 5px,
+                        2.5em 2.5em;
+                      background-repeat: no-repeat;
+                    }
+                    
+                    select.classic:focus {
+                      background-image:
+                        linear-gradient(45deg, white 50%, transparent 50%),
+                        linear-gradient(135deg, transparent 50%, white 50%),
+                        linear-gradient(to right, #224C95, #224C95);
+                      background-position:
+                        calc(100% - 15px) 1em,
+                        calc(100% - 20px) 1em,
+                        100% 0;
+                      background-size:
+                        5px 5px,
+                        5px 5px,
+                        2.5em 2.5em;
+                      background-repeat: no-repeat;
+                      border-color: grey;
+                      outline: 0;
+                    }
+
+                </style>
+                <select name="sort-select" id="sort-select" style="width: 100%;" class="classic" onchange="filterRecipes(this)">
+                  <option value="all">Semua Resep</option>
+                    {% if category == "resep-sahur" %}
+                        {% for item in sahur %}
+                        <option value="{{item.day}}">Hari ke-{{item.day}} {{item.title}}</option>
+                        {% endfor %}
+                    {% elseif category == "resep-takjil-manis-tujuh-langkah" %}
+                        {% for item in takjil %}
+                        <option value="{{item.day}}">Hari ke-{{item.day}} {{item.title}}</option>
+                        {% endfor %}
+                    {% elseif category == "resep-ramadan-kue-kering-pilihan" %}
+                        {% for item in kue_kering %}
+                        <option value="{{item.day}}">Hari ke-{{item.day}} {{item.title}}</option>
+                        {% endfor %}
+                    {% endif %}
+                </select>
+            </div>
+        </div>
+        
+        <div class="all-recipes-container-desktop">
+        
+        {% if category == "resep-takjil-manis-tujuh-langkah" %}
+            {% for item in takjil %}
+                <!-- Recipe Desktop -->
+                <a href="{{item.link}}?ramadan=true" class="recipe-desktop class-resep-takjil" day="{{item.day}}">
+                    <div class="recipe-desktop-top">
+                        <div class="recipe-desktop-card">Hari Ke-{{item.day}}</div>
+                        <div class="recipe-desktop-img-container">
+                            <img src="{{item.image | media}}" alt="image">
+                        </div>
+                    </div>
+                    <!-- <div class="recipe-desktop-middle">{{item.title}}</div> -->
+                    <div class="recipe-desktop-bottom">Selengkapnya</div>
+                </a>
+            {% endfor %}
+        {% elseif category == "resep-sahur" %}
+            {% for item in sahur %}
+                <!-- Recipe Desktop -->
+                <a href="{{item.link}}?ramadan=true" class="recipe-desktop class-resep-sahur" day="{{item.day}}">
+                    <div class="recipe-desktop-top">
+                        <div class="recipe-desktop-card">Hari Ke-{{item.day}}</div>
+                        <div class="recipe-desktop-img-container">
+                            <img src="{{item.image | media}}" alt="image">
+                        </div>
+                    </div>
+                    <!-- <div class="recipe-desktop-middle">{{item.title}}</div> -->
+                    <div class="recipe-desktop-bottom">Selengkapnya</div>
+                </a>
+            {% endfor %}
+        {% elseif category == "resep-ramadan-kue-kering-pilihan" %}
+            {% for item in kue_kering %}
+                <!-- Recipe Desktop -->
+                <a href="{{item.link}}?ramadan=true" class="recipe-desktop class-resep-kue" day="{{item.day}}">
+                    <div class="recipe-desktop-top">
+                        <div class="recipe-desktop-card">Hari Ke-{{item.day}}</div>
+                        <div class="recipe-desktop-img-container">
+                            <img src="{{item.image | media}}" alt="image">
+                        </div>
+                    </div>
+                    <!-- <div class="recipe-desktop-middle">{{item.title}}</div> -->
+                    <div class="recipe-desktop-bottom">Selengkapnya</div>
+                </a>
+            {% endfor %}
+        {% endif %}
+            
+        </div>
+        <div class="all-recipes-container-mobile">
+            
+            {% if category == "resep-sahur"%}
+                {% for item in sahur %}
+                <!-- Recipe Mobile -->
+                <a href="{{item.link}}?ramadan=true" class="recipe-mobile class-resep-sahur" day="{{item.day}}">
+                    <div class="recipe-mobile-top">
+                        <div class="recipe-mobile-card">Hari Ke-{{item.day}}</div>
+                        <div class="recipe-mobile-img-container">
+                            <img src="{{item.image | media}}" alt="image">
+                        </div>
+                    </div>
+                    <!-- <div class="recipe-mobile-middle">{{item.title}}</div> -->
+                    <div class="recipe-mobile-bottom">Selengkapnya</div>
+                </a>
+                {% endfor %}
+            {% elseif category == "resep-takjil-manis-tujuh-langkah" %}
+                {% for item in takjil %}
+                <!-- Recipe Mobile -->
+                <a href="{{item.link}}?ramadan=true" class="recipe-mobile class-resep-takjil" day="{{item.day}}">
+                    <div class="recipe-mobile-top">
+                        <div class="recipe-mobile-card">Hari Ke-{{item.day}}</div>
+                        <div class="recipe-mobile-img-container">
+                            <img src="{{item.image | media}}" alt="image">
+                        </div>
+                    </div>
+                    <!-- <div class="recipe-mobile-middle">{{item.title}}</div> -->
+                    <div class="recipe-mobile-bottom">Selengkapnya</div>
+                </a>
+                {% endfor %}
+            {% elseif category == "resep-ramadan-kue-kering-pilihan" %}
+                {% for item in kue_kering %}
+                <!-- Recipe Mobile -->
+                <a href="{{item.link}}?ramadan=true" class="recipe-mobile class-resep-kue" day="{{item.day}}">
+                    <div class="recipe-mobile-top">
+                        <div class="recipe-mobile-card">Hari Ke-{{item.day}}</div>
+                        <div class="recipe-mobile-img-container">
+                            <img src="{{item.image | media}}" alt="image">
+                        </div>
+                    </div>
+                    <!-- <div class="recipe-mobile-middle">{{item.title}}</div> -->
+                    <div class="recipe-mobile-bottom">Selengkapnya</div>
+                </a>
+                {% endfor %}
+            {% endif %}
+            
+            <!-- Placeholder Recipe -->
+            <!-- <div class="recipe" style="visibility: hidden;">
+                <div class="recipe-img-container">
+                    <img src="{{'assets/ramadhan2024/produk/Resep Nastar Keju Lembut Lumer di Mulut Anti Retak Buat Lebaran.png' | theme}}" alt="recipe-img">
+                </div>
+                <div class="card-bottom">
+                    <div class="recipe-title">Inspirasi Resep Kue Kering</div>
+                    <a href="#" class="recipe-btn">Selengkapnya</a>
+                </div>
+            </div> -->
+            <!-- End Placeholder Recipe -->
+            
+        </div>
+    </div>
+    {% endif %}
+    
+    {% if category == "resep-sahur" or category == "resep-takjil-manis-tujuh-langkah" or category == "resep-ramadan-kue-kering-pilihan" %}
+    <div class="other-recipes-section">
+        <h1 class="recipe-headline">{{headline2}}</h1>
+        <div class="other-recipes">
+        
+            <!-- Recipe -->
+            <a href="/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu/resep-sahur" class="other-recipe-item" category="resep-sahur">
+                <div class="other-recipe-img-container">
+                    <img src="{{'assets/ramadhan2024/main-resep-thumbnail/[RTD_Mirrored]-FESTIVE-Thumbnail-2024_Web-FF-372x189.jpg' | theme}}" alt="recipe-img">
+                </div>
+                <div class="card-bottom">
+                    <div class="recipe-title">Resep Sahur</div>
+                    <div class="recipe-btn">Selengkapnya</div>
+                </div>
+            </a>
+            <!-- End Recipe -->
+            
+            <!-- Recipe -->
+            <a href="/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu/resep-takjil-manis-tujuh-langkah" class="other-recipe-item" category="resep-takjil-manis-tujuh-langkah">
+                <div class="other-recipe-img-container">
+                    <img src="{{'assets/ramadhan2024/main-resep-thumbnail/[R5_SCM_Mirrored]-FESTIVE-Thumbnail-2024_Web-FF-372x189.jpg' | theme}}" alt="recipe-img">
+                </div>
+                <div class="card-bottom">
+                    <div class="recipe-title">Resep Takjil</div>
+                    <div class="recipe-btn">Selengkapnya</div>
+                </div>
+            </a>
+            <!-- End Recipe -->
+            
+            <!-- Recipe -->
+            <a href="/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu/resep-ramadan-kue-kering-pilihan" class="other-recipe-item" category="resep-ramadan-kue-kering-pilihan">
+                <div class="other-recipe-img-container">
+                    <img src="{{'assets/ramadhan2024/main-resep-thumbnail/[FMP_Mirrored]-FESTIVE-Thumbnail-2024_Web-FF-372x189.jpg' | theme}}" alt="recipe-img">
+                </div>
+                <div class="card-bottom">
+                    <div class="recipe-title">Resep Kue Kering</div>
+                    <div class="recipe-btn">Selengkapnya</div>
+                </div>
+            </a>
+            <!-- End Recipe -->
+            
+        </div>
+    </div>
+    {% endif %}
+    
+    <style>
+    .tips-item{
+        width: 100%;
+        height: fit-content;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+        border-radius: 0 0 30px 30px;
+    }
+    .tips-item-image-container{
+        width: 100%;
+        height: 35rem;
+        border-radius: 20px;
+    }
+    .tips-item-image-container img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+    .tips-item-middle{
+        width: 100%;
+        height: 15rem;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .tips-item-middle-title{
+        font-size: 22px;
+        color: #224C95;
+        font-weight: 800;
+        font-family: Uni-Sans !important;
+    }
+    .tips-item-btn{
+        width: 100%;
+        height: 5rem;
+        background-image: linear-gradient(rgb(216,178,93),rgb(251,242,171),rgb(216,178,93));
+        color: #224C95;
+        border-radius: 999px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        font-weight: 800;
+        font-family: Uni-Sans !important;
+    }
+    .tips-item-middle-description{
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+    }
+    
+    </style>
+    
+    {% if category == "tips-spesial-ramadan" %}
+     <div class="recipes-section">
+        <h2 class="recipe-headline">{{headline}}</h2>
+        <!-- <div class="promo-sort">
+            <div style="display: flex;">
+                <select name="sort-select" id="sort-select" onchange="filterTips(this)">
+                    <option value="all">Semua Kategori</option>
+                    {% for item in articleCategory.records %}
+                        <option value="{{item.title}}">{{item.title}}</option>
+                    {% endfor %}
+                </select>
+                <div onclick="handleDropdown()" class="dropdown-icon">
+                    <img src="{{'assets/ramadhan2024/icons8-down-arrow-50.png' | theme}}" alt="icon" style="width: 2rem; height: 2rem;">
+                </div>
+            </div>
+        </div> -->
+        <div class="all-recipes-container-desktop">
+            
+            {% for item in articleList.records %}
+            {% set desiredArticle = milkpedia.records.where('slug', item.article_slug).first() %}
+            <!-- Tips Item -->
+            <a href="{{item.link}}?ramadan=true" class="tips-item" category="{{item.category}}">
+                <div class="tips-item-image-container">
+                    <img src="{{desiredArticle.featured_image | media}}" alt="image">
+                </div>
+                <div class="tips-item-middle">
+                    <span class="tips-item-middle-title">{{desiredArticle.title}}</span>
+                    <!-- <span class="tips-item-middle-description">{{desiredArticle.excerpt}}</span> -->
+                </div>
+                <div class="tips-item-btn">Baca Selengkapnya</div>
+            </a>
+            {% endfor %}
+            
+        </div>
+        <div class="all-recipes-container-mobile">
+            {% for item in articleList.records %}
+            {% set desiredArticle = milkpedia.records.where('slug', item.article_slug).first() %}
+            <!-- Tips Item -->
+            <a href="{{item.link}}?ramadan=true" class="tips-item" category="{{item.category}}">
+                <div class="tips-item-image-container">
+                    <img src="{{desiredArticle.featured_image | media}}" alt="image">
+                </div>
+                <div class="tips-item-middle">
+                    <span class="tips-item-middle-title">{{desiredArticle.title}}</span>
+                    <!-- <span class="tips-item-middle-description">{{desiredArticle.excerpt}}</span> -->
+                </div>
+                <div class="tips-item-btn">Baca Selengkapnya</div>
+            </a>
+            {% endfor %}
+            
+            <!-- Placeholder Recipe -->
+            <!-- <div class="recipe" style="visibility: hidden;">
+                <div class="recipe-img-container">
+                    <img src="{{'assets/ramadhan2024/produk/Resep Nastar Keju Lembut Lumer di Mulut Anti Retak Buat Lebaran.png' | theme}}" alt="recipe-img">
+                </div>
+                <div class="card-bottom">
+                    <div class="recipe-title">Inspirasi Resep Kue Kering</div>
+                    <a href="#" class="recipe-btn">Selengkapnya</a>
+                </div>
+            </div> -->
+            <!-- End Placeholder Recipe -->
+        </div>
+    </div>
+    {% endif %}
+    
+    <style>
+    .promo-sort{
+        width: 100%;
+        height: 8rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 2rem;
+        padding: 0 2rem;
+        margin-bottom: 2rem;
+    }
+    /*#sort-select{
+        width: 20rem;
+        height: 5rem;
+        border-radius: 10px 0 0 10px;
+        -webkit-appearance: none;
+        padding: 0 2rem;
+        border: 2px solid #224C95;
+        color: #224C95;
+        font-weight: 800;
+    }*/
+    .dropdown-icon{
+        width:5rem; 
+        height: 5rem; 
+        background-color: #224C95; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        border-radius: 0 10px 10px 0;
+        cursor: pointer;    
+    }
+    .promo-item{
+        width: 100%;
+        /*height: 42rem;*/
+        /*box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;*/
+        border-radius: 0 0 30px 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .promo-item-image-container{
+        width: 100%;
+        height: 35rem;
+        border-radius: 20px;
+    }
+    .promo-item-image-container img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+    .promo-item-middle{
+        width: 100%;
+        height: 10rem;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .promo-item-middle-title{
+        font-size: 30px;
+        color: #224C95;
+        font-weight: 800;
+        font-family: Uni-Sans !important;
+    }
+    .promo-item-btn{
+        margin-top: 1rem;
+        width: 100%;
+        height: 5rem;
+        background-image: linear-gradient(rgb(216,178,93),rgb(251,242,171),rgb(216,178,93));
+        border-radius: 999px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        color: #224C95;
+        font-weight: 800;
+        font-family: Uni-Sans !important;
+    }
+    .promo-item-middle-description{
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+    }
+    </style>
+    
+    {% if category == "promo-spesial-ramadan" %}
+     <div class="recipes-section">
+         <h2 class="recipe-headline">{{headline}}</h2>
+        <!-- <div class="promo-sort">
+            <span style="font-weight: 800;"><u>Urutkan</u></span>
+            <div style="display: flex;">
+                <select name="sort-select" id="sort-select">
+                    <option value="">Promo Terbaru</option>
+                    <option value="latest">Latest</option>
+                    <option value="newest">Newest</option>
+                    <option value="asc">Ascending</option>
+                    <option value="dsc">Descending</option>
+                </select>
+                <div onclick="handleDropdown()" class="dropdown-icon">
+                    <img src="{{'assets/ramadhan2024/icons8-down-arrow-50.png' | theme}}" alt="icon" style="width: 2rem; height: 2rem;">
+                </div>
+            </div>
+        </div> -->
+        <div class="all-recipes-container-desktop">
+            
+            {% for item in promo_items %}
+            <a href="{{item.link}}" class="promo-item">
+                <div class="promo-item-image-container">
+                    <img src="{{item.image | media}}" alt="image">
+                </div>
+                <!-- <div class="promo-item-middle">
+                    <span class="promo-item-middle-title">{{item.title}}</span>
+                    <span class="promo-item-middle-description">{{item.excerpt}}</span>
+                </div> -->
+                <div href="{{item.link}}" class="promo-item-btn">Cek {{item.title}} Sekarang</div>
+            </a>
+            {% endfor %}
+        </div>
+        <div class="all-recipes-container-mobile">
+            {% for item in promo_items %}
+            <a href="{{item.link}}" class="promo-item">
+                <div class="promo-item-image-container">
+                    <img src="{{item.image | media}}" alt="image">
+                </div>
+                <!-- <div class="promo-item-middle">
+                    <span class="promo-item-middle-title">{{item.title}}</span>
+                    <span class="promo-item-middle-description">{{item.excerpt}}</span>
+                </div> -->
+                <div href="{{item.link}}" class="promo-item-btn">Cek {{item.title}} Sekarang</div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    
+</section>
+<!-- End Content Recipe -->
+
+<script>
+$(document).ready(function(){
+  $('.ramadhan-banner').slick({
+      dots: true,
+      infinite: true,
+      autoplay: false,
+      autoplaySpeed: 2000,
+      arrows: false
+  });
+  
+  $('.ramadhan-banner-mobile').slick({
+      dots: false,
+      infinite: true,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      arrows: false
+  });
+  
+  $('.all-recipes-container-mobile').slick({
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      infinite: true,
+      autoplay: false,
+      arrows: false,
+      swipeToSlide: true,
+      responsive: [
+        {
+          breakpoint: 1000,
+          settings: {
+            slidesToShow: 1.5,
+            slidesToScroll: 1,
+            infinite: false,
+          }
+        }
+      ]
+  });
+  
+  let category = '{{category}}';
+  for(let i = 0; i < document.querySelectorAll('.other-recipe-item').length; i++ ){
+    if(document.querySelectorAll('.other-recipe-item')[i].getAttribute('category') == category){
+        document.querySelectorAll('.other-recipe-item')[i].style.display = "none";
+    }  
+  }
+});
+
+function handleDropdown(){
+    const element = document.getElementById('sort-select');
+    element.style.transform = 'translateX(100%)'; 
+}
+
+function filterRecipes(e){
+    if(e.value == "all"){
+        for(let i = 0; i < document.querySelectorAll('.recipe-mobile').length; i++){
+            document.querySelectorAll('.recipe-mobile')[i].classList.remove('recipe-hidden');
+            document.querySelectorAll('.recipe-desktop')[i].classList.remove('recipe-hidden');
+        }   
+    } else {
+        for(let i = 0; i < document.querySelectorAll('.recipe-mobile').length; i++){
+            document.querySelectorAll('.recipe-mobile')[i].classList.add('recipe-hidden');
+            document.querySelectorAll('.recipe-desktop')[i].classList.add('recipe-hidden');
+            if(document.querySelectorAll('.recipe-mobile')[i].getAttribute('day') == e.value){
+                document.querySelectorAll('.recipe-mobile')[i].classList.remove('recipe-hidden');
+            }
+            if(document.querySelectorAll('.recipe-desktop')[i].getAttribute('day') == e.value){
+                document.querySelectorAll('.recipe-desktop')[i].classList.remove('recipe-hidden');
+            }
+        }   
+    }
+    $('.all-recipes-container-mobile').slick('slickGoTo', 0);
+}
+
+function filterTips(e){
+    if(e.value == "all"){
+        for(let i = 0; i < document.querySelectorAll('.tips-item').length; i++){
+            document.querySelectorAll('.tips-item')[i].classList.remove('recipe-hidden');
+        }   
+    } else {
+        for(let i = 0; i < document.querySelectorAll('.tips-item').length; i++){
+            document.querySelectorAll('.tips-item')[i].classList.add('recipe-hidden');
+            if(document.querySelectorAll('.tips-item')[i].getAttribute('category') == e.value){
+                document.querySelectorAll('.tips-item')[i].classList.remove('recipe-hidden');
+            }
+        }   
+    }
+    $('.all-recipes-container-mobile').slick('slickGoTo', 0);
+}
+</script>

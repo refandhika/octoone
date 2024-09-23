@@ -1,0 +1,46 @@
+plugin:
+    name: 'definite.milkpedia::lang.plugin.name'
+    description: 'definite.milkpedia::lang.plugin.description'
+    author: Definite
+    icon: oc-icon-smile-o
+    homepage: ''
+navigation:
+    milkpedia:
+        label: 'definite.milkpedia::lang.plugin.name'
+        url: definite/milkpedia/milkpedia
+        icon: icon-smile-o
+        permissions:
+            - manage_milkpedia
+        sideMenu:
+            milkpedia-category:
+                label: 'Kategori Milkpedia'
+                url: definite/milkpedia/categories
+                icon: icon-caret-right
+                permissions:
+                    - manage_kategori
+            milkpedia-post:
+                label: 'Artikel Kapan & Bagaimana Cara Minum Susu'
+                url: definite/milkpedia/milkpedia
+                icon: icon-book
+                permissions:
+                    - manage_artikel
+            milkpedia-faq:
+                label: FAQ
+                url: definite/milkpedia/faq
+                icon: icon-support
+                permissions:
+                    - manage_faq
+         
+permissions:
+    manage_milkpedia:
+        tab: Milkpedia
+        label: 'Manage Milkpedia'
+    manage_kategori:
+        tab: Milkpedia
+        label: 'Manage Kategori Milkpedia'
+    manage_artikel:
+        tab: Milkpedia
+        label: 'Manage Artikel'
+    manage_faq:
+        tab: Milkpedia
+        label: 'Manage Faq'

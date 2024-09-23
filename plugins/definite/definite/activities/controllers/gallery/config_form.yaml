@@ -1,0 +1,11 @@
+name: Gallery
+modelClass: Definite\Activities\Models\Gallery
+form: $/definite/activities/models/gallery/fields.yaml
+defaultRedirect: definite/activities/gallery
+create:
+    redirect: 'definite/activities/gallery/update/:id'
+    redirectClose: definite/activities/gallery
+update:
+    redirect: definite/activities/gallery
+    redirectClose: definite/activities/gallery
+preview: {  }

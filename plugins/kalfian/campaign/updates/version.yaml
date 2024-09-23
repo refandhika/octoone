@@ -1,0 +1,44 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table kalfian_campaign_'
+    - builder_table_create_kalfian_campaign_.php
+1.0.3:
+    - 'Updated table kalfian_campaign_'
+    - builder_table_update_kalfian_campaign_.php
+1.0.4:
+    - 'Updated table kalfian_campaign_'
+    - builder_table_update_kalfian_campaign__2.php
+1.0.5:
+    - 'Updated table kalfian_campaign_'
+    - builder_table_update_kalfian_campaign__3.php
+1.0.6:
+    - 'Updated table kalfian_campaign_'
+    - builder_table_update_kalfian_campaign__4.php
+1.0.7:
+    - 'Created table kalfian_campaign_indomaret_quiz'
+    - builder_table_create_kalfian_campaign_indomaret_quiz.php
+1.0.8:
+    - 'Created table kalfian_campaign_quiz_struk'
+    - builder_table_create_kalfian_campaign_quiz_struk.php
+1.0.9:
+    - 'Updated table kalfian_campaign_indomaret_quiz'
+    - builder_table_update_kalfian_campaign_indomaret_quiz.php
+1.0.10:
+    - 'Updated table kalfian_campaign_quiz_struk'
+    - builder_table_update_kalfian_campaign_indomaret_quiz_struk.php
+1.0.11:
+    - 'Drop table kalfian_campaign_indomaret_quiz'
+    - builder_table_delete_kalfian_campaign_indomaret_quiz.php
+1.0.12:
+    - 'Created table kalfian_campaign_indomaret_quiz'
+    - builder_table_create_kalfian_campaign_indomaret_quiz_2.php
+1.0.13:
+    - 'Created table kalfian_campaign_alfamart_quiz'
+    - builder_table_create_kalfian_campaign_alfamart_quiz.php
+1.0.14:
+    - 'Created table kalfian_campaign_alfamart'
+    - builder_table_create_kalfian_campaign_alfamart.php
+1.0.15:
+    - 'Drop table kalfian_campaign_alfamart'
+    - builder_table_delete_kalfian_campaign_alfamart.php

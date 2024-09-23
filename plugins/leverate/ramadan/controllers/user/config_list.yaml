@@ -1,0 +1,14 @@
+list: $/leverate/ramadan/models/user/columns.yaml
+modelClass: Leverate\Ramadan\Models\User
+title: User
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+defaultSort: 
+    column: created_at
+    direction: desc
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

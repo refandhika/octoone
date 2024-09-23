@@ -1,0 +1,10 @@
+name: WinningScm
+form: $/definite/activities/models/winningscm/fields.yaml
+modelClass: Definite\Activities\Models\WinningScm
+defaultRedirect: definite/activities/winningscm
+create:
+    redirect: 'definite/activities/winningscm/update/:id'
+    redirectClose: definite/activities/winningscm
+update:
+    redirect: definite/activities/winningscm
+    redirectClose: definite/activities/winningscm

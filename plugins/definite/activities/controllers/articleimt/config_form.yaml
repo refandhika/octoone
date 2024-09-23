@@ -1,0 +1,10 @@
+name: ArticleImt
+form: $/definite/activities/models/definiteactivitiesarticleimt/fields.yaml
+modelClass: Definite\Activities\Models\DefiniteActivitiesArticleimt
+defaultRedirect: definite/activities/articleimt
+create:
+    redirect: 'definite/activities/articleimt/update/:id'
+    redirectClose: definite/activities/articleimt
+update:
+    redirect: definite/activities/articleimt
+    redirectClose: definite/activities/articleimt

@@ -1,0 +1,10 @@
+name: RecomendationMenu
+form: $/definite/activities/models/recomendationmenu/fields.yaml
+modelClass: Definite\Activities\Models\RecomendationMenu
+defaultRedirect: definite/activities/recomendationmenu
+create:
+    redirect: 'definite/activities/recomendationmenu/update/:id'
+    redirectClose: definite/activities/recomendationmenu
+update:
+    redirect: definite/activities/recomendationmenu
+    redirectClose: definite/activities/recomendationmenu

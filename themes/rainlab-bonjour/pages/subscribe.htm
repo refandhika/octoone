@@ -1,0 +1,51 @@
+title = "subscribe"
+url = "/subscribe"
+is_hidden = 0
+role = 0
+permission = 0
+anonymous_only = 0
+logged_only = 0
+
+[subscriberform]
+
+[builderList]
+modelClass = "Definite\FunFact\Models\FunFact"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "description"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+<?php
+use Kalfian\Subscriber\Models\Subscriber as Subscriber;
+
+function onStart(){
+  
+    $data  = post();
+    $rules = ['email' => 'required|email|unique:kalfian_subscriber_,email'];
+    
+    $validasi = Validator::make($data,$rules);
+    header("Access-Control-Allow-Credentials: true");
+    header("Content-Type: application/json");
+    header("Access-Control-Allow-Origin: http://frisianflag.nuedev.com");
+    header("AMP-Access-Control-Allow-Source-Origin: http://frisianflag.nuedev.com");
+    header("Access-Control-Expose-Headers: AMP-Access-Control-Allow-Source-Origin");
+ 
+    if($validasi->fails()){
+        $data = array('X_OCTOBER_FLASH_MESSAGES' => array('success' => 'Isian email sudah ada sebelumnya.'));
+        echo json_encode($data);
+        header("HTTP/1.0 406 Not Acceptable");
+        exit;
+    }else{
+         $email = $_POST["email"];
+         Subscriber::forceCreate(['email'=>$email]);
+        
+        $data = array('X_OCTOBER_FLASH_MESSAGES' => array('success' => 'Thankyou for Subscribe!'));
+        echo json_encode($data);
+    }
+    
+}
+?>
+==

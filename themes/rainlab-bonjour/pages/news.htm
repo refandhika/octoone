@@ -1,0 +1,216 @@
+title = "News New"
+url = "/perusahaan-kami/berita/"
+layout = "default"
+meta_description = "Frisian Flag selalu berkomitmen untuk berkontribusi untuk kesehatan Indonesia. Dapatkan berita terbaru dari Frisian Flag di sini!"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/testpagedesktopnews"
+
+[builderList]
+modelClass = "Definite\News\Models\News"
+scope = "scopeIndex"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "news-single"
+detailsKeyColumn = "slug"
+detailsUrlParameter = "slug"
+recordsPerPage = 8
+pageNumber = "{{ :page }}"
+sortColumn = "published_date"
+sortDirection = "desc"
+
+[builderDetails]
+modelClass = "Definite\News\Models\Categories"
+identifierValue = "{{ :id }}"
+modelKeyColumn = "id"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+
+[NewsList]
+==
+<?php
+function onEnd() {
+
+    // get the post component
+
+    $this->page->title_en = "News";
+     $records = $this->page->components["builderList"]->records;
+    if($records->currentPage() > $records->lastPage()){
+             $cmsController     = new Cms\Classes\Controller;
+             return Response::make( $cmsController->render("/404"), 404);
+    }       
+    $this->page->amp_url = $this->pageUrl('news-amp', ['page' => $this->param('page')]);
+    
+    
+    $total = $this->page->components["NewsList"]->total;
+    $total2 = Definite\News\Models\News::get();
+    
+    $countTotal2 = count($total2);
+    $currentPage =  $this->page->p = Input::get('p', 1);
+     $this['total2'] = ($currentPage - 1) * 10;
+     
+     // for title with page 
+    $this->page->title = "Berita halaman ".$currentPage;
+    // end of title with page
+    
+    $this['currentPage'] = $currentPage;
+    
+   $products =  Definite\News\Models\News::offset(($currentPage - 1) * 8)->orderBy('published_date', 'desc')->limit(8)->get();
+ 
+   $test =  Definite\News\Models\News::paginate(15);
+      // $products = Definite\News\Models\News::where('pages', 0)->limit(3)->offset((2) * 1)->get();
+    $this['totalnya'] =  $products;
+    $count = count($products);
+    if($count === 0) {
+                    $cmsController = new Cms\Classes\Controller;
+            return Response::make( $cmsController->render("/404"), 404);
+        }
+    $this['lengthProduct'] = $count;
+        //pagination
+    $this->page->p = Input::get('p', 1);
+    if( ! is_numeric($this->page->p)){
+      $this->page->p = 1;
+    }else if($this->page->p < 1){
+      $this->page->p = 1;
+    }
+
+    $num_pgn = 5;
+    $space_pgn = 2;
+
+    $this->page->total_page = $countTotal2 / 8;
+    $this->page->total_page = (int) ceil($this->page->total_page);
+  
+    $this->page->max_p = $this->page->p <= $space_pgn ? $num_pgn : $this->page->p + $space_pgn;
+
+  if( $this->page->max_p > $records->lastPage() ){
+    $this->page->max_p = $records->lastPage();
+  }
+
+  $this->page->min_p = $this->page->max_p - ($num_pgn - 1);
+  if( $this->page->min_p < 1 ) $this->page->min_p = 1;
+  
+}
+?>
+==
+{% set records = builderList.records %}
+{% set displayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
+{% set record = builderDetails.record %}
+<h1 aria-hidden="true" class="seo-heading">Berita</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp hidden-xs"><img src="{{ 'assets/img/95-TAHUN-FF_desktop-banner.jpg'|theme }}" alt="Desktop-banner"/> </div>
+    <div class="imgwrp visible-xs"><img src="{{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }}" alt="Mobile-banner"/> </div>
+</div>
+
+<div class="container-menutab">
+    <div class="container-one">
+        <ul>
+          <li class="toggle hidden-lg"><a href="javascript:;" class="active">{{'news'|_}}</a></li>
+          <li><a href="{{'about-us'|page}}" class="{% if this.page.id == 'about-us' %}active{% endif %}">{{'tentang-kami'|_}}</a></li>
+          <li><a href="{{'news'|page}}" class="{% if this.page.id == 'news' %}active{% endif %}">{{'berita'|_}}</a></li>
+          <li><a href="{{'gallery'|page}}" class="{% if this.page.id == 'galeri-foto' %}active{% endif %}">{{'galeri-foto'|_}}</a></li>
+          <li><a href="{{'press-release'|page}}" class="{% if this.page.id == 'press-release-single' %}active{% endif %}">{{'siaran-pers'|_}}</a></li>
+          <li><a href="{{'our-purposes'|page}}" class="{% if this.page.id == 'our-purposes' %}active{% endif %}">{{'tujuan-kami'|_}}</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id='main-section' class="container-fluid">
+    <div class="container-two">
+      <div class="col-md-12">
+          <div class="breadcrumb">
+            <ul>
+                <li><a href="{{ 'home'|page }}">{{'beranda'|_}}</a> </li>
+                <li><a href="javascript:;">{{'berita'|_}}</a> </li>
+            </ul>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+        <div class="default-content">
+            <div class="container-two">
+                <div class="row">
+                    <div class="col-md-7">
+                      <h3>{{'berita'|_}}</h3>
+                    </div>
+                    <div class="col-md-5">
+                      <input type="search" placeholder="Search" class="form-control" id="news-search" style="margin-bottom: 20px;">
+                    </div>
+                </div>
+                <div class="container-menutab container-menutab-news hidden-lg">
+                    <div class="container-one">
+                        <ul>
+                            <li class="toggle"><a href="javascript:;" class="active">All</a></li>
+                            <li><a href="{{url('news'|page) }}" class="active">All</a></li>
+                            {% for years in records.first.year  %}
+                            <li><a href="{{url('news-archive'|page ({"slug":years.published_date})) }}">{{ years.published_date }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="container-news">
+                    <div class="content">
+                        <div class="left">
+                            <div class="content">
+                                {% for news in totalnya %}
+                                    <div class="wrp-itemnews">
+                                        <div class="imgwrp">
+                                            <a href="{{ 'news-single'|page({"slug": news.slug}) }}">
+                                                <img src="{{news.featured_image| mediathumb_resize('width', 100, 80) }}" alt="{{ news.title }}"/>
+                                            </a>
+                                        </div>
+                                        <div class="contenttxt">
+                                            <div class="date">{{news.published_date|date('M d, Y')}}</div>
+                                        {% set spaceout %}
+                                            <h4><a href="{{ 'news-single'|page({"slug": news.slug}) }}">{{ trans_pick(news, 'title') }}</a></h4>
+                                        {% endset %}
+                                        {{ spaceout|trim|raw }}
+                                            {{ html_limit(trans_pick(news, 'description'), 150)|raw }}
+                                            <a href="{{ 'news-single'|page({"slug": news.slug}) }}" class="button">{{'selengkapnya'|_}}</a>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                               
+                                
+                                 <div class="stylepaging">
+      <ul>
+        {% if this.page.p != 1 %}
+          <li><a href="{{ this.page.baseFileName|page({ "page": this.page.p }) }}?p={{ this.page.p - 1 }}">&laquo;</a></li>
+        {% endif %}
+        {% for i in this.page.min_p..this.page.max_p %}
+          <li>
+            <a href="{{ this.page.baseFileName|page({ "page": i }) }}?p={{ i }}" {{ i != currentPage ? 'class="disable"' : 'class="active"' }}>
+              {{ i }}
+            </a>
+          </li>
+        {% endfor %}
+        {% if this.page.p != this.page.total_page %}
+          <li><a href="{{ this.page.baseFileName|page({ "page": page }) }}?p={{ this.page.p + 1 }}">&raquo;</a></li>
+        {% endif %}
+      </ul>                       
+      <div  class="paging-info">{{ 'halaman'|_ }} {{currentPage}} {{ 'dari'|_ }} {{this.page.total_page}}</div>
+    </div>
+                            </div>
+                        </div>
+               
+                                                <div  class="right visible-lg">
+                            <div class="content">
+                                <ul class="yearright">
+                                {% for years in records.first.year  %}
+                                    <li class=""><a href="{{url('newstestarchive'|page ({"slug":years.published_date})) }}">{{ years.published_date }}</a></li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- end mainsection -->

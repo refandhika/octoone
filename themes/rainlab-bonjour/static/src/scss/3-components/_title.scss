@@ -1,0 +1,31 @@
+.title-center {
+    display: block;
+    text-align: center;
+    clear: left;
+    display: inline-block;
+    width: 100%;
+    margin-top: 70px;
+    margin-bottom: 25px;
+
+    h3 {
+        font-size: 40px;
+        font-family: $font-black;
+        color: $blue;
+        margin-top: 0;
+        margin-bottom: 25px;
+    }
+}
+
+.post {
+    &__title {
+        font-size: 25px;
+        font-family: $font-black;
+        color: $blue;
+        margin-top: 0;
+        margin-bottom: 25px;
+
+        @media screen and (min-width: $screen-md) {
+            font-size: 40px;
+        }
+    }
+}

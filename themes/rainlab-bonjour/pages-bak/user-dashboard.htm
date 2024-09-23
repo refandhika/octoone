@@ -1,0 +1,146 @@
+title = "User Dashboard"
+url = "/user-dashboard"
+layout = "default"
+is_hidden = 0
+[session]
+security = "user"
+redirect = "home"
+==
+<h1 aria-hidden="true" class="seo-heading">Tentang Kami | Frisian Flag Indonesia</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp"><img src="{{ 'assets/img/our-milkpedia.png'|theme }}" alt="Our Milkpedia"/> </div>
+</div>
+
+
+<div id='main-section' class="container-fluid">
+    <div class="col-md-12">
+        <div class="breadcrumb">
+            <div class="container-two">
+                <ul>
+                    <li><a href="{{ 'home' | page}}">{{'beranda'|_}}</a> </li>
+                    <li><a href="#">{{'profil'|_}}</a> </li>
+                    <li><a href="javascript:;">{{'user-dashboard'|_}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="default-content">
+            <div class="container-two">
+                <h3><span class="color-blue">Selamat Datang,</span>  {{ user.name }} {{ user.surname }}</h3>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="con-profile">
+                            <div class="clearfix">
+                                <div class="con-foto pull-left"></div>
+                                <div class="con-nama pull-left">{{ user.name }} {{ user.surname }}</div>
+                                <div class="pull-right"><a href="" id="editProfil">Edit</a></div>
+                            </div>
+                           {{ form_ajax('onUpdate',{model: user,class: 'form-editprofil'}) }}
+                            <div class="con-form">
+                                <label>Email</label>
+                                <input type="text" disabled="disabled" name="email" value="{{ form_value('email') }}">
+                            </div>
+                            <div class="con-form">
+                                <label>Jenis Kelamin</label>
+                                <input type="text" disabled="disabled" name="jk" value="{{ form_value('jk') }}">
+                            </div>
+                            <div class="con-form">
+                                <label>Tanggal Lahir</label>
+                                <input type="text" disabled="disabled" name="tgl_lahir" value="{{ form_value('tgl_lahir') }}">
+                            </div>
+                            <div class="con-form">
+                                <label>Nomor Telepon</label>
+                                <input type="text" disabled="disabled" name="telp" value="{{ form_value('telp') }}">
+                            </div>
+                            <div class="con-form">
+                                <label>Provinsi</label>
+                                <input type="text" disabled="disabled" name="prof" value="{{ form_value('prof') }}">
+                            </div>
+                            <div class="con-form">
+                                <label>Kota</label>
+                                <input type="text" disabled="disabled" name="kota" value="{{ form_value('kota') }}">
+                            </div>
+                            <div class="con-form">
+                                <label>Alamat</label>
+                                <input type="text" disabled="disabled" name="alamat" value="{{ form_value('alamat') }}">
+                            </div>
+                            <div class="con-form">
+                                <button type="submit" class="btn-edit-profile">Edit</button>
+                            </div>
+                           {{ form_close() }}
+                        </div>
+                        <div class="con-profile">
+                           {{ form_ajax('onUpdate',{model: user,class: 'form-editprofil2'}) }}
+                            <div class="con-form">
+                                <div class="clearfix">
+                                    <label class="pull-left">Password</label>
+                                    <a href="#" id="edit2" class="pull-right">Edit</a>
+                                </div>
+                                <div id="form2">
+                                    <small>New Password</small>
+                                    <input type="password" class="active" name="password" id="accountPassword">
+                                    <small>Confirm Password</small>
+                                    <input type="password" class="active" name="password_confirmation" id="accountPasswordConfirm">
+                                    <button type="submit" class="btn-edit-profile active">Ganti Password</button>
+                                </div>
+                            </div>
+                           {{ form_close() }}
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="con-kampanye">
+                            <h4 class="color-blue">KAMPANYE</h4>
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                <div class="panel panel-default">
+                                  <div class="panel-heading" role="tab" id="headingOne">
+                                    <h4 class="panel-title">
+                                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Collapsible Group Item #1
+                                      </a>
+                                    </h4>
+                                  </div>
+                                  <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                    <div class="panel-body">
+                                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="panel panel-default">
+                                  <div class="panel-heading" role="tab" id="headingTwo">
+                                    <h4 class="panel-title">
+                                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Collapsible Group Item #2
+                                      </a>
+                                    </h4>
+                                  </div>
+                                  <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                    <div class="panel-body">
+                                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="panel panel-default">
+                                  <div class="panel-heading" role="tab" id="headingThree">
+                                    <h4 class="panel-title">
+                                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        Collapsible Group Item #3
+                                      </a>
+                                    </h4>
+                                  </div>
+                                  <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                    <div class="panel-body">
+                                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,183 @@
+title = "Our Activities Single"
+url = "/aktivitas-kami/:category-slug/:slug"
+layout = "default"
+is_hidden = 0
+
+[activityCategories]
+
+[builderDetails]
+modelClass = "Definite\Activities\Models\Activity"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+==
+<?php
+function onStart(){
+    $url = $this->param('slug');
+    if($url == "ayam-goreng-tepung"){
+         return redirect('resep-kami/resep-dengan-susu-cair/ayam-goreng-tepung');
+    }
+    if($url == "resep-hotteok-ala-korea"){
+         return redirect('resep-kami/resep-dengan-kental-manis/resep-hotteok-ala-korea');
+    }
+    
+}
+function onEnd() {
+
+    $this->page->amp_url = $this->pageUrl('our-activities-single-amp');
+    // get the post component
+  
+    $_title            = $this->page->components["builderDetails"]->record["title"];
+    $_desc             = $this->page->components["builderDetails"]->record["title"];
+    $meta_title        = $this->page->components["builderDetails"]->record["meta_title"];
+    $meta_description  = $this->page->components["builderDetails"]->record["meta_description"];
+    $og_image          = $this->page->components["builderDetails"]->record["featured_image"];
+    
+    $this->page->title            = $_title; 
+    $this->page->meta_title       = $meta_title;
+    $this->page->meta_description = $meta_description;
+    $this->page->og_image         = $og_image;
+    $this->page->og_description   = $meta_description;
+    
+    $category = $this->param('category-slug');
+    $allowed = ['keluargaminumsusu' , 'gerakan-nusantara' , 'jr-nba'];
+    
+    $allowed_count = 0;
+    foreach($allowed as $slug){
+        if($category != $slug){
+            $allowed_count += 1;
+        }
+    }
+    if($allowed_count == 0){
+        $cmsController     = new Cms\Classes\Controller;
+        return Response::make( $cmsController->render("/404"), 404);
+    }
+
+}
+?>
+==
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+{% if record %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ record.title }}</h1>
+
+<div class="static-baner-pages">
+    {% if record.category.slug == 'keluargaminumsusu' %}
+        <div class="imgwrp hidden-xs"><img src="{{  'assets/img/keluargaminumsusu/FF-perayaan-susu-1440x460.jpg'|theme }}" alt="Frisian Flag Perayaan Susu Desktop" /> </div>
+        <div class="imgwrp visible-xs"><img src="{{ 'assets/img/keluargaminumsusu/FF-perayaan-susu-480x480.jpg'|theme }}" alt="Frisian Flag Perayaan Susu Mobile" /> </div>
+     {% elseif record.category.slug == 'jr-nba' %}
+        <div class="imgwrp hidden-xs"><img src="{{  'assets/img/activities/JrNBA-desktop.jpg'|theme }}" alt="JrNBA Desktop" /> </div>
+        <div class="imgwrp visible-xs"><img src="{{ 'assets/img/activities/JrNBA-mobile.jpg'|theme }}" alt="JrNBA Mobile" /> </div>
+     {% elseif record.category.slug == 'gerakan-nusantara' %}
+        <div class="imgwrp hidden-xs"><img src="{{  'assets/img/activities/Gerakan-Nusantara-desktop.jpg'|theme }}" alt="Gerakan Nusantara Dekstop" /> </div>
+        <div class="imgwrp visible-xs"><img src="{{ 'assets/img/activities/Gerakan-Nusantara-mobile.jpg'|theme }}" alt="Gerakan Nusantara Mobile" /> </div>
+     {% else %}
+        <div class="imgwrp hidden-xs"><img src="{{  'assets/img/our-milkpedia.png'|theme }}" alt="Our Milkpedia" /> </div>
+        <div class="imgwrp visible-xs"><img src="{{ 'assets/img/staticbaner-xs.jpg'|theme }}" alt="Banner Static" /> </div>
+    {% endif %}
+</div>
+
+<div style="display:none">hii sendifajri</div>
+<div class="container-menutab container-menutab--five">
+    <div class="container-one">
+        <ul class="breadcrumb">
+            <li class="toggle visible-xs visible-sm"><a href="javascript:;" class="active">{{ record.title }}</a></li>
+            {% if activityCategories.records %}
+                {% for category in activityCategories.records %}
+                <li>
+                    <a href="{{ 'our-activities-archive'|page({'slug': category.slug}) }}" class="{{ record.slug == category.slug ? 'active' : '' }}">
+                        {{ category.title }}
+                    </a>
+                </li>
+                {% endfor %}
+            {% endif %}
+         </ul>
+    </div>
+</div>
+
+<div id='main-section'>
+
+  <div class="container">
+      <div class="row">
+          <div class="breadcrumb">
+              <div class="container-two breadcrumb__left">
+                  <ul>
+                      <li>
+                          <a href="{{ 'home'|page }}">{{ 'beranda'|_ }}</a>
+                      </li>
+                      <li>
+                          <a href="javascript:;">Aktivitas Kami</a>
+                      </li>
+                      <li>
+                          <a href="{{ 'our-activities-archive'|page({'slug': record.category.slug}) }}">{{ record.category.title }}</a>
+                      </li>
+                      <li>
+                          <a href="{{ 'our-activities-single'|page({
+                            'category-slug': record.category.slug,
+                            'slug': record.slug
+                        }) }}">{{ record.title }}</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="col-md-12">
+      <div class="container-two">
+          <div class="date date-main">
+              <label>{{ record.category.title }}</label>
+              <span> | {{ record.created_at.format('d M Y') }}</span>
+          </div>
+      </div>
+  </div>
+
+  <div class="col-md-12">
+      <div class="default-content">
+          <div class="container-two">
+              <h3>{{ record.title }}</h3>
+
+              <div class="imgwrp">
+                  <img src="{{ record.image_banner|media }}" alt="{{ record.title }}"/>
+              </div>
+
+                {{ record.description|raw }}
+
+
+                <div class="row activities__gallery-thumbnail hide">
+                  <div class="col-xs-12 col-sm-4 item">
+                    <img src="{{ 'assets/img/activities/thumbnail/01.png'|theme }}" alt="Thumbnail 1">
+                  </div>
+                  <div class="col-xs-12 col-sm-4 item">
+                    <img src="{{ 'assets/img/activities/thumbnail/02.png'|theme }}" alt="Thumbnail 2">
+                  </div>
+                  <div class="col-xs-12 col-sm-4 item">
+                    <img src="{{ 'assets/img/activities/thumbnail/03.png'|theme }}" alt="Thumbnail 3">
+                  </div>
+                </div>
+
+              <div class="wrp-sharesocemd">
+                  <label>{{'share'|_}}</label>
+                  <div class="addthis_inline_share_toolbox"></div>
+               </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="col-xs-12 activities__information testeran">
+    <div class="container">
+      <div class="text-center default-content">
+        <h3>Untuk informasi lebih lanjut, yuk klik disini</h3>
+        <a href="{{ 'our-activities-archive'|page({'slug': record.category.slug}) }}/galeri" class="button">Find Out More</a>
+      </div>
+    </div>
+  </div>
+
+</div> <!-- end mainsection -->
+{% else %}
+    {% partial '404' %}
+{% endif %}

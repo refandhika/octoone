@@ -1,0 +1,93 @@
+description = "Layour for Choco Periment"
+
+[staticPage]
+useContent = 1
+default = 0
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('cokoperimen-amp');
+    }
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+    	<img src="{{ 'cokoperimen/desktop/cokoperiment-cara-mengikuti.jpeg'|media }}" class="hidden-xs" />
+      <img src="{{ 'cokoperimen/mobile/cokoperiment-cara-mengikuti-m.jpeg'|media  }}" class="visible-xs" />
+    </div>
+</div>
+
+{% partial 'site/chocoperiment-menu' %}
+
+
+<!-- <div class="default-content" style="text-align: center;">
+    <img src="{{ 'cokoperimen/content/cokoperimen-cara-bermain.jpeg'|media  }}" style="width: 50%;">
+</div> -->
+<div id='main-section' class="container" style="padding: 30px 15px;">
+    <div class="col-md-12">
+        <div class="default-content">
+             <div class="center-img" style="text-align: center;margin-bottom:10px;">
+                <img src="{{ 'cokoperimen/content/cokoperimen-cb-desktop.png'|media  }}" style="" class="hidden-xs">
+                <img src="{{ 'cokoperimen/content/cokoperimen-cb-mobile.jpeg'|media  }}" style="" class="visible-xs">
+                
+            </div>
+            <div class="row" style="text-align: right;">
+                <div class="col-sm-12 col-md-3 card card--small" style="margin-bottom: 15px;">
+                    <div class="card__thumbnail card__thumbnail--blue" style="background-size: cover; background-position: top; background-image: url('{{ 'cokoperimen/content/ide-cokoperimen.jpeg'|media  }}');  border-color: #eee;" data-adaptive-background data-ab-css-background>
+                        <div class="card__meta card__meta--small">
+                            <a href="{{ '/aktivitas-kami/cokoperimen/ide-cokoperimen' }}" class="button button--small">KLIK DI SINI</a>
+                        </div>
+                    </div>
+                </div> <!--  .col-sm-12 col-md-4 -->
+                <div class="col-sm-12 col-md-3 card card--small" style="margin-bottom: 15px;">
+                    <div class="card__thumbnail card__thumbnail--blue" style="background-size: cover; background-position: top; background-image: url('{{ 'cokoperimen/content/cokoperimen-2.jpeg'|media }}');  border-color: #eee;" data-adaptive-background data-ab-css-background>
+                        <div class="card__meta card__meta--small">
+                            <a href="{{ '/aktivitas-kami/cokoperimen/hadiah' }}" class="button button--small">KLIK DI SINI</a>
+                        </div>
+                    </div>
+                </div> <!--  .col-sm-12 col-md-4 -->
+                <div class="col-sm-12 col-md-3 card card--small" style="margin-bottom: 15px;">
+                    <div class="card__thumbnail card__thumbnail--blue" style="background-size: cover; background-position: top; background-image: url('{{ 'cokoperimen/content/cokoperimen-syarat.jpeg'|media }}');  border-color: #eee;" data-adaptive-background data-ab-css-background>
+                     <div class="card__meta card__meta--small">
+                         <a href="{{ '/aktivitas-kami/cokoperimen/syarat-dan-ketentuan' }}" class="button button--small">KLIK DI SINI</a>
+                     </div>
+                    </div>
+                </div> <!--  .col-sm-12 col-md-4 -->
+                <div class="col-sm-12 col-md-3 card card--small" style="margin-bottom: 15px;">
+                    <div class="card__thumbnail card__thumbnail--blue" style="background-size: cover; background-position: top; background-image: url('{{ 'cokoperimen/content/cokoperimen-pemenang-2.jpeg'|media }}');  border-color: #eee;" data-adaptive-background data-ab-css-background>
+                       <div class="card__meta card__meta--small">
+                           <a href="{{ '/aktivitas-kami/cokoperimen/pemenang' }}" class="button button--small">KLIK DI SINI</a>
+                       </div>
+                    </div>
+                </div> <!--  .col-sm-12 col-md-4 -->
+            </div> <!--  .row -->
+        </div>
+    </div>
+</div>
+
+<style>
+    .default-content h3 {
+        font-size: 22px;
+        line-height: 1.2;
+    }
+
+    @media screen and (min-width: 767px) {
+        .default-content h3 {
+            font-size: 30px;
+        }
+    }
+
+  @media screen and (max-width: 767px) {
+    .m-bottom-15 {
+      margin-bottom: 15px;
+    }
+  }
+</style>
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

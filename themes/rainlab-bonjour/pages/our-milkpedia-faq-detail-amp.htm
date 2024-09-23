@@ -1,0 +1,101 @@
+title = "Our Milkpedia FAQ Detail"
+url = "/amp/milkpedia/faq/:slug?"
+layout = "basic-amp"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/our-milkpedia-faq-detail"
+
+[builderDetails]
+modelClass = "Definite\Milkpedia\Models\Faq"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+==
+<?php
+function onEnd() {
+    
+     if($this->param('category-slug') == 'default')
+    {
+         $cmsController = new Cms\Classes\Controller;
+        return Response::make( $cmsController->render("/404"), 404);
+    }  
+    // get the post component
+    $_title      = $this->page->components["builderDetails"]->record->attributes["title"];
+    $_meta_title = $this->page->components["builderDetails"]->record->attributes["title"];
+    
+    if($_meta_title){
+             $this->page->title      = $_meta_title;
+        }
+    else{
+             $this->page->title = $_title;
+        }    
+    
+    $_meta_description = $this->page->components["builderDetails"]->record->attributes["meta_description"] ?? NULL;
+    $_meta_keywords = $this->page->components["builderDetails"]->record->attributes["meta_keywords"] ?? NULL;
+
+    $this->page->meta_description = $_meta_description;
+    $this->page->meta_keywords = $_meta_keywords;
+
+    $_title_en = $this->page->components["builderDetails"]->record->attributes["title_en"] ?? NULL;
+    $_meta_description_en = $this->page->components["builderDetails"]->record->attributes["meta_description_en"] ?? NULL;
+    $_meta_keywords_en = $this->page->components["builderDetails"]->record->attributes["meta_keywords_en"] ?? NULL;
+    $this->page->title_en = $_title_en;
+    $this->page->meta_title_en = $this->page->components["builderDetails"]->record->attributes["meta_title_en"] ?? NULL;
+    $this->page->meta_description_en = $_meta_description_en;
+    $this->page->meta_keywords_en = $_meta_keywords_en;
+
+    $this->page->category_slug = $this->param('category-slug');
+}
+?>
+==
+{% set record = builderDetails.record %}
+{% set record2 = builderDetailsCat.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+
+<amp-img src="{{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }}" srcset="{{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }} 640w,
+           {{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }} 320w" width="50" height="50" layout="responsive"
+    alt="Banner 95 Tahun Frisian Flag">
+</amp-img>
+{{key}}
+
+<amp-accordion class="title_home">
+    <section>
+        <h4 class="arrow_down"><a href="#" target="_self">FAQ</a></h4>
+        <p>
+            <a href="{{ 'our-milkpedia'|page({ "slug": "nutrisi-dan-kesehatan" }) }}">
+                Nutrisi &amp; Kesehatan
+            </a>
+            <a href="{{ 'our-milkpedia'|page({ "slug": "manfaat-minum-susu" }) }}">
+                Manfaat Minum Susu
+            </a>
+            <a href="{{ 'our-milkpedia'|page({ "slug": "kapan-dan-bagaimana-cara-minum-susu" }) }}">
+                Kapan &amp; Bagaimana Cara Minum Susu
+            </a>
+            <a href="{{ 'our-milkpedia'|page({ "slug": "faq" }) }}">FAQ</a>
+        </p>
+    </section>
+</amp-accordion>
+<div class="breadcrumb">
+    <a href="{{ url('/') }}">{{ 'beranda'|_ }}</a> /
+    <a href="#">Milkpedia</a> /
+    <a href="/milkpedia/faq">FAQ</a> /
+    <a href="{{ 'our-milkpedia-single-amp'|page({ slug: record.slug }) }}">{{ trans_pick(record, 'title') }}</a>
+</div>
+<div id='main-section'>
+    <!--s:event-->
+    <section class="event">
+        <div class="detail_text mt-20">
+            <div class="content mb-10">
+                <h1>{{ trans_pick(record, "title") }}</h1>
+                <p>{{ trans_pick(record, "description") | raw}}</p>
+            </div>
+            <p><a href="/milkpedia/faq" class="button btnblue" style="text-transform: uppercase">Kembali Ke FAQ</a></p>
+            <br>
+
+    </section>
+    <!--s:event-->
+</div> <!-- end mainsection -->

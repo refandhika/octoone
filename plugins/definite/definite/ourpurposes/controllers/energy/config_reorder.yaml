@@ -1,0 +1,4 @@
+title: Energy
+modelClass: Definite\Ourpurposes\Models\Energy
+toolbar:
+    buttons: reorder_toolbar

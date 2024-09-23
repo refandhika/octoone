@@ -1,0 +1,4 @@
+title: Ddp
+modelClass: Definite\Ourpurposes\Models\Ddp
+toolbar:
+    buttons: reorder_toolbar

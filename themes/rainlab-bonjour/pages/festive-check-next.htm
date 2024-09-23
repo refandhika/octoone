@@ -1,0 +1,99 @@
+title = "festive-check-next"
+url = "/festive-check-next"
+is_hidden = 0
+==
+<?php
+function onStart(){
+    $title = Input::get('title');
+    $sort = Input::get('sort');
+    $category = Input::get('category');
+    
+    $limit = 6;
+    $next = 6;
+    $sortvar = $category == "SCM" ? 'tb.updated_at' : 'definite_activities_activity.updated_at';
+    
+    if($sort == "populer"){
+        $sortvar = $category == "SCM" ? 'total' : 'definite_activities_like.total';
+    }
+
+    $index    = intval(Input::get('index')) + $next;
+    $count = 0;
+    if($title == ""){
+        if($category == "SCM")
+        {
+            if(Input::get('sort') == "populer"){
+            $query = DB::select("SELECT tb.*, IFNULL(definite_activities_like.total,0) as total_likes from (select definite_activities_activity.sort_top, definite_activities_activity.id, definite_activities_activity.updated_at,group_concat(definite_activities_categories_activities.category_id) as groupid, definite_activities_category.slug as slug_category, definite_activities_activity.title, definite_activities_activity.slug, definite_activities_activity.featured_image from definite_activities_activity left join definite_activities_categories_activities ON definite_activities_categories_activities.activity_id = definite_activities_activity.id left join definite_activities_category ON definite_activities_category.id = definite_activities_categories_activities.category_id where definite_activities_activity.favorite <> 1 AND (definite_activities_category.id = 22 or definite_activities_category.id = 18) group by definite_activities_activity.id) tb
+                left join definite_activities_like ON tb.id = definite_activities_like.activity_id
+                where groupid = '22,18' or groupid = '18,22' order by ".$sortvar." DESC LIMIT 6 OFFSET ".$index."");
+            }else{
+                $query = DB::select("SELECT tb.*, IFNULL(definite_activities_like.total,0) as total_likes from (select definite_activities_activity.sort_top, definite_activities_activity.id, definite_activities_activity.updated_at,group_concat(definite_activities_categories_activities.category_id) as groupid, definite_activities_category.slug as slug_category, definite_activities_activity.title, definite_activities_activity.slug, definite_activities_activity.featured_image from definite_activities_activity left join definite_activities_categories_activities ON definite_activities_categories_activities.activity_id = definite_activities_activity.id left join definite_activities_category ON definite_activities_category.id = definite_activities_categories_activities.category_id where definite_activities_activity.favorite <> 1 AND (definite_activities_category.id = 22 or definite_activities_category.id = 18) group by definite_activities_activity.id) tb
+                left join definite_activities_like ON tb.id = definite_activities_like.activity_id
+                where groupid = '22,18' or groupid = '18,22' order by sort_top desc, ".$sortvar." ".$sort." LIMIT 6 OFFSET ".$index." ");
+                
+            }
+            $query = collect($query);
+        }
+        
+        if($category == "FMP")
+        {
+            $query = Definite\Activities\Models\Activity::leftJoin('definite_activities_categories_activities', 'definite_activities_categories_activities.activity_id', '=', 'definite_activities_activity.id')->
+        leftJoin('definite_activities_like', 'definite_activities_like.activity_id', '=', 'definite_activities_activity.id')->
+        leftJoin('definite_activities_category', 'definite_activities_category.id', '=', 'definite_activities_categories_activities.category_id')->whereRaw('(definite_activities_activity.favorite <> 1 or definite_activities_activity.favorite is null ) AND definite_activities_category.id = 21' )->
+                select(DB::raw('IFNULL(definite_activities_like.total,0) as total_likes'), 'definite_activities_category.slug as slug_category','definite_activities_activity.title', 'definite_activities_activity.slug', 'definite_activities_activity.featured_image');
+            if(Input::get('sort') == "populer"){
+                $query = $query->orderBy($sortvar, "DESC")->offset($index)->limit($limit)->get();
+            }else{
+                $query = $query->orderBy('definite_activities_activity.sort_top', "desc")->orderBy($sortvar, $sort)->offset($index)->limit($limit)->get();
+            }
+           
+        }
+    
+    if(!$query->isEmpty()) $count += 1;
+    
+    }
+    else{
+        if($category == "FMP")
+        {
+            
+        $allquery = Definite\Activities\Models\Activity::leftJoin('definite_activities_categories_activities', 'definite_activities_categories_activities.activity_id', '=', 'definite_activities_activity.id')->
+    leftJoin('definite_activities_like', 'definite_activities_like.activity_id', '=', 'definite_activities_activity.id')->
+    leftJoin('definite_activities_category', 'definite_activities_category.id', '=', 'definite_activities_categories_activities.category_id')->whereRaw('(definite_activities_activity.favorite <> 1 or definite_activities_activity.favorite is null ) AND definite_activities_category.id = 21 AND ( definite_activities_activity.title like ? OR definite_activities_activity.description like ?) ', [ '%'.$title.'%', '%'.$title.'%'] )->
+            select('definite_activities_like.total as total_likes','definite_activities_category.slug as slug_category','definite_activities_activity.title', 'definite_activities_activity.slug', 'definite_activities_activity.featured_image');
+            
+            if($sortvar == 'definite_activities_activity.updated_at'){
+                $allquery = $allquery->orderByRaw(" CASE
+            WHEN definite_activities_activity.title LIKE '%".$title."%' THEN 1
+            WHEN definite_activities_activity.description LIKE '%".$title."%' THEN 2
+            ELSE 3
+          END, definite_activities_activity.updated_at ".$sort)->offset($index)->limit($limit)->get();
+          
+            }else{
+             $allquery = $allquery->orderBy($sortvar, $sort)->offset($index)->limit($limit)->get();
+            }
+            
+        }else{
+            if($sortvar == 'tb.updated_at'){
+                $allquery = DB::select("SELECT tb.*, IFNULL(definite_activities_like.total,0) as total_likes from (select definite_activities_activity.sort_top, definite_activities_activity.id, definite_activities_activity.updated_at,group_concat(definite_activities_categories_activities.category_id) as groupid, definite_activities_category.slug as slug_category, definite_activities_activity.title, definite_activities_activity.description, definite_activities_activity.slug, definite_activities_activity.featured_image from definite_activities_activity left join definite_activities_categories_activities ON definite_activities_categories_activities.activity_id = definite_activities_activity.id left join definite_activities_category ON definite_activities_category.id = definite_activities_categories_activities.category_id where definite_activities_activity.favorite <> 1 AND (definite_activities_category.id = 22 or definite_activities_category.id = 18) AND (definite_activities_activity.title like '%".$title."%' OR definite_activities_activity.description like '%".$title."%')  group by definite_activities_activity.id) tb
+                left join definite_activities_like ON tb.id = definite_activities_like.activity_id
+                where groupid = '22,18' or groupid = '18,22' order by CASE
+            WHEN title LIKE '%".$title."%' THEN 1
+            WHEN description LIKE '%".$title."%' THEN 2
+            ELSE 3
+          END, ".$sortvar." ".$sort." LIMIT 6 OFFSET ".$index." ");
+            }else{
+                $allquery = DB::select("SELECT tb.*, IFNULL(definite_activities_like.total,0) as total_likes from (select definite_activities_activity.sort_top, definite_activities_activity.id, definite_activities_activity.updated_at,group_concat(definite_activities_categories_activities.category_id) as groupid, definite_activities_category.slug as slug_category, definite_activities_activity.title, definite_activities_activity.description, definite_activities_activity.slug, definite_activities_activity.featured_image from definite_activities_activity left join definite_activities_categories_activities ON definite_activities_categories_activities.activity_id = definite_activities_activity.id left join definite_activities_category ON definite_activities_category.id = definite_activities_categories_activities.category_id where definite_activities_activity.favorite <> 1 AND (definite_activities_category.id = 22 or definite_activities_category.id = 18) AND (definite_activities_activity.title like '%".$title."%' OR definite_activities_activity.description like '%".$title."%')  group by definite_activities_activity.id) tb
+                left join definite_activities_like ON tb.id = definite_activities_like.activity_id
+                where groupid = '22,18' or groupid = '18,22' order by ".$sortvar." ".$sort." LIMIT 6 OFFSET ".$index." ");
+            }
+            $allquery = collect($allquery);
+            
+        }
+  
+      if(!$allquery->isEmpty()) $count += 1;
+    }
+    header('Content-Type: application/json');
+     $this['result'] = $count;   
+}
+?>
+==
+{"items":{{ result | raw  }}}

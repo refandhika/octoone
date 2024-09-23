@@ -1,0 +1,10 @@
+name: Fdov
+form: $/definite/ourpurposes/models/fdov/fields.yaml
+modelClass: Definite\Ourpurposes\Models\Fdov
+defaultRedirect: definite/ourpurposes/fdov
+create:
+    redirect: 'definite/ourpurposes/fdov/update/:id'
+    redirectClose: definite/ourpurposes/fdov
+update:
+    redirect: definite/ourpurposes/fdov
+    redirectClose: definite/ourpurposes/fdov

@@ -1,0 +1,14 @@
+[\Flynsarmy\Menu\Components\Menu menu]
+menu_id = 5
+
+[viewBag]
+==
+{%
+    component "menu"
+    before_menu="<ul class=''>"
+    before_item='<li class="menu-item-%1$s %3$s">'
+    before_children='<ul class=" val-submenu-xs">'
+    selected_item_class="active"
+    before_url_item_label='<a href="%1$s" title="%6$s" target="%7$s">'
+    has_children_class="submenu-xs"
+%}

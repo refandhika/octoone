@@ -1,0 +1,120 @@
+fields:
+    title:
+        label: 'Title (id)'
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    title_en:
+        label: 'Title (en)'
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    subtitle:
+        label: 'Subtitle (id)'
+        oc.commentPosition: ''
+        span: full
+        type: text
+    subtitle_en:
+        label: 'Subtitle (en)'
+        oc.commentPosition: ''
+        span: full
+        type: text
+    slug:
+        label: Slug
+        oc.commentPosition: ''
+        span: full
+        preset:
+            field: title
+            type: slug
+        type: text
+    description:
+        label: 'Description (id)'
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: richeditor
+    description_en:
+        label: 'Description (en)'
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: richeditor
+    featured_image:
+        label: 'Featured Image'
+        mode: image
+        span: full
+        type: mediafinder
+        comment: 'Image for category banner'
+    image:
+        label: Image
+        mode: image
+        span: auto
+        type: mediafinder
+        comment: 'Image in category description'
+    small_packshot_image:
+        label: 'Small Packshot Image'
+        mode: image
+        span: auto
+        type: mediafinder
+        comment: 'Image icon for Megamenu'
+    parent:
+        label: Parent
+        oc.commentPosition: ''
+        nameFrom: title
+        descriptionFrom: description
+        span: auto
+        emptyOption: None
+        type: relation
+    is_featured:
+        label: 'Set as featured'
+        span: auto
+        type: checkbox
+        comment: 'for slideshow product in homepage'
+    additional_tags:
+        label: 'Additional Tags'
+        size: huge
+        language: html
+        span: full
+        stretch: 0
+        type: codeeditor
+        commentAbove: 'Paste your additional tags here'
+tabs:
+    fields:
+        meta_description:
+            label: 'Meta Description'
+            size: ''
+            oc.commentPosition: ''
+            span: auto
+            type: textarea
+            tab: 'Meta Tag (id)'
+        meta_keywords:
+            label: 'Meta Keywords'
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            tab: 'Meta Tag (id)'
+        meta_title:
+            label: 'Meta Title'
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            tab: 'Meta Tag (id)'
+        meta_description_en:
+            label: 'Meta Description (en)'
+            size: ''
+            oc.commentPosition: ''
+            span: auto
+            type: textarea
+            tab: 'Meta Tag (en)'
+        meta_keywords_en:
+            label: 'Meta Keywords (en)'
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            tab: 'Meta Tag (en)'
+        meta_title_en:
+            label: 'Meta Title (en)'
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            tab: 'Meta Tag (en)'

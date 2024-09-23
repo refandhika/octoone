@@ -1,0 +1,66 @@
+title = "Sustainability Homepage Testing AMP"
+url = "/sustainability-homepage-testing-amp"
+layout = "basic-amp"
+is_hidden = 0
+==
+<?php
+function onStart(){
+    
+        //$this->page->amp_url = $this->pageUrl('testing-page-detail-recipe-amp');
+       
+       
+        $slug         = "sustainability1";
+        $cmsController     = new Cms\Classes\Controller;
+         $arrContextOptions =array(
+            "ssl"=>array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
+        );
+
+        
+        $pages = Definite\Activities\Models\Activity::whereHas('categories',function($query) {
+           $query->where('id', 23);
+        })->where('id',343)->get()->first();
+        
+        if($pages$pages$pages){
+          
+          $this['content'] = $pages;
+          $this['pageid'] = $pages->id;
+          $this['title'] = $pages->title;
+          $this['image_banner'] = $pages->featured_image;
+          
+          $this['description'] = $pages->description_amp;
+          
+          $this->page->title = ucwords(strtolower($pages->title));
+          $this->page->meta_title = $pages->meta_title;
+          $this->page->meta_description = $pages->meta_description;
+          $this->page->og_image = $pages->featured_image;
+          $this->page->og_description = $pages->meta_description;
+
+        
+        }else{
+          return $cmsController->render("/404");
+        }
+     
+        
+        
+
+}
+?>
+==
+<div class="cover banner-lp" style='background:url({{ image_banner |media  }})'>
+       <div class="banner-title">
+           <h2>{{ title }}</h2>
+       </div>
+</div>
+
+
+
+<section class="event">
+  {{ description | raw }}
+</section>
+{% partial 'sustainability-custom-css.htm' %}
+      
+
+<!--s:event-->

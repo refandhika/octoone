@@ -1,0 +1,5 @@
+title: Products
+modelClass: Definite\Products\Models\Product
+nameFrom: created_at
+toolbar:
+    buttons: reorder_toolbar

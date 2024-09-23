@@ -1,0 +1,36 @@
+title = "unsubscribe-page"
+url = "/unsubscribe-page"
+layout = "default"
+is_hidden = 0
+role = 0
+permission = 0
+anonymous_only = 0
+logged_only = 0
+==
+<?php
+function onStart(){
+        
+        if (session::get('data')) {
+            
+            $this['data'] = session::get('data');
+        }else{
+            return redirect()->to(url('/'));    
+        }
+    
+    }
+?>
+==
+<div class="static-baner-pages">
+    <div class="imgwrp hidden-xs"><img src="{{ 'assets/img/our-milkpedia.png'|theme }}" alt="Our Milkpedia"/> </div>
+    <div class="imgwrp visible-xs"><img src="{{ 'assets/img/staticbaner-xs.jpg'|theme }}" alt="Banner Static"/> </div>
+</div>
+
+<div id='main-section' class="container-fluid">
+	<div class="col-md-8 float-center text-center" style="float:none; margin:auto; padding: 60px 0;">
+		<div class="default-content">
+		
+			<h3 style="margin-top: 30px;">Berhasil unsubscribe</h3>
+			<a href="{{ 'home' | page }}" class="button">{{ 'beranda'|_ }}</a>
+		</div>
+	</div>
+</div>

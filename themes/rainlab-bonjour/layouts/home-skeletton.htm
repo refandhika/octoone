@@ -1,0 +1,37 @@
+description = "A new layout only for testing"
+
+[staticPage]
+useContent = 1
+default = 0
+
+[subscriberform]
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "all"
+
+[SessionClose]
+load_js = 1
+==
+<?php
+function onEnd() {
+
+    // get the post component
+    $this->page->title = "Beranda";
+    $this->page->title_en = "Home";
+
+}
+?>
+==
+{% partial 'site/header-skeleton.htm' %}
+
+{% page %}
+
+
+{% partial 'site/footer' %}
+
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

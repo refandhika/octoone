@@ -1,0 +1,13 @@
+columns:
+    title:
+        label: Title
+        type: text
+        searchable: true
+        sortable: true
+    published_date:
+        label: 'Published Date'
+        type: datetime
+    published_status:
+        label: Published
+        type: text
+        sortable: true

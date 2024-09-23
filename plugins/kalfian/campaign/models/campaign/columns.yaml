@@ -1,0 +1,20 @@
+columns:
+    id:
+        label: ID
+        type: number
+        searchable: true
+        sortable: true
+    title:
+        label: Title
+        type: text
+        searchable: true
+        sortable: true
+    show_page:
+        label: Show Page
+    show_submission:
+        label: Show Submission
+    created_at:
+        label: 'Created At'
+        type: datetime
+        searchable: true
+        sortable: true

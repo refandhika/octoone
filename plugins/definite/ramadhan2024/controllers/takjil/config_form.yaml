@@ -1,0 +1,10 @@
+name: Takjil
+form: $/definite/ramadhan2024/models/takjil/fields.yaml
+modelClass: Definite\Ramadhan2024\Models\Takjil
+defaultRedirect: definite/ramadhan2024/takjil
+create:
+    redirect: 'definite/ramadhan2024/takjil/update/:id'
+    redirectClose: definite/ramadhan2024/takjil
+update:
+    redirect: definite/ramadhan2024/takjil
+    redirectClose: definite/ramadhan2024/takjil

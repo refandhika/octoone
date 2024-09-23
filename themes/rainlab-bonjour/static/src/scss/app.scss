@@ -1,0 +1,63 @@
+@import
+  "0-tools/mixins",
+  "0-tools/margin",
+  "0-tools/fonts",
+  "0-tools/pos",
+  "0-tools/size",
+  "0-tools/color";
+
+@import "bootstrap";
+@import "0-tools/backgrounds";
+
+@import
+  "2-layouts/header",
+  "2-layouts/section",
+  "2-layouts/activities",
+  "2-layouts/bsf",
+  "2-layouts/milkyspiderman",
+  "2-layouts/search",
+  "2-layouts/content",
+  "2-layouts/footer";
+
+@import
+  "3-components/accordion",
+  "3-components/breadcrumb",
+  "3-components/navigation",
+  "3-components/popup",
+  "3-components/contact",
+  "3-components/main-slide",
+  "3-components/button",
+  "3-components/box",
+  "3-components/gallery",
+  "3-components/timeline",
+  "3-components/newsletter",
+  "3-components/heading",
+  "3-components/table",
+  "3-components/search",
+  "3-components/forms",
+  "3-components/variant",
+  "3-components/menutab",
+  "3-components/small-news",
+  "3-components/tabs",
+  "3-components/title",
+  "3-components/separator",
+  "3-components/card";
+
+// @import
+//   "4-pages/";
+
+@import
+  "5-vendor/swiper/swiper",
+  "5-vendor/fontawesome/font-awesome",
+  "5-vendor/slick",
+  "5-vendor/fancybox",
+  "5-vendor/tab-accordion",
+  "5-vendor/fancyboxs",
+  "5-vendor/datepicker",
+  "5-vendor/slick-theme",
+  "5-vendor/fileinput/fileinput";
+
+@import
+  "6-helpers/loader";
+
+@import "1-base/custom";

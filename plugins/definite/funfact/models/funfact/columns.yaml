@@ -1,0 +1,12 @@
+columns:
+    'no':
+        label: Number
+        type: text
+        searchable: true
+        invisible: false
+        sortable: true
+    description:
+        label: Description
+        type: text
+        searchable: true
+        sortable: true

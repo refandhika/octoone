@@ -1,0 +1,23 @@
+<?php namespace Definite\Activities\Updates;
+
+use Schema;
+use October\Rain\Database\Updates\Migration;
+
+class BuilderTableUpdateDefiniteActivitiesWinningScm2 extends Migration
+{
+    public function up()
+    {
+        Schema::table('definite_activities_winning_scm', function($table)
+        {
+            $table->string('main_banner', 100);
+        });
+    }
+    
+    public function down()
+    {
+        Schema::table('definite_activities_winning_scm', function($table)
+        {
+            $table->dropColumn('main_banner');
+        });
+    }
+}

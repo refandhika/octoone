@@ -1,0 +1,134 @@
+description = "Layout for Syarat dan Ketentuan Nikmatnya Kemerdekaan"
+
+[staticPage]
+useContent = 1
+default = 0
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "all"
+
+[SessionClose]
+load_js = 1
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title') }}</h1>
+
+<section>
+  <div class="static-baner-pages mb-5">
+    <div class="imgwrp hidden-xs"><img src="{{ 'assets/img/kemerdekaan/masthead-kemerdekaan.jpg'|theme }}" alt="Masthead Kemerdekaan"> </div>
+    <div class="imgwrp visible-xs"><img src="{{ 'assets/img/kemerdekaan/masthead-mobile.jpg'|theme }}" alt="Masthead Mobile"> </div>
+  </div>
+
+  <div class="container-menutab">
+    <div class="container-one">
+        <ul>
+          <li class="toggle hidden-lg"><a href="javascript:;" class="active">Promo</a></li>
+          <li><a href="promo-frisianflag">Promo</a></li>
+          <li><a href="pemenang-promo">Pemenang</a></li>
+        </ul>
+    </div>
+  </div>
+
+  <div class="imgwrp hidden-xs"><img style="width:100%;" src="{{ 'assets/img/kemerdekaan/banner.jpg'|theme }}" alt="Banner Kemerdekaan Desktop"></div>
+  <div class="imgwrp visible-xs"><img style="width:100%;" src="{{ 'assets/img/kemerdekaan/banner-mobile.jpg'|theme }}" alt="Banner Kemerdekaan Mobile"></div>
+
+  <div class="container-fluid" style="padding: 0; margin: 0;background: #e40613">
+    <div class="row" style="margin: 0">
+      <!-- slider penipuan -->
+      <div class="col-sm-6" style="padding: 0">
+        <div class="swiper-container voucher-kemerdekaan">
+          <div class="swiper-wrapper">
+            {% for i in 1..8 %}
+            <div class="swiper-slide">
+              <img src="{{ url('assets/img/kemerdekaan/voucher/tipu-'|theme) }}{{ i }}.jpg" style="width: 100%" alt="Kemerdekaan {{ i }}">
+            </div>
+            {% endfor %}
+            <label class="label-slider" style="text-align: center; color: white; font-size: 28px; width: 100%;position: absolute; background: #e62900;">CONTOH KUPON / SELEBARAN PENIPUAN</label>
+          </div>
+          <!-- Add Arrows -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+      <!-- end slider -->
+      <div class="col-sm-6" style="padding: 0">
+        <div class="list-warning">
+          <h2>HATI-HATI PENIPUAN!</h2>
+          <ul style="padding-left: 20px; margin: 0; color: white;">
+            <li>Pemenang tidak dipungut biaya apapun / pajak dan administrasi ditanggung PT. Frisian Flag Indonesia</li>
+            <li>Hati-hati penipuan mengatasnamakan Frisian Flag dalam bentuk website, email, SMS, telepon, kupon, atau selebaran</li>
+            <li>Frisian Flag tidak mengeluarkan promo dalam bentuk kupon atau selebaran seperti pada gambar-gambar di samping</li>
+            <li>Harap konfirmasi dan laporkan setiap bentuk informasi yang mencurigakan ke Layanan Peduli Frisian Flag 0-80018-21-406 (Senin - Jumat, pukul 08.00 - 16.00 WIB)</li>
+            <li>Pengumuman pemenang hanya ada di <a href="https://www.frisianflag.com/">www.frisianflag.com</a></li>
+          </ul>
+        </div>
+        <!-- <img src="{{ 'assets/img/kemerdekaan/hati-hati-penipuan.jpg'|theme }}" alt="Hati hati penipuan" width="100%"> -->
+      </div>
+    </div>
+  </div>
+
+  <div id='main-section' class="container" style="padding-top: 60px; padding-bottom: 60px;">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="default-content">
+          {{ trans_pick(page, 'markup')|raw }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section style="background-color: #ececec; color: #2b3990; text-align: center; font-size: 10px; padding: 25px 10px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <b>Hubungi Call Center Promo Frisian Flag di 021-80615181 (Senin-Jumat, 08.00-17.00)<br>
+        Syarat dan Ketentuan kunjungi www.frisianflag.com<br>
+      *Gambar & warna hanya ilustrasi. 1 hadiah untuk 1 pemenang. *Jika spesifikasi yang ditentukan tidak tersedia, Frisian Flag berhak menentukan hadiah lain dengan nilai dan harga yang sama</b>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .list-warning {
+    padding: 50px;
+  }
+  .list-warning h2 {
+    font-size: 36px;
+    color: white;
+    font-family: "Brevia-Black";
+  }
+  .list-warning li {
+    font-family: "Brevia-Black";
+    font-size: 18px;
+    letter-spacing: 0.8px;
+  }
+  .label-slider {
+    padding: 0;
+  }
+  @media (max-width: 640px) {
+    .label-slider {
+      padding: 10px 0;
+    }
+    .list-warning {
+      padding: 15px;
+    }
+    .list-warning h2 {
+      font-size: 24px;
+    }
+    .list-warning li {
+      font-size: 14px;
+    }
+  }
+</style>
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

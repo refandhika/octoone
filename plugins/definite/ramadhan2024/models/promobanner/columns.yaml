@@ -1,0 +1,25 @@
+columns:
+    id:
+        label: id
+        type: number
+    title:
+        label: title
+        type: text
+    link:
+        label: link
+        type: text
+    button_word:
+        label: button_word
+        type: text
+    image:
+        label: image
+        type: text
+    created_at:
+        label: created_at
+        type: datetime
+    updated_at:
+        label: updated_at
+        type: datetime
+    image_mobile:
+        label: image_mobile
+        type: text

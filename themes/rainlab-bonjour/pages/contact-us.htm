@@ -1,0 +1,27 @@
+title = "Hubungi Kami"
+url = "/hubungi-kami"
+layout = "default"
+meta_description = "Anda bisa menghubungi kami melalui layanan telepon bebas pulsa, email layanan peduli, atau alamat PT Frisian Flag Indonesia (FFI) yang tertera di website ini."
+is_hidden = 0
+
+[contactform]
+==
+<?php
+//function onEnd(){
+    //$this->page->amp_url = $this->pageUrl('hubungi-kami');
+//}
+?>
+==
+<h1 aria-hidden="true" class="seo-heading">Hubungi Kami</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp hidden-xs"><img src="{{ 'assets/img/our-milkpedia.png'|theme }}" alt="Our Milkpedia"/> </div>
+    <div class="imgwrp visible-xs"><img src="{{ 'assets/img/staticbaner-xs.jpg'|theme }}" alt="Banner Static Mobile"/> </div>
+</div>
+	<div style="display: none;"  id=“thank-you”>
+       <h2>Terima kasih, pesan Anda telah kami terima dan akan segera dijawab oleh Tim Frisian Flag Indonesia</h2>
+   </div>
+   
+{#% component "contactform" %#}
+
+{% partial "newcontactform" %}

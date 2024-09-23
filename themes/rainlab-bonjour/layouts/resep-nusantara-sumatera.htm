@@ -1,0 +1,604 @@
+description = "Layout for Sumatera"
+
+[staticPage]
+useContent = 1
+default = 0
+
+[account]
+paramCode = "code"
+forceSecure = 0
+[session]
+
+[SessionClose]
+load_js = 1
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('resep-khas-sumatera-amp');
+}
+?>
+==
+{% partial 'site/header-resep-nusantara' %}
+
+	<section>
+
+		<h1 style="display: none;">RESEP KHAS SUMATERA</h1>
+  	<div class="static-baner-pages">
+    	<div class="imgwrp hidden-xs"><img src="{{ 'assets/img-ramadhan/banner/recipe page_sumatera_desktop.jpg'|theme }}" alt="Recipe Page Sumatera Dekstop"> </div>
+    	<div class="imgwrp visible-xs"><img src="{{ 'assets/img-ramadhan/banner/recipe page_sumatera_mobile.jpg'|theme }}" alt="Recipe Page Sumatera Mobile"> </div>
+   	</div>
+		<div class="container-menutab container-menutab--five">
+			<div class="container-one">
+				<ul class="menutab-full">
+					<li class="toggle visible-xs visible-sm">
+						<a href="javascript:;" class="active">RESEP KHAS SUMATERA</a>
+					</li>
+					<li>
+						<a href="{{ '/aktivitas-kami/resep-nusantara' }}"><span>RESEP NUSANTARA</span></a>
+					</li>
+					<li>
+						<a href="#" class="active"><span>RESEP KHAS SUMATERA</span></a>
+					</li>
+					<li>
+						<a href="{{ '/aktivitas-kami/resep-nusantara/resep-khas-jawa-bali-nusa-tenggara' }}"><span>RESEP KHAS JAWA, BALI &AMP; NUSA TENGGARA</span></a>
+					</li>
+					<li>
+						<a href="{{ '/aktivitas-kami/resep-nusantara/resep-khas-kalimantan' }}"><span>RESEP KHAS KALIMANTAN</span></a>
+					</li>
+					<li>
+						<a href="{{ '/aktivitas-kami/resep-nusantara/resep-khas-sulawesi-maluku-papua' }}"><span>RESEP KHAS SULAWESI,<br /> MALUKU &AMP; PAPUA</span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="container padding--large">
+			
+			<div class="row">
+
+				<ul id="menu" style="display: none;">
+		      <li><a href="#resep-bolu-bhoi"></a></li>
+		      <li><a href="#resep-kue-ombus-ombus"></a></li>
+		      <li><a href="#resep-es-tebak"></a></li>
+		      <li><a href="#resep-es-barnebon"></a></li>
+		      <li><a href="#resep-kue-that-krim-keju"></a></li>
+		      <li><a href="#resep-bolu-kojo"></a></li>
+		      <li><a href="#resep-pulut-berinti"></a></li>
+		      <li><a href="#resep-es-laksamana-mengamuk"></a></li>
+		      <li><a href="#resep-kue-yet-yet"></a></li>
+		      <li><a href="#resep-es-kopi-jelly"></a></li>
+		    </ul>
+				
+				<div class="col-sm-12 col-md-4" id="resep-puding-kacang-merah">
+					<div class="recipe">
+						<div class="recipe-title">
+							<h4>Resep Puding Kacang Merah Khas Sumatra Selatan</h4>							
+						</div> <!--  .recipe-title -->
+						<a id="puding-kacang-merah-play-button" href="https://www.youtube.com/watch?v=XWlCFxK-vmQ&feature=youtu.be" data-fancybox="resep-puding-kacang-merah" class="images">
+							<img src="{{ 'assets/img-ramadhan/card/resep/5. Puding Kacang Merah copy.png'|theme }}" alt="Puding Kacang Merah" />
+						</a>
+						<div class="text-center recipe--button">
+							<a id="puding-kacang-merah" href="javascript:;" class="button button-reds" data-fancybox data-src="#resep-puding-kacang-merah-khas-sumatra-selatan">lihat resepnya</a>							
+							<a href="#" class="button button-reds" onclick="openFacebookDialog()">Bagikan <i class="fa fa-facebook" aria-hidden="true"></i></a>
+							<a href="#"
+                 class="prettySocial button button-reds"
+                 data-url="https://www.frisianflag.com/aktivitas-kami/resep-nusantara"
+                 data-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                 data-type="twitter"
+                 data-description="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Puding Kacang Merah Khas Sumatra Selatan untuk sekeluarga.">Tweet <i class="fa fa-twitter" aria-hidden="true"></i></a>
+						</div> <!--  .text-center -->
+						<div style="display: none;" id="resep-puding-kacang-merah-khas-sumatra-selatan" class="recipe--popup">
+							<h4>Resep Puding Kacang Merah Khas Sumatra Selatan</h4>		
+							<br />
+							<p><strong>Bahan:</strong></p>
+							<p>180 gr kacang merah</p>
+							<p>1.250 ml air</p>
+							<p>70 gr gula pasir</p>
+							<p>2 lembar daun pandan</p>
+							<p>200 ml santan cair</p>
+							<p>4 gr agar-agar</p>
+							<p>7gr jelly bubuk</p>
+							<p>100 ml gula pasir</p>
+							<p>150 ml Frisian Flag Cocopandan</p><br />
+
+							<p><strong>Cara Membuat:</strong></p>
+							<ol>
+								<li>Rendam kacang merah dengan 500 ml air selama 8 - 10 jam lalu rebus hingga lunak.</li>
+								<li>Tambahkan gula pasir, daun pandan, 250 ml air, masak hingga menyusut.</li>
+								<li>Campur 500 ml air, santan cair, agar-agar, jelly bubuk, gula pasir, Frisian Flag Cocopandan, lalu masak hingga mendidih.</li>
+								<li>Tuang kacang merah yang sudah di masak dan campuran bahan lainnya ke dalam gelas, dinginkan hingga puding mengeras.</li>
+								<li>Tambahkan Frisian Flag Cocopandan sebagai topping.</li>
+							</ol>
+						</div>
+					</div> <!--  .recipe -->
+				</div> <!--  .col-sm-12 col-md-6 col-xmd-4 mg-b-20 -->
+
+				<div class="col-sm-12 col-md-4" id="resep-bolu-bhoi">
+					<div class="recipe">
+						<div class="recipe-title">
+							<h4>resep bolu bhoi khas aceh</h4>							
+						</div> <!--  .recipe-title -->
+						<a id="bolu-bhoi-play-button" href="https://www.youtube.com/watch?v=BgKc602KHM8" data-fancybox="resep-bolu-bhoi" class="images">
+							<img src="{{ 'assets/img-ramadhan/card/resep/bolu-bhoi-aceh.jpg'|theme }}" alt="Bolu Bhoi Aceh"/>
+						</a>
+						<div class="text-center recipe--button">
+							<a id="bolu-bhoi" href="javascript:;" class="button" data-fancybox data-src="#resep-bolu-link">lihat resepnya</a>							
+							<a href="#" class="button" onclick="openFacebookDialog()">Bagikan <i class="fa fa-facebook" aria-hidden="true"></i></a>	
+							<a href="#"
+                 class="prettySocial button"
+                 data-url="https://www.frisianflag.com/aktivitas-kami/resep-nusantara"
+                 data-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                 data-type="twitter"
+                 data-description="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Bolu Bhoi Khas Aceh untuk sekeluarga.">Tweet <i class="fa fa-twitter" aria-hidden="true"></i></a>
+						</div> <!--  .text-center -->
+						<div style="display: none;" id="resep-bolu-link" class="recipe--popup">
+							<h4>resep bolu bhoi khas aceh</h4>
+							<br />
+							<p><strong>Bahan:</strong></p>
+							<p>4 Btr Telur</p>
+							<p>75 Gr Gula Pasir</p>
+							<p>1 Sdt Cake Emulsifier (Sp)</p>
+							<p>100 Ml Susu Kental Manis Frisian Flag Gold</p>
+							<p>150 G Tepung Terigu</p>
+							<p>¼ Sdt Baking Powder</p>
+							<p>½ Sdt Kayu Manis Bubuk</p>
+							<p>1 Bh Pisang Ambon, Iris Tipis</p>
+							<br />
+							<p><strong>Cara membuat:</strong></p>
+							<ol>
+								<li>Siapkan loyang muffin, alasi dengan paper cup. Panaskan oven hingga suhu 180 derajat celsius.</li>
+								<li>Ayak tepung terigu, baking powder, dan kayu manis bubuk. Sisihkan.</li>
+								<li>Kocok telur, gula pasir, dan cake emulsifier hingga mengembang dan pucat. Tambahkan susu kental manis frisian flag gold, aduh rata. Masukkan bahan kering, aduk hingga tercampur rata.</li>
+								<li>Masukkan adonan ke dalam paper cup hingga ¾ bagian. Tambahkan bagian atasnya dengan irisan pisang ambon.</li>
+								<li>Panggang dalam oven selama 20 menit atau hingga mengembang.</li>
+								<li>Angkat, tambahkan susu kental manis frisian flag gold dibagian atasnya, panggang kembali hingga benar-benar matang. Angkat.</li>
+								<li>Sajikan selagi hangat ataupun dingin sebagai takjil berbuka puasa.</li>
+							</ol>
+							<br />
+							<p><strong>Waktu Persiapan: 30 menit</strong></p>
+							<p><strong>Estimasi Porsi: 27 buah</strong></p>												
+						</div>
+					</div> <!--  .recipe -->
+				</div> <!--  .col-sm-12 col-md-6 col-xmd-4 mg-b-20 -->
+				
+				<div class="col-sm-12 col-md-4" id="resep-kue-ombus-ombus">
+					<div class="recipe">
+						<div class="recipe-title">
+							<h4>RESEP KUE OMBUS-OMBUS KHAS SUMATERA UTARA</h4>							
+						</div> <!--  .recipe-title -->
+						<a id="kue-ombus-umbus-play-button" href="https://www.youtube.com/watch?v=ocNrnSFzEXw" data-fancybox="resep-kue-ombus-ombus" class="images">
+							<img src="{{ 'assets/img-ramadhan/card/resep/ombus.jpg'|theme }}" alt="Ombus" />
+						</a>
+						<div class="text-center recipe--button">
+							<a id="kue-ombus-umbus" href="javascript:;" class="button" data-fancybox data-src="#resep-ombus-link">lihat resepnya</a>							
+							<a href="#" class="button" onclick="openFacebookDialog()">Bagikan <i class="fa fa-facebook" aria-hidden="true"></i></a>	
+							<a href="#"
+                 class="prettySocial button"
+                 data-url="https://www.frisianflag.com/aktivitas-kami/resep-nusantara"
+                 data-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                 data-type="twitter"
+                 data-description="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Kue Ombus-ombus Khas Sumatera Utara untuk sekeluarga.">Tweet <i class="fa fa-twitter" aria-hidden="true"></i></a>
+						</div> <!--  .text-center -->
+						<div style="display: none;" id="resep-ombus-link" class="recipe--popup">
+							<div class="content">
+								<h4>RESEP KUE OMBUS-OMBUS KHAS SUMATERA UTARA</h4>	
+								<br />						
+                <p><strong>Bahan Kulit :</strong></p>
+                <p>200 Gr Tepung Ketan Putih</p>
+                <p>150 Gr Kelapa Parut Muda</p>
+                <p>½ Sdt Garam</p>
+                <p>Bahan Isi :</p>
+                <p>100 Gr Daging Kurma Cincang</p>
+                <p>5 Sdm Susu Kental Manis Frisian Flag Cokelat</p>
+                <p>Bahan Pelengkap :</p>
+                <p>Daun Pandan</p>
+                <p>Daun Pisang</p>
+                <br />
+                <p><strong>Cara membuat :</strong></p>
+                <ol>
+                	<li>Campur bahan kulit hingga tercampur rata.</li>
+                	<li>Campur bahan isi hingga rata.</li>
+                	<li>Siapkan kukusan. Siapkan daun pisang bentuk menyerupai terompet, masukkan adonan kulit, adonan isi kemudian tutup kembali adonan kulit, potongan daun pandan. Rapihkan (tutup) dengan sisa daun pisang. Kukus hingga matang.</li>
+                	<li>Sajikan selagi hangat.</li>
+                </ol>
+            </div>
+						</div>
+					</div> <!--  .recipe -->
+				</div> <!--  .col-sm-12 col-md-6 col-xmd-4 mg-b-20 -->
+				
+				<div class="col-sm-12 col-md-4" id="resep-es-tebak">
+					<div class="recipe">
+						<div class="recipe-title">
+							<h4>RESEP ES TEBAK KHAS SUMATERA BARAT</h4>							
+						</div> <!--  .recipe-title -->
+						<a id="es-tebak-play-button" href="https://www.youtube.com/watch?v=yAC0wiReiMo" data-fancybox="resep-es-tebak" class="images">
+							<img src="{{ 'assets/img-ramadhan/card/resep/es-tebak.jpg'|theme }}" alt="Es Tebak" />
+						</a>
+						<div class="text-center recipe--button">
+							<a id="es-tebak" href="javascript:;" class="button" data-fancybox data-src="#resep-tebak-link">lihat resepnya</a>							
+							<a href="#" class="button" onclick="openFacebookDialog()">Bagikan <i class="fa fa-facebook" aria-hidden="true"></i></a>	
+							<a href="#"
+                 class="prettySocial button"
+                 data-url="https://www.frisianflag.com/aktivitas-kami/resep-nusantara"
+                 data-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                 data-type="twitter"
+                 data-description="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Es Tebak Khas Sumatera Barat untuk sekeluarga.">Tweet <i class="fa fa-twitter" aria-hidden="true"></i></a>
+						</div> <!--  .text-center -->
+						<div style="display: none;" id="resep-tebak-link" class="recipe--popup">
+							<div class="content">
+								<h4>RESEP ES TEBAK KHAS SUMATERA BARAT</h4>							              
+								<br />
+                <p><strong>Bahan isi :</strong>
+              	<p>100 Gr Cendol Putih</p>
+              	<p>100 Gr Kolang-Kaling Warna-Warni</p>
+              	<p>250 Gr Tape Ketan Hitam</p>
+              	<p>250 Gr Cincau Hitam, Potong Kotak</p>
+              	<br />
+              	<p><strong>Bahan Kuah :</strong></p>
+              	<p>1 Liter Santan Dari 1 Butir Kelapa</p>
+              	<p>½ Sdt Garam</p>
+              	<p>2 Lembar Daun Pandan</p>
+              	<br />
+              	<p><strong>Bahan Pelengkap :</strong></p>
+              	<p>1 Kaleng Susu Kental Manis Putih Frisan Flag Gold</p>
+              	<p>100 Ml Sirup Merah</p>
+              	<p>700 Gr Es Serut</p>
+              	<br />
+              	<p><strong>Cara membuat :</strong></p>
+              	<ol>
+              		<li>Kuah : Rebus santan, daun pandan dan garam hingga mendidih dengan menggunakan api kecil sambil terus diaduk. Dinginkan.</li>
+              		<li>Siapkan mangkuk hidang, ambil 1 sendok sayur es serut diatasnya diatur bahan isi, siram dengan kuah santan, frisian flag gold dan sirup merah. Sajikan.</li>
+              	</ol>
+            	</div>
+						</div>
+					</div> <!--  .recipe -->
+				</div> <!--  .col-sm-12 col-md-6 col-xmd-4 mg-b-20 -->
+
+				<div class="col-sm-12 col-md-4" id="resep-es-barnebon">
+					<div class="recipe">
+						<div class="recipe-title">
+							<h4>RESEP ES BARNEBON KHAS SUMATERA SELATAN</h4>							
+						</div> <!--  .recipe-title -->
+						<a id="es-barnebon-play-button" href="https://www.youtube.com/watch?v=My1_GoTkRpg" data-fancybox="resep-es-barnebon" class="images">
+							<img src="{{ 'assets/img-ramadhan/card/resep/es-barnebon.jpg'|theme }}" alt="Es Barnebon" />
+						</a>
+						<div class="text-center recipe--button">
+							<a id="es barnebon" href="javascript:;" class="button" data-fancybox data-src="#resep-barnebon-link">lihat resepnya</a>							
+							<a href="#" class="button" onclick="openFacebookDialog()">Bagikan <i class="fa fa-facebook" aria-hidden="true"></i></a>	
+							<a href="#"
+                 class="prettySocial button"
+                 data-url="https://www.frisianflag.com/aktivitas-kami/resep-nusantara"
+                 data-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                 data-type="twitter"
+                 data-description="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Es Barnebon Khas Sumatera Selatan untuk sekeluarga.">Tweet <i class="fa fa-twitter" aria-hidden="true"></i></a>
+						</div> <!--  .text-center -->
+						<div style="display: none;" id="resep-barnebon-link" class="recipe--popup">
+							<div class="content">
+								<h4>RESEP ES BARNEBON KHAS SUMATERA SELATAN</h4>
+								<br />
+                <p><strong>Bahan isi :</strong>
+              	<p>200 gr Kacang merah</p>
+								<p>1 ltr Air</p>
+								<p>2 btg Kayu manis</p>
+								<p>3 lmbr Daun pandan</p>              	
+              	<br />
+              	<p><strong>Bahan Kuah :</strong></p>
+              	<p>250 gr Gula pasir</p>
+								<p>300 ml Air</p>
+								<p>¼ sdt Garam</p>
+								<p>1 btg Kayu manis</p>
+              	<br />
+              	<p><strong>Bahan Pelengkap :</strong></p>
+              	<p>200 ml Susu kental manis Frisian Flag Cokelat</p>
+								<p>100 gr Pacar cina (siap pakai)</p>
+								<p>Secukupnya Es batu</p>
+								<br />
+              	<p><strong>Cara membuat :</strong></p>
+              	<ol>
+              		<li>Rebus bahan isi hingga kacang empuk, dinginkan.</li>
+									<li>Kuah : rebus gula hingga larut bersama air, kayu manis dan garam, dinginkan.</li>
+									<li>Siapkan gelas hidang atur es batu, kacang merah, pacar cina, kuah, siram dengan susu kental manis Frisian Flag Cokelat. Sajikan.</li>
+              	</ol>
+            	</div>
+						</div>
+					</div> <!--  .recipe -->
+				</div> <!--  .col-sm-12 col-md-6 col-xmd-4 mg-b-20 -->
+
+				<div class="col-sm-12 col-md-4" id="resep-kue-that-krim-keju">
+					<div class="recipe">
+						<div class="recipe-title">
+							<h4>RESEP KUE THAT KRIM KEJU KHAS BENGKULU</h4>							
+						</div> <!--  .recipe-title -->
+						<a id="kue-that-krim-keju-play-button" href="https://www.youtube.com/watch?v=CG3HP7g0jEc" data-fancybox="resep-kue-that-krim-keju" class="images">
+							<img src="{{ 'assets/img-ramadhan/card/resep/kue-that.jpg'|theme }}" alt="Kue That" />
+						</a>
+						<div class="text-center recipe--button">
+							<a id="kue-that-krim-keju" href="javascript:;" class="button" data-fancybox data-src="#resep-kue-that-link">lihat resepnya</a>							
+							<a href="#" class="button" onclick="openFacebookDialog()">Bagikan <i class="fa fa-facebook" aria-hidden="true"></i></a>	
+							<a href="#"
+                 class="prettySocial button"
+                 data-url="https://www.frisianflag.com/aktivitas-kami/resep-nusantara"
+                 data-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                 data-type="twitter"
+                 data-description="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Kue That Krim Keju Khas Bengkulu untuk sekeluarga.">Tweet <i class="fa fa-twitter" aria-hidden="true"></i></a>
+						</div> <!--  .text-center -->
+						<div style="display: none;" id="resep-kue-that-link" class="recipe--popup">
+							<div class="content">
+								<h4>RESEP KUE THAT KRIM KEJU KHAS BENGKULU</h4>							
+								<br />
+                <p><strong>Bahan :</strong></p>
+              	<p>100 g margarin</p>
+								<p>100 g gula halus</p>
+								<p>2 btr telur</p>
+								<p>½ sdt baking powder</p>
+								<p>½ sdt vanili bubuk</p>
+								<p>400 g tepung terigu</p>
+								<p>50 ml Susu Kental Manis Frisian Flag Full Cream</p>
+								<p>200 g selai nanas siap pakai</p>
+              	<br />
+              	<p><strong>Cara membuat :</strong></p>
+              	<ol>
+              		<li>Campur margarin dan gula halus, aduk rata. Masukkan telur dan vanili bubuk, aduk rata. Tambahkan tepung terigu dan baking powder sambil diayak, aduk rata. Tuang Susu Kental Manis Frisian Flag Full Cream, uleni sampai kalis.</li>
+									<li>Giling adonan ½ cm. Letakkan dalam loyang 15x15x3cm yang sudah diolesi margarin dan ditaburi tepung. Olesi permukaan adonan dengan selai nanas.</li>
+									<li>Tutup permukaan selai nanas dengan adonan yang digiling memanjang, dan disusun seperti membuat apel pie.</li>
+									<li>Panggang dalam oven bersuhu 180 derajat Celsius selama 20 menit atau sampai matang.</li>
+									<li>Angkat dan dinginkan. Potong-potong dan sajikan.</li>
+              	</ol>
+              	<br />
+              	<p><strong>20 potong</strong></p>
+              	<p><strong>40 menit</strong></p>
+            	</div>
+						</div>
+					</div> <!--  .recipe -->
+				</div> <!--  .col-sm-12 col-md-6 col-xmd-4 mg-b-20 -->
+
+				<div class="col-sm-12 col-md-4" id="resep-bolu-kojo">
+					<div class="recipe">
+						<div class="recipe-title">
+							<h4>RESEP BOLU KOJO KHAS JAMBI</h4>							
+						</div> <!--  .recipe-title -->
+						<a id="bolu-kojo-play-button" href="https://www.youtube.com/watch?v=G-o5gyf2H6U" data-fancybox="resep-bolu-kojo" class="images">
+							<img src="{{ 'assets/img-ramadhan/card/resep/bolu-kojo.jpg'|theme }}" alt="Bolu Kojo" />
+						</a>
+						<div class="text-center recipe--button">
+							<a id="bolu-kojo" href="javascript:;" class="button" data-fancybox data-src="#resep-bolu-kojo-link">lihat resepnya</a>							
+							<a href="#" class="button" onclick="openFacebookDialog()">Bagikan <i class="fa fa-facebook" aria-hidden="true"></i></a>
+							<a href="#"
+                 class="prettySocial button"
+                 data-url="https://www.frisianflag.com/aktivitas-kami/resep-nusantara"
+                 data-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                 data-type="twitter"
+                 data-description="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Bolu Kojo Khas Jambi untuk sekeluarga.">Tweet <i class="fa fa-twitter" aria-hidden="true"></i></a>
+						</div> <!--  .text-center -->
+						<div style="display: none;" id="resep-bolu-kojo-link" class="recipe--popup">
+							<div class="content">
+								<h4>RESEP BOLU KOJO KHAS JAMBI</h4>		
+								<br />							
+                <p><strong>Bahan :</strong></p>
+              	<p>300 ml santan</p>
+								<p>100 ml air daun suji</p>
+								<p>8 btr telur ayam</p>
+								<p>200 ml Susu Kental Manis Frisian Flag Full Cream</p>
+								<p>200 g gula pasir</p>
+								<p>150 g tepung terigu protein sedang</p>
+								<p>50 g margarin, dilelehkan</p>
+								<p>¼ sdt garam</p>
+								<br />
+              	<p><strong>Cara membuat :</strong></p>
+              	<ol>
+              		<li>Aduk santan, air daun suji, Susu Kental Manis Frisian Flag Full Cream, dan gula pasir sampai gula larut. Masukkan margarin dan garam. Aduk rata. Sisihkan.</li>
+									<li>Ayak tepung terigu. Tambahkan campuran telur sambil diaduk rata.</li>
+									<li>Tuang adonan ke dalam loyang tulban diameter 21 cm tinggi 7 cm yang dioles margarin dan ditabur tepung terigu.</li>
+									<li>Panggang dalam oven dengan api bawah suhu 160 derajat Celcius 70 menit sampai matang.</li>
+              	</ol>
+              	<br />
+              	<p><strong>16 potong</strong></p>
+              	<p><strong>90 menit</strong></p>
+            	</div>
+						</div>
+					</div> <!--  .recipe -->
+				</div> <!--  .col-sm-12 col-md-6 col-xmd-4 mg-b-20 -->
+
+				<div class="col-sm-12 col-md-4" id="resep-pulut-berinti">
+					<div class="recipe">
+						<div class="recipe-title">
+							<h4>RESEP PULUT BERINTI KHAS KEPULAUAN RIAU</h4>							
+						</div> <!--  .recipe-title -->
+						<a id="pulut-berinti-play-button" href="https://www.youtube.com/watch?v=q6F7PfpZULA" data-fancybox="resep-pulut-berinti" class="images">
+							<img src="{{ 'assets/img-ramadhan/card/resep/pulut-berinti.jpg'|theme }}" alt="Pelut Berinti" />
+						</a>
+						<div class="text-center recipe--button">
+							<a id="pulut-berinti" href="javascript:;" class="button" data-fancybox data-src="#resep-pulut-berinti-link">lihat resepnya</a>							
+							<a href="#" class="button" onclick="openFacebookDialog()">Bagikan <i class="fa fa-facebook" aria-hidden="true"></i></a>	
+							<a href="#"
+                 class="prettySocial button"
+                 data-url="https://www.frisianflag.com/aktivitas-kami/resep-nusantara"
+                 data-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                 data-type="twitter"
+                 data-description="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Pulut Berinti Khas Kepulauan Riau untuk sekeluarga.">Tweet <i class="fa fa-twitter" aria-hidden="true"></i></a>
+						</div> <!--  .text-center -->
+						<div style="display: none;" id="resep-pulut-berinti-link" class="recipe--popup">
+							<div class="content">
+								<h4>RESEP PULUT BERINTI KHAS KEPULAUAN RIAU</h4>													
+								<br />
+                <p><strong>Bahan :</strong></p>
+              	<p>200 gr Beras ketan, rendam selama 2 jam &amp; kukus 15 menit</p>
+								<p>150 ml Santan dari ½ btr kelapa</p>
+								<p>50 ml Susu kental manis Frisian Flag Cokelat</p>
+								<p>2 lmbr Daun pandan</p>
+								<p>Daun pisang untuk membungkus</p>
+								<br />
+								<p><strong>Bahan Isi:</strong></p>
+								<p>250 gr Kelapa parut muda</p>
+								<p>100 gr Daging duren</p>
+								<p>50 gr Gula merah, iris halus</p>
+								<p>100 ml Susu kental manis Frisian Flag Cokelat</p>
+								<br />
+              	<p><strong>Cara membuat :</strong></p>
+              	<ol>
+              		<li>Isi : campur bahan isi, masak di atas api kecil hingga mengering sambil terus diaduk.</li>
+									<li>Ketan : Panaskan santan, susu kental manis Frisian Flag Cokelat dan daun pandan hingga mendidih, siramkan pada beras ketan yang sudah dikukus (selagi panas) aduk rata. Kukus selama 30 menit hingga matang.</li>
+									<li>Ambil 1 kepal adonan ketan, bentuk seperti shusi, tabur bagian atasnya dengan adonan isi, lalu gulung padat. Kemudian potong-potong. Sajikan</li>
+              	</ol>
+            	</div>
+						</div>
+					</div> <!--  .recipe -->
+				</div> <!--  .col-sm-12 col-md-6 col-xmd-4 mg-b-20 -->
+
+				<div class="col-sm-12 col-md-4" id="resep-es-laksamana-mengamuk">
+					<div class="recipe">
+						<div class="recipe-title">
+							<h4>RESEP ES LAKSAMANA MENGAMUK KHAS RIAU</h4>							
+						</div> <!--  .recipe-title -->
+						<a id="es-laksamana-play-button" href="https://www.youtube.com/watch?v=e6_zxPmrCkY" data-fancybox="resep-es-laksamana" class="images">
+							<img src="{{ 'assets/img-ramadhan/card/resep/es-laksamana-mengamuk.jpg'|theme }}" alt="Es Laksamana Mengamuk" />
+						</a>
+						<div class="text-center recipe--button">
+							<a id="es-laksamana" href="javascript:;" class="button" data-fancybox data-src="#resep-es-laksamana-mengamuk-link">lihat resepnya</a>							
+							<a href="#" class="button" onclick="openFacebookDialog()">Bagikan <i class="fa fa-facebook" aria-hidden="true"></i></a>
+							<a href="#"
+                 class="prettySocial button"
+                 data-url="https://www.frisianflag.com/aktivitas-kami/resep-nusantara"
+                 data-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                 data-type="twitter"
+                 data-description="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Es Laksamana Mengamuk Khas Riau untuk sekeluarga.">Tweet <i class="fa fa-twitter" aria-hidden="true"></i></a>
+						</div> <!--  .text-center -->
+						<div style="display: none;" id="resep-es-laksamana-mengamuk-link" class="recipe--popup">
+							<div class="content">
+								<h4>RESEP ES LAKSAMANA MENGAMUK KHAS RIAU</h4>																			
+								<br />
+                <p><strong>Bahan :</strong></p>
+              	<p>300 g mangga kweni, kupas, potong-potong</p>
+								<p>2 bh kelapa muda, keruk daging buahnya, pisahkan 600 ml air kelapa</p>
+								<p>1 sdm biji selasih</p>
+								<p>200 ml santan cair</p>
+								<p>200 ml susu kental manis frisian flag gold</p>
+								<p>200 ml sirup jeruk</p>
+								<p>600 g es batu</p>
+								<br />								
+              	<p><strong>Cara membuat :</strong></p>
+              	<ol>
+              		<li>Tuang sirup jeruk ke dasar gelas hidang.</li>
+									<li>Tambahkan es batu secukupnya. Masukkan kelapa muda dan biji selasih.</li>
+									<li>Tuang air kelapa, beri santan, siram dengan susu kental manis frisian flag gold. Sajikan segera.</li>
+              	</ol>
+              	<br />
+              	<p><strong>6 GELAS</strong></p>
+              	<p><strong>10 MENIT</strong></p>
+            	</div>
+						</div>
+					</div> <!--  .recipe -->
+				</div> <!--  .col-sm-12 col-md-6 col-xmd-4 mg-b-20 -->
+
+				<div class="col-sm-12 col-md-4" id="resep-kue-yet-yet">
+					<div class="recipe">
+						<div class="recipe-title">
+							<h4>RESEP KUE YET YET KHAS BANGKA BELITUNG</h4>							
+						</div> <!--  .recipe-title -->
+						<a id="kue-yet-yet-play-button" href="https://www.youtube.com/watch?v=pCmlnpvN4Og" data-fancybox="resep-kue-yet-yet" class="images">
+							<img src="{{ 'assets/img-ramadhan/card/resep/kue-yet-yet.jpg'|theme }}" alt="Kue Yet Yet" />
+						</a>
+						<div class="text-center recipe--button">
+							<a id="kue-yet-yet" href="javascript:;" class="button" data-fancybox data-src="#resep-kue-yet-yet-link">lihat resepnya</a>							
+							<a href="#" class="button" onclick="openFacebookDialog()">Bagikan <i class="fa fa-facebook" aria-hidden="true"></i></a>	
+							<a href="#"
+                 class="prettySocial button"
+                 data-url="https://www.frisianflag.com/aktivitas-kami/resep-nusantara"
+                 data-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                 data-type="twitter"
+                 data-description="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Kue Yet Yet Khas Bangka Belitung untuk sekeluarga.">Tweet <i class="fa fa-twitter" aria-hidden="true"></i></a>
+						</div> <!--  .text-center -->
+						<div style="display: none;" id="resep-kue-yet-yet-link" class="recipe--popup">
+							<div class="content">
+								<h4>RESEP KUE YET YET KHAS BANGKA BELITUNG</h4>																							
+								<br />
+                <p><strong>Bahan :</strong></p>
+              	<p>200 g sagu tani</p>
+								<p>80 g tepung terigu</p>
+								<p>1/8 sdt kapur sirih + 1 sdm air, saring</p>
+								<p>100 g gula merah disisir</p>
+								<p>50 ml Susu Kental Manis Frisian Flag Gold</p>
+								<p>¼ sdt garam</p>
+								<p>450 ml air</p>
+								<br />								
+              	<p><strong>Taburan (campur Lalu Kukus):</strong></p>
+              	<p>½ btr kelapa setengah tua, kupas, parut kasar</p>
+								<p>1 lbr daun pandan</p>
+								<p>½ sdt garam</p>
+								<br />								
+              	<p><strong>Cara membuat :</strong></p>
+              	<ol>
+              		<li>Campur sagu tani, tepung terigu, air kapur sirih, Susu Kental Manis Frisian Flag Gold, dan garam, aduk rata.</li>
+									<li>Tambahkan air sedikit-sedikit sambil diuleni hingga rata. Saring.</li>
+									<li>Tuang adonan ke dalam loyang persegi 18 cm yang dioles minyak dan dialas plastik.</li>
+									<li>Kukus 45 menit. Angkat. Setelah dingin, potong-potong. Sajikan dengan bahan taburan.</li>
+              	</ol>
+              	<br />
+              	<p><strong>18 BUAH</strong></p>
+              	<p><strong>50 MENIT</strong></p>
+            	</div>
+						</div>
+					</div> <!--  .recipe -->
+				</div> <!--  .col-sm-12 col-md-6 col-xmd-4 mg-b-20 -->
+
+				<div class="col-sm-12 col-md-4" id="resep-es-kopi-jelly">
+					<div class="recipe">
+						<div class="recipe-title">
+							<h4>RESEP ES KOPI JELLY KHAS LAMPUNG</h4>							
+						</div> <!--  .recipe-title -->
+						<a id="es-kopi-jelly-play-button" href="https://www.youtube.com/watch?v=jLzsg2RjkUo" data-fancybox="resep-es-kopi-jelly" class="images">
+							<img src="{{ 'assets/img-ramadhan/card/resep/es-kopi.jpg'|theme }}" alt="Es Kopi" />
+						</a>
+						<div class="text-center recipe--button">
+							<a id="es-kopi-jelly" href="javascript:;" class="button" data-fancybox data-src="#resep-es-kopi-link">lihat resepnya</a>							
+							<a href="#" class="button" onclick="openFacebookDialog()">Bagikan <i class="fa fa-facebook" aria-hidden="true"></i></a>	
+							<a href="#"
+                 class="prettySocial button"
+                 data-url="https://www.frisianflag.com/aktivitas-kami/resep-nusantara"
+                 data-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                 data-type="twitter"
+                 data-description="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Es Kopi Kelly Khas Lampung untuk sekeluarga.">Tweet <i class="fa fa-twitter" aria-hidden="true"></i></a>
+						</div> <!--  .text-center -->
+						<div style="display: none;" id="resep-es-kopi-link" class="recipe--popup">
+							<div class="content">
+								<h4>RESEP ES KOPI JELLY KHAS LAMPUNG</h4>																										
+								<br />
+                <p><strong>Bahan Jelly: </strong></p>
+              	<p>1 bks Jelly bubuk plain (nutrijell)</p>
+								<p>2 sdm Kopi lampung</p>
+								<p>3 sdm Gula pasir </p>
+								<p>500 ml Air</p>
+								<br />								
+              	<p><strong>Bahan Kuah :</strong></p>
+              	<p>200 ml Susu kental manis putih Frisian Flag Gold</p>
+								<p>400 ml Air</p>
+								<p>1 sdm Maizena</p>
+								<br />							
+								<p><strong>Bahan Pelengkap :</strong></p>
+              	<p>Es batu</p>
+								<p>Whipped cream</p>
+								<br />
+              	<p><strong>Cara membuat :</strong></p>
+              	<ol>
+              		<li>Kopi Jelly : campur bahan jelly, masak hingga mengetal. Dinginkan, potong kotak-kotak.</li>
+									<li>Kuah : campur bahan kuah, masak di atas api kecil sambil terus diaduk hingga matang, dinginkan.</li>
+									<li>Siapkan gelas/mangkuk hidang, atur es batu, kopi jelly, siram dengan adonan kuah, kemudian atasnya dihias dengan whipped cream. Sajikan.</li>
+              	</ol>
+            	</div>
+						</div>
+					</div> <!--  .recipe -->
+				</div> <!--  .col-sm-12 col-md-6 col-xmd-4 mg-b-20 -->
+
+			</div> <!--  .row -->			
+
+		</div> <!--  .container -->
+  </section>
+
+  <style>
+  	.button-reds {
+  		background: #e83366 !important;
+  	}
+  </style>
+
+{% partial 'site/footer-resep-nusantara' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

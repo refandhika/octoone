@@ -1,0 +1,4002 @@
+title = "sample-vision-testing"
+url = "/sample-vision-testing"
+layout = "aniversary"
+is_hidden = 0
+==
+<?php
+use RainLab\User\Models\User;
+private function getResep(){
+    return DB::select("select
+            cat.slug as slug_category,
+            resep.title,
+            resep.slug,
+            resep.featured_image,
+            bahan.e as energi,
+            bahan.k as karbohidrat,
+            bahan.p as protein,
+            bahan.l as lemak,
+            bahan.category as category
+            from
+            definite_activities_activity resep
+            left join definite_activities_categories_activities category ON category.activity_id = resep.id
+            left join definite_activities_category cat ON cat.id = category.category_id
+            left join definite_activities_detailsbahan bahan ON bahan.resep_id = resep.id
+            WHERE 
+            category.category_id IN (19 , 21 , 22) AND 
+            bahan.e IS NOT NULL
+            UNION
+            SELECT 
+            NULL as slug_category, 
+            resep as title,
+            resep as slug, 
+            featured_image,
+            e as energi, 
+            k as karbohidrat, 
+            p as protein, 
+            l as lemak, 
+            category 
+            FROM 
+            definite_activities_detailsbahan 
+            WHERE 
+            resep_id IS NULL;
+            ");
+    }
+    
+    function onRegist() {
+    //$data['user'] = User::where('email' , input('email'))->first();
+    $data = [];
+    $email = input('email');
+    $user = User::where('email', $email)->first();
+    if($user){
+        if( $email == $user->email ){
+            if(!$user->fbid){
+                $user->fbid = input('fbid');
+                $user->save();
+                Auth::login($user);
+                $data['user'] = $user;
+            }
+        }
+    }
+    else{
+    
+        $user = Auth::register([
+                    'name' => input('name'),
+                    'surname' => input('surname'),
+                    'email' => input('email'),
+                    'password' => "testing123",
+                    'password_confirmation' => "testing123",
+                    'fbid' => input('fbid')  ? input('fbid') : "",
+                    'googleid' => input('googleid') ? input('googleid') : ""
+                ] , true);
+        
+                
+                Auth::login($user);
+                
+        $data['user'] = $user;
+    }
+    return $data;
+}
+    
+    function onGetAllData () {
+        return $this->getResep();    
+    }
+    function onGetDetail () {
+    $slug = input('slug');
+    $result = DB::select("SELECT * FROM ( select
+            cat.slug as slug_category,
+            resep.title,
+            resep.slug,
+            resep.featured_image,
+            bahan.e as energi,
+            bahan.k as karbohidrat,
+            bahan.p as protein,
+            bahan.l as lemak,
+            bahan.category as category
+            from
+            definite_activities_activity resep
+            left join definite_activities_categories_activities category ON category.activity_id = resep.id
+            left join definite_activities_category cat ON cat.id = category.category_id
+            left join definite_activities_detailsbahan bahan ON bahan.resep_id = resep.id
+            WHERE 
+            category.category_id IN (19 , 21 , 22) AND 
+            bahan.e IS NOT NULL
+            UNION
+            SELECT 
+            NULL as slug_category, 
+            resep as title,
+            resep as slug, 
+            featured_image,
+            e as energi, 
+            k as karbohidrat, 
+            p as protein, 
+            l as lemak, 
+            category 
+            FROM 
+            definite_activities_detailsbahan 
+            WHERE 
+            resep_id IS NULL ) AS U
+            WHERE
+            U.slug = '$slug';
+            
+            ");
+        return ['result' => $result, 'request' => input()];
+    }
+    function onStart(){
+    $isLoggedIn = Rainlab\User\Facades\Auth::check();
+    $this['login'] = $isLoggedIn;
+    $this['ecommerce'] = [ 
+                "page-cokelat/blibli.png" => "https://www.blibli.com/brand/frisian-flag-official-store?excludeProductList=false&promoTab=false&brandSearchTerm=susu%20UHT&sort=&utm_source=Frisian_Flag_Indonesia&utm_medium=refpartner_FF_Ecommerce_Button&utm_campaign=FFI_Website",
+                "page-cokelat/klik-indomaret.png" => "https://www.klikindomaret.com/search/?key=Frisian%20Flag%20Susu%20Cair",
+                "page-cokelat/tokopedia.png" => "https://www.tokopedia.com/frisian-flag/etalase/susu-uht",
+                "page-cokelat/shopee.png" => "https://shopee.co.id/universal-link/shop/70448302/search?deep_and_web=1&page=0&shopCollection=19321013&smtt=9&utm_campaign=p70448302_ss_id_othr_ff-cd-websiteff&utm_content=ff-cd-rtd&utm_medium=seller&utm_source=website",
+                "page-cokelat/jdid.png" => "https://www.jd.id/promotion/Frisian-Flag-Official-Store/2UNKdjnR1bxXyHAbKRR7uxC2qLG3.html",
+                "page-cokelat/lazada.png" => "https://c.lazada.co.id/t/c.0xDTyD?intent=false&fallback=true&url=https%3A%2F%2Fwww.lazada.co.id%2Fbeli-makanan-minuman-susu-uht%2F%3Ffrisian-flag-official-store%26from%3Dwangpu"
+                
+            ];
+    $this['artikel'] = \Definite\Activities\Models\DefiniteActivitiesArticleimt::limit(4)->get();            
+    $this['artikel1'] = \Definite\Activities\Models\DefiniteActivitiesArticleimt::whereIn('id', [1, 2, 3,4])->get();
+    $this['artikel2'] = \Definite\Activities\Models\DefiniteActivitiesArticleimt::whereIn('id', [5, 6, 7,8])->get();
+    $this['artikel3'] = \Definite\Activities\Models\DefiniteActivitiesArticleimt::whereIn('id', [9, 10, 11,12])->get();
+    $this['artikel4'] = \Definite\Activities\Models\DefiniteActivitiesArticleimt::whereIn('id', [13, 14, 15,16])->get();
+    $this['artikel5'] = \Definite\Activities\Models\DefiniteActivitiesArticleimt::whereIn('id', [17,18,19,20])->get();
+        
+    
+    
+    $isLoggedIn = Rainlab\User\Facades\Auth::check();
+    if($isLoggedIn){
+        $users = Rainlab\User\Facades\Auth::getUser();
+        $this['imt_data'] = json_decode($users->imt);
+        $this['tee'] = ceil($this['imt_data']->tee);
+    } else {
+        if(isset($_COOKIE['IMTCookie'])) {
+            $this['imt_data'] = json_decode($_COOKIE['IMTCookie']);
+            $this['tee'] = ceil($this['imt_data']->tee);
+        }
+    }
+    
+    
+    
+    
+        $this['resep'] = $this->getResep();
+    }
+    
+    function onAutoFillForm() {
+        $this['file_session'] = input('file');
+        $this['day'] = input('day');
+        $this['autofill'] = true; 
+        
+        return $this->onUpload();
+        
+    }
+function onUpload(){    
+    $url = "https://vision.googleapis.com/v1/images:annotate?key=AIzaSyB6a1gcelpPh61g8taibgtH1xnNWTgbUJE";
+    $detection_type = "LABEL_DETECTION";
+    $image_validation = array('image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp');    
+    
+if($_FILES || $this['autofill']){
+    $data = "image masuk";
+    
+	// validate uploaded file for allowed mime type
+	if((isset($_FILES['image']) ? in_array($_FILES['image']['type'],$image_validation ) : false) || $this['autofill']){	    	
+        
+		// base64 encode image
+		if(!$this['autofill']){
+    		$image = file_get_contents($_FILES['image']['tmp_name']);
+    		$image_base64 = base64_encode($image);
+            
+		} else {
+		    $image_base64 = str_replace('data:image/jpeg;base64,' , '' , $this['file_session']);
+		    $image_base64 = str_replace('data:image/png;base64,' , '' , $image_base64);
+		    $image_base64 = str_replace('data:image/jpg;base64,' , '' , $image_base64);
+		}
+		$json_request ='{
+			  	"requests": [
+					{
+					"image": {
+					    "content":"' . $image_base64. '"
+					  },
+					  "features": [
+					      {
+					      	"type": "' .$detection_type. '",
+					      	"maxResults": 200
+					      }
+					  ]
+					}
+				]
+			}';
+		//dd($json_request);
+		
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_URL, $url);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-type: application/json"));
+		curl_setopt($curl, CURLOPT_POST, true);
+		curl_setopt($curl, CURLOPT_POSTFIELDS, $json_request);
+		$json_response = curl_exec($curl);
+		$status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+		curl_close($curl);
+		//dd($json_response);
+
+		// verify if we got a correct response
+		if ( $status != 200 ) {
+			die("Something when wrong. Status code: $status" );
+		}
+		
+		
+		//return $_FILES['image']['tmp_name'];
+		// create an image identifier for the uploaded file
+		/*
+		switch($_FILES['image']['type']){
+			case 'image/jpeg':
+				$im = imagecreatefromjpeg($_FILES['image']['tmp_name']);
+				break;
+			case 'image/png':
+				$im = imagecreatefrompng($_FILES['image']['tmp_name']);
+				break;
+			case 'image/gif':
+				$im = imagecreatefromgif($_FILES['image']['tmp_name']);
+				break;
+		}
+		*/
+
+		// transform the json response to an associative array
+		$response = json_decode($json_response, true);	
+		//$data = json_decode($json_response);
+		$ress = $response['responses'][0]['labelAnnotations'];
+        
+        if($ress[0]['description'] == 'Food' || $ress[1]['description'] == 'Food' || $ress[2]['description'] == 'Food'){
+            
+            $resep = $this->getResep();
+            $isFound = false;
+            $filtered_result = null;
+            foreach($ress as $i){
+                if(!$isFound){
+                    //$tmp = collect($resep)->whereRaw('LOWER(`category`) = ? ',[strtolower($i['description'])])->all();
+                     $filterBy = strtolower($i['description']); // or Finance etc.
+
+                        $tmp = array_filter($resep, function ($var) use ($filterBy) {
+                            return (strtolower($var->category) == $filterBy);
+                        });  
+                    if($tmp){
+                        $filtered_result = $tmp;  
+                        $isFound = true;
+                    }
+                }
+            }
+            $hasil = (array) $filtered_result;  
+        }else{
+            $hasil = "Wrong";
+        }
+        
+        	
+		return ['hasil' => $hasil , 'google_vision' => $ress];
+			
+		return $hasil;
+		
+    }
+    else{
+    	echo 'File type not allowed';
+    }
+
+	}
+}
+
+
+public function onSaveMenu () {
+    $data = input('data');
+    $this['data'] = $data;
+    $this['save'] = json_encode($data);
+    
+    $protein = 0;
+    $karbohidrat = 0;
+    $lemak = 0;
+    $energi = 0;
+    foreach($data as $item) {
+        $protein += $item['p'];
+        $karbohidrat += $item['k'];
+        $lemak += $item['l'];
+        $energi += $item['e'];
+    }
+    $this['total'] = [
+        'protein' => ceil($protein),
+        'karbohidrat' => ceil($karbohidrat),
+        'lemak' => ceil($lemak),
+        'energi' => ceil($energi),    
+    ];
+    
+    $isLoggedIn = Rainlab\User\Facades\Auth::check();
+    if($isLoggedIn){
+        $users = Rainlab\User\Facades\Auth::getUser();
+        $this['imt_data'] = json_decode($users->imt);
+        
+    } else {
+        if(isset($_COOKIE['IMTCookie'])) {
+            $this['imt_data'] = json_decode($_COOKIE['IMTCookie']);
+            
+        }
+        
+    }
+    
+   $this['tee'] = ceil($this['imt_data']->tee);
+    
+     if ($this['total']['energi'] > ($this['imt_data']->tee - 100) && $this['total']['energi'] < ($this['imt_data']->tee + 100)) {
+        $this['msg'] = 'kebutuhan gizi harianmu cukup';
+        $this['suggest'] = 'Gizi harianmu cukup.';
+        $diff = abs($this['total']['energi'] - $this['imt_data']->tee);
+        $this['typeMsg'] = 'Kebutuhan Gizi Kamu Cukup Pertahankan asupanmu di <b>' . ceil($this['imt_data']->tee) . ' Kal </b>';
+    }else if($this['total']['energi'] < $this['imt_data']->tee){
+        $this['msg'] = 'kebutuhan gizi harianmu kurang';
+        $this['suggest'] = 'Kamu perlu mencukupi gizi harianmu.';
+        $diff = abs($this['total']['energi'] - $this['imt_data']->tee);
+        $this['typeMsg'] = 'Kebutuhan Gizi Kamu <b>kekurangan</b> Kamu perlu menambah <b>' . ceil($diff) . ' Kal </b>';
+    } else if ($this['total']['energi'] > $this['imt_data']->tee) {
+        $this['msg'] = 'kebutuhan gizi harianmu sangat baik';
+        $this['suggest'] = 'Gizi harianmu lebih dari cukup.';
+        $diff = abs($this['total']['energi'] - $this['imt_data']->tee);
+        $this['typeMsg'] = 'Kebutuhan Gizi Kamu <b>Berlebih</b> Kamu perlu mengurangi <b>' . ceil($diff) . ' Kal </b>';
+    }
+    
+    $recomendation = collect(Definite\Activities\Models\RecomendationMenu::get()[0]);
+    
+    $total_imt = intval($this['imt_data']->tee);
+    $tier = null;
+    $label = null;
+    
+    $tier_1 = $recomendation['tier_1'][0];
+    $periode_1 =  $recomendation['periode_1'];
+    
+    $tier_2 = $recomendation['tier_2'][0];
+    $periode_2 =  $recomendation['periode_2'];
+    
+    $tier_3 = $recomendation['tier_3'][0];
+    $periode_3 =  $recomendation['periode_3'];
+    
+    $tier_4 = $recomendation['tier_4'][0];
+    $periode_4 =  $recomendation['periode_4'];
+    
+    $tier_5 = $recomendation['tier_5'][0];
+    $periode_5 =  $recomendation['periode_5'];
+    
+    if($total_imt <= 1700 ){
+        
+        $tier = $tier_1;
+        $label = $periode_1;
+    } elseif($total_imt <= 1900 ){
+        $tier = $tier_2;
+        $label = $periode_2;
+        
+    }elseif($total_imt <= 2100 ){
+        $tier = $tier_3;
+        $label = $periode_3;
+        
+    }elseif($total_imt <= 2300 ){
+        $tier = $tier_4;
+        $label = $periode_4;
+        
+    }else {
+        $tier = $tier_5;
+        $label = $periode_5;
+        
+    }
+    $menus = [
+        'label' => [$periode_1, $periode_2 , $periode_3 , $periode_4 , $periode_5],
+        'menu' => $tier
+    ];
+    $this['data_menu'] = $menus;
+    $array = [];
+        foreach($tier as $key => $item){
+            $total_kal = 0;
+            foreach($item as $i){
+                $total_kal = $total_kal + intval($i['kalori']);
+            }
+            $array[] = $total_kal;
+            
+        }
+        $this['total_kal'] = $array;
+    return [
+        '#menu-selection-section' => $this->renderPartial('site/menu-result') , 
+        'imt' => $this['imt_data'] ,
+        'data_menu' => $this['data_menu'],
+        'data' => $this['data'],
+        'save' => $this['save']
+    ];
+}
+?>
+==
+{% put styles %}
+    .text-bg-2{
+        color: #1B4586 !important;    
+    }
+    #menu-selection-list hr {
+        margin-top: 40px;
+        margin-bottom: 20px;
+        background: #1B4586 !important;
+        border-top: 0px solid #1B4586 !important;
+        height : 1px;
+    }
+    
+    #banner-text{
+        color : #1B4586 !important;
+    }
+    @media (max-width : 767px){
+        #banner-text{
+            font-size : 25px !important;
+        }   
+    }
+    .op-5{
+        opacity : 0.3
+    }
+    #totalResult {
+        display : none    
+    }
+    input.input-trigger ~ .tab-content{
+        display : block !important    
+    }
+    input.input-trigger {
+      position: absolute;
+      opacity: 0;
+      z-index: -1;
+    }
+    .recomendation-menu {
+        display : flex;
+        align-items : center;
+        margin-top : 20px;
+        gap : 50px
+    }
+    .recomendation-menu .img-wrapper {
+        position : relative;
+        width : 50%;
+        margin-bottom : 20px;
+    }
+    .recomendation-menu .img-wrapper .content{
+        position : relative;
+        background : #4BB0F7;
+        border-radius : 10px;
+        width : 70%;
+        margin-left : auto;
+        padding-top : 35%;
+        overflow : hidden;
+    }
+    .recomendation-menu .menu-content{
+        width : 50%;
+    }
+    
+    @media (max-width : 767px){
+        #energi-menu{
+            font-size: 17.5px;    
+        }
+        
+        .wrapper-imt{
+            //display: flex;
+            text-align: center;
+            color: #1B4586;
+            gap: 20px;
+            font-size: 20px;
+            font-family: "Brevia-semibold";
+            margin: 30px 0 0;
+            justify-content: center;
+            width: 90%;
+            margin-left: 5%;
+            align-items: center;
+        }
+        .recomendation-menu {
+            display : flex;
+            align-items : start;
+            flex-direction : column;
+            margin-top : 20px;
+            gap : 20px
+        }
+        .recomendation-menu .img-wrapper {
+            position : relative;
+            width : 100%;
+        }
+        .recomendation-menu .menu-content{
+            width : 100%;
+        }
+        .recomendation-menu .img-wrapper .content{
+            position : relative;
+            background : #4BB0F7;
+            border-radius : 10px;
+            width : 100%;
+            padding-top : 65%;
+            overflow : hidden;
+        }
+    }
+    /* Accordion styles */
+    .tabs {
+      overflow: hidden;
+      background : #E7F5FF
+    }
+    
+    .tab {
+      width: 100%;
+      color: white;
+      overflow: hidden;
+      margin-bottom : 15px;
+    }
+    .tab-label {
+      display: flex;
+      justify-content: space-between;
+      border-radius: 50px;
+      padding: 1em;
+      background: #4BB0F7;
+      font-weight: bold;
+      cursor: pointer;
+      /* Icon */
+    }
+    .tab-label:hover {
+      background: #4BB0F3;
+    }
+    .tab-label::after {
+      content: "❯";
+      width: 1em;
+      height: 1em;
+      text-align: center;
+      transition: all 0.35s;
+    }
+    .tab-content {
+      max-height: 0;
+      padding: 0 5em;
+      background: white;
+      transition: all 0.35s;
+      width: 100%;
+      margin: auto;
+      color : #3B5C98;
+      margin-top : 20px;
+      border-radius : 8px
+    }
+    .tab-close {
+      display: flex;
+      justify-content: flex-end;
+      padding: 1em;
+      font-size: 0.75em;
+      background: #4BB0F7;
+      cursor: pointer;
+    }
+    .tab-close:hover {
+      background: #4BB0F3;
+    }
+    
+    input.input-trigger:checked + .tab-label {
+      background: #4BB0F3;
+    }
+    input.input-trigger:checked + .tab-label::after {
+      transform: rotate(90deg);
+    }
+    input.input-trigger:checked ~ .tab-content {
+      max-height: 1000vh;
+      height : max-content;
+      padding: 4em;
+    }
+.ob-contain{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;    
+    border-radius: 15px;
+}
+#result-malam, #data-malam , #data-total-malam, #result-siang, #data-siang , #data-total-siang,#result-pagi, #data-pagi , #data-total-pagi {
+    
+}
+.text-capitalize {
+    text-transform : capitalize !important;    
+}
+.d-none{
+    display: none !important;    
+}
+.ov-hidden{
+    overflow: hidden !important;    
+}
+.bg-top {
+    width: 100vw;
+    height: 450px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(180deg, #80cbfd 15%, #fff 100%) 0 0 no-repeat padding-box !important;
+    z-index: -1;
+}
+@media screen and (min-width: 768px) {
+    .foto-wrapper .drag-wrapper{
+            display: flex;
+            flex-direction: column;
+            place-items: center;    
+        }
+        #energi-menu{
+            font-size: 17.5px !Important;    
+        }
+        .custom-dl-container {
+            position: absolute;
+            width: 300px;
+            border: solid 1px #d8d6d6;
+            top: 324px;
+            left: 100px;
+            border-radius: 8px;
+            background: white;
+            max-height: 200px;
+            height: auto;
+            overflow-y: auto;
+        }
+
+        .list-option {
+            padding: 5px 10px 5px 10px
+
+        }
+
+        .list-option:hover {
+            background: #eaeaea;
+        }
+
+        .related-article .main .slide {
+            position: relative;
+            width: 100%;
+            height: auto;
+            border-radius: 25px;
+            overflow: hidden;
+            padding: unset !important;
+        }
+        .related-article .main .slide .related-text-wrap {
+            position: absolute;
+            bottom: 20px;
+            right: 0;
+            padding: 10px;
+        }
+        .related-article .main .slide img {
+            width: 100%;
+            height: 275px;
+            object-fit: cover;
+        }
+        .related-article .main .slide .related-text-wrap h3 {
+            margin: unset;
+            margin-bottom: 20px;
+            color: #fff;
+            font-family: "Brevia-Bold";
+            font-size: 15px;
+        }
+        .related-article .main .slide .related-text-wrap a {
+            color: #fff;
+            background: #f58e1d;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 15px;
+            font-family: "Brevia-Semibold";
+        }
+        .wrapper-imt{
+            display: flex;
+            color: #1B4586;
+            gap: 20px;
+            font-size: 20px;
+            font-family: "Brevia-semibold";
+            margin: 50px 0;
+            justify-content: center;
+        }
+        
+        .hero-bg{
+            background: url(https://www.frisianflag.com/storage/app/media/imt/FR-BANNER-DESKTOP.png);    
+            background-size: cover;
+            height: 700px;
+        }
+        .overlay-store .card {
+               width : 35%;
+               }
+               
+               .overlay-store h4, .overlay-store a{
+               color : white !important;
+               text-align : center;
+               }
+               .overlay-store a.btn-outline-light{
+               color : white !important;
+               border : 1px solid white;
+               margin-bottom : 10px;
+               width : 100%;
+               transition : 0.3s;
+               }
+               .overlay-store a.btn-outline-light:hover{
+               background : #2875D5 !important;
+               }
+               .overlay-store .btn-close {
+               background : white !important;
+               border : unset !important;
+               color : black;
+               text-align : center;
+               width : 30px !important;
+               height : 30px !important;
+               position : absolute;
+               right : -10px;
+               top : -10px;
+               border-radius : 50%;
+               font-weight : bold;
+               }
+    
+       
+        .related-product{
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        .related-product .wrapper-imt{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .related-product .wrapper-imt a{
+            padding: 17.5px 50px;
+            background: #F78E00;
+            color: #fff;
+            border-radius: 50px;
+            font-size: 15px;    
+        }
+        .related-product .card{
+            width: 40%;
+            margin: 40px auto 0 auto;
+            box-shadow: 0 0px 20px #00000029;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 440px;
+        }
+        .related-product .card .imgproduk{
+            text-align: center;    
+        }
+        .related-product .card .imgproduk img{
+            height: 240px;    
+        }
+        .eccomerce-card .card-body{
+            display: flex;
+            gap: 30px;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 30px 0 30px;
+        }
+        .eccomerce-card .card-body > div{
+            width: 100%;    
+        }
+        .eccomerce-card .card-body .detailproduk{
+            color: #1B4586;
+            font-size: 22.5px;
+            width: 100%;
+            font-family: "Brevia-Bold";
+            margin-bottom: 34px;
+        }
+        .eccomerce-card #btnecom{
+            width: 100%;
+            background: #F78E00;
+            display: flex;
+            justify-content: center;
+            color: #fff;
+            border-radius: unset;
+        }
+        .eccomerce-card #btnecom span{
+            font-size: 20px !important;    
+        }
+        
+        
+        .related-article {
+            margin-bottom: 50px;
+        }
+        .related-article h2 {
+            text-align: center;
+            color: #54b8fc;
+            font-family: "Brevia-Bold";
+            font-size: 20px;
+            margin-bottom: 40px;
+            width: 90%;
+            margin-left: 5%;
+        }
+        .related-article .main {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-gap: 20px;
+        }
+        .related-article .main .slidee {
+            position: relative;
+            width: 100%;
+            height: auto;
+            border-radius: 25px;
+            overflow: hidden;
+        }
+        .related-article .main .slidee .related-text-wrap {
+            position: absolute;
+            bottom: 20px;
+            right: 0;
+            padding: 10px;
+        }
+        .related-article .main .slidee img {
+            width: 100%;
+            height: 275px;
+            object-fit: cover;
+        }
+        .related-article .main .slidee .related-text-wrap h3 {
+            margin: unset;
+            margin-bottom: 20px;
+            color: #fff;
+            font-family: "Brevia-Bold";
+            font-size: 15px;
+        }
+        .related-article .main .slidee .related-text-wrap a {
+            color: #fff;
+            background: #f58e1d;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 15px;
+            font-family: "Brevia-Semibold";
+        }
+        .related-article .btn-more{
+            display: flex;
+            justify-content: end;
+            margin-top: 20px;
+            font-family: "Brevia-Semibold";
+            text-decoration: underline;    
+        }
+    
+        .dp-wrap {
+            margin: 0 auto;
+            position: relative;
+            perspective: 1000px;
+            height: 100%;
+        }
+
+        .dp-slider {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+        }
+
+        .dp-slider div {
+            transform-style: preserve-3d;
+        }
+
+        .dp_item {
+            display: block;
+            position: absolute;
+            text-align: center;
+            color: #fff;
+            border-radius: 10px;
+            transition: transform 1.2s;
+        }
+
+        .dp-img img {
+            border-left: 1px solid #fff;
+        }
+
+        #dp-slider .dp_item:first-child {
+            z-index: 10 !important;
+            transform: rotateY(0deg) translateX(0px) !important;
+            width: 60%;
+        }
+        #dp-slider .dp_item:first-child .dp-content {
+            background: #0d62a7;
+        }
+        .modal-wrapper {
+            position: relative;
+        }
+        .modal-mobile {
+            z-index: 1000;
+            width: 100%;
+            height: auto;
+            padding: 20px;
+            background: #fff;
+            position: absolute;
+            box-shadow: 5px 5px 10px #000;
+            border-radius: 15px;
+            display: none;
+        }
+        .modal-mobile.active {
+            display: block;
+        }
+        .modal-mobile .content {
+        }
+        .modal-mobile .close {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            border: 1px solid #000;
+            border-radius: 100%;
+            background: transparent;
+            box-shadow: 1px 1px 1px #7e7a7a;
+            width: 25px;
+            height: 25px;
+            display: grid;
+            justify-items: center;
+        }
+
+        .dp_item[data-position="2"] {
+            z-index: 9;
+            transform: rotateY(0deg) translateX(10%) scale(0.9);
+            width: 62%;
+        }
+
+        .dp_item[data-position="3"] {
+            z-index: 8;
+            transform: rotateY(0deg) translateX(20%) scale(0.8);
+            width: 64%;
+        }
+
+        .dp_item[data-position="4"] {
+            z-index: 7;
+            transform: rotateY(0deg) translateX(30%) scale(0.7);
+            width: 65.25%;
+        }
+        .dp_item[data-position="5"] {
+            z-index: 7;
+            transform: rotateY(0deg) translateX(30%) scale(0.7);
+            width: 66.5%;
+        }
+        .dp_item[data-position="6"] {
+            z-index: 7;
+            transform: rotateY(0deg) translateX(30%) scale(0.7);
+            width: 67.75%;
+        }
+        .dp_item[data-position="7"] {
+            z-index: 7;
+            transform: rotateY(0deg) translateX(30%) scale(0.7);
+            width: 69%;
+        }
+        .dp_item[data-position="8"] {
+            z-index: 7;
+            transform: rotateY(0deg) translateX(30%) scale(0.7);
+            width: 70.25%;
+        }
+
+        #dp-next,
+        #dp-prev {
+            position: absolute;
+            top: 50%;
+            right: 25%;
+            height: 33px;
+            width: 33px;
+            z-index: 10;
+            cursor: pointer;
+        }
+
+        #dp-prev {
+            left: 15px;
+            transform: rotate(180deg);
+        }
+
+        #dp-dots {
+            position: absolute;
+            bottom: 25px;
+            z-index: 12;
+            left: 38%;
+            cursor: default;
+            display: none;
+        }
+
+        #dp-dots li {
+            display: inline-block;
+            width: 13px;
+            height: 13px;
+            background: #fff;
+            border-radius: 50%;
+        }
+
+        #dp-dots li:hover {
+            cursor: pointer;
+            background: #fa8c8c;
+            transition: background 0.3s;
+        }
+
+        #dp-dots li.active {
+            background: #fa8c8c;
+        }
+
+        .dp_item {
+            width: 85%;
+        }
+
+        .dp-content,
+        .dp-img {
+            text-align: left;
+        }
+
+        .dp_item {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            
+        }
+        .dp_item[data-position="1"] .wrap-text {
+            background: linear-gradient(360deg, rgba(0,0,0,0.9), transparent);
+            bottom: 0;
+            width: 100%;
+            z-index: 1;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            padding-left: 30px;
+            justify-content: flex-start;
+            color: #fff;
+            font-size: 20px;
+            font-family: "Brevia-Bold";
+            position: absolute;
+        }
+        .dp_item[data-position="1"] .wrap-text button {
+            position: absolute;
+            bottom: 7.5px;
+            right: 10px;
+            background: transparent;
+            width: 20px;
+            height: 20px;
+            border-radius: 50px;
+            border: 1px solid #fff;
+            font-size: 10px;
+        }
+        .dp_item[data-position="2"] .wrap-text,
+        .dp_item[data-position="3"] .wrap-text,
+        .dp_item[data-position="4"] .wrap-text,
+        .dp_item[data-position="5"] .wrap-text,
+        .dp_item[data-position="6"] .wrap-text,
+        .dp_item[data-position="7"] .wrap-text,
+        .dp_item[data-position="8"] .wrap-text{
+            display: none;
+        }
+
+        .dp-content {
+            display: inline-block;
+            width: 100%;
+        }
+        .dp-content .wrap-img {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            height: 300px;
+            align-items: center;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            background: #fff;
+        }
+        .dp-content .wrap-img img {
+            width: 100%;
+            height: 100%;
+        }
+        .dp-content h2 {
+            color: #41414b;
+            font-family: Circular Std Bold;
+            font-size: 48px;
+            max-width: 460px;
+            margin-top: 8px;
+            margin-bottom: 0px;
+        }
+
+        .dp-content p {
+            color: #74747f;
+            max-width: 490px;
+            margin-top: 15px;
+            font-size: 24px;
+        }
+
+        .dp-content .site-btn {
+            margin-top: 15px;
+            font-size: 13px;
+            padding: 19px 40px;
+        }
+
+        .dp-img:before {
+            background: -webkit-linear-gradient(-90deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0));
+            background: -o-linear-gradient(-90deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0));
+            background: -moz-linear-gradient(-90deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0));
+            background: linear-gradient(-90deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 25%;
+            z-index: 1;
+            top: 0;
+            pointer-events: none;
+            background: -webkit-linear-gradient(-90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75));
+            background: -o-linear-gradient(-90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75));
+            background: -moz-linear-gradient(-90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75));
+            background: linear-gradient(-90deg, rgba(255, 255, 255, 0), rgb(255, 255, 255));
+        }
+
+        .dp-img img {
+            object-fit: cover;
+            object-position: right;
+        }
+
+        #dp-slider,
+        .dp-img img {
+            height: 325px;
+            padding: 10px;
+        }
+
+        #dp-slider .dp_item:hover:not(:first-child) {
+            cursor: pointer;
+        }
+
+
+.container-result-text{
+    color: #1B4586;
+    width: 50%;
+    margin: 0 auto 30px;
+    text-align: center;
+    font-family: "Brevia-Semibold";    
+}    
+.wrap{
+    width: max-content;
+    padding: 20px;    
+}
+.slide.slick-current{
+        background: #0F61A7;
+        gap: 30px !important;
+        height: 150px;
+        align-items: center;
+        transition: all .3s ease;
+    }
+.slide{
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        background: #53B8FC;
+        border-radius: 15px;
+        box-shadow: 0 3px 6px #00000029;
+        gap: 10px;
+        transition: all .3s ease;
+        width: 100%;
+    }
+    .slide .slide-img img{
+        width: 50px;
+        height: 50px;    
+    }
+    .slide .slide-text{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #fff;
+        gap: 10px;
+    }
+    .slide .slide-text .number{
+        font-size: 20px;
+        font-family: 'Brevia-Semibold';
+        color: #fff;
+        line-height: 1;
+    }
+    .slide .slide-text .detail{
+        font-size: 15px;
+        font-family: 'Brevia-Regular';
+        color: #FFF;
+    }
+    
+    .slide.slick-current img{
+        width: 75px;
+        height: 75px;
+    }
+    .slide.slick-current .slide-text{
+        display: flex;
+        flex-direction: column;
+        width: auto !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+    }
+    .slide.slick-current .slide-text .number{
+        font-size:40px;
+    }
+    .slide.slick-current .slide-text .detail{
+        font-size:22px;
+    }     
+    
+    
+    .wrapper-flex {
+        display: flex;
+        justify-content: space-between;
+        margin: 200px 0 0;
+    }
+    .wrapper-bg{
+        height: 100vh;    
+        width: 100vw;
+        display: grid;
+        place-content: center;
+        background: rgb(0 0 0 / 70%);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10000;
+    }
+    .wrapper-bg .modall{
+        height: 250px;
+        width: 400px;
+        padding: 20px;
+        background: #fff;
+        position: relative;
+        border-radius: 15px;
+        display : flex;
+        align-items : center;
+        justify-content : center;
+        z-index: 1000;
+        box-shadow: 3px 2px 6px #000;
+    }
+    .wrapper-bg .modall .modal-body h4{
+        font-size: 18px;
+        font-family: "Brevia-Bold";
+        padding: 0px 28px;
+        margin-bottom : 15px
+    }
+    .wrapper-bg .modall .modal-body .button{
+        width : 100% !important;
+        background : #1B4586 !important
+    }
+    
+    .wrapper-bg .modall .close{
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        width: 30px;
+        height: 30px;
+        border-radius: 20px;
+        display: grid;
+        place-items: center;
+        box-shadow: 2px 2px 5px rgb(0 0 0);
+        cursor: pointer;
+    }
+    
+    .top-section {
+            margin-bottom: 50px;
+    }
+    .top-section .wrapper-flex{
+        flex-direction: column;    
+    }
+    .top-section .wrapper-flex .desc{
+        width: 70%;
+        color: #1a4586;    
+    }
+    .wrapper-flex .hero-text {
+        align-self: center;
+        font-family: "Brevia-Black";
+        color: #54b8fc;
+        font-size: 40px;
+        width: 100%;
+    }
+    .wrapper-flex .hero-text h1 {
+        font-size: 45px;
+        font-family: "Brevia-Black";
+        color : #0f4d9a !important;
+    }
+    
+    .top-desc{
+        padding: 100px 20px;
+        transform: translateX(-10.5vw);
+        background: linear-gradient( to bottom,#54BDFD 30%, #54B8FC 100% );
+        width: 100vw;
+        text-align: center;
+    }
+    .top-desc p {
+        width: 55%;
+        margin: 0 auto;
+        color: #fff;
+        font-size: 20px;
+    }
+    
+    .btn-remove{
+        grid-column: 1/3;
+        width: fit-content;
+        justify-self: center;
+        padding: 0 150px;
+        background: #ff1b1b;
+        box-shadow: 2px 2px 10px #beb2b2;    
+        margin-bottom: 50px;
+    }
+    .menu{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-flow: dense; 
+        grid-gap: 50px;
+        margin-top: 50px;
+        position: relative;
+    }
+    .menu-selection{
+        position: relative;    
+    }
+    .menu-selection .numbering{
+        position: absolute;
+        top: 0;
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+        background: #1B4586;
+        display: grid;
+        place-content: center;
+        color: #fff;
+        font-family: "Brevia-semibold";
+        box-shadow: 2px 2px 10px #4e4e4e;    
+    }
+    .menu .left-wrapper{
+        display: flex;
+        flex-direction: column;
+        order: -1;
+        padding: 0 75px;
+        text-align: center;
+        gap: 20px;
+        align-self: center;
+    }
+    .menu .left-wrapper .result-upload{
+        width: 70%;
+        padding: 30px;
+        border-radius: 15px;
+        background: #F5F4F4;
+        color: #18A20B;
+        font-family: 'brevia-semiBold';
+        margin: 0 auto;    
+        transition : all 0.3s;
+    }
+    .menu .left-wrapper h2{
+        color: #1B4586;
+        font-family: "Brevia-Bold";
+        font-size: 20px;
+    }
+    .menu .left-wrapper .btn-start{
+        background: #1B4586;
+        color: #fff;
+        border: unset;
+        padding: 12.5px 50px;
+        border-radius: 50px;
+        font-family: "Brevia-semibold";
+        font-size: 15px;   
+    }
+    .menu .left-wrapper select{
+        padding: 0 25%;
+        text-align: center;
+        height: 45px;
+        border-radius: 50px;
+        border: 4px solid #53B8FB;
+        color: #1B4586;
+        font-family: "Brevia-semibold";
+        opacity: 1;
+    }
+    .menu .left-wrapper select:disabled{
+        padding: 0 25%;
+        text-align: center;
+        height: 45px;
+        border-radius: 50px;
+        border: 4px solid #53B8FB;
+        color: #1B4586;
+        font-family: "Brevia-semibold";
+        opacity: 0.5;
+    }
+    .menu .left-wrapper .btn-duplicate{
+        padding: 0 25%;
+        text-align: center;
+        height: 45px;
+        border-radius: 50px;
+        border: 4px solid #53B8FB;
+        color: #1B4586;
+        font-family: "Brevia-semibold";
+        background: #fff;    
+    }
+    .menu .left-wrapper .form-menu{
+        border-radius: 50px;
+        padding: 22.5px;
+        box-shadow: inset 2px 2px 3px #797979;    
+    }
+    
+    .menu .right-wrapper{
+        width: 80%;
+        padding: 25px;
+        background: #e3e3e3e6;
+        border-radius: 20px;
+        height: 400px;
+        position: relative;
+    }
+    .right-wrapper .right-wrapper-btn-remove{
+            position: absolute;
+            top: -15px;
+            right: 0;
+            width: 35px;
+            height: 35px;
+            display: grid;
+            place-content: center;
+            border-radius: 50px;
+            background: #1B4586;
+            z-index: 5;
+            color: #fff;
+            box-shadow: 2px 2px 10px #0e0e0e;
+            border: unset;
+    }
+    .menu .right-wrapper .foto-wrapper{
+        background: #fff;
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;    
+        border-radius: 20px;
+        border: solid 1px #0000008f;
+        border-style: dashed;
+        overflow: hidden;
+        position : relative;
+    }
+    .menu .right-wrapper .foto-wrapper img{
+        position : absolute;
+        top : 0;
+        left : 0;
+        width : 100%;
+        height : 100%;
+        object-fit : cover;
+    }
+    .menu .right-wrapper .foto-wrapper.active{
+        border-style: solid !important;   
+        position : relative;
+    }
+    .menu .right-wrapper .upload{
+        border: unset;
+        background: transparent;
+        color: #1f54a1;    
+    }
+    .top-wrapper{
+        width: 80%;
+        padding: 25px;
+        height: auto;    
+    }
+    .btn-reswrap{
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;    
+        flex-direction: column;
+    }
+    .btn-reswrap .progress-wrap{
+        display: flex;
+        flex-direction: column;
+        align-items: center;    
+    }
+    .btn-reswrap .progress-wrap .prog-res{
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        width: 85%;    
+        margin-bottom: 20px;
+    }
+    .btn-reswrap .progress-wrap .prog-res div{
+        width: 100%;
+        height: 3.75px;
+        background: #70707036;;    
+    }
+    .btn-reswrap .btn-saveresult{
+        background: #F58E29;
+        color: #fff;
+        padding: 15px 40px;
+        border-radius: 50px;
+        font-family: 'Brevia-Semibold';
+        border: unset;
+        width: fit-content;
+        margin: 50px 0;
+        align-self: center;
+    }
+    .btn-reswrap .disclaimer-saveresult{
+        width: 70%;
+        margin: 0 auto;    
+    }
+    
+    .result-wrapper{
+        display: flex;
+        gap: 30px;
+        width: 80%;
+        margin: 0 auto 50px;
+    }
+    .result-wrapper .result-left{
+        width: 40%;    
+        padding: 50px 25px;
+        align-self: center;
+    }
+    .result-wrapper .result-left .total-wrapper{
+        display: flex;
+        width: 100%;
+        background: #1B4586;
+        padding: 20px;
+        border-radius: 15px;
+        gap: 30px;   
+        box-shadow: 5px 5px 10px #00000029;
+    }
+    .result-wrapper .result-left .total-wrapper .icon{
+        display: flex;
+        width: 100px;
+        align-items: center;
+        justify-content: center;    
+    }
+    .result-wrapper .result-left .total-wrapper .icon img{
+        height: 75px;    
+    }
+    .result-wrapper .result-left .text-wrapper{
+        color: #fff;    
+        font-family: "Brevia-Semibold";
+    }
+    .result-wrapper .result-left h3{
+        font-size: 20px;
+        margin: unset;
+        margin-bottom: 20px;
+    }
+    .result-wrapper .result-left .total h3{
+        font-size: 20px;
+        margin: unset;
+    }
+    .result-wrapper .result-left .total .total-wrap{
+        font-size: 30px;
+        font-family: "Brevia-Bold";    
+    }
+    .result-wrapper .result-right{
+        width: 60%;
+    }
+    .result-wrapper .result-right .detail-cal{
+            width: 400px;
+        max-width: 400px;
+        padding: 10px 50px 10px 50px;
+        background: #1a4586;
+        color: #fff;
+        border-radius: 50px;
+        font-family: "Brevia-Semibold";
+        margin-left: 7.5px;
+        position: relative;
+    }
+    .result-wrapper .result-right .detail-cal .wrapper-energi{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        align-items: center;
+        
+    }
+    .result-wrapper .result-right .detail-cal .wrapper-energi div{
+        position: relative;    
+    }
+    .result-wrapper .result-right .detail-cal img{
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        bottom: 0;
+        left: -50px;
+    }
+    
+}
+@media screen and (max-width: 767px) {
+        .menu .left-wrapper .result-upload{
+            width: 70%;
+            padding: 30px;
+            border-radius: 15px;
+            background: #F5F4F4;
+            color: #18A20B;
+            font-family: 'brevia-semiBold';
+            margin: 0 auto;    
+            transition : all 0.3s;
+        }
+        .related-product{
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            flex-direction: column;
+        }
+        .related-product .wrapper-imt{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .related-product .wrapper-imt a{
+            padding: 10px 20px;
+            background: #F78E00;
+            color: #fff;
+            border-radius: 50px;
+            font-size: 15px;
+            width: max-content;
+            display: block;
+        }
+    .custom-dl-container {
+        position: absolute;
+        width: 260px;
+        border: solid 1px #d8d6d6;
+        top: 235px;
+        left: 20px;
+        border-radius: 8px;
+        background: white;
+        max-height: 200px;
+        height: auto;
+        overflow-y: auto;
+    }
+    
+    .list-option {
+        padding: 5px 10px 5px 10px
+
+    }
+
+    .list-option:hover {
+        background: #eaeaea;
+    }
+
+    .hero-bg{
+        background: url(https://www.frisianflag.com/storage/app/media/imt/FR-BANNER-MOBILE.png);    
+        background-size: cover;
+        height: 550px;
+    }
+    .top-section-hero{
+        position: relative;    
+        height: 500px;
+    }
+    .top-section-hero .wrapper-flex{
+        position: absolute !important;
+        bottom: -85px !important;
+        flex-direction: column;
+    }
+    .top-section-hero .wrapper-flex .desc{
+            width: 90%;
+        margin: 0 5%;
+        color: #1a4586;    
+    }
+    
+               .overlay-store .card {
+                   width : 90%;
+               }
+               
+               .overlay-store h4, .overlay-store a{
+               color : white !important;
+               text-align : center;
+               }
+               .overlay-store a.btn-outline-light{
+               color : white !important;
+               border : 1px solid white;
+               margin-bottom : 10px;
+               width : 100%;
+               transition : 0.3s;
+               }
+               .overlay-store a.btn-outline-light:hover{
+               background : #2875D5 !important;
+               }
+               .overlay-store .btn-close {
+               background : white !important;
+               border : unset !important;
+               color : black;
+               text-align : center;
+               width : 30px !important;
+               height : 30px !important;
+               position : absolute;
+               right : -10px;
+               top : -10px;
+               border-radius : 50%;
+               font-weight : bold;
+               }
+    
+       
+        
+        .related-product .card{
+            width: 80%;
+            margin: 50px auto;
+            box-shadow: 0 0px 20px #00000029;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .eccomerce-card .card-body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 30px 0 30px;
+        }
+        .eccomerce-card .card-body .imgproduk{
+            width: 100%;    
+        }
+        .eccomerce-card .card-body .detailproduk{
+            color: #52b9fc;
+            font-size: 17.5px;
+            width: 100%;
+            font-family: "Brevia-Semibold";
+            margin-bottom: 20px;
+        }
+        .eccomerce-card #btnecom{
+            width: 100%;
+            background: #F78E00;
+            display: flex;
+            justify-content: center;
+            color: #fff;
+            border-radius: unset;
+        }
+        .eccomerce-card #btnecom span{
+            font-size: 20px !important;    
+        }
+        
+        
+        .related-article {
+            margin-bottom: 50px;
+        }
+        .related-article h2 {
+            text-align: center;
+            color: #54b8fc;
+            font-family: "Brevia-Bold";
+            font-size: 20px;
+            margin-bottom: 40px;
+            width: 90%;
+            margin-left: 5%;
+        }
+        .related-article .main {
+            height: 250px;
+        }
+        .related-article .main .slick-list {
+            //overflow: unset !important;
+            padding: unset !important;
+        }
+        .related-article .main .slidee {
+            position: relative;
+            width: 100%;
+            height: auto;
+            border-radius: 25px;
+            overflow: hidden;
+        }
+        .related-article .slidee:is(.slick-current) > div{
+            padding: 0 10px;    
+        }
+        .related-article .slidee:not(.slick-current) > div{
+            height: 200px;
+            margin-top: 25px;
+        }
+        .related-article .main .slidee .related-text-wrap {
+            position: absolute;
+            bottom: 20px;
+            right: 0;
+            padding: 10px;
+        }
+        .related-article .main .slidee img {
+            width: 100%;
+            height: 275px;
+            object-fit: cover;
+        }
+        .related-article .main .slidee .related-text-wrap h3 {
+            margin: unset;
+            margin-bottom: 20px;
+            color: #fff;
+            font-family: "Brevia-Bold";
+            font-size: 15px;
+        }
+        .related-article .main .slidee .related-text-wrap a {
+            color: #fff;
+            background: #f58e1d;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 15px;
+            font-family: "Brevia-Semibold";
+        }
+        .related-article .btn-more{
+            display: flex;
+            justify-content: end;
+            margin-top: 20px;
+            font-family: "Brevia-Semibold";
+            text-decoration: underline;    
+        }
+        
+        .result-wrapper #slider{
+            overflow: hidden;    
+        }
+        .dp-wrap {
+            margin: 0 auto;
+            position: relative;
+            perspective: 1000px;
+            height: 100%;
+            width: 100vw;
+        }
+
+        .dp-slider {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+        }
+
+        .dp-slider div {
+            transform-style: preserve-3d;
+        }
+
+        .dp_item {
+            display: block;
+            position: absolute;
+            text-align: center;
+            color: #fff;
+            border-radius: 10px;
+            transition: transform 1.2s;
+        }
+
+        .dp-img img {
+            border-left: 1px solid #fff;
+        }
+
+        #dp-slider .dp_item:first-child {
+            z-index: 10 !important;
+            transform: rotateY(0deg) translateX(0px) !important;
+            width: 60%;
+        }
+        #dp-slider .dp_item:first-child .dp-content {
+            background: #0d62a7;
+        }
+        .modal-wrapper {
+            position: relative;
+        }
+        .modal-mobile {
+            z-index: 1000;
+            width: 100%;
+            height: auto;
+            padding: 20px;
+            background: #fff;
+            position: absolute;
+            box-shadow: 5px 5px 10px #000;
+            border-radius: 15px;
+            display: none;
+        }
+        .modal-mobile.active {
+            display: block;
+        }
+        .modal-mobile .content {
+        }
+        .modal-mobile .close {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            border: 1px solid #000;
+            border-radius: 100%;
+            background: transparent;
+            box-shadow: 1px 1px 1px #7e7a7a;
+            width: 25px;
+            height: 25px;
+            display: grid;
+            justify-items: center;
+        }
+
+        .dp_item[data-position="2"] {
+            z-index: 9;
+            transform: rotateY(0deg) translateX(10%) scale(0.9);
+            width: 62%;
+        }
+
+        .dp_item[data-position="3"] {
+            z-index: 8;
+            transform: rotateY(0deg) translateX(20%) scale(0.8);
+            width: 64%;
+        }
+
+        .dp_item[data-position="4"] {
+            z-index: 7;
+            transform: rotateY(0deg) translateX(30%) scale(0.7);
+            width: 65.25%;
+        }
+        .dp_item[data-position="5"] {
+            z-index: 7;
+            transform: rotateY(0deg) translateX(30%) scale(0.7);
+            width: 66.5%;
+        }
+        .dp_item[data-position="6"] {
+            z-index: 7;
+            transform: rotateY(0deg) translateX(30%) scale(0.7);
+            width: 67.75%;
+        }
+        .dp_item[data-position="7"] {
+            z-index: 7;
+            transform: rotateY(0deg) translateX(30%) scale(0.7);
+            width: 69%;
+        }
+        .dp_item[data-position="8"] {
+            z-index: 7;
+            transform: rotateY(0deg) translateX(30%) scale(0.7);
+            width: 70.25%;
+        }
+
+        #dp-next,
+        #dp-prev {
+            position: absolute;
+            top: 50%;
+            right: 25%;
+            height: 33px;
+            width: 33px;
+            z-index: 10;
+            cursor: pointer;
+        }
+
+        #dp-prev {
+            left: 15px;
+            transform: rotate(180deg);
+        }
+
+        #dp-dots {
+            position: absolute;
+            bottom: 25px;
+            z-index: 12;
+            left: 38%;
+            cursor: default;
+            display: none;
+        }
+
+        #dp-dots li {
+            display: inline-block;
+            width: 13px;
+            height: 13px;
+            background: #fff;
+            border-radius: 50%;
+        }
+
+        #dp-dots li:hover {
+            cursor: pointer;
+            background: #fa8c8c;
+            transition: background 0.3s;
+        }
+
+        #dp-dots li.active {
+            background: #fa8c8c;
+        }
+
+        .dp_item {
+            width: 85%;
+        }
+
+        .dp-content,
+        .dp-img {
+            text-align: left;
+        }
+
+        .dp_item {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            
+        }
+        .dp_item[data-position="1"] .wrap-text {
+            background: linear-gradient(360deg, rgba(0,0,0,0.9), transparent);
+            bottom: 0;
+            width: 100%;
+            z-index: 1;
+            height: 141px;
+            display: flex;
+            align-items: center;
+            padding-left: 30px;
+            justify-content: flex-start;
+            color: #fff;
+            font-size: 20px;
+            font-family: "Brevia-Bold";
+            position: absolute;
+        }
+        .dp_item[data-position="1"] .wrap-text button {
+            position: absolute;
+            bottom: 7.5px;
+            right: 10px;
+            background: transparent;
+            width: 20px;
+            height: 20px;
+            border-radius: 50px;
+            border: 1px solid #fff;
+            font-size: 10px;
+        }
+        .dp_item[data-position="2"] .wrap-text,
+        .dp_item[data-position="3"] .wrap-text,
+        .dp_item[data-position="4"] .wrap-text,
+        .dp_item[data-position="5"] .wrap-text,
+        .dp_item[data-position="6"] .wrap-text,
+        .dp_item[data-position="7"] .wrap-text,
+        .dp_item[data-position="8"] .wrap-text{
+            display: none;
+        }
+
+        .dp-content {
+            display: inline-block;
+            width: 100%;
+        }
+        .dp-content .wrap-img {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            height: 300px;
+            align-items: center;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            background: #fff;
+        }
+        .dp-content .wrap-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+        }
+        .dp-content h2 {
+            color: #41414b;
+            font-family: Circular Std Bold;
+            font-size: 48px;
+            max-width: 460px;
+            margin-top: 8px;
+            margin-bottom: 0px;
+        }
+
+        .dp-content p {
+            color: #74747f;
+            max-width: 490px;
+            margin-top: 15px;
+            font-size: 24px;
+        }
+
+        .dp-content .site-btn {
+            margin-top: 15px;
+            font-size: 13px;
+            padding: 19px 40px;
+        }
+
+        .dp-img:before {
+            background: -webkit-linear-gradient(-90deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0));
+            background: -o-linear-gradient(-90deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0));
+            background: -moz-linear-gradient(-90deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0));
+            background: linear-gradient(-90deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 25%;
+            z-index: 1;
+            top: 0;
+            pointer-events: none;
+            background: -webkit-linear-gradient(-90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75));
+            background: -o-linear-gradient(-90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75));
+            background: -moz-linear-gradient(-90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75));
+            background: linear-gradient(-90deg, rgba(255, 255, 255, 0), rgb(255, 255, 255));
+        }
+
+        .dp-img img {
+            object-fit: cover;
+            object-position: right;
+        }
+
+        #dp-slider,
+        .dp-img img {
+            height: 325px;
+            padding: 10px;
+        }
+
+        #dp-slider .dp_item:hover:not(:first-child) {
+            cursor: pointer;
+        }
+        
+    .result-wrapper{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        width: 80%;
+        margin: 0 auto 50px;
+    }
+    .result-wrapper .result-left{
+        width: 100%;    
+        align-self: center;
+    }
+    .result-wrapper .result-left .total-wrapper{
+        display: flex;
+        width: 100%;
+        background: #1B4586;
+        padding: 20px;
+        border-radius: 15px;
+        gap: 30px;   
+        box-shadow: 5px 5px 10px #00000029;
+    }
+    .result-wrapper .result-left .total-wrapper .icon{
+        display: flex;
+        width: 100px;
+        align-items: center;
+        justify-content: center;    
+    }
+    .result-wrapper .result-left .total-wrapper .icon img{
+        height: 75px;    
+    }
+    .result-wrapper .result-left .text-wrapper{
+        color: #fff;    
+        font-family: "Brevia-Semibold";
+    }
+    .result-wrapper .result-left h3{
+        font-size: 20px;
+        margin: unset;
+        margin-bottom: 20px;
+    }
+    .result-wrapper .result-left .total h3{
+        font-size: 20px;
+        margin: unset;
+    }
+    .result-wrapper .result-left .total .total-wrap{
+        font-size: 30px;
+        font-family: "Brevia-Bold";    
+    }
+    .result-wrapper .result-right{
+        width: 100%;
+    }
+    .result-wrapper .result-right .detail-cal{
+        width: auto;
+        padding: 10px;
+        background: #1a4586;
+        color: #fff;
+        border-radius: 50px;
+        font-family: "Brevia-Semibold";
+        margin-left: 7.5px;
+        position: relative;
+        text-align: center;
+    }
+    .result-wrapper .result-right .detail-cal .wrapper-energi{
+        display: flex;
+        flex-direction: column;
+    }
+    .result-wrapper .result-right .detail-cal .wrapper-energi div{
+        position: relative;    
+    }
+    .result-wrapper .result-right .detail-cal img{
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        bottom: 0;
+        left: 50px;
+    }
+    
+    .container-result-text{
+    color: #1B4586;
+    width: 50%;
+    margin: 0 auto 30px;
+    text-align: center;
+    font-family: "Brevia-Semibold";    
+}    
+.wrap{
+    width: max-content;
+    padding: 20px;    
+}
+.slide.slick-current{
+        background: #0F61A7;
+        gap: 30px !important;
+        height: 150px;
+        align-items: center;
+        transition: all .3s ease;
+    }
+    .slide{
+        display: flex !important;
+        justify-content: center;
+        padding: 20px;
+        background: #53B8FC;
+        border-radius: 15px;
+        box-shadow: 0 3px 6px #00000029;
+        gap: 10px;
+        transition: all .3s ease;
+        width: 100%;
+    }
+    .related-article .slide{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        box-shadow: unset !important;
+        background: unset !important;
+        gap: 10px;
+        transition: all .3s ease;
+        position: relative;
+        height: 250px;
+        border-radius: 15px;
+        overflow: hidden;
+        padding: unset !important;
+    }
+    .slide .related-text-wrap{
+        position: absolute;
+        bottom: 20px;
+        width: 90%;
+        left: 5%;
+        font-size: 15px;    
+    }
+    .slide .related-text-wrap a{
+        background: #f78d01;
+        color: #fff;
+        padding: 10px 50px;
+        border-radius: 50px;
+        font-family: "Brevia-semibold";    
+    }
+    .slide .related-text-wrap h3{
+        font-size: 20px;
+        color: #fff;
+        margin-bottom: 20px;
+        font-family: "Brevia-semibold";    
+    }
+    .slide .slide-img img{
+        width: 50px;
+        height: 50px;    
+    }
+    .slide .slide-text{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #fff;
+        gap: 10px;
+    }
+    .slide .slide-text .number{
+        font-size: 20px;
+        font-family: 'Brevia-Semibold';
+        color: #fff;
+        line-height: 1;
+    }
+    .slide .slide-text .detail{
+        font-size: 15px;
+        font-family: 'Brevia-Regular';
+        color: #FFF;
+    }
+    
+    .slide.slick-current img{
+        width: 75px;
+        height: 75px;
+    }
+    .slide.slick-current .slide-text{
+        display: flex;
+        flex-direction: column;
+        width: auto !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+    }
+    .slide.slick-current .slide-text .number{
+        font-size:40px;
+    }
+    .slide.slick-current .slide-text .detail{
+        font-size:22px;
+    }     
+    
+    
+ .btn-remove{
+      background: red;
+      box-shadow: 2px 2px 10px #a0a0a0;
+      
+  }    
+    
+ .wrapper-bg{
+        height: 100vh;    
+        width: 100vw;
+        display: grid;
+        place-content: center;
+        background: rgb(0 0 0 / 70%);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index : 100
+    }
+    .wrapper-bg .modall{
+        height: 250px;
+        width: 90vw;
+        padding: 20px;
+        background: #fff;
+        position: relative;
+        border-radius: 15px;
+        z-index: 1000;
+        box-shadow: 3px 2px 6px #000;
+        display : flex; 
+        align-items : center;
+    }
+    .wrapper-bg .modall .modal-body h4{
+        font-size : 20px;
+        margin-bottom : 15px;
+        font-family : "Brevia-Bold";
+    }
+    .wrapper-bg .modall .close{
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        width: 30px;
+        height: 30px;
+        border-radius: 20px;
+        display: grid;
+        place-items: center;
+        box-shadow: 2px 2px 5px rgb(0 0 0);
+        cursor: pointer;
+    }   
+    
+    .wrapper-flex {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        margin: 100px 0 50px;
+    }
+    .hero-text h1{
+        padding: 0 5%;
+        color: #54B8FB;
+        font-family: 'brevia-Bold';
+        font-size: 40px;    
+    }
+    .top-desc{
+        padding: 50px 0;
+        transform: translateX(-2%);
+        background: linear-gradient( to bottom,#54BDFD 30%, #54B8FC 100% );
+        width: 100vw;
+        text-align: left;
+    }
+    .top-desc p {
+        width: 80%;
+        margin: 0 auto;
+        color: #fff;
+        font-size: 15px;
+    }
+    
+    .menu{
+        display: flex;
+        flex-direction: column;
+        margin-top: 50px;
+        gap: 50px;
+    }
+    .menu-selection{
+        position: relative;    
+    }
+    .menu-selection .numbering{
+        position: absolute;
+        top: 0;
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+        background: #1B4586;
+        display: grid;
+        place-content: center;
+        color: #fff;
+        font-family: "Brevia-semibold";
+        box-shadow: 2px 2px 10px #4e4e4e;    
+    }
+    .menu .left-wrapper{
+        display: flex;
+        flex-direction: column;
+        order: -1;
+        text-align: center;
+        gap: 12.5px;
+        align-self: center;
+        width: 90%;
+        position: relative;
+    }
+    .menu .left-wrapper h2{
+        color: #1B4586;
+        font-family: "Brevia-Bold";
+        font-size: 20px;
+    }
+    .menu .left-wrapper .btn-start{
+        background: #1B4586;
+        color: #fff;
+        border: unset;
+        padding: 12.5px 50px;
+        border-radius: 50px;
+        font-family: "Brevia-semibold";
+        font-size: 15px;   
+    }
+    .menu .left-wrapper select{
+        padding: 0 25%;
+        text-align: center;
+        height: 45px;
+        border-radius: 50px;
+        border: 4px solid #53B8FB;
+        color: #1B4586;
+        font-family: "Brevia-semibold";
+    }
+    .menu .left-wrapper .btn-duplicate{
+        padding: 0 25%;
+        text-align: center;
+        height: 45px;
+        border-radius: 50px;
+        border: 4px solid #53B8FB;
+        color: #1B4586;
+        font-family: "Brevia-semibold";
+        background: #fff;    
+    }
+    .menu .right-wrapper{
+        width: 90%;
+        padding: 25px;
+        background: #e3e3e3e6;
+        border-radius: 12.5px;
+        height: 350px;
+        margin-left: 5%;
+        position: relative;
+    }
+    .menu .right-wrapper .right-wrapper-btn-remove{
+        position: absolute;
+        top: 0;
+        right: -10px;
+        width: 30px;
+        height: 30px;
+        background: #fff;
+        border-radius: 30px;
+        border: unset;
+        box-shadow: 2px 2px 10px #000;    
+    }
+    .menu .right-wrapper .foto-wrapper{
+        background: #fff;
+        display: flex;
+        height: 100%;
+        position : relative;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 12.5px;
+        border: solid 1px #0000008f;
+        border-style: dashed;
+        overflow: hidden;
+    }
+    .menu .right-wrapper .foto-wrapper .drag-wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;    
+    } 
+    .menu .right-wrapper .upload{
+        border: unset;
+        background: transparent;
+        color: #1f54a1;    
+    }
+    
+    .btn-reswrap{
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;    
+        flex-direction: column;
+    }
+    .btn-reswrap .progress-wrap{
+        display: flex;
+        flex-direction: column;
+        align-items: center;    
+    }
+    .btn-reswrap .progress-wrap .prog-res{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        width: 85%;    
+        margin-bottom: 20px;
+    }
+    .btn-reswrap .progress-wrap .prog-res div{
+        width: 100%;
+        height: 3.75px;
+        background: #70707036;;    
+    }
+    .btn-reswrap .btn-saveresult{
+        background: #F58E29;
+        color: #fff;
+        padding: 15px 40px;
+        border-radius: 50px;
+        font-family: 'Brevia-Semibold';
+        border: unset;
+        width: fit-content;
+        margin: 30px 0;
+        align-self: center;
+    }
+    .btn-reswrap .disclaimer-saveresult{
+        width: 85%;
+        margin: 0 auto;
+        text-align: left; 
+    }
+}
+{% endput %}
+<div id="popup-ecommerce" class="overlay-store">
+   <div class="card">
+      <button class="btn-close">x</button>
+      <div class="card-body">
+         <h4>Temukan Produk Kami di:</h4>
+         {% for shop in ecommerce %}
+         <a class="btn btn-outline-light btn-commerce" href="{{ shop }}" target="_blank">
+         
+         </a>
+         {% endfor %}
+      </div>
+   </div>
+</div>
+
+<div class="wrapper-bg imt d-none">
+    <div class="modall">
+        <div class="modal-body text-center">
+            <h4>Kamu belum hitung IMT. Yuk, hitung dulu untuk dapat info yang lebih lengkap</h4>
+            <a class="button" href="https://www.frisianflag.com/sample-design-kalkulator">Hitung IMT Saya</a>
+        </div>
+        <!-- <div class="close">X</div> -->
+    </div>
+</div>
+
+<div class="wrapper-bg fr d-none">
+    <div class="modall">
+        <div class="modal-body text-center">
+            <h4>Harap login/register terlebih dahulu untuk menggunakan fitur ini</h4>
+            <a class="button login-modalfr" href="javascript:void(0)">Login/Register</a>
+        </div>
+        <!-- <div class="close">X</div> -->
+    </div>
+</div>
+
+<div class="bg-top"></div>
+
+    <div class="">
+        <div class="hero-bg">
+            <div class="container">
+            
+            <!-- top hero -->
+            <div class="top-section">
+                <div class="top-section-hero">
+                    <div class="wrapper-flex">
+                        <div class="hero-text">
+                            <h1 id="banner-text" data-result="Yuk, lihat kalori harianmu!" data-page="#Kalkulator Gizi Harian">
+                                #KalkulatorFrisianFlag<br>Gizi Harian
+                            </h1>
+                        </div>
+                        <p class="desc">
+                                
+                            </p>
+                        <div class="hero-img d-none">
+                            <img src="https://www.frisianflag.com/storage/app/media/kalkulator/hero-kalkulator.png" alt="frisianflag-kalkulator" title="frisianflag-kalkulator" class="w-100 h-100" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <!-- top desc -->
+    <div class="top-desc text-bg-2">
+            <p class="text-bg-2"><strong>#KalkulatorFrisianFlag
+        Gizi Harian</strong> adalah cara sederhana menghitung kalori makanan harian kamu apakah sudah sesuai dengan kebutuhan gizi kamu atau belum. Yuk, hitung kalori harian kamu!</p>
+    </div>
+    </div>
+    <div class="container" id="menu-selection-list">
+        
+        
+        
+        <!-- Menu Pagi -->
+        <div class="menus">
+            
+            <div class="wrapper-imt">
+                Total Energi yang Kamu Butuhkan: <span id="res-imt"></span>
+            </div>
+            <div class="col-3 menu-item">
+            
+            <!-- Jangan di replace class Menu -->
+                <div class="menu-selection">
+                    
+                    <div class="menu menu-pagi">
+                        <form enctype="multipart/form-data" id="formimage" method="POST" data-request-success="handleSuccess(this, data)" data-request="onUpload" data-request-files class="d-none">
+                                
+                                <input onchange="handleOnChangeImage(this)" class="form-file d-none" name="image" type="file"/>
+                                <div class="mti-wrapper">
+                                    <div class="img-wrapper">
+                                        <img src="" class="img-preview" height="100" id="img-preview-1" alt="">    
+                                    </div>
+                                    <div class="action-wrapper">
+                                        <button type="button" onclick="handleRemoveMenu(this)" style="display : none" class="btn-delete-menu">Delete Menu</button>
+                                        <br>
+                                        <br>
+                                        <!-- <a href="https://www.frisianflag.com/result-sample">Upload document</a> -->
+                                        <input type="submit" value="Upload Document" id="convert" style="display: none;" />
+                                    </div>
+                                </div>
+                                
+                        </form>
+                        
+                        <div class="right-wrapperfull">
+                            <div class="top-wrapper d-none">
+                                <div class="food-slider">
+                                    <div class="slider">
+                                        <div class="sliderimg-wrapper">
+                                            <img src="https://www.frisianflag.com/storage/app/media/resep-kami/rtd/RTD%20-%20Chocolate%20Milk%20Pudding.png" alt="" class="slider-img">
+                                            <div class="desc-detail">
+                                                <p class="desc-name"></p>
+                                                <p class="desc-porsi"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slider">
+                                        <div class="sliderimg-wrapper">
+                                            <img src="https://www.frisianflag.com/storage/app/media/resep-kami/rtd/RTD%20-%20Chocolate%20Milk%20Pudding.png" alt="" class="slider-img">
+                                            <div class="desc-detail">
+                                                     
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slider">
+                                        <div class="sliderimg-wrapper">
+                                            <img src="https://www.frisianflag.com/storage/app/media/resep-kami/rtd/RTD%20-%20Chocolate%20Milk%20Pudding.png" alt="" class="slider-img">
+                                            <div class="desc-detail">
+                                                     
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="right-wrapper">
+                                <button class="right-wrapper-btn-remove d-none" onclick="handleDeletImage(this)">x</button>
+                                <div class="foto-wrapper">
+                                    <div class="drag-wrapper" style="display: flex">
+                                        <p>Drag an image here or </p><button class="upload">upload a file .png, .jpeg, .jpg, .webp</button>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                        
+                        <!-- Datalist -->
+                        <datalist id="menu-pagi-field-1" class="text-capitalize">
+                            {% for item in resep %}
+                                <option data-value="{{item.slug}}" value="{{ (item.slug | replace({  '-': " " }) | capitalize ) | replace({  'Resep ': "" })  | capitalize }}"></option>
+                            {% endfor %}
+                        </datalist>
+                        <div class="left-wrapper pagi">
+                            <h2>Pilih Sarapan</h2> 
+                            <div class="result-upload d-none">
+                                Unggahan berhasil<br>Gambar terdeteksi<br>
+                                Pilih Menu yang Sesuai
+                            </div>
+                            <button class="btn-start">Ambil Gambar</button>
+                            <!-- <label for="">Pilih Menu</label> -->
+                            <!-- <p>Porsi</p> -->
+                            <input autocomplete="off" placeholder="-- Pilih Menu --" onfocus="clearValue(this)" onchange="handleChangeInput(this)" data-input="1" list="menu-pagi-field-1" class="form-control form-menu" name="foodMenu" >
+                            <select disabled="true" data-select="1" onchange="handleChangeMenu(this , 'Pagi')" data-subtotal="#data-total-pagi" data-result="#data-pagi" data-save="#result-pagi">
+                                <option value="">-- Pilih Porsi --</option>
+                                <option value="25">25 Gram</option>
+                                <option value="50">50 Gram</option>
+                                <option value="75">75 Gram</option>
+                                <option value="100">100 Gram</option>
+                                <option value="125">125 Gram</option>
+                                <option value="150">150 Gram</option>
+                                <option value="175">175 Gram</option>
+                                <option value="200">200 Gram</option>
+                                <option value="225">225 Gram</option>
+                                <option value="250">250 Gram</option>
+                                <option value="275">275 Gram</option>
+                                <option value="300">300 Gram</option>
+                                <option value="325">325 Gram</option>
+                                <option value="350">350 Gram</option>
+                            </select>
+                            
+                            
+                            <button class="btn-duplicate" data-duplicate=".menu-pagi" data-list="menu-pagi-field" onclick="handleDuplicate(this)">Tambah Menu Lainnya</button>
+                        </div>
+                        
+                        <button style="display : none" class="button btn-remove" onclick="handleDeleteMenu(this , '#result-pagi')">Remove</button>
+                    </div>
+                </div>
+                
+                
+                
+            <div id="result-pagi" ></div>
+            <div id="data-pagi" style="display : flex;"></div>
+            <hr>
+            <div id="data-total-pagi"></div>
+            
+            </div>
+        </div>
+        
+        
+        
+        <!-- Menu siang -->
+        <div class="menus">
+            <div class="col-3 menu-item">
+            
+            <!-- Jangan di replace class Menu -->
+                <div class="menu-selection">
+                
+                    <div class="menu menu-siang">
+                        <form enctype="multipart/form-data" id="formimage" method="POST" data-request-success="handleSuccess(this, data)" data-request="onUpload" data-request-files class="d-none">
+                                
+                            <input onchange="handleOnChangeImage(this)" class="form-file d-none" name="image" type="file"/>
+                            <div class="mti-wrapper">
+                                <div class="img-wrapper">
+                                    <img src="" class="img-preview" height="100" id="img-preview-1" alt="">    
+                                </div>
+                                <div class="action-wrapper">
+                                    <button type="button" onclick="handleRemoveMenu(this)" style="display : none" class="btn-delete-menu">Delete Menu</button>
+                                    <br>
+                                    <br>
+                                    <!-- <a href="https://www.frisianflag.com/result-sample">Upload document</a> -->
+                                    <input type="submit" value="Upload Document" id="convert" style="display: none;" />
+                                </div>
+                            </div>
+                            
+                    </form>
+
+                    <div class="right-wrapper">
+                        <button class="right-wrapper-btn-remove d-none" onclick="handleDeletImage(this)">x</button>
+                        <div class="foto-wrapper">
+                            <div class="drag-wrapper" style="display: flex">
+                                <p>Drag an image here or </p><button class="upload">upload a file .png, .jpeg, .jpg, .webp</button>
+                            </div>
+                        </div>
+                    </div>    
+                        
+                        <!-- Datalist -->
+                        <datalist id="menu-siang-field-1" class="text-capitalize">
+                            {% for item in resep %}
+                                <option data-value="{{item.slug}}" value="{{ (item.slug | replace({  '-': " " }) | capitalize ) | replace({  'Resep ': "" })  | capitalize }}"></option>
+                            {% endfor %}
+                        </datalist>
+                        <div class="left-wrapper siang">
+                            <h2>Pilih Makan Siang</h2> 
+                            
+                            <div class="result-upload d-none">
+                                Unggahan berhasil<br>Gambar terdeteksi<br>
+                                Pilih Menu yang Sesuai
+                            </div>
+                            <button class="btn-start">Ambil Gambar</button>
+                            <!-- <label for="">Pilih Menu</label> -->
+                            <!-- <p>Porsi</p> -->
+                            <input autocomplete="off" placeholder="-- Pilih Menu --" onfocus="clearValue(this)" onchange="handleChangeInput(this)" data-input="1" list="menu-siang-field-1" class="form-control form-menu" name="foodMenu" >
+                            <select disabled="true" data-select="1" onchange="handleChangeMenu(this , 'siang')" data-subtotal="#data-total-siang" data-result="#data-siang" data-save="#result-siang">
+                                <option value="">-- Pilih Porsi --</option>
+                                <option value="25">25 Gram</option>
+                                <option value="50">50 Gram</option>
+                                <option value="75">75 Gram</option>
+                                <option value="100">100 Gram</option>
+                                <option value="125">125 Gram</option>
+                                <option value="150">150 Gram</option>
+                                <option value="175">175 Gram</option>
+                                <option value="200">200 Gram</option>
+                                <option value="225">225 Gram</option>
+                                <option value="250">250 Gram</option>
+                                <option value="275">275 Gram</option>
+                                <option value="300">300 Gram</option>
+                                <option value="325">325 Gram</option>
+                                <option value="350">350 Gram</option>
+                            </select>
+                            
+                            
+                            <button class="btn-duplicate" data-duplicate=".menu-siang" data-list="menu-siang-field" onclick="handleDuplicate(this)">Tambah Menu Lainnya</button>
+                        </div>
+                        
+                        
+                        <button style="display : none" class="button btn-remove" onclick="handleDeleteMenu(this , '#result-siang')">Remove</button>
+                    </div>
+                </div>
+                
+                
+                
+                
+            <div id="result-siang" ></div>
+            <div id="data-siang" style="display : flex;"></div>
+            <hr>
+            <div id="data-total-siang"></div>
+            
+            </div>
+        </div>
+        
+        
+        
+        <!-- Menu malam -->
+        <div  class="menus">
+            <div class="col-3 menu-item">
+            
+            <!-- Jangan di replace class Menu -->
+                <div class="menu-selection">
+                
+                    <div class="menu menu-malam">
+                        <form enctype="multipart/form-data" id="formimage" method="POST" data-request-success="handleSuccess(this, data)" data-request="onUpload" data-request-files class="d-none">
+                                
+                            <input onchange="handleOnChangeImage(this)" class="form-file d-none" name="image" type="file"/>
+                            <div class="mti-wrapper">
+                                <div class="img-wrapper">
+                                    <img src="" class="img-preview" height="100" id="img-preview-1" alt="">    
+                                </div>
+                                <div class="action-wrapper">
+                                    <button type="button" onclick="handleRemoveMenu(this)" style="display : none" class="btn-delete-menu">Delete Menu</button>
+                                    <br>
+                                    <br>
+                                    <!-- <a href="https://www.frisianflag.com/result-sample">Upload document</a> -->
+                                    <input type="submit" value="Upload Document" id="convert" style="display: none;" />
+                                </div>
+                            </div>
+                            
+                    </form>
+                    
+                    <div class="right-wrapper">
+                        <button class="right-wrapper-btn-remove d-none" onclick="handleDeletImage(this)">x</button>
+                        <div class="foto-wrapper">
+                            <div class="drag-wrapper" style="display: flex">
+                                <p>Drag an image here or </p><button class="upload">upload a file .png, .jpeg, .jpg, .webp</button>
+                            </div>
+                        </div>
+                    </div>    
+                        
+                        <!-- Datalist -->
+                        <datalist id="menu-malam-field-1" class="text-capitalize">
+                            {% for item in resep %}
+                                <option data-value="{{item.slug}}" value="{{ (item.slug | replace({  '-': " " }) | capitalize ) | replace({  'Resep ': "" })  | capitalize }}"></option>
+                            {% endfor %}
+                        </datalist>
+                        <div class="left-wrapper malam">
+                            <h2>Pilih Makan Malam</h2> 
+                            
+                            <div class="result-upload d-none">
+                                Unggahan berhasil<br>Gambar terdeteksi<br>
+                                Pilih Menu yang Sesuai
+                            </div>
+                            <button class="btn-start">Ambil Gambar</button>
+                            <!-- <label for="">Pilih Menu</label> -->
+                            <!-- <p>Porsi</p> -->
+                            <input autocomplete="off" placeholder="-- Pilih Menu --"  onfocus="clearValue(this)" onchange="handleChangeInput(this)" data-input="1" list="menu-malam-field-1" class="form-control form-menu" name="foodMenu" >
+                            <select disabled="true" data-select="1" onchange="handleChangeMenu(this , 'malam')" data-subtotal="#data-total-malam" data-result="#data-malam" data-save="#result-malam">
+                                <option value="">-- Pilih Porsi --</option>
+                                <option value="25">25 Gram</option>
+                                <option value="50">50 Gram</option>
+                                <option value="75">75 Gram</option>
+                                <option value="100">100 Gram</option>
+                                <option value="125">125 Gram</option>
+                                <option value="150">150 Gram</option>
+                                <option value="175">175 Gram</option>
+                                <option value="200">200 Gram</option>
+                                <option value="225">225 Gram</option>
+                                <option value="250">250 Gram</option>
+                                <option value="275">275 Gram</option>
+                                <option value="300">300 Gram</option>
+                                <option value="325">325 Gram</option>
+                                <option value="350">350 Gram</option>
+                            </select>
+                            
+                            
+                            <button class="btn-duplicate" data-duplicate=".menu-malam" data-list="menu-malam-field" onclick="handleDuplicate(this)">Tambah Menu Lainnya</button>
+                        </div>
+                        
+                        
+                        <button style="display : none" class="button btn-remove" onclick="handleDeleteMenu(this , '#result-malam')">Remove</button>
+                    </div>
+                </div>
+                
+                
+                
+                
+            <div id="result-malam" ></div>
+            <div id="data-malam" style="display : flex;"></div>
+            
+            <div id="data-total-malam"></div>
+            
+            </div>
+        </div>
+        <div id="totalResult"></div>
+        <div class="btn-reswrap">
+            <div class="progress-wrap">
+                <div class="prog-res">
+                    <div class="prog-1"></div>
+                    <div class="prog-2"></div>
+                    <div class="prog-3"></div>
+                </div>
+                <div class="prog-text">
+                    <p>*<span id="change"></span> <span id="data-length">0</span> menu dipilih</p>
+                </div>
+            </div>
+            <button class="btn-saveresult op-5" disabled="true" onclick="handleGetTotal()" >Hitung Total Kalori Makanan Saya</button>
+            <p class="disclaimer-saveresult">*Disclaimer<br>Hasil perhitungan dari <strong>#KalkulatorFrisianFlag Gizi Harian</strong> ini hanya sebuah data yang digunakan sebagai informasi mengenai asupan & kalori harian kamu. Konsultasikan lebih lanjut kepada tenaga medis profesional.
+            </p>
+        </div>
+
+    </div>
+
+
+
+    <div class="" style="margin-top : 50px" id="menu-selection-section">
+        
+    </div>
+    <!-- Result Container -->
+    
+    <!-- End Result Container -->
+</div>
+
+{% partial 'site/footer' %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- <script>
+    
+    $("#formimage").submit(function(){
+        $.request('onHandleForm', 
+    })
+</script> -->
+<script>  
+
+    var result = '{{imt_data.tee}}'
+    initDragEvent()
+    
+    function handleDeletImage(e){
+        var parent = $(e).parent();
+        parent.html(`<button class="right-wrapper-btn-remove d-none" onclick="handleDeletImage(this)">x</button>
+                        <div class="foto-wrapper">
+                                    <div class="drag-wrapper" style="display: flex">
+                                        <p>Drag an image here or </p><button class="upload">upload a file .png, .jpeg, .jpg, .webp</button>
+                                    </div>
+                                </div>`);
+        $(".result-upload").addClass("d-none");
+        var upload = parent.parents(".menu").find(".btn-start");
+        console.log(upload);
+        upload.on("click", function(){
+             console.log($(this).parents('.menu').find("#formimage input[type='file']"))
+        });
+        
+        $.request('onGetAllData' , {
+           success : function (data) {
+                generateDataList(parent.parents(".menu").find("datalist").attr("id") , data)
+            }    
+       })
+        
+        
+    }
+    
+    function handleDragedFile(file  , container){
+        $(container).addClass('op-5')
+        $.request('onAutoFillForm' , {
+                data : {file},
+                success : function (data) {
+                    var datas = data;
+                    var parent = container;
+                    handleOnChangeImageSuccess(file , true , container)
+                    
+                    var target = $(parent).find('datalist').attr('id')
+                    var buttonDelete = $(parent).find('.btn-delete-menu')
+                    buttonDelete.show()
+                    
+                    
+                    $(container).removeClass('op-5')
+                        $(parent).find(".result-upload").removeClass("d-none")
+                        $(parent).find(".right-wrapper-btn-remove").removeClass("d-none")
+                        $(parent).find(".result-upload").html(`Unggahan berhasil<br>Gambar terdeteksi<br>
+                                Pilih Menu yang Sesuai`);
+                        $([document.documentElement, document.body]).animate({
+                            scrollTop: $(parent).find("input.form-control.form-menu").offset().top - 500
+                        }, 1000);
+                        //$(parent).find("input.form-control.form-menu").focus();                                
+                        generateDataList(target , data);
+
+                        //START CUSTOM DATALIST
+                        var $target = $("#" + $(parent).find("input.form-control.form-menu").attr("list") + " > option");
+                        var $replica = '';
+                        for(var i=0; i<$target.length; i++){
+                            $replica += '<div class="list-option" data-val="' + $target[i].attributes['data-value'].value + '">' + $target[i].attributes['value'].value + '</div>';
+                        }
+                        $target.parent().parent().append($('<div class="custom-dl-container">').html($replica));
+
+                        $(document).click(function(){  
+                            $('.custom-dl-container').remove();
+                        });
+
+                        $(".list-option").click(function(){
+                            $(this).parent().parent().find(".form-control.form-menu").val($(this).text());
+                            $('#' + $(this).parent().parent().find(".form-control.form-menu").attr("list") + ' option').attr('selected', false).find('[value="' + $(this).text() + '"]').attr('selected', true);
+                            $(this).parent().parent().find("select").removeAttr("disabled");
+                        });
+                        //END CUSTOM DATALIST
+                }
+            })
+        }
+    function compress(e) {
+        return new Promise((resolve, reject) => {
+            const width = 200;
+            const height = 200;
+            const fileName = e.name;
+            
+            const fileSize = e.size / 1000000;
+            
+            if(fileSize > 4) {
+                resolve(false)
+            }
+            
+            const reader = new FileReader();
+            reader.readAsDataURL(e);
+            var image
+            reader.onload = event => {
+                const img = new Image();
+                img.src = event.target.result;
+                img.onload = () => {
+                        const elem = document.createElement('canvas');
+                        elem.width = width;
+                        elem.height = height;
+                        const ctx = elem.getContext('2d');
+                        // img.width and img.height will contain the original dimensions
+                        ctx.drawImage(img, 0, 0, width, height);
+                        ctx.canvas.toBlob((blob) => {
+                            file = new File([blob], fileName, {
+                                type: 'image/jpeg',
+                                lastModified: Date.now()
+                            });
+                            resolve(file)
+                        }, 'image/jpeg', 1);
+                    },
+                    reader.onerror = error => console.log(error);
+            };
+        })
+        
+    }
+    function initDragEvent(){
+        
+        let dArea = $(".right-wrapper .foto-wrapper"),
+        img = $("#uploadphoto"),
+        dText = $(".drag-wrapper p");
+        
+        
+        dArea.on("dragover", function(e){
+            e.preventDefault();
+            $(this).addClass("active");
+            $(this).text("Drop your image here"); 
+            //alert("Drop your image here");
+        })
+        dArea.on("dragleave", function(e) {
+            //alert("2");
+            e.preventDefault();
+            $(this).removeClass("active");
+            $(this).text("Drag an image here or");
+        })
+        dArea.on("drop", async function(e) {
+            if(e.originalEvent.dataTransfer && e.originalEvent.dataTransfer.files.length) {
+                e.preventDefault();
+                e.stopPropagation();
+                /*UPLOAD FILES HERE*/
+                
+                var parent = $(e.target).parents('.menu')
+                
+                console.log(parent)
+                file = e.originalEvent.dataTransfer.files[0];
+                var compressed = await compress(file);
+                let fileType = compressed.type;
+                
+                if(!compressed) {
+                    alert('Size file Anda terlalu besar')
+                    return false;
+                } else {
+                    let validation = ['image/jpeg','image/jpg','image/png','image/webp'];
+                    if( validation.includes(fileType) ){
+                        let fileReader = new FileReader();
+                        fileReader.onload = function(){
+                            let fileUrl = fileReader.result;
+                            console.log(fileUrl);
+                            let imgTag = `<img src="${fileUrl}">`;
+                            dArea.innerHTML = imgTag;
+                            
+                            parent.find(".btnlanjut").removeClass("d-none");
+                            sessionStorage.setItem("b64", fileUrl);
+                            document.cookie = `b64=${fileUrl}`;
+                            file = fileUrl;
+                            container = parent
+                            handleDragedFile(file , container)
+                        }
+                        fileReader.readAsDataURL(compressed);
+                    }else{
+                        //alert("File Harus Berupa image (jpeg, jpg, png, webp)")
+                        $(parent).find(".result-upload").removeClass("d-none")
+                        $(parent).find(".result-upload").html(`<span style="color : red !important">**maaf saat ini pilihan menu yang kamu unggah belum tersedia, silahkan ambil gambar ulang atau pilih menu secara manual</span>`);
+                    }
+                }
+            }
+            
+        })
+    
+    }
+    $(".food-slider .slider").slick({
+          slidesToShow: 3,
+    })
+    
+    
+    //modalpopup login
+    $(".login-modalfr").on("click", function(){
+        console.log("click foodrecall");
+        if(window.screen.width < 768){
+            $(`.wrp-headmenu-xs [onclick*='getpopuplogin']`).click()
+        } else {
+            var url = window.location.href;
+            document.cookie = "ref_page=" + url;
+            $(".top-menu__list a[onclick*='getpopuplogin']").click();    
+        }
+    })
+    
+    //modalpopup ecom
+    $("#btnecom").click(function(){
+        $("#popup-ecommerce").addClass("show");    
+    })
+    //close popupecom
+    $("#popup-ecommerce .btn-close").click(function(){
+        $("#popup-ecommerce").removeClass("show");        
+    })
+    
+    
+
+    $(document).ready(function (){
+        //sorting default menu list
+        $('#menu-pagi-field-1>option').sort(function(a, b) {
+            if (a.value < b.value) {
+                return -1;
+            } else {
+                return 1;
+            }
+        }).appendTo('#menu-pagi-field-1');
+
+        $('#menu-siang-field-1>option').sort(function(a, b) {
+            if (a.value < b.value) {
+                return -1;
+            } else {
+                return 1;
+            }
+        }).appendTo('#menu-siang-field-1');
+
+        $('#menu-malam-field-1>option').sort(function(a, b) {
+            if (a.value < b.value) {
+                return -1;
+            } else {
+                return 1;
+            }
+        }).appendTo('#menu-malam-field-1');
+
+        if( window.innerWidth < 767 ){
+              $(".main").slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false,
+                dots: true,
+                infinite: false,
+                adaptiveHeight: true,
+                centerPadding: '30px',
+                centerMode: true,    
+            })  
+            
+            $('.slider-wrapper').slick({
+              dots: true,
+              infinite: false,
+              speed: 300,
+              slidesToShow: 1,
+              slidesToScroll: 1,
+            });
+        }else{
+            $('.slider-wrapper').slick({
+              dots: true,
+              infinite: false,
+              speed: 300,
+              slidesToShow: 4,
+              slidesToScroll: 1,
+            });
+        }
+        
+        //var file = sessionStorage.getItem('b64');
+        var file = localStorage.getItem('b64');
+        var container , day , parent;
+        //var type = sessionStorage.getItem('tipeb64');
+        var type = localStorage.getItem('tipeb64');
+        
+        
+        var btntrigger = $(".btn-start");
+        
+        btntrigger.on("click", function(){
+            console.log("start");
+            $(this).parents('.menu').find("#formimage input[type='file']").click()
+        })
+        $(".upload").on("click", function(){
+            $(this).parents('.menu').find("#formimage input[type='file']").click()
+        })
+        
+        if(type && file) {
+            if(type == 'Sarapan'){
+                container = $('.menu-pagi');
+                day = "pagi";
+            } else if(type == 'Makan Siang') {
+                container = $('.menu-siang');
+                day = "siang";
+            } else if(type == 'Makan Malam') {
+                container = $('.menu-malam');
+                day = "malam";
+            }
+            parents = container.parents('.menus');
+            parents.css({'opacity' : 0.3 , 'pointer-events' : 'none'})
+            
+            var isLoggedIn = {{login ? 'true' : 'false'}};
+            if(isLoggedIn){
+                $('html, body').animate({
+                    scrollTop: parents.offset().top - 150
+                }, 1000);
+            }
+            $.request('onAutoFillForm' , {
+                data : {file, day},
+                success : function (data) {
+                    var datas = data;
+                    parents.css({'opacity' : 1 , 'pointer-events' : 'auto'})
+                    var parent = container;
+                    console.log(file)
+                    console.log(parent)
+                    handleOnChangeImageSuccess(file , true , container)
+                    
+                    var target = $(parent).find('datalist').attr('id')
+                    var buttonDelete = $(parent).find('.btn-delete-menu')
+                    buttonDelete.show()
+                    
+                    if(datas.result == "Wrong"){
+                        //alert("Your picture is not food");
+                        $(parent).find(".result-upload").removeClass("d-none")
+            $(parent).find(".result-upload").html(`<span style="color : red !important">**maaf saat ini pilihan menu yang kamu unggah belum tersedia, silahkan ambil gambar ulang atau pilih menu secara manual</span>`);
+                    }else{ 
+                        $(parent).find(".result-upload").removeClass("d-none")
+                        $(parent).find(".right-wrapper-btn-remove").removeClass("d-none")
+                        $(parent).find(".result-upload").html(`Unggahan berhasil<br>Gambar terdeteksi<br>
+                                Pilih Menu yang Sesuai`);
+                        $([document.documentElement, document.body]).animate({
+                            scrollTop: $(parent).find("input.form-control.form-menu").offset().top - 500
+                        }, 1000);
+                        //$(parent).find("input.form-control.form-menu").focus();
+                        generateDataList(target , data);
+                        
+                        //START CUSTOM DATALIST
+                        var $target = $("#" + $(parent).find("input.form-control.form-menu").attr("list") + " > option");
+                        var $replica = '';
+                        for(var i=0; i<$target.length; i++){
+                            $replica += '<div class="list-option" data-val="' + $target[i].attributes['data-value'].value + '">' + $target[i].attributes['value'].value + '</div>';
+                        }
+                        $target.parent().parent().append($('<div class="custom-dl-container">').html($replica));
+
+                        $(document).click(function(){  
+                            $('.custom-dl-container').remove();
+                        });
+
+                        $(".list-option").click(function(){
+                            $(this).parent().parent().find(".form-control.form-menu").val($(this).text());
+                            $('#' + $(this).parent().parent().find(".form-control.form-menu").attr("list") + ' option').attr('selected', false).find('[value="' + $(this).text() + '"]').attr('selected', true);
+                            $(this).parent().parent().find("select").removeAttr("disabled");
+                        });
+                        //END CUSTOM DATALIST
+                    }
+                    //Remove Base64 file after success get result
+                    sessionStorage.removeItem('tipeb64');
+                    sessionStorage.removeItem('b64');
+                }
+            })      
+        }
+    })
+    function handleChangeMenu (e , day){
+        console.log($(e).parent().parent().parent().find(".foto-wrapper"));
+        var portion = $(e).val() ? $(e).val() : 100;
+        var targetContainer = $($(e).data('save'));
+        var resultContainer = $($(e).data('result'));
+        var subTotalContainer = $($(e).data('subtotal'));
+        var parent = $(e).parents('.menu');
+        var select = $(e);
+        var input = $(parent).find('input.form-menu')
+        var list = $(input).attr('list');
+        var value = input.val();
+        var menuSlug = $('#' + list).find('[value="' + value + '"]').data('value');
+        
+        $.request( 'onGetDetail' , {
+                data : {
+                    slug : menuSlug    
+                },
+                success : function (data) {
+                    var result = data.result[0];
+                    var container = $('#result-menu');
+
+                    
+                    var currVal = checkResult(targetContainer)
+                    console.log({currVal : currVal , result : result})
+                    var arr = currVal;
+                    if(arr.length > 0) {
+                        arr = arr.filter((x) => {
+                            return x.ref != select.attr('data-select') + '-' +  input.attr('data-input')
+                        })   
+                        console.log('arr')
+                        console.log(arr)
+                    }
+                    targetContainer.html('')
+                    
+                     var str = (result.slug.replaceAll('-' , ' ')).replaceAll('resep ' , '')
+                     var text = str.charAt(0).toUpperCase() + str.slice(1);
+                    arr.push({
+                        result : result,
+                        text : text,
+                        day : day,
+                        portion : portion,
+                        k : calculateMenu(result.karbohidrat , portion),
+                        e : calculateMenu(result.energi , portion),
+                        l : calculateMenu(result.lemak , portion),
+                        p : calculateMenu(result.protein , portion),
+                        ref : select.attr('data-select') + '-' +  input.attr('data-input')
+                    });
+                    targetContainer.append(JSON.stringify(arr))   
+                    var postVal = checkResult(targetContainer);
+                    if(resultContainer){
+                        generateItem(postVal , resultContainer , subTotalContainer , e)
+                        checkValidation()
+                    }
+                    
+                }
+        })
+    }
+    function calculateMenu(val , portion){
+        
+        return portion / 100 * val;
+    }
+    function generateItem (data , container, subTotalContainer , el) {
+        $(container).html('')
+        getSubTotal(data , 100 , subTotalContainer)
+        for(var i = 0 ; i < data.length; i++){
+            var energi = data[i].e;
+            var karbohidrat = data[i].k;
+            var protein = data[i].p;
+            var lemak = data[i].l;
+            var portion = data[i].portion
+            var image = '/storage/app/media' + data[i].result.featured_image;
+            var title = data[i].text;
+            var element = `<div style="margin-left : 10px; width : 200px">
+                <img src="${image}" height="100" />
+                <h4>${title}</h4>
+                <h5>Porsi : ${portion} Gram</h5>
+                <p>Karbohidrat : ${karbohidrat} Gram</p>
+                <p>Protein : ${protein} Gram</p>
+                <p>Lemak : ${lemak} Gram</p>
+                <p>Energi : ${energi} Kal</p>
+            </div>`;
+            $(container).append(element)
+            
+            // Hilangkan 
+            $(el).parents('.menu').find('.foto-wrapper').html(`<img src="${image}" class="ob-cover" />`)
+            console.log($(el).parents('.menu-selection').find('.foto-wrapper'))
+            
+            //$(".foto-wrapper").html(`<img src="${image}" class="ob-cover" />`);
+        }
+        
+    }
+    function handleChangeInput(e) {
+        
+        var input = $(e)
+        var list = $(input).attr('list');
+        console.log(input)
+        var value = input.val();
+        var menuSlug = $('#' + list).find('[value="' + value + '"]').data('value');
+        
+        var parent = $(e).parents('.menu')
+        var select = $(parent).find('select')
+        var val = $(e).val();
+        var ref = $(select).attr('data-select') + '-' + $(e).attr('data-input')
+        
+        var error = false
+        console.log('menuSlug')
+        console.log(menuSlug)
+        $.request( 'onGetDetail' , {
+                data : {
+                    slug : menuSlug    
+                },
+                success : (data) => {
+                    console.log(data.result)
+                    if(data.result.length == 0){
+                        alert('Harus memilih dari menu yang tersedia')
+                        error = true;  
+                        select.attr('disabled' , true)
+                        select.val('')   
+                        input.val('')
+                    }
+                }
+        });
+        if(error){
+            return
+        }
+        select.val('')         
+        if(val){
+            select.attr('disabled' , false)
+        } else {
+            select.val('')         
+            select.attr('disabled' , true)
+            var targetContainer = $($(select).data('save'))
+            var resultContainer = $($(select).data('result'))
+            var subTotalContainer = $($(select).data('subtotal'));
+            var data = checkResult(targetContainer)
+            
+            var arr = data.filter((x) => {
+                    return x.ref != ref
+            })               
+            targetContainer.html(JSON.stringify(arr))
+            
+            if(resultContainer){
+                generateItem(arr , resultContainer , subTotalContainer , e)
+            }
+        }
+        
+    }
+    function getSubTotal(data , divider = 100 , container){
+        
+        var container = $(container)
+        var energiTotal = 0;
+        var karbohidratTotal = 0;
+        var proteinTotal = 0;
+        var lemakTotal = 0;
+        for(var i = 0 ; i < data.length; i++){
+            energiTotal += data[i].e;
+            karbohidratTotal += data[i].k;
+            proteinTotal += data[i].p;
+            lemakTotal += data[i].l;
+        }
+        
+        var energiSubTotal = divider/100 * energiTotal;
+        var karbohidratSubTotal = divider/100 * karbohidratTotal;
+        var proteinSubTotal = divider/100 * proteinTotal;
+        var lemakSubTotal = divider/100 * lemakTotal;
+        
+            container.html(`
+                Energi : ${energiSubTotal} Kal/${divider} <br>
+                karbohidrat : ${karbohidratSubTotal} Gram/${divider} <br>
+                Lemak : ${lemakSubTotal} Gram/${divider} <br>
+                Protein : ${proteinSubTotal} Gram/${divider} <br>
+            `)
+        
+    }
+    function checkResult(e) {
+        
+        var val = $(e).html();
+        if(val){
+           return JSON.parse(val);
+        } else {
+           return [];
+        }
+    }
+    function checkValidation () {
+        var pagi = $('#result-pagi').text();
+        var siang = $('#result-siang').text();
+        var malam = $('#result-malam').text();
+        var data = []; 
+            if(pagi){
+                pagi = JSON.parse(pagi);
+                for(var i = 0 ; i < pagi.length ; i++){
+                    data.push(pagi[i]);
+                }
+            }
+            if(siang){
+                siang = JSON.parse(siang);
+                for(var i = 0 ; i < siang.length ; i++){
+                    data.push(siang[i]);
+                }
+            }
+            if(malam){
+                malam = JSON.parse(malam);
+                for(var i = 0 ; i < malam.length ; i++){
+                    data.push(malam[i]);
+                }
+            }
+            console.log(data)
+            if(data.length > 0){
+                $('.btn-saveresult').removeClass('op-5')
+                $('.btn-saveresult').attr('disabled' , false)
+                $('#data-length').text(data.length)
+            }
+    }
+    
+    function validateForm () {
+        var error = 0;
+        var selector = [];
+        $('.form-menu').each(function () {
+            var val = $(this).val()
+            console.log(val)
+            if(val){
+                var parent = $(this).parents('.menu')
+                var portion = parent.find('select')
+                if(!portion.val()){
+                    error++;   
+                    selector.push(portion);
+                }
+            }
+        })    
+        if(error > 0){
+            return {result : false, target : selector};    
+        } else {
+            return {result : true, target : selector};    
+        }
+    }
+    function handleGetTotal() {
+        
+        var resultContainer = $('#totalResult')
+        var pagi = $('#result-pagi').text();
+        var siang = $('#result-siang').text();
+        var malam = $('#result-malam').text();
+        
+        var validate = validateForm()
+        if(validate.result){
+            if(pagi || siang || malam){
+                var data = []; 
+                if(pagi){
+                    pagi = JSON.parse(pagi);
+                    for(var i = 0 ; i < pagi.length ; i++){
+                        data.push(pagi[i]);
+                    }
+                }
+                if(siang){
+                    siang = JSON.parse(siang);
+                    for(var i = 0 ; i < siang.length ; i++){
+                        data.push(siang[i]);
+                    }
+                }
+                if(malam){
+                    malam = JSON.parse(malam);
+                    for(var i = 0 ; i < malam.length ; i++){
+                        data.push(malam[i]);
+                    }
+                }
+                
+                if(data.length > 0){
+                    resultContainer.html(JSON.stringify(data))
+                    
+                    $.request('onSaveMenu' , {
+                        data : {data},
+                        beforeUpdate: function() { 
+                            
+                            var imt = $("#res-imt").text();
+                            $('#menu-selection-list').hide()
+                            $('#menu-selection-section').show(function(){
+                                console.log($("#tee"))    
+                            });
+                            
+                            var el = $('#banner-text')
+                            
+                            var text = $(el).data('result')
+                            el.text(text)
+                            $(".top-desc").addClass("d-none");
+                            
+                        }
+                    })
+                } else {
+                    alert('Isi minimal satu menu')  
+                }
+            }
+        } else {
+               alert('Harap isi porsi pada menu yang dipilih')  
+                    console.log(validate.target)
+                    $([document.documentElement, document.body]).animate({
+                        scrollTop: $(validate.target[0]).offset().top - 200
+                    }, 1000);      
+        }
+        
+        $("#resultdes").removeClass("d-none");
+        //slick slider
+    
+    }
+    function generateDataList (target , data) {
+            var datas = [];
+            for(var i = 0 ; i < data.length ; i++){
+                 var str = (data[i].slug.replaceAll('-' , ' ')).replaceAll('resep ' , '')
+                 var text = str.charAt(0).toUpperCase() + str.slice(1);
+                 datas.push({value : data[i].slug , label : text});
+            }
+            console.log('datas')
+            console.log(datas)
+            datas = datas.sort((a, b) => a.label.localeCompare(b.label))
+            var x = document.getElementById(target);
+            $(x).empty()
+            for(var i = 0 ; i < datas.length ; i++){
+                 var option = document.createElement("option");
+                 $(option).addClass('text-capitalize');
+                 option.value = datas[i].label;
+                 $(option).attr('data-value' , datas[i].value);
+                 $(x).append(option);      
+            }    
+        
+    }
+    function handleSuccess(e , data ) {
+        
+        console.log('ini dataaa')
+        console.log(data.hasil)
+        var datas = data;
+        var parent = $(e).parents('.menu');
+        if(datas.hasil == "Wrong"){
+            parent.find('.img-preview').attr('src' , '')
+            //alert("Your picture is not food");
+            $(parent).find(".result-upload").removeClass("d-none")
+            $(parent).find(".result-upload").html(`<span style="color : red !important">**maaf saat ini pilihan menu yang kamu unggah belum tersedia, silahkan ambil gambar ulang atau pilih menu secara manual</span>`);
+        }else{ 
+            
+            var file = $(parent).find('.form-file')
+            handleOnChangeImageSuccess(file)
+            
+            var target = $(parent).find('datalist').attr('id')
+            var buttonDelete = $(parent).find('.btn-delete-menu')
+            buttonDelete.show()
+            generateDataList(target , data.hasil)
+            $(parent).find(".result-upload").removeClass("d-none")
+            $(parent).find(".result-upload").html(`Unggahan berhasil<br>Gambar terdeteksi<br>
+                                Pilih Menu yang Sesuai`);
+            //$(parent).find("input.form-control.form-menu").focus();
+
+            //START CUSTOM DATALIST
+            var $target = $("#" + $(parent).find("input.form-control.form-menu").attr("list") + " > option");
+            var $replica = '';
+            for(var i=0; i<$target.length; i++){
+                $replica += '<div class="list-option" data-val="' + $target[i].attributes['data-value'].value + '">' + $target[i].attributes['value'].value + '</div>';
+            }
+
+            $target.parent().parent().append($('<div class="custom-dl-container">').html($replica));
+
+            $(document).click(function(){  
+                $('.custom-dl-container').remove();
+            });
+
+            $(".list-option").click(function(){
+                $(this).parent().parent().find(".form-control.form-menu").val($(this).text());
+                $('#' + $(this).parent().parent().find(".form-control.form-menu").attr("list") + ' option').attr('selected', false).find('[value="' + $(this).text() + '"]').attr('selected', true);
+                $(this).parent().parent().find("select").removeAttr("disabled");
+            });
+            //END CUSTOM DATALIST
+
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $(parent).find("input.form-control.form-menu").offset().top - 500
+            }, 1000);
+            $(parent).find(".right-wrapper-btn-remove").removeClass("d-none")
+        }
+        
+    }
+    async function handleOnChangeImageSuccess(e , base64 = false , container = null) {
+        
+        if(!base64 && !container) {
+            var file = $(e)[0].files[0];
+            var compressed = await compress(file);
+            
+            if(!compressed) {
+                alert('Size file Anda terlalu besar')
+                return false;
+            }
+            let fileType = compressed.type;
+            console.log('compressed success')
+            
+            var parent = $(e).parents('.menu');
+            var target = $(parent).find('.img-preview');
+            
+            target.show()
+            
+            var base64 = null
+            var reader = new FileReader();
+            reader.onloadend = function() {
+              target.attr('src' , reader.result)
+              parent.find(".foto-wrapper").html("<img src='"+reader.result+"'/>");
+            }
+            
+            reader.readAsDataURL(compressed)
+        } else {
+            var file = e;
+            var parent = container;
+            parent.find(".foto-wrapper").html("<img src='"+file+"'/>");
+            var target = $(parent).find('.img-preview');
+            target.attr('src' , file)
+            target.show()
+            
+        }    
+    }
+    function handleDuplicate (e) {
+       
+       var element = $($(e).data('duplicate'))[0];
+       var parent = $(element).parents('.menu-selection')[0];
+       
+       var list = $(e).data('list')
+       $(parent).append($(element).prop('outerHTML'));
+        
+        
+        
+        
+        
+        var menu = $(parent).find('.menu')
+        //numbering
+        var menulength = menu.length; 
+        var ele = document.createElement("div");    
+        ele.classList.add("numbering");
+        
+        
+        //$(e).parent().find(".numbering").text(menulength);
+        //end numbering
+       
+        
+       var cloned = $($(menu)[$(menu).length - 1]);
+       var counter = $(menu).length;
+       
+       var leftwrap = $(cloned).find(".left-wrapper");
+       var rightwrap = $(cloned).find(".right-wrapper");
+       
+       leftwrap.append(ele);
+       leftwrap.find(".numbering").text(menulength);
+       rightwrap.find(".right-wrapper-btn-remove").addClass("d-none");
+       var datalist = $(cloned).find('datalist')
+       var input = $(cloned).find('input.form-menu')
+       var img = $(cloned).find('img.img-preview')
+       $(cloned).find(".foto-wrapper").html(`<div class="drag-wrapper" style="display: flex">
+                                        <p>Drag an image here or </p><button class="upload">upload a file .png, .jpeg, .jpg, .webp</button>
+                                    </div>`)
+       $(cloned).find('.result-upload').addClass('d-none')
+       var button = $(cloned).find('.btn-delete-menu')
+       img.hide();
+       img.attr('src' , '')
+       button.hide();
+       var menuLength = $(menu).length;
+       $(menu).find('.btn-remove').show();  
+       if(menuLength == 1){
+           $(menu).find('.btn-remove').hide();           
+       }
+       $($(menu).find('.btn-remove')[menuLength - 1]).show();
+       
+       var inputId = input.data('input');
+       var selectId = $(cloned).find('select').data('select');
+       console.log('select ID : ' + selectId)
+       console.log('input ID : ' + selectId)
+       $(cloned).find('input.form-menu').attr('data-input' , counter)
+       $(cloned).find('select').attr('data-select' ,counter)
+       $(cloned).find('select').attr('disabled' , true)
+       datalist.attr('id' , list + '-' + (counter))
+       input.attr('list' , list + '-' + (counter))
+       
+       var targetId = datalist.attr('id');
+       $.request('onGetAllData' , {
+           success : function (data) {
+                generateDataList(targetId , data)
+            }    
+       })
+       
+        
+        var btntrigger = $(".btn-start");
+        
+        btntrigger.on("click", function(){
+            $(this).parents('.menu').find("#formimage input[type='file']").click()
+        })
+        $(".upload").on("click", function(){
+            $(this).parents('.menu').find("#formimage input[type='file']").click()
+        })
+        
+        initDragEvent()
+        console.log()
+    }
+    
+    
+    function handleDeleteMenu(e , id){
+        
+          
+       var parent = $(e).parents('.menu');
+       var parents = $(e).parents('.menu-selection');
+       var foto = parent.find(".foto-wrapper img");
+       var numlength = parseInt($("#data-length").text());
+       
+       var select = $(parent).find('select');
+       var menu = $(parents).find('.menu');
+       
+       if( foto.length != 0 ){
+           numlength = numlength - 1;
+           $("#data-length").text(numlength);
+       }
+       if(menu.length == 1){
+          //menu.find('.btn-remove').hide();
+          alert('You can\'t remove this menu')
+          return;
+        }
+        
+       var menuLength = $(e).parents('.menu').length;
+       
+       if(menuLength > 1){
+           $(menu.find('.btn-remove')[menuLength - 1]).show();
+       }
+       
+       var inputId = $(parent).find('input.form-menu').attr('data-input')
+       var selectId = $(parent).find('select').attr('data-select')
+       var ref = selectId + '-' +  inputId;
+       
+      var data =  checkResult(id);
+     
+       var arr = data.filter((x) => {
+           return x.ref != ref
+        })   
+        
+        
+        var targetContainer = $($(select).data('save'))
+        var resultContainer = $($(select).data('result'))
+        var subTotalContainer = $($(select).data('subtotal'));
+            
+        if(resultContainer){
+            generateItem(arr , resultContainer , subTotalContainer , e)
+        }
+        
+        var parentClass = parent.attr("class").split(" ")[1];
+        parent.remove()
+        
+        
+        var target = $("."+parentClass);
+        
+        //numbering
+        $(target).each(function(index, e){
+            if( index == 0 ){
+                $(this).find(".numbering").remove();
+            }else{
+                $(this).find(".numbering").text(index+1);    
+            }
+            
+        })
+        var btn = $(menu)
+        if($(menu).length == 2){
+          menu.find('.btn-remove').hide();
+        }
+        $(id).html(JSON.stringify(arr))
+       
+        var btntrigger = $(".btn-start");
+        
+        btntrigger.on("click", function(){
+            $(this).parents('.menu').find("#formimage input[type='file']").click()
+        })
+        $(".upload").on("click", function(){
+            $(this).parents('.menu').find("#formimage input[type='file']").click()
+        })
+        
+        
+        
+        initDragEvent()
+    }
+    
+    async function handleOnChangeImage (e , base64 = false , container = null){
+        
+        if(!base64 && !container) {
+            var file = $(e)[0].files[0];
+            var parent = $(e).parents('.menu');
+            parent.find('#convert').click()
+            var target = $(parent).find('.img-preview');
+            target.show()
+            
+            var compressed = await compress(file);
+            
+            
+            if(!compressed) {
+                alert('Size file Anda terlalu besar')
+                return false;
+            }
+            let fileType = compressed.type;
+            console.log('compressed onchange')
+            
+            
+            var base64 = null
+            var reader = new FileReader();
+            reader.onloadend = function() {
+              target.attr('src' , reader.result)
+              
+            }
+          
+            reader.readAsDataURL(compressed)
+        } else {
+            var file = e;
+            var parent = container;
+            var target = $(parent).find('.img-preview');
+            target.attr('src' , file)
+            target.show()
+            
+            
+        }
+    }
+    
+    function handleRemoveMenu(e) {
+        
+        var parent = $(e).parents('.menu');
+        var target = $(parent).find('.img-preview');
+        target.attr('src' , '')
+        target.hide()
+        $(e).hide()
+         var datalist = $(parent).find('datalist')
+         var targetId = datalist.attr('id')
+       $.request('onGetAllData' , {
+           success : function (data) {
+                generateDataList(targetId , data)
+            }    
+       })
+        
+    }
+    
+    function clearValue (e) {
+        $(e).val('');
+
+    }
+    
+    function handleBack() {
+        
+        var menu = $('#menu-selection-list');
+        var result = $('#menu-selection-section');   
+        
+                        var el = $('#banner-text')
+                        
+                        var text = $(el).data('result')
+                        el.text(text)
+        menu.show()
+        result.hide()
+        $(".top-desc").removeClass("d-none");
+    }
+    
+    
+    //slider result
+    function detect_active(){
+                // get active
+                var get_active = $("#dp-slider .dp_item:first-child").data("class");
+                $("#dp-dots li").removeClass("active");
+                $("#dp-dots li[data-class="+ get_active +"]").addClass("active");
+            }
+            $("#dp-next").click(function(){
+                var total = $(".dp_item").length;
+                $("#dp-slider .dp_item:first-child").hide().appendTo("#dp-slider").fadeIn();
+                $.each($('.dp_item'), function (index, dp_item) {
+                    $(dp_item).attr('data-position', index + 1);
+                });
+                detect_active();
+
+            });
+
+            $("#dp-prev").click(function(){
+                var total = $(".dp_item").length;
+                $("#dp-slider .dp_item:last-child").hide().prependTo("#dp-slider").fadeIn();
+                $.each($('.dp_item'), function (index, dp_item) {
+                    $(dp_item).attr('data-position', index + 1);
+                });
+
+                detect_active();
+            });
+
+            $("#dp-dots li").click(function(){
+                $("#dp-dots li").removeClass("active");
+                $(this).addClass("active");
+                var get_slide = $(this).attr('data-class');
+                console.log(get_slide);
+                $("#dp-slider .dp_item[data-class=" + get_slide + "]").hide().prependTo("#dp-slider").fadeIn();
+                $.each($('.dp_item'), function (index, dp_item) {
+                    $(dp_item).attr('data-position', index + 1);
+                });
+            });
+
+
+            $("body").on("click", "#dp-slider .dp_item:not(:first-child)", function(){
+                var get_slide = $(this).attr('data-class');
+                console.log(get_slide);
+                $("#dp-slider .dp_item[data-class=" + get_slide + "]").hide().prependTo("#dp-slider").fadeIn();
+                $.each($('.dp_item'), function (index, dp_item) {
+                    $(dp_item).attr('data-position', index + 1);
+                });
+
+                detect_active();
+            });
+    
+    
+    //header calon diapus
+    if(screen.width >= 768){
+        
+    
+        var lipar = document.createElement("li");
+        var apar = document.createElement("a");
+        var achild1 = document.createElement("a");
+        var achild2 = document.createElement("a");
+        var ulchild = document.createElement("ul");
+        var lichild1 = document.createElement("li");
+        var lichild2 = document.createElement("li");
+        
+        achild1.href = "https://www.frisianflag.com/sample-design-kalkulator";
+        achild1.text = "Massa Tubuh";
+        achild2.href = "https://www.frisianflag.com/sample-vision";
+        achild2.text = "Gizi Harian";
+        
+        lichild1.appendChild(achild1);
+        lichild2.appendChild(achild2);
+        
+        
+        ulchild.appendChild(lichild1);
+        ulchild.appendChild(lichild2);
+        ulchild.classList.add("val-submenu");
+        
+        apar.text = "Fitur Kami";
+        apar.href = "javascript:void(0)";
+        
+        
+        
+        lipar.classList.add("main-menu__list", "menu-item-252", "menu-item-level-0" ,"has-child");
+        lipar.appendChild(apar);
+        lipar.appendChild(ulchild);
+        document.querySelector("header .main-menu").append(lipar);
+        
+        document.querySelector("header .row .col-xs-4").classList.remove("col-md-2");
+        document.querySelector("header .row .col-xs-4").classList.add("col-md-1");
+        document.querySelector("header .row .col-md-10").classList.remove("col-md-10");
+        document.querySelector("header .row .navigation").classList.add("col-md-11");
+    
+    }
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+    var a = getCookie("IMTCookie");
+    
+    if(a != ''){
+        var b = JSON.parse(a);
+        
+    }
+    var isLoggedIn = {{login ? 'true' : 'false'}};
+    
+    
+    // tidak login dan belum ada imt
+    if((!isLoggedIn && !a) && !a){
+        $(".wrapper-bg.imt").removeClass("d-none");
+        $("body").addClass("ov-hidden");
+    } else if(!isLoggedIn && a){
+        
+        //$("body").addClass("ov-hidden");
+        //$("#res-imt").text(b.tee);  
+        // belum login tapi sudah ada imt
+        
+        $("#res-imt").text(Math.round(b.tee));
+        sessionStorage.setItem("roundtee", Math.round(b.tee));
+    } else {
+        $("#res-imt").text(Math.round(result)); 
+        sessionStorage.setItem("roundtee", Math.round(b.tee));
+    }
+    
+    var sess = sessionStorage.getItem("roundtee");
+    console.log("Ses : "+sess);
+</script>

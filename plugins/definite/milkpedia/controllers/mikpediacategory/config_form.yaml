@@ -1,0 +1,10 @@
+name: MikpediaCategory
+form: $/definite/milkpedia/models/milkpediacategory/fields.yaml
+modelClass: Definite\Milkpedia\Models\MilkpediaCategory
+defaultRedirect: definite/milkpedia/mikpediacategory
+create:
+    redirect: 'definite/milkpedia/mikpediacategory/update/:id'
+    redirectClose: definite/milkpedia/mikpediacategory
+update:
+    redirect: definite/milkpedia/mikpediacategory
+    redirectClose: definite/milkpedia/mikpediacategory

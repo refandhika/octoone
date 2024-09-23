@@ -1,0 +1,17 @@
+plugin:
+    name: 'kalfian.campaign::lang.plugin.name'
+    description: 'kalfian.campaign::lang.plugin.description'
+    author: Kalfian
+    icon: oc-icon-flag
+    homepage: ''
+navigation:
+    campaign:
+        label: 'kalfian.campaign::lang.plugin.name'
+        url: kalfian/campaign/campaign
+        icon: icon-flag
+        permissions:
+            - manage_campaign
+permissions:
+    manage_campaign:
+        tab: Campaign
+        label: 'Manage Campaign'

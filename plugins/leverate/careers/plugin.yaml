@@ -1,0 +1,63 @@
+plugin:
+    name: 'leverate.careers::lang.plugin.name'
+    description: 'Setting for Menu Karir'
+    author: Leverate
+    icon: oc-icon-book
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: Karir
+        url: leverate/careers/category
+        icon: icon-book
+        permissions:
+            - manage_karir
+        sideMenu:
+            side-menu-item5:
+                label: Karir
+                url: leverate/careers/career
+                icon: icon-sitemap
+                permissions:
+                    - manage_menu
+            side-menu-item:
+                label: kategori
+                url: leverate/careers/category
+                icon: icon-slack
+                permissions:
+                    - manage_kategory
+            side-menu-item2:
+                label: 'Pusat Karir'
+                url: leverate/careers/careercenter
+                icon: icon-windows
+                permissions:
+                    - manage_center
+            side-menu-item3:
+                label: Event
+                url: leverate/careers/event
+                icon: icon-clipboard
+                permissions:
+                    - manage_event
+            side-menu-item4:
+                label: Artikel
+                url: leverate/careers/articel
+                icon: icon-share-alt
+                permissions:
+                    - manage_artikel
+permissions:
+    manage_karir:
+        tab: Karir
+        label: 'Manage Karir'
+    manage_artikel:
+        tab: Karir
+        label: 'Manage Artikel'
+    manage_event:
+        tab: Karir
+        label: 'Manage Event'
+    manage_center:
+        tab: Karir
+        label: 'Manage Pusat Karir'
+    manage_kategory:
+        tab: Karir
+        label: 'Manage Kategori'
+    manage_menu:
+        tab: Karir
+        label: 'Manage Menu'

@@ -1,0 +1,16 @@
+fields:
+    username:
+        label: Username
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    url:
+        label: Url
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    action:
+        label: Action
+        span: auto
+        oc.commentPosition: ''
+        type: text

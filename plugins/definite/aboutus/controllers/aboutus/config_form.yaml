@@ -1,0 +1,10 @@
+name: AboutUs
+form: $/definite/aboutus/models/aboutus/fields.yaml
+modelClass: Definite\Aboutus\Models\AboutUs
+defaultRedirect: definite/aboutus/aboutus
+create:
+    redirect: 'definite/aboutus/aboutus/update/:id'
+    redirectClose: definite/aboutus/aboutus
+update:
+    redirect: definite/aboutus/aboutus
+    redirectClose: definite/aboutus/aboutus

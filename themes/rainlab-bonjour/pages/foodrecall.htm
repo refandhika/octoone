@@ -1,0 +1,112 @@
+title = "foodrecall"
+url = "/sample-foodrecall"
+layout = "resep-ardi"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/foodrecall"
+==
+{% put styles %}
+@media screen and (min-width: 768px) {
+    .wrapper-flex{    
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 100px 0;
+    }
+    
+    .section-dummy{
+        background: #54B8FC;
+        padding: 7.5% 15%;
+        text-align: center;
+        color: #fff;
+    }
+    
+    .main-section{
+        margin: 50px 0;    
+    }
+    .main-section .first{
+        text-align-last: center;
+        font-family: 'Brevia-Semibold';
+        color: #0e4d9a;
+        font-size: 20px;    
+        margin-bottom: 40px;
+    }
+    .main-section .second{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        font-family: 'Brevia-Semibold';    
+    }
+    .main-section .second .second-one{
+        color: #0e4d9a;    
+    }
+    .main-section .second .second-two form{
+        display: flex;
+        gap: 15px;
+    }
+    .main-section .second .second-two input{
+        padding: 10px 40px;
+        border-radius: 50px;
+        border: unset;
+        box-shadow: inset 2px 2px 4px #6c6c6c;
+        background: #f2f2f2;    
+    }
+    .main-section .second .second-two button{
+        border-radius: 50px;
+        padding: 10px 40px;
+        border: unset;
+        color: #fff;
+        font-family: 'Brevia-Semibold';
+        background: #f4ab3d;
+    }
+    
+}
+{% endput %}
+
+<div class="container">
+    <div class="top-section">
+        <div class="top-section-hero">
+            <div class="wrapper-flex">
+                <div class="hero-text">
+                    <h1>Pengaturan<br>Pola Hidup Sehat</h1>
+                </div>
+                <div class="hero-img">
+                    <img src="https://www.frisianflag.com/storage/app/media/kalkulator/hero-kalkulator.png" alt="frisianflag-kalkulator" title="frisianflag-kalkulator" class="w-100 h-100">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section-dummy">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, id, quam, hic, incidunt soluta dignissimos beatae aspernatur nulla illum blanditiis quaerat nesciunt nisi! Iure, unde labore corrupti natus rerum sint.
+</div>
+<div class="main-section">
+    <div class="container">
+        <div class="first">Sebelum Memakai Fitur ini,<br>Yuk Isi Dulu Jumlah Gizi Harianmu</div>
+        <div class="second">
+            <div class="second-one">
+                Total Gizi Kebutuhan Harian
+            </div>
+            <div class="second-two">
+                <form action="">
+                    <input type="text" name="" id="" placeholder="masukan angka">
+                    <button type="submit">Hitung IMT & Gizi Saya Dulu</button>
+                </form>            
+            </div>
+        </div>
+        <div class="third">
+            <div class="option-wrapper">
+            
+            </div>
+            <div class="image-wrapper">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+{% partial 'site/footer' %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>

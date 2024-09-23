@@ -1,0 +1,14 @@
+title = "redirect"
+url = "/aktivitas-kami/homedelivery"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/redirect"
+==
+<?php
+function onStart(){
+    
+    return Redirect::to('/');
+}
+?>
+==

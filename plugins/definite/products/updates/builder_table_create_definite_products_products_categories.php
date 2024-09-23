@@ -1,0 +1,23 @@
+<?php
+
+namespace Definite\Products\Updates;
+
+use Schema;
+use October\Rain\Database\Updates\Migration;
+
+class BuilderTableCreateDefiniteProductsProductsCategories extends Migration
+{
+    public function up()
+    {
+        Schema::create('definite_products_products_categories', function ($table) {
+            $table->engine = 'InnoDB';
+            $table->integer('product_id');
+            $table->integer('category_id');
+        });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('definite_products_products_categories');
+    }
+}

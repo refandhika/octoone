@@ -1,0 +1,427 @@
+title = "AMP Festive Category"
+url = "/amp/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu/:category"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/amp-festive-category"
+==
+<?php
+function onStart(){
+    //get slug
+    $category        = $this->param('category');
+    $cmsController = new Cms\Classes\Controller;   
+    
+    $preview = Input::get('preview') ? Input::get('preview') : 0;
+    //get pages meta from CMS
+    $pages = Definite\Activities\Models\Activity::whereHas('categories',function($query) {
+       $query->where('id', 18);
+        })->where('slug',$category)->get()->first();
+        $sortvar = "tb.updated_at";
+        $sort = "Desc";
+        $index= 0;
+    //if($preview == 1) dd($pages);
+    if($pages){
+        
+        $this['title'] = "";
+        $this->page->title = $pages->title;
+        $this->page->meta_title = $pages->meta_title;
+        $this->page->meta_description = $pages->meta_description;
+        
+        if( $category == "resep-takjil-manis-tujuh-langkah"){
+            $sg = DB::select(" select slug from definite_activities_category where id = 22");
+            $this["slug_category"] = $sg[0]->slug;
+            $this['category'] = "SCM";
+            $query = DB::select("SELECT * from (select definite_activities_activity.updated_at,group_concat(definite_activities_categories_activities.category_id) as groupid, definite_activities_category.slug as slug_category, definite_activities_activity.title, definite_activities_activity.slug, definite_activities_activity.featured_image from definite_activities_activity left join definite_activities_categories_activities ON definite_activities_categories_activities.activity_id = definite_activities_activity.id left join definite_activities_category ON definite_activities_category.id = definite_activities_categories_activities.category_id where definite_activities_activity.favorite <> 1 AND (definite_activities_category.id = 22 or definite_activities_category.id = 18) group by definite_activities_activity.id) tb where groupid = '22,18' or groupid = '18,22' order by updated_at DESC LIMIT 6");
+            
+            $favorite = Definite\Activities\Models\Activity::leftJoin('definite_activities_categories_activities', 'definite_activities_categories_activities.activity_id', '=', 'definite_activities_activity.id')->
+    leftJoin('definite_activities_like', 'definite_activities_like.activity_id', '=', 'definite_activities_activity.id')->
+    leftJoin('definite_activities_category', 'definite_activities_category.id', '=', 'definite_activities_categories_activities.category_id')->whereRaw('definite_activities_activity.favorite = 1 AND definite_activities_category.id = ?', [ 22 ] )->
+            select(DB::raw('IFNULL(definite_activities_like.total,0) as total_likes'), 'definite_activities_category.slug as slug_category','definite_activities_activity.title', 'definite_activities_activity.slug', 'definite_activities_activity.featured_image')->limit(6)->get();
+            
+            $milkpedia = DB::select("SELECT t1.title, t1.slug, t1.featured_image, t1.excerpt, t3.slug as category_slug from definite_milkpedia_post t1 left join definite_milkpedia_posts_categories t2 on t2.milkpedia_id = t1.id left join definite_milkpedia_category t3 on t3.id = t2.category_id  where t1.id IN (419,431,430,425);");
+            
+        }elseif($category == "resep-ramadan-kue-kering-pilihan"){
+            $sg = DB::select(" select slug from definite_activities_category where id = 21");
+            $this["slug_category"] = $sg[0]->slug;
+            $this['category'] = "FMP";
+            $favorite = Definite\Activities\Models\Activity::leftJoin('definite_activities_categories_activities', 'definite_activities_categories_activities.activity_id', '=', 'definite_activities_activity.id')->
+        leftJoin('definite_activities_like', 'definite_activities_like.activity_id', '=', 'definite_activities_activity.id')->
+        leftJoin('definite_activities_category', 'definite_activities_category.id', '=', 'definite_activities_categories_activities.category_id')->whereRaw('definite_activities_activity.favorite = 1 AND definite_activities_category.id = ?', [ 21] )->
+            select(DB::raw('IFNULL(definite_activities_like.total,0) as total_likes'), 'definite_activities_category.slug as slug_category','definite_activities_activity.title', 'definite_activities_activity.slug', 'definite_activities_activity.featured_image')->limit(6)->get();
+            $query = Definite\Activities\Models\Activity::leftJoin('definite_activities_categories_activities', 'definite_activities_categories_activities.activity_id', '=', 'definite_activities_activity.id')->
+    leftJoin('definite_activities_category', 'definite_activities_category.id', '=', 'definite_activities_categories_activities.category_id')->whereRaw('definite_activities_activity.favorite <> 1 AND definite_activities_category.id = ? ', [ 21 ] )->
+            select('definite_activities_category.slug as slug_category','definite_activities_activity.title', 'definite_activities_activity.slug', 'definite_activities_activity.featured_image')->orderBy('definite_activities_activity.updated_at', 'desc')->limit(6)->get();
+            
+            $milkpedia = DB::select("SELECT t1.title, t1.slug, t1.featured_image, t1.excerpt, t3.slug as category_slug from definite_milkpedia_post t1 left join definite_milkpedia_posts_categories t2 on t2.milkpedia_id = t1.id left join definite_milkpedia_category t3 on t3.id = t2.category_id  where t1.id IN (480,404,398,455,418);");
+        }else{
+            
+            $this['category'] = "promo";
+            $favorite = [];
+            $milkpedia = [];
+        }
+        
+        $this['result'] = $favorite;
+        $preview = Input::get('preview') ? Input::get('preview') : 0;
+        $milkpediascm = [419,431,430,425];
+        $milkpediafmp = [480,404,398,455,418];
+
+        $this['milkpedia'] = $milkpedia;
+       
+        $this['preview'] = $preview;
+        
+    
+    }else{
+      return $cmsController->render("/404");
+    }
+        
+    $this['pageurl'] = str_replace("/amp","",$this->currentPageUrl());
+    //redirect to normal page
+    header("Location: ".$this['pageurl']);
+        
+}
+?>
+==
+{% partial 'site/banner-festive2021-amp' %}
+{% if category != 'promo' %}
+<amp-state id="recipe" src="https://www.frisianflag.com/return-festive?sort=desc&category={{ category }}&index=0"></amp-state>
+
+<amp-state id="product">
+    <script type="application/json">
+    {
+        "title": "",
+        "pageIndex": 6,
+        "sort": "desc",
+        "category":"{{ category }}",
+        "checknext":1,
+        "length": {{ result.count }}
+    }
+    </script>
+</amp-state>
+{% endif %}
+<div>
+{% if category != 'promo' %}
+<div class="content-festive">
+<h2 class="underline">6 Resep Terfavorit</h2>
+<div class="section-favorite mb-3">
+            {% for ct in result %}
+                <div class="list-item">
+                    <a href="/resep-kami/{{slug_category}}/{{ct.slug}}#main-scroll">
+                    <div class="main__recipe">
+                        <div class="recipe-thumb">
+                                <amp-img class="img-list" src="/storage/app/media/{{ct.featured_image}}" width="100" height="100" layout="responsive" alt="{{ct.title}}"></amp-img>
+                        </div>
+                        <div class="div-1">
+                            <span class="button gradient-orange ">Lihat Resepnya</span>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+            {% endfor %}
+   
+</div>
+
+<h2 class="underline">Semua Resep</h2>
+<form id="formdata" method="GET" action="https://www.frisianflag.com/return-festive" action-xhr="https://www.frisianflag.com/return-festive" target="_top" on="submit-success: AMP.setState({
+              product: {
+                  pageIndex : 6
+              },
+               recipe: {
+                items: event.response.items
+              }
+            });">
+    <input class="search-amp-resep" type="search" name="title" on="input-debounced:AMP.setState({ product:{ title: event.value } }), formdata.submit, formchecknext.submit" placeholder="Cari Resep Favoritmu" autocomplete="off">
+        
+    
+    <input type="hidden" name="index" value="0">
+    <input type="hidden" name="category" value="{{category}}">
+    <div style="display: flex;">
+        <label class="select-l">Cari Resep Berdasarkan</label>
+        <select class="option-b" name="sort" on="change:AMP.setState({
+                product:{
+                    pageIndex: 6, sort: event.value 
+                }
+            }), formdata.submit, formchecknext.submit"> 
+                    <option value="desc" [selected]="product.sort == 'desc'">Terbaru</option>
+                    <option value="asc" [selected]="product.sort == 'asc'">Terlama</option>
+                    <option value="populer" [selected]="product.sort == 'populer'">Terpopuler</option>
+                    
+        </select>
+    </div>
+</form>
+<div class="recipe-list">
+<amp-list src="https://www.frisianflag.com/return-festive?sort=desc&category={{ category }}&index=0" [src]="recipe.items"  binding="refresh" layout="fixed-height" width="auto" height="600" [height]="recipe.items.length * 100 + 12">
+    <template type="amp-mustache">
+        
+    <div class="list-item">
+        <a href="/resep-kami/{{slug_category}}/{% verbatim %}{{slug}}#main-scroll">
+        <div class="main__recipe">
+            <div class="recipe-thumb">
+                
+                <amp-img class="img-list" src="/storage/app/media/{{featured_image}}" width="100" height="100" layout="responsive" alt="{{title}}"></amp-img>
+                
+                <div class="total--likes" hidden [hidden]="product.sort != 'populer'">
+                {{ total_likes }} 
+                <amp-img style="vertical-align:middle;" src="/storage/app/media/resep-kami/heart-icon.svg" width="15" height="15" layout="fixed"></amp-img>
+                </div>
+            </div>
+            
+            <div class="div-1"><span class="button gradient-orange ">Lihat Resepnya</span></div>
+        </div>
+        </a>
+    </div>
+    {% endverbatim %}
+    </template>
+  </amp-list>
+  </div>
+  <form id="formdataloadmore" method="GET" action="https://www.frisianflag.com/return-festive" action-xhr="https://www.frisianflag.com/return-festive" target="_top" on="submit-success: AMP.setState({
+              recipe: {
+                items: recipe.items.concat(event.response.items)
+              },
+              product: {
+                  pageIndex : product.pageIndex + 6 
+              }
+            });">
+        <input type="hidden" name="title" value="" [value]="product.title">
+        <input type="hidden" name="sort" value="desc" [value]="product.sort">
+        <input type="hidden" name="category" value="{{ category }}" [value]="product.category">
+        <input type="hidden" name="index" value="6" [value]="product.pageIndex">
+        <input class="button gradient-blue w-100" id="btnloadmore" [hidden]="product.checknext == 0" type="submit" value="Resep Lainnya" tabindex="0" role="button" on="tap:formchecknext.submit">
+
+</form>
+<form id="formchecknext" method="GET" action="https://www.frisianflag.com/festive-check-next" action-xhr="https://www.frisianflag.com/festive-check-next" target="_top" on="submit-success: AMP.setState({
+              product: {
+                checknext: event.response.items
+              }
+            });">
+        <input type="hidden" name="title" value="" [value]="product.title">
+        <input type="hidden" name="sort" value="desc" [value]="product.sort">
+        <input type="hidden" name="category" value="{{ category }}" [value]="product.category">
+        <input type="hidden" name="index" value="6" [value]="product.pageIndex">
+
+</form>  
+
+{% if (preview == 1)%}
+<br>
+<h2 class="underline">Artikel Terkait</h2>
+<amp-base-carousel layout="responsive" class="related-carousel" width="260" height="270" visible-count="2" snap="true" advance-count="1" loop="true" auto-advance-interval="1">
+       
+            {% for ct in milkpedia %}
+                    <div class="padding-5">
+                      <a href="/milkpedia/{{ct.category_slug}}/{{ct.slug}}">
+                      <div>
+                      <div class="box-milkpedia">
+                        <amp-img class="carousel-slider-img border-15" src="{{ ct.featured_image |media }}" width="10vh" height="10vh" layout="responsive"></amp-img>
+                        </div>
+                        <h5>{{ ct.title }}</h5>
+                        <p>{{ str_limit(ct.excerpt, 60)}}</p>
+                        <span class="button-amp button center button--large">Selengkapnya</span>
+                        </div>
+                      </a>
+            
+                        
+                    </div>
+             {% endfor %} 
+</amp-base-carousel>
+
+{% endif %}
+{#
+<br>
+<h2 class="underline">Artikel Terkait</h2>
+<div class="section-promo">
+<a href="#" class="mb-3">
+    <div class="list-promo">
+        <div class="promo-thumb">
+              <amp-img src="{{ 'festive2021/mobile/Group_11142.png'|media}}" width="170" height="170" layout="responsive" alt="Promo">
+                </amp-img>
+        </div>
+        <h5>Judul artikel</h5>
+        <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet</p>
+        <div class="button">Selengkapnya</div>
+    </div>
+</a>
+<a href="#" class="mb-3">
+    <div class="list-promo">
+        <div class="promo-thumb">
+              <amp-img src="{{ 'festive2021/mobile/Group_11141.png'|media}}" width="170" height="170" layout="responsive" alt="Promo">
+                </amp-img>
+        </div>
+        <h5>Judul artikel</h5>
+        <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet</p>
+        <div class="button">Selengkapnya</div>
+    </div>
+</a>
+
+</div>
+<a class="button gradient-blue w-100" href="#">Artikel Lainnya</a>
+#}
+</div>
+{% else %}
+
+<div class="content-festive">
+<div class="list-item">
+    <a href="https://www.frisianflag.com/resep-ramadan-untuk-menangkan-puasamu-dengan-kebaikan-dan-nikmatnya/promo-special-ramadhan">
+        <div class="main__recipe">
+            <div class="recipe-thumb">
+                    <amp-img src="{{ 'ramadan-2023/promo-1.png'|media}}" width="170" height="170" layout="responsive" alt="Promo">
+                    </amp-img>
+            </div>
+            <div class="div-1">
+                <span class="button gradient-orange ">Lihat Promonya</span>
+            </div>
+            
+        </div>
+    </a>
+</div>
+<div class="list-item">
+    <a href="https://shopee.co.id/frisianflagofficial?shopCollection=245040512#product_list">
+        <div class="main__recipe">
+            <div class="recipe-thumb">
+                    <amp-img src="{{ 'ramadan-2023/promo-spesial-shopee.png'|media}}" width="170" height="170" layout="responsive" alt="Promo">
+                    </amp-img>
+            </div>
+             <div class="div-1">
+                <span class="button gradient-orange ">Lihat Promonya</span>
+            </div>
+            
+        </div>
+    </a>
+</div>
+<div class="list-item">
+    <a href="https://www.tokopedia.com/frisian-flag/etalase/all">
+        <div class="main__recipe">
+            <div class="recipe-thumb">
+                    <amp-img src="{{ 'ramadan-2023/promo-ramadan-tokopedia.png'|media}}" width="170" height="170" layout="responsive" alt="Promo">
+                    </amp-img>
+            </div>
+            <div class="div-1">
+                <span class="button gradient-orange ">Lihat Promonya</span>
+            </div>
+            
+        </div>
+    </a>
+</div>
+<div class="list-item">
+    <a href="https://www.lazada.co.id/shop/frisian-flag/?spm=a2o4j.searchlist.search.4.926240d5gcbeKd&path=promotion-37114-0.htm&sugg=Frisian%2520Flag_3_1&tab=promotion&_keyori=ss&sis_suggestion_click=Frisian%2520Flag%2520Flagship%2520Store%252CFrisian%2520Flag&from=suggest_sis">
+        <div class="main__recipe">
+            <div class="recipe-thumb">
+                    <amp-img src="{{ 'ramadan-2023/promo-ramadan-lazada.png'|media}}" width="170" height="170" layout="responsive" alt="Promo">
+                    </amp-img>
+            </div>
+            <div class="div-1">
+                <span class="button gradient-orange ">Lihat Promonya</span>
+            </div>
+            
+        </div>
+    </a>
+</div>
+<div class="list-item">
+    <a href="https://www.blibli.com/promosi/blm-frisian-flag?appsWebview=true">
+        <div class="main__recipe">
+            <div class="recipe-thumb">
+                    <amp-img src="{{ 'ramadan-2023/promo-ramadan-blibli.png'|media}}" width="170" height="170" layout="responsive" alt="Promo">
+                    </amp-img>
+            </div>
+            <div class="div-1">
+                <span class="button gradient-orange ">Lihat Promonya</span>
+            </div>
+            
+        </div>
+    </a>
+</div>
+<div class="list-item">
+    <a href="https://alfagift.id/b/frisian-flag-11497">
+    <!-- https://c.lazada.co.id/t/c.0xPo6p?intent=false&fallback=true&url=https%3A%2F%2Fwww.lazada.co.id%2Fshop%2Ffrisian-flag-official-store -->
+        <div class="main__recipe">
+            <div class="recipe-thumb">
+                    <amp-img src="{{ 'ramadan-2023/promo-diskon-18.png'|media}}" width="170" height="170" layout="responsive" alt="Promo">
+                    </amp-img>
+            </div>
+            <div class="div-1">
+                <span class="button gradient-orange ">Lihat Promonya</span>
+            </div>
+            
+        </div>
+    </a>
+</div>
+<div class="list-item">
+    <a href="https://alfagift.id/b/frisian-flag-11497">
+    <!-- https://shopee.co.id/universal-link/frisianflagofficial?deep_and_web=1&smtt=9&utm_campaign=p70448302_ss_id_othr_ff-cd-fmp&utm_content=ffcd-ffsite&utm_medium=seller&utm_source=website -->
+        <div class="main__recipe">
+            <div class="recipe-thumb">
+                    <amp-img src="{{ 'ramadan-2023/promo-diskon-15.png'|media}}" width="170" height="170" layout="responsive" alt="Promo">
+                    </amp-img>
+            </div>
+             <div class="div-1">
+                <span class="button gradient-orange ">Lihat Promonya</span>
+            </div>
+            
+        </div>
+    </a>
+</div>
+<div class="list-item">
+    <a href="https://play.google.com/store/apps/details?id=com.midi.kriing&hl=id&gl=US">
+    <!-- https://c.lazada.co.id/t/c.0xPo6p?intent=false&fallback=true&url=https%3A%2F%2Fwww.lazada.co.id%2Fshop%2Ffrisian-flag-official-store -->
+        <div class="main__recipe">
+            <div class="recipe-thumb">
+                    <amp-img src="{{ 'ramadan-2023/promo-scm-alfamidi.png'|media}}" width="170" height="170" layout="responsive" alt="Promo">
+                    </amp-img>
+            </div>
+            <div class="div-1">
+                <span class="button gradient-orange ">Lihat Promonya</span>
+            </div>
+            
+        </div>
+    </a>
+</div>
+<div class="list-item">
+    <a href="https://play.google.com/store/apps/details?id=com.midi.kriing&hl=id&gl=US">
+    <!-- https://tokopedia.link/Oj87euyvufb?utm_source=website&utm_medium=brand&utm_campaign=_ff_website__ -->
+        <div class="main__recipe">
+            <div class="recipe-thumb">
+                    <amp-img src="{{ 'ramadan-2023/promo-fmp-alfamidi.png'|media}}" width="170" height="170" layout="responsive" alt="Promo">
+                    </amp-img>
+            </div>
+            <div class="div-1">
+                <span class="button gradient-orange ">Lihat Promonya</span>
+            </div>
+            
+        </div>
+    </a>
+</div>
+<div class="list-item">
+    <a href="http://www.klikindomaret.com/page/frisian-flag-official-store">
+    <!-- https://www.frisianflag.com/resepsahurterbaik/amp/promo-terbaik -->
+        <div class="main__recipe">
+            <div class="recipe-thumb">
+                    <amp-img src="{{ 'ramadan-2023/promo-scm-indomaret.png'|media}}" width="170" height="170" layout="responsive" alt="Promo">
+                    </amp-img>
+            </div>
+            <div class="div-1">
+                <span class="button gradient-orange ">Lihat Promonya</span>
+            </div>
+            
+        </div>
+    </a>
+</div>
+<div class="list-item">
+    <a href="http://www.klikindomaret.com/page/frisian-flag-official-store">
+    <!-- https://tokopedia.link/Oj87euyvufb?utm_source=website&utm_medium=brand&utm_campaign=_ff_website__ -->
+        <div class="main__recipe">
+            <div class="recipe-thumb">
+                    <amp-img src="{{ 'ramadan-2023/promo-fmp-indomaret.png'|media}}" width="170" height="170" layout="responsive" alt="Promo">
+                    </amp-img>
+            </div>
+            <div class="div-1">
+                <span class="button gradient-orange ">Lihat Promonya</span>
+            </div>
+            
+        </div>
+    </a>
+</div>
+
+</div>
+{% endif %}
+
+{% partial 'festive-sticky' %}
+</div>
+{% partial 'site/footer-amp' %}

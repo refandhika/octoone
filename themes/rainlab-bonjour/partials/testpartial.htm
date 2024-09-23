@@ -1,0 +1,86 @@
+[viewBag]
+==
+{% for ct in result %}
+     
+            <div class="col-sm-6 col-md-4 item-thumb">
+                <div class="item-thumb-img">
+                    <a href="/resep-kami/{{ct.slug_category}}/{{ct.slug}}">
+                     <img src="{{ct.featured_image | media}}" class="image-object" alt ="{{ct.title | title}}" />
+                    </a>
+                </div>
+                <div class="text-center">
+                <a  href="/resep-kami/{{ct.slug_category}}/{{ct.slug}}" class="button bg-orange" >lihat resepnya</a>
+                </div>
+             </div> 
+         {#
+     {% if ct.energi == null and ct.lemak == null and ct.protein == null and ct.karbohidrat == null %}
+         <div class="col-sm-6 col-md-4 item-thumb sames">
+            <div class="card mt-5" style="border-radius: 30px; background-color:#0F61A7;">
+               <a href="/resep-kami/{{ct.slug_category}}/{{ct.slug}}">
+               <img src="{{ct.featured_image | media}}" class="card-img-top" alt="{{ct.title | title}}" style="border-radius:30px;">
+               </a>
+            </div>
+            <div class="d-grid">
+               <div class="text-center">
+                  <h2 style="color:#54B8FC"><b> {{ct.title}}</b></h2>
+               </div>
+               <div class="d-grid text-center mt-4">
+                  <a  href="/resep-kami/{{ct.slug_category}}/{{ct.slug}}" class="button bg-orange" style="background-color: orange;text-decoration:none;">lihat resepnya</a>
+               </div>
+            </div>
+         </div>
+         {% else %}
+            <div class="col-sm-6 col-md-4 item-thumb sames">
+               <div class="card mt-5" style="border-radius: 30px; background-color:#0F61A7;">
+                  <a href="/resep-kami/{{ct.slug_category}}/{{ct.slug}}">
+                  <img src="{{ct.featured_image | media}}" class="card-img-top" alt="{{ct.title | title}}" style="border-radius:30px;">
+                  </a>
+                  <div class="card-body">
+                     <div class="row text-center">
+                        <div class="col-sm-3 col-3">
+                           <img src="https://www.frisianflag.com/storage/app/media/resep-kami-images/Group%20131.svg" alt="">
+                           <p style="color: white;">
+                              <b>{{ct.energi}}</b> <br>
+                              <b>Energi</b> <br>
+                              <b>(hcal)</b>
+                           </p>
+                        </div>
+                        <div class="col-sm-3 col-3">
+                           <img src="https://www.frisianflag.com/storage/app/media/resep-kami-images/Group%20130.svg" alt="" style="height:41px;">
+                           <p style="color: white;">
+                              <b>{{ct.lemak}}</b> <br>
+                              <b>Lemak</b> <br>
+                              <b>(g)</b>
+                           </p>
+                        </div>
+                        <div class="col-sm-3 col-3">
+                           <img src="https://www.frisianflag.com/storage/app/media/resep-kami-images/Group%20132.svg" alt="">
+                           <p style="color: white;">
+                              <b>{{ct.protein}}</b> <br>
+                              <b>Protein</b> <br>
+                              <b>(g)</b>
+                           </p>
+                        </div>
+                        <div class="col-sm-3 col-3">
+                           <img src="https://www.frisianflag.com/storage/app/media/resep-kami-images/Group%20133.svg" alt="">
+                           <p style="color: white;">
+                              <b>{{ct.karbohidrat}}</b> <br>
+                              <b>Karbo</b> <br>
+                              <b>(g)</b>
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="d-grid">
+                   <div class="text-center">
+                      <h3 style="color:#54B8FC"><b> {{ct.title}}</b></h3>
+                   </div>
+                   <div class="d-grid text-center mt-4">
+                      <a  href="/resep-kami/{{ct.slug_category}}/{{ct.slug}}" class="button bg-orange" style="background-color: orange;">lihat resepnya</a>
+                   </div>
+               </div>
+            </div>
+         {% endif %}
+         #}
+{%endfor%}

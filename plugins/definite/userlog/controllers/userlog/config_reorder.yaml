@@ -1,0 +1,4 @@
+title: Userlog
+modelClass: Definite\UserLog\Models\Userlog
+toolbar:
+    buttons: reorder_toolbar
