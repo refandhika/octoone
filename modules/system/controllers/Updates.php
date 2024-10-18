@@ -981,7 +981,7 @@ class Updates extends Controller
 
     protected function getInstalledPlugins()
     {
-        $installed = PluginVersion::lists('code');
+        $installed = PluginVersion::pluck('code');
         $manager = UpdateManager::instance();
         return $manager->requestProductDetails($installed, 'plugin');
     }

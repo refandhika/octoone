@@ -53,7 +53,7 @@ class MailTemplate extends Model
     public static function listAllTemplates()
     {
         $fileTemplates = (array) MailManager::instance()->listRegisteredTemplates();
-        $dbTemplates = (array) self::lists('code', 'code');
+        $dbTemplates = (array) self::pluck('code', 'code');
         $templates = $fileTemplates + $dbTemplates;
         ksort($templates);
         return $templates;
@@ -89,7 +89,7 @@ class MailTemplate extends Model
         MailPartial::createPartials();
 
         $templates = MailManager::instance()->listRegisteredTemplates();
-        $dbTemplates = self::lists('is_custom', 'code');
+        $dbTemplates = self::pluck('is_custom', 'code');
         $newTemplates = array_diff_key($templates, $dbTemplates);
 
         /*

@@ -41,6 +41,6 @@ class UserGroup extends GroupBase
 
     public function addAllUsersToGroup()
     {
-        $this->users()->sync(User::lists('id'));
+        $this->users()->sync(User::pluck('id'));
     }
 }

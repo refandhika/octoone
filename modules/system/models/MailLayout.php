@@ -74,7 +74,7 @@ class MailLayout extends Model
             return self::$codeCache;
         }
 
-        return self::$codeCache = self::lists('id', 'code');
+        return self::$codeCache = self::pluck('id', 'code');
     }
 
     /**
@@ -115,7 +115,7 @@ class MailLayout extends Model
      */
     public static function createLayouts()
     {
-        $dbLayouts = self::lists('code', 'code');
+        $dbLayouts = self::pluck('code', 'code');
 
         $definitions = MailManager::instance()->listRegisteredLayouts();
         foreach ($definitions as $code => $path) {

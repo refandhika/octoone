@@ -143,7 +143,7 @@ class PluginVersion extends Model
     public static function getVersion($pluginCode)
     {
         if (self::$versionCache === null) {
-            self::$versionCache = self::lists('version', 'code');
+            self::$versionCache = self::pluck('version', 'code');
         }
 
         return self::$versionCache[$pluginCode] ?? null;

@@ -85,7 +85,7 @@ class MailPartial extends Model
     public static function createPartials()
     {
         $partials = MailManager::instance()->listRegisteredPartials();
-        $dbPartials = self::lists('is_custom', 'code');
+        $dbPartials = self::pluck('is_custom', 'code');
         $newPartials = array_diff_key($partials, $dbPartials);
 
         /*

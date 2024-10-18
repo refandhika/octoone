@@ -53,7 +53,7 @@ class CmsObjectQueryTest extends TestCase
     public function testLists()
     {
         // Default theme: test
-        $pages = Page::lists('baseFileName');
+        $pages = Page::pluck('baseFileName');
         sort($pages);
 
         $this->assertEquals([
@@ -92,7 +92,7 @@ class CmsObjectQueryTest extends TestCase
             "with-soft-component-class-alias",
         ], $pages);
 
-        $layouts = Layout::lists('baseFileName');
+        $layouts = Layout::pluck('baseFileName');
         sort($layouts);
 
         $this->assertEquals([
