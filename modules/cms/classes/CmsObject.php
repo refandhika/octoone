@@ -134,7 +134,7 @@ class CmsObject extends HalcyonModel implements CmsObjectContract
         if ($skipCache) {
             $result = $instance->get();
         } else {
-            $items = $instance->newQuery()->lists('fileName');
+            $items = $instance->newQuery()->pluck('fileName');
 
             $loadedItems = [];
             foreach ($items as $item) {

@@ -53,7 +53,7 @@ class MaintenanceSetting extends Model
             throw new ApplicationException('Unable to find the active theme.');
         }
 
-        return Page::listInTheme($theme)->lists('fileName', 'fileName');
+        return Page::listInTheme($theme)->pluck('fileName', 'fileName');
     }
 
     /**

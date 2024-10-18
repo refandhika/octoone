@@ -34,7 +34,7 @@ class HasManyModelTest extends PluginTestCase
         $this->assertEquals([
             'First post',
             'Second post'
-        ], $author->posts->lists('title'));
+        ], $author->posts->pluck('title'));
 
         // Set by primary key
         $postId = $post3->id;
@@ -44,7 +44,7 @@ class HasManyModelTest extends PluginTestCase
         $this->assertEquals($author->id, $post3->author_id);
         $this->assertEquals([
             'Third post'
-        ], $author->posts->lists('title'));
+        ], $author->posts->pluck('title'));
 
         // Nullify
         $author->posts = null;
@@ -58,7 +58,7 @@ class HasManyModelTest extends PluginTestCase
         $this->assertEquals($author->id, $post4->author_id);
         $this->assertEquals([
             'Fourth post'
-        ], $author->posts->lists('title'));
+        ], $author->posts->pluck('title'));
     }
 
     public function testGetRelationValue()
@@ -98,7 +98,7 @@ class HasManyModelTest extends PluginTestCase
         $this->assertEquals($author->id, $post->author_id);
         $this->assertEquals([
             'First post'
-        ], $author->posts->lists('title'));
+        ], $author->posts->pluck('title'));
 
         // New session
         $sessionKey = uniqid('session_key', true);
@@ -110,7 +110,7 @@ class HasManyModelTest extends PluginTestCase
         $this->assertEquals($author->id, $post->author_id);
         $this->assertEquals([
             'First post'
-        ], $author->posts->lists('title'));
+        ], $author->posts->pluck('title'));
 
         // Commit deferred
         $author->save(null, $sessionKey);

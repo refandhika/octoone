@@ -160,7 +160,7 @@ class Relation extends FormWidgetBase
 
             $field->options = $usesTree
                 ? $result->listsNested($nameFrom, $primaryKeyName)
-                : $result->lists($nameFrom, $primaryKeyName);
+                : $result->pluck($nameFrom, $primaryKeyName);
 
             return $field;
         });

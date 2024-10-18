@@ -40,7 +40,7 @@ class MorphManyModelTest extends PluginTestCase
         $this->assertEquals([
             'user-created',
             'user-updated'
-        ], $author->event_log->lists('action'));
+        ], $author->event_log->pluck('action'));
 
         // Set by primary key
         $eventId = $event3->id;
@@ -51,7 +51,7 @@ class MorphManyModelTest extends PluginTestCase
         $this->assertEquals('Database\Tester\Models\Author', $event3->related_type);
         $this->assertEquals([
             'user-deleted'
-        ], $author->event_log->lists('action'));
+        ], $author->event_log->pluck('action'));
 
         // Nullify
         $author->event_log = null;
@@ -67,7 +67,7 @@ class MorphManyModelTest extends PluginTestCase
         $this->assertEquals('Database\Tester\Models\Author', $event4->related_type);
         $this->assertEquals([
             'user-restored'
-        ], $author->event_log->lists('action'));
+        ], $author->event_log->pluck('action'));
     }
 
     public function testGetRelationValue()
@@ -122,15 +122,15 @@ class MorphManyModelTest extends PluginTestCase
         $this->assertEquals($author->id, $event->related_id);
         $this->assertEquals([
             'user-created'
-        ], $author->event_log->lists('action'));
+        ], $author->event_log->pluck('action'));
 
         $this->assertEquals(1, $author->tags()->count());
-        $this->assertEquals([$tagForAuthor->id], $author->tags->lists('id'));
+        $this->assertEquals([$tagForAuthor->id], $author->tags->pluck('id'));
         $this->assertEquals(99, $author->tags->first()->pivot->added_by);
 
         $tagForPost->save(null, $sessionKey);
         $this->assertEquals(1, $tagForPost->posts()->count());
-        $this->assertEquals([$post->id], $tagForPost->posts->lists('id'));
+        $this->assertEquals([$post->id], $tagForPost->posts->pluck('id'));
         $this->assertEquals(88, $tagForPost->posts->first()->pivot->added_by);
 
         // New session
@@ -143,18 +143,18 @@ class MorphManyModelTest extends PluginTestCase
         $this->assertEquals($author->id, $event->related_id);
         $this->assertEquals([
             'user-created'
-        ], $author->event_log->lists('action'));
+        ], $author->event_log->pluck('action'));
 
         $author->tags()->remove($tagForAuthor, $sessionKey);
         $this->assertEquals(1, $author->tags()->count());
         $this->assertEquals(0, $author->tags()->withDeferred($sessionKey)->count());
-        $this->assertEquals([$tagForAuthor->id], $author->tags->lists('id'));
+        $this->assertEquals([$tagForAuthor->id], $author->tags->pluck('id'));
         $this->assertEquals(99, $author->tags->first()->pivot->added_by);
 
         $tagForPost->posts()->remove($post, $sessionKey);
         $this->assertEquals(1, $tagForPost->posts()->count());
         $this->assertEquals(0, $tagForPost->posts()->withDeferred($sessionKey)->count());
-        $this->assertEquals([$post->id], $tagForPost->posts->lists('id'));
+        $this->assertEquals([$post->id], $tagForPost->posts->pluck('id'));
         $this->assertEquals(88, $tagForPost->posts->first()->pivot->added_by);
 
 

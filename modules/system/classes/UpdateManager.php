@@ -224,11 +224,11 @@ class UpdateManager
     public function requestUpdateList($force = false)
     {
         $installed = PluginVersion::all();
-        $versions = $installed->lists('version', 'code');
-        $names = $installed->lists('name', 'code');
-        $icons = $installed->lists('icon', 'code');
-        $frozen = $installed->lists('is_frozen', 'code');
-        $updatable = $installed->lists('is_updatable', 'code');
+        $versions = $installed->pluck('version', 'code');
+        $names = $installed->pluck('name', 'code');
+        $icons = $installed->pluck('icon', 'code');
+        $frozen = $installed->pluck('is_frozen', 'code');
+        $updatable = $installed->pluck('is_updatable', 'code');
         $build = Parameter::get('system::core.build');
         $themes = [];
 

@@ -206,8 +206,8 @@ class BelongsToManyModelTest extends PluginTestCase
         $author->roles()->add($role2, null, ['is_executive' => 1]);
         $author->roles()->add($role3, null, ['is_executive' => 0]);
 
-        $this->assertEquals([1, 2], $author->executive_authors->lists('id'));
-        $this->assertEquals([1, 2], $author->executive_authors()->lists('id'));
-        $this->assertEquals([1, 2], $author->executive_authors()->get()->lists('id'));
+        $this->assertEquals([1, 2], $author->executive_authors->pluck('id'));
+        $this->assertEquals([1, 2], $author->executive_authors()->pluck('id'));
+        $this->assertEquals([1, 2], $author->executive_authors()->get()->pluck('id'));
     }
 }

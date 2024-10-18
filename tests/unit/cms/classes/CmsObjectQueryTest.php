@@ -110,7 +110,7 @@ class CmsObjectQueryTest extends TestCase
 
     public function testListsNonExistentTheme()
     {
-        $pages = Page::inTheme('NON_EXISTENT_THEME')->lists('baseFileName');
+        $pages = Page::inTheme('NON_EXISTENT_THEME')->pluck('baseFileName');
         $this->assertEmpty($pages);
     }
 }

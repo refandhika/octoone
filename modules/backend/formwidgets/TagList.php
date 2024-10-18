@@ -131,7 +131,7 @@ class TagList extends FormWidgetBase
         $relationModel = $this->getRelationModel();
         $existingTags = $relationModel
             ->whereIn($this->nameFrom, $names)
-            ->lists($this->nameFrom, $relationModel->getKeyName())
+            ->pluck($this->nameFrom, $relationModel->getKeyName())
         ;
 
         $newTags = $this->customTags ? array_diff($names, $existingTags) : [];
@@ -154,7 +154,7 @@ class TagList extends FormWidgetBase
         $value = parent::getLoadValue();
 
         if ($this->mode === static::MODE_RELATION) {
-            return $this->getRelationObject()->lists($this->nameFrom);
+            return $this->getRelationObject()->pluck($this->nameFrom);
         }
 
         return $this->mode === static::MODE_STRING
@@ -178,7 +178,7 @@ class TagList extends FormWidgetBase
                 // by joining its pivot table. Remove all joins from the query.
                 $query->getQuery()->getQuery()->joins = [];
 
-                return $query->lists($this->nameFrom);
+                return $query->pluck($this->nameFrom);
             });
         }
 
