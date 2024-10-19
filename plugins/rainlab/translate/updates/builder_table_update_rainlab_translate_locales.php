@@ -1,7 +1,7 @@
 <?php namespace RainLab\Translate\Updates;
 
 use RainLab\Translate\Models\Locale;
-use Schema;
+use Illuminate\Support\Facades\Schema;
 use October\Rain\Database\Updates\Migration;
 
 class BuilderTableUpdateRainlabTranslateLocales extends Migration

@@ -1,6 +1,6 @@
 <?php namespace Definite\Ramadhan2024\Updates;
 
-use Schema;
+use Illuminate\Support\Facades\Schema;
 use October\Rain\Database\Updates\Migration;
 
 class BuilderTableUpdateDefiniteRamadhan20245 extends Migration

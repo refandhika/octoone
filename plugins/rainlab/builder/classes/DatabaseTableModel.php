@@ -7,7 +7,7 @@ use SystemException;
 use Exception;
 use Validator;
 use Lang;
-use Schema;
+use Illuminate\Support\Facades\Schema;
 use Str;
 use Db;
 

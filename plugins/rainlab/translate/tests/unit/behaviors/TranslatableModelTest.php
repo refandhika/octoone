@@ -1,6 +1,6 @@
 <?php namespace RainLab\Translate\Tests\Unit\Behaviors;
 
-use Schema;
+use Illuminate\Support\Facades\Schema;
 use PluginTestCase;
 use Model;
 use RainLab\Translate\Tests\Fixtures\Models\Country as CountryModel;

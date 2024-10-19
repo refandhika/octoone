@@ -2,7 +2,7 @@
 
 namespace Definite\Milkpedia\Updates;
 
-use Schema;
+use Illuminate\Support\Facades\Schema;
 use October\Rain\Database\Updates\Migration;
 
 class BuilderTableUpdateDefiniteMilkpediaCategory4 extends Migration

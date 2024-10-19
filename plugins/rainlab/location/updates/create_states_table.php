@@ -2,7 +2,7 @@
 
 namespace RainLab\Location\Updates;
 
-use Schema;
+use Illuminate\Support\Facades\Schema;
 use October\Rain\Database\Schema\Blueprint;
 use October\Rain\Database\Updates\Migration;
 

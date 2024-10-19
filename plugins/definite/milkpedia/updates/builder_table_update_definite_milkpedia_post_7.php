@@ -1,6 +1,6 @@
 <?php namespace Definite\Milkpedia\Updates;
 
-use Schema;
+use Illuminate\Support\Facades\Schema;
 use October\Rain\Database\Updates\Migration;
 
 class BuilderTableUpdateDefiniteMilkpediaPost7 extends Migration

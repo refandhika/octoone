@@ -1,6 +1,6 @@
 <?php namespace Definite\Cities\Updates;
 
-use Schema;
+use Illuminate\Support\Facades\Schema;
 use October\Rain\Database\Updates\Migration;
 
 class BuilderTableCreateDefiniteCitiesCities extends Migration

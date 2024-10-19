@@ -1,7 +1,7 @@
 <?php namespace Definite\Cities\Updates;
 
 use DB;
-use Schema;
+use Illuminate\Support\Facades\Schema;
 use October\Rain\Database\Updates\Migration;
 
 class BuilderTableInsertDefiniteCities extends Migration

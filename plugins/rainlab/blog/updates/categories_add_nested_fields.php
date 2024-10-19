@@ -1,6 +1,6 @@
 <?php namespace RainLab\Blog\Updates;
 
-use Schema;
+use Illuminate\Support\Facades\Schema;
 use October\Rain\Database\Updates\Migration;
 use RainLab\Blog\Models\Category as CategoryModel;
 

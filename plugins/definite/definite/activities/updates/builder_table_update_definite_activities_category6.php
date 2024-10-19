@@ -2,7 +2,7 @@
 
 namespace Definite\Activities\Updates;
 
-use Schema;
+use Illuminate\Support\Facades\Schema;
 use October\Rain\Database\Updates\Migration;
 
 class BuilderTableUpdateDefiniteActivitiesCategory6 extends Migration

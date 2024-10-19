@@ -2,7 +2,7 @@
 
 namespace Definite\Pressrelease\Updates;
 
-use Schema;
+use Illuminate\Support\Facades\Schema;
 use October\Rain\Database\Updates\Migration;
 
 class BuilderTableCreateDefinitePressreleasePost extends Migration

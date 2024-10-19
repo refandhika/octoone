@@ -3,7 +3,7 @@
 namespace Definite\Aboutus\Updates;
 
 use October\Rain\Database\Updates\Migration;
-use Schema;
+use Illuminate\Support\Facades\Schema;
 
 class BuilderTableUpdateDefiniteAboutusHistory3 extends Migration
 {

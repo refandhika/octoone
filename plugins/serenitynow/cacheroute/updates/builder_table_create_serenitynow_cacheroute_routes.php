@@ -1,6 +1,6 @@
 <?php namespace SerenityNow\Cacheroute\Updates;
 
-use Schema;
+use Illuminate\Support\Facades\Schema;
 use October\Rain\Database\Updates\Migration;
 
 class BuilderTableCreateSerenitynowCacherouteRoutes extends Migration
