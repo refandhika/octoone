@@ -2,7 +2,7 @@
 
 namespace Definite\News\Updates;
 
-use October\Rain\Database\Updates\Migration;
+use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
 
 class BuilderTableUpdateDefiniteNewsPost2 extends Migration

@@ -2,7 +2,7 @@
 
 namespace Definite\Aboutus\Updates;
 
-use October\Rain\Database\Updates\Migration;
+use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
 
 class BuilderTableUpdateDefiniteAboutusAward4 extends Migration

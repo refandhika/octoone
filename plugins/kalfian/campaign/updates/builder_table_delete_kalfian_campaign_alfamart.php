@@ -1,7 +1,7 @@
 <?php namespace Kalfian\Campaign\Updates;
 
 use Illuminate\Support\Facades\Schema;
-use October\Rain\Database\Updates\Migration;
+use Illuminate\Database\Migrations\Migration;
 
 class BuilderTableDeleteKalfianCampaignAlfamart extends Migration
 {

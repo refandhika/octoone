@@ -3,7 +3,7 @@
 namespace Flynsarmy\Menu\Updates;
 
 use DB;
-use October\Rain\Database\Updates\Migration;
+use Illuminate\Database\Migrations\Migration;
 
 class MakeMenuItemMenuIdNullable extends Migration
 {

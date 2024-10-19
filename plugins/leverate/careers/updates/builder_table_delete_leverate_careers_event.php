@@ -1,7 +1,7 @@
 <?php namespace Leverate\Careers\Updates;
 
 use Illuminate\Support\Facades\Schema;
-use October\Rain\Database\Updates\Migration;
+use Illuminate\Database\Migrations\Migration;
 
 class BuilderTableDeleteLeverateCareersEvent extends Migration
 {

@@ -3,7 +3,7 @@
 namespace RainLab\User\Updates;
 
 use File;
-use October\Rain\Database\Updates\Migration;
+use Illuminate\Database\Migrations\Migration;
 use Cms\Classes\Theme;
 use Cms\Classes\Partial;
 

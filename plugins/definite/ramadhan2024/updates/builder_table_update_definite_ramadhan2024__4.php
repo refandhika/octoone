@@ -1,7 +1,7 @@
 <?php namespace Definite\Ramadhan2024\Updates;
 
 use Illuminate\Support\Facades\Schema;
-use October\Rain\Database\Updates\Migration;
+use Illuminate\Database\Migrations\Migration;
 
 class BuilderTableUpdateDefiniteRamadhan20244 extends Migration
 {

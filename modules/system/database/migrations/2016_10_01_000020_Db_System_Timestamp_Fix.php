@@ -1,6 +1,6 @@
 <?php
 
-use October\Rain\Database\Updates\Migration;
+use Illuminate\Database\Migrations\Migration;
 
 /**
  * This migration addresses a MySQL specific issue around STRICT MODE.

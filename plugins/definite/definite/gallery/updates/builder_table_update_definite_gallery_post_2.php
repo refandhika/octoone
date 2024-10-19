@@ -1,7 +1,7 @@
 <?php namespace Definite\Gallery\Updates;
 
 use Illuminate\Support\Facades\Schema;
-use October\Rain\Database\Updates\Migration;
+use Illuminate\Database\Migrations\Migration;
 
 class BuilderTableUpdateDefiniteGalleryPost2 extends Migration
 {

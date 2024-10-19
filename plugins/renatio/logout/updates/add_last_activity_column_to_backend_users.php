@@ -2,7 +2,7 @@
 
 namespace Renatio\Logout\Updates;
 
-use October\Rain\Database\Updates\Migration;
+use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
 use Renatio\Logout\Models\Settings;
 

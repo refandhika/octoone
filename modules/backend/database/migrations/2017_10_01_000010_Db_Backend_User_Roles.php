@@ -1,8 +1,8 @@
 <?php
 
 use Backend\Models\UserRole;
-use October\Rain\Database\Schema\Blueprint;
-use October\Rain\Database\Updates\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class DbBackendUserRoles extends Migration
 {

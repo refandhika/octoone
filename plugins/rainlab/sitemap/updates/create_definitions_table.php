@@ -3,7 +3,7 @@
 namespace RainLab\Sitemap\Updates;
 
 use Illuminate\Support\Facades\Schema;
-use October\Rain\Database\Updates\Migration;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateDefinitionsTable extends Migration
 {

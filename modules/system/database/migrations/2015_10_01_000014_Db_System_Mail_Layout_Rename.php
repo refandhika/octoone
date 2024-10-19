@@ -1,7 +1,7 @@
 <?php
 
 use System\Models\MailLayout;
-use October\Rain\Database\Updates\Migration;
+use Illuminate\Database\Migrations\Migration;
 
 class DbSystemMailLayoutRename extends Migration
 {

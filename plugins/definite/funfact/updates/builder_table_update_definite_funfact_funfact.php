@@ -3,7 +3,7 @@
 namespace Definite\FunFact\Updates;
 
 use Illuminate\Support\Facades\Schema;
-use October\Rain\Database\Updates\Migration;
+use Illuminate\Database\Migrations\Migration;
 
 class BuilderTableUpdateDefiniteFunfactFunfact extends Migration
 {

@@ -1,7 +1,7 @@
 <?php namespace AnandPatel\SeoExtension\Updates;
 
 use Illuminate\Support\Facades\Schema;
-use October\Rain\Database\Updates\Migration;
+use Illuminate\Database\Migrations\Migration;
 use System\Classes\PluginManager;
 class CreateBlogPostsTable extends Migration
 {
