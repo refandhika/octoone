@@ -3,7 +3,7 @@
 namespace Renatio\Logout\Updates;
 
 use October\Rain\Database\Updates\Migration;
-use October\Rain\Support\Facades\Schema;
+use Illuminate\Support\Facades\Schema;
 use Renatio\Logout\Models\Settings;
 
 /**

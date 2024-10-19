@@ -52,7 +52,7 @@ return [
     'Mail'                 => October\Rain\Support\Facades\Mail::class,
     'Markdown'             => October\Rain\Support\Facades\Markdown::class,
     'Model'                => October\Rain\Database\Model::class,
-    'Schema'               => October\Rain\Support\Facades\Schema::class,
+    'Schema'               => Illuminate\Support\Facades\Schema::class,
     'Seeder'               => October\Rain\Database\Updates\Seeder::class,
     'Str'                  => October\Rain\Support\Facades\Str::class,
     'SystemException'      => October\Rain\Exception\SystemException::class,
