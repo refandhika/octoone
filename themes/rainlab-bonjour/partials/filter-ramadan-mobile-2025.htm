@@ -1,0 +1,130 @@
+[viewBag]
+==
+<style>
+.only-mobile {
+    display: none;    
+}
+
+@media only screen and (max-width: 431px){
+    .only-mobile {
+        display: block !important;    
+    }
+}
+</style>
+
+<section class="container-filter only-mobile">
+    <div class="heading-filter">Temukan Berbagai Resep Untuk Ramadan</div>
+    <div class="parr-mob">
+        <button id="filter-button" class="filter-button">
+            <i class="fas fa-filter"></i> Filter
+        </button>
+    </div>
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <button id="close-sidebar" class="close-sidebar">✖</button>
+        </div>
+        <div class="sidebar-content">
+            <p class="hidding-mob">Silahkan pilih filter</p>
+            <div class="custom-select-mob">
+                <select id="produkDropdownMobile" 
+                    data-request="onDropdownChangeMobile" 
+                    data-request-data="produkValue: $('#produkDropdownMobile').val(), bahanValue: $('#bahanUtamaDropdownMobile').val(), jenisValue: $('#jenisMakananDropdownMobile').val()" 
+                    data-request-success="handleSuccess(data)"
+                    onchange="$(this).request()">
+                    <option disabled selected>Produk Yang Digunakan</option>
+                    <option value="Susu Cair">Susu Cair</option>
+                    <option value="Susu Kental Manis">Susu Kental Manis</option>
+                    <option value="Susu Bubuk">Susu Bubuk</option>
+                </select>
+            </div>
+            <div class="custom-select-mob">
+                <select id="bahanUtamaDropdownMobile"
+                    data-request="onDropdownChangeMobile" 
+                    data-request-data="produkValue: $('#produkDropdownMobile').val(), bahanValue: $('#bahanUtamaDropdownMobile').val(), jenisValue: $('#jenisMakananDropdownMobile').val()" 
+                    data-request-success="handleSuccess(data)"
+                    onchange="$(this).request()">
+                    <option disabled selected>Bahan Utama</option>
+                    <option value="ayam">Ayam</option>
+                    <option value="sapi">Sapi</option>
+                    <option value="kambing">Kambing</option>
+                    <option value="bebek">Bebek</option>
+                    <option value="ikan-tuna">Ikan Tuna</option>
+                    <option value="ikan-salmon">Ikan Salmon</option>
+                    <option value="telur-ayam">Telur Ayam</option>
+                    <option value="kacang-kedelai">Kacang Kedelai</option>
+                    <option value="tahu">Tahu</option>
+                    <option value="tempe">Tempe</option>
+                    <option value="susu">Susu</option>
+                    <option value="keju">Keju</option>
+                    <option value="yogurt">Yogurt</option>
+                </select>
+            </div>
+            <div class="custom-select-mob">
+                <select id="jenisMakananDropdownMobile"
+                    data-request="onDropdownChangeMobile" 
+                    data-request-data="produkValue: $('#produkDropdownMobile').val(), bahanValue: $('#bahanUtamaDropdownMobile').val(), jenisValue: $('#jenisMakananDropdownMobile').val()" 
+                    data-request-success="handleSuccess(data)"
+                    onchange="$(this).request()">
+                    <option disabled selected>Jenis Makanan</option>
+                    <option value="sahur">Sahur</option>
+                    <option value="takjil">Takjil</option>
+                    <option value="kue-kering">Kue Kering</option>
+                </select>
+            </div>
+            <div class="custom-select-mob">
+                <div class="clear-btn" 
+                    data-request="onClear" 
+                    data-request-data="jenisValue: window.location.pathname.split('/')[window.location.pathname.split('/').length-1]" 
+                    onclick="$(this).request()">clear</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+const filterButton = document.getElementById("filter-button");
+const sidebar = document.getElementById("sidebar");
+const closeSidebar = document.getElementById("close-sidebar");
+
+filterButton.addEventListener("click", () => {
+    sidebar.classList.add("active");
+});
+
+closeSidebar.addEventListener("click", () => {
+    sidebar.classList.remove("active");
+});
+
+document.addEventListener("click", (e) => {
+    if (!sidebar.contains(e.target) && !filterButton.contains(e.target)) {
+        sidebar.classList.remove("active");
+    }
+});
+
+function handleSuccess(response) {
+    if (response['.all-recipes-container-mobile'] == 'No records found for the selected product.') {
+        
+    } else {
+        $('.all-recipes-container-mobile').slick('unslick');
+        $('.all-recipes-container-mobile').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            infinite: true,
+            autoplay: false,
+            arrows: false,
+            swipeToSlide: true,
+            responsive: [
+                {
+                    breakpoint: 1000,
+                    settings: {
+                        slidesToShow: 1.5,
+                        slidesToScroll: 1,
+                        infinite: false,
+                    }
+                }
+            ]
+        }); 
+    }
+    
+    sidebar.classList.remove("active");
+}
+</script>

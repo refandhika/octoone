@@ -1,0 +1,35 @@
+title = "Resep Kami Detail"
+url = "/resep-kami/:category/:slug"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/testing-page-detail-recipe"
+==
+<?php
+function hariIndo ($hariInggris) {
+  switch ($hariInggris) {
+    case 'Sunday':
+      return 'Minggu';
+    case 'Monday':
+      return 'Senin';
+    case 'Tuesday':
+      return 'Selasa';
+    case 'Wednesday':
+      return 'Rabu';
+    case 'Thursday':
+      return 'Kamis';
+    case 'Friday':
+      return 'Jumat';
+    case 'Saturday':
+      return 'Sabtu';
+    default:
+      return 'hari tidak valid';
+  }
+}
+
+function onStart(){
+        $this->page->amp_url = $this->pageUrl('testing-page-detail-recipe-amp');
+}
+?>
+==
+adasdasd
