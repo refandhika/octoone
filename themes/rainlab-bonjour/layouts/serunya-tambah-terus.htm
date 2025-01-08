@@ -1,0 +1,39 @@
+description = "Serunya Tambah Terus"
+
+[staticPage]
+useContent = 1
+default = 0
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('milky-unicorn-amp');
+    $this->page->meta_description = "Mewarnai gambar dapat hadiah? Ikuti lomba Frisian Flag Milky #SerunyaTambahTerus. Lihat cara mengikutinya di sini.";
+}
+?>
+==
+{% partial 'site/header-serunya' %}
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+    	<img src="{{ 'milky-unicorn/desktop_statik_serunyatambahterus.jpg'|media }}" class="hidden-xs" />
+        <img src="{{ 'milky-unicorn/mobile-serunya-tambah-terus.jpg'|media  }}" class="visible-xs" />
+    </div>
+</div>
+
+{% partial 'site/milky-unicorn-menu' %}
+
+<div id='main-section'>
+    <h1 style="display: none;">Serunya Tambah Terus | Frisian Flag Indonesia</h1>
+    <br>
+   <div class="col-md-12">
+        <div class="default-content">
+             <div class="center-img" style="text-align: center;margin-bottom:10px;">
+                <img src="{{ 'milky-unicorn/mekanisme-serunyatambahterus-desktop.jpg'|media  }}" style="" class="hidden-xs">
+                <img src="{{ 'milky-unicorn/mekanisme-serunyatambahterus-mobile.jpg'|media  }}" style="" class="visible-xs">
+            </div>
+        </div>
+    </div>
+</div>
+            
+{% partial 'site/footer' %}

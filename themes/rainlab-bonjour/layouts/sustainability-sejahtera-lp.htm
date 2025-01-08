@@ -1,0 +1,96 @@
+description = "Layour for Sustainability Sehat Page"
+
+[staticPage]
+useContent = 1
+default = 0
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('sustainability/sustainability-sejahtera-amp');
+    }
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp banner-lp" style='background:url({{ 'sustainability/sejahtera/Asset_23-100.jpg'|media  }})'>
+        <div class="container">
+        	<div class="banner-panel">
+        	    <div class="banner-description">
+        			<h2>Mewujudkan Indonesia Sejahtera</h2>
+        		</div>
+        	</div>
+    	</div>
+    </div>
+</div>
+
+
+
+<div class="section">
+    <div id='main-section' class="container sustainability-pages">
+        <div class="row">
+            <div class="col-md-12 top-copy">
+            <p class="description">Frisian Flag Indonesia meningkatkan kualitas & produktivitas susu segar dan taraf hidup para peternak sapi perah lokal, khususnya di Jawa Barat, Jawa Tengah, dan Jawa Timur, melalui berbagai program pengembangan peternak sapi perah (Dairy Development Program).</p>
+            
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                
+                <a href="{{ 'sustainability/sustainability-sejahtera-farmer-lp' | page }}">
+                    <div class="box sejahtera"  style='background:url({{ 'sustainability/sejahtera/thumbnail_1_-100.jpg'|media  }})' >
+                        <div class="box-title">
+                            <h3>Farmer to Farmer</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <a href="{{ 'sustainability/sustainability-sejahtera-milk-lp' | page }}">
+                    <div class="box sejahtera"  style='background:url({{ 'sustainability/sejahtera/thumbnail_2_-100.jpg'|media  }})' >
+                        <div class="box-title">
+                            <h3>Milk Collection Point</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <a href="{{ 'sustainability/sustainability-sejahtera-dairy-lp' | page }}">
+                    <div class="box sejahtera"  style='background:url({{ 'sustainability/sejahtera/thumbnail_3_-100.jpg'|media  }})' >
+                        <div class="box-title">
+                            <h3>Dairy Village</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <a href="{{ 'sustainability/sustainability-sejahtera-young-lp' | page }}">
+                    <div class="box sejahtera"  style='background:url({{ 'sustainability/sejahtera/thumbnail_4_-100.jpg'|media  }})' >
+                        <div class="box-title">
+                            <h3>Young Farmer Academy</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <a href="{{ 'sustainability/sustainability-sejahtera-bewara-lp' | page }}">
+                    <div class="box sejahtera"  style='background:url({{ 'sustainability/sejahtera/thumbnail_5_-100.jpg'|media  }})' >
+                        <div class="box-title">
+                            <h3>Bewara</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="{{ 'assets/css/sustainability.css'|theme }}">
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

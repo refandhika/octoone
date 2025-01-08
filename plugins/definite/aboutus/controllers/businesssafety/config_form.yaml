@@ -1,0 +1,10 @@
+name: BusinessSafety
+form: $/definite/aboutus/models/businesssafety/fields.yaml
+modelClass: Definite\Aboutus\Models\BusinessSafety
+defaultRedirect: definite/aboutus/businesssafety
+create:
+    redirect: 'definite/aboutus/businesssafety/update/:id'
+    redirectClose: definite/aboutus/businesssafety
+update:
+    redirect: definite/aboutus/businesssafety
+    redirectClose: definite/aboutus/businesssafety

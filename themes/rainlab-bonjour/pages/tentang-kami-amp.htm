@@ -1,0 +1,231 @@
+title = "Tentang Kami"
+url = "/amp/perusahaan-kami/tentang-kami"
+layout = "basic-amp"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/tentang-kami-amp"
+
+[builderList AboutUs]
+modelClass = "Definite\Aboutus\Models\AboutUs"
+scope = "scopeIndex"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList FrisianFlag]
+modelClass = "Definite\Aboutus\Models\FrisianFlag"
+scope = "scopeIndex"
+scopeValue = "{{ :scope }}"
+displayColumn = "frisian"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList award]
+modelClass = "Definite\Aboutus\Models\Award"
+scope = "scopeSearch"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList history]
+modelClass = "Definite\Aboutus\Models\History"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+sortDirection = "asc"
+
+[builderList logoHistory]
+modelClass = "Definite\Aboutus\Models\LogoHistory"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+sortColumn = "id"
+sortDirection = "desc"
+==
+{% set about = AboutUs.records %}
+{% set frisian = FrisianFlag.records %}
+{% set awards = award.records %}
+{% set history = history.records %}
+{% set logoHistory = logoHistory.records %}
+<div class="cover">
+        <amp-img 
+            src="{{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }}"
+            srcset="{{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }} 640w,
+                  {{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }} 320w"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="95 Tahun Frisian Flag Banner">
+        </amp-img>
+</div>
+<amp-accordion class="title_home">
+    <section>
+      <h4 class="arrow_down"><a href="#" target="_self">Tentang Kami</a></h4>
+      <p>
+          <a href="{{ 'tentang-kami-amp'|page }}" target="_self">{{'tentang-kami'|_}}</a>
+          <a href="{{'news'|page}}" target="_self">{{'berita'|_}}</a>
+          <a href="{{'gallery'|page}}" target="_self">{{'galeri-foto'|_}}</a>
+          <a href="{{'press-release'|page}}" target="_self">{{'siaran-pers'|_}}</a>
+          <a href="{{'our-purposes'|page}}">{{'tujuan-kami'|_}}</a>
+      </p>
+    </section>
+</amp-accordion>
+
+<div class="breadcrumb">
+    <a href="{{ 'home'|page }}">{{ 'beranda'|_ }}</a> /
+    <a href="#">Tentang Kami</a>
+</div>
+
+<section class="content-header">
+    <div class="detail_text main-content">
+      <h3>{{trans_pick(about.first, 'title')}}</h3>
+        {{trans_pick(about.first, 'description')|raw}}
+        <hr>
+    <!--main accordion-->
+    <amp-accordion class="main-accordion">
+  <section class="content">
+    <h4 class="point">FrieslandCampina<i class="fas fa1 fa-angle-down"></i></h4>
+    <div class="point-content">
+    {{trans_pick(about.first, 'friesland')|raw}}
+    </div>
+  </section>
+  <section class="content">
+    <h4 class="point">Frisian Flag<i class="fas fa1 fa-angle-down"></i></h4>
+    <div class="point-content">
+  {% for flag in frisian.first.frisian %}
+                                <h5>{{'visi'|_}}</h5>
+                                {{trans_pick(flag, 'vision')|raw}}
+                            {% endfor %}
+
+                            {% for flag in frisian.first.frisian %}
+                                <h5>{{'misi'|_}}</h5>
+                                {{trans_pick(flag, 'mission')|raw}}
+                            {% endfor %}
+
+                            {%  for flag in frisian.first.frisian %}
+                                <h5>{{'kode-etik-perusahaan'|_}}</h5>
+                                {{trans_pick(flag, 'coec')|raw}}
+                            {% endfor %}   
+    </div>
+  </section>
+
+  <section class="content">
+    <h4 class="point">Penghargaan Frisian Flag Indonesia<i class="fas fa2 fa-angle-down"></i></h4>
+       <div class="live-search-list">
+                                        {% for award in awards %}
+                                            <div class="itemlist-search itemhomefade">
+                                                <div class="wrpcontent">
+                                                    <div class="content">
+                                                        {% if award.file_upload %}
+                                                            <div class="content--thumbnail" style="background-image: url('{{ award.file_upload|media }}');"></div>
+                                                        {% endif %}
+                                                        <h6>{{trans_pick(award, 'title')|raw}}</h6>
+                                                        {{ trans_pick(award, 'description')|raw }}
+                                                        <span>{{award.published_date|date('Y')}}</span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+  </section>
+  <section class="content">
+    <h4 class="point">Sejarah Perusahaan<i class="fas fa1 fa-angle-down"></i></h4>
+    <div class="point-content">
+ {% if not logoHistory.isEmpty %}
+                                <div class="container-history">
+                                    <div class="wrphistory">
+                                        <div class="linehistory"></div>
+                                        <div class="wrp-itemcontent-history">
+                                        {% for historys in history  %}
+                                            <div class="itemcontent-history itemhomefade3">
+                                                <div class="top">
+                                                    <div class="dot"><span></span></div>
+                                                    <div class="year">{{ historys.title|raw }}</div>
+                                                </div>
+                                                <div class="bottom">
+                                                    <div class="content">
+                                                    {% if historys.file_upload %}
+                                                        <div class="imgwrp border">
+                                                            <amp-img class="img"
+                                                            src="{{ historys.file_upload|media }}"
+                                                            width="100"
+                                                            height="100"
+                                                            layout="responsive"
+                                                            alt="{{ historys.title|raw }}">
+                                                        </amp-img>
+                                                       </div>
+                                                    {% endif %}
+                                                       {{ trans_pick(historys, 'description')|raw }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                        </div>
+                                   
+                                    </div>
+                                </div>
+                          
+                            {% endif %}
+    </div>
+  </section>
+  <section class="content">
+    <h4 class="point">Perubahan Logo<i class="fas fa1 fa-angle-down"></i></h4>
+    <div class="point-content">
+ {% if not logoHistory.isEmpty %}
+                                <div class="container-history">
+                                    <div class="wrphistory">
+                                        <div class="linehistory"></div>
+                                        <div class="wrp-itemcontent-history">
+                                        {% for historys in logoHistory  %}
+                                            <div class="itemcontent-history itemhomefade3">
+                                                <div class="top">
+                                                    <div class="dot"><span></span></div>
+                                                    <div class="year">{{ historys.title|raw }}</div>
+                                                </div>
+                                                <div class="bottom">
+                                                    <div class="content">
+                                                    {% if historys.file_upload %}
+                                                        <div class="imgwrp border">
+                                                            <amp-img class="img"
+                                                            src="{{ historys.file_upload|media }}"
+                                                            width="100"
+                                                            height="100"
+                                                            layout="responsive"
+                                                            alt="{{ historys.title|raw }}">
+                                                        </amp-img>
+                                                       </div>
+                                                    {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                        </div>
+                                   
+                                    </div>
+                                </div>
+                          
+                            {% endif %}
+    </div>
+  </section>
+</amp-accordion>
+    <!--end accordion -->
+    </div>
+</section>

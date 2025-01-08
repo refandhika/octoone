@@ -1,0 +1,148 @@
+description = "floating navigation in ramadhan 2024 pages"
+
+[viewBag]
+==
+<style>
+.floating-navigation{
+    position: fixed;
+    top: 25%;
+    right: 2rem;
+    width: 8rem;
+    height: 40rem;
+    background-color: #224c95;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+    border-radius: 999px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    text-align: center;
+    color: white;
+    z-index: 300;
+}
+.floating-home, .floating-promo{
+    width: 8rem;
+    height: 8rem;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.floating-menu{
+    padding: 1rem;
+    cursor: pointer;
+    color: white;
+    font-family: Uni-Sans !important;
+}
+.floating-menu:hover{
+    background-color: white;
+    color: #224C95;
+    font-weight: 600;
+}
+.floating-menu:nth-child(2),.floating-menu:nth-child(3),.floating-menu:nth-child(4){
+    border-bottom: 1px solid white;    
+}
+.floating-menu:nth-child(1){
+    border-bottom: 1px solid white;    
+}
+.floating-menu:nth-child(6){
+    border-top: 1px solid white;    
+}
+.floating-nav-active{
+    background-color: white;
+    color: #224C95;
+    font-weight: 600;
+}
+.floating-navigation-mobile{
+    display: none;    
+}
+
+@media only screen and (max-width: 769px){
+    .floating-navigation{
+        display: none;    
+    }
+    .floating-navigation-mobile{
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 10rem;
+        background-color: #224c95;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        padding: 0 10px;
+        z-index: 300;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        font-size: 10px;
+        border-radius: 30px 30px 0 0;
+        font-family: Uni-Sans !important;
+    }
+    .floating-navigation-mobile a{
+        color: white;
+        width: 16%;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80%;
+    }
+    .floating-navigation-mobile a:nth-child(1),.floating-navigation-mobile a:nth-child(2),.floating-navigation-mobile a:nth-child(3),.floating-navigation-mobile a:nth-child(4),.floating-navigation-mobile a:nth-child(5){
+        border-right: 1px solid white;
+    }
+    .floating-active-mobile{
+        background-color: white;
+        color: #224C95 !important;
+        font-weight: 600;
+        border-radius: 14px;
+    }
+}
+</style>
+
+<section class="floating-navigation">
+    <a href="/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu" class="floating-home floating-menu">Beranda</a> <!-- floating-nav-active -->
+    <a href="/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu/resep-sahur" class="floating-sahur floating-menu">Resep Sahur</a>
+    <a href="/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu/resep-takjil-manis-tujuh-langkah" class="floating-takjil floating-menu">Resep Takjil</a>
+    <a href="/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu/resep-ramadan-kue-kering-pilihan" class="floating-kue floating-menu">Resep Kue Kering</a>
+    <a href="/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu/tips-spesial-ramadan" class="floating-tips floating-menu">Tips Ramadan</a>
+    <a href="/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu/promo-spesial-ramadan" class="floating-promo floating-menu">Promo Ramadan</a>
+</section>
+
+<section class="floating-navigation-mobile">
+    <a href="/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu" class="floating-menu-mobile floating-home-mobile">Beranda</a> <!-- floating-active-mobile -->
+    <a href="/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu/resep-sahur" class="floating-menu-mobile floating-sahur-mobile">Resep Sahur</a>
+    <a href="/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu/resep-takjil-manis-tujuh-langkah" class="floating-menu-mobile floating-takjil-mobile">Resep Takjil</a>
+    <a href="/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu/resep-ramadan-kue-kering-pilihan" class="floating-menu-mobile floating-kue-mobile">Resep Kue Kering</a>
+    <a href="/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu/tips-spesial-ramadan" class="floating-menu-mobile floating-tips-mobile">Tips Ramadan</a>
+    <a href="/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu/promo-spesial-ramadan" class="floating-menu-mobile floating-promo-mobile">Promo Ramadan</a>
+</section>
+
+<script>
+$(document).ready(function(){
+    if(location.pathname == "/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu"){
+        document.querySelector('.floating-home').classList.add("floating-nav-active");
+        document.querySelector('.floating-home-mobile').classList.add("floating-active-mobile");
+    } else if (location.pathname == "/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu/resep-sahur"){
+        document.querySelector('.floating-sahur').classList.add("floating-nav-active");
+        document.querySelector('.floating-sahur-mobile').classList.add("floating-active-mobile");
+    } else if (location.pathname == "/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu/resep-takjil-manis-tujuh-langkah"){
+        document.querySelector('.floating-takjil').classList.add("floating-nav-active");
+        document.querySelector('.floating-takjil-mobile').classList.add("floating-active-mobile");
+    } else if (location.pathname == "/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu/resep-ramadan-kue-kering-pilihan"){
+        document.querySelector('.floating-kue').classList.add("floating-nav-active");
+        document.querySelector('.floating-kue-mobile').classList.add("floating-active-mobile");
+    } else if (location.pathname == "/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu/tips-spesial-ramadan"){
+        document.querySelector('.floating-tips').classList.add("floating-nav-active");
+        document.querySelector('.floating-tips-mobile').classList.add("floating-active-mobile");
+    } else if (location.pathname == "/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu/promo-spesial-ramadan"){
+        document.querySelector('.floating-promo').classList.add("floating-nav-active");
+        document.querySelector('.floating-promo-mobile').classList.add("floating-active-mobile");
+    }
+    
+    if(document.querySelector('.floating-active-mobile').previousElementSibling){
+        document.querySelector('.floating-active-mobile').previousElementSibling.style.borderRight = "0 solid white";
+    }
+});
+</script>

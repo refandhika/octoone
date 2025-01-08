@@ -1,0 +1,82 @@
+description = "Layour for Sustainability Sehat Page"
+
+[staticPage]
+useContent = 1
+default = 0
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('sustainability/sustainability-selaras-limbah-amp');
+    }
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp banner-lp" style="background:url({{ 'sustainability/selaras/Manajemen_Limbah-100.jpg'|media  }})">
+    	<div class="container">
+        	<div class="banner-panel">
+        	    <div class="banner-description">
+        			<h2>Manajemen<br>Limbah</h2>
+        		</div>
+        	</div>
+    	</div>
+    </div>
+</div>
+
+
+<div class="section">
+    <div id='main-section' class="container sustainability-pages">
+        <div class="row">
+            
+            <div class="col-md-12 top-copy">
+            <p class="description">Tata kelola limbah menjadi program yang sangat penting dalam upaya menjaga kelestarian lingkungan dan memastikan masa depan tanah dan air bagi generasi yang akan datang, tak terkecuali dalam menjalankan bisnis perusahaan. Untuk itu, sejak 20 tahun lalu, Frisian Flag Indonesia telah melakukan tata kelola limbah yang baik dan benar, dan terus meningkatkan upaya tersebut tiap tahunnya.</p>
+            
+            </div>
+            <div class="col-md-12 top-copy">
+            <div class="tab-links">
+                <a href="#" class="active" onclick="return false;">Manajemen Limbah</a>
+               <a href="{{ 'paper-straw' | page }}">Sedotan Kertas</a>
+            </div>
+            </div>
+            <div class="col-md-12 top-copy">
+  
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="grid-box">
+                           <img src="{{ 'sustainability/selaras/Asset_17.png'|media  }}">
+                        </div>
+                        <a href="https://www.frisianflag.com/milkpedia/nutrisi-dan-kesehatan/hal-hal-kecil-yang-bisa-kamu-lakukan-untuk-lingkungan">
+                        <div class="grid-box">
+                            
+                            <div class="box-article">
+                                <img src="{{ 'sustainability/selaras/Asset_13.png'|media  }}"/>
+                                <div class="article-description">
+                                    <div class="box-hd valign-middle">
+                                    <div class="gb-overlay"></div>
+                                    <h3 style="color:#FFF;text-transform:inherit;">Hal-Hal Kecil Yang Bisa Kamu Lakukan Untuk Lingkungan</h3>
+                                    </div>
+                                    <span style="" class="button p-absolute">Baca Artikel</span>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        </a>
+                    </div>
+                    
+                </div>
+  
+            </div>
+        </div>
+    </div>
+        
+</div>
+<link rel="stylesheet" href="{{ 'assets/css/sustainability.css'|theme }}?v=1.1">
+
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

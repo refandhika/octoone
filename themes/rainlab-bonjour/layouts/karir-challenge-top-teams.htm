@@ -1,0 +1,129 @@
+description = "Layout for karir challenge top teams"
+
+[staticPage]
+useContent = 1
+default = 0
+
+[subscriberform]
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "all"
+
+[SessionClose]
+load_js = 1
+==
+{% partial 'site/header-karir' %}
+
+	<section>
+
+  	<div class="static-baner-pages">
+    	<div class="imgwrp hidden-xs"><img src="{{ 'assets/img/karir/campus-challenge.jpeg'|theme }}" alt="Campus Challenge Desktop"></div>
+    	<div class="imgwrp visible-xs"><img src="{{ 'assets/img/karir/campus-challenge-mobile.jpg'|theme }}" alt="Campus Challenge Mobile"></div>
+   	</div>
+		<div class="container-menutab">
+			<div class="container-one">
+				<ul class="menutab-full">
+					<li class="toggle visible-xs visible-sm">
+						<a href="javascript:;" class="active">The Winner</a>
+					</li>
+					
+					<li>
+					    <a href="{{ '/karir/FFCC2019/about' }}"><img class="icon--" src="{{ 'assets/img/karir/about.svg'|theme }}" alt="About" >About</a>
+					</li>
+					
+					<li>
+						<a href="{{ '/karir/FFCC2019/how-to-join' }}"><img class="icon--" src="{{ 'assets/img/karir/how-to-join.svg'|theme }}" alt="Prizes" >How to Join</a>
+					</li>
+					
+					<li>
+						<a href="{{ '/karir/FFCC2019/prizes' }}"><img class="icon--" src="{{ 'assets/img/karir/prizes.svg'|theme }}" alt="Prizes" >Prizes</a>
+					</li>
+					
+					<li>
+						<a href="{{ '/karir/FFCC2019/the-winner' }}" class="active"><img class="icon--" src="{{ 'assets/img/karir/teams.svg'|theme }}" alt="Top 5 Teams" >The Winner</a>
+					</li>
+					
+					<li>
+						<a href="{{ '/karir/FFCC2019/faq' }}"><img class="icon--" src="{{ 'assets/img/karir/faq.svg'|theme }}" alt="Faq">FAQ</a>
+					</li>
+				
+				</ul>
+			</div>
+		</div>
+		
+	<div class="container-fluid view view-md view-sm">
+		<h1 style="display: none;">The Winner Of FFCC 2019 | Frisian Flag Indonesia| Frisian Flag Indonesia</h1>
+	     <div class="container view text-center">
+	        <!--  
+	        <h1 class="title---"><img class="icon---" src="{{ 'assets/img/karir/teams.svg'|theme }}" alt="About"> Top 5 Teams</h1>
+	        
+	        <h3 style="color:white"><strong>Congratulations for all Frisian Flag Campus Challenge's Top 5 Teams!</strong></h3>
+	                    -->
+	         <div class="row px py">
+	             <div class="col-md-12">
+	                 <h2 style="color: white"><strong>The Winner of FFCC 2019</strong></h2>
+	             </div>
+			<div class="col-sm-6 col-md-3 col-md-offset-2">
+					<img src="{{ 'assets/img/karir/FFCC WINNER.PNG'|theme }}" width="100%" alt="FFCC Winner" />								
+				</div>
+				<div class="col-sm-6" style="margin-top: 20px">
+				    <div>
+					    <img src="{{ 'assets/img/karir/teams/karir-team-04_CARAKA.png'|theme }}" alt="Karir Team 04 Caraka" />	
+					</div>
+					<div>
+					    <h5 style="color:white; text-align: left;line-height: 1.57; font-weight: 700">Caraka Team has successfully completed FFCC 2019 by implementing #SekotakSusuAjaDulu Campaign and entitled to be The Winner of FFCC 2019.</h5>					</div>
+					  
+				</div>
+			</div>
+
+	         <div class="row px py">
+                <div class="col-md-12">
+	                 <h3 style="color: white"><strong>Below The Line Award</strong></h3>
+	             </div>
+			    <div class="col-sm-3 col-md-offset-2">
+					<img src="{{ 'assets/img/karir/FFCC WINNER B.PNG'|theme }}" width="100%" alt="FFCC Winner B" />								
+				</div>
+				<div class="col-sm-6" style="margin-top: 20px">
+				    <div>
+					    <img src="{{ 'assets/img/karir/teams/karir-team-01_PUMBA.png'|theme }}" alt="Karir Team 01 Pumba" />	
+					</div>
+					<div>
+					    <h5 style="color:white; text-align: left; line-height: 1.57; font-weight: 700">Pumba Team has successfully completed FFCC 2019 by implementing #SahabatAktivitasku Campaign. This Special Award is given for their astonishing achievement on activation implementation.</h5>					</div>
+					  
+				</div>
+			</div>
+
+	         <div class="row px py">
+	             <div class="col-md-12">
+	                 <h3 style="color: white"><strong>Social Media Award</strong></h3>
+	             </div>	         
+				<div class="col-sm-3 col-md-offset-2">
+					<img src="{{ 'assets/img/karir/FFCC WINNER C.PNG'|theme }}" width="100%" alt="FFCC Winner C" />								
+				</div>
+				<div class="col-sm-6" style="margin-top: 20px">
+				    <div>
+					    <img src="{{ 'assets/img/karir/teams/karir-team-08_SUBASA.png'|theme }}" alt="Karir Team 08 Subasa" />	
+					</div>
+					<div>
+					    <h5 style="color:white; text-align: left; line-height: 1.57; font-weight: 700">Subasa Team has successfully completed FFCC 2019 by implementing #SatuSusuSebelumKeos Campaign. This Special Award is given for their astonishing achievement on Social Media content implementation.
+                        </h5>
+                    </div>
+					  
+				</div>
+			</div>			
+		
+	       
+	     </div>
+	</div>
+  </section>
+  <style>
+ body{font-family:Brevia-Regular,Helvetica,Arial,sans-serif}.top-menu__list a{color:#0F4D9A}.container-menutab::after,div.container-menutab.container-menutab--five:after{border-bottom:10px solid #00AEEE!important}h1{font-family:Brevia-Black,Helvetica,Arial,sans-serif}.container-menutab ul a.active::after,.container-menutab::after{color:#00AEEE}.view{background:#00AEEE}.container-menutab{margin-bottom:0}.py{padding-top:30px;padding-bottom:30px}.px{padding-right:30px;padding-left:30px}.icon--{margin-top:-3px;margin-right:20px;width:25px}.icon---{margin-top:-10px;margin-right:5px;width:45px}.container-fluid.view{background-image:url("{{ 'assets/img/karir/teams/BG_element.svg'|theme }}");background-repeat:no-repeat;background-position-y:100%;background-size:cover}.container.view{background-color:transparent;margin-top:35px;margin-bottom:100px}.order{margin-top:15px;margin-left:44px}.title--{display:inline;position:relative;top:-16px}.number--,.sub-p--{display:inline-block}.title---{margin-top:45px;margin-bottom:40px}.title--,.title---{font-size:40px;font-weight:700;color:#0F4D9A}.order,.p--,.sub-p--{color:#FFF;font-size:17px;text-align:justify}.p--{margin-left:10px;margin-top:5px}.sub-p--{margin-top:-24px;margin-left:26px}.number-{margin-bottom:15px}.number--{width:25px;line-height:25px;border-radius:50%;text-align:center;font-size:16px;font-weight:700;color:#0F4D9A;background-color:#FFF;margin-right:10px}.p---{display:inline;color:#FFF;font-size:17px}@media (max-width:768px){.container-fluid.view{background-image:none}.container.view{margin-bottom:25px}.p---{text-align:justify;display:block;color:#FFF;margin:-21px 0 0 30px}.icon---{margin-bottom:20px}.title---{margin-bottom:30px}.icon--{margin-top:-3px;margin-right:15px;width:17px}.icon---{margin-left:0;margin-top:10px;width:35px}.view-sm{padding:0;margin-top:-20px}.title--,.title---{font-size:22px}.number--,.p--,.p---,.sub-order,.sub-p--{font-size:14px}.title--{display:inherit;margin-top:-52px;margin-left:50px}.order{margin-top:10px;margin-left:30px}.number-{margin-bottom:10px}.number--{display:inline-block;width:20px;line-height:20px}.p--{margin-left:0}.sub-p--{margin-top:-22px}}
+  </style>
+
+{% partial 'site/footer-karir' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

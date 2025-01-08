@@ -1,0 +1,50 @@
+fields:
+    title:
+        label: Title
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    frisian:
+        label: 'Frisan Flag'
+        oc.commentPosition: ''
+        prompt: 'Add new item'
+        span: full
+        type: repeater
+        form:
+            fields:
+                vision:
+                    label: Vision (id)
+                    size: ''
+                    oc.commentPosition: ''
+                    span: full
+                    type: richeditor
+                vision_en:
+                    label: Vision (en)
+                    size: ''
+                    oc.commentPosition: ''
+                    span: full
+                    type: richeditor
+                mission:
+                    label: Mission (id)
+                    size: ''
+                    oc.commentPosition: ''
+                    span: full
+                    type: richeditor
+                mission_en:
+                    label: Mission (en)
+                    size: ''
+                    oc.commentPosition: ''
+                    span: full
+                    type: richeditor
+                coec:
+                    label: 'Code of Ethic for Company (id)'
+                    size: ''
+                    oc.commentPosition: ''
+                    span: full
+                    type: richeditor
+                coec_en:
+                    label: 'Code of Ethic for Company (en)'
+                    size: ''
+                    oc.commentPosition: ''
+                    span: full
+                    type: richeditor

@@ -1,0 +1,18 @@
+fields:
+    title:
+        label: Title
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    file_upload:
+        label: 'File Upload'
+        oc.commentPosition: ''
+        mode: file
+        span: auto
+        type: mediafinder
+    published_date:
+        label: 'Published Date'
+        oc.commentPosition: ''
+        mode: datetime
+        span: auto
+        type: datepicker

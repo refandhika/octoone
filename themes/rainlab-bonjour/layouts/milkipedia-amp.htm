@@ -1,0 +1,246 @@
+description = "Layout for AMP Milkpedia Archive"
+
+[staticPage]
+useContent = 1
+default = 0
+
+[milkpediaList]
+
+[milkpediaCategories]
+
+[subscriberform]
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "all"
+
+[SessionClose]
+load_js = 1
+==
+<?php
+function onEnd(){
+    $this['ResultCode'] = Definite\Milkpedia\Models\Milkpedia::orderBy('updated_at', 'desc')->limit(3)->get(); 
+     $this['nutrisilists'] = Definite\Milkpedia\Models\Milkpedia::leftJoin('definite_milkpedia_posts_categories', 'definite_milkpedia_posts_categories.milkpedia_id', '=', 'definite_milkpedia_post.id')->where('category_id',1)->orderBy('updated_at', 'desc')->limit(4)->get(); 
+    $this['manfaatlists'] = Definite\Milkpedia\Models\Milkpedia::leftJoin('definite_milkpedia_posts_categories', 'definite_milkpedia_posts_categories.milkpedia_id', '=', 'definite_milkpedia_post.id')->where('category_id',2)->orderBy('updated_at', 'desc')->limit(4)->get(); 
+    $this['caraminumlists'] = Definite\Milkpedia\Models\Milkpedia::leftJoin('definite_milkpedia_posts_categories', 'definite_milkpedia_posts_categories.milkpedia_id', '=', 'definite_milkpedia_post.id')->where('category_id',3)->orderBy('updated_at', 'desc')->limit(4)->get(); 
+}
+?>
+==
+{% partial 'site/header-basic-amp' %}
+
+
+<!-- modal -->
+
+
+    <amp-lightbox id="ecom-lightbox" layout="nodisplay">
+      <div class="lightbox-sustain" role="button" tabindex="0">
+          <div class="amp-modal-wrapper-ecom">
+              <h2 class="amp-modal-ecom-title">Temukan Product Kami di:</h2>
+              <div class="amp-modal-ecom-list">
+                <a class="amp-modal-ecom-btn" href="https://www.tokopedia.com/frisian-flag?utm_source=others&utm_medium=brand&utm_campaign=ao_frisianflag_221121_311222" target="_blank">
+                    tokopedia
+                </a>
+                <a class="amp-modal-ecom-btn" href="https://shopee.co.id/frisianflagofficial" target="_blank">
+                    shopee
+                </a>                
+                <a class="amp-modal-ecom-btn" href="https://www.lazada.co.id/shop/frisian-flag/" target="_blank">
+                    Lazada
+                </a>
+                <a class="amp-modal-ecom-btn" href="https://www.bukalapak.com/frisian-flag-official-store-official" target="_blank">
+                    Bukalapak
+                </a>
+                <a class="amp-modal-ecom-btn" href="https://www.klikindomaret.com/page/frisian-flag-official-store" target="_blank">
+                    Klikindomaret
+                </a>
+
+
+                
+              </div>
+              <button class="close" on="tap:ecom-lightbox.close">X</button>
+          </div>
+      </div>
+    </amp-lightbox> 
+
+<div class="cover">
+    <amp-img 
+        src="{{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }}"
+        srcset="{{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }} 640w,
+               {{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }} 320w"
+        width="50"
+        height="50"
+        layout="responsive"
+        alt="an image">
+    </amp-img>
+</div>
+
+<amp-accordion class="title_home">
+    <section>
+      <h4 class="arrow_down"><a href="#" target="_self">Milkpedia</a></h4>
+      <p>
+          <a href="{{ 'our-milkpedia-amp'|page({ "slug": "nutrisi-dan-kesehatan" }) }}" target="_self"> {{'nutrisi-dan-kesehatan'|_}}</a>
+          <a href="{{ 'our-milkpedia-amp'|page({ "slug": "manfaat-minum-susu" }) }}" target="_self">{{'manfaat-minum-susu'|_}}</a>
+          <a href="{{ 'our-milkpedia-amp'|page({ "slug": "kapan-dan-bagaimana-cara-minum-susu" }) }}" target="_self">{{'kapan-dan-bagaimana-cara-minum-susu'|_}}</a>
+          <a href="{{ 'our-milkpedia-faq-amp'|page }}">FAQ</a>
+      </p>
+    </section>
+</amp-accordion>
+
+<div class="breadcrumb">
+    <a href="{{ 'home' | page }}">{{'beranda'|_}}</a> /
+    <a href="#">{{ trans_pick(page, 'title')|raw }}</a>
+</div>
+
+
+
+<div class="detail_text">
+    {% page %}    
+</div>
+<div class="banner-wrapper-amp">    
+        <div class="wrapper-ecom">
+            
+            <div class="wrapper-ecom-2">
+                <h4 class="ecom-title">Sedia Frisian Flag Pilihanmu Sekarang</h4>
+                <amp-img  src="{{ 'button-ecommerce.png' | media }}" height="25" width="100" on="tap:ecom-lightbox" role="button" tabindex="0"/>
+            </div>
+        </div> 
+</div>
+
+
+<!-- s:artikel terbaru -->
+<div class="title_page">Artikel Terbaru</div>
+
+{% if milkpediaList.records %}
+{% set milkpedias = milkpediaList.records.take(3) %}
+{% for milkpediaPost in ResultCode %}
+<div class="list">
+    <div class="img">
+      <amp-img 
+          src="{{ milkpediaPost.featured_image | mediathumb_resize('width', 640, 90)  }}"
+          srcset="{{ milkpediaPost.featured_image | mediathumb_resize('width', 640, 90)  }} 640w,
+                 {{ milkpediaPost.featured_image | mediathumb_resize('width', 640, 90)  }} 320w"
+          width="160"
+          height="90"
+          layout="responsive"
+          alt="an image">
+      </amp-img>
+    </div>
+    <div class="info">
+      <span class="label">MILKPEDIA</span>
+      | | {{ milkpediaPost.updated_at.format('d M Y') }}
+    </div>
+    <a href="{{ 'our-milkpedia-amp-single'|page({"category-slug": milkpediaPost.categories.first().slug, "slug": milkpediaPost.slug}) }}" target="_self"><h3>{{ trans_pick(milkpediaPost, 'title')|raw }}</h3></a>
+    <p>{{ trans_pick(milkpediaPost, 'excerpt')|raw }}</p>
+    <a href="{{ 'our-milkpedia-amp-single'|page({"category-slug": milkpediaPost.categories.first().slug, "slug": milkpediaPost.slug}) }}" target="_self" class="btn_more">LEBIH LANJUT</a>
+</div>    
+{% endfor %}
+{% endif %}
+<!-- e:section list -->
+
+<!-- s:section list -->
+<div class="title_page">{{'nutrisi-dan-kesehatan'|_}}</div>
+{% if milkpediaList.nutrisi  %}
+{% set milkpedias = milkpediaList.nutrisi.take(4) %}
+{% for milkpediaPost in nutrisilists %}
+<div class="list2">
+    <div class="img">
+      <amp-img 
+          src="{{ milkpediaPost.featured_image | mediathumb_resize('width', 640, 90)  }}"
+          srcset="{{ milkpediaPost.featured_image | mediathumb_resize('width', 640, 90)  }} 640w,
+                 {{ milkpediaPost.featured_image | mediathumb_resize('width', 640, 90)  }} 320w"
+          width="160"
+          height="90"
+          layout="responsive"
+          alt="an image">
+      </amp-img>
+    </div>
+    <div class="text">
+      <div class="info">
+        <span class="label">MILKPEDIA</span>
+        {{milkpediaPost.updated_at|date('d M Y')}}
+      </div>
+      <a href="{{ 'our-milkpedia-amp-single'|page({"category-slug": milkpediaPost.categories.first().slug, "slug": milkpediaPost.slug}) }}" target="_self"><h3>{{trans_pick(milkpediaPost, 'title')|raw}}</h3></a>
+    </div>
+    <div class="clearfix"></div>
+</div>
+{% endfor %}
+<div align="center">
+  <a href="{{ 'our-milkpedia-amp'|page({ "slug": "nutrisi-dan-kesehatan" }) }}" target="_self" class="btn_more">{{'lihat-semua-artikel'|_}}</a>
+</div>
+{% endif %}
+<!-- end Nutrisi and Kesehatan -->
+<!-- e:section list -->
+
+<!-- s:section list -->
+<div class="title_page">{{'manfaat-minum-susu'|_}}</div>
+{% if milkpediaList.susu  %}
+{% set milkpedias = milkpediaList.susu.take(4) %}
+{% for milkpediaPost in manfaatlists %}
+<div class="list2">
+    <div class="img">
+      <amp-img 
+          src="{{ milkpediaPost.featured_image | mediathumb_resize('width', 640, 90)  }}"
+          srcset="{{ milkpediaPost.featured_image | mediathumb_resize('width', 640, 90)  }} 640w,
+                 {{ milkpediaPost.featured_image | mediathumb_resize('width', 640, 90)  }} 320w"
+          width="160"
+          height="90"
+          layout="responsive"
+          alt="an image">
+      </amp-img>
+    </div>
+    <div class="text">
+      <div class="info">
+        <span class="label">MILKPEDIA</span>
+        {{milkpediaPost.updated_at|date('d M Y')}}
+      </div>
+      <a href="{{ 'our-milkpedia-amp-single'|page({"category-slug": milkpediaPost.categories.first().slug, "slug": milkpediaPost.slug}) }}" target="_self"><h3>{{trans_pick(milkpediaPost, 'title')|raw}}</h3></a>
+    </div>
+    <div class="clearfix"></div>
+</div>
+{% endfor %}
+<div align="center">
+  <a href="{{ 'our-milkpedia-amp'|page({ "slug": "manfaat-minum-susu" }) }}" target="_self" class="btn_more">{{'lihat-semua-artikel'|_}}</a>
+</div>
+{% endif %}
+<!-- end Manfaat Minum Susu -->
+<!-- e:section list -->
+
+<!-- s:section list -->
+<div class="title_page">{{'kapan-dan-bagaimana-cara-minum-susu'|_}}</div>
+{% if milkpediaList.cara_minum_susu  %}
+{% set milkpedias = milkpediaList.cara_minum_susu.take(4) %}
+{% for milkpediaPost in caraminumlists %}
+<div class="list2">
+    <div class="img">
+      <amp-img 
+          src="{{ milkpediaPost.featured_image | mediathumb_resize('width', 640, 90)  }}"
+          srcset="{{ milkpediaPost.featured_image | mediathumb_resize('width', 640, 90)  }} 640w,
+                 {{ milkpediaPost.featured_image | mediathumb_resize('width', 640, 90)  }} 320w"
+          width="160"
+          height="90"
+          layout="responsive"
+          alt="an image">
+      </amp-img>
+    </div>
+    <div class="text">
+      <div class="info">
+        <span class="label">MILKPEDIA</span>
+        {{milkpediaPost.updated_at|date('d M Y')}}
+      </div>
+      <a href="{{ 'our-milkpedia-amp-single'|page({"category-slug": milkpediaPost.categories.first().slug, "slug": milkpediaPost.slug}) }}" target="_self"><h3>{{trans_pick(milkpediaPost, 'title')|raw}}</h3></a>
+    </div>
+    <div class="clearfix"></div>
+</div>
+{% endfor %}
+<div align="center">
+  <a href="{{ 'our-milkpedia-amp'|page({ "slug": "kapan-dan-bagaimana-cara-minum-susu" }) }}" target="_self" class="btn_more">{{'lihat-semua-artikel'|_}}</a>
+</div>
+{% endif %}
+<!-- end Kapan &amp; Bagaimana Cara Minum Susu -->
+<!-- e:section list -->
+
+{% partial 'site/footer-amp' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

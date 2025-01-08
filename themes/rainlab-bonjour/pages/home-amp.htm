@@ -1,0 +1,130 @@
+title = "Home-amp"
+url = "/amp/home"
+layout = "home-amp-alt"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/home-amp"
+
+[milkpediaList]
+
+[milkpediaCategories]
+
+[NewsCategories]
+
+[NewsList]
+
+[productCategories]
+
+[staticPage]
+useContent = 1
+default = 0
+==
+<div class="menus-amp">
+        <div class="menu-amp">
+            <amp-img src="http://frisianflag.nuedev.com/themes/rainlab-bonjour/assets/img/logo.png" width="80" height="80"></amp-img>
+            <a class="menu-amp-action" on="tap:sidebar-left.toggle">
+                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" class="svg-inline--fa fa-bars fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg>
+            </a>
+        </div>
+        <div id="target-element-left">
+        </div>
+    </div>
+
+    <div class="carousel-container t">
+        <amp-carousel width="360" height="480" layout="responsive" type="slides" class="amp-slider-costum" on="slideChange:AMP.setState({selected: {slide: event.index}})">
+            {% for slider in sliders %}
+                <div>
+                    <amp-img class="carousel-slider-img" src="{{ url(slider.image_mobile|media) }}"  width="280" height="480" layout="responsive"></amp-img>
+                </div>
+            {% endfor %}
+        </amp-carousel>
+        <div class="caraousel-dots">
+            {% for slider in sliders %}
+                <span [class]="selected.slide == 0 ? 'current' : ''"></span>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="home-amp-container">
+       <amp-carousel width="300" height="300" layout="responsive" type="slides" class="amp-carousel-costum" on="slideChange:AMP.setState({selectedMenu: {slide: event.index}})">
+             {% for category in productCategories.featured %}
+                    <div class="carousel-child">
+                        <amp-img class="carousel-img" src="{{ category.featured_image| mediathumb_resize('width', 350, 90)  }}" width="280" height="280" layout="responsive"></amp-img>
+                        <div class="carousel-header title-blue">
+                            <h3>{{ category.title }}</h3>
+                            <a class="button-amp" href="{{ 'our-products-archive'|page({'slug': category.slug}) }}">Selengkapnya</a>
+                        </div>
+                    </div>
+            {% endfor %}
+        </amp-carousel>
+
+        <br />
+
+        <div class="card-amp-container">
+            <div class="card-amp">
+                <amp-img class="card-amp-img" src="http://frisianflag.nuedev.com/storage/app/media/_mediathumbs/jan-bekerja-cerdas-demi-liburan-berkualitas-ad27aa637f697c4b583a35f5f66e86fa.jpg" width="300" height="300" layout="responsive"></amp-img> 
+                <a href="http://frisianflag.nuedev.com/milkpedia/nutrisi-dan-kesehatan" class="card-amp-category">Milkpedia</a>
+                <div class="card-amp-meta">
+                    <header class="card-amp-head">
+                        <h3>Bekerja Cerdas Demi Liburan Berkualitas</h3>
+                    </header>
+                    <a class="button-amp" href="http://frisianflag.nuedev.com/milkpedia/nutrisi-dan-kesehatan/bekerja-cerdas-demi-liburan-berkualitas">Lebih Lanjut</a>
+                </div>
+            </div>
+
+            <div class="card-amp">
+                <amp-img class="card-amp-img" src="http://frisianflag.nuedev.com/storage/app/media/_mediathumbs/cropped-images-panen-rw-09-gedong2-0-0-0-0-1548139854-907b9951c9b04240f1669784a6b15bf6.jpeg" width="300" height="300" layout="responsive"></amp-img> 
+                <a href="http://frisianflag.nuedev.com/milkpedia/nutrisi-dan-kesehatan" class="card-amp-category">Berita</a>
+                <div class="card-amp-meta">
+                    <header class="card-amp-head">
+                        <h3>Penghijauan dan Kemandirian Ekonomi Warga Melalui Budidaya Hidroponik</h3>
+                    </header>
+                    <a class="button-amp" href="http://frisianflag.nuedev.com/milkpedia/nutrisi-dan-kesehatan/bekerja-cerdas-demi-liburan-berkualitas">Lebih Lanjut</a>
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <h2 class="section-amp-title">AKTIVITAS KAMI</h2>
+
+        <div class="card-amp-container">
+            <div class="card-amp">
+                <amp-img class="card-amp-img" src="{{ 'assets/img/activities/3.jpg'|theme }}" width="300" height="300" layout="responsive"></amp-img> 
+                <div class="card-amp-meta">
+                    <header class="card-amp-head">
+                        <h3>4 Persiapan Berkemah Bersama Keluarga</h3>
+                    </header>
+                    <a href="/milkpedia/nutrisi-dan-kesehatan/bekerja-cerdas-demi-liburan-berkualitas" class="button-amp">Lebih Lanjut</a>
+                </div>
+            </div>
+    
+            <div class="card-amp">
+                <amp-img class="card-amp-img" src="{{ 'assets/img/activities/4.jpg'|theme }}" width="300" height="300" layout="responsive"></amp-img> 
+                <div class="card-amp-meta">
+                    <header class="card-amp-head">
+                        <h3>#Gerakan <br/>Nusantara</h3>
+                    </header>
+                    <a href="/milkpedia/nutrisi-dan-kesehatan/bekerja-cerdas-demi-liburan-berkualitas" class="button-amp">Lebih Lanjut</a>
+                </div>
+            </div>
+            
+            <div class="card-amp">
+                <amp-img class="card-amp-img" src="{{'assets/img/activities/5.jpg'|theme }}" width="300" height="300" layout="responsive"></amp-img> 
+                <div class="card-amp-meta">
+                    <header class="card-amp-head">
+                        <h3>#Ibu&Balita</h3>
+                    </header>
+                    <a href="/milkpedia/nutrisi-dan-kesehatan/bekerja-cerdas-demi-liburan-berkualitas" class="button-amp">Lebih Lanjut</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<amp-script script="btn-obs" layout="responsive" height="300" width="300" data-ampdevmode>
+</amp-script>
+
+<script id="btn-obs" type="text/plain" target="amp-script">
+console.log('here')
+</script>

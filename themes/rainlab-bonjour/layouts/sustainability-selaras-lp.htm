@@ -1,0 +1,69 @@
+description = "Layour for Sustainability Sehat Page"
+
+[staticPage]
+useContent = 1
+default = 0
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('sustainability/sustainability-selaras-amp');
+    }
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp banner-lp" style='background:url({{ 'sustainability/selaras/BannerAsset_8-100.jpg'|media  }})'>
+        <div class="container">
+        	<div class="banner-panel">
+        	    <div class="banner-description">
+        			<h2>Mewujudkan <br>Indonesia <br>Selaras</h2>
+        		</div>
+        	</div>
+    	</div>
+    </div>
+</div>
+
+
+
+<div class="section">
+    <div id='main-section' class="container sustainability-pages">
+        <div class="row">
+            <div class="col-md-12 top-copy">
+            <p class="description">Melalui upaya penghematan dan terobosan di beberapa bidang, Frisian Flag Indonesia berharap bisa tetap selaras menjaga keberlangsungan energi dan pelestarian bumi di masa depan.</p>
+            
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-sm-4 col-sm-offset-2">
+            
+                <a href="{{ 'sustainability/sustainability-selaras-energi-lp' | page }}">
+                    <div class="box selaras" style='background:url({{ 'sustainability/selaras/Asset--6-100.jpg'|media  }})' >
+                        <div class="box-title">
+                            <h3>Efisiensi Energi dan Air</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <a href="{{ 'sustainability/sustainability-selaras-limbah-lp' | page }}">
+                    <div class="box selaras" style='background:url({{ 'sustainability/manaj-limbah-100.jpg'|media  }})' >
+                        <div class="box-title">
+                            <h3>Manajemen Limbah</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            
+            
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="{{ 'assets/css/sustainability.css'|theme }}?v=1">
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

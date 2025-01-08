@@ -1,0 +1,25 @@
+fields:
+    title:
+        label: Title
+        span: left
+        type: text
+    day:
+        label: Day
+        span: right
+        type: number
+    resep:
+        label: Resep
+        nameFrom: name
+        descriptionFrom: description
+        list: $/definite/activities/models/activity/columns.yaml
+        span: left
+        type: recordfinder
+    image:
+        label: Image
+        mode: image
+        span: auto
+        type: mediafinder
+    link:
+        label: Link
+        span: left
+        type: text

@@ -1,0 +1,10 @@
+name: Userlog
+form: $/definite/userlog/models/userlog/fields.yaml
+modelClass: Definite\UserLog\Models\Userlog
+defaultRedirect: definite/userlog/userlog
+create:
+    redirect: 'definite/userlog/userlog/update/:id'
+    redirectClose: definite/userlog/userlog
+update:
+    redirect: definite/userlog/userlog
+    redirectClose: definite/userlog/userlog

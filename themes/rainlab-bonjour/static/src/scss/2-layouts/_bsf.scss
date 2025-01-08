@@ -1,0 +1,82 @@
+.bsf {
+  // Flag
+  &__flag {
+    padding: 50px 20px;
+    min-height: 350px;
+
+    > p {
+      font-size: 120%;
+    }
+  }
+
+  // Timeline
+  &__timeline {
+    // Vector and Image height
+    &-vector,
+    &-image {
+      @media (min-width: $screen-md) {
+        height: 300px;
+      }
+    }
+
+    // Vector after image
+    &-image + &-vector {
+      @media (min-width: $screen-md) {
+        padding-top: 50px;
+      }
+    }
+
+    // Image
+    &-image {
+      @media (min-width: $screen-md) {
+        padding-top: 25%;
+      }
+      box-sizing: border-box;
+
+      .thumbnail {
+        background-color: white;
+        width: 125px;
+        height: 125px;
+        text-align: center;
+        margin: auto;
+        border-radius: 5px;
+        border: 1px solid rgba(black, .25);
+      }
+    }
+
+    // Title
+    &-title {
+      margin-top: 20px;
+      font-size: 125%;
+    }
+  }
+
+  // Footer
+  &__footer {
+    padding: 30px;
+
+    // Half
+    &-half {
+      padding: 60px;
+      box-sizing: border-box;
+    }
+    // Image
+    &-image {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: bottom center;
+      background-image: url('../img/cards/5.png');
+    }
+
+    // H3
+    h3 {
+      color: white;
+      font-size: 3.5vw;
+    }
+
+    h3 + p {
+      font-size: 150%;
+    }
+  }
+
+}

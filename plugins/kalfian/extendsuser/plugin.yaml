@@ -1,0 +1,6 @@
+plugin:
+    name: 'kalfian.extendsuser::lang.plugin.name'
+    description: 'kalfian.extendsuser::lang.plugin.description'
+    author: Kalfian
+    icon: oc-icon-users
+    homepage: ''

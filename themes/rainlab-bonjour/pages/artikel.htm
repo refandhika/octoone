@@ -1,0 +1,31 @@
+title = "Artikel"
+url = "/karir/artikel/:slug"
+layout = "karir-article-slug"
+is_hidden = 0
+
+
+[builderDetails artikel]
+modelClass = "Leverate\Careers\Models\Article"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+==
+<?php
+function onEnd() {
+    // get the post component
+    $_title = $this->page->components["artikel"]->record->attributes["title"];
+    $desc   = $this->page->components["artikel"]->record->attributes["meta_description"];
+    $keys   = $this->page->components["artikel"]->record->attributes["meta_keywords"];
+    $img    = $this->page->components["artikel"]->record->attributes["thumb_img"];
+        
+    $this->page->title            = $_title;
+    $this->page->meta_description = $desc;
+    $this->page->meta_keywords    = $keys;
+    $this->og_description         = $desc;
+    $this->og_image               = $img;
+    $this->page->amp_url = $this->pageUrl('karir-artikel-detail-amp');
+   
+}
+?>
+==

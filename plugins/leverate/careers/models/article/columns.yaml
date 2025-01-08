@@ -1,0 +1,18 @@
+columns:
+    title:
+        label: Judul
+        type: text
+        searchable: true
+        sortable: true
+    is_enabled:
+        label: 'Status Tampil'
+        type: text
+        searchable: true
+        sortable: true
+        select: title
+        relation: status
+    created_at:
+        label: Dibuat
+        type: datetime
+        searchable: true
+        sortable: true

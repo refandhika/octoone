@@ -1,0 +1,11 @@
+list: $/definite/ourpurposes/models/program/columns.yaml
+modelClass: Definite\Ourpurposes\Models\Program
+title: Program
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'definite/ourpurposes/program/update/:id'

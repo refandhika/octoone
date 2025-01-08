@@ -1,0 +1,11 @@
+plugin:
+    name: 'definite.translation::lang.plugin.name'
+    description: 'definite.translation::lang.plugin.description'
+    author: Definite
+    icon: oc-icon-language
+    homepage: ''
+navigation:
+    translation:
+        label: 'definite.translation::lang.plugin.name'
+        url: definite/translation/messages
+        icon: icon-language

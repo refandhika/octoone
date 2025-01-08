@@ -1,0 +1,69 @@
+title = "Siap Puasa"
+url = "/siappuasa"
+is_hidden = 0
+role = 0
+permission = 0
+anonymous_only = 0
+logged_only = 0
+
+[viewBag]
+localeUrl[en] = "/siap-puasa"
+==
+<?php
+function onStart(){
+    $this->page->amp_url = $this->pageUrl('siap-puasa-amp');
+    $this->page->meta_description = "Yuk, bikin resep sahur terbaikmu! Ikuti lomba #SiapPuasa bersama Frisian Flag. Lihat cara mengikutinya di sini.";
+}
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+    	<img src="{{ 'kreasi-takjil.jpg'|media }}" class="hidden-xs" />
+        <img src="{{ 'kreasi-takjil-mobile.jpg'|media  }}" class="visible-xs" />
+    </div>
+</div>
+
+{% partial 'site/siap-puasa-menu' %}
+
+
+<!-- <div class="default-content" style="text-align: center;">
+    <img src="{{ 'cokoperimen/content/cokoperimen-cara-bermain.jpeg'|media  }}" style="width: 50%;">
+</div> -->
+<div id='main-section' class="container" style="padding: 30px 15px;">
+    <h1 style="display: none;">Siap Puasa | Frisian Flag Indonesia</h1>
+    <div class="col-md-12">
+        <div class="default-content">
+             <div class="center-img" style="text-align: center;margin-bottom:10px;">
+                <img src="{{ '/siappuasa/siappuasa_desktop_caramengikuti.jpg'|media  }}" style="" class="hidden-xs">
+                <img src="{{ '/siappuasa/siappuasa_mobile_caramengikuti.jpg'|media  }}" style="" class="visible-xs">
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .default-content h3 {
+        font-size: 22px;
+        line-height: 1.2;
+    }
+
+    @media screen and (min-width: 767px) {
+        .default-content h3 {
+            font-size: 30px;
+        }
+    }
+
+  @media screen and (max-width: 767px) {
+    .m-bottom-15 {
+      margin-bottom: 15px;
+    }
+  }
+</style>
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

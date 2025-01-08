@@ -1,0 +1,209 @@
+title = "Search Result"
+url = "/pencarian/:type?"
+layout = "default"
+is_hidden = 0
+
+[featuredSearch]
+type = "{{ :type }}"
+==
+<?php
+function onStart()
+{
+	// Get query string
+	$qs = request()->input('q');
+	if (!$qs) return Redirect::to('/pencarian?q=no%20result');
+
+	$this->page->show_career_link = in_array( strtolower( $qs ), ['lowongan','karir','career']);
+}
+?>
+==
+<h1 aria-hidden="true" class="seo-heading">Hasil Pencarian</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp"><img src="{{ 'assets/img/our-milkpedia.png'|theme }}" alt="Our Milkpedia"/> </div>
+</div>
+
+
+<div id='main-section' class="container" style="padding: 60px 0;">
+    <div class="col-md-12" id="search-app">
+        <div class="default-content">
+	        <form id="form-search" class="searchresult__form" action="{{ 'search' | page }}" method="get">
+				<div class="form-group">
+	  			    <div class="input-group">
+			            <input name="q" id="search-result" type="search" class="form-control" placeholder="Search" value="{{ featuredSearch.getQuery }}">
+			  			<div class="input-group-addon"><button type="button"><i class="fa fa-search" aria-hidden="true"></i></button></div>
+	  			    </div>
+	  			  </div>
+
+				{% if(this.page.show_career_link) %}
+					<a href="https://www.frisianflag.com/karir" title="">
+						<h5 style="margin-top: 25px; margin-bottom: 25px; text-decoration: underline">Mohon kunjungi FF Career page</h5>
+					</a>
+				{% endif %}
+
+				<p>Menampilkan laman dengan kata pencarian <strong>“{{ featuredSearch.getQuery }}”</strong> <br></p>
+
+				<div id="dropdown-search" class="container-menutab row hidden-md hidden-lg">
+					<div class="container-one">
+						<ul>
+							<li class="toggle hidden-lg"><a href="javascript:;" class="active">Pilih Kategori</a></li>
+
+							<li id="semua" {{ featuredSearch.type == '' ? 'class="active"' }}><a href="{{ 'home'|page }}/pencarian/?q={{ featuredSearch.getQuery }}">Semua</a></li>
+						<li id="produk" {{ featuredSearch.type == 'produk' ? 'class="active"' }}><a href="{{ 'home'|page }}/pencarian/produk/?q={{ featuredSearch.getQuery }}">Produk</a></li>
+						<li id="milkpedia" {{ featuredSearch.type == 'milkpedia' ? 'class="active"' }}><a href="{{ 'home'|page }}/pencarian/milkpedia/?q={{ featuredSearch.getQuery }}">Milkpedia</a></li>
+						<li id="aktifitas" {{ featuredSearch.type == 'aktifitas' ? 'class="active"' }}><a href="{{ 'home'|page }}/pencarian/aktifitas/?q={{ featuredSearch.getQuery }}">Aktivitas</a></li>
+						<li id="resep-kami" {{ featuredSearch.type == 'resep-kami' ? 'class="active"' }}><a href="{{ 'home'|page }}/pencarian/resep-kami/?q={{ featuredSearch.getQuery }}">Resep Kami</a></li>
+						<li id="sustainability" {{ featuredSearch.type == 'sustainability' ? 'class="active"' }}><a href="{{ 'home'|page }}/pencarian/sustainability/?q={{ featuredSearch.getQuery }}">Sustainability</a></li>
+						<li id="berita" {{ featuredSearch.type == 'berita' ? 'class="active"' }}><a href="{{ 'home'|page }}/pencarian/berita/?q={{ featuredSearch.getQuery }}">Berita</a></li>
+						<li id="press" {{ featuredSearch.type == 'press' ? 'class="active"' }}><a href="{{ 'home'|page }}/pencarian/press/?q={{ featuredSearch.getQuery }}">Siaran Pers</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="responsiveTabs">
+					<ul id="search-tab" class="nav nav-tabs nav-tabs--50 hidden-xs" role="tablist">
+						<li id="semua" {{ featuredSearch.type == '' ? 'class="active"' }}><a href="{{ 'home'|page }}/pencarian/?q={{ featuredSearch.getQuery }}">Semua</a></li>
+						<li id="produk" {{ featuredSearch.type == 'produk' ? 'class="active"' }}><a href="{{ 'home'|page }}/pencarian/produk/?q={{ featuredSearch.getQuery }}">Produk</a></li>
+						<li id="milkpedia" {{ featuredSearch.type == 'milkpedia' ? 'class="active"' }}><a href="{{ 'home'|page }}/pencarian/milkpedia/?q={{ featuredSearch.getQuery }}">Milkpedia</a></li>
+						<li id="aktifitas" {{ featuredSearch.type == 'aktifitas' ? 'class="active"' }}><a href="{{ 'home'|page }}/pencarian/aktifitas/?q={{ featuredSearch.getQuery }}">Aktivitas</a></li>
+						<li id="resep-kami" {{ featuredSearch.type == 'resep-kami' ? 'class="active"' }}><a href="{{ 'home'|page }}/pencarian/resep-kami/?q={{ featuredSearch.getQuery }}">Resep Kami</a></li>
+						<li id="sustainability" {{ featuredSearch.type == 'sustainability' ? 'class="active"' }}><a href="{{ 'home'|page }}/pencarian/sustainability/?q={{ featuredSearch.getQuery }}">Sustainability</a></li>
+						<li id="berita" {{ featuredSearch.type == 'berita' ? 'class="active"' }}><a href="{{ 'home'|page }}/pencarian/berita/?q={{ featuredSearch.getQuery }}">Berita</a></li>
+						<li id="press" {{ featuredSearch.type == 'press' ? 'class="active"' }}><a href="{{ 'home'|page }}/pencarian/press/?q={{ featuredSearch.getQuery }}">Siaran Pers</a></li>
+					</ul>
+					<div class="tab-content" style="display: block;">
+						<div role="tabpanel" class="tab-pane" style="display: block;">
+
+							<div class="searchresult__wrapper" v-cloak>
+								<h3 class="pull-left">{{'dari-situs'|_}} frisianflag.com ({% verbatim %}{{ total.ff }}{% endverbatim %} Hasil Ditemukan)</h3>
+								{% verbatim %}
+
+								<div class="pull-right"><button type="button" class="btn btn-primary" @click="tabs.isFF = !tabs.isFF"><span class="fa" :class="{ 'fa-minus': tabs.isFF, 'fa-plus': !tabs.isFF }"></span></button></div>
+								<div class="clearfix"></div>
+								
+								<div v-if="tabs.isFF">
+									<!-- Content -->
+									<ul class="list-unstyled" v-if="ffData.length > 0">
+										<li v-for="row in ffData">
+											<div class="searchresult__item">
+												<h4 class="ss-result__title">
+													<a :href="row.url" v-html="row.title"></a></h4>
+											
+												<div class="date">
+													<label class="ss-result__badge uppercase">{{ row.type == 'product' ? 'produk' : (row.type == 'news' ? 'berita' : (row.type == 'activity' ? 'aktivitas' : (row.type == 'press' ? 'siaran pers' : ( row.type == 'resep-kami' ? 'resep kami' : (row.type == 'sustainability' ? 'sustainability' : row.type) )) )) }}</label>
+												</div>
+											
+												<p class="ss-result__text" v-html="row.mainContent"></p>
+												
+												<p class="ss-result__url">
+													<a :href="row.url" class="ss-result__link">Lebih Lanjut →</a>
+												</p>
+											
+											</div>
+											<hr>
+										</li>
+									</ul>
+
+									<div v-if="!ffData.length && !loading.ff">Tidak Ada Data.</div>
+
+									<!-- Loader -->
+									<div class="text-center" v-if="loading.ff">
+										<span class="fa fa-spin fa-spinner"></span> Memuat Data&hellip;
+									</div>
+
+									<div class="text-center" v-if="!loading.ff && (page < Math.ceil(total.ff / 10))">
+										<button type="button" class="button medium" @click="loadFFData(page + 1)">Load More</button>
+									</div>
+								</div>
+
+								{% endverbatim %}
+							</div>
+				
+							{% if featuredSearch.type == '' %}
+							<div class="searchresult__wrapper" v-cloak>
+								<h3 class="pull-left">{{'dari-situs'|_}} ibudanbalita.com ({% verbatim %}{{ total.idb }}{% endverbatim %} Hasil Ditemukan)</h3>
+								{% verbatim %}
+
+								<div class="pull-right"><button class="btn btn-primary" type="button" @click="tabs.isIDB = !tabs.isIDB"><span class="fa" :class="{ 'fa-minus': tabs.isIDB, 'fa-plus': !tabs.isIDB }"></span></button></div>
+								<div class="clearfix"></div>
+
+								<div v-if="tabs.isIDB">
+									<!-- Content -->
+									<ul class="list-unstyled" v-if="idbData.length > 0">
+										<li v-for="row in idbData">
+											<div class="searchresult__item">
+												<h4 class="ss-result__title">
+													<a :href="row.link" target="_blank" v-html="row.title"></a></h4>
+											
+												<p class="ss-result__text" v-html="row.description"></p>
+												
+												<p class="ss-result__url">
+													<a :href="row.link" class="ss-result__link" target="_blank">Lebih Lanjut →</a>
+												</p>
+											
+											</div>
+											<hr>
+										</li>
+									</ul>
+
+									<div v-if="!idbData.length && !loading.idb">Tidak Ada Data.</div>
+
+									<!-- Loader -->
+									<div class="text-center" v-if="loading.idb">
+										<span class="fa fa-spin fa-spinner"></span> Memuat Data&hellip;
+									</div>
+								</div>
+
+								{% endverbatim %}
+							</div>
+							{% endif %}
+				
+							{% if featuredSearch.type == '' %}
+							<div class="searchresult__wrapper" v-cloak>
+								<h3 class="pull-left">{{'dari-situs'|_}} friso.co.id ({% verbatim %}{{ total.friso }}{% endverbatim %} Hasil Ditemukan)</h3>
+								{% verbatim %}
+
+								<div class="pull-right"><button class="btn btn-primary" type="button" @click="tabs.isFRISO = !tabs.isFRISO"><span class="fa" :class="{ 'fa-minus': tabs.isFRISO, 'fa-plus': !tabs.isFRISO }"></span></button></div>
+								<div class="clearfix"></div>
+
+								<div v-if="tabs.isFRISO">
+
+									<!-- Content -->
+									<ul class="list-unstyled" v-if="frisoData.length > 0">
+										<li v-for="row in frisoData">
+											<div class="searchresult__item">
+												<h4 class="ss-result__title">
+													<a :href="row.link" target="_blank" v-html="row.title"></a></h4>
+											
+												<p class="ss-result__text" v-html="row.description"></p>
+												
+												<p class="ss-result__url">
+													<a :href="row.link" class="ss-result__link" target="_blank">Lebih Lanjut →</a>
+												</p>
+											
+											</div>
+											<hr>
+										</li>
+									</ul>
+
+									<div v-if="!frisoData.length && !loading.friso">Tidak Ada Data.</div>
+
+									<!-- Loader -->
+									<div class="text-center" v-if="loading.friso">
+										<span class="fa fa-spin fa-spinner"></span> Memuat Data&hellip;
+									</div>
+
+								</div>
+
+								{% endverbatim %}
+							</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+
+			</form>
+        </div>
+    </div>
+</div>
+<script>var queryString = '{{ featuredSearch.getQuery }}';</script>

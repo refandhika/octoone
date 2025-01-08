@@ -1,0 +1,45 @@
+description = "Layout for Search New"
+
+[staticPage]
+
+[searchResults]
+resultsPerPage = 10
+showProviderBadge = 0
+noResultsMessage = "Your search did not return any results."
+visitPageMessage = "Visit page"
+[subscriberform]
+[account]
+paramCode = "code"
+forceSecure = 0
+[session]
+
+[SessionClose]
+load_js = 1
+==
+
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title') }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp"><img src="{{ 'assets/img/our-milkpedia.png'|theme }}" alt="Our Milkpedia"/> </div>
+</div>
+
+<div id='main-section' class="container" style="padding: 60px 0;">
+    <div class="col-md-12">
+        <div class="default-content">
+
+        <form action="{{ 'search' | page }}" method="get">
+            <input name="q" type="text" placeholder="What are you looking for?" autocomplete="off">
+            <button type="submit">Search</button>
+        </form>
+            <p>{{'menampilkan'|_}} <span id="total">0</span> {{'laman-dengan-kata-pencarian'|_}} <strong>“{{ searchResults.query }}”</strong></p>
+
+            {% component 'searchResults' %}
+        </div>
+    </div>
+</div>
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

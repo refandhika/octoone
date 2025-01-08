@@ -1,0 +1,11 @@
+list: $/definite/products/models/category/columns.yaml
+modelClass: Definite\Products\Models\Category
+title: Category
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'definite/products/category/update/:id'

@@ -1,0 +1,71 @@
+tabs:
+    fields:
+        title:
+            label: Judul
+            span: left
+            required: 1
+            type: text
+            tab: 'Informasi Detail'
+        slug:
+            label: Slug
+            span: auto
+            preset:
+                field: title
+                type: slug
+            type: text
+            tab: 'Informasi Detail'
+        status:
+            label: 'Status Tampil'
+            nameFrom: title
+            descriptionFrom: description
+            select: title
+            span: left
+            type: relation
+            tab: 'Informasi Detail'
+        excerpt:
+            label: Excerpt
+            size: small
+            span: full
+            required: 1
+            type: richeditor
+            tab: 'Informasi Detail'
+        description:
+            label: Deskripsi
+            size: huge
+            span: full
+            required: 1
+            type: richeditor
+            tab: 'Informasi Detail'
+        thumb_img:
+            label: 'Thumbnail ( 400 x 300 )'
+            mode: image
+            imageWidth: '400'
+            imageHeight: '300'
+            span: left
+            required: 1
+            type: mediafinder
+            tab: Gambar
+        img:
+            label: 'Gambar ( 1000 x 700 )'
+            mode: image
+            imageWidth: '1000'
+            imageHeight: '700'
+            span: left
+            required: 1
+            type: mediafinder
+            tab: Gambar
+        alt_img:
+            label: ALT
+            span: left
+            type: text
+            tab: Gambar
+        meta_description:
+            label: 'Meta Description'
+            span: left
+            type: text
+            tab: 'Meta Tag'
+        meta_keywords:
+            label: 'Meta Keywords'
+            span: left
+            type: text
+            tab: 'Meta Tag'

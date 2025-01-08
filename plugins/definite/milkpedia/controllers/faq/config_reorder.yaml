@@ -1,0 +1,4 @@
+title: FAQ
+modelClass: Definite\Milkpedia\Models\Faq
+toolbar:
+    buttons: reorder_toolbar

@@ -1,0 +1,217 @@
+title = "test milipedia lz"
+url = "/milkpedia/test-lazy/:category-slug?/:slug"
+layout = "default"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/test-milipedia-lz"
+
+[builderDetails]
+modelClass = "Definite\Milkpedia\Models\Milkpedia"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+==
+<?php
+use \Definite\Milkpedia\Models\Category as Category;
+
+
+function onEnd() {
+    
+   $param_slug    = $this->param('category-slug');
+   $cmsController = new Cms\Classes\Controller;   
+   
+   if(!$this->page->components["builderDetails"]->record){
+    
+        return Response::make( $cmsController->render("/404"), 404);
+   
+    }
+   
+    $category_slug = $this->page->components["builderDetails"]->record->categories->first();
+    $slug          = $this->page->components["builderDetails"]->record->attributes["slug"];
+  
+    if($param_slug == 'default')
+    {
+        return redirect()->to(url('/milkpedia/'.$category_slug->slug.'/'.$slug));
+    }
+    
+    if(!Category::where('slug',$param_slug)->first()){
+        return Response::make( $cmsController->render("/404"), 404);
+    }
+
+      // get the post component
+    $_title      = $this->page->components["builderDetails"]->record->attributes["title"];
+    $_meta_title = $this->page->components["builderDetails"]->record->attributes["meta_title"];
+    
+    if($_meta_title){
+             $this->page->title      = $_meta_title;
+             $this->page->meta_title = $_meta_title;
+        }
+    else{
+             $this->page->title = $_title;
+        }    
+    $_meta_description = $this->page->components["builderDetails"]->record->attributes["meta_description"] ?? NULL;
+    $_meta_keywords = $this->page->components["builderDetails"]->record->attributes["meta_keywords"] ?? NULL;
+   
+    $this->page->meta_description = $_meta_description;
+    $this->page->meta_keywords = $_meta_keywords;
+
+    $_title_en = $this->page->components["builderDetails"]->record->attributes["title_en"] ?? NULL;
+    $_meta_description_en = $this->page->components["builderDetails"]->record->attributes["meta_description_en"] ?? NULL;
+    $_meta_keywords_en = $this->page->components["builderDetails"]->record->attributes["meta_keywords_en"] ?? NULL;
+    $this->page->title_en = $_title_en;
+    $this->page->meta_title_en = $this->page->components["builderDetails"]->record->attributes["meta_title_en"] ?? NULL;
+    $this->page->meta_description_en = $_meta_description_en;
+    $this->page->meta_keywords_en = $_meta_keywords_en;
+
+    $this->page->category_slug = $this->param('category-slug');
+    $og_desc =  $this->page->components["builderDetails"]->record->attributes["excerpt"];
+    $og_img  =  $this->page->components["builderDetails"]->record->attributes["featured_image"];
+    
+    if(!$og_desc){
+             $this->page->og_description = 'Halo! Ada artikel yang menarik dan bermanfaat untuk Anda baca dari Frisian Flag Milkpedia. Temukan juga berbagai artikel lainnya di https://www.frisianflag.com/milkpedia';
+        }
+   
+    $this->page->og_description = $og_desc;    
+    $this->page->og_image = $og_img;
+
+    $this->page->amp_url = $this->pageUrl('our-milkpedia-single-amp', ['category-slug' => $this->param('category-slug'), 'slug'=>$this->param('slug')]);
+}
+?>
+==
+{% put scripts %}
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.0/lazysizes.min.js"></script>
+{% endput %}
+
+
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+{% if record %}
+
+    <h1 aria-hidden="true" class="seo-heading">{{ record.title }}</h1>
+
+    <div id='main-section'>
+
+      <div class="static-baner-pages">
+        {% if this.page.category_slug == 'kapan-dan-bagaimana-cara-minum-susu' %}
+        <div class="imgwrp hidden-xs">
+          <img src="{{ 'assets/img/milkypedia/Kapan-dan-bagaimana-cara-minum-susu-Desktop.jpg'|theme }}" alt="Kapan dan Bagaimana cara minum susu Desktop"/>
+        </div>
+        <div class="imgwrp visible-xs">
+          <img src="{{ 'assets/img/milkypedia/Kapan-dan-bagaimana-cara-minum-susu-Mobile.jpg'|theme }}" alt="Kapan dan Bagaimana cara minum susu Mobile"/> 
+        </div>
+        {% elseif this.page.category_slug == 'manfaat-minum-susu' %}
+        <div class="imgwrp hidden-xs">
+          <img src="{{ 'assets/img/milkypedia/Manfaat-Minum-Susu-Desktop.jpg'|theme }}" alt="Manfaat Minum Susu Desktop"/> 
+        </div>
+        <div class="imgwrp visible-xs">
+          <img src="{{ 'assets/img/milkypedia/Manfaat-Minum-Susu-Mobile.jpg'|theme }}" alt="Manfaat Minum Susu Mobile"/> 
+        </div>
+        {% elseif this.page.category_slug == 'nutrisi-dan-kesehatan' %}        
+        <div class="imgwrp hidden-xs">
+          <img src="{{ 'assets/img/milkypedia/Nutrisi-dan-Kesehatan-Desktop.jpg'|theme }}" alt="Nutrisi dan Kesehatan Desktop"/> 
+        </div>
+        <div class="imgwrp visible-xs">
+          <img src="{{ 'assets/img/milkypedia/Nutrisi-dan-Kesehatan-Mobile.jpg'|theme }}" alt="Nutrisi dan Kesehatan Mobile"/> 
+        </div>
+        {% else %}
+        <div class="imgwrp hidden-xs">
+          <img src="{{ 'assets/img/95-TAHUN-FF_desktop-banner.jpg'|theme }}" alt="Banner 95 Tahun Frisian Flag Desktop"/>
+        </div>
+        <div class="imgwrp visible-xs">
+          <img src="{{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }}" alt="Banner 95 Tahun Frisian Flag Mobile"/>
+        </div>
+        {% endif %}
+      </div>
+
+      <div class="col-md-12">
+          <div class="breadcrumb">
+              <div class="container-two">
+                  <ul>
+                      <li><a href="#">{{ 'beranda'|_ }}</a> </li>
+                      <li><a href="#">Milkpedia</a> </li>
+                      <li><a href="{{ 'our-milkpedia'|page({ slug: record.categories.first.slug }) }}">{{ trans_pick(record.categories.first, 'title') }}</a> </li>
+                      <li><a href="{{ 'our-milkpedia-single'|page({ slug: record.slug }) }}">{{ trans_pick(record, 'title') }}</a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+
+      <div class="col-md-12">
+          <div class="container-two">
+              <div class="date date-main">
+                  <label>{{ trans_pick(record.categories.first, 'title') }}</label>
+                  <span> | {{ record.created_at.format('d M Y') }}</span>
+              </div>
+          </div>
+      </div>
+
+      <div class="col-md-12">
+          <div id="article" class="default-content">
+              <div class="container-two">
+                  <h3>{{ trans_pick(record, 'title') }}</h3>
+
+                   {% if record.featured_image %}
+                      <div class="imgwrp">
+                            <img src="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img/loader.gif" data-src="{{ record.featured_image|media }}" class="lazyload" alt="{{ trans_pick(record, 'title') }}"/>
+                            
+                      
+                      </div>
+                  {% endif %}
+
+                  {{ trans_pick(record, 'content')|raw }}
+                  <div class="wrp-sharesocemd">
+                      <label>{{'share'|_}}</label>
+                      <div class="addthis_inline_share_toolbox"
+                        data-url="{{ this.page.id | page }}" 
+                        data-title="{{ this.page.title }} - Frisian Flag Milkpedia"
+                        data-description="Halo!\nAda artikel yang menarik dan bermanfaat untuk Anda baca dari Frisian Flag Milkpedia\n\n(link artikel)\n\nTemukan juga berbagai artikel lainnya di  (link)."></div>
+                   </div>
+                   <script type="text/javascript" defer>
+                        var addthis_config = addthis_config||{};
+                        addthis_config.ui_email_note = 'Halo!\n\nAda artikel yang menarik dan bermanfaat untuk Anda baca dari Frisian Flag Milkpedia\n\nTemukan juga berbagai artikel lainnya di ' + "{{ str_replace_first('https://', '', url('/milkpedia')) }}";
+                    </script>
+              </div>
+          </div>
+      </div>
+
+    {% set related = record.related %}
+    {% if related %}
+        <div class="title-center"><h3 style="text-transform: uppercase">{{ 'artikel-terkait'|_ }}</h3></div>
+        <div class="wrp-related clearfix section section_card">
+              {% for milkpedia in related %}
+                <div class="col-sm-4 itemhomefade">
+                  <div class="card card_featured">
+                      <div class="card__thumbnail">
+                          <div class="card__image">
+                              <img src="{{ milkpedia.featured_image| mediathumb_resize('width', 640, 90)  }}" alt="{{ 'artikel-terkait'|_ }}">
+                          </div>
+
+                          <div class="card__meta">
+                              <header class="card__head">
+                                  <h3>
+                                    <a href="{{ 'our-milkpedia-single'|page({
+                                        'categories-slug': milkpedia.category.slug,
+                                        'slug': milkpedia.slug
+                                    }) }}">{{ trans_pick(milkpedia, 'title') }}</a>
+                                </h3>
+                              </header>
+                             <a href="{{ 'our-milkpedia-single'|page({
+                                'categories-slug': milkpedia.category.slug,
+                                'slug': milkpedia.slug
+                            }) }}" class="button hidden-xs">{{ 'lebih-lanjut'|_ }}</a>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    {% endif %}
+    </div> <!-- end mainsection -->
+{% else %}
+    {% partial '404' %}
+{% endif %}

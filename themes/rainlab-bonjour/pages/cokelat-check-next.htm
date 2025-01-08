@@ -1,0 +1,33 @@
+title = "/cokelat-check-next"
+url = "/cokelat-check-next"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/cokelat-check-next"
+==
+<?php
+function onStart(){
+    $title = Input::get('title');
+    $sort = Input::get('sort');
+    $category = Input::get('category');
+    
+    
+    $limit = 6;
+    $next = 6;
+   
+    $index    = intval(Input::get('index')) + $next;
+    
+    $query = Definite\Activities\Models\Activity::leftJoin('definite_activities_categories_activities', 'definite_activities_categories_activities.activity_id', '=', 'definite_activities_activity.id')->
+    leftJoin('definite_activities_category', 'definite_activities_category.id', '=', 'definite_activities_categories_activities.category_id')->whereRaw('definite_activities_category.id = ? AND ( definite_activities_activity.title like ? OR definite_activities_activity.description like ?)', [ 20, '%'.$title.'%', '%'.$title.'%' ] )->
+            select('definite_activities_activity.title', 'definite_activities_activity.slug', 'definite_activities_activity.featured_image')->orderBy('definite_activities_activity.updated_at', $sort)->offset($index)->limit($limit)->get();
+    
+    
+    $count = 0;
+    if(!$query->isEmpty()) $count += 1;
+    
+    
+     $this['result'] = $count;   
+}
+?>
+==
+{"items":{{ result | raw  }}}

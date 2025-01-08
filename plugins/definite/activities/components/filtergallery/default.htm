@@ -1,0 +1,25 @@
+{% set gallery = filtergallery.gallery %}
+  
+ {%if gallery.image_gallery%}
+        {% for image in gallery.image_gallery %}
+      <div class="col-xs-12 col-sm-4 item mh itemhomefade2">
+          
+          <a data-fancybox="gallery" data-caption="{{ image.caption }}" href="{{ image.image|media }}" alt="{{image.year}}" data="{{image.activities}}">
+
+
+            <div class="gallery--item" style="background-image: url('{{ image.image|media }}')"></div>
+              <!-- <img src="{{ image.image|media }}" alt="{{ image.image|media }}"> -->
+          </a>
+      </div>
+      {% endfor %}
+      <div class="col-xs-12 text-center">
+        <a href="javascript:;" id="loadMore" class="button loadseemore2">Load More</a>
+      </div>
+</div>
+
+      <h4 id="notfound" style="display: none;">Gallery is empty</h4>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+{% endif %}

@@ -1,0 +1,17 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table definite_gallery_post'
+    - builder_table_create_definite_gallery_post.php
+1.0.3:
+    - 'Updated table definite_gallery_post'
+    - builder_table_update_definite_gallery_post.php
+1.0.4:
+    - 'Created table definite_gallery_image'
+    - builder_table_create_definite_gallery_image.php
+1.0.5:
+    - 'Updated table definite_gallery_post'
+    - builder_table_update_definite_gallery_post_2.php
+1.0.6:
+    - 'Updated table definite_gallery_post'
+    - builder_table_update_definite_gallery_post_3.php

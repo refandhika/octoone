@@ -1,0 +1,10 @@
+name: Activities
+form: $/definite/activities/models/activity/fields.yaml
+modelClass: Definite\Activities\Models\Activity
+defaultRedirect: definite/activities/activities
+create:
+    redirect: 'definite/activities/activities/update/:id'
+    redirectClose: definite/activities/activities
+update:
+    redirect: definite/activities/activities
+    redirectClose: definite/activities/activities

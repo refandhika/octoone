@@ -1,0 +1,12 @@
+title: WinningScm
+modelClass: Definite\Activities\Models\WinningScm
+list: $/definite/activities/models/winningscm/columns.yaml
+recordUrl: 'definite/activities/winningscm/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+recordsPerPage: 20
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

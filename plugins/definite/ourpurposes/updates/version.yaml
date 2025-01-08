@@ -1,0 +1,59 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table definite_ourpurposes_nutriton_seanuts'
+    - builder_table_create_definite_ourpurposes_nutriton_seanuts.php
+1.0.3:
+    - 'Created table definite_ourpurposes_nutriton_dbms'
+    - builder_table_create_definite_ourpurposes_nutriton_dbms.php
+1.0.4:
+    - 'Updated table definite_ourpurposes_nutriton_seanuts'
+    - builder_table_update_definite_ourpurposes_nutriton_seanuts.php
+1.0.5:
+    - 'Updated table definite_ourpurposes_nutriton_seanuts'
+    - builder_table_update_definite_ourpurposes_nutriton_seanuts_2.php
+1.0.6:
+    - 'Created table definite_ourpurposes_local_farmer'
+    - builder_table_create_definite_ourpurposes_local_farmer.php
+1.0.7:
+    - 'Created table definite_ourpurposes_local_young'
+    - builder_table_create_definite_ourpurposes_local_young.php
+1.0.8:
+    - 'Created table definite_ourpurposes_local_fdov'
+    - builder_table_create_definite_ourpurposes_local_fdov.php
+1.0.9:
+    - 'Created table definite_ourpurposes_local_ddp'
+    - builder_table_create_definite_ourpurposes_local_ddp.php
+1.0.10:
+    - 'Created table definite_ourpurposes_sus_waste'
+    - builder_table_create_definite_ourpurposes_sus_waste.php
+1.0.11:
+    - 'Created table definite_ourpurposes_sus_energy'
+    - builder_table_create_definite_ourpurposes_sus_energy.php
+1.0.12:
+    - 'Created table definite_ourpurposes_program'
+    - builder_table_create_definite_ourpurposes_program.php
+1.0.13:
+    - 'Updated table definite_ourpurposes_sus_waste'
+    - builder_table_update_definite_ourpurposes_sus_waste.php
+1.0.14:
+    - 'Updated table definite_ourpurposes_local_ddp'
+    - builder_table_update_definite_ourpurposes_local_ddp.php
+1.0.15:
+    - 'Updated table definite_ourpurposes_local_young'
+    - builder_table_update_definite_ourpurposes_local_young.php
+1.0.16:
+    - 'Updated table definite_ourpurposes_local_fdov'
+    - builder_table_update_definite_ourpurposes_local_fdov.php
+1.0.17:
+    - 'Updated table definite_ourpurposes_local_farmer'
+    - migration1017.php
+1.0.18:
+    - 'Updated table definite_ourpurposes_program'
+    - builder_table_update_definite_ourpurposes_program.php
+1.0.19:
+    - 'Updated table definite_ourpurposes_nutriton_dbms'
+    - builder_table_update_definite_ourpurposes_nutriton_dbms.php
+1.0.20:
+    - 'Updated table definite_ourpurposes_nutriton_seanuts'
+    - builder_table_update_definite_ourpurposes_nutriton_seanuts_3.php

@@ -1,0 +1,36 @@
+description = "Layout for Pemenang Promo"
+
+[staticPage]
+
+[account]
+paramCode = "code"
+forceSecure = 0
+[session]
+
+[SessionClose]
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title') }}</h1>
+
+<section>
+  <div class="static-baner-pages mb-5">
+    <div class="imgwrp hidden-xs"><img src="{{ 'assets/img/kemerdekaan/masthead-kemerdekaan.jpg'|theme }}" alt="Masthead Kemerdekaan"> </div>
+    <div class="imgwrp visible-xs"><img src="{{ 'assets/img/kemerdekaan/masthead-mobile.jpg'|theme }}" alt="Masthead Kemerdekaan Mobile"> </div>
+  </div>
+
+  <div class="container-menutab">
+    <div class="container-one">
+        <ul>
+          <li class="toggle hidden-lg"><a href="javascript:;" class="active">Pemenang</a></li>
+          <li><a href="promo-frisianflag">Promo</a></li>
+          <li><a href="pemenang-promo">Pemenang</a></li>
+        </ul>
+    </div>
+  </div>
+
+  <div class="imgwrp"><img style="width:100%;" src="{{ 'assets/img/promo-undian.png'|theme }}" alt="Promo Undian"></div>
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

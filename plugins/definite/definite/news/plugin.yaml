@@ -1,0 +1,36 @@
+plugin:
+    name: 'definite.news::lang.plugin.name'
+    description: 'definite.news::lang.plugin.description'
+    author: Definite
+    icon: oc-icon-newspaper-o
+    homepage: ''
+navigation:
+    News:
+        label: 'definite.news::lang.plugin.name'
+        url: definite/news/news
+        icon: icon-newspaper-o
+        permissions:
+            - manage_berita
+        sideMenu:
+            News:
+                label: Berita
+                url: definite/news/news
+                icon: icon-sitemap
+                permissions:
+                    - manage_news
+            Categories:
+                label: 'Kategori Berita'
+                url: definite/news/categories
+                icon: icon-sitemap
+                permissions:
+                    - manage_news_category
+permissions:
+    manage_berita:
+        tab: Berita
+        label: 'Manage Menu Berita'
+    manage_news:
+        tab: Berita
+        label: 'Manage News Content'
+    manage_news_category:
+        tab: Berita
+        label: 'Manage News Category'

@@ -1,0 +1,370 @@
+title = "Our Products Sub Single"
+url = "/produk/:category-slug/:sub-category-slug/:slug"
+layout = "default"
+is_hidden = 0
+
+[builderDetails]
+modelClass = "Definite\Products\Models\Product"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+
+[milkpediaList]
+==
+<?php
+use \Definite\Products\Models\Product   as Product;
+
+function onStart() {
+    $currentPath = $_SERVER['REQUEST_URI'];
+    
+    if ($currentPath == '/produk/susu-siap-minum/kids/junio') {
+        return Redirect::to('/produk');    
+    }
+}
+
+function onEnd() {
+
+    $cmsController     = new Cms\Classes\Controller;
+    $slug         = $this->param('slug');
+    $subCategorySlug         = $this->param('sub-category-slug');
+    $detail = Product::where(['slug' => $slug ])->first();
+    if($slug == 'milky-uht'){
+          return Redirect::to("/produk/susu-siap-minum/kids/milky-kotak-zuzhu-zhaza" , 301);
+    }
+    if($slug == 'milky-botol-zuzhu-zhaza'){
+          return Redirect::to("/produk/susu-siap-minum/kids" , 301);
+    }
+    if($slug == 'milky-kotak-zuzhu-zhaza'){
+          return Redirect::to("/produk/susu-siap-minum/kids/milky-kotak-zuzhu-zazha" , 301);
+    }
+    if($slug == 'milky-kotak-zuzhu-zhaza-rasa-coklat'){
+          return Redirect::to("/produk/susu-siap-minum/kids/milky-kotak-zuzhu-zazha-rasa-coklat" , 301);
+    }
+    if($slug == 'milky-kotak-zuzhu-zhaza-rasa-strawberry'){
+          return Redirect::to("/produk/susu-siap-minum/kids/milky-kotak-zuzhu-zazha-rasa-strawberry" , 301);
+    }
+    if($detail && $detail->published == 0){
+          return $cmsController->render("/404");
+    }
+    
+     //get slug
+    $router = $this->controller->getRouter();
+    $this->page['slug'] = $router->getURL();
+    $this['cat'] = $this->param('category-slug');
+    // get the post component
+    $_title = $this->page->components["builderDetails"]->record->attributes["meta_title"];
+    $_meta_description = $this->page->components["builderDetails"]->record->attributes["meta_description"];
+    $_meta_keywords = $this->page->components["builderDetails"]->record->attributes["meta_keywords"];
+    $this->page->title = $_title;
+    $this->page->meta_title = $_title;
+    $this->page->meta_description = $_meta_description;
+    $this->page->meta_keywords = $_meta_keywords;
+
+    $this->page->meta_title_en = $this->page->components["builderDetails"]->record->attributes["meta_title_en"];
+    $this->page->meta_description_en = $this->page->components["builderDetails"]->record->attributes["meta_description_en"];
+    $this->page->meta_keywords_en = $this->page->components["builderDetails"]->record->attributes["meta_keywords_en"];
+
+    $og_desc =  $this->page->components["builderDetails"]->record->attributes["meta_description"];
+    $og_img  =  $this->page->components["builderDetails"]->record->attributes["featured_image"];
+
+    if(!$og_desc){
+             $this->page->og_description = "";
+        }
+
+    $this->page->og_description = $og_desc;
+    $this->page->og_image = $og_img;
+
+    // get the post component
+//    $_title = $this->page->components["builderDetails"]->record->attributes["title"];
+//    $this->page->title = $_title;
+//    $this->page->meta_title = $_title;
+    
+//    $_title_en = $this->page->components["builderDetails"]->record->attributes["title_en"];
+//    $this->page->title_en = $_title_en;
+//    $this->page->meta_title_en = $_title_en;
+
+//    $og_desc =  $this->page->components["builderDetails"]->record->attributes["meta_description"];
+//    $og_img  =  $this->page->components["builderDetails"]->record->attributes["featured_image"];
+    
+//    if(!$og_desc){
+//             $this->page->og_description = "";
+//        }
+   
+//    $this->page->og_description = $og_desc;    
+//    $this->page->og_image = $og_img;  
+    $slug = $this->param('slug');
+    $disableList = [
+        'purefarm-full-cream' // Disabled 29-07-2024
+    ];
+    
+    if (!in_array($slug,$disableList) && !in_array('disable-all-pages',$disableList)){
+        $this->page->amp_url = $this->pageUrl('our-products-sub-single-amp', 
+            [
+                'category-slug'=>$this->param('category-slug'),
+                'sub-category-slug' => $this->param('sub-category-slug'),
+                'slug'=>$this->param('slug'),
+            ]
+        );
+    }
+
+}
+?>
+==
+{# Template file for single product of sub category #}
+<link rel="preload" href="{{ '/assets/[R1]RTD-Product_2024_Mobile%20(1).jpg'|theme }}" as="image">
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+{% if ( this.page.slug == 'produk/susu-siap-minum/purefarm/purefarm-flavour-milk' ) %}
+  
+  {% partial 'site/our-product-purefarm' %}
+
+{%else%}
+
+{% if record %}
+{% set category = record.categories().first %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(record, 'title') }} - Our Product</h1>
+{% if ( this.page.slug == 'produk/susu-siap-minum/kids/junio' ) %}
+    <div class="static-baner-pages">
+        <div class="imgwrp hidden-xs"><img src="{{ 'assets/img/banner/junio-banner-hd.jpg'|theme }}" alt="Banner Junio Desktop"/> </div>
+        <div class="imgwrp visible-xs"><img src="{{ 'assets/img/banner/junio-hd-m.jpg'|theme }}" alt="Banner Junio Mobile"/> </div>
+    </div>
+{% else %}
+<div class="static-baner-pages">
+    {% if category.slug == 'susu-siap-minum' or record.slug == 'purefarm-full-cream' or  cat == 'susu-siap-minum' %}    
+        <!-- <div class="imgwrp hidden-xs"><img src="{{ 'assets/susu_siap_minum.png'|theme }}" alt="Susu Siap Minum Desktop"/> </div>
+        <div class="imgwrp visible-xs"><img src="{{ 'assets/img/banner/RTDUpdated1-MobileBanner.jpg'|theme }}" alt="Susu Siap Minum Mobile"/> </div> -->
+        <div class="imgwrp hidden-xs"><img width="1440" height="351" src="{{ 'assets/[R1]RTD-Product_2024.jpg'|theme }}" alt="Susu Siap Minum Desktop"/> </div>
+        <div class="imgwrp visible-xs"><img width="1440" height="351" src="{{ 'assets/[R1]RTD-Product_2024_Mobile (1).jpg'|theme }}" alt="Susu Siap Minum Mobile"/> </div>
+    {% else %}
+        <div class="imgwrp hidden-xs"><img src="{{ 'assets/img/product-header-desktop.png'|theme }}" alt="Product Header Desktop"/> </div>
+        <div class="imgwrp visible-xs"><img src="{{ 'assets/img/product-header-mobile.png'|theme }}" alt="Product Header Mobile"/> </div>
+    {% endif %}
+</div>
+{% endif %}
+<div class="container-menutab container-menutab--five">
+    <div class="container-one">
+        <ul>
+
+            {% for category in categories %}
+            <li>
+                <a href="{{ 'our-products-archive'|page({'slug': category.slug }) }}"
+                {% if category.slug == record.slug %}
+                    class="active"
+                {% endif %}
+                >
+                    {{ trans_pick(category, 'title') }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+
+<div id='main-section' class="container-fluid">
+    <div class="col-md-12">
+        <div class="breadcrumb">
+            <div class="container-two">
+                <ul>
+                    <li>
+                        <a href="{{ 'home'|page }}">{{'beranda'|_}}</a> </li>
+                    <li>
+                        <a href="{{ 'our-products'|page }}">{{'produk'|_}}</a> </li>
+                    <li>
+                        <a href="{{ 'our-products-archive'|page({"slug": category.slug}) }}">{{ trans_pick(category, 'title') }}</a> </li>
+                    <li class="active">
+                        <a href="{{ 'our-products-single'|page({
+                            "category-slug": category.slug,
+                            "slug": record.slug
+                        }) }}">{{ trans_pick(record, 'title') }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="default-content">
+            <div class="container-two">
+                <h1>{{ trans_pick(record, 'title') }}</h1>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="slider-for">
+                            {% for image in record.image_gallery %}
+                                <div class="imgproduct">
+                                    <img class="lazyload" width="463" height="465" src="{{ image.image | media }}" alt="{{ trans_pick(record, 'title') }}"/>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        {% if record.detail_kemasan %}
+                        <div class="wrp-size">
+                            <h4>{{'ukuran-kemasan'|_}}</h4>
+                            {% for package in record.detail_kemasan %}
+                            <div class="itemsize">
+                                <label>{{ package.value }}
+                                    <sub>{{ package.satuan }}</sub>
+                                </label>{{ package.jenis }}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+
+                        {% if not record.childs.isEmpty or record.parent %}
+                            {# calculating variants #}
+                            {% if record.isParent %}
+                                {% set variants = record.childs %}
+                            {% else %}
+                                {% set variants = record.siblingsVariants  %}
+                            {% endif %}
+
+                            <h3 class="heading heading_variant">{{'tersedia-dalam-rasa-lain'|_}}</h3>
+                            <div class="variant test">
+
+                                {% for product in variants %}
+                                    {% if product.id != record.id %}
+                                        <div class="imgproduct">
+                                            <a href="{{ 'our-products-single'|page({
+                                                'category-slug': product.category.slug,
+                                                'slug': product.slug
+                                            }) }}">
+                                                {% if product.isParent %}
+                                                    {% set img = product.image_gallery[0].image %}
+                                                {% else %}
+                                                    {% set img = product.featured_image %}
+                                                {% endif %}
+                                                <img src="{{ img | mediathumb_resize('width', 150, 100) }}" alt="{{ product.title }}"/>
+
+                                                <h6 class="imgproduct__title">{{ trans_pick(product, 'title') }}</h6>
+                                            </a>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                            
+                        {% if record.link_e_commerce %}
+                        <div class="wrp-marketplace">
+                            <h4>{{'beli-disini'|_}}</h4>
+                            <ul>
+                            {% for shop in record.link_e_commerce %}
+                                <li>
+                                    <a href="{{ shop.link }}" target="_blank">
+                                        <img class="lazyload" width="139" height="54" src="{{ shop.image|media }}" alt="{{ shop.title }}"/>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6">
+                      <div class="accordion accordion_product-detail">
+                        {{ record.content | raw }}
+
+                        <h3 class="hidden-md hidden-lg">{{'keuntungan'|_}}</h3>
+                        <div class="accordion__content">
+                            {%for ringkasan in record.ringkasan_gizi %}
+                            <div class="wrp-sectiongray">
+                                <h4 class="subtitle">{{ trans_pick(ringkasan, 'title') }}</h4>
+                                {{ trans_pick(ringkasan, 'description') | raw }}
+                            </div>
+                            {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="wrp-sharesocemd">
+                        <label>{{'share'|_}}</label>
+                        <div class="addthis_inline_share_toolbox"
+                          data-url="{{ this.page.id | page }}" 
+                          data-title="{{ trans_pick(record, 'title') }} - Frisian Flag Produk"
+                          data-description="Halo!\n\nCari tahu bagaimana produk-produk Frisian Flag bisa menjadi bagian dari pola hidup sehat keluarga Anda.\n\n(link produk)\n\nTemukan berbagai  produk Frisian Flag lainnya di (link)."></div>
+                     </div>
+                     <script type="text/javascript" defer>
+                          var addthis_config = addthis_config||{};
+                          addthis_config.ui_email_note = 'Halo!\n\nCari tahu bagaimana produk-produk Frisian Flag bisa menjadi bagian dari pola hidup sehat keluarga Anda.\n\nTemukan berbagai produk Frisian Flag lainnya di ' + "{{ str_replace_first('https://', '', url('/produk')) }}";
+                      </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="clearfix">
+      {%if not record.related.isEmpty %}
+          <h2 class="section__title">{{ 'produk-terkait'|_ }}</h2>
+          {% for post in record.related %}
+          <div class="col-sm-4 item-related itemhomefade">
+              <div class="card card_featured card_product">
+                  <div class="card__thumbnail card__thumbnail--blue">
+                      <div class="card__image">
+                        <img src="{{ post.featured_image|  mediathumb_resize('width', 450, 100)  }}" alt="{{ trans_pick(post, 'title') }}">
+                      </div>
+                      <div class="card__meta">
+                          <header class="card__head">
+                              <h3><a href="{{ 'our-products-single'|page({
+                                  "category-slug": category.slug,
+                                  "slug": post.slug
+                              }) }}">{{ trans_pick(post, 'title') }}</a></h3>
+                          </header>
+                          <a href="{{ 'our-products-single'|page({
+                              "category-slug": category.slug,
+                              "slug": post.slug
+                          }) }}" class="button button-dark hidden-xs">{{ 'selengkapnya'|_ }}</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          {% endfor %}
+      {% endif %}
+    </div>
+
+{% if record.slug == 'milky-uht'%}
+ 
+
+    {% if milkpediaList.susu  %}
+	{% set milkpedias = milkpediaList.susu.take(3) %}
+
+		<h3 class=" text-center small-news__title">{{ 'manfaat-minum-susu'|_ }}</h3>
+
+		{% for milkpediaPost in milkpedias %}
+		<div class="col-sm-4">
+        <div class="card">
+            <div class="card__thumbnail card__thumbnail--half" style="background-image: url('{{ milkpediaPost.featured_image | mediathumb_resize('width', 640, 90)  }}');">
+            </div>
+            <div class="card__meta card__meta--relative">
+            	<div class="date">
+                    <label>Milkpedia</label> | {{ milkpediaPost.created_at.format('d M Y') }}
+                </div>
+                <header class="card__head">
+                    <h3>{{milkpediaPost.title}}</h3>
+                </header>
+                <p>{{milkpediaPost.excerpt}}</p><br>
+                <a href="{{ 'our-milkpedia-single'|page({"category-slug": milkpediaPost.categories.first().slug, "slug": milkpediaPost.slug}) }}" class="button">{{ 'lebih-lanjut'|_ }}</a>
+            </div>
+        </div>
+    </div>
+		
+		{% endfor %}
+
+	{% endif %}
+
+    
+    {% endif %}
+</div> <!-- end mainsection -->
+
+{% put footer %}
+    {{ record.additional_tags|raw }}
+{% endput %}
+
+{% else %}
+    {% partial 'site/our-products-sub-archive' %}
+{% endif %}
+{% endif %}

@@ -1,0 +1,13 @@
+title = "Artikel"
+url = "/karir/artikel"
+layout = "karir-article"
+is_hidden = 0
+
+==
+<?php
+function onEnd()
+    {
+         $this->page->amp_url = $this->pageUrl('karir-artikel-amp');
+    }
+?>
+==

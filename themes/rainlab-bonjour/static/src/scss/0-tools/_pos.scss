@@ -1,0 +1,13 @@
+.pos {
+  position: initial;
+
+  // Relative
+  &_rel {
+    position: relative;
+  }
+
+  // Absolute
+  &_abs {
+    position: absolute;
+  }
+}

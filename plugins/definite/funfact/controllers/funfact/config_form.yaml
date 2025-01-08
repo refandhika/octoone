@@ -1,0 +1,10 @@
+name: FunFact
+form: $/definite/funfact/models/funfact/fields.yaml
+modelClass: Definite\FunFact\Models\FunFact
+defaultRedirect: definite/funfact/funfact
+create:
+    redirect: 'definite/funfact/funfact/update/:id'
+    redirectClose: definite/funfact/funfact
+update:
+    redirect: definite/funfact/funfact
+    redirectClose: definite/funfact/funfact

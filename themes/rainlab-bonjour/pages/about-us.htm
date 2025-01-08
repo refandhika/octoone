@@ -1,0 +1,268 @@
+title = "Tentang Kami"
+url = "/perusahaan-kami/tentang-kami/:search?"
+layout = "default"
+meta_description = "PT Frisian Flag Indonesia (FFI) adalah nama perusahaan produsen susu Frisian Flag dengan sejarah yang panjang di Indonesia dan bagian dari FrieslandCampina."
+is_hidden = 0
+
+[builderList AboutUs]
+modelClass = "Definite\Aboutus\Models\AboutUs"
+scope = "scopeIndex"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList FrisianFlag]
+modelClass = "Definite\Aboutus\Models\FrisianFlag"
+scope = "scopeIndex"
+scopeValue = "{{ :scope }}"
+displayColumn = "frisian"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList award]
+modelClass = "Definite\Aboutus\Models\Award"
+scope = "scopeSearch"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+sortColumn = "published_date"
+sortDirection = "desc"
+
+[builderList history]
+modelClass = "Definite\Aboutus\Models\History"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList logoHistory]
+modelClass = "Definite\Aboutus\Models\LogoHistory"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+sortColumn = "title"
+sortDirection = "desc"
+==
+<?php
+function onEnd () {
+    
+    $this->page->meta_title = $this->page->components["AboutUs"]->records[0]->attributes["meta_title"];
+    $this->page->meta_description = $this->page->components["AboutUs"]->records[0]->attributes["meta_description"];
+    
+    $this->page->meta_title_en = $this->page->components["AboutUs"]->records[0]->attributes["meta_title_en"];
+    $this->page->meta_description_en = $this->page->components["AboutUs"]->records[0]->attributes["meta_description_en"];
+     $this->page->amp_url = $this->pageUrl('tentang-kami-amp');
+}
+?>
+==
+{% set about = AboutUs.records %}
+{% set frisian = FrisianFlag.records %}
+{% set awards = award.records %}
+{% set history = history.records %}
+{% set logoHistory = logoHistory.records %}
+{% set displayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsPage = builderList.detailsPage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
+
+<h1 aria-hidden="true" class="seo-heading">Tentang Kami | Frisian Flag Indonesia</h1>
+
+<div class="static-baner-pages test1">
+    <div class="imgwrp hidden-xs"><img src="{{ 'assets/img/95-TAHUN-FF_desktop-banner.jpg'|theme }}" alt="Desktop Banner"/> </div>
+    <div class="imgwrp visible-xs"><img src="{{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }}" alt="Mobile Banner"/> </div>
+</div>
+
+<div class="container-menutab">
+    <div class="container-one">
+        <ul>
+          <li class="toggle hidden-lg"><a href="javascript:;" class="active">{{'tentang-kami'|_}}</a></li>
+          <li><a href="{{'about-us'|page}}" class="{% if this.page.id == 'about-us' %}active{% endif %}">{{'tentang-kami'|_}}</a></li>
+          <li><a href="{{'news'|page}}" class="{% if this.page.id == 'news' %}active{% endif %}">{{'berita'|_}}</a></li>
+          <li><a href="{{'gallery'|page}}" class="{% if this.page.id == 'galeri-foto' %}active{% endif %}">{{'galeri-foto'|_}}</a></li>
+          <li><a href="{{'press-release'|page}}" class="{% if this.page.id == 'press-release-single' %}active{% endif %}">{{'siaran-pers'|_}}</a></li>
+          <li><a href="{{'our-purposes'|page}}" class="{% if this.page.id == 'our-purposes' %}active{% endif %}">{{'tujuan-kami'|_}}</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id='main-section' class="container-fluid">
+    <div class="col-md-12">
+        <div class="breadcrumb">
+            <div class="container-two">
+                <ul>
+                    <li><a href="{{ 'home' | page}}">{{'beranda'|_}}</a> </li>
+                    <li><a href="javascript:;">{{'tentang-kami'|_}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="default-content">
+            <div class="container-two">
+                <h3>{{trans_pick(about.first, 'title')}}</h3>
+
+                {{trans_pick(about.first, 'description')|raw}}
+
+                <div class="wrp-tabsection">
+                    <ul class="tabs">
+                        <li class="tab-link current" data-tab="tab-1">
+                          <div class="tab-toggle">FrieslandCampina</div>
+                        </li>
+                        <li class="tab-link" data-tab="tab-2">
+                          <div class="tab-toggle">Frisian Flag</div>
+                        </li>
+                        <!-- <li class="tab-link " data-tab="tab-3">
+                          <div class="tab-toggle">95 Tahun Frisian Flag Indonesia</div>
+                        </li> -->
+                        <li class="tab-link " data-tab="tab-4">
+                          <div class="tab-toggle">Penghargaan Frisian Flag Indonesia</div>
+                        </li>
+                        <li class="tab-link " data-tab="tab-5">
+                          <div class="tab-toggle">Sejarah Perusahaan</div>
+                        </li>
+                        <li class="tab-link " data-tab="tab-6">
+                          <div class="tab-toggle">Perubahan Logo</div>
+                        </li>
+                    </ul>
+
+                    <div class="contentab">
+                        <div id="tab-1" class="tab-content current">
+                            {{trans_pick(about.first, 'friesland')|raw}}
+                        </div>
+                        <div id="tab-2" class="tab-content">
+                            {% for flag in frisian.first.frisian %}
+                                <h5>{{'visi'|_}}</h5>
+                                {{trans_pick(flag, 'vision')|raw}}
+                            {% endfor %}
+
+                            {% for flag in frisian.first.frisian %}
+                                <h5>{{'misi'|_}}</h5>
+                                {{trans_pick(flag, 'mission')|raw}}
+                            {% endfor %}
+
+                            {%  for flag in frisian.first.frisian %}
+                                <h5>{{'kode-etik-perusahaan'|_}}</h5>
+                                {{trans_pick(flag, 'coec')|raw}}
+                            {% endfor %}
+                        </div>
+                        <div id="tab-3" class="tab-content ">
+                            {{trans_pick(about.first, 'flag')|raw}}
+                        </div>
+                        <div id="tab-4" class="tab-content ">
+                                {% if not awards.isEmpty %}
+                                    <div class="wrp-searchitem">
+                                        <label>{{'cari-spesifik-penghargaan'|_}}</label>
+                                        <form method="GET" action="{{url('about-us'|page)}}">
+                                            <?= Form::token() ?>
+                                            <input name="q" type="text" class="live-search-box" placeholder="{{'cari-di-sini'|_}}" required>
+                                        </form>
+                                    </div>
+                                    <div class="live-search-list">
+                                        {% for award in awards %}
+                                            <div class="itemlist-search itemhomefade">
+                                                <div class="wrpcontent">
+                                                    <div class="content">
+                                                        {% if award.file_upload %}
+                                                            <div class="content--thumbnail" style="background-image: url('{{ award.file_upload|media }}');"></div>
+                                                        {% endif %}
+                                                        <h6>{{trans_pick(award, 'title')|raw}}</h6>
+                                                        {{ trans_pick(award, 'description')|raw }}
+                                                        <span>{{award.published_date|date('Y')}}</span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+
+                                        <p><a class=" loadseemore button medium">{{'muat-lebih'|_}}</a></p>
+                                    </div>
+                                {% else %}
+                                    <p><strong>Coming soon</strong></p>
+                                {% endif %}
+                        </div>
+                        <div id="tab-5" class="tab-content">
+                            {% if not history.isEmpty %}
+                                <div class="container-history">
+                                    <div class="wrphistory">
+                                        <div class="linehistory"></div>
+                                        <div class="wrp-itemcontent-history">
+                                        {% for historys in history  %}
+                                            <div class="itemcontent-history itemhomefade2">
+                                                <div class="top">
+                                                    <div class="dot"><span></span></div>
+                                                    <div class="year">{{ historys.title|raw }}</div>
+                                                </div>
+                                                <div class="bottom">
+                                                    <div class="content">
+                                                    {% if historys.file_upload %}
+                                                        <div class="imgwrp border"><img src="{{ historys.file_upload|media }}" alt="{{ historys.title|raw }}"/></div>
+                                                    {% endif %}
+                                                        {{ trans_pick(historys, 'description')|raw }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                        </div>
+                                        <div class="wrp-loadmore loadseemore2">
+                                            <a class="button small">{{'muat-lebih'|_}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <p><strong>Coming soon</strong></p>
+                            {% endif %}
+                        </div>
+                        <div id="tab-6" class="tab-content">
+                            {% if not logoHistory.isEmpty %}
+                                <div class="container-history">
+                                    <div class="wrphistory">
+                                        <div class="linehistory"></div>
+                                        <div class="wrp-itemcontent-history">
+                                        {% for historys in logoHistory  %}
+                                            <div class="itemcontent-history itemhomefade3">
+                                                <div class="top">
+                                                    <div class="dot"><span></span></div>
+                                                    <div class="year">{{ historys.title|raw }}</div>
+                                                </div>
+                                                <div class="bottom">
+                                                    <div class="content">
+                                                    {% if historys.file_upload %}
+                                                        <div class="imgwrp border"><img src="{{ historys.file_upload|media }}" alt="File Upload"/></div>
+                                                    {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                        </div>
+                                        <div class="wrp-loadmore loadseemore3">
+                                            <a class="button small">{{'muat-lebih'|_}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <p><strong>Coming soon</strong></p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> <!-- end mainsection -->

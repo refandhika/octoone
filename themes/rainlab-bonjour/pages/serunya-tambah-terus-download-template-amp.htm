@@ -1,0 +1,56 @@
+title = "Serunya Tambah Terus - Download Template | AMP"
+url = "/amp/serunyatambahterus/download-template"
+layout = "basic-amp"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/serunya-tambah-terus-download-template-amp"
+==
+<?php
+function onEnd(){
+    $this->page->meta_description = "Ikuti aktivitas seru mewarnai gambar dari Frisian Flag. Download template gambarnya di sini. Dijamin #SerunyaTambahTerus!";
+}
+?>
+==
+<div class="body-seru-dt">
+    <div class="cover">
+            <amp-img 
+                src="{{ 'milky-unicorn/mobile-serunya-tambah-terus.jpg'|media }}"
+                width="50"
+                height="50"
+                layout="responsive"
+                alt="Serunya tambah terus">
+            </amp-img>
+    </div>
+    <amp-accordion class="title_home th-dt">
+        <section>
+            <h4 class="arrow_down"><a href="#" target="_self">Download Template</a></h4>
+            <p>
+                   <a href="/amp/serunyatambahterus">Cara Mengikuti</a>
+                   <a href="/amp/serunyatambahterus/download-template"  class="active">Download Template</a>
+                   <a href="/amp/serunyatambahterus/syarat-dan-ketentuan">Syarat dan Ketentuan</a>
+                   <a href="/amp/serunyatambahterus/pemenang">Pemenang</a>
+            </p>
+        </section>
+    </amp-accordion>
+    
+    <!--s:event-->
+    <section class="event">
+        <div class="detail_text mt-20">
+            <div class="content mb-10">
+                <h1>Download Template</h1>
+            </div>
+            <div class="card-amp ca-dt">
+                <amp-img class="card-amp-img ca-dt-img" src="{{'milky-unicorn/image_unicorn.jpg'|media }}" width="1" height="1" layout="responsive"></amp-img>
+            </div>
+            <p><a href="{{ 'milky-unicorn/serunya-tambah-terus-clipart-unicorn.jpg'|media  }}" class="button button-content fbtrack" download>Klik di Sini</a></p>
+            <br>
+            
+            <div class="card-amp ca-dt">
+                <amp-img class="card-amp-img ca-dt-img" src="{{'milky-unicorn/image_plane.jpg'|media }}" width="1" height="1" layout="responsive"></amp-img>
+            </div>
+            <p><a href="{{ 'milky-unicorn/serunya-tambah-terus-clipart-pesawat.jpg'|media  }}" class="button button-content fbtrack" download>Klik di Sini</a></p>
+        </div>
+    </section>
+    <!--s:event-->
+</div>

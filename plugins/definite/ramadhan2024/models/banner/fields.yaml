@@ -1,0 +1,28 @@
+fields:
+    title:
+        label: Title
+        span: full
+        type: text
+    description:
+        label: Description
+        size: small
+        span: full
+        type: textarea
+    link:
+        label: Link
+        span: full
+        type: text
+    image_desktop:
+        label: 'Image Desktop'
+        span: full
+        mode: image
+        type: mediafinder
+    image_mobile:
+        label: 'Image Mobile'
+        span: full
+        mode: image
+        type: mediafinder
+    order:
+        label: Order
+        span: auto
+        type: number

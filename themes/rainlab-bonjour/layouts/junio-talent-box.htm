@@ -1,0 +1,32 @@
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('junio-talent-box-amp');
+}
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pa{% component 'staticPage' %}ges">
+    <div class="imgwrp">
+    	<img src="{{ 'junio-talent-box/Junio-talent-box-SB-min.jpg'|media }}" class="hidden-xs" />
+    	<img src="{{ 'junio-talent-box/Junio-talent-box-M-min.jpg'|media }}" class="visible-xs" />
+    </div>
+</div>
+
+<div id='main-section' class="container" style="padding: 30px 15px;">
+    <div class="col-md-12">
+        <div class="default-content" style="background-color: #01bfe3;">
+            <div class="center-img" style="text-align: center;">
+                <img src="{{ 'junio-talent-box/Junio-talent-box-min.jpg'|media  }}">
+            </div>
+            <div style="text-align: center;">
+                <a href="https://www.jd.id/campaign/ffi-junio-launching.html" class="button btnblue" target="_blank">Beli di Sini</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% partial 'site/footer' %}

@@ -1,0 +1,33 @@
+<div data-control="toolbar">
+        <a href="<?= Backend::url('kalfian/subscriber/subscriber/create') ?>" class="btn btn-primary oc-icon-plus"><?= e(trans('backend::lang.form.create')) ?></a>
+        <button id="export" class="btn btn-primary oc-icon-cloud-download"> Export</button>
+        <button
+        class="btn btn-default oc-icon-trash-o"
+        disabled="disabled"
+        onclick="$(this).data('request-data', {
+            checked: $('.control-list').listWidget('getChecked')
+        })"
+        data-request="onDelete"
+        data-request-confirm="<?= e(trans('backend::lang.list.delete_selected_confirm')) ?>"
+        data-trigger-action="enable"
+        data-trigger=".control-list input[type=checkbox]"
+        data-trigger-condition="checked"
+        data-request-success="$(this).prop('disabled', true)"
+        data-stripe-load-indicator>
+        <?= e(trans('backend::lang.list.delete_selected')) ?>
+    </button>
+</div>
+<script>
+    $("#export").click(function(){
+        var time1 = $('span.filter-setting').text();
+        $('.table.data').table2excel({
+            exclude: ".list-checkbox",
+            name: "Report",
+            filename: "ReportSubscriber " + time1,
+            fileext: ".xls",
+            exclude_img: true,
+            exclude_links: true,
+            exclude_inputs: true
+        });
+    });
+</script>

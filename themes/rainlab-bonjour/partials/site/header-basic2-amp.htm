@@ -1,0 +1,315 @@
+[viewBag]
+==
+<?php
+function onStart()
+{
+    $this->page['fb_app_id'] = env('FB_APP_ID');
+    $this->page['fb_app_secret'] = env('FB_APP_SECRET');
+
+    $fb = new Facebook\Facebook([
+        'app_id' => env('FB_APP_ID'), 
+        'app_secret' => env('FB_APP_SECRET'),
+        'default_graph_version' => 'v2.2'
+    ]);
+
+    $next = url()->current();
+    
+    //$scopes = ['email', 'user_birthday', 'user_gender'];
+    $scopes = ['email'];
+    $callbackUrl = url('/fb-callback');
+
+    //REGISTER FROM POP UP
+    $helper_register = $fb->getRedirectLoginHelper();
+    $pdata_register = $helper_register->getPersistentDataHandler(); 
+    $pdata_register->set('state', json_encode(['act' => 'registration', 'next' => $next, 'show_registration_form' => true]));
+
+    $registrationUrl = $helper_register->getLoginUrl( $callbackUrl, $scopes);
+    $this->page['fb_registration_url'] = $registrationUrl;
+
+    //REGISTER FROM INDOMARET
+    $helper_register_indomaret = $fb->getRedirectLoginHelper();
+    $pdata_register_indomaret = $helper_register_indomaret->getPersistentDataHandler(); 
+    $pdata_register_indomaret->set('state', json_encode(['act' => 'registration', 'next' => $next]));
+
+    //REGISTER FROM ALFAMART
+    $helper_register_alfamart = $fb->getRedirectLoginHelper();
+    $pdata_register_alfamart = $helper_register_alfamart->getPersistentDataHandler(); 
+    $pdata_register_alfamart->set('state', json_encode(['act' => 'registration', 'next' => $next]));
+
+    $registrationUrl = $helper_register->getLoginUrl( $callbackUrl, $scopes);
+    $this->page['fb_registration_indomaret_url'] = $registrationUrl;
+    $this->page['fb_registration_alfamart_url'] = $registrationUrl;
+
+    //LOGIN
+    $helper_login = $fb->getRedirectLoginHelper();
+    $pdata_login = $helper_login->getPersistentDataHandler(); 
+    $pdata_login->set('state', json_encode(['act' => 'login', 'next' => $next]));
+
+    $loginUrl = $helper_login->getLoginUrl( $callbackUrl, $scopes );
+    $this->page['fb_login_url'] = $loginUrl;
+
+    $req_uri = $_SERVER['REQUEST_URI'];
+    if (strpos($req_uri, '/amp') === 0) {
+        $req_uri = substr($req_uri, 4);
+    }
+
+     $path        = parse_url($req_uri, PHP_URL_PATH);
+    $this['canonical_uri'] = (isset($_SERVER['HTTP_USESSL']) || isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]".$path;
+
+    $this['AMP_GTM_ID'] = env('AMP_GTM_ID');
+    $this['AMP_GA_ID'] = env('AMP_GA_ID');
+}
+?>
+==
+<!doctype html>
+<html amp lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{{ this.page.title }} | Frisian Flag Indonesia</title>
+	<meta name="title" content="{{ this.page.meta_title}}">
+        <meta name="description" content="{{ this.page.meta_description }}">
+        <meta name="facebook-domain-verification" content="t2ubto7jn7dd9h6si4fk19a8gd88ks" />
+        <meta name=“facebook-domain-verification” content=“74hs9dbda87d9cawoguzz2w7pjviwl” />
+        <meta name="ahrefs-site-verification" content="112d70195f4804d5ec8b0a26f6808e96afa04708dac83c5ded305ccf923cb44e">
+        <link rel="canonical" href="{{ canonical_uri }}">
+        <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+        <!-- FAVICONS -->
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ 'assets/favicon/apple-touch-icon.png'|theme }}">
+
+<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}
+</style></noscript> 
+<style amp-custom> 
+@font-face{font-family:Brevia-semibold;font-style:normal;font-weight:500;src:url(/themes/rainlab-bonjour/assets/fonts/Brevia-Semibold.woff)}@font-face{font-family:Brevia-black;font-style:normal;font-weight:500;src:url(/themes/rainlab-bonjour/assets/fonts/Brevia-Black.woff)}@font-face{font-family:Brevia-Regular;font-style:normal;font-weight:500;src:url(/themes/rainlab-bonjour/assets/fonts//Brevia-Regular.woff)}.btn_more,.download,.title-khas,button.lightClick{text-transform:uppercase}body,header{background:#fff}.close_menu,header{position:fixed;z-index:10}.breadcrumb a,.btn_more,.download,.list a,.list2 a,.nav_bot a,.nav_bot a span,a{text-decoration:none}.search_plain input,body{font-family:Brevia-Regular,Helvetica,Arial,sans-serif}h1,h2,h3,h4,h5,h6{font-family:Brevia-Black,Helvetica,Arial,sans-serif;margin:0;padding:0}.clearfix{clear:both}.left{text-align:left;color:#0f4d9a;font-size:22px}#sidebar,.nav_bot,.nav_bot a{text-align:center}body{margin:0;padding:70px 0 0}header{top:0;left:0;width:100%;height:70px;border-bottom:1px solid #eee}.close_menu,.menu_acc h4,header .menu{border:0;outline:0}header .logo{height:60px;width:60px;position:fixed;top:5px;left:10px}header .logo img{height:80px;display:block}header .menu{position:fixed;top:10px;right:10px;padding:15px;background:0 0}header .menu span{display:block;background:#0f4d9a;height:3px;width:20px;margin-bottom:3px}#sidebar{width:100%;padding-top:100px;background:#fff}#sidebar .logo{height:60px;width:60px;position:fixed;top:5px;left:10px}#sidebar .logo img{height:80px;display:block}amp-sidebar{max-width:none}.close_menu{top:15px;right:15px;padding:15px;background:0 0}.close_menu span{display:block;background:#0f4d9a;height:3px;width:20px;transform:rotate(45deg)}.close_menu span:last-child{transform:rotate(-45deg);margin-top:-3px}amp-accordion{color:#124a9d;background:0 0;outline:0}amp-accordion section{padding:10px 0;background:0 0;outline:0;font-family:Brevia-semibold}amp-accordion section a{color:#124a9d;text-decoration:none}amp-accordion section p{padding-top:10px}amp-accordion section p a{color:#45acd9;display:block;padding:5px 0;font-size:14px}amp-accordion section .arrow_down:after{content:"";width:10px;height:8px;background:url("{{ 'assets/img/arrow-b.png'|theme }}") no-repeat;background-size:10px;margin-left:10px;display:inline-block}.menu_acc h4{padding:0 10px;background:#fff}.nav_bot{margin-top:50px}.nav_bot a{width:130px;display:inline-block;font-size:13px}.nav_bot a amp-img{width:50px;display:inline-block}.nav_bot a span{display:block;color:#124a9d;padding:5px 0}.cover .amp-img{width:100%}.title_home{background-color:#f8f8f8;outline:0}.title_home section{padding:0}.title_home section h4{padding:20px;background-color:#ececec;color:#124a9d;outline:0}.title_home section h4 a{pointer-events:none}.title_home section .arrow_down:after{content:"";width:20px;height:20px;background:url("{{ 'assets/img/arrow-b.png'|theme }}") center no-repeat;background-size:15px;margin-left:10px;display:inline-block;float:right}.content_ttf_timeline:before,.timeline .box_timeline:after,.timeline:after{content:''}.title_home section p a{color:#9c9c9c;display:block;padding:20px}.breadcrumb,.detail_text,.title_home .isi_detail{padding:15px}.breadcrumb{color:#124a9d;font-weight:400;font-size:13px;line-height:140%}.btn_more,.download,.title_inside,.title_page{font-weight:700}.breadcrumb a{color:#124a9d;margin:0 5px}.breadcrumb a:last-child{color:#45acd9}.breadcrumb a:first-child{margin-left:0}.detail_text h1{font-size:25px;color:#0f4d9a;margin:0;padding:0;line-height:130%}.detail_text h2{color:#0f4d9a;border-bottom:1px solid #eee;padding-bottom:15px}.detail_text .text p{font-size:15px;line-height:150%;color:#4a4a4a}.detail_text .text.text_left{text-align:left}.card_penghargaan,.center,.detail_text .img_detail,.lightbox,.share,.stylepaging,.stylepaging ul li a,.title_page,.wrp-marketplace,a.button3,footer,footer .situs{text-align:center}.detail_text .category{color:#45acd9;padding-bottom:5px;font-size:14px}.detail_text .date{color:#bdbdbd;font-size:14px;margin-bottom:20px}.detail_text .img_detail{margin:10px 0}.detail_text .img_detail amp-img{width:100%;height:auto}.title_page{color:#0f4d9a;font-size:25px;padding:20px 0}.btn_more,.title_page.title_page_white{color:#fff}.btn_more{height:40px;border:0;-webkit-border-radius:25px;-moz-border-radius:25px;-ms-border-radius:25px;border-radius:25px;font-size:14px;background-color:#45acd9;padding:0 30px;display:inline-block;line-height:38px;margin:20px 0}.list h3,.list p,.list2 h3,.list2 p,.list_text h3{line-height:130%}.list{padding:10px}.list .img{overflow:hidden;border-radius:5px}.list .info{padding:10px 0;color:#bdbdbd;font-size:14px}.list .info .label{color:#45acd9}.detail-content h3,.list h3{font-size:22px;color:#0f4d9a}.list p{font-size:14px;color:#4a4a4a}.list .btn_more{margin-top:0}.list2{padding:10px}.list2 .img{overflow:hidden;float:left;width:80px;height:80px;background-size:cover}.list2 .text{float:right;width:calc(100% - 100px)}.list2 .text.text2{margin-top:10px}.list2 .info{color:#bdbdbd;font-size:12px}.list2 .info .label{color:#45acd9}.list2 h3{font-size:16px;color:#0f4d9a;padding-top:10px}.list2 p{font-size:14px;color:#4a4a4a}.list2.list2a .img{width:120px;height:120px;border-radius:3px;border:1px solid #eee;overflow:hidden}.list2.list2a .text{float:right;width:calc(100% - 140px)}.list2.list2a .text h3{font-size:18px;padding-top:20px;color:#4a4a4a}.list2.list2b .img{width:120px;height:90px;border-radius:3px;border:1px solid #eee;overflow:hidden}.list2.list2b .text{float:right;width:calc(100% - 140px)}.list2.list2b .text h3{font-size:16px}.list_text{padding:15px}.list_text h3{color:#0f4d9a;padding:5px 0 10px;font-size:18px}.list_text .info{font-size:13px;color:#bdbdbd}.download,.list_galeri .text h3,footer{color:#fff}.list_galeri{position:relative;margin:15px;border-radius:5px;overflow:hidden;height:250px}.list_galeri .img{width:100%;height:250px;display:block;background-size:cover}.list_galeri .text{position:absolute;padding:30px 10px 10px;color:#fff;bottom:0;width:calc(100% - 20px);left:0;background:-moz-linear-gradient(top,transparent 0,rgba(0,0,0,.65) 100%);background:-webkit-linear-gradient(top,transparent 0,rgba(0,0,0,.65) 100%);background:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.65) 100%)}.download{height:30px;border:0;-webkit-border-radius:25px;-moz-border-radius:25px;-ms-border-radius:25px;border-radius:25px;font-size:14px;background-color:#45acd9;padding:0 30px;display:inline-block;line-height:28px}footer{background-color:#0f4d9a;font-size:14px;line-height:130%}footer a{color:#45acd9}footer .newsletter{padding:20px;border-bottom:1px solid #225da4;font-size:14px}footer .newsletter strong{font-weight:700;font-size:18px;display:block}footer .newsletter span{display:block;padding:10px 0}footer .newsletter form{width:90%;display:inline-block;margin-top:10px;border-radius:100px;background-color:#033b80;padding:5px;height:50px}footer .newsletter form input[type=text]{height:50px;padding:0 15px;color:#fff;width:calc(100% - 90px);background-color:transparent;outline:0;font-size:15px;border:0;font-family:Brevia,helvetica,arial}footer .newsletter form input[type=submit]{width:50px;height:50px;outline:0;border-radius:100px;background:url("{{ 'assets/img/right-arrow.svg'|theme }}") center no-repeat #abdaf1;background-size:15px;float:right}footer .situs{padding:20px}footer .situs strong{font-size:20px;padding-bottom:15px;display:block}footer .situs a{display:inline-block;height:30px;width:24%;padding:10px}.share a,footer .sosmed a{width:30px;height:30px;border-radius:100px;display:inline-block}footer .situs a amp-img{height:30px}footer .sosmed{padding:20px}footer .sosmed a{background:#fff;padding:10px;margin:2px}footer .sosmed a amp-img{color:#0f4d9a;fill:#000}footer .fakta{font-size:14px;line-height:130%;margin-bottom:20px;padding:20px}footer .fakta a{color:#45acd9}footer .address{padding:20px;border-bottom:1px solid #225da4;border-top:1px solid #225da4}footer .address a{color:#fff;text-decoration:underline}footer .credit{padding:20px;font-size:12px;line-height:140%}footer .credit a{color:#fff}.share a{margin:10px 2px;background:#eee;padding:10px}.share a amp-img{width:100%;height:100%}.share a.fb{background:#3b5997}.share a.tw{background:#1da1f1}.share a.wa{background:#4dc247}.share a.line{background:#00c300}.menus--footer{display:flex;justify-content:center;align-items:center}.menus--footer a{display:block;height:58px;width:58px;border-radius:58px;background:#0f4d9a;margin:20px;color:#fff}.menus--footer svg{display:block;margin:18px auto}.svg-inline--fa{height:22px;margin:12px}.menus--footer i{color:#0f4d9a;font-style:unset;padding:10px 0;display:block;font-size:14px;font-family:Brevia-semibold}.newsletter__form{width:100%;max-width:400px;margin:0 auto}.newsletter__form form{position:relative}.newsletter__form input[type=email]{height:56px;padding:0 60px 0 25px;background:#033b80;border-radius:50px;border:0;color:#fff;width:100%;outline:0;font-size:16px;-webkit-appearance:none;box-sizing:border-box}.newsletter__form__btn{width:46px;height:46px;position:absolute;right:5px;top:5px;display:block;background:#abdaf1;-webkit-border-radius:46px;-moz-border-radius:46px;-ms-border-radius:46px;border-radius:46px;border:0;-webkit-appearance:none;color:#0f4d9a;font-size:25px}
+</style>
+       
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.2.js"></script>
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+    <script async custom-element="amp-accordion" src="https://cdn.ampproject.org/v0/amp-accordion-0.1.js"></script>
+    <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
+    {% placeholder head_scripts %}
+
+    </head>
+    <body>
+    <!-- Google Tag Manager -->
+<amp-analytics config="https://www.googletagmanager.com/amp.json?id=GTM-KZZGV9Q&gtm.url=SOURCE_URL" data-credentials="include"></amp-analytics>
+<amp-analytics type="googleanalytics">
+    <script type="application/json">
+    {
+      "vars": {
+        "account": "UA-9912630-22"
+      },
+      "triggers": {
+        "videoplay": {
+          "on": "video-play",
+          "selector": "amp-youtube",
+          "request": "event",
+          "vars": {
+            "eventLabel": "${title}",
+            "eventAction": "Play",
+            "eventCategory": "Youtube"
+          }
+        },
+        "myVideoEnded": {
+            "on": "video-ended",
+            "request": "event",
+            "selector": "amp-youtube",
+            "vars": {
+                "eventLabel": "${title}",
+                "eventAction": "Complete Watched",
+                "eventCategory": "Youtube"
+              }
+          },
+          "myVideoPercentagePlayed25": {
+            "on": "video-percentage-played",
+            "request": "event",
+            "selector": "amp-youtube",
+            "videoSpec": {
+              "percentages": [25]
+            },
+            "vars": {
+                "eventLabel": "${title}",
+                "eventAction": "Watched 25%",
+                "eventCategory": "Youtube"
+            }
+          },
+          "myVideoPercentagePlayed50": {
+            "on": "video-percentage-played",
+            "request": "event",
+            "selector": "amp-youtube",
+            "videoSpec": {
+              "percentages": [50]
+            },
+            "vars": {
+                "eventLabel": "${title}",
+                "eventAction": "Watched 50%",
+                "eventCategory": "Youtube"
+            }
+          },
+          "myVideoPercentagePlayed75": {
+            "on": "video-percentage-played",
+            "request": "event",
+            "selector": "amp-youtube",
+            "videoSpec": {
+              "percentages": [75]
+            },
+            "vars": {
+                "eventLabel": "${title}",
+                "eventAction": "Watched 75%",
+                "eventCategory": "Youtube"
+            }
+          },
+          "myVideoPercentagePlayed100": {
+            "on": "video-percentage-played",
+            "request": "event",
+            "selector": "amp-youtube",
+            "videoSpec": {
+              "percentages": [100]
+            },
+            "vars": {
+                "eventLabel": "${title}",
+                "eventAction": "Watched 100%",
+                "eventCategory": "Youtube"
+            }
+          },
+          "myVideoPause": {
+            "on": "video-pause",
+            "request": "event",
+            "selector": "amp-youtube",
+            "vars": {
+                "eventLabel": "${title}",
+                "eventAction": "Pause",
+                "eventCategory": "Youtube"
+            }
+          }
+    }
+}
+    </script>
+    </amp-analytics>
+    
+    <amp-analytics type="googleanalytics" config="https://amp.analytics-debugger.com/ga4.json" data-credentials="include">
+    <script type="application/json">
+    {
+        "vars": {
+                    "GA4_MEASUREMENT_ID": "G-MFFHGNH0VJ",
+                    "GA4_ENDPOINT_HOSTNAME": "www.google-analytics.com",
+                    "DEFAULT_PAGEVIEW_ENABLED": true,    
+                    "GOOGLE_CONSENT_ENABLED": false,
+                    "WEBVITALS_TRACKING": false,
+                    "PERFORMANCE_TIMING_TRACKING": false
+        }
+    }
+    </script>
+    </amp-analytics>
+    <!--
+        <amp-analytics config="https://www.googletagmanager.com/amp.json?id={{ AMP_GTM_ID }}&gtm.url=SOURCE_URL" data-credentials="include"></amp-analytics>
+        <amp-analytics type="googleanalytics">
+            <script type="application/json">
+                {
+                    "vars": {
+                        "account": "{{ AMP_GA_ID }}"
+                    },
+                    "triggers": {
+                        "sampledOnRandom": {
+                            "on": "visible",
+                            "request": "pageview",
+                            "sampleSpec": {
+                                "sampleOn": "${random}",
+                                "threshold": 50
+                            }
+                        },
+                        "sampledOnClientId": {
+                            "on": "visible",
+                            "request": "pageview",
+                            "sampleSpec": {
+                                "sampleOn": "${clientId(cookieName)}",
+                                "threshold": 50
+                            }
+                        }
+                    }
+                }
+            </script>
+        </amp-analytics>
+          <!-- Facebook Pixel Analytics tracking -->
+       <!--  <amp-analytics type="facebookpixel" id="facebook-pixel">
+           <script type="application/json">
+           {
+               "vars": {
+                   "pixelId": "1152867051533614"
+               },
+               "triggers": {
+                   "trackPageview": {
+                       "on": "visible",
+                       "request": "pageview"
+                   }
+               }
+           }
+           </script>
+       </amp-analytics> -->
+        
+        <!-- End Facebook Pixel Analytics example -->    
+        <div id="fb-root"></div>
+    <header>
+       <a href="/" class="logo">
+           <amp-img 
+                src="{{ 'assets/img/logo_ff_low.png'|theme }}"
+                srcset="{{ 'assets/img/logo_ff_low.png'|theme }} 640w,
+                       {{ 'assets/img/logo_ff_low.png'|theme }} 320w"
+                width="180"
+                height="180"
+                layout="responsive"
+                alt="an image">
+            </amp-img>
+       </a>
+       <button on="tap:sidebar.toggle" class="ampstart-btn caps m2 menu">
+           <span></span>
+           <span></span>
+           <span></span>
+       </button>
+   </header>
+   <amp-sidebar id="sidebar"
+        layout="nodisplay"
+        side="right">
+        <a href="#" class="logo">
+           <amp-img 
+                src="{{ 'assets/img/logo_ff.png'|theme }}"
+                srcset="{{ 'assets/img/logo_ff.png'|theme }} 640w,
+                       {{ 'assets/img/logo_ff.png'|theme }} 320w"
+                width="180"
+                height="180"
+                layout="responsive"
+                alt="an image">
+            </amp-img>
+        </a>
+        <button on="tap:sidebar.close" class="ampstart-btn caps m2 close_menu">
+            <span></span>
+            <span></span>
+        </button>
+        <amp-accordion class="menu_acc" expand-single-section>
+            {% if str_contains(url_current(), '/en') %} 
+                       
+            {% else %}
+                {% partial 'site/mobilemenu-amp' %}
+            {% endif %}
+        </amp-accordion>
+        <div class="menus--footer">
+        {% set rule = this.page.set_rule %}
+             {% if not rule %}
+             <a href="/login" target="_blank">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" class="svg-inline--fa fa-user fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path></svg>
+                    <i>Masuk / Daftar</i>
+                </a>
+             {% endif %}    
+                <a href="/hubungi-kami">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="envelope" class="svg-inline--fa fa-envelope fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path></svg>
+                    <i>Hubungi Kami</i>                
+                </a>
+                <a href="/pencarian" target="_blank">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg>
+                    <i>Search</i>                                
+                </a>
+        </div>
+    </amp-sidebar>

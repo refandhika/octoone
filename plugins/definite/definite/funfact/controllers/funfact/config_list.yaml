@@ -1,0 +1,11 @@
+list: $/definite/funfact/models/funfact/columns.yaml
+modelClass: Definite\FunFact\Models\FunFact
+title: FunFact
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'definite/funfact/funfact/update/:id'

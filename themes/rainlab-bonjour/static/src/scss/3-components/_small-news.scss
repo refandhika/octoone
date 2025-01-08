@@ -1,0 +1,56 @@
+.small-news {
+	@include clearfix();
+	position: relative;
+	min-height: 100px;
+	margin-bottom: 20px;
+
+	&__wrapper {
+		margin-bottom: 40px;
+
+		padding: 0 30px;
+		&:not(:last-child) {
+			@media screen and (min-width: 767px) {
+				border-right: 1px solid #EEE;
+			}
+		}
+	}
+
+	&__title {
+		font-size: 22px;
+		margin-bottom: 20px;
+		color: $blue;
+		font-family: $font-black;
+
+		@media screen and (min-width: 767px) {
+			font-size: 25px;
+			min-height: 45px;
+
+		}
+	}
+
+	&__thumbnail {
+		width: 100px;
+		height: 100px;
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		position: absolute;
+		top: 0;
+	}
+
+	&__meta {
+		padding-left: 115px;
+
+
+		h3 {
+			font-family: $font-black;
+			font-size: 18px;
+			margin-top: 10px;
+			color: $blue;
+		}
+
+		.date {
+			font-size: 12px;
+		}
+	}
+}

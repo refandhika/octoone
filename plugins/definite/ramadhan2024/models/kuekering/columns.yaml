@@ -1,0 +1,28 @@
+columns:
+    id:
+        label: id
+        type: number
+    title:
+        label: title
+        type: text
+    resep:
+        label: resep
+        type: number
+    resep_id:
+        label: resep_id
+        type: number
+    created_at:
+        label: created_at
+        type: datetime
+    updated_at:
+        label: updated_at
+        type: datetime
+    day:
+        label: day
+        type: number
+    link:
+        label: link
+        type: text
+    image:
+        label: image
+        type: text

@@ -1,0 +1,181 @@
+title = "Resep Kami Kategori AMP Page"
+url = "/amp/resep-kami/:category"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/resep-kami-kategori-page"
+==
+<?php
+function onStart(){
+    $title = Input::get('title') ? Input::get('title') : "";
+    $sort = "desc";
+    
+    //$category = Input::get('category') ? strtoupper(Input::get('category')) : "all";
+    $index    = 0;
+    
+    $limit = 6;
+    $category = "";
+    $category_id = "";
+    if($this->param('category') == "resep-dengan-susu-bubuk"){
+        $category = "FMP";
+        $category_id = 21;
+        $this->page->title = "Resep Nikmat Bergizi dengan Susu Bubuk Frisian Flag";
+    }
+    elseif($this->param('category') == "resep-dengan-susu-cair")
+    {
+        $category = "RTD";
+        $category_id = 19;
+        $this->page->title = "Resep Praktis Bergizi dengan Susu Cair Frisian Flag";
+    }
+    elseif($this->param('category') == "resep-dengan-kental-manis")
+    {
+        $category = "SCM";
+        $category_id = 22;
+        $this->page->title = "Resep MANTUL Frisian Flag Kental Manis MAnis Nikmat TUjuh Langkah";
+    }
+    
+    $this['title'] = $title;
+    $this['category'] = $category;
+    
+    
+    $query = Definite\Activities\Models\Activity::leftJoin('definite_activities_categories_activities', 'definite_activities_categories_activities.activity_id', '=', 'definite_activities_activity.id')->
+    leftJoin('definite_activities_category', 'definite_activities_category.id', '=', 'definite_activities_categories_activities.category_id')->whereRaw('definite_activities_category.id = ? AND ( definite_activities_activity.title like ? OR definite_activities_activity.description like ?)', [ $category_id, '%'.$title.'%', '%'.$title.'%' ] )->
+            select('definite_activities_category.slug as slug_category','definite_activities_activity.title', 'definite_activities_activity.slug', 'definite_activities_activity.featured_image')->orderBy('definite_activities_activity.sort_top', "desc")->orderBy('definite_activities_activity.updated_at', $sort)->offset($index)->limit($limit)->get();
+    
+    $this['result'] = $query;
+    
+        
+}
+?>
+==
+{% partial 'site/header-amp-banner1' %}
+
+<div class="body-1">
+
+    <div class="disresult row">
+
+	 
+      <amp-state id="photos" src="https://www.frisianflag.com/return-json?title={{title}}&sort=desc&category={{ category }}&index=0"></amp-state>
+      <amp-state id="product">
+        <script type="application/json">
+        {
+            "title": "{{ title }}",
+            "titletemp": "{{ title }}",
+            "pageIndex": 6,
+            "sort": "desc",
+            "category":"{{ category }}",
+            "checknext":{{ result.count > 0 ? '1' : '0'}},
+            "moreItemsPageIndex": 6,
+            "hasMorePages": true
+        }
+        </script>
+      </amp-state>
+       <form method="GET" action="https://www.frisianflag.com/amp/resep-kami?title=qwert" target="_top">
+
+            <input class="search-amp-resep" type="search" name="q" placeholder="Ketik Resep Atau Bahan">
+            <input type="submit" value="Search" style="display: none;">
+            
+        </form>
+  <form id="formdata" method="GET" action="https://www.frisianflag.com/return-json" action-xhr="https://www.frisianflag.com/return-json" target="_top" on="submit-success: AMP.setState({
+              product: {
+                  pageIndex : product.category != 'all' ? 6 : 2
+              },
+               photos: {
+                items: event.response.items
+              }
+            });">
+    <!--<input class="search-amp-resep" type="search" name="title" on="input-debounced:AMP.setState({ product:{ title: event.value } }), formdata.submit, formchecknext.submit" 
+    value="{{title}}" placeholder="Ketik Resep Atau Bahan">-->
+        
+    <input type="hidden" name="title" value="{{ title }}" [value]="product.title">
+    
+    <input type="hidden" name="category" value="all" [value]="product.category">
+    <input type="hidden" name="index" value="0">
+    <div style="display: flex;">
+        <h1 class="title-filter">Resep Pilihan  Hari ini</h1>
+        <select class="option-b" name="sort" on="change:AMP.setState({
+                product:{
+                    pageIndex: product.category != 'all' ? 6 : 2, sort: event.value 
+                },
+                photos: {
+                    items: 'https://www.frisianflag.com/return-json?title={{title}}&sort='+event.value+'&category={{ category }}&index=0'
+                }
+            }), formdata.submit, formchecknext.submit">
+                    
+                    <option value="desc" [selected]="product.sort == 'desc'">Terbaru</option>
+                    <option value="asc" [selected]="product.sort == 'asc'">Terlama</option>
+                    <option value="populer" [selected]="product.sort == 'populer'">Terpopuler</option>
+                    
+        </select>
+    </div>
+</form>
+    {% if result.count == 0 %}
+        <h3 class="noresult">Hasil pencarian tidak ditemukan</h3>
+    {% else %}
+      
+  
+      
+    <amp-list src="https://www.frisianflag.com/return-json?title={{title}}&sort=desc&category={{ category }}&index=0" [src]="photos.items" binding="refresh" load-more="auto" load-more-bookmark="nextload" layout="fixed-height" width="auto" height="600" [height]="photos.items.length * 100 + 12">
+    <template type="amp-mustache">
+        
+      {% verbatim %}
+     
+          <div class="list-item">
+          <div class="main__recipe">
+          <div class="recipe-thumb">
+          <a href="/resep-kami/{{slug_category}}/{{slug}}#main-scroll">
+          <amp-img class="img-list" src="/storage/app/media/{{featured_image}}" width="100" height="100" layout="responsive" alt="{{title}}">
+            </amp-img>
+            </a>
+            <div class="total--likes" hidden [hidden]="product.sort != 'populer'">
+                    {{ total_likes }} 
+                    <amp-img style="vertical-align:middle;" src="/storage/app/media/resep-kami/heart-icon.svg" width="15" height="15" layout="fixed"></amp-img>
+                </div>
+            </div>
+            <div class="div-1"><a href="/resep-kami/{{slug_category}}/{{slug}}#main-scroll" class="button gradient-orange ">Lihat Resepnya</a></div>
+            
+            
+          </div>
+      </div>
+      {% endverbatim %}
+    </template>
+  </amp-list>
+  
+  {% endif %}
+  
+<!-- <form id="formdataloadmore" method="GET" action="https://www.frisianflag.com/return-json" action-xhr="https://www.frisianflag.com/return-json" target="_top" on="submit-success: AMP.setState({
+              photos: {
+                items: photos.items.concat(event.response.items)
+              },
+              product: {
+                  pageIndex : product.category != 'all' ? product.pageIndex + 6 : product.pageIndex + 2
+              }
+            });">
+        <input type="hidden" name="title" value="{{ title }}" [value]="product.title">
+        <input type="hidden" name="sort" value="desc" [value]="product.sort">
+        <input type="hidden" name="category" value="{{ category }}" [value]="product.category">
+        <input type="hidden" name="index" value="6" [value]="product.pageIndex">
+        <input class="load-more" id="btnloadmore" {{ result.count > 0 ? '' : 'hidden'}} [hidden]="product.checknext == 0" type="submit" value="Resep Lainnya" on="tap:formchecknext.submit" tabindex="0" role="button">
+
+</form> -->
+
+<!-- <form id="formchecknext" method="GET" action="https://www.frisianflag.com/recipe-check-next" action-xhr="https://www.frisianflag.com/recipe-check-next" target="_top" on="submit-success: AMP.setState({
+              product: {
+                checknext: event.response.items
+              }
+            });">
+        <input type="hidden" name="title" value="{{ title }}" [value]="product.title">
+        <input type="hidden" name="sort" value="desc" [value]="product.sort">
+        <input type="hidden" name="category" value="{{ category }}" [value]="product.category">
+        <input type="hidden" name="index" value="6" [value]="product.pageIndex">
+        <input type="text" name="test" value="6" [value]="product.checknext" style="display:none"> 
+        <input class="load-more" type="submit" value="Check Next" style="display:none">
+</form>       -->
+ 
+	 <button class="category1 fixed" on="tap:AMP.navigateTo(url=/resep-kami/resep-dengan-susu-cair)"></button>
+	 <button class="category2 fixed" on="tap:AMP.navigateTo(url=/resep-kami/resep-dengan-kental-manis)"></button>
+	 <button class="category3 fixed" on="tap:AMP.navigateTo(url=/resep-kami/resep-dengan-susu-bubuk)"></button>
+    </div>	 
+
+</div>
+{% partial 'site/footer-amp' %}

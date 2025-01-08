@@ -1,0 +1,29 @@
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+        <img src="{{ 'assets/img/alfamart/pemenang/pemenang-banner.jpg'|theme }}" class="hidden-xs" alt="Banner Pemenang Desktop" />
+      <img src="{{ 'assets/img/alfamart/pemenang/pemenang-banner-mobile.jpg'|theme }}" class="visible-xs" alt="Banner Pemenang Mobile" />
+    </div>
+</div>
+
+{% partial 'site/alfamart-menu' %}
+
+<div class="main">
+    <h1 style="display: none;">Alfamart Pemenang | Frisian Flag Indonesia</h1>
+    <img src="{{ 'assets/img/alfamart/pemenang/daftar-pemenang.jpg'|theme }}" alt="Daftar Pemenang Promo Alfamart" />
+ 
+</div>
+
+<style>
+.main{
+    margin:30px 0;
+    
+    }
+  
+</style>
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

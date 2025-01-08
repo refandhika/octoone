@@ -1,0 +1,17 @@
+plugin:
+    name: 'leverate.sitemap::lang.plugin.name'
+    description: 'leverate.sitemap::lang.plugin.description'
+    author: Leverate
+    icon: oc-icon-globe
+    homepage: ''
+permissions:
+    manage_sitemap:
+        tab: sitemap
+        label: 'Manage Sitemap'
+navigation:
+    sitemap:
+        label: 'Sitemap for Static Pages'
+        url: leverate/sitemap/page
+        icon: icon-globe
+        permissions:
+            - manage_sitemap

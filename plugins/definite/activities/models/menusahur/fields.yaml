@@ -1,0 +1,19 @@
+fields:
+    title:
+        label: Title
+        nameFrom: title
+        descriptionFrom: description
+        list: $/definite/activities/models/activity/columns.yaml
+        span: auto
+        type: recordfinder
+tabs:
+    fields:
+        recipe:
+            label: Recipe
+            nameFrom: title
+            descriptionFrom: description
+            emptyOption: 'Select Recipe'
+            select: title
+            span: auto
+            type: relation
+            tab: 'Tab 1'

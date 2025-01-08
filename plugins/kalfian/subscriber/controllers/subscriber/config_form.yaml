@@ -1,0 +1,10 @@
+name: Subscriber
+form: $/kalfian/subscriber/models/subscriber/fields.yaml
+modelClass: Kalfian\Subscriber\Models\Subscriber
+defaultRedirect: kalfian/subscriber/subscriber
+create:
+    redirect: 'kalfian/subscriber/subscriber/update/:id'
+    redirectClose: kalfian/subscriber/subscriber
+update:
+    redirect: kalfian/subscriber/subscriber
+    redirectClose: kalfian/subscriber/subscriber

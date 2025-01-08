@@ -1,0 +1,14 @@
+title = "ResepMANTUL"
+url = "/ResepMANTUL"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/resepmantul"
+==
+<?php
+function onEnd() {
+    $this->page->amp_url = $this->pageUrl('/amp/aktivitas-kami/resep-ramadan-kaya-rasa-dirumahaja/resep-manis-tujuh-langkah');
+    return Redirect::to("/aktivitas-kami/resep-ramadan-kaya-rasa-dirumahaja/resep-manis-tujuh-langkah" , 301);
+}
+?>
+==

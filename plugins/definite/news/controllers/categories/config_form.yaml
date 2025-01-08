@@ -1,0 +1,10 @@
+name: Categories
+form: $/definite/news/models/categories/fields.yaml
+modelClass: Definite\News\Models\Categories
+defaultRedirect: definite/news/categories
+create:
+    redirect: 'definite/news/categories/update/:id'
+    redirectClose: definite/news/categories
+update:
+    redirect: definite/news/categories
+    redirectClose: definite/news/categories

@@ -1,0 +1,58 @@
+.box {
+    border: 1px solid #d4d4d4;
+    background-color: #f8f8f8;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+
+    &__link {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    &__article {
+        h3 {
+            margin: 0;
+            font-family: "Brevia-Black",Helvetica,Arial,sans-serif;
+            color: #0F4D9A;
+            text-transform: capitalize;
+        }
+    }
+
+    &__profile {
+        position: relative;
+
+        &-heading {
+
+            .profile {
+                height: 70px;
+                width: 70px;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                border-radius: 4px;
+                display: inline-block;
+            }
+
+            label {
+                font-size: 18px;
+                margin-bottom: 20px;
+                vertical-align: text-bottom;
+                margin-left: 10px;
+                color: #999;
+            }
+        }
+
+        &-main {
+            p {
+                margin-bottom: 20px;
+                color: #999;
+
+                span {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}

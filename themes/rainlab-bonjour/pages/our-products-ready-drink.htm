@@ -1,0 +1,112 @@
+title = "Our Products Ready To drink"
+url = "/produk/su"
+layout = "default"
+is_hidden = 0
+
+[builderDetails]
+modelClass = "Definite\Products\Models\Category"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+==
+<?php
+function onEnd() {
+
+    // get the post component
+    $this->page->title = "Susu Cair Siap Minum";
+    $this->page->meta_description = "Susu Cair Siap Minum Frisian Flag tersedia dalam kemasan yang praktis dan higienis dengan harga yang terjangkau serta baik untuk kesehatan keluarga Anda.";
+    $this->page->meta_keywords = "susu cair, harga susu cair, harga susu frisian flag cair, susu cair frisian flag, susu siap minum";
+    
+    $this->page->title_en = "Ready to drink milk";
+    $this->page->meta_description = "Susu Cair Siap Minum Frisian Flag tersedia dalam kemasan yang praktis dan higienis dengan harga yang terjangkau serta baik untuk kesehatan keluarga Anda.";
+    $this->page->meta_keywords = "susu cair, harga susu cair, harga susu frisian flag cair, susu cair frisian flag, susu siap minum";
+
+}
+?>
+==
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+{% if record %}
+{% set category = record.categories().first %}
+    <!-- {{ attribute(record, displayColumn) }} -->
+
+<h1 aria-hidden="true" class="seo-heading">{{ record.title }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp hidden-xs"><img src="{{ 'assets/img/our-milkpedia.png'|theme }}" alt="Our Milkpedia"/> </div>
+    <div class="imgwrp visible-xs"><img src="{{ 'assets/img/staticbaner-xs.jpg'|theme }}" alt="Banner Static"/> </div>
+</div>
+
+<div class="container-menutab">
+    <div class="container-one">
+        <ul>
+            <li class="toggle visible-xs visible-sm"><a href="javascript:;" class="active">{{ record.title }}</a></li>
+            {% for category in  record.all %}
+            <li>
+                <a href="{{ 'our-products-archive'|page({'slug': category.slug }) }}"
+                {% if category.slug == record.slug %}
+                    class="active"
+                {% endif %}
+                >
+                    {{ category.title }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<div id='main-section' class="container-fluid">
+    <div class="col-md-12">
+        <div class="breadcrumb">
+            <div class="container-two">
+                <ul>
+                   <li><a href="{{ 'home'|page }}">{{ 'beranda'|_ }}</a> </li>
+                    <li><a href="{{ 'our-products'|page }}">Produk</a> </li>
+                    <li><a href="{{ 'our-products-archive'|page({"slug": rec}) }}">{{ record.title }}</a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="default-content">
+            <div class="container-two">
+                <h1>{{ record.title }}</h1>
+                <p>{{ record.description | raw}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section section_card clearfix">
+        {% for post in record.publishedProducts %}
+            <div class="col-sm-4 itemhomefade">
+                    <div class="card card_featured card_product">
+                        <div class="card__thumbnail">
+                            <div class="card__image">
+                                 {% if post.featured_image %}
+                                    <img src="{{ post.featured_image|media }}" alt="{{ category.title }}"/>
+                                {% else %}
+                                     <img src="http://placehold.it/600x600/797979/666666?text=No+Image" alt="No Image"/>
+                                {% endif %}
+                            </div>
+
+                            <div class="card__meta">
+                                <header class="card__head">
+                                    <h3><a href="{{ 'our-products-single'|page({"category-slug": record.slug, "slug": post.slug}) }}">{{ post.title }}</a></h3>
+                                </header>
+                                <a href="{{ 'our-products-single'|page({"category-slug": record.slug, "slug": post.slug}) }}" class="button hidden-xs">{{ 'selengkapnya'|_ }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        {% endfor %}
+    </div>
+</div> <!-- end mainsection -->
+
+{% else %}
+    {% partial '404' %}
+{% endif %}

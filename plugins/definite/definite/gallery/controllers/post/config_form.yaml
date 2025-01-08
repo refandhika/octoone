@@ -1,0 +1,10 @@
+name: Post
+form: $/definite/gallery/models/post/fields.yaml
+modelClass: Definite\Gallery\Models\Post
+defaultRedirect: definite/gallery/post
+create:
+    redirect: 'definite/gallery/post/update/:id'
+    redirectClose: definite/gallery/post
+update:
+    redirect: definite/gallery/post
+    redirectClose: definite/gallery/post

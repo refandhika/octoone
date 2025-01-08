@@ -1,0 +1,100 @@
+title = "home with skeleteon"
+url = "/home-skeleteon"
+layout = "home-skeletton"
+is_hidden = 0
+
+[milkpediaList]
+
+[milkpediaCategories]
+
+[NewsList]
+
+[NewsCategories]
+==
+<?php
+function onStart()
+{
+   $this['AMP_GTM_ID'] = env('AMP_GTM_ID');
+    $this['AMP_GA_ID'] = env('AMP_GA_ID');
+}
+?>
+==
+<h1 aria-hidden="true" class="seo-heading">{{ this.page.meta_title|_ }}</h1>
+    
+    <style>
+         .kadal{
+width: 100%;
+    height: 300px;
+    padding-top: 34%;
+    margin-top: 16%;
+    margin-bottom:7%;
+             }
+    </style>
+    
+    
+    <div class="container">
+ <div class="row-fluid" id="skeletone">
+            <div class="kadal">
+                
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                                    <div class="card__thumbnail card-ovl card__activity"  data-mobile="/storage/app/media/tips-menu-menjaga-nutrisi-anak.jpeg">
+                        <div class="card__meta">
+                            <header class="card__head">
+                                <h3>Tips dan Menu Menjaga Nutrisi Anak</h3>
+                            </header>
+                                                            <a href="https://www.frisianflag.com/milkpedia/nutrisi-dan-kesehatan/tips-dan-menu-menjaga-nutrisi-anak" class="button">LEBIH LANJUT</a>
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="col-sm-4">
+                <div class="card">
+                                    <div class="card__thumbnail card-ovl card__activity"  data-mobile="/storage/app/media/tips-menu-menjaga-nutrisi-anak.jpeg">
+                        <div class="card__meta">
+                            <header class="card__head">
+                                <h3>Tips dan Menu Menjaga Nutrisi Anak</h3>
+                            </header>
+                                                            <a href="https://www.frisianflag.com/milkpedia/nutrisi-dan-kesehatan/tips-dan-menu-menjaga-nutrisi-anak" class="button">LEBIH LANJUT</a>
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="col-sm-4">
+                <div class="card">
+                                    <div class="card__thumbnail card-ovl card__activity"  data-mobile="/storage/app/media/tips-menu-menjaga-nutrisi-anak.jpeg">
+                        <div class="card__meta">
+                            <header class="card__head">
+                                <h3>Tips dan Menu Menjaga Nutrisi Anak</h3>
+                            </header>
+                                                            <a href="https://www.frisianflag.com/milkpedia/nutrisi-dan-kesehatan/tips-dan-menu-menjaga-nutrisi-anak" class="button">LEBIH LANJUT</a>
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+       
+      </div>
+      </div>
+    
+
+
+    <script>
+        $(function() {
+            var instance = $('#skeletone').scheletrone({
+                   url : "/home-kasjdkasjdkjsakklasjkj-content",
+                    debug		: {
+                        latency: 4000
+                    },
+                    incache: false,
+                    onComplete: function() {
+                        console.info('plugin is loaded')
+                        console.info('wait 3 secs for the data');
+                    }
+            });
+  
+          
+            
+            
+        });
+    </script>

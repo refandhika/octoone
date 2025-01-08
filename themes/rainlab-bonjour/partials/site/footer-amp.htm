@@ -1,0 +1,270 @@
+[viewBag]
+
+[builderList]
+modelClass = "Definite\FunFact\Models\FunFact"
+scopeValue = "{{ :scope }}"
+displayColumn = "description"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[subscriberform]
+==
+<?php
+function onStart(){
+    if(Session::pull('show_login_form', false)){
+        $this->page['show_form'] = '$.fancybox.open({ src  : \'#login\'});';
+
+        if($msg = Session::pull('login_alert')){
+            $this->page['login_alert'] = 'alert(\''.$msg.'\')';
+        }else{
+            $this->page['login_alert'] = '';
+        }
+
+    }else if(Session::pull('show_registration_form', false)){
+        $this->page['show_form'] = '$.fancybox.open({ src  : \'#register\'});';
+    }else{
+        $this->page['show_form'] = '';
+    }
+}
+?>
+==
+<!-- s:footer -->
+    <footer>
+    
+      <div class="situs">
+        <strong>{{'situs-kami-yang-lain'|_}}</strong>
+        <a href="https://www.frieslandcampina.com/en/"  target="_blank">
+          <amp-img 
+              src="{{ 'assets/img/other-sites/friesland.png'|theme }}"
+              srcset="{{ 'assets/img/other-sites/friesland2x.png'|theme }} 640w,
+                     {{ 'assets/img/other-sites/friesland2x.png'|theme }} 320w"
+              width="84"
+              height="36"
+              alt="an image">
+          </amp-img>
+        </a>
+        <a href="https://www.ibudanbalita.com/"  target="_blank">
+          <amp-img 
+              src="{{ 'assets/img/other-sites/ibu-balita.png'|theme }}"
+              srcset="{{ 'assets/img/other-sites/ibu-balita.png'|theme }} 640w,
+                     {{ 'assets/img/other-sites/ibu-balita.png'|theme }} 320w"
+              width="72"
+              height="30"
+              alt="an image">
+          </amp-img>
+        </a>
+        <!-- <a href="https://www.friso.co.id/"  target="_blank">
+          <amp-img 
+              src="{{ 'assets/img/other-sites/friso.png'|theme }}"
+              srcset="{{ 'assets/img/other-sites/friso2x.png'|theme }} 640w,
+                     {{ 'assets/img/other-sites/friso2x.png'|theme }} 320w"
+              width="68"
+              height="29"
+              alt="an image">
+          </amp-img>
+        </a> -->
+        <a href="https://www.omela.com"  target="_blank">
+          <amp-img 
+              src="{{ 'assets/img/other-sites/omela.png'|theme }}"
+              srcset="{{ 'assets/img/other-sites/omela2x.png'|theme }} 640w,
+                     {{ 'assets/img/other-sites/omela2x.png'|theme }} 320w"
+              width="94"
+              height="30"
+              alt="an image">
+          </amp-img>
+        </a>
+        <!-- <a href="https://www.susubendera.com"  target="_blank">
+          <amp-img 
+              src="{{ 'assets/img/other-sites/Logo_Susu_Bendera.png'|theme }}"
+              srcset="{{ 'assets/img/other-sites/Logo_Susu_Bendera.png'|theme }} 640w,
+                     {{ 'assets/img/other-sites/Logo_Susu_Bendera.png'|theme }} 320w"
+              width="94"
+              height="33"
+              alt="an image">
+          </amp-img>
+        </a> -->
+      </div>
+      <div class="clearfix"></div>
+      <!-- s:fakta -->
+      {% if not records.isEmpty %}
+          {% set funfact = records.random %}
+          <div class="title_page title_page_white">{{'fakta-seru'|_}} #{{ funfact.no }}</div>
+          <div class="fakta">
+            {{ trans_pick(funfact, 'description') | raw }}
+          </div>
+      {% endif %}
+      <!-- e:fakta -->
+      <!-- s:sosmed -->
+      <div class="title_page title_page_white">Temukan Kami</div>
+      <div class="sosmed">
+        <a href="https://www.facebook.com/FrisianFlagID" target="_blank">
+          <amp-img 
+              src="{{ 'assets/img/ico_fb.svg'|theme }}"
+              srcset="{{ 'assets/img/ico_fb.svg'|theme }} 640w,
+                     {{ 'assets/img/ico_fb.svg'|theme }} 320w"
+              width="30"
+              height="30"
+              alt="an image">
+          </amp-img>
+        </a>
+        <a href="https://twitter.com/FrisianFlagID" target="_blank">
+          <amp-img 
+              src="{{ 'assets/img/ico_tw.svg'|theme }}"
+              srcset="{{ 'assets/img/ico_tw.svg'|theme }} 640w,
+                     {{ 'assets/img/ico_tw.svg'|theme }} 320w"
+              width="30"
+              height="30"
+              alt="an image">
+          </amp-img>
+        </a>
+        <a href="https://www.instagram.com/frisianflagid/" target="_blank">
+          <amp-img 
+              src="{{ 'assets/img/ico_ig.svg'|theme }}"
+              srcset="{{ 'assets/img/ico_ig.svg'|theme }} 640w,
+                     {{ 'assets/img/ico_ig.svg'|theme }} 320w"
+              width="30"
+              height="30"
+              alt="an image">
+          </amp-img>
+        </a>
+        <a href="https://www.youtube.com/user/frisianflagger" target="_blank">
+          <amp-img 
+              src="{{ 'assets/img/ico_yt.svg'|theme }}"
+              srcset="{{ 'assets/img/ico_yt.svg'|theme }} 640w,
+                     {{ 'assets/img/ico_yt.svg'|theme }} 320w"
+              width="30"
+              height="30"
+              alt="an image">
+          </amp-img>
+        </a>
+      </div>
+      <div class="clearfix"></div>
+      <!-- e:sosmed -->
+      <!-- s:address -->
+      <div class="address">
+        <p>Jl. Raya Bogor KM 5,  Pasar Rebo, Jakarta Timur, Indonesia 13760 <a href="https://www.google.co.id/maps/place/PT.+Frisian+Flag+Indonesia/@-6.3122231,106.8617656,15z/data=!4m5!3m4!1s0x2e69ed0827ec9d73:0x8a08cc1af1e6ef0e!8m2!3d-6.3050945!4d106.8642973" target="_blank">Map</a> &nbsp; &nbsp; Telp +62 21 8410945 | PO BOX  4074 Jakarta 13760 Indonesia <br> Toll Free Layanan Peduli Frisian Flag 0-80018-21-406; Senin - Jumat, 08:00 - 16:30 WIB, E-mail: layanan.peduli@frieslandcampina.com</p>
+      </div>
+      <!-- e:address -->
+      <!-- s:credit -->
+      <div class="credit">
+        <p>Frisian Flag Indonesia is a subsidiary of Royal FrieslandCampina N.V. Copyright © 2017. All rights reserved.</p>
+        <a href="https://www.frisianflag.com/syarat-ketentuan">Syarat &amp; Ketentuan</a> |
+        <a href="https://www.frisianflag.com/kebijakan-cookie">Kebijakan Cookie</a>
+        <a href="https://www.frisianflag.com/kebijakan-privasi">Kebijakan Privasi</a>
+      </div>
+      <!-- e:credit -->
+
+    </footer>
+    <!-- e:footer -->
+    {% flash success %}
+        {% if (message == 'An activation email has been sent to your email address.') %}
+
+        <script>
+        (function($) {
+            $.fancybox.open({
+                src  : '#thank-you'                
+            });
+        })(jQuery);
+        </script>
+
+        {% else %}
+        <p data-control="flash-message" data-interval="5" class="success">
+            {{ message }}
+        </p>
+        {% endif %}
+    {% endflash %}
+	<!--
+<script>
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+function closepopupbanner(){
+	document.getElementById("popup-banner-sekotak").style.display = "none";
+	document.getElementsByTagName("html")[0].style.overflow = 'unset';
+	setCookie('closepopupbanner','1',);
+}
+function closebottombanner(){
+	document.getElementById("bottom-banner-notification").style.display = "none";
+	setCookie('closebottombanner','1',);
+}
+function closedropdownnotif(){
+	document.getElementById("dropdown-notification").style.display = "none";
+	setCookie('closedropdownnotif','1',);
+}
+
+
+function scrollBottomBanner() {
+	var limit = document.body.scrollHeight * 0.25;
+  if (document.body.scrollTop > limit || document.documentElement.scrollTop > limit) {
+    document.getElementById("bottom-banner-notification").style.bottom = "-4px";
+	statusbottombanner = 1;
+  }
+}
+var checkURL=["produk/susu-siap-minum/minuman-susu-cokelat-kemasan-botol/chocolate","produk/susu-siap-minum/minuman-susu-cokelat-kemasan-botol/chocolate-hazelnut","produk/susu-siap-minum/minuman-susu-cokelat-kemasan-botol","milkpedia/nutrisi-dan-kesehatan/minuman-untuk-kamu-yang-sedang-di-jalan","milkpedia/nutrisi-dan-kesehatan/minuman-asik-yang-wajib-kamu-coba","produk/susu-siap-minum/purefarm","produk/purefarm/purefarm-flavour-milk-ketan-hitam","produk/purefarm/purefarm-flavour-chocolate","produk/purefarm/purefarm-flavour-milk-coconut-delight","produk/purefarm/purefarm-flavour-milk-strawberry","produk/susu-siap-minum/purefarm/purefarm-low-fat","produk/susu-siap-minum/purefarm/purefarm-full-cream","produk/purefarm/frisian-flag-purefarm-kacang-hijau","milkpedia/nutrisi-dan-kesehatan/kenali-lebih-jauh-tentang-manfaat-susu-kacang-hijau","produk/purefarm/frisian-flag-purefarm-sweet-delight","produk/susu-siap-minum","milkpedia/manfaat-minum-susu","milkpedia/nutrisi-dan-kesehatan/kenali-susu-low-fat-dan-susu-non-fat","milkpedia/manfaat-minum-susu/runners-ini-caranya-mempertahankan-stamina-saat-berlari","milkpedia/nutrisi-dan-kesehatan/3-cara-agar-badan-tidak-cepat-lelah-setelah-olahraga","milkpedia/kapan-dan-bagaimana-cara-minum-susu/memilih-waktu-yang-tepat-untuk-minum-susu-pertumbuhan-tinggi-badan","milkpedia/kapan-dan-bagaimana-cara-minum-susu/alasan-berat-badan-tak-kunjung-turun-meski-sudah-diet","milkpedia/nutrisi-dan-kesehatan/3-menu-sarapan-sehat-dari-susu-rendah-lemak","perusahaan-kami/berita/frisian-flag-indonesia-ajak-pengunjung-car-free-day-menikmati-kelezatan-purefarm-swiss-chocolate","produk/purefarm","produk/purefarm/frisian-flag-purefarm-kacang-hijau","produk/purefarm/frisian-flag-purefarm-sweet-delight","produk/purefarm/hyperurl.co/SEMUAUHTNONDISNEY","produk/purefarm/purefarm-flavour-chocolate","produk/purefarm/purefarm-flavour-milk","produk/purefarm/purefarm-flavour-milk-coconut-delight","produk/purefarm/purefarm-flavour-milk-ketan-hitam","produk/purefarm/purefarm-flavour-milk-strawberry","produk/purefarm/purefarm-full-cream","produk/purefarm/purefarm-low-fat","produk/purefarm/purefarm-low-fat-coklat","produk/purefarm/purefarm-low-fat-french-vanilla","produk/purefarm/purefarm-low-fat-strawberry","produk/purefarm/purefarm-sweet-delight","produk/susu-siap-minum/purefarm","produk/susu-siap-minum/purefarm/purefarm-flavour-milk","produk/susu-siap-minum/purefarm/purefarm-flavour-milk-coconut-delight","produk/susu-siap-minum/purefarm/purefarm-full-cream","produk/susu-siap-minum/purefarm/purefarm-low-fat","produk/susu-siap-minum/purefarm-flavour-chocolate","produk/susu-siap-minum/purefarm-flavour-milk","produk/susu-siap-minum/purefarm-flavour-milk-coconut-delight","produk/susu-siap-minum/purefarm-flavour-milk-ketan-hitam","produk/susu-siap-minum/purefarm-full-cream","produk/susu-siap-minum/purefarm-low-fat","produk/susu-siap-minum/purefarm-low-fat-coklat","produk/susu-siap-minum/purefarm-low-fat-strawberry","Produk/Susu-Siap-Minum/Purefarm/Purefarm-Flavour-Milk","produk/minuman-siap-minum/purefarm-low-fat-strawberry","produk/purefarm","produk/purefarm/frisian-flag-purefarm-kacang-hijau","produk/purefarm/frisian-flag-purefarm-sweet-delight","produk/purefarm/hyperurl.co/SEMUAUHTNONDISNEY","produk/purefarm/purefarm-flavour-milk","produk/purefarm/purefarm-flavour-milk-strawberry","produk/purefarm/purefarm-full-cream","produk/purefarm/purefarm-low-fat-strawberry","produk/susu-siap-minum/purefarm","produk/susu-siap-minum/purefarm/purefarm-flavour-milk","produk/susu-siap-minum/purefarm/purefarm-full-cream","produk/susu-siap-minum/purefarm/purefarm-low-fat","produk/susu-siap-minum/purefarm-flavour-milk","produk/susu-siap-minum/purefarm-flavour-milk-coconut-delight","produk/susu-siap-minum/purefarm-full-cream","produk/susu-siap-minum/purefarm-low-fat","produk/susu-siap-minum/purefarm-low-fat-french-vanilla","produk/purefarm/purefarm-flavour-milk","produk/purefarm/purefarm-full-cream","produk/susu-siap-minum/purefarm","produk/susu-siap-minum/purefarm/purefarm-flavour-milk","produk/susu-siap-minum/purefarm/purefarm-full-cream","produk/susu-siap-minum/purefarm/purefarm-low-fat","perusahaan-kami/berita/frisian-flag-indonesia-ajak-pengunjung-car-free-day-menikmati-kelezatan-purefarm-swiss-chocolate","produk/purefarm","produk/purefarm/frisian-flag-purefarm-sweet-delight","produk/purefarm/hyperurl.co/SEMUAUHTNONDISNEY","produk/purefarm/purefarm-full-cream","produk/purefarm/purefarm-low-fat","produk/purefarm/purefarm-low-fat-coklat","produk/purefarm/purefarm-low-fat-french-vanilla","produk/susu-siap-minum/purefarm","produk/susu-siap-minum/purefarm/purefarm-flavour-milk","produk/susu-siap-minum/purefarm/purefarm-flavour-milk-coconut-delight","produk/susu-siap-minum/purefarm/purefarm-full-cream","produk/susu-siap-minum/purefarm/purefarm-low-fat","produk/susu-siap-minum/purefarm-flavour-chocolate","produk/susu-siap-minum/purefarm-flavour-milk","produk/susu-siap-minum/purefarm-low-fat-coklat","produk/susu-siap-minum/purefarm-low-fat-french-vanilla","produk/purefarm/purefarm-flavour-chocolate","produk/purefarm/purefarm-full-cream","produk/purefarm/purefarm-low-fat","produk/purefarm/purefarm-low-fat-coklat","produk/purefarm/purefarm-low-fat-french-vanilla","produk/susu-siap-minum/purefarm","produk/susu-siap-minum/purefarm/purefarm-flavour-milk","produk/susu-siap-minum/purefarm/purefarm-flavour-milk-coconut-delight","produk/susu-siap-minum/purefarm/purefarm-full-cream","produk/susu-siap-minum/purefarm/purefarm-low-fat","perusahaan-kami/berita/frisian-flag-indonesia-ajak-pengunjung-car-free-day-menikmati-kelezatan-purefarm-swiss-chocolate","produk/purefarm","produk/purefarm/frisian-flag-purefarm-kacang-hijau","produk/purefarm/frisian-flag-purefarm-sweet-delight","produk/purefarm/purefarm-flavour-chocolate","produk/purefarm/purefarm-flavour-milk","produk/purefarm/purefarm-flavour-milk-coconut-delight","produk/purefarm/purefarm-flavour-milk-ketan-hitam","produk/purefarm/purefarm-flavour-milk-strawberry","produk/purefarm/purefarm-full-cream","produk/purefarm/purefarm-low-fat","produk/purefarm/purefarm-low-fat-coklat","produk/purefarm/purefarm-low-fat-french-vanilla","produk/purefarm/purefarm-low-fat-strawberry","produk/purefarm/purefarm-sweet-delight","produk/susu-siap-minum/purefarm","produk/susu-siap-minum/purefarm/purefarm","produk/susu-siap-minum/purefarm/purefarm-flavour-milk","produk/susu-siap-minum/purefarm/purefarm-flavour-milk-coconut-delight","produk/susu-siap-minum/purefarm/purefarm-full-cream","produk/susu-siap-minum/purefarm/purefarm-low-fat","produk/susu-siap-minum/purefarm-flavour-chocolate","produk/susu-siap-minum/purefarm-flavour-milk-coconut-delight","produk/susu-siap-minum/purefarm-flavour-milk-ketan-hitam","produk/susu-siap-minum/purefarm-full-cream","produk/susu-siap-minum/purefarm-low-fat"];
+var checkstatus = 0;
+var statusbottombanner = 0;
+	for (var i = 0; i < checkURL.length; i++) {
+		if(window.location.href.indexOf(checkURL[i]) > -1) {
+			checkstatus = 1;
+		}
+	}
+	if(checkstatus == 1){
+		
+		if(!getCookie('closepopupbanner') && !getCookie('sekotak_login')){
+			
+			
+			
+			setTimeout(function(){
+				if(statusbottombanner == 0){
+				    document.body.innerHTML += "<div class='popup-banner-sekotak' id='popup-banner-sekotak'><a href='https://www.frisianflag.com/aktivitas-kami/sekotaktiaphari/app?utm_source=FF-INTL&utm_medium=Banner&utm_campaign=Sekotak-Tiap-Hari&utm_term=Popup-Mobile&utm_content=TRF-1PD'><div class='popup-img'><button onclick='closepopupbanner();return false;'>&times;</button><img src='https://www.frisianflag.com/storage/app/media/sekotak-tiap-hari/Pop-Up-Home-min.png'></a></div></div>";
+					document.getElementsByTagName("html")[0].style.overflow = 'hidden';
+					document.getElementById("popup-banner-sekotak").style.opacity = "1";
+				
+				}
+				
+			},10000);
+		}
+		if(!getCookie('closebottombanner') && !getCookie('sekotak_login')){
+			document.body.innerHTML += "<div id='bottom-banner-notification'><button onclick='closebottombanner();return false;'>&times;</button><a href='https://www.frisianflag.com/aktivitas-kami/sekotaktiaphari/app/register?utm_source=FF-INTL&utm_medium=Banner&utm_campaign=Sekotak-Tiap-Hari&utm_term=Bottom-Banner-Notification&utm_content=REG-1PD'><img src='https://www.frisianflag.com/storage/app/media/sekotak-tiap-hari/Bottom-Banner-1.jpg'></a></div>";
+			setTimeout(function(){
+				window.onscroll = function() {scrollBottomBanner()};
+				/*document.getElementById("bottom-banner-notification").style.display = "block";*/
+			},500);
+		}
+		
+		if(!getCookie('closedropdownnotif') && getCookie('sekotak_login')){
+			document.body.innerHTML += "<div id='dropdown-notification'><a href='https://www.frisianflag.com/aktivitas-kami/sekotaktiaphari/app?tdiv=upload&utm_source=FF-INTL&utm_medium=Banner&utm_campaign=Sekotak-Tiap-Hari&utm_term=Dropdown-Notification&utm_content=UPL-1PD'><img src='https://www.frisianflag.com/storage/app/media/sekotak-tiap-hari/Dropdown-Reminder-Redeem-1.jpg'></a><button onclick='closedropdownnotif();return false;'>&times;</button></div>";
+			setTimeout(function(){
+				document.getElementById("dropdown-notification").style.top = "0";
+			},9000);
+		}
+		setTimeout(function(){
+			document.getElementsByClassName('detail_text')[0].innerHTML += "<div id='notification-product'  style='padding-bottom:3%'><div class='container-two'><a href='https://www.frisianflag.com/aktivitas-kami/sekotaktiaphari/app?tdiv=beliyuk&utm_source=FF-INTL&utm_medium=Banner&utm_campaign=Sekotak-Tiap-Hari&utm_term=Product-Banner&utm_content=SALE-1PD'><img style='width:100%' src='https://www.frisianflag.com/storage/app/media/sekotak-tiap-hari/Product-Banner-1.jpg'></a></div></div>";
+		},5000);
+		
+	}
+	
+</script>
+<style>
+#popup-banner-sekotak{top:0;width:100%;height:100%;position:fixed;background:#000000c2;z-index:999;opacity:0}#popup-banner-sekotak img,#bottom-banner-notification img,#dropdown-notification img{width:100%}.popup-img{width:75%;top:10vh;bottom:0;left:0;right:0;margin:auto;position:absolute}#popup-banner-sekotak button{background:none;color:#4447;border:0;float:right;position:absolute;padding:0 12px;right:10px;top:10px;font-size:32px}#bottom-banner-notification{width:100%;position:fixed;bottom:-200px;z-index:999;transition:.3s}#bottom-banner-notification button{background:#fef200;border:0;float:right;width:50px;height:20px;font-size:16px;border-top-left-radius:10px;border-top-right-radius:10px}#dropdown-notification{width:100%;position:fixed;top:-200px;z-index:999;transition:.9s;}#dropdown-notification button{background:#fef200;border:0;margin-top:-4px;float:right;width:50px;height:20px;font-size:16px;border-bottom-left-radius:10px;border-bottom-right-radius:10px}
+</style>-->
+    </body>
+</html>

@@ -1,0 +1,155 @@
+title = "test coklat amp"
+url = "/amp/testing-coklat"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/test-coklat-amp"
+==
+<?php
+function onStart(){
+    $title = Input::get('title') ? Input::get('title') : "";
+    $sort = "desc";
+    $category = "all";
+    $index    = 0;
+    $categoryId = 24;
+    $limit = 6;
+
+    $query = Definite\Activities\Models\Activity::leftJoin('definite_activities_categories_activities', 'definite_activities_categories_activities.activity_id', '=', 'definite_activities_activity.id')->
+    leftJoin('definite_activities_category', 'definite_activities_category.id', '=', 'definite_activities_categories_activities.category_id')->whereRaw('definite_activities_category.id = ? AND ( definite_activities_activity.title like ? OR definite_activities_activity.description like ?)', [ 
+        20, '%'.$title.'%', '%'.$title.'%' ] )->
+            select('definite_activities_category.slug as slug_category','definite_activities_activity.title', 'definite_activities_activity.slug', 'definite_activities_activity.featured_image')->orderBy('definite_activities_activity.updated_at', $sort)->offset($index)->limit($limit)->get();
+    
+    $this['result'] = $query;
+    
+    
+        
+        
+}
+?>
+==
+{% partial 'site/header-coklat-amp.htm' %}
+{% put styles %}
+<style></style>
+{% endput %}
+<div class="body-3">
+
+    <div class="disresult row">
+
+	 
+  <amp-state id="photos" src="https://www.frisianflag.com/return-json-cokelat?title={{title}}&sort=desc&category=all&index=0">
+  </amp-state>
+  <amp-state id="product">
+    <script type="application/json">
+    {
+        "title": "{{ title }}",
+        "titletemp": "{{ title }}",
+        "categoryId": "{{ categoryId }}",
+        "pageIndex": 6,
+        "sort": "desc",
+        "category":"all",
+        "checknext":1,
+      "moreItemsPageIndex": 6,
+      "hasMorePages": true
+    }
+    </script>
+  </amp-state>
+  {% partial 'site/banner-cokelat-amp' %}
+    <p class="h1-white-coklat">Masukan mood Keluarga kamu dan temukan inpsirasi resep <span style="font-size: 16px;font-weight: bolder;"><b>COKELAT NIKMAT</b></span> yang bikin suasana <span><b>NIKMAT!</span></b></p>
+    <p class="p-white" style="width : 86%; margin-left : 7%; font-size : 15px">Cari resep sesuai moodmu: <br>Kangen, Bosan, Lelah, Senang, Patah Hati, Galau, Sedih.</p>
+  <form id="formdata" method="GET" action="https://www.frisianflag.com/return-json-cokelat" action-xhr="https://www.frisianflag.com/return-json-cokelat" target="_top" on="submit-success: AMP.setState({
+              product: {
+                  pageIndex : 6
+              },
+               photos: {
+                items: event.response.items
+              }
+            });">
+    <input class="search-amp-resep-coklat" type="search" name="title" on="input-debounced:AMP.setState({ product:{ title: event.value, categoryId: event.value } }), formdata.submit, formchecknext.submit" 
+    value="{{title}}" placeholder="Ketik moodmu di sini!">
+        <!-- <input type="submit" value="Search" style="line-height: 50px;width: 20%;;border-radius: 500px;border: none; padding-left: 10px;background: linear-gradient(to bottom, #00AAF6 ,#009DE0); color: #fff; box-shadow: 0 8px 6px -6px black;"> -->
+    
+    <input type="hidden" name="title" value="{{ title }}" [value]="product.title">
+    <input type="hidden" name="sort" value="desc" [value]="product.sort">
+    <input type="hidden" name="category" value="all" [value]="product.category">
+    <input type="hidden" name="index" value="0">
+    <p class="p-white padding-10" style="font-size : 14px">Resep-Resep <b>NIKMAT</b> Bikin Suasana Jadi NIKMAT!</p>
+     <select class="option-c" name="sort" on="change:AMP.setState({
+                product:{
+                    pageIndex: 6, sort: event.value 
+                }
+            }), formdata.submit, formchecknext.submit">
+                    <option value="all" [selected]="product.category == 'all'">Terpopuler</option><!-- belom fix -->
+                    <option value="desc" [selected]="product.sort == 'desc'">Terbaru</option><!-- belom ganti asc -->
+                    <option value="asc" [selected]="product.sort == 'asc'">Terlama</option><!-- belom ganti asc -->
+                    <!-- <option value="FMP" [selected]="product.category == 'FMP'">FMP</option> -->
+        </select>
+</form>
+    
+<div class="body-4">      
+    <amp-list src="https://www.frisianflag.com/return-json-cokelat?title={{title}}&sort=desc&category=all&index=0" [src]="photos.items" binding="refresh" layout="fixed-height" width="auto" height="775" [height]="photos.items.length * 100 + 8">
+    <template type="amp-mustache">
+      <div class="list-item padding-20">
+      <div class="main__recipe">
+      {% verbatim %}
+      <a href="/resep-kami/resep-dengan-kental-manis/{{slug}}#main-scroll">
+      <amp-img class="img-radius" src="/storage/app/media/{{featured_image}}" width="100" height="100" layout="responsive" alt="{{title}}">
+        </amp-img>
+        </a>
+        
+        <div class="div-1"><a href="/resep-kami/resep-dengan-kental-manis/{{slug}}#main-scroll" class="button2 selengkapnya-coklat">Lihat Resepnya</a></div>
+        {% endverbatim %}
+        
+      </div>
+      </div>
+    </template>
+  </amp-list>
+</div>
+
+<!-- <form id="formdataloadmore" method="GET" action="https://www.frisianflag.com/return-json" action-xhr="https://www.frisianflag.com/return-json" target="_top" on="submit-success: AMP.setState({
+              photos: {
+                items: photos.items.concat(event.response.items)
+              },
+              product: {
+                  pageIndex : product.category != 'all' ? product.pageIndex + 6 : product.pageIndex + 2
+              }
+            });">
+        <input type="hidden" name="title" value="{{ title }}" [value]="product.title">
+        <input type="hidden" name="sort" value="desc" [value]="product.sort">
+        <input type="hidden" name="category" value="all" [value]="product.category">
+        <input type="hidden" name="index" value="2" [value]="product.pageIndex">
+        <input class="load-more" id="btnloadmore" [hidden]="product.checknext == 0" type="submit" value="Load More" on="tap:formchecknext.submit" tabindex="0" role="button">
+        <amp-next-page src="https://www.frisianflag.com/return-json"></amp-next-page> infinitescroll test
+</form> -->
+<form id="formdataloadmore" method="GET" action="https://www.frisianflag.com/return-json-cokelat" action-xhr="https://www.frisianflag.com/return-json-cokelat" target="_top" on="submit-success: AMP.setState({
+              photos: {
+                items: photos.items.concat(event.response.items)
+              },
+              product: {
+                  pageIndex : product.pageIndex + 6
+              }
+            });">
+        <input type="hidden" name="title" value="{{ title }}" [value]="product.title">
+        <input type="hidden" name="sort" value="desc" [value]="product.sort">
+        <input type="hidden" name="category" value="all" [value]="product.category">
+        <input type="hidden" name="index" value="6" [value]="product.pageIndex">
+        <input type="hidden" name="categoryId" value="{{ categoryId }}" [value]="product.categoryId">
+        <input class="load-more-coklat" id="btnloadmore" [hidden]="product.checknext == 0" type="submit" value="Resep Lainnya" on="tap:formchecknext.submit" tabindex="0" role="button">
+
+</form>
+<form id="formchecknext" method="GET" action="https://www.frisianflag.com/cokelat-check-next" action-xhr="https://www.frisianflag.com/cokelat-check-next" target="_top" on="submit-success: AMP.setState({
+              product: {
+                checknext: event.response.items
+              }
+            });">
+        <input type="hidden" name="title" value="{{ title }}" [value]="product.title">
+        <input type="hidden" name="sort" value="desc" [value]="product.sort">
+        <input type="hidden" name="category" value="all" [value]="product.category">
+        <input type="hidden" name="index" value="6" [value]="product.pageIndex">
+        <input type="hidden" name="categoryId" value="{{ categoryId }}" [value]="product.categoryId">
+        <input type="text" name="test" value="6" [value]="product.checknext" style="display:none"> 
+        <input class="load-more" type="submit" value="Check Next" style="display:none">
+</form>
+	 
+    </div>	 
+{% partial 'site/footer-amp' %}
+</div>

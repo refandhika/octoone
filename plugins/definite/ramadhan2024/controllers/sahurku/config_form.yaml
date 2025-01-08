@@ -1,0 +1,10 @@
+name: Sahurku
+form: $/definite/ramadhan2024/models/sahurku/fields.yaml
+modelClass: Definite\Ramadhan2024\Models\Sahurku
+defaultRedirect: definite/ramadhan2024/sahurku
+create:
+    redirect: 'definite/ramadhan2024/sahurku/update/:id'
+    redirectClose: definite/ramadhan2024/sahurku
+update:
+    redirect: definite/ramadhan2024/sahurku
+    redirectClose: definite/ramadhan2024/sahurku

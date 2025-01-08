@@ -1,0 +1,29 @@
+description = "Serunya Tambah Terus Pemenang"
+==
+<?php
+function onEnd(){
+    $this->page->meta_description = "Selamat! Ini pengumuman pemenang Frisian Flag Milky #SerunyaTambahTerus. Apakah kamu salah satu pemenangnya? Cek di sini!";
+}
+?>
+==
+{% partial 'site/header' %}
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+<div class="imgwrp">
+    	<img src="{{ 'serunyatambahterus/serunyatambahterus-banner-desktop.jpg'|media }}" class="hidden-xs" />
+        <img src="{{ 'serunyatambahterus/serunyatambahterus-banner-mobile.jpg'|media  }}" class="visible-xs" />
+    </div>
+</div>
+
+{% partial 'site/milky-unicorn-menu' %}
+
+<div id='main-section' class="container" style="padding: 15px 0;">
+        <h1 style="display: none;">Serunya Tambah Terus -  Pemenang | Frisian Flag Indonesia</h1>
+        <div class="default-content">
+          {% page %}
+        </div>
+</div>
+
+
+{% partial 'site/footer' %}

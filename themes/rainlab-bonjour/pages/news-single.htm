@@ -1,0 +1,137 @@
+title = "News single"
+url = "/perusahaan-kami/berita/:slug*|([0-9].[a-z]+.*|[a-z]+.*)$"
+layout = "default"
+is_hidden = 0
+
+[builderDetails]
+modelClass = "Definite\News\Models\News"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+
+[builderList]
+modelClass = "Definite\News\Models\News"
+scope = "-"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "news-single"
+detailsKeyColumn = "slug"
+detailsUrlParameter = "slug"
+==
+<?php
+function onStart()
+{
+    if ($this->controller->getRouter()->getParameters()['slug'] === 'years') return Redirect::to('/perusahaan-kami/berita');
+
+    $this->page->amp_url = $this->pageUrl('news-single-amp', ['slug' => $this->param('slug')]);
+}
+function onEnd() {
+
+    if (!$this->page->components["builderDetails"]->record) {
+        return;
+    }
+
+    // get the post component
+    $_title   = $this->page->components["builderDetails"]->record->attributes["title"];
+    $_desc    = $this->page->components["builderDetails"]->record->attributes["meta_description"];
+    $og_image = $this->page->components["builderDetails"]->record->attributes["featured_image"];
+    
+    $this->page->title = $_title;
+    $this->page->meta_title = $this->page->components["builderDetails"]->record->attributes["meta_title"];
+    $this->page->meta_description = $_desc;
+    
+    $_title_en = $this->page->components["builderDetails"]->record->attributes["title_en"];
+    $this->page->title_en = $_title_en;
+    $this->page->meta_title_en = $this->page->components["builderDetails"]->record->attributes["meta_title_en"];
+    $this->page->meta_description_en = $this->page->components["builderDetails"]->record->attributes["meta_description_en"];
+    $this->page->og_description = $_desc;
+    $this->page->og_image       = $og_image;
+}
+?>
+==
+{% set records = builderList.records %}
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ record.title }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp"><img src="{{ 'assets/img/our-milkpedia.png'|theme }}" alt="Our Milkpedia"/> </div>
+</div>
+
+<div class="container-menutab">
+    <div class="container-one">
+        <ul>
+          <li class="toggle hidden-lg"><a href="javascript:;" class="active">{{'news'|_}}</a></li>
+          <li><a href="{{'about-us'|page}}" class="{% if this.page.id == 'about-us' %}active{% endif %}">{{'tentang-kami'|_}}</a></li>
+          <li><a href="{{'news'|page}}" class="active">{{'berita'|_}}</a></li>
+          <li><a href="{{'gallery'|page}}" class="{% if this.page.id == 'galeri-foto' %}active{% endif %}">{{'galeri-foto'|_}}</a></li>
+          <li><a href="{{'press-release'|page}}" class="{% if this.page.id == 'press-release-single' %}active{% endif %}">{{'siaran-pers'|_}}</a></li>
+          <li><a href="{{'our-purposes'|page}}" class="{% if this.page.id == 'our-purposes' %}active{% endif %}">{{'tujuan-kami'|_}}</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id='main-section' class="container-fluid">
+{% if record %}
+    <div class="col-md-12">
+        <div class="breadcrumb">
+            <div class="container-two">
+                <ul>
+                    <li><a href="{{ 'home'|page }}">{{'beranda'|_}}</a> </li>
+                    <li><a href="javascript:;">{{'berita'|_}}</a> </li>
+                    <li><a href="javascript:;">{{ trans_pick(record, 'title') }}</a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="default-content">
+            <div class="container-two">
+                <h3>{{ 'berita'|_ }}</h3>
+                <div class="container-news">
+                    <div class="content">
+                        <div class="left v2">
+                            <div class="content">
+                                <div class="date">
+                                    {{record.published_date|date('M d, Y')}}
+                                </div>
+                                <h4>{{ trans_pick(record, 'title') }}</h4>
+                                <div class="wrp-listitemnews">
+                                    <div class="imgwrp-full"><img src="{{record.featured_image| mediathumb_resize('width', 800, 80) }}" alt="{{ record.title }}"/> </div>
+                                   {{ trans_pick(record, 'description')|raw }}
+                                </div>
+                                <div class="wrp-sharesocemd">
+                                    <label>{{'share'|_}}</label>
+                                    <div class="addthis_inline_share_toolbox"></div>
+                                 </div> 
+                            </div>
+                        </div>
+                        <div class="right v2">
+                            <div class="content">
+                                <h3>{{ 'berita-lainnya'|_ }}</h3>
+                                {% for news in records.first.getByLatest %}
+                                    <div class="wrp-listthu">
+                                        <div class="item-listthu">
+                                            <div class="imgwrp">
+                                                <img src="{{news.featured_image| mediathumb_resize('width', 100, 80) }}" alt="{{trans_pick(news, 'title')}}"/>
+                                            </div>
+                                            <p><a href="{{ 'news-single'|page({"slug": news.slug}) }}">{{trans_pick(news, 'title')}}</a></p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% else %}
+    {{ notFoundMessage }}
+{% endif %}
+</div> <!-- end mainsection -->

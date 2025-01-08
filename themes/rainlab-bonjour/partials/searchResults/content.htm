@@ -1,0 +1,28 @@
+<div class="searchresult__item">
+    <h4 class="ss-result__title">
+        <a href="{{ result.url }}">{{ result.title | raw }}</a>
+        {# Some results contain meta information.     #}
+        {# You can access it using result.meta.       #}
+        {# To find out from which plugin the result   #}
+        {# was returned you can use result.identifier #}
+        {# Some results contain the original model.   #}
+        {# You can access it using result.model       #}
+    </h4>
+
+    <div class="date">
+        {% if __SELF__.showProviderBadge %}
+            <label class="ss-result__badge uppercase">
+                {{ result.provider }} 
+            </label>
+        {% endif %}
+    </div>
+
+    <p class="ss-result__text">
+        {{ result.excerpt | raw }}
+    </p>
+    
+    <p class="ss-result__url">
+        <a href="{{ result.url | app }}" class="ss-result__link">{{'lebih-lanjut'|_}} &rarr;</a>
+    </p>
+
+</div>

@@ -1,0 +1,148 @@
+description = "Layout test for detail event"
+
+[CareerEvent]
+
+[CareerMenu]
+
+[staticPage]
+useContent = 1
+default = 0
+==
+{% partial 'site/header-karir' %}
+
+{% if CareerEvent.events %}
+{% set events = CareerEvent.events  %}
+{% set page_slug = CareerEvent.page_slug %}
+{% for event in events %}
+    {% if event.slug == page_slug %}                         
+    <section>
+  	<div class="static-baner-pages">
+    	<div class="imgwrp"><img src="{{ 'assets/img/menukarir/home-desktop.jpg'|theme }}" alt="Karir | Frisian Flag Indonesia">
+    	</div>	
+   	</div>
+<div class="container-menutab">
+    <div class="container-one">
+        <ul>
+            <li class="toggle visible-xs visible-sm"><a href="javascript:;" class="active">Event</a></li>
+            
+            {% if CareerMenu.submenus %}
+        		      {% set careermenus = CareerMenu.submenus %}
+                      {% for menu in careermenus %}
+                          	<li>
+                          	    {% if menu.id == 3 %}
+                          	    
+                          	    <a href="{{url('/karir')}}/{{menu.slug}}" class="active">{{menu.title}}</a>
+                          	    
+                          	     {% elseif menu.id == 1 %}
+                          	    
+                          	     <a href="{{url('/karir')}}">{{menu.title}}</a>
+                          	     
+                          	     {% else %}
+                          	     
+                          	     <a href="{{url('/karir')}}/{{menu.slug}}">{{menu.title}}</a>
+                          	     
+                          	    {% endif%} 	    
+					        </li>                        
+            {% endfor %}
+            {% endif%}
+            
+        </ul>
+    </div>
+</div>
+</section>
+
+<main class="enem l-career">
+<section id="main-section" class="container">
+	<div class="col-lg-12">
+	   <div class="breadcrumb">
+		 
+			 <ul>
+				    <li><a href="{{ 'home' | page }}">{{ 'beranda'|_ }}</a> </li>
+                    <li><a href="{{ 'main-karir' | page }}">{{ 'Karir'|_ }}</a> </li>
+                    <li><a href="{{ 'karir-event' | page }}">{{ 'Event'|_ }}</a> </li>
+                    <li><a href="javascript:;">{{ event.title}}</a> </li>
+			 </ul>
+		 
+	   </div>
+	</div>
+	<div class="section clearfix"  >
+	   <div class="col-lg-12 o-career__event-detail">
+		  <div class="enem default-content gap-b-40">
+			 <div class="container-two event-detail__content main-title">
+				<h1 style="font-size: 40px; margin-bottom: 30px; margin-top: 0;">Grow Strong Give More - Future Talk</h1>
+				<div class="enem textCenter content-image"><img src="{{ event.img | media}}" alt="{{ event.alt_img}}"></div>
+				<div class="row content-desc">
+				   <div class="col-lg-6 col-md-6 col-sm-6 left">
+					  <i class="fa fa-map-marker"></i> 
+					  <p>
+						 {{event.regencies.name | title}}
+					  </p>
+				   </div>
+				   <div class="col-lg-6 col-md-6 col-sm-6 right">
+					  <i class="material-icons">date_range</i> 
+					  <p>
+					{{event.start_date.format('d F ') }} - {{event.end_date.format('d F Y')}}
+					  </p>
+				   </div>
+				</div>
+				<h5>
+				   Description
+				</h5>
+				<div class="enem gap-b-40 ql-editor no-padding">{{event.description | raw}}</div>
+				 <div class="wrp-sharesocemd">
+                      <label>{{'Share This Entry'| title}}</label>
+                      <div class="addthis_inline_share_toolbox"
+                        data-url="{{ url('/karir/event')}}/{{event.slug}}" 
+                        data-title="{{ 'Karir' | _ }} - Frisian Flag Indonesia"
+                        data-description="Berkarirlah bersama PT Frisian Flag Indonesia. Jika Anda memerlukan informasi karir di PT Fririsan Flag Indonesia halaman ini menyediakan informasi tersebut untuk Anda">
+                        </div>
+                   </div>
+                   <script type="text/javascript" defer>
+                        var addthis_config = addthis_config||{};
+                        addthis_config.ui_email_note = "Berkarirlah bersama PT Frisian Flag Indonesia. Jika Anda memerlukan informasi karir di PT Fririsan Flag Indonesia halaman ini menyediakan informasi tersebut untuk Anda";
+                    </script>
+			
+			 </div>
+		  </div>
+	   </div>
+	   
+	   <div class="clearfix"></div>
+	   <div class="enem container-fluid gap-b-100">
+		  <div class="enem default-content col-lg-12">
+			 <div class="container-two">
+				<h3 class="section__title">Event Terkait</h3>
+			 </div>
+		  </div>
+		  <div class="container-fluid enem col-lg-12 no-padding">
+			 <div class="enem wrapper-card-list">
+			  <!----> 
+			 {% set relates = CareerEvent.events_page %}
+			 {% for relate in relates %}
+				<div class="col-lg-6 col-md-12 col-sm-12">
+				   <div class="card card--large">
+					 <div title ="{{relate.alt_img}}" data-mobile="{{ relate.thumb_img | media}}" class="card__thumbnail card-ovl card__activity event" style="background-image: url('{{ relate.thumb_img | media}}');">
+						 <div class="card__meta">
+							<header class="card__head">
+							   <h3>{{ relate.title }}</h3>
+							   <span class="date">{{relate.start_date.format('d F ') }} - {{relate.end_date.format('d F Y')}}</span>
+							</header>
+						 <a href="{{url('karir')}}/event/{{relate.slug}}" class="button">Lebih Lanjut</a>
+						 </div>
+					  </div>
+				   </div>
+				</div>
+  				{% endfor %}
+			 </div>
+		  </div>
+		  <div class="clearfix"></div>
+	   </div>
+ 
+	</div>
+ </section>
+</main>
+{% endif %}	  
+{% endfor%}
+{% endif %}
+
+{% partial 'site/footer-karir' %}
+{% framework %}

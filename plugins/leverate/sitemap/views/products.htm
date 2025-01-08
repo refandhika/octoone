@@ -1,0 +1,62 @@
+<?xml-stylesheet type='text/xsl' href="{{ url('/themes/rainlab-bonjour/assets/src/style.xsl') }}"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+	 {% for category in categories %}
+        <url>
+            <loc>{{ url('produk')}}/{{category.slug}}</loc>
+            <lastmod>{{ category.created_at|date('c') }}</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.3</priority>
+        </url>
+    {% endfor %}
+     {% for parent_category in parents_category %}
+        <url>
+            <loc>{{ url('produk')}}/{{parent_category.parent.slug}}/{{parent_category.slug}}</loc>
+            <lastmod>{{ category.created_at|date('c') }}</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.3</priority>
+        </url>
+    {% endfor %}
+
+     {% for parent in parents %}
+        <url>
+            <loc>{{ url('produk')}}/{{parent.parent.categories.last().slug}}/{{parent.slug}}</loc>
+            <lastmod>{{ parent.created_at|date('c') }}</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+        </url>
+    {% endfor %}
+
+     {% for product in products %}
+     
+        {% if product.categories.count > 1 %}
+        {% set multiple = product.categories.sort() %}
+        <url>
+            <loc>{{ url('produk')}}/{{multiple.first().slug}}/{{multiple.last().slug}}/{{product.slug}}</loc>
+            <lastmod>{{ product.created_at|date('c') }}</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+        </url>
+        {% else %}
+            {% if product.categories.first().slug  != '' %}
+                {% if product.slug  == 'purefarm-flavour-milk' %}
+                    <url>
+                        <loc>{{ url('produk/susu-siap-minum')}}/{{product.categories.last().slug}}/{{product.slug}}</loc>
+                        <lastmod>{{ product.created_at|date('c') }}</lastmod>
+                        <changefreq>weekly</changefreq>
+                        <priority>0.6</priority>
+                    </url>
+                {% else %}
+                     <url>
+                        <loc>{{ url('produk')}}/{{product.categories.last().slug}}/{{product.slug}}</loc>
+                        <lastmod>{{ product.created_at|date('c') }}</lastmod>
+                        <changefreq>weekly</changefreq>
+                        <priority>0.6</priority>
+                    </url>    
+                {% endif %}
+            {% endif %}
+             
+     {% endif %}   
+    {% endfor %}
+
+  
+</urlset>

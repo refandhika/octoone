@@ -1,0 +1,21 @@
+[viewBag]
+==
+{% for ct in result %}
+    <div class="col-sm-6 col-md-4 item-thumb">
+        <div class="item-thumb-img">
+            <a href="{{'testing-page'|page}}/{{slug_category}}/{{ct.slug}}">
+             <img src="{{ct.featured_image | media}}" class="image-object" alt ="{{ct.title | title}}" />
+            </a>
+            {% if populer == 1 %}
+                <div class="total--likes">
+                    {{ct.total_likes ? ct.total_likes : 0}} <i class="fa fa-heart"></i>
+                </div>
+            {% endif %}
+        </div>
+        
+        <div class=" text-center">
+        <a  href="{{'testing-page'|page}}/{{ct.slug_category}}/{{ct.slug}}" class="button bg-orange" >lihat resepnya</a>
+        </div>
+        
+     </div> 
+{%endfor%}

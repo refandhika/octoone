@@ -1,0 +1,19 @@
+title = "Ramadan Istimewa - Promo"
+url = "/aktivitas-kami/ramadan-istimewa/promo"
+layout = "ramadan-istimewa-promo"
+is_hidden = 0
+role = 0
+permission = 0
+anonymous_only = 0
+logged_only = 0
+
+[viewBag]
+localeUrl[en] = "/ramadan-istimewa-promo"
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('ramadan-istimewa-promo-amp');
+    $this->page->meta_description = "Dapatkan promo harga spesial untuk berbagai produk Frisian Flag Susu UHT 900 ml varian apa saja dan Frisian Flag Kental Manis kemasan kaleng 370gr.";
+}
+?>
+==

@@ -1,0 +1,240 @@
+[viewBag]
+title = "Kebijakan Cookie"
+url = "/kebijakan-cookie"
+layout = "content"
+is_hidden = 0
+navigation_hidden = 0
+title_en = "Cookie Policy"
+markup_en = "<p>[EN] Di PT Frisian Flag Indonesia, kami memiliki tanggung jawab untuk menjaga data dan privasi Anda. Karena kepercayaan kami dalam menjaga kualitas pelayanan yang transparan, intim dan dapat diandalkan sangat penting. Maka dari itu, kami mengembangkan kebijakan cookie di PT Frisian Flag Indonesia untuk menjelasakan alasan kami menggunakan cookie dan bagaimana cara bekerjanya. Kami mengajak Anda untuk dapat memahami apa itu kebijakan cookie.</p>
+
+<p><strong>1.&nbsp;Kapan kebijakan cookie dapat diterapkan?</strong></p>
+
+<p>Kebijakan cookie ini diterapkan di website milik PT Frisian Flag Indonesia yaitu ibudanbalita.com, friso.co.id, shop.friso.co.id, dan frisianflag,com. Anda dapat mehamani lebih lanjut tentang PT Frisian Flag Indonesia, perusahaan, brand, dan pelayanan kami di www.frisianflag.com. Untuk lebih lanjut tentang website kami, Anda dapat menemukannya pada seksi ‘Cookie apa yang kami gunakan’ dibawah ini.</p>
+
+<p><strong>2.&nbsp;Apa itu cookie?</strong></p>
+
+<p>Cookie adalah data-data kecil yang ada pada browser di komputer atau perangkat telefon genggam Anda. Cookies membantu browser Anda untuk menavigasi website kami. Ada beberapa variasi cookie, mulai dari cookies yang mudah diingat bahasanya hingga advertising cookies. Kami menggunakan beberapa variasi cookies sesuai dengan kegunaannya. Beberapa cookies yang kami gunakan adalah temporer cookies dan hanya bertahan hingga Anda menutup browser Anda, sedangkan lainnya adalah permanen cookie yang tersimpan pada komputer Anda dalam jangka waktu yang lebih lama. Cookies sendiri tidak dapat mengumpulkan informasi yang tersimpan pada komputer Anda.</p>
+
+<p><strong>3. Mengapa kami menggunakan cookies?</strong></p>
+
+<p>Cookies membantu kami menginovasi website kami. Selain itu, cookies untuk membantu kami untuk memahami bagaimana Anda berinteraksi dengan website dan aplikasi milik PT Frisian Flag Indonesia. Cookies dapat mengingat secara instan tipe browser yang Anda gunakan dan perangkat lunak tambahan yang Anda pasang. Mereka juga dapat mengingat preferensi Anda, seperti bahasa dan negara, yang menjadi setingan awal Anda saat Anda mengunjungi kembali website kami. Cookie juga mengizinkan Anda untuk me-ranking sebuah page dan mengisi kolom komentar. Kami yakin bahwa cookies yang kami gunakan dapat menambah pengalaman Anda saat mengunjungi website kami.</p>
+
+<p><strong>4.&nbsp;Tipe cookies apa yang kami gunakan?</strong></p>
+
+<p>Berikut tipe-tipe cookies yang kami gunakan:</p>
+
+<p><strong>Essential cookies</strong>: cookies ini merupakan cookies yang sangat penting untuk fungsi website dan aplikasi kami.</p>
+
+<p><strong>Functionally cookies</strong>: cookies ini dapat mengingat preferensi Anda di sebuah website, seperti preferensi bahasa, nama pengguna atau keranjang belanja.</p>
+
+<p><strong>Performance cookies</strong>: cookies ini dapat menangkap informasi penggunaan di website dan aplikasi yang diterjemahkan secara abstrak. Selain itu, cookies ini menyediakan analisa dan metric seperti jumlah pengunjung dan page mana yang paling banyak di akses. Google Analytics merupakan bagian dari cookies ini (lihat juga di bawah).</p>
+
+<p><strong>5. Cookies apa yang kami gunakan?</strong></p>
+
+<p>Berikut tipe-tipe cookies yang kami gunakan:</p>
+
+<table class=\"table table-bordered table-responsive\">
+	<thead>
+		<tr>
+			<th style=\"text-align: center; vertical-align: middle;\">Nama cookie</th>
+			<th style=\"text-align: center; vertical-align: middle;\">Tujuan</th>
+			<th style=\"text-align: center; vertical-align: middle;\">Lama waktu penyimpanan</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>PHPSESSID
+				<br>child_month_age_filter
+				<br>child_year_age_filter
+				<br>ibb_child_dob
+				<br>ibb_disclaimer
+				<br>ibb_pregnant
+				<br>ibudanbalita_session
+				<br>poll_vote_*
+				<br>selected_filter
+				<br>selected_milestone
+				<br>regulatory</td>
+			<td>Functionality cookie. Cookie ini digunakan untuk mengidentifikasi sesi unik Anda di sebuah website (session cookie) dan untuk mengingat data yang dimasukkan pada form kontak</td>
+			<td>Durasi tertentu</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>List di atas akan ter-update secara teratur, tetapi kami tidak menjamin penuh kelengkapannya.</p>
+
+<p><strong>6.&nbsp;Apa kami menggunakan cookies pihak ketiga?</strong></p>
+
+<p>Website dan aplikasi kami menggunakan cookies dari pihak ketiga seperti Facebook, Instagram, Youtube, dan Twitter. Pihak ketiga ini dapat memantau aktifitas Anda di website ibudanbalita.com dan friso.co.id. Sebagai contoh, Anda meng-klik tombol media sosial (seperti likes), beberapa informasi personal Anda (seperti nama Anda dan fakta bahwa Anda tertarik dengan produk kami) juga akan terlihat di provider media sosial dan untuk pengunjung dari halaman media sosial Anda.</p>
+
+<p>Penggunaan website media sosial dilindungi oleh syarat-syarat (termasuk kebijakan pribadi) dari platform media sosial tersebut. Kebijakan cookie ini tidak dapat diaplikasikan pada website media sosial.</p>
+
+<p>Kami ingin transparan dan menginformasikan Anda dengan tepat tentang cookie-cookie pihak ketiga yang akan terhubung saat mengunjungi website kami atau menggunakan aplikasi kami. Berikut adalah list cookies, tujuan, dan lama waktu penyimpanan yang akan sering Anda temukan.</p>
+
+<table class=\"table table-bordered table-responsive\">
+	<thead>
+		<tr>
+			<th style=\"vertical-align: middle; text-align: center;\" width=\"25%\">Nama cookie</th>
+			<th style=\"text-align: center; vertical-align: middle;\">Tujuan</th>
+			<th style=\"vertical-align: middle; text-align: center;\">Lama waktu penyimpanan</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>_utma
+				<br>_utmb
+				<br>_utmc
+				<br>(Google Analytics)</td>
+			<td>Google Analytics adalah sebuah layanan web analisa yang disediakan oleh Google Inc. (Google). Google Analytics menggunakan cookies untuk analisis bagaimana pengguna menggunakan website. Google mengumpulkan informasi statistik agregat untuk PT Frisian Flag Indonesia dengan insight bagaimana pengguna menggunakan website.</td>
+			<td>Durasi tertentu</td>
+		</tr>
+		<tr>
+			<td>fbm_*
+				<br>fbsr_*</td>
+			<td>Facebook cookies. Cookies ini akan mengizinkan Anda untuk mendaftar lebih awal sebelum mendaftarkan diri dengan akun Facebook Anda.</td>
+			<td>Durasi tertentu</td>
+		</tr>
+		<tr>
+			<td>_ga / _gat</td>
+			<td>Performance cookie</td>
+			<td>Tidak diketahui</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>List di atas akan ter-update secara teratur, tetapi kami tidak menjamin penuh kelengkapannya.</p>
+
+<p><strong>7.&nbsp;Bagaimana Anda menolak dan membuang cookie?</strong></p>
+
+<p>Ada beberapa cara untuk meniadakan atau meminimalisir penggunaan cookie di perangkat Anda.</p>
+
+<ol>
+	<li>Jika diperlukan oleh hukum, kami akan menanyakan persetujuan Anda sebelum menggunakan cookie. Hal tersebut dikembalikan ke Anda untuk menerima atau menolak (contoh: dengan tidak menghiraukan pop-up cookie).</li>
+	<li>Anda juga dapat memilih untuk menolak atau blok cookie dari PT Frisian Flag Indonesia atau website dari pihak ketiga dengan merubah pengaturan website Anda. Untuk informasi lebih lanjut, bisa dilihat di tool 'help' pada browser Anda.</li>
+	<li>Anda juga dapat mengunjungi www.allaboutcookies.org untuk lebih mengetahui dengan detil bagaimana cara membuang atau menolak cookie dan untuk mengetahui informasi lebih lanjut mengenai cookie secara umum.</li>
+	<li>Bagaimanapun, jika Anda menolak penggunaan cookie, beberapa fungsi dari website kami tidak akan berfungsi sebagaimana mestinya.</li>
+</ol>
+
+<p><strong>8. Kontak</strong></p>
+
+<p>Jika Anda memiliki beberapa pertanyaan yang berhubungan dengan kebijakan cookie atau cookie yang digunakan pada website kami, mohon bisa diinformasikan kepada kami. Anda dapat menghubungi kami dengan meng-klik link kontak pada website yang akan membawa Anda ke kebijakan cookie.</p>
+
+<p><strong>9.&nbsp;Merubah kebijakan cookie</strong></p>
+
+<p>Kebijakan cookie ini dapat berubah sewaktu-waktu apabila ada perubahan baru atau saat cookie kami diubah. PT Frisian Flag Indonesia menyarankan agar Anda membaca kebijakan cookie ini secara berkala, agar Anda tetap dapat mengikuti perubahan yang terjadi.</p>"
+==
+<p>Di PT Frisian Flag Indonesia, kami memiliki tanggung jawab untuk menjaga data dan privasi Anda. Karena kepercayaan kami dalam menjaga kualitas pelayanan yang transparan, intim dan dapat diandalkan sangat penting. Maka dari itu, kami mengembangkan kebijakan cookie di PT Frisian Flag Indonesia untuk menjelasakan alasan kami menggunakan cookie dan bagaimana cara bekerjanya. Kami mengajak Anda untuk dapat memahami apa itu kebijakan cookie.</p>
+
+<p><strong>1.&nbsp;Kapan kebijakan cookie dapat diterapkan?</strong></p>
+
+<p>Kebijakan cookie ini diterapkan di website milik PT Frisian Flag Indonesia yaitu ibudanbalita.com, friso.co.id, shop.friso.co.id, dan frisianflag,com. Anda dapat mehamani lebih lanjut tentang PT Frisian Flag Indonesia, perusahaan, brand, dan pelayanan kami di www.frisianflag.com. Untuk lebih lanjut tentang website kami, Anda dapat menemukannya pada seksi ‘Cookie apa yang kami gunakan’ dibawah ini.</p>
+
+<p><strong>2.&nbsp;Apa itu cookie?</strong></p>
+
+<p>Cookie adalah data-data kecil yang ada pada browser di komputer atau perangkat telefon genggam Anda. Cookies membantu browser Anda untuk menavigasi website kami. Ada beberapa variasi cookie, mulai dari cookies yang mudah diingat bahasanya hingga advertising cookies. Kami menggunakan beberapa variasi cookies sesuai dengan kegunaannya. Beberapa cookies yang kami gunakan adalah temporer cookies dan hanya bertahan hingga Anda menutup browser Anda, sedangkan lainnya adalah permanen cookie yang tersimpan pada komputer Anda dalam jangka waktu yang lebih lama. Cookies sendiri tidak dapat mengumpulkan informasi yang tersimpan pada komputer Anda.</p>
+
+<p><strong>3. Mengapa kami menggunakan cookies?</strong></p>
+
+<p>Cookies membantu kami menginovasi website kami. Selain itu, cookies untuk membantu kami untuk memahami bagaimana Anda berinteraksi dengan website dan aplikasi milik PT Frisian Flag Indonesia. Cookies dapat mengingat secara instan tipe browser yang Anda gunakan dan perangkat lunak tambahan yang Anda pasang. Mereka juga dapat mengingat preferensi Anda, seperti bahasa dan negara, yang menjadi setingan awal Anda saat Anda mengunjungi kembali website kami. Cookie juga mengizinkan Anda untuk me-ranking sebuah page dan mengisi kolom komentar. Kami yakin bahwa cookies yang kami gunakan dapat menambah pengalaman Anda saat mengunjungi website kami.</p>
+
+<p><strong>4.&nbsp;Tipe cookies apa yang kami gunakan?</strong></p>
+
+<p>Berikut tipe-tipe cookies yang kami gunakan:</p>
+
+<p><strong>Essential cookies</strong>: cookies ini merupakan cookies yang sangat penting untuk fungsi website dan aplikasi kami.</p>
+
+<p><strong>Functionally cookies</strong>: cookies ini dapat mengingat preferensi Anda di sebuah website, seperti preferensi bahasa, nama pengguna atau keranjang belanja.</p>
+
+<p><strong>Performance cookies</strong>: cookies ini dapat menangkap informasi penggunaan di website dan aplikasi yang diterjemahkan secara abstrak. Selain itu, cookies ini menyediakan analisa dan metric seperti jumlah pengunjung dan page mana yang paling banyak di akses. Google Analytics merupakan bagian dari cookies ini (lihat juga di bawah).</p>
+
+<p><strong>5. Cookies apa yang kami gunakan?</strong></p>
+
+<p>Berikut tipe-tipe cookies yang kami gunakan:</p>
+
+<table class="table table-bordered table-responsive">
+	<thead>
+		<tr>
+			<th style="text-align: center; vertical-align: middle;">Nama cookie</th>
+			<th style="text-align: center; vertical-align: middle;">Tujuan</th>
+			<th style="text-align: center; vertical-align: middle;">Lama waktu penyimpanan</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>PHPSESSID
+				<br>child_month_age_filter
+				<br>child_year_age_filter
+				<br>ibb_child_dob
+				<br>ibb_disclaimer
+				<br>ibb_pregnant
+				<br>ibudanbalita_session
+				<br>poll_vote_*
+				<br>selected_filter
+				<br>selected_milestone
+				<br>regulatory</td>
+			<td>Functionality cookie. Cookie ini digunakan untuk mengidentifikasi sesi unik Anda di sebuah website (session cookie) dan untuk mengingat data yang dimasukkan pada form kontak</td>
+			<td>Durasi tertentu</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>List di atas akan ter-update secara teratur, tetapi kami tidak menjamin penuh kelengkapannya.</p>
+
+<p><strong>6.&nbsp;Apa kami menggunakan cookies pihak ketiga?</strong></p>
+
+<p>Website dan aplikasi kami menggunakan cookies dari pihak ketiga seperti Facebook, Instagram, Youtube, dan Twitter. Pihak ketiga ini dapat memantau aktifitas Anda di website ibudanbalita.com dan friso.co.id. Sebagai contoh, Anda meng-klik tombol media sosial (seperti likes), beberapa informasi personal Anda (seperti nama Anda dan fakta bahwa Anda tertarik dengan produk kami) juga akan terlihat di provider media sosial dan untuk pengunjung dari halaman media sosial Anda.</p>
+
+<p>Penggunaan website media sosial dilindungi oleh syarat-syarat (termasuk kebijakan pribadi) dari platform media sosial tersebut. Kebijakan cookie ini tidak dapat diaplikasikan pada website media sosial.</p>
+
+<p>Kami ingin transparan dan menginformasikan Anda dengan tepat tentang cookie-cookie pihak ketiga yang akan terhubung saat mengunjungi website kami atau menggunakan aplikasi kami. Berikut adalah list cookies, tujuan, dan lama waktu penyimpanan yang akan sering Anda temukan.</p>
+
+<table class="table table-bordered table-responsive">
+	<thead>
+		<tr>
+			<th style="vertical-align: middle; text-align: center;" width="25%">Nama cookie</th>
+			<th style="text-align: center; vertical-align: middle;">Tujuan</th>
+			<th style="vertical-align: middle; text-align: center;">Lama waktu penyimpanan</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>_utma
+				<br>_utmb
+				<br>_utmc
+				<br>(Google Analytics)</td>
+			<td>Google Analytics adalah sebuah layanan web analisa yang disediakan oleh Google Inc. (Google). Google Analytics menggunakan cookies untuk analisis bagaimana pengguna menggunakan website. Google mengumpulkan informasi statistik agregat untuk PT Frisian Flag Indonesia dengan insight bagaimana pengguna menggunakan website.</td>
+			<td>Durasi tertentu</td>
+		</tr>
+		<tr>
+			<td>fbm_*
+				<br>fbsr_*</td>
+			<td>Facebook cookies. Cookies ini akan mengizinkan Anda untuk mendaftar lebih awal sebelum mendaftarkan diri dengan akun Facebook Anda.</td>
+			<td>Durasi tertentu</td>
+		</tr>
+		<tr>
+			<td>_ga / _gat</td>
+			<td>Performance cookie</td>
+			<td>Tidak diketahui</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>List di atas akan ter-update secara teratur, tetapi kami tidak menjamin penuh kelengkapannya.</p>
+
+<p><strong>7.&nbsp;Bagaimana Anda menolak dan membuang cookie?</strong></p>
+
+<p>Ada beberapa cara untuk meniadakan atau meminimalisir penggunaan cookie di perangkat Anda.</p>
+
+<ol>
+	<li>Jika diperlukan oleh hukum, kami akan menanyakan persetujuan Anda sebelum menggunakan cookie. Hal tersebut dikembalikan ke Anda untuk menerima atau menolak (contoh: dengan tidak menghiraukan pop-up cookie).</li>
+	<li>Anda juga dapat memilih untuk menolak atau blok cookie dari PT Frisian Flag Indonesia atau website dari pihak ketiga dengan merubah pengaturan website Anda. Untuk informasi lebih lanjut, bisa dilihat di tool 'help' pada browser Anda.</li>
+	<li>Anda juga dapat mengunjungi www.allaboutcookies.org untuk lebih mengetahui dengan detil bagaimana cara membuang atau menolak cookie dan untuk mengetahui informasi lebih lanjut mengenai cookie secara umum.</li>
+	<li>Bagaimanapun, jika Anda menolak penggunaan cookie, beberapa fungsi dari website kami tidak akan berfungsi sebagaimana mestinya.</li>
+</ol>
+
+<p><strong>8. Kontak</strong></p>
+
+<p>Jika Anda memiliki beberapa pertanyaan yang berhubungan dengan kebijakan cookie atau cookie yang digunakan pada website kami, mohon bisa diinformasikan kepada kami. Anda dapat menghubungi kami dengan meng-klik link kontak pada website yang akan membawa Anda ke kebijakan cookie.</p>
+
+<p><strong>9.&nbsp;Merubah kebijakan cookie</strong></p>
+
+<p>Kebijakan cookie ini dapat berubah sewaktu-waktu apabila ada perubahan baru atau saat cookie kami diubah. PT Frisian Flag Indonesia menyarankan agar Anda membaca kebijakan cookie ini secara berkala, agar Anda tetap dapat mengikuti perubahan yang terjadi.</p>

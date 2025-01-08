@@ -1,0 +1,111 @@
+[viewBag]
+==
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Frisian Flag Ramadhan | Frisian Flag</title>
+
+    <!-- FAVICONS -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ 'assets/favicon/apple-touch-icon.png'|theme }}">
+    <link rel="icon" type="image/png" href="{{ 'assets/favicon/favicon-32x32.png'|theme }}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{ 'assets/favicon/favicon-16x16.png'|theme }}" sizes="16x16">
+    <link rel="manifest" href="{{ 'assets/favicon/manifest.json'|theme }}">
+    <link rel="mask-icon" href="{{ 'assets/favicon/safari-pinned-tab.svg'|theme }}" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">	
+
+    <meta name="title" content="Frisian Flag Ramadhan">
+    <meta name="description" content="Temukan beragam resep takjil nusantara dengan perpaduan susu kental manis Frisian Flag yang nikmat!">
+    <meta name="keywords" content="Frisian Flag Ramadhan">
+
+    <meta name="author" content="Frisian Flag Indonesia">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:url"           content="https://www.frisianflag.com/aktivitas-kami/ramadhan" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Awali puasa dengan nutrisi dan akhiri dengan yang manis." />
+    <meta property="og:description"   content="Kembalikan semangat keluarga dengan menikmati berbagai macam padu padan Frisian Flag kental manis. Yuk cobain !" />
+    <meta property="og:image"         content="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg" />
+
+    <link rel="stylesheet" href="{{ 'assets/css/app-ramadhan.css'|theme }}">
+
+  </head>
+  <body>
+
+  	<header class="header">
+        <!-- desktop menu -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2 col-xs-4">
+                    <a href="{{ 'home'|page }}" class="logo">
+                        <div class="logo__default">
+                            <img src="{{ 'assets/img/logo.png'|theme }}" srcset="{{ 'assets/img/logo2x.png'|theme }} 2x" alt="Frisian Flag"/>
+                             <span>BUILDING<br/>STRONG FAMILIES<br/>SINCE 1871</span>
+                        </div>
+                        <div class="logo__small">
+                            <img src="{{ 'assets/img/logo-small.png'|theme }}" srcset="{{ 'assets/img/logo-small2x.png'|theme }} 2x" alt="Frisian Flag">
+                            <span>BUILDING<br/>STRONG FAMILIES<br/>SINCE 1871</span>
+                        </div>
+
+                    </a>
+                </div>
+
+                <div class="col-md-10 navigation hidden-xs hidden-sm hidden-md">
+                    <ul class="top-menu">
+                        <li class="top-menu__list">
+                            <a href="{{ 'contact-us'|page }}">{{'hubungi-kami'|trans}}</a>
+                        </li>
+                        <li class="top-menu__list">
+                            <a href="javascript:;" class="lang-picker" data-lang="id">
+                                <img src="{{ 'assets/img/id.png'|theme }}" srcset="{{ 'assets/img/id2x.png'|theme }} 2x" alt="Indonesian">
+                            </a>
+                        </li>
+                        <li class="top-menu__list">
+                            <a href="javascript:;" class="lang-picker" data-lang="en">
+                                <img src="{{ 'assets/img/uk.png'|theme }}" srcset="{{ 'assets/img/uk2x.png'|theme }} 2x" alt="English">
+                            </a>
+                        </li>
+                       <li class="top-menu__list top-menu__list--button"><a href="javascript:;" class="searchbtn"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                    </ul>
+
+                    {% partial 'site/nav' %}
+
+                </div>
+                <div class="col-xs-8 col-sm-8 pull-right">
+                    <div class="bar-mobile">
+                        <div class="wrp-navbar">
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end of desktop menu -->
+
+        <!-- Mobile Menu -->
+        <div class="headermenu-xs">
+            <div class="wrp-headmenu-xs">
+
+                {% partial 'site/mobilemenu' %}
+
+                <div class="bottom">
+                    <ul>
+                        <li><a href="{{ 'contact-us'|page }}"><img src="{{ 'assets/img/contact-us.png'|theme }}" alt="Hubungi Kami"/><span>{{'hubungi-kami'|trans|uppercase}}</span></a></li>
+                        <li><a href="javascript:;" class="searchbtn"><img src="{{ 'assets/img/search.png'|theme }}" alt="Search"/><span>SEARCH</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- end of mobile menu -->
+
+        <!-- search form -->
+        <div class="searchform">
+          <form action="{{ 'home'|page }}/pencarian" method="get">
+            <input name="q" id="search-result" type="search" placeholder="Masukkan kata kunci dan tekan enter">
+            <a class="closesearch"><i class="fa fa-close"></i> </a>
+          </form>
+        </div>
+    </header>

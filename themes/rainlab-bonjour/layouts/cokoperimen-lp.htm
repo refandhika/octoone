@@ -1,0 +1,143 @@
+description = "Layour for Choco Periment"
+
+[staticPage]
+useContent = 1
+default = 0
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('cokoperimen-lp-amp');
+    }
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp banner-lp">
+    	
+      <div class="food-1"><img src="{{ 'lp-cokoperimen/Food-1.png'|media }}"  /></div>
+      <div class="main-img"><img src="{{ 'lp-cokoperimen/Main-Image.png'|media }}"  /></div>
+      <div class="food-2"><img src="{{ 'lp-cokoperimen/Food-2.png'|media }}"  /></div>
+      <div class="spatula"><img src="{{ 'lp-cokoperimen/spatula.png'|media }}"  /></div>
+    </div>
+</div>
+
+<div class="container-menutab">
+    <div class="rolling-pin"><img src="{{ 'lp-cokoperimen/rolling-pin.png'|media }}"  /></div>
+    <img src="{{ 'lp-cokoperimen/gini-gitu-nikmat-.png'|media  }}">
+    <div class="pack-ff"><img src="{{ 'lp-cokoperimen/Pack-FF-coklat.png'|media }}"  /></div>
+
+</div>
+
+<div class="section">
+    <h1 style="display: none;">cokoperimen - Ide Cokoperimen | Frisian Flag Indonesia</h1>
+    <div id='main-section' class="container">
+        <div class="row">
+            <div class="col-md-12 top-copy">
+            <p>Millennials adalah generasi yang sangat menyukai hal yang baru, anti-mainstream dan menyenangkan. Selalu penuh dengan ide-ide baru, langsung bikin banyak eksperimen seru! Frisian Flag Indonesia mengajak semua millennials dan masyarakat Indonesia untuk berani bereksperimen dengan memadukan kental manis cokelat ke dalam 2 jenis makanan, pedas manis atau asin manis. Yuk, bikin Cokoperimen lo dengan memilih geng yang sesuai dengan makanan favorit lo!</p>
+            <img src="{{ 'lp-cokoperimen/TimManaLo.png'|media  }}">
+               
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+               <img src="{{ 'lp-cokoperimen/Tim-Asin-Manis.png'|media  }}">
+            </div>
+            <div class="col-sm-6">
+               <img src="{{ 'lp-cokoperimen/Tim-Pedas-Manis.png'|media  }}">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="thumb-grid">
+    <div class="container">
+        <div class="row">
+            <a href="{{ '/aktivitas-kami/cokoperimen/ide-cokoperimen/artikel/destinasi-wisata-kuliner-di-indonesia-yang-pas-buat-timpedasmanis-atau-timasinmanis' }}">
+            <div class="col-md-3 col-sm-6">
+                <div class="thumb-img"></div>
+                <p>Destinasi Wisata Kuliner di Indonesia Buat #TimPedasManis dan #TimAsinManis</p>
+            </div>
+            </a>
+            <a href="{{ '/aktivitas-kami/cokoperimen/ide-cokoperimen/artikel/resep-makanan-antimainstream-timpedasmanis-dan-timasinmanis' }}">
+            <div class="col-md-3 col-sm-6">
+                <div class="thumb-img"></div>
+                <p>Resep Makanan Anti-Mainstream  #TimPedasManis dan #TimAsinManis</p>
+            </div>
+            </a>
+            <a href="{{ '/aktivitas-kami/cokoperimen/ide-cokoperimen/artikel/gaya-makan-khas-timpedasmanis-dan-timasinmanis' }}">
+            <div class="col-md-3 col-sm-6">
+                <div class="thumb-img"></div>
+                <p>Gaya Makan Khas #TimPedasManis dan #TimAsinManis</p>
+            </div>
+            </a>
+            <a href="{{ '/aktivitas-kami/cokoperimen/ide-cokoperimen/artikel/tips-malam-mingguan-ala-timpedasmanis-vs-timasinmanis' }}">
+            <div class="col-md-3 col-sm-6">
+                <div class="thumb-img"></div>
+                <p>Tips Malam Mingguan Ala #TimPedasManis vs #TimAsinManis</p>
+            </div>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="section-banner">
+    <div class="banner-slider">
+        <!--<div class="bs-item">
+            <div class="coklat-1"><img src="{{ 'lp-cokoperimen/coklat-1.png'|media  }}"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6"><img src="{{ 'lp-cokoperimen/Produk-Cokoperimen-copy.png'|media  }}"></div>
+                    <div class="col-sm-6"><img src="{{ 'lp-cokoperimen/copy-Promo.png'|media  }}"></div>
+                </div>
+            </div>
+        </div>
+        <div class="bs-item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6"><img src="{{ 'lp-cokoperimen/Produk-Cokoperimen-copy.png'|media  }}"></div>
+                    <div class="col-sm-6"><img src="{{ 'lp-cokoperimen/copy-Promo.png'|media  }}"></div>
+                </div>
+            </div>
+        </div>-->
+        <div class="bs-item">
+            <img src="{{ 'lp-cokoperimen/JDID-banner-desktop.jpg'|media  }}" class="hidden-xs" alt="Banner JD.ID Desktop">
+            <img src="{{ 'lp-cokoperimen/JDID-banner-mobile.jpg'|media  }}" class="visible-xs" alt="Banner JD.ID Mobile">
+        </div>
+        <div class="bs-item">
+            <img src="{{ 'lp-cokoperimen/Klik-Indomaret-desktop.jpg'|media  }}" class="hidden-xs" alt="Klik Indomaret Desktop">
+            <img src="{{ 'lp-cokoperimen/Klik-Indomaret-mobile.jpg'|media  }}" class="visible-xs" alt="Klik Indomaret Mobile">
+        </div>
+    </div>
+    <div class="coklat-2"><img src="{{ 'lp-cokoperimen/coklat-2.png'|media  }}" alt="Coklat Cokoperimen"></div>
+</div>
+<style>
+.banner-lp{background:url("{{ 'lp-cokoperimen/bg-desktop-d.png'|media }}");width:100%;height:100vh;min-height:450px;max-height:550px;position:relative;background-size:cover!important;background-repeat:no-repeat!important}.bs-item{background:url("{{ 'lp-cokoperimen/bg-desktop-d.png'|media }}");background-size:cover!important;background-repeat:no-repeat!important}.imgwrp{position:relative;overflow:hidden}.food-1{width:25vw;height:25vw;position:absolute;left:-6vw;top:0;bottom:0;margin:auto}.food-2{width:25vw;height:25vw;position:absolute;right:-6vw;top:0;bottom:0;margin:auto}.spatula{position:absolute;right:-50px;bottom:0;width:12vw}.main-img{width:40vw;height:40vw;position:absolute;right:0;left:0;top:0;bottom:0;margin:auto}.imgwrp img{width:100%}.rolling-pin{position:absolute;width:12vw;bottom:-100px}.pack-ff{width:15vw;position:absolute;right:25px;bottom:0}.container-menutab>img{width:30%;margin:auto}.container-menutab{background-image:linear-gradient(to top,#3a1d1f,#69362a);overflow:inherit;text-align:center;padding:16px 0}.top-copy{position:relative;text-align:center;padding:6% 6% 4%}.top-copy p{font-size:22px;font-weight:700;color:#fff}.top-copy img{width:45vw;max-width:550px;margin:auto;position:absolute;left:0;right:0;bottom:-25%}.section{background:linear-gradient(90deg,#0797d9 50%,#f19912 50%);padding-bottom:4%}.thumb-grid{padding:7% 0;background-image:linear-gradient(to top,#3a1d1f,#69362a)}.thumb-grid p{color:#fff;padding:0 10px}.footerblue{padding-top:30px}.thumb-img{height:200px;border-radius:15px;border:5px solid #f09925;background:#fff;margin-bottom:15px}.bs-item .col-sm-6 img{max-width:450px;width:100%}.bs-item .col-sm-6:last-child{padding-top:4%}.banner-slider{margin-bottom:0!important}.bs-item{position:relative}.banner-slider .slick-dots{position:absolute;bottom:20px}.banner-slider .slick-dots li button:before{display:none}.banner-slider button{border:2px solid #fff!important;border-radius:50%;background:#fff;height:17px!important;width:17px!important}.banner-slider .slick-active button{background:#fff}.section-banner{position:relative}.coklat-2{position:absolute;top:-30px;right:0;width:10vw}.coklat-1{position:absolute;bottom:0;left:-50px;width:14vw}@media only screen and (min-width:768px){.thumb-grid .col-md-3{padding:0 20px}.thumb-grid .col-md-3:first-child{padding-left:15px}.thumb-grid .col-md-3:last-child{padding-right:15px}}@media only screen and (max-width:767px){.container-menutab{text-align:left;padding-left:20px}.container-menutab::after{display:none}.container-menutab>img{width:50%}.top-copy p{font-size:18px;margin-bottom:20px}.rolling-pin{width:18vw;bottom:-20vw;left:-35px}.pack-ff{width:30vw;position:absolute;right:15px}.spatula{position:absolute;right:-50px;bottom:0;width:25vw}.top-copy img{width:55vw}.top-copy{padding:6% 6% 0}.banner-lp{min-height:auto;height:80vw}.main-img{width:60vw;height:60vw}.food-1{width:30vw;height:30vw;position:absolute;left:-10vw;top:auto;bottom:5%}.food-2{width:37vw;height:37vw;position:absolute;right:-16vw;top:0;bottom:auto;margin:auto}.top-copy img{position:relative;bottom:0}.section .col-sm-6{text-align:center}.container-menutab{margin-bottom:0}.banner-lp,.bs-item{background:url("{{ 'lp-cokoperimen/bg-mobile.png'|media }}")}.thumb-grid .col-md-3{display:block;overflow:hidden}.thumb-img{width:35%;height:140px;display:inline-block;float:left}.thumb-grid p{display:inline-block;width:65%;padding:15px}.bs-item .col-sm-6 img{width:82%}.coklat-2{width:15vw}.coklat-1{width:17vw}.banner-slider button{width:14px!important;height:14px!important}.banner-slider .slick-dots{bottom:12px}}@media screen and (min-width:767px){.default-content h3{font-size:30px}}@media screen and (max-width:767px){.m-bottom-15{margin-bottom:15px}}
+</style>
+<script>
+function checkVariable(){
+   if ( window.jQuery){
+       $(document).ready(function(){
+           setTimeout(function(){
+            $(".banner-slider").slick({
+                rows: 0,
+                dots:true,
+                arrows:false
+            });console.log("ready");
+            },800);
+       });
+       
+       
+      
+   }
+   else{
+      window.setTimeout("checkVariable();",100);
+   }
+}
+checkVariable();
+
+</script>
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

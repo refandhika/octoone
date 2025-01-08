@@ -1,0 +1,17 @@
+plugin:
+    name: 'definite.userlog::lang.plugin.name'
+    description: 'definite.userlog::lang.plugin.description'
+    author: Definite
+    icon: oc-icon-history
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: Userlog
+        url: definite/userlog/userlog
+        icon: icon-history
+        permissions:
+            - manage_userlog
+permissions:
+    manage_userlog:
+        tab: Userlog
+        label: 'Manage Userlog'

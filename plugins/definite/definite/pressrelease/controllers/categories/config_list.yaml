@@ -1,0 +1,11 @@
+list: $/definite/pressrelease/models/categories/columns.yaml
+modelClass: Definite\Pressrelease\Models\Categories
+title: Categories
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'definite/pressrelease/categories/update/:id'

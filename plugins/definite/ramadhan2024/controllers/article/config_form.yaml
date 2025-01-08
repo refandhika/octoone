@@ -1,0 +1,10 @@
+name: Article
+form: $/definite/ramadhan2024/models/article/fields.yaml
+modelClass: Definite\Ramadhan2024\Models\Article
+defaultRedirect: definite/ramadhan2024/article
+create:
+    redirect: 'definite/ramadhan2024/article/update/:id'
+    redirectClose: definite/ramadhan2024/article
+update:
+    redirect: definite/ramadhan2024/article
+    redirectClose: definite/ramadhan2024/article

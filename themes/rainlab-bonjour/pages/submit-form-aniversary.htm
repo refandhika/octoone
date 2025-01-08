@@ -1,0 +1,49 @@
+title = "submit-form-aniversary"
+url = "/submit-form-aniversary"
+is_hidden = 0
+==
+<?php
+use October\Rain\Database\Attach\Resizer;
+function onStart(){
+    // inputan name dari form 
+    $namapengirim = Input::get('namapengirim');
+    $notelppengirim = Input::get('telppengirim');
+    $alamatpengirim = Input::get('alamatpengirim');
+    $namakandidat = Input::get('namakandidat');
+    $notelpkandidat  = Input::get('telpkandidat');
+    $alamatkandidat  = Input::get('alamatkandidat');
+    $narasi  = Input::get('narasi');
+    $file  = Input::file('photo');
+    
+    $aniversary = new Definite\News\Models\Aniversary();
+    $aniversary->nama_pengirim = $namapengirim;
+    $aniversary->nomor_telepon_pengirim = $notelppengirim;
+    $aniversary->alamat_pengirim = $alamatpengirim;
+    $aniversary->nama_kandidat = $namakandidat;
+    $aniversary->nomor_telepon_kandidat = $notelpkandidat;
+    $aniversary->alamat_kandidat = $alamatkandidat;
+    $aniversary->narasi = $narasi;
+    $aniversary->photo = $file;
+    $aniversary->save();
+    
+    $percent = 0.3;
+    list($width, $height) = getimagesize($file);
+    $newwidth = $width * $percent;
+    $newheight = $height * $percent;
+    $option = [];
+    Resizer::open($aniversary->photo_source->getLocalPath())
+        ->resize($newwidth, $newheight, $option)
+        ->save($aniversary->photo_source->getLocalPath());
+
+    //$insert_data = Definite\News\Models\Aniversary::insert($data);
+    return $aniversary;
+    if($insert_data){
+        $this['message'] = 'Berhasil insert data';    
+    } else {
+        $this['message'] = 'Gagal insert data'; 
+    }
+    
+}
+?>
+==
+{{message}}

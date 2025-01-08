@@ -1,0 +1,71 @@
+<?php
+
+use Definite\Milkpedia\Models\Category;
+use Definite\Milkpedia\Models\Milkpedia;
+use Illuminate\Http\Request;
+use GuzzleHttp\Client;
+
+/*
+ Routes for milkpedia
+ */
+
+Route::get('/milkpedia/api/{categorySlug}/posts', function ($categorySlug) {
+    $category = (new Category())->findBySlug($categorySlug);
+    if ($category) {
+        return Milkpedia::filterCategories([$category->id])->orderBy('id', 'DESC')->orderBy('id')->paginate(7);
+    }
+
+    return [];
+});
+
+Route::get('/api/search', function (Request $request) {
+    $url = null;
+    $keyword = null;
+
+    $type = $request->input('type');
+    $value = $request->input('keyword');
+
+    if ('friso' == $type) {
+        $url = 'https://www.friso.co.id/api/v1/ ';
+        $keyword = 'keyword';
+    } elseif ('ibu' == $type) {
+        $url = 'https://www.ibudanbalita.com/api/v1/';
+        $keyword = 'q';
+    } elseif ('milkipedia' == $type) {
+        $data = Milkpedia::with('categories')->whereRaw('content LIKE "%'.$value.'%"')
+        ->orWhereRaw('title LIKE "%'.$value.'%"')
+        ->orderBy('id', 'DESC')->orderBy('id')->take(5)->get();
+
+        return response()->json($data);
+    } else {
+        return response()->json(['msq' => 'not found']);
+    }
+
+    $client = new Client([
+        'base_uri' => $url,
+    ]);
+    $response = $client->request('GET', 'search', [
+        'query' => [$keyword => $value],
+    ]);
+    $body = (string) $response->getBody();
+
+    return response()->json($body);
+});
+
+Route::get('/milkpedia/loadmore', function (Request $request) {
+    $value = $request->input('keyword');
+    $data = Milkpedia::with('categories')->whereRaw('content LIKE "%'.$value.'%"')
+    ->orWhereRaw('title LIKE "%'.$value.'%"')
+    ->orderBy('id', 'DESC')->orderBy('id')->paginate(5);
+
+    return response()->json($data);
+});
+
+Route::get('/all/milkpedia', function (Request $request) {
+    $value = $request->input('keyword');
+    $data = Milkpedia::with('categories')->whereRaw('content LIKE "%'.$value.'%"')
+    ->orWhereRaw('title LIKE "%'.$value.'%"')
+    ->orderBy('id', 'DESC')->orderBy('id')->take(1)->get();
+
+    return response()->json($data);
+});

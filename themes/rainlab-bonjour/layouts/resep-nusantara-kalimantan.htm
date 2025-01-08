@@ -1,0 +1,298 @@
+description = "Layout for Kalimantan"
+
+[staticPage]
+
+[account]
+paramCode = "code"
+forceSecure = 0
+[session]
+
+[SessionClose]
+load_js = 1
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('resep-khas-kalimantan-amp');
+}
+?>
+==
+{% partial 'site/header-resep-nusantara' %}
+
+	<section>
+
+		<h1 style="display: none;">RESEP KHAS KALIMANTAN</h1>
+  	<div class="static-baner-pages">
+    	<div class="imgwrp hidden-xs"><img src="{{ 'assets/img-ramadhan/banner/recipe page_kalimantan_desktop.jpg'|theme }}" alt="Recipe Page Kalimantan Desktop"> </div>
+    	<div class="imgwrp visible-xs"><img src="{{ 'assets/img-ramadhan/banner/recipe page_kalimantan_mobile.jpg'|theme }}" alt="Recipe Page Kalimantan Mobile"> </div>
+   	</div>
+		<div class="container-menutab container-menutab--five">
+			<div class="container-one">
+				<ul class="menutab-full">
+					<li class="toggle visible-xs visible-sm">
+						<a href="javascript:;" class="active">RESEP KHAS KALIMANTAN</a>
+					</li>
+					<li>
+						<a href="{{ '/aktivitas-kami/resep-nusantara' }}"><span>RESEP NUSANTARA</span></a>
+					</li>
+					<li>
+						<a href="{{ '/aktivitas-kami/resep-nusantara/resep-khas-sumatera' }}"><span>RESEP KHAS SUMATERA</span></a>
+					</li>
+					<li>
+						<a href="{{ '/aktivitas-kami/resep-nusantara/resep-khas-jawa-bali-nusa-tenggara' }}"><span>RESEP KHAS JAWA, BALI &AMP; NUSA TENGGARA</span></a>
+					</li>
+					<li>
+						<a href="#" class="active"><span>RESEP KHAS KALIMANTAN</span></a>
+					</li>
+					<li>
+						<a href="{{ '/aktivitas-kami/resep-nusantara/resep-khas-sulawesi-maluku-papua' }}"><span>RESEP KHAS SULAWESI,<br /> MALUKU &AMP; PAPUA</span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="container padding--large">
+			
+			<div class="row">
+
+				<ul id="menu" style="display: none;">
+		      <li><a href="#resep-pundut-pisang"></a></li>
+		      <li><a href="#resep-wadai-baceper"></a></li>
+		      <li><a href="#resep-amparan-tatak"></a></li>
+		      <li><a href="#resep-es-jagung-pontianak"></a></li>
+		      <li><a href="#resep-kararaban"></a></li>
+		    </ul>
+
+				<div class="col-sm-12 col-md-4" id="resep-pundut-pisang">
+					<div class="recipe">
+						<div class="recipe-title">
+							<h4>RESEP PUNDUT PISANG KHAS KALIMANTAN SELATAN</h4>							
+						</div> <!--  .recipe-title -->
+						<a id="pundut-pisang-play-button" href="https://youtu.be/1uM6TiHD7dw" data-fancybox="resep-pundut-pisang" class="images">
+							<img src="{{ 'assets/img-ramadhan/card/resep/pundut-pisang.jpg'|theme }}" alt="Pundut Pisang" />
+						</a>
+						<div class="text-center recipe--button">
+							<a id="pundut-pisang" href="javascript:;" class="button" data-fancybox data-src="#pundut-pisang-link">lihat resepnya</a>
+							<a href="#" class="button" onclick="openFacebookDialog()">Bagikan <i class="fa fa-facebook" aria-hidden="true"></i></a>
+							<a href="#"
+                 class="prettySocial button"
+                 data-url="https://www.frisianflag.com/aktivitas-kami/resep-nusantara"
+                 data-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                 data-type="twitter"
+                 data-description="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Pundut Pisang Khas Kalimantan Selatan untuk sekeluarga.">Tweet <i class="fa fa-twitter" aria-hidden="true"></i></a>
+						</div> <!--  .text-center -->
+						<div style="display: none;" id="pundut-pisang-link" class="recipe--popup">
+							<h4>RESEP PUNDUT PISANG KHAS KALIMANTAN SELATAN</h4>							
+							<br />
+							<p><strong>Bahan:</strong></p>
+							<p>3 bh pisang kepok, belah 2, potong-potong</p>
+							<p>200 g tepung beras</p>
+							<p>600 ml santan</p>
+							<p>½ sdt garam</p>
+							<p>50 gram gula pasir</p>
+							<p>100 ml Susu Kental Manis Frisian Flag Gold</p>
+							<p>daun pisang untuk membungkus</p>
+							<br />
+							<p><strong>Cara membuat:</strong></p>
+							<ol>
+								<li>Aduk rata tepung beras, santan, gula pasir, Susu Kental Manis Frisian Flag Gold, dan garam. Didihkan sambil diaduk. Masak sambil diaduk hingga meletup-letup dan kental.</li>
+								<li>Ambil daun pisang, sendokkan adonan. Tambahkan beberapa potong pisang kepok.Tutup sedikit adonan.</li>
+								<li>Bungkus tum. Kukus di atas api sedang selama 20 menit atau sampai matang.</li>
+							</ol>
+							<br />
+							<p><strong>10 Buah</strong></p>											
+							<p><strong>30 Menit</strong></p>											
+						</div>
+					</div> <!--  .recipe -->
+				</div> <!--  .col-sm-12 col-md-6 col-xmd-4 mg-b-20 -->
+
+				<div class="col-sm-12 col-md-4" id="resep-wadai-baceper">
+					<div class="recipe">
+						<div class="recipe-title">
+							<h4>RESEP WADAI BACEPER KHAS KALIMANTAN TENGAH</h4>							
+						</div> <!--  .recipe-title -->
+						<a id="wadai-baceper-play-button" href="https://youtu.be/OFIA1VikIGo" data-fancybox="resep-wadai-baceper" class="images">
+							<img src="{{ 'assets/img-ramadhan/card/resep/wadai-bacaper.jpg'|theme }}" alt="Wadai Bacaper" />
+						</a>
+						<div class="text-center recipe--button">
+							<a id="wadai-baceper" href="javascript:;" class="button" data-fancybox data-src="#wadai-bacaper-link">lihat resepnya</a>
+							<a href="#" class="button" onclick="openFacebookDialog()">Bagikan <i class="fa fa-facebook" aria-hidden="true"></i></a>
+							<a href="#"
+                 class="prettySocial button"
+                 data-url="https://www.frisianflag.com/aktivitas-kami/resep-nusantara"
+                 data-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                 data-type="twitter"
+                 data-description="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Wadai Baceper Khas Kalimantan Tengah untuk sekeluarga.">Tweet <i class="fa fa-twitter" aria-hidden="true"></i></a>
+						</div> <!--  .text-center -->
+						<div style="display: none;" id="wadai-bacaper-link" class="recipe--popup">
+							<h4>RESEP WADAI BACEPER KHAS KALIMANTAN TENGAH</h4>										
+							<br />
+							<p><strong>Bahan:</strong></p>
+							<p>250 gr Tepung beras</p>
+							<p>1 btr Kelapa parut muda</p>
+							<p>½ sdtGaram</p>
+							<p>100 gr Santan cair</p>
+							<p>200 ml Susu kental manis putih Frisian Flag Gold</p>
+							<br />
+							<p><strong>Bahan Pelengkap:</strong></p>
+							<p>50 ml Susu kental manis putih Frisian Flag Gold</p>
+							<p>50 gr Keju parut</p>
+							<p>50 gr Gula pasir</p>
+							<br />
+							<p><strong>Cara membuat:</strong></p>
+							<ol>
+								<li>1.Siapkan cetakan kue lumpur, olesi dengan minyak. Panaskan cetakan.
+								<li>Campur bahan baceper, aduk rata. Tuangkan adonan ke dalam cetakan kue lumpur, taburi keju dan susu kental manis putih Frisian Flag Gold, masak hingga matang dengan menggunakan api kecil.
+								<li>Setelah matang sajikan dengan parutan keju dan gula pasir.
+								<li>Sajikan selagi hangat.</li>
+							</ol>								
+						</div>
+					</div> <!--  .recipe -->
+				</div> <!--  .col-sm-12 col-md-6 col-xmd-4 mg-b-20 -->
+
+				<div class="col-sm-12 col-md-4" id="resep-amparan-tatak">
+					<div class="recipe">
+						<div class="recipe-title">
+							<h4>RESEP AMPARAN TATAK KHAS KALIMANTAN UTARA</h4>							
+						</div> <!--  .recipe-title -->
+						<a id="amparan-tatak-play-button" href="https://youtu.be/8dXphMtPF4g" data-fancybox="resep-amparan-tatak" class="images">
+							<img src="{{ 'assets/img-ramadhan/card/resep/amparan-tatak.jpg'|theme }}" alt="Amparan Tatak" />
+						</a>
+						<div class="text-center recipe--button">
+							<a id="amparan-tatak" href="javascript:;" class="button" data-fancybox data-src="#amparan-tatak-link">lihat resepnya</a>
+							<a href="#" class="button" onclick="openFacebookDialog()">Bagikan <i class="fa fa-facebook" aria-hidden="true"></i></a>
+							<a href="#"
+                 class="prettySocial button"
+                 data-url="https://www.frisianflag.com/aktivitas-kami/resep-nusantara"
+                 data-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                 data-type="twitter"
+                 data-description="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Amparan Tatak Khas Kalimantan Utara untuk sekeluarga.">Tweet <i class="fa fa-twitter" aria-hidden="true"></i></a>
+						</div> <!--  .text-center -->
+						<div style="display: none;" id="amparan-tatak-link" class="recipe--popup">
+							<h4>RESEP AMPARAN TATAK KHAS KALIMANTAN UTARA</h4>							
+							<br />
+							<p><strong>Bahan I:</strong></p>
+							<p>800 ml santan</p>
+							<p>3 lbr daun pandan, ikat</p>
+							<p>200 g tepung beras</p>
+							<p>100 g tepung sagu</p>
+							<p>100 g gula pasir</p>
+							<p>½ sdt garam</p>
+							<p>2 bh pisang tanduk, kukus, kupas, belah dua, dan potong memanjang</p>
+							<br />
+							<p><strong>Bahan II:</strong></p>
+							<p>300 ml santan</p>
+							<p>3 lbr daun pandan, ikat</p>
+							<p>100 g tepung beras</p>
+							<p>25 g tepung sagu</p>
+							<p>75 ml Susu Kental Manis Frisian Flag Full Cream</p>
+							<p>¼ sdt garam</p>
+							<br />
+							<p><strong>Cara membuat:</strong></p>
+							<ol>
+								<li>Bahan I: Rebus santan dan daun pandan sampai harum. Dinginkan. Tuang sedikit demi sedikit di atas campuran tepung beras, tepung sagu, gula pasir, garam, sambil diaduk rata. Sisihkan.</li>
+								<li>Bahan II: Rebus santan dan daun pandan sampai harum. Dinginkan. Tuang sedikit demi sedikit ke dalam campuran tepung beras, tepung sagu, Susu Kental Manis Frisian Flag Full Cream, garam, dan santan sambil diaduk rata. Sisihkan.</li>
+								<li>Tuang adonan bahan I ke dalam loyang loaf ukuran 30x12x8 cm yang dioles minyak dan dialas plastik. Kukus di atas api sedang 30 menit sampai matang.</li>
+								<li>Tata potongan pisang. Tuang adonan bahan II di atasnya.</li>
+								<li>Kukus lagi di atas api sedang 30 menit sampai matang.</li>
+							</ol>								
+							<br />
+							<p><strong>15 Potong</strong></p>
+							<p><strong>70 Menit</strong></p>
+						</div>
+					</div> <!--  .recipe -->
+				</div> <!--  .col-sm-12 col-md-6 col-xmd-4 mg-b-20 -->
+
+				<div class="col-sm-12 col-md-4" id="resep-es-jagung-pontianak">
+					<div class="recipe">
+						<div class="recipe-title">
+							<h4>RESEP ES JAGUNG PONTIANAK KHAS KALIMANTAN BARAT</h4>							
+						</div> <!--  .recipe-title -->
+						<a id="es-jagung-play-button" href="https://youtu.be/zy3YEhfTgrQ" data-fancybox="resep-es-jagung-pontianak" class="images">
+							<img src="{{ 'assets/img-ramadhan/card/resep/es-jagung.jpg'|theme }}" alt="Es Jagung" />
+						</a>
+						<div class="text-center recipe--button">
+							<a id="es-jagung" href="javascript:;" class="button" data-fancybox data-src="#es-jagung-link">lihat resepnya</a>
+							<a href="#" class="button" onclick="openFacebookDialog()">Bagikan <i class="fa fa-facebook" aria-hidden="true"></i></a>
+							<a href="#"
+                 class="prettySocial button"
+                 data-url="https://www.frisianflag.com/aktivitas-kami/resep-nusantara"
+                 data-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                 data-type="twitter"
+                 data-description="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Es Jagung Pontianak Khas Kalimantan Barat untuk sekeluarga.">Tweet <i class="fa fa-twitter" aria-hidden="true"></i></a>
+						</div> <!--  .text-center -->
+						<div style="display: none;" id="es-jagung-link" class="recipe--popup">
+							<h4>RESEP ES JAGUNG PONTIANAK KHAS KALIMANTAN BARAT</h4>							
+							<br />
+							<p><strong>Bahan :</strong></p>
+							<p>150 gr Jagung manis muda rebus, pipil</p>
+							<br />
+							<p><strong>Bahan Sirup :</strong></p>
+							<p>500 ml Air</p>
+							<p>250 gr Gula pasir</p>
+							<p>2 lembar Daun pandan</p>
+							<br />
+							<p><strong>Bahan Pelengkap :</strong></p>
+							<p>100 ml Susu kental manis putih Frisian Flag Gold</p>
+							<p>100 gr Nata de coco</p>
+							<p>Es serut, secukupnya</p>
+							<br />
+							<p><strong>Cara membuat:</strong></p>
+							<ol>
+								<li>Sirup : masak semua bahan hingga gula larut. Saring dan dinginkan.</li>
+								<li>Siapkan gelas hidang, atur es serut, nata de coco, jagung manis rebus dan sirup. Siram dengan susu kental manis putih Frisian Flag Gold. Sajikan.</li>
+							</ol>								
+						</div>
+					</div> <!--  .recipe -->
+				</div> <!--  .col-sm-12 col-md-6 col-xmd-4 mg-b-20 -->
+
+				<div class="col-sm-12 col-md-4" id="resep-kararaban">
+					<div class="recipe">
+						<div class="recipe-title">
+							<h4>RESEP KARARABAN KHAS KALIMANTAN TIMUR</h4>							
+						</div> <!--  .recipe-title -->
+						<a id="kararaban-play-button" href="https://youtu.be/491FnbNR5p4" data-fancybox="resep-kararaban" class="images">
+							<img src="{{ 'assets/img-ramadhan/card/resep/kararaban.jpg'|theme }}" alt="Kararaban" />
+						</a>
+						<div class="text-center recipe--button">
+							<a id="kararaban" href="javascript:;" class="button" data-fancybox data-src="#kararaban-link">lihat resepnya</a>
+							<a href="#" class="button" onclick="openFacebookDialog()">Bagikan <i class="fa fa-facebook" aria-hidden="true"></i></a>
+							<a href="#"
+                 class="prettySocial button"
+                 data-url="https://www.frisianflag.com/aktivitas-kami/resep-nusantara"
+                 data-media="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img-ramadhan/share.jpg"
+                 data-type="twitter"
+                 data-description="Cobain berbagai kreasi Frisian Flag Kental Manis Resep Karaban Khas Kalimantan Timur untuk sekeluarga.">Tweet <i class="fa fa-twitter" aria-hidden="true"></i></a>
+						</div> <!--  .text-center -->
+						<div style="display: none;" id="kararaban-link" class="recipe--popup">
+							<h4>RESEP KARARABAN KHAS KALIMANTAN TIMUR</h4>								
+							<br />
+							<p><strong>Bahan :</strong></p>
+							<p>250 g tepung beras, ayak</p>
+							<p>150 g gula merah, sisir halus</p>
+							<p>50 ml Susu Kental Manis Frisian Flag Full Cream</p>
+							<p>½ sdt adas manis, sangrai</p>
+							<p>½ sdt garam</p>
+							<p>100 ml santan</p>
+							<p>minyak untuk olesan</p>
+							<br />							
+							<p><strong>Cara membuat:</strong></p>
+							<ol>
+								<li>Campur tepung beras, gula merah, Susu Kental Manis Frisian Flag Full Cream, adas manis, garam, dan santan. Uleni sampai berbutir.</li>
+								<li>Letakkan adonan diloyang 20x20 yang dioles minyak dan dialas kertas roti.</li>
+								<li>Kukus 30 menit sampai matang. Angkat. Dinginkan.</li>
+								<li>Potong-potong.</li>
+							</ol>								
+							<br />							
+							<p><strong>8 porsi</strong></p>
+							<p><strong>40 menit</strong></p>
+						</div>
+					</div> <!--  .recipe -->
+				</div> <!--  .col-sm-12 col-md-6 col-xmd-4 mg-b-20 -->
+
+			</div> <!--  .row -->			
+
+		</div> <!--  .container -->
+  </section>
+
+{% partial 'site/footer-resep-nusantara' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

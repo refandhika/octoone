@@ -1,0 +1,88 @@
+fields:
+    title:
+        label: Title (id)
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    title_en:
+        label: Title (en)
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    slug:
+        label: Slug
+        oc.commentPosition: ''
+        span: full
+        preset:
+            field: title
+            type: slug
+        type: text
+    description:
+        label: Description (id)
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: richeditor
+    description_en:
+        label: Description (en)
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: richeditor
+    featured_image:
+        label: 'Featured Image'
+        oc.commentPosition: ''
+        mode: image
+        span: auto
+        type: mediafinder
+    categories:
+        label: Categories
+        oc.commentPosition: ''
+        nameFrom: title
+        descriptionFrom: description
+        span: auto
+        type: relation
+    published_status:
+        label: 'Published status'
+        oc.commentPosition: ''
+        options:
+            'Yes': 'Y'
+            'No': 'N'
+        span: auto
+        default: ''
+        type: dropdown
+    published_date:
+        label: 'Published date'
+        oc.commentPosition: ''
+        mode: date
+        span: auto
+        type: datepicker
+tabs:
+    fields:
+        meta_description:
+            label: 'Meta Description'
+            size: ''
+            oc.commentPosition: ''
+            span: auto
+            type: textarea
+            tab: 'Meta Tag (id)'
+        meta_title:
+            label: 'Meta Title'
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            tab: 'Meta Tag (id)'
+        
+        meta_description_en:
+            label: 'Meta Description (en)'
+            size: ''
+            oc.commentPosition: ''
+            span: auto
+            type: textarea
+            tab: 'Meta Tag (en)'
+        meta_title_en:
+            label: 'Meta Title (en)'
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            tab: 'Meta Tag (en)'

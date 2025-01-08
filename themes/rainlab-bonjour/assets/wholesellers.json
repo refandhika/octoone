@@ -1,0 +1,1762 @@
+[
+  {
+    "provinsi": "ACEH",
+    "nama": "SINAR MAKMUR (H.ILYAS), TK",
+    "alamat": "JL. H. ILYAS",
+    "kelurahan": "MEUDANG ARA",
+    "kode_pos": 23764,
+    "kecamatan": "BLANG PIDIE"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "MITRA MARWAN, TK",
+    "alamat": "JL. AT TAQWA",
+    "kelurahan": "PASAR BLANGPIDIE",
+    "kode_pos": 23764,
+    "kecamatan": "BLANG PIDIE"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "RIZKI, UD",
+    "alamat": "LR.TAQWA KOTA PAJAR",
+    "kelurahan": "KOTAFAJAR",
+    "kode_pos": 23771,
+    "kecamatan": "KLUET UTARA"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "MUTTAQIN (TRM)",
+    "alamat": "DUSUN BINEH KRUNG TRUMON",
+    "kelurahan": "LADANG RIMBA",
+    "kode_pos": 23775,
+    "kecamatan": "TRUMON TENGAH"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "MHDS,TOKO",
+    "alamat": "JL. KOMP.LAPANGAN VOA BIREUN",
+    "kelurahan": "BANDAR BIREUEN",
+    "kode_pos": 24252,
+    "kecamatan": "KOTA JUANG"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "UD.MAJU,TOKO",
+    "alamat": "JL. ISKANDAR MUDA NO.5 BIREUN",
+    "kelurahan": "BIREUEN MEUNASAH CAPA",
+    "kode_pos": 24252,
+    "kecamatan": "KOTA JUANG"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "CAHAYA NIAGA II,TOKO",
+    "alamat": "JL. MEDANB.ACEH",
+    "kelurahan": "GLEUMPANG PAYONG",
+    "kode_pos": 24251,
+    "kecamatan": "JEUMPA"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "KENANGAN BARU,TOKO",
+    "alamat": "JL. MEDANB.ACEH NO.6 BIREUN",
+    "kelurahan": "BIREUEN MEUNASAH CAPA",
+    "kode_pos": 24252,
+    "kecamatan": "KOTA JUANG"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "ULEE GUNONG",
+    "alamat": "JL.MEDAN B.ACEH / BLANG BLADEH",
+    "kelurahan": "BLANG BLADEH",
+    "kode_pos": 24251,
+    "kecamatan": "JEUMPA"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "AZZIRA, TK",
+    "alamat": "JL. NASIONAL",
+    "kelurahan": "GUNONG CUT",
+    "kode_pos": 23662,
+    "kecamatan": "DARUL MAKMUR"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "ADP, TOKO",
+    "alamat": "SINABANG",
+    "kelurahan": "SINABANG",
+    "kode_pos": 23891,
+    "kecamatan": "SIMEULUE TIMUR"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "UD. HERI, TOKO",
+    "alamat": "JLN MEULABOH - BLANG PIDIE",
+    "kelurahan": "SUKA RAJA",
+    "kode_pos": 23662,
+    "kecamatan": "DARUL MAKMUR"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "TK MULIA SARY,TOKO",
+    "alamat": "JL. PASAR INPRES, PASAR INPRES, LHOKSEUMAWE, NAN",
+    "kelurahan": "TUMPOK TEUNGOH",
+    "kode_pos": 24311,
+    "kecamatan": "BANDA SAKTI"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "ISLAH,TOKO",
+    "alamat": "JL TGK CHIK DITIRO NO4 P. LABU, KOTA PANTON LABU,",
+    "kelurahan": "KOTA PANTON LABU",
+    "kode_pos": 24395,
+    "kecamatan": "TANAH JAMBO AYE"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "TIMBANG RASA,TOKO",
+    "alamat": "JL. BANDA ACEH - MEDAN",
+    "kelurahan": "GRONG GRONG",
+    "kode_pos": 24150,
+    "kecamatan": "GRONG GRONG"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "UD. 88,TOKO",
+    "alamat": "JL. KOTA SIGLI - BENTENG",
+    "kelurahan": "BLANG ASAN",
+    "kode_pos": 24111,
+    "kecamatan": "KOTA SIGLI"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "TIMBANG RASA 3,TOKO",
+    "alamat": "JL. BEUREUNUEN - TANGSE",
+    "kelurahan": "LINGKOK",
+    "kode_pos": 24164,
+    "kecamatan": "SAKTI"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "ANEKA KLONTONG,TOKO",
+    "alamat": "JL. TENGKU CHIK DITIRO",
+    "kelurahan": "LINGKOK",
+    "kode_pos": 24164,
+    "kecamatan": "SAKTI"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "SEDERHANA,TOKO",
+    "alamat": "JL. PERDAGANGAN",
+    "kelurahan": "KERAMAT DALAM",
+    "kode_pos": 24115,
+    "kecamatan": "KOTA SIGLI"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "UD. RUSLI,TOKO",
+    "alamat": "JL. MEDAN - BANDA ACEH",
+    "kelurahan": "GAMPONG ULEE GLE",
+    "kode_pos": 24188,
+    "kecamatan": "BANDAR DUA"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "TERANG,TOKO",
+    "alamat": "JL. TGK. ABDUL JALIL",
+    "kelurahan": "KAMPUNG BARU",
+    "kode_pos": 23242,
+    "kecamatan": "BAITURRAHMAN"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "DELIMA BARU,TOKO",
+    "alamat": "JL. TGK. CHIK DITIRO NO. 82",
+    "kelurahan": "PEUNITI",
+    "kode_pos": 23241,
+    "kecamatan": "BAITURRAHMAN"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "JASA BARONA,TOKO",
+    "alamat": "JL. T. ISKANDAR",
+    "kelurahan": "IE MASEN ULEE KARENG",
+    "kode_pos": 23117,
+    "kecamatan": "ULEE KARENG"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "UD. RAHMAD,TOKO",
+    "alamat": "JL. WEDANA/MIBO NO. 5",
+    "kelurahan": "LHONG CUT",
+    "kode_pos": 23238,
+    "kecamatan": "BANDA RAYA"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "MITRA TUNGGAL MANDIRI,TOKO",
+    "alamat": "JL. SOEKARNO HATTA NO. 04",
+    "kelurahan": "LAMREUNG",
+    "kode_pos": 23352,
+    "kecamatan": "DARUL IMARAH"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "BAHAGIA,TOKO",
+    "alamat": "JL. KEMIREU",
+    "kelurahan": "KEUMIREU",
+    "kode_pos": 23364,
+    "kecamatan": "KOTA COT GLIE"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "ADI SIBREH,TOKO",
+    "alamat": "JL. SIMPANG LUBUK KM 11.5",
+    "kelurahan": "LAMBARO SIBREH",
+    "kode_pos": 23361,
+    "kecamatan": "SUKAMAKMUR"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "SUMBER BARU,TOKO",
+    "alamat": "JL. T.GLE INEM",
+    "kelurahan": "TUNGKOP",
+    "kode_pos": 23374,
+    "kecamatan": "DARUSSALAM"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "RW,TOKO",
+    "alamat": "JL. T. ISKANDAR",
+    "kelurahan": "CEURIH",
+    "kode_pos": 23117,
+    "kecamatan": "ULEE KARENG"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "HERI TUNGGAL,TOKO",
+    "alamat": "JL. CUT MEUTIA SAMPING TERMINA",
+    "kelurahan": "KEUDAH",
+    "kode_pos": 23129,
+    "kecamatan": "KUTA RAJA"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "HKS SINAR JAYA , TOKO",
+    "alamat": "Jl. MR. MOHD HASAN - SUKADAMAI",
+    "kelurahan": "SUKADAMAI",
+    "kode_pos": 23249,
+    "kecamatan": "LUENG BATA"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "AJIR MANDIRI,TOKO",
+    "alamat": "JLN.PASAR INDUK LAMBARO",
+    "kelurahan": "LAMBARO",
+    "kode_pos": 23371,
+    "kecamatan": "INGIN JAYA"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "KIKI BINTANG,TOKO",
+    "alamat": "JL. TEUKU UMAR",
+    "kelurahan": "SUBULUSSALAM",
+    "kode_pos": 24781,
+    "kecamatan": "SIMPANG KIRI"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "UD.RISKY,TOKO",
+    "alamat": "JL. TR. ANGKASA",
+    "kelurahan": "GUNUNG LAGAN",
+    "kode_pos": 24793,
+    "kecamatan": "GUNUNG MERIAH"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "SATRIA POHAN,TOKO",
+    "alamat": "JL. TR. ANGKASA",
+    "kelurahan": "LAE BALNO",
+    "kode_pos": 24784,
+    "kecamatan": "DANAU PARIS"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "AMPERA,TOKO",
+    "alamat": "JL. CUT NYAT DHIEN",
+    "kelurahan": "SUBULUSSALAM",
+    "kode_pos": 24781,
+    "kecamatan": "SIMPANG KIRI"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "JASA,TOKO",
+    "alamat": "JALAN MEDAN BANDA ACEH,KUTA BINJE, ACEH TIMUR",
+    "kelurahan": "BLANG PAOH SATU",
+    "kode_pos": 24459,
+    "kecamatan": "JULOK"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "MUHAJIR,TOKO",
+    "alamat": "JALAN MEDAN BANDA ACEH DEPAN SD ALUR NIREH PEUREUL",
+    "kelurahan": "SEUMATANG KEUDE",
+    "kode_pos": 24440,
+    "kecamatan": "PEUREULAK TIMUR"
+  },
+  {
+    "provinsi": "SUMATERA UTARA",
+    "nama": "KARYA,TOKO",
+    "alamat": "JL.HAMPARAN PERAK",
+    "kelurahan": "TANJUNG MULIA HILIR",
+    "kode_pos": 20241,
+    "kecamatan": "MEDAN DELI"
+  },
+  {
+    "provinsi": "SUMATERA UTARA",
+    "nama": "SILALAHI SWS,TOKO",
+    "alamat": "JL.MARELAN RAYA",
+    "kelurahan": "TANAH ENAM RATUS",
+    "kode_pos": 20245,
+    "kecamatan": "MEDAN MARELAN"
+  },
+  {
+    "provinsi": "SUMATERA UTARA",
+    "nama": "MAKMUR JAYA,TOKO",
+    "alamat": "JL.NIAGA BATANG KUIS",
+    "kelurahan": "BANTAN",
+    "kode_pos": 20224,
+    "kecamatan": "MEDAN TEMBUNG"
+  },
+  {
+    "provinsi": "SUMATERA UTARA",
+    "nama": "PT. MITRA REZEKI DISTRIBUSI NUSANTARA",
+    "alamat": "JL. SELAMAT KETAREN KOMP MMTC LOGISTIC BLOK D NO.",
+    "kelurahan": "MEDAN ESTATE",
+    "kode_pos": 20371,
+    "kecamatan": "PERCUT SEI TUAN"
+  },
+  {
+    "provinsi": "SUMATERA UTARA",
+    "nama": "RAHAYUSWS,TOKO",
+    "alamat": "JL.BERINGIN TEMBUNG NO. 61",
+    "kelurahan": "TEMBUNG",
+    "kode_pos": 20371,
+    "kecamatan": "PERCUT SEI TUAN"
+  },
+  {
+    "provinsi": "SUMATERA UTARA",
+    "nama": "RATIHTATA,TOKO",
+    "alamat": "JL.MESJID",
+    "kelurahan": "BANDAR KLIPPA",
+    "kode_pos": 20371,
+    "kecamatan": "PERCUT SEI TUAN"
+  },
+  {
+    "provinsi": "SUMATERA UTARA",
+    "nama": "ANDRE JAYA,TOKO",
+    "alamat": "JLN PERHUBUNGAN LAUT DENDANG",
+    "kelurahan": "LAUT DENDANG",
+    "kode_pos": 20371,
+    "kecamatan": "PERCUT SEI TUAN"
+  },
+  {
+    "provinsi": "SUMATERA UTARA",
+    "nama": "JASA,TOKO",
+    "alamat": "JL. SUDIRMAN INDRA PURAKAB. BATU BARASUMATERA",
+    "kelurahan": "INDRAPURA",
+    "kode_pos": 21256,
+    "kecamatan": "AIR PUTIH"
+  },
+  {
+    "provinsi": "ACEH",
+    "nama": "TIMBUL GANDA,TOKO",
+    "alamat": "LAWE PERBUNGA",
+    "kelurahan": "KUTE BAKTI",
+    "kode_pos": 24673,
+    "kecamatan": "BABUL MAKMUR"
+  },
+  {
+    "provinsi": "SUMATERA UTARA",
+    "nama": "KRISNA,TOKO",
+    "alamat": "JL. B.BATU L PAKAM",
+    "kelurahan": "BANGUN MULIA",
+    "kode_pos": 20149,
+    "kecamatan": "MEDAN AMPLAS"
+  },
+  {
+    "provinsi": "SUMATERA UTARA",
+    "nama": "KURNIA,SNK",
+    "alamat": "JL.B ZEIN HAMID",
+    "kelurahan": "TITI KUNING",
+    "kode_pos": 20146,
+    "kecamatan": "MEDAN JOHOR"
+  },
+  {
+    "provinsi": "SUMATERA UTARA",
+    "nama": "ALENG,TOKO",
+    "alamat": "JL. J. GINTING NO. 9 P. BATU",
+    "kelurahan": "BANGUN MULIA",
+    "kode_pos": 20149,
+    "kecamatan": "MEDAN AMPLAS"
+  },
+  {
+    "provinsi": "SUMATERA UTARA",
+    "nama": "SERBA GUNA,TOKO",
+    "alamat": "JL. JAMIN GINTING, PANCUR BATU",
+    "kelurahan": "BANGUN MULIA",
+    "kode_pos": 20149,
+    "kecamatan": "MEDAN AMPLAS"
+  },
+  {
+    "provinsi": "SUMATERA UTARA",
+    "nama": "K.A.C,SNK",
+    "alamat": "JL. LIMAU MANIS NO 93A",
+    "kelurahan": "LIMAU MANIS",
+    "kode_pos": 20362,
+    "kecamatan": "TANJUNG MORAWA"
+  },
+  {
+    "provinsi": "SUMATERA UTARA",
+    "nama": "ORION,TOKO",
+    "alamat": "JL. SISINGAMANGARAJA NO. 45 A",
+    "kelurahan": "BANGUN MULIA",
+    "kode_pos": 20149,
+    "kecamatan": "MEDAN AMPLAS"
+  },
+  {
+    "provinsi": "SUMATERA UTARA",
+    "nama": "MEKAR JAYA,TOKO",
+    "alamat": "JL. PERINTIS KEMERDEKAAN NO.12, GALANG",
+    "kelurahan": "BANGUN MULIA",
+    "kode_pos": 20149,
+    "kecamatan": "MEDAN AMPLAS"
+  },
+  {
+    "provinsi": "SUMATERA UTARA",
+    "nama": "SISKA,TOKO",
+    "alamat": "JL. TALUN KENAS",
+    "kelurahan": "BANGUN MULIA",
+    "kode_pos": 20149,
+    "kecamatan": "MEDAN AMPLAS"
+  },
+  {
+    "provinsi": "SUMATERA UTARA",
+    "nama": "ALHAMDULILLAH. Toko",
+    "alamat": "Jl. Purwo No. 210 LORONG ANGGREK",
+    "kelurahan": "BANGUN MULIA",
+    "kode_pos": 20149,
+    "kecamatan": "MEDAN AMPLAS"
+  },
+  {
+    "provinsi": "KEPULAUAN RIAU",
+    "nama": "KE YA TEK,TOKO",
+    "alamat": "JL. PELIPIT",
+    "kelurahan": "KAPLING",
+    "kode_pos": 29668,
+    "kecamatan": "TEBING"
+  },
+  {
+    "provinsi": "KEPULAUAN RIAU",
+    "nama": "AMONG,TOKO",
+    "alamat": "JL. PERTAMBANGAN",
+    "kelurahan": "TELUK UMA",
+    "kode_pos": 29668,
+    "kecamatan": "TEBING"
+  },
+  {
+    "provinsi": "KEPULAUAN RIAU",
+    "nama": "LOKARIA,TOKO",
+    "alamat": "PULAU BURU",
+    "kelurahan": "SUNGAILAKAM TIMUR",
+    "kode_pos": 29661,
+    "kecamatan": "KARIMUN"
+  },
+  {
+    "provinsi": "SUMATERA BARAT",
+    "nama": "ADE MAWAR,TOKO",
+    "alamat": "JL. RAYA PAYAKUMBUH LINTAU",
+    "kelurahan": "TIGO JANGKO",
+    "kode_pos": 27292,
+    "kecamatan": "LINTAU BUO"
+  },
+  {
+    "provinsi": "SUMATERA BARAT",
+    "nama": "HANA MART,TOKO",
+    "alamat": "JL. SURI MAHARAJO",
+    "kelurahan": "LIMA KAUM",
+    "kode_pos": 27211,
+    "kecamatan": "LIMA KAUM"
+  },
+  {
+    "provinsi": "SUMATERA BARAT",
+    "nama": "EDI (YANTI),TOKO",
+    "alamat": "JL. PEMUDA",
+    "kelurahan": "PASAR PANDAN AIR MATI",
+    "kode_pos": 27322,
+    "kecamatan": "TANJUNG HARAPAN"
+  },
+  {
+    "provinsi": "SUMATERA BARAT",
+    "nama": "TUGU PUTRA,TOKO",
+    "alamat": "JL. GAJAH MADA",
+    "kelurahan": "ALAHAN PANJANG",
+    "kode_pos": 27371,
+    "kecamatan": "LEMBAH GUMANTI"
+  },
+  {
+    "provinsi": "SUMATERA BARAT",
+    "nama": "GANI,TOKO",
+    "alamat": "JL. RAYA SOLOK PADANG PANJANG",
+    "kelurahan": "SINGKARAK",
+    "kode_pos": 27356,
+    "kecamatan": "X KOTO SINGKARAK"
+  },
+  {
+    "provinsi": "SUMATERA BARAT",
+    "nama": "MAKMUR JAYA,TOKO",
+    "alamat": "JL. KOTO BARU MUARA PANAS",
+    "kelurahan": "KOTO BARU",
+    "kode_pos": 27361,
+    "kecamatan": "KUBUNG"
+  },
+  {
+    "provinsi": "RIAU",
+    "nama": "PEPSI JAYA,TOKO",
+    "alamat": "JL. JENDRAL SUDIRMAN",
+    "kelurahan": "RATU SIMA",
+    "kode_pos": 28825,
+    "kecamatan": "DUMAI SELATAN"
+  },
+  {
+    "provinsi": "RIAU",
+    "nama": "DMS,TOKO",
+    "alamat": "JL. HANG TUAH",
+    "kelurahan": "DURI BARAT",
+    "kode_pos": 28783,
+    "kecamatan": "MANDAU"
+  },
+  {
+    "provinsi": "RIAU",
+    "nama": "PS-AN , TOKO",
+    "alamat": "JL.HASANUDIN",
+    "kelurahan": "DURI BARAT",
+    "kode_pos": 28783,
+    "kecamatan": "MANDAU"
+  },
+  {
+    "provinsi": "SUMATERA BARAT",
+    "nama": "TETEN,TOKO",
+    "alamat": "JL. RAYA PAYAKUMBUHLINTAU",
+    "kelurahan": "BALAI PANJANG",
+    "kode_pos": 26262,
+    "kecamatan": "LAREH SAGO HALABAN"
+  },
+  {
+    "provinsi": "SUMATERA BARAT",
+    "nama": "H.D ADEK,TOKO",
+    "alamat": "JL. AHMAD YANI",
+    "kelurahan": "IBUAH",
+    "kode_pos": 26229,
+    "kecamatan": "PAYAKUMBUH BARAT"
+  },
+  {
+    "provinsi": "SUMATERA BARAT",
+    "nama": "MITRA ARTHA,TOKO",
+    "alamat": "JL. JENDRAL SUDIRMAN",
+    "kelurahan": "IKUA KOTO DIBALAI",
+    "kode_pos": 26212,
+    "kecamatan": "PAYAKUMBUH UTARA"
+  },
+  {
+    "provinsi": "SUMATERA BARAT",
+    "nama": "FATMA, TOKO",
+    "alamat": "JL. ARAI PINANG",
+    "kelurahan": "PAGAMBIRAN AMPALU NAN XX",
+    "kode_pos": 25226,
+    "kecamatan": "LUBUK BEGALUNG"
+  },
+  {
+    "provinsi": "SUMATERA BARAT",
+    "nama": "BINTANG HARAPAN, TOKO",
+    "alamat": "KAMPUNG JAMBAK PILAKUIK BALAI BARU",
+    "kelurahan": "TANJUNG SABA PITAMEN NAN XX",
+    "kode_pos": 25224,
+    "kecamatan": "LUBUK BEGALUNG"
+  },
+  {
+    "provinsi": "SUMATERA BARAT",
+    "nama": "HOKKY, TOKO",
+    "alamat": "JL.BANDAR OLO",
+    "kelurahan": "KAMPUNG JAO",
+    "kode_pos": 25112,
+    "kecamatan": "PADANG BARAT"
+  },
+  {
+    "provinsi": "SUMATERA BARAT",
+    "nama": "FRD,TOKO",
+    "alamat": "PERUM GRIYA ANAK AIR PERMAI",
+    "kelurahan": "TANJUNG SABA PITAMEN NAN XX",
+    "kode_pos": 25224,
+    "kecamatan": "LUBUK BEGALUNG"
+  },
+  {
+    "provinsi": "KEPULAUAN RIAU",
+    "nama": "YANTO BALOI,TOKO",
+    "alamat": "JL. KOMPLEK BATAM MAS BLOK B NO.45-46",
+    "kelurahan": "KAMPUNG PELITA",
+    "kode_pos": 29443,
+    "kecamatan": "LUBUK BAJA"
+  },
+  {
+    "provinsi": "KEPULAUAN RIAU",
+    "nama": "GLASSINDO MILLENIUM KOP,TOKO",
+    "alamat": "KOMPLEK BUMI RIAU MAKMUR BLOK L.4",
+    "kelurahan": "KAMPUNG PELITA",
+    "kode_pos": 29443,
+    "kecamatan": "LUBUK BAJA"
+  },
+  {
+    "provinsi": "KEPULAUAN RIAU",
+    "nama": "PT. GSI, TOKO",
+    "alamat": "JL. KOMPLEK CITRA BUANA CENTER PARK BLOK B NO.5",
+    "kelurahan": "KAMPUNG PELITA",
+    "kode_pos": 29443,
+    "kecamatan": "LUBUK BAJA"
+  },
+  {
+    "provinsi": "KEPULAUAN RIAU",
+    "nama": "MEKAR INDAH LESTARI,TOKO",
+    "alamat": "JL. GAJAH MADA TIBAN MC DERMOT BLOK D NO.2",
+    "kelurahan": "TIBAN INDAH",
+    "kode_pos": 29426,
+    "kecamatan": "SEKUPANG"
+  },
+  {
+    "provinsi": "KEPULAUAN RIAU",
+    "nama": "ASUN TIBAN,TOKO",
+    "alamat": "JL. GAJAH MADA KOMPLEK TIBAN LESTARI BLOK RA NO.89",
+    "kelurahan": "TIBAN INDAH",
+    "kode_pos": 29426,
+    "kecamatan": "SEKUPANG"
+  },
+  {
+    "provinsi": "KEPULAUAN RIAU",
+    "nama": "ATEK DS,,TOKO",
+    "alamat": "JL. DABO SINGKEP",
+    "kelurahan": "KAMPUNG PELITA",
+    "kode_pos": 29443,
+    "kecamatan": "LUBUK BAJA"
+  },
+  {
+    "provinsi": "KEPULAUAN RIAU",
+    "nama": "PT.SUKSES MENTARI MULIA,TOKO",
+    "alamat": "JL. KOMP. INDAH IND. PARK BLOK. E1 NO.3 PELITA",
+    "kelurahan": "KAMPUNG PELITA",
+    "kode_pos": 29443,
+    "kecamatan": "LUBUK BAJA"
+  },
+  {
+    "provinsi": "KEPULAUAN RIAU",
+    "nama": "YONG PING,TOKO",
+    "alamat": "JL.TANJUNG SENGKUANG BLOK A NO.2",
+    "kelurahan": "KAMPUNG PELITA",
+    "kode_pos": 29443,
+    "kecamatan": "LUBUK BAJA"
+  },
+  {
+    "provinsi": "KEPULAUAN RIAU",
+    "nama": "GROSIR ACHIANG,TOKO",
+    "alamat": "JL. RHABAYU ASRI BLOK A NO 36",
+    "kelurahan": "DURIANGKANG",
+    "kode_pos": 29437,
+    "kecamatan": "SUNGAI BEDUK"
+  },
+  {
+    "provinsi": "KEPULAUAN RIAU",
+    "nama": "AHUN ,TOKO",
+    "alamat": "JL. BRIGJEND KATAMSO",
+    "kelurahan": "TANJUNG UNCANG",
+    "kode_pos": 29424,
+    "kecamatan": "BATU AJI"
+  },
+  {
+    "provinsi": "KEPULAUAN RIAU",
+    "nama": "ALAK APUI,TOKO",
+    "alamat": "JL. S. PARMAN, PANCUR BLOK B 9 10",
+    "kelurahan": "DURIANGKANG",
+    "kode_pos": 29437,
+    "kecamatan": "SUNGAI BEDUK"
+  },
+  {
+    "provinsi": "KEPULAUAN RIAU",
+    "nama": "ACC MART,TOKO",
+    "alamat": "JL. TENGKU SULUNG, BLOK B2 89",
+    "kelurahan": "BELIAN",
+    "kode_pos": 29464,
+    "kecamatan": "BATAM KOTA"
+  },
+  {
+    "provinsi": "KEPULAUAN RIAU",
+    "nama": "GROSIR BUANA IMPIAN,TOKO",
+    "alamat": "JL. TRANS BARELANG",
+    "kelurahan": "TEMBESI",
+    "kode_pos": 29439,
+    "kecamatan": "SAGULUNG"
+  },
+  {
+    "provinsi": "KEPULAUAN RIAU",
+    "nama": "MTB MART,TOKO",
+    "alamat": "JL. TUNAS REGENCI",
+    "kelurahan": "SUNGAI BINTI",
+    "kode_pos": 29439,
+    "kecamatan": "SAGULUNG"
+  },
+  {
+    "provinsi": "KEPULAUAN RIAU",
+    "nama": "RAMLI,TOKO",
+    "alamat": "JL. ABDULTAYAMA NO. 11",
+    "kelurahan": "BALOI PERMAI",
+    "kode_pos": 29431,
+    "kecamatan": "BATAM KOTA"
+  },
+  {
+    "provinsi": "KEPULAUAN RIAU",
+    "nama": "HAJJAH SIREGAR,TOKO",
+    "alamat": "JL. RUKO LEGENDA MALAKA BLOK A NO 5",
+    "kelurahan": "BALOI PERMAI",
+    "kode_pos": 29431,
+    "kecamatan": "BATAM KOTA"
+  },
+  {
+    "provinsi": "RIAU",
+    "nama": "ATAK,TOKO",
+    "alamat": "JL. BANDAR SUNGAI",
+    "kelurahan": "SABAK PERMAI",
+    "kode_pos": 28684,
+    "kecamatan": "SABAK AUH"
+  },
+  {
+    "provinsi": "RIAU",
+    "nama": "INDAH MAJU,TOKO",
+    "alamat": "JL. RAYA SIAKSUNGAI APIT",
+    "kelurahan": "SUNGAI APIT",
+    "kode_pos": 28662,
+    "kecamatan": "SUNGAI APIT"
+  },
+  {
+    "provinsi": "RIAU",
+    "nama": "GEBYAR,TOKO",
+    "alamat": "SUKARAMAI",
+    "kelurahan": "SUKARAMAI",
+    "kode_pos": 28466,
+    "kecamatan": "TAPUNG HULU"
+  },
+  {
+    "provinsi": "RIAU",
+    "nama": "NOVITA,TOKO",
+    "alamat": "JL. RAYA SUKARAMAI",
+    "kelurahan": "SUKARAMAI",
+    "kode_pos": 28466,
+    "kecamatan": "TAPUNG HULU"
+  },
+  {
+    "provinsi": "RIAU",
+    "nama": "YASA,TOKO",
+    "alamat": "JL. TEBING TINGGI N0 131",
+    "kelurahan": "PADANG BULAN",
+    "kode_pos": 28156,
+    "kecamatan": "SENAPELAN"
+  },
+  {
+    "provinsi": "RIAU",
+    "nama": "PERSADA,TOKO",
+    "alamat": "JL.JEND SUDIRMAN UJUNG BATU",
+    "kelurahan": "UJUNG BATU",
+    "kode_pos": 28553,
+    "kecamatan": "UJUNG BATU"
+  },
+  {
+    "provinsi": "RIAU",
+    "nama": "KOSTARIKA MART",
+    "alamat": "PASAR LUBUK JAMBI",
+    "kelurahan": "BANJAR PADANG",
+    "kode_pos": 29564,
+    "kecamatan": "KUANTAN MUDIK"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "KARYA JAYA,TOKO",
+    "alamat": "JL. JENDRAL SUDIRMAN NO. 107",
+    "kelurahan": "KARYA BAKTI",
+    "kode_pos": 31623,
+    "kecamatan": "LUBUK LINGGAU TIMUR DUA"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "ABU,TOKO",
+    "alamat": "JL. PEMBANGUNAN NO. 371 RT. 6",
+    "kelurahan": "KARYA BAKTI",
+    "kode_pos": 31623,
+    "kecamatan": "LUBUK LINGGAU TIMUR DUA"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "KARYA TAMA,TOKO",
+    "alamat": "JL. JENDRAL SUDIRMAN NO. 50 RT. 06",
+    "kelurahan": "KARYA BAKTI",
+    "kode_pos": 31623,
+    "kecamatan": "LUBUK LINGGAU TIMUR DUA"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "HASAN,TOKO",
+    "alamat": "JL. LINTAS SUDIRMAN KP. O NO. 168",
+    "kelurahan": "KARYA BAKTI",
+    "kode_pos": 31623,
+    "kecamatan": "LUBUK LINGGAU TIMUR DUA"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "AMEN,TOKO",
+    "alamat": "JL. JEND. SUDIRMAN KP. B NO. 25",
+    "kelurahan": "KARYA BAKTI",
+    "kode_pos": 31623,
+    "kecamatan": "LUBUK LINGGAU TIMUR DUA"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "ROCHIM,TOKO",
+    "alamat": "JL. JEND. SUDIRMAN KP. E NO. 25",
+    "kelurahan": "KARYA BAKTI",
+    "kode_pos": 31623,
+    "kecamatan": "LUBUK LINGGAU TIMUR DUA"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "YENTI,TOKO",
+    "alamat": "JL. JENDRAL SUDIRMAN PASAR LOS",
+    "kelurahan": "KARYA BAKTI",
+    "kode_pos": 31623,
+    "kecamatan": "LUBUK LINGGAU TIMUR DUA"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "AYU,TOKO",
+    "alamat": "JL. LINTAS DESA MUARA BELITI",
+    "kelurahan": "KARYA BAKTI",
+    "kode_pos": 31623,
+    "kecamatan": "LUBUK LINGGAU TIMUR DUA"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "MACANG JAYA,TOKO",
+    "alamat": "JL. AHMAD YANI NO. 08",
+    "kelurahan": "KARYA BAKTI",
+    "kode_pos": 31623,
+    "kecamatan": "LUBUK LINGGAU TIMUR DUA"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "JOHAN,TOKO",
+    "alamat": "JL. SAID TOYIB, KEBUN SIRIH",
+    "kelurahan": "KALIDONI",
+    "kode_pos": 30114,
+    "kecamatan": "BUKIT SANGKAL"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "FRANS,TOKO",
+    "alamat": "JL.SRIJAYA NEGARA NO.228RT.36RW.32PALEMBANGSOUTH R",
+    "kelurahan": "BUKIT LAMA 30136",
+    "kode_pos": 30136,
+    "kecamatan": "ILIR BARAT I"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "CAHAYA ALAM, TOKO,TOKO",
+    "alamat": "JL.PALEMBANG BETUNG KM 12,LUKMAN IDRISRT.10RW.03RT",
+    "kelurahan": "KARYA BARU",
+    "kode_pos": 30961,
+    "kecamatan": "ALANG-ALANG LEBAR"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "AMING,TOKO",
+    "alamat": "JL. PANGERAN AYIN NO.1DEPAN POS POLISIPALEMBANGSOU",
+    "kelurahan": "KENTEN 30961",
+    "kode_pos": 30961,
+    "kecamatan": "TALANG KELAPA"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "ATOK,TOKO",
+    "alamat": "JL. PANGERAN AYIN NO.280RT.2RW.1PALEMBANGSOUTH SUR",
+    "kelurahan": "KENTEN 30961",
+    "kode_pos": 30961,
+    "kecamatan": "TALANG KELAPA"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "UTAMA JAYA,TOKO",
+    "alamat": "JL.PRAJURIT NAZARUDINRT.2 RW.09",
+    "kelurahan": "KALIDONI",
+    "kode_pos": 30162,
+    "kecamatan": "KALIDONI"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "EMI,TOKO",
+    "alamat": "JL.PALEMBANG BETUNG NO.06,KM 18RT.39RW.08PALEMBRT.",
+    "kelurahan": "SUKAJADI 30961",
+    "kode_pos": 30961,
+    "kecamatan": "TALANG KELAPA"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "YENI,TOKO",
+    "alamat": "JL. PASAR TANGGA BUNTUNGBLOCK B NO.08PALEMBANGSOUT",
+    "kelurahan": "36 ILIR 30147",
+    "kode_pos": 30147,
+    "kecamatan": "GANDUS"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "ICON, TOKO",
+    "alamat": "JL. TAQWA MATA MERAH",
+    "kelurahan": "SEI SELINCAH",
+    "kode_pos": 30119,
+    "kecamatan": "KALIDONI"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "JUSTINAKIM. TOKO",
+    "alamat": "JALAN MACAN LINDUNGAN",
+    "kelurahan": "BUKIT BARU",
+    "kode_pos": 30961,
+    "kecamatan": "ILIR BARAT 1"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "RIA,TOKO",
+    "alamat": "LR.SETIA BUDI",
+    "kelurahan": "SIRING AGUNG",
+    "kode_pos": 30151,
+    "kecamatan": "ILIR BARAT 1"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "MEILAN. TOKO",
+    "alamat": "JL. SOSIAL",
+    "kelurahan": "SIRING AGUNG",
+    "kode_pos": 30151,
+    "kecamatan": "ILIR BARAT 1"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "EDI TRIPLE AS",
+    "alamat": "JL.PELTU YAHYA",
+    "kelurahan": "ILIR",
+    "kode_pos": 30115,
+    "kecamatan": "ILIR TIMUR 2"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "SURYA SALIM. TOKO",
+    "alamat": "JL. SIARAN NO. 11 DEPAN PASAR SATELIT",
+    "kelurahan": "SAKO",
+    "kode_pos": 30961,
+    "kecamatan": "SAKO"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "LILISAMIR,TOKO",
+    "alamat": "JL. PASAR SUNGAI LILINJL PALEMBANG JAMBI",
+    "kelurahan": "SUNGAI LILIN",
+    "kode_pos": 30755,
+    "kecamatan": "MUSI BANYUASIN"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "SINFU 1,TOKO",
+    "alamat": "JL. MERDEKA",
+    "kelurahan": "CINTARAJA",
+    "kode_pos": 30614,
+    "kecamatan": "KAYU AGUNG"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "RAMA,TOKO",
+    "alamat": "JL. PS. TANJUNG RAJA",
+    "kelurahan": "TANJUNG RAJA UTARA",
+    "kode_pos": 30663,
+    "kecamatan": "TANJUNG RAJA"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "FIRDAUS,TO",
+    "alamat": "JL. PS. TANJUNG RAJA",
+    "kelurahan": "TANJUNG RAJA UTARA",
+    "kode_pos": 30663,
+    "kecamatan": "TANJUNG RAJA"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "TOKO HENDRI",
+    "alamat": "Pasar Kayuagung",
+    "kelurahan": "CINTARAJA",
+    "kode_pos": 30614,
+    "kecamatan": "KAYU AGUNG"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "EVIN CANDRA",
+    "alamat": "JALAN LINTAS TIMUR",
+    "kelurahan": "TANJUNG RAJA UTARA",
+    "kode_pos": 30663,
+    "kecamatan": "TANJUNG RAJA"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "DEDI , TOKO",
+    "alamat": "JLN KIJANG BATUAMPAR",
+    "kelurahan": "BATU AMPAR BARU",
+    "kode_pos": 30651,
+    "kecamatan": "SIRAH PULAU PADANG"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "NUSANTARA,TOKO",
+    "alamat": "JL MS RACHMAN",
+    "kelurahan": "PASAR PADI",
+    "kode_pos": 33142,
+    "kecamatan": "GIRIMAYA"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "NICOLAS STEFANS,TOKO",
+    "alamat": "PAYUNG",
+    "kelurahan": "PAYUNG",
+    "kode_pos": 33778,
+    "kecamatan": "PAYUNG"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "AHINALING,TOKO",
+    "alamat": "PASAR IKAN",
+    "kelurahan": "PASAR PADI",
+    "kode_pos": 33142,
+    "kecamatan": "GIRIMAYA"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "YUDY COPRIMA,TOKO",
+    "alamat": "JL THERESIA, PASAR BINTANG",
+    "kelurahan": "BINTANG",
+    "kode_pos": 33138,
+    "kecamatan": "RANGKUI"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "JUN THONG, TOKO",
+    "alamat": "JL DENPASAR, SIRSAK",
+    "kelurahan": "PASIR PUTIH",
+    "kode_pos": 33147,
+    "kecamatan": "BUKITINTAN"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "WANTI,TOKO",
+    "alamat": "JL BAHAGIA",
+    "kelurahan": "PASAR PADI",
+    "kode_pos": 33142,
+    "kecamatan": "GIRIMAYA"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "BUJANGNENENG,TOKO",
+    "alamat": "BUKIT MERAPIN",
+    "kelurahan": "BUKITMERAPIN",
+    "kode_pos": 33123,
+    "kecamatan": "GERUNGGANG"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "JOHN 2,TOKO",
+    "alamat": "RAWA BANGUN",
+    "kelurahan": "TOBOALI",
+    "kode_pos": 33783,
+    "kecamatan": "TOBOALI"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "CE KIANG,TOKO",
+    "alamat": "JL TREM",
+    "kelurahan": "PASAR PADI",
+    "kode_pos": 33142,
+    "kecamatan": "GIRIMAYA"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "COZY MART,TOKO",
+    "alamat": "JL JENDRAL SUDIRMAN",
+    "kelurahan": "TELADAN",
+    "kode_pos": 33783,
+    "kecamatan": "TOBOALI"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "CV. TEDJAYA MAKMURINDO,TOKO",
+    "alamat": "JL SUKA DAMAI, KONGHIN",
+    "kelurahan": "MANGKOL",
+    "kode_pos": 33684,
+    "kecamatan": "PANGKALAN BARU"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "SITI ROBA AH",
+    "alamat": "JL.PASIR PUTIH",
+    "kelurahan": "PASIR PUTIH",
+    "kode_pos": 33147,
+    "kecamatan": "BUKITINTAN"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "CV. UNO GEMILANG SENTOSA (DIKNES)",
+    "alamat": "JL. KAMPUNG JAWA LAMA",
+    "kelurahan": "SUNGAI DAENG",
+    "kode_pos": 33313,
+    "kecamatan": "MENTOK"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "FRENGKY,TOKO",
+    "alamat": "JL SUDIRMAN PERAWAS",
+    "kelurahan": "BULUH TUMBANG",
+    "kode_pos": 33411,
+    "kecamatan": "TANJUNG PANDAN"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "CV. CEMERLANG ABADI DJAYA",
+    "alamat": "JL SUDIRMAN",
+    "kelurahan": "PERAWAS",
+    "kode_pos": 33413,
+    "kecamatan": "TANJUNG PANDAN"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "CV.ARIFIN NURALAM,TOKO",
+    "alamat": "JL SUDIRMAN",
+    "kelurahan": "AIK RAYAK",
+    "kode_pos": 33413,
+    "kecamatan": "TANJUNG PANDAN"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "CV.RADIKA JAYA PERKASA,TOKO",
+    "alamat": "JL SUDIRMAN RT 07 RW 07",
+    "kelurahan": "PANGKALLALANG",
+    "kode_pos": 33412,
+    "kecamatan": "TANJUNG PANDAN"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "HO ACHIN,TOKO",
+    "alamat": "JL R.E MARTADINATA",
+    "kelurahan": "KOTA",
+    "kode_pos": 33411,
+    "kecamatan": "TANJUNG PANDAN"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "AHONG,TOKO",
+    "alamat": "JL R.E MARTADINATA",
+    "kelurahan": "KOTA",
+    "kode_pos": 33411,
+    "kecamatan": "TANJUNG PANDAN"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "ANEKA JAYA,TOKO",
+    "alamat": "JL SUDIRMAN",
+    "kelurahan": "KURNIA JAYA",
+    "kode_pos": 33512,
+    "kecamatan": "MANGGAR"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "PIANG CHIN,TOKO",
+    "alamat": "JL PILANG",
+    "kelurahan": "DUKONG",
+    "kode_pos": 33411,
+    "kecamatan": "TANJUNG PANDAN"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "ERMI,TOKO",
+    "alamat": "JL AIR KETEKOK",
+    "kelurahan": "PANGKALLALANG",
+    "kode_pos": 33412,
+    "kecamatan": "TANJUNG PANDAN"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "AYUNG,TOKO",
+    "alamat": "JL BAMBANG UTOYO RT 02 RW 01",
+    "kelurahan": "KAMPONG DAMAI",
+    "kode_pos": 33411,
+    "kecamatan": "TANJUNG PANDAN"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "BILI,TOKO",
+    "alamat": "JL SIJUK",
+    "kelurahan": "AIR MERBAU",
+    "kode_pos": 33411,
+    "kecamatan": "TANJUNG PANDAN"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "SHIAUW MUNG, TOKO",
+    "alamat": "JL SIJUK",
+    "kelurahan": "AIR MERBAU",
+    "kode_pos": 33411,
+    "kecamatan": "TANJUNG PANDAN"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "CV. ADIKARYA SUKSES ABADI",
+    "alamat": "JL GANTUNG",
+    "kelurahan": "GANTUNG",
+    "kode_pos": 33562,
+    "kecamatan": "GANTUNG"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "ACAI,TOKO",
+    "alamat": "JL SUDIRMAN",
+    "kelurahan": "RENGGIANG",
+    "kode_pos": 33563,
+    "kecamatan": "SIMPANG RENGGIANG"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "ABING,TOKO",
+    "alamat": "JL. JEND GATOT SUBROTO",
+    "kelurahan": "PAAL SATU",
+    "kode_pos": 33414,
+    "kecamatan": "TANJUNG PANDAN"
+  },
+  {
+    "provinsi": "KEPULAUAN BANGKA BELITUNG",
+    "nama": "WENNY, TOKO",
+    "alamat": "JALAN GATOT SUBROTO",
+    "kelurahan": "PAAL SATU",
+    "kode_pos": 33414,
+    "kecamatan": "TANJUNG PANDAN"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "HERI BELITANG. TOKO",
+    "alamat": "JL. S. PARMAN",
+    "kelurahan": "TEGAL REJO",
+    "kode_pos": 31713,
+    "kecamatan": "LAWANG KIDUL"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "MAN, TOKO",
+    "alamat": "JL. PASAR BARU",
+    "kelurahan": "TEGAL REJO",
+    "kode_pos": 31713,
+    "kecamatan": "LAWANG KIDUL"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "AONG, TOKO",
+    "alamat": "JL. MAYOR RUSLAN III",
+    "kelurahan": "PASAR LAMA",
+    "kode_pos": 31413,
+    "kecamatan": "LAHAT"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "CV. PUTRA GEMILANG",
+    "alamat": "JL. KRIO KOMAR",
+    "kelurahan": "PASAR BARU",
+    "kode_pos": 31411,
+    "kecamatan": "LAHAT"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "BINTANG TERANG, TOKO",
+    "alamat": "JL. INSPEKTUR YAZID NO. 810 PASAR LEMATANG",
+    "kelurahan": "PASAR BARU",
+    "kode_pos": 31411,
+    "kecamatan": "LAHAT"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "SUBUR JAYA, TOKO",
+    "alamat": "JL. SERMA WANAR",
+    "kelurahan": "BASEMAH SERSAN",
+    "kode_pos": 31526,
+    "kecamatan": "PAGAR ALAM SELATAN"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "SAHABAT 2, TOKO",
+    "alamat": "JL. LETTU HAMID",
+    "kelurahan": "BASEMAH SERSAN",
+    "kode_pos": 31526,
+    "kecamatan": "PAGAR ALAM SELATAN"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "SAHABAT 1, TOKO",
+    "alamat": "JL. TRIP YUNUS",
+    "kelurahan": "BASEMAH SERSAN",
+    "kode_pos": 31526,
+    "kecamatan": "PAGAR ALAM SELATAN"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "YONGKI. TOKO",
+    "alamat": "JL. S. PARMAN",
+    "kelurahan": "TEGAL REJO",
+    "kode_pos": 31713,
+    "kecamatan": "LAWANG KIDUL"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "HARSONO, TOKO",
+    "alamat": "KOMPLEK PASAR PTM SQUARE",
+    "kelurahan": "PASAR LAMA",
+    "kode_pos": 31413,
+    "kecamatan": "LAHAT"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "LEO, TOKO",
+    "alamat": "JL. HTI",
+    "kelurahan": "LUBUK EMPLAS",
+    "kode_pos": 31311,
+    "kecamatan": "MUARA ENIM"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "AKON. TOKO",
+    "alamat": "JL. SERMA WANAR",
+    "kelurahan": "BASEMAH SERSAN",
+    "kode_pos": 31526,
+    "kecamatan": "PAGAR ALAM SELATAN"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "MANIS. TOKO",
+    "alamat": "JL. LIBERTY SIMANJUNTAK",
+    "kelurahan": "PASAR II MUARA ENIM",
+    "kode_pos": 31315,
+    "kecamatan": "MUARA ENIM"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "ARIS, TOKO",
+    "alamat": "JL. RE MARTADINATA PASAR PTM SQUER",
+    "kelurahan": "PASAR LAMA",
+    "kode_pos": 31413,
+    "kecamatan": "LAHAT"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "BARU. TOKO",
+    "alamat": "JL DEPATI RENASIN",
+    "kelurahan": "SIDOREJO",
+    "kode_pos": 31527,
+    "kecamatan": "PAGAR ALAM SELATAN"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "ROMLI,TOKO",
+    "alamat": "JL. PS. 16 ILIR",
+    "kelurahan": "16 ILIR",
+    "kode_pos": 30122,
+    "kecamatan": "ILIR TIMUR I"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "ISMAIL,TOKO",
+    "alamat": "JL. PS. 1 ULU NO.26.JL.K.H.AZHARI",
+    "kelurahan": "10 ULU",
+    "kode_pos": 30251,
+    "kecamatan": "JAKABARING"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "YANTO,TOKO",
+    "alamat": "JL. PS. LOS KS.7",
+    "kelurahan": "PLAJU ILIR",
+    "kode_pos": 30268,
+    "kecamatan": "PLAJU"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "BASKAR,TOKO",
+    "alamat": "JL. KAPT.ABDULLAH NO. 69 RT 19 7",
+    "kelurahan": "PLAJU DARAT",
+    "kode_pos": 30267,
+    "kecamatan": "PLAJU"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "HARAPAN BARU,TOKO",
+    "alamat": "JL. PS. 16 ILIR",
+    "kelurahan": "16 ILIR",
+    "kode_pos": 30122,
+    "kecamatan": "ILIR TIMUR I"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "SUBUR INDAH,TOKO",
+    "alamat": "JL. MAYOR SABARA",
+    "kelurahan": "20 ILIR D. I",
+    "kode_pos": 30126,
+    "kecamatan": "ILIR TIMUR I"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "AGU,TOKO",
+    "alamat": "JL. PS. 16 ILIR",
+    "kelurahan": "16 ILIR",
+    "kode_pos": 30122,
+    "kecamatan": "ILIR TIMUR I"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "LAIHO,TOKO",
+    "alamat": "JL. SUNGAI BUAYA",
+    "kelurahan": "PIPA PUTIH",
+    "kode_pos": 30653,
+    "kecamatan": "PEMULUTAN"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "BUDI,TOKO",
+    "alamat": "JL. PS. INDUK JAKA BARING",
+    "kelurahan": "15 ULU",
+    "kode_pos": 30257,
+    "kecamatan": "JAKABARING"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "H. SARPANI,TOKO",
+    "alamat": "JL. PULAU MAKARTI",
+    "kelurahan": "TALANG KELAPA",
+    "kode_pos": 30151,
+    "kecamatan": "ALANG ALANG LEBAR"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "ACIT,TOKO",
+    "alamat": "JL. PS. LOS PLAJU KS9 1",
+    "kelurahan": "PLAJU ILIR",
+    "kode_pos": 30268,
+    "kecamatan": "PLAJU"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "ISWANTO,TOKO",
+    "alamat": "JL. PS. 1 ULU",
+    "kelurahan": "10 ULU",
+    "kode_pos": 30251,
+    "kecamatan": "JAKABARING"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "NICO,TOKO",
+    "alamat": "JL. MAYOR SALIM BATUBARA",
+    "kelurahan": "SEKIP JAYA",
+    "kode_pos": 30128,
+    "kecamatan": "KEMUNING"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "SINAR ASIA,TOKO",
+    "alamat": "JL. PS. 16 ILIR",
+    "kelurahan": "16 ILIR",
+    "kode_pos": 30122,
+    "kecamatan": "ILIR TIMUR I"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "BENO,TOKO",
+    "alamat": "JL. MARIANA",
+    "kelurahan": "PERAJEN",
+    "kode_pos": 30963,
+    "kecamatan": "BANYUASIN I"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "VIVIT,TOKO",
+    "alamat": "JL.KIMEROGAN",
+    "kelurahan": "KEMANG AGUNG",
+    "kode_pos": 30258,
+    "kecamatan": "KERTAPATI"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "LIA,TOKO",
+    "alamat": "JL. TEGAL BINAGUN",
+    "kelurahan": "PLAJU DARAT",
+    "kode_pos": 30267,
+    "kecamatan": "PLAJU"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "AJEN,TOKO",
+    "alamat": "JL.AIPTU WAHAB",
+    "kelurahan": "5 ULU",
+    "kode_pos": 30254,
+    "kecamatan": "SEBERANG ULU I"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "CV. MITRA CERMAT",
+    "alamat": "JL. PS. KERAMASAN",
+    "kelurahan": "KERTAPATI",
+    "kode_pos": 30258,
+    "kecamatan": "KERTAPATI"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "SPJ,TOKO",
+    "alamat": "JL. SLAMET RIADY",
+    "kelurahan": "11 ILIR",
+    "kode_pos": 30112,
+    "kecamatan": "ILIR TIMUR TIGA"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "FRENGKY, TOKO",
+    "alamat": "JL. SENTOSA",
+    "kelurahan": "SENTOSA",
+    "kode_pos": 30261,
+    "kecamatan": "SEBERANG ULU II"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "DINDA, TOKO",
+    "alamat": "JL LRG SIDOMULYO1 N056",
+    "kelurahan": "TALANG PUTRI",
+    "kode_pos": 30268,
+    "kecamatan": "PLAJU"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "JONI,TOKO",
+    "alamat": "PASAR 10 ULU",
+    "kelurahan": "10 ULU",
+    "kode_pos": 30251,
+    "kecamatan": "JAKABARING"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "HENDRA,TOKO",
+    "alamat": "JLN TRIKORA LRG SWAKARYA2",
+    "kelurahan": "DEMANG LEBAR DAUN",
+    "kode_pos": 30131,
+    "kecamatan": "ILIR BARAT I"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "TONGHAI, TOKO",
+    "alamat": "JL. KARANG RAJA 31113 KOTA PRABUMULIH",
+    "kelurahan": "TUGU KECIL",
+    "kode_pos": 31111,
+    "kecamatan": "PRABUMULIH TIMUR"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "NASYA, TOKO",
+    "alamat": "JL. DS. SIGAM GELUMBANG",
+    "kelurahan": "SEGAYAM",
+    "kode_pos": 31170,
+    "kecamatan": "GELUMBANG"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "PUTRA TUNGGAL, TOKO",
+    "alamat": "JL. KAMPUNG 1 GELUMBANG",
+    "kelurahan": "GELUMBANG",
+    "kode_pos": 31170,
+    "kecamatan": "GELUMBANG"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "H. ARSYAD, TOKO",
+    "alamat": "JL. JEND. SUDIRMAN NO. 131",
+    "kelurahan": "PASAR PRABUMULIH I",
+    "kode_pos": 31121,
+    "kecamatan": "PRABUMULIH UTARA"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "AFA, TOKO",
+    "alamat": "JL. KOP.HANAFIAH. 192",
+    "kelurahan": "MUARA DUA",
+    "kode_pos": 31113,
+    "kecamatan": "PRABUMULIH TIMUR"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "SEDERHANA, TOKO",
+    "alamat": "JL. PASAR PENDOPO",
+    "kelurahan": "PASAR BHAYANGKARA",
+    "kode_pos": 31214,
+    "kecamatan": "TALANG UBI"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "PUSAKA, TOKO",
+    "alamat": "JL. PASAR PENDOPO",
+    "kelurahan": "PASAR BHAYANGKARA",
+    "kode_pos": 31214,
+    "kecamatan": "TALANG UBI"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "SURYA ABADI, TOKO",
+    "alamat": "JL. PASAR PENDOPO NO. 12",
+    "kelurahan": "PASAR BHAYANGKARA",
+    "kode_pos": 31214,
+    "kecamatan": "TALANG UBI"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "ELIZABET, TOKO",
+    "alamat": "JL. URIP SUMOHARJO. 11",
+    "kelurahan": "PASAR PRABUMULIH I",
+    "kode_pos": 31121,
+    "kecamatan": "PRABUMULIH UTARA"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "ANGEL, TOKO",
+    "alamat": "JL. M. YAMIN",
+    "kelurahan": "PASAR PRABUMULIH II",
+    "kode_pos": 31121,
+    "kecamatan": "PRABUMULIH UTARA"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "AY MAKMUR, TOKO",
+    "alamat": "JL. LINGKAR RS. UMUM",
+    "kelurahan": "GUNUNG IBUL",
+    "kode_pos": 31113,
+    "kecamatan": "PRABUMULIH TIMUR"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "AYONG, TOKO",
+    "alamat": "JL. LINGKAR RS. UMUM",
+    "kelurahan": "GUNUNG IBUL",
+    "kode_pos": 31113,
+    "kecamatan": "PRABUMULIH TIMUR"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "ALAN, TOKO",
+    "alamat": "JL.URIP SUMOHARJO NO.",
+    "kelurahan": "WONOSARI",
+    "kode_pos": 31126,
+    "kecamatan": "PRABUMULIH UTARA"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "GRACIA, TOKO",
+    "alamat": "JL.A.HAMID NO.573",
+    "kelurahan": "PASAR PRABUMULIH I",
+    "kode_pos": 31121,
+    "kecamatan": "PRABUMULIH UTARA"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "SOHANAN, TOKO",
+    "alamat": "JL.LINTAS MUARA ENIM",
+    "kelurahan": "DALAM",
+    "kode_pos": 31352,
+    "kecamatan": "BELIMBING"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "ANEKA SOSIS, TOKO",
+    "alamat": "JL. LINTAS PALEMBANG",
+    "kelurahan": "GELUMBANG",
+    "kode_pos": 31170,
+    "kecamatan": "GELUMBANG"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "UD GEMILANG, TOKO",
+    "alamat": "JL LINTAS SUMATERA, PASAR BARU",
+    "kelurahan": "KEMALARAJA",
+    "kode_pos": 32111,
+    "kecamatan": "BATURAJA TIMUR"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "VANESA, TOKO",
+    "alamat": "BATU KUNING",
+    "kelurahan": "KEMALARAJA",
+    "kode_pos": 32111,
+    "kecamatan": "BATURAJA TIMUR"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "998, TOKO",
+    "alamat": "Jln. MT. Haryono Ps. Baru",
+    "kelurahan": "BATU MARTA VI",
+    "kode_pos": 32365,
+    "kecamatan": "MADANG SUKU III"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "KARYA BAKTI, TOKO",
+    "alamat": "Ps. Tengah Muara Dua",
+    "kelurahan": "PASAR MUARADUA",
+    "kode_pos": 32212,
+    "kecamatan": "MUARA DUA"
+  },
+  {
+    "provinsi": "SUMATERA SELATAN",
+    "nama": "HERI ARYANTO, TOKO",
+    "alamat": "Batu Kuning",
+    "kelurahan": "AIR PAOH",
+    "kode_pos": 32111,
+    "kecamatan": "BATURAJA TIMUR"
+  },
+  {
+    "provinsi": "LAMPUNG",
+    "nama": "ACUN , TOKO",
+    "alamat": "Jl. SUDIRMAN",
+    "kelurahan": "GANJAR ASRI",
+    "kode_pos": 34125,
+    "kecamatan": "METRO BARAT"
+  },
+  {
+    "provinsi": "LAMPUNG",
+    "nama": "FADLI , TOKO",
+    "alamat": "Jl. LEMBAYUNG 15 A KOTA METRO",
+    "kelurahan": "IMOPURO",
+    "kode_pos": 34111,
+    "kecamatan": "METRO PUSAT"
+  },
+  {
+    "provinsi": "LAMPUNG",
+    "nama": "RAMA JAYA, TOKO",
+    "alamat": "JL CUT NYAK DIEN",
+    "kelurahan": "IMOPURO",
+    "kode_pos": 34111,
+    "kecamatan": "METRO PUSAT"
+  }
+]

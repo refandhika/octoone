@@ -1,0 +1,15 @@
+list: $/leverate/sitemap/models/page/columns.yaml
+modelClass: Leverate\Sitemap\Models\Page
+title: Page
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+defaultSort:
+    column: created_at
+    direction: desc
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'leverate/sitemap/page/update/:id'

@@ -1,0 +1,10 @@
+name: FrisianFlag
+form: $/definite/aboutus/models/frisianflag/fields.yaml
+modelClass: Definite\Aboutus\Models\FrisianFlag
+defaultRedirect: definite/aboutus/frisianflag
+create:
+    redirect: 'definite/aboutus/frisianflag/update/:id'
+    redirectClose: definite/aboutus/frisianflag
+update:
+    redirect: definite/aboutus/frisianflag
+    redirectClose: definite/aboutus/frisianflag

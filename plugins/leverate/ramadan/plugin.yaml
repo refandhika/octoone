@@ -1,0 +1,17 @@
+plugin:
+    name: 'leverate.ramadan::lang.plugin.name'
+    description: 'Ramadan campaign 2019'
+    author: Leverate
+    icon: oc-icon-moon-o
+    homepage: ''
+navigation:
+    ramadan:
+        label: 'Ramadan 2019'
+        url: leverate/ramadan/user
+        icon: icon-moon-o
+        permissions:
+            - manage_ramadan
+permissions:
+    manage_ramadan:
+        tab: 'Manage Ramadan'
+        label: 'Manage Ramadan'

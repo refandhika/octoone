@@ -1,0 +1,144 @@
+title = "Sustainability Category Page"
+url = "/sustainability/:category"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/sustainability-category-page"
+==
+<?php
+function onStart(){
+    
+        $this->page->amp_url = $this->pageUrl('sustainability-category-amp-page');
+        $slug         = $this->param('category');
+         
+        $cmsController     = new Cms\Classes\Controller;
+         $arrContextOptions =array(
+            "ssl"=>array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
+        );
+
+        
+        $pages = Definite\Activities\Models\Activity::whereHas('categories',function($query) {
+           $query->where('id', 23);
+        })->where('slug',$slug)->get()->first();
+        
+        if($pages){
+          
+          
+          $this['content'] = $pages;
+          $this['pageid'] = $pages->id;
+          $this['title'] = $pages->title;
+          $this['image_banner'] = $pages->image_banner;
+          $this['description'] = $pages->description;
+          
+          $this->page->title = ucwords(strtolower($pages->title));
+          $this->page->meta_title = $pages->meta_title;
+          $this->page->meta_description = $pages->meta_description;
+          $this->page->og_image = $pages->featured_image;
+          $this->page->og_description = $pages->meta_description;
+
+        
+        }else{
+          return $cmsController->render("/404");
+        }
+
+}
+?>
+==
+{% partial 'site/header' %}
+<style>
+    #main-section .row .col-sm-4 .box.sehat{
+        margin-bottom : unset !important;
+    }
+</style>
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp banner-lp" style='background:url({{ image_banner |media }})'>
+    	<div class="container">
+    	    
+        	<div class="banner-panel">
+        	    <div class="banner-description">
+        			<h2>{{title}}</h2>
+        		</div>
+        	</div>
+    	</div>
+    	
+    </div>
+</div>
+
+<div class="section">
+    <div id='main-section' class="container sustainability-pages">
+        {{ description | raw }}
+        
+        <div class="row" id="banner-ecommerce">
+            
+            <div class="col-md-12">
+                <div class=" banner-commerce">
+                    <img src="{{ 'Banner/ecommerce-banner.png' | media  }}" class="img-banner" alt="ecommerce-banner"/>
+                    <div class="content">
+                        <h4>Sedia Frisian Flag<br/>Pilihanmu Sekarang</h4>
+                       <a href="javascript:void(0)" data-target="#popup-ecommerce" class="btn-modal">
+                           <img loading="lazy" src="{{ 'button-ecommerce.png' | media }}" />
+                       </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="popup-ecommerce" class="overlay-store">
+   <div class="card">
+    <button class="btn-close">x</button>
+        <div class="card-body">
+            <h4>Temukan Produk Kami di:</h4>
+            
+                <a class="btn btn-outline-light btn-commerce" href="https://www.tokopedia.com/frisian-flag?utm_source=others&utm_medium=brand&utm_campaign=ao_frisianflag_221121_311222" target="_blank">
+                    Tokopedia
+                </a>
+                <a class="btn btn-outline-light btn-commerce" href="https://shopee.co.id/frisianflagofficial" target="_blank">
+                    Shopee
+                </a>
+                <a class="btn btn-outline-light btn-commerce" href="https://www.lazada.co.id/shop/frisian-flag" target="_blank">
+                    Lazada
+                </a>
+                <a class="btn btn-outline-light btn-commerce" href="https://www.bukalapak.com/frisian-flag-official-store-official" target="_blank">
+                    Bukalapak
+                </a>
+                <a class="btn btn-outline-light btn-commerce" href="https://www.klikindomaret.com/page/frisian-flag-official-store" target="_blank">
+                    Klikindomaret
+                </a>
+                
+        </div>
+   </div>
+</div>
+<!--test-->
+<link rel="stylesheet" href="{{ 'assets/css/sustainability.css'|theme }}?v=32">
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	
+<script>
+$(document).ready(function () {
+    var banner = $('#banner-ecommerce').hide()
+    var target = $('#main-section .description')
+    
+    banner.insertAfter(target)
+    banner.show()
+    
+    
+    var button = $('.btn-modal')
+    button.click(function () {
+        var target = $(this).data('target')
+        $(target).addClass('show')
+    })
+    
+    var overlay = $('.overlay-store')
+    var close_btn = $('.overlay-store .btn-close')
+    close_btn.click(function () {
+        overlay.removeClass('show')    
+    })
+})
+</script>
+{% partial 'site/footer' %}

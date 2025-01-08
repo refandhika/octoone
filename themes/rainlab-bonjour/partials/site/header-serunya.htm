@@ -1,0 +1,421 @@
+[viewBag]
+
+[Agent]
+==
+<?php
+function onStart(){
+    $this->page['fb_app_id'] = env('FB_APP_ID');
+    $this->page['fb_app_secret'] = env('FB_APP_SECRET');
+
+    $fb = new Facebook\Facebook([
+        'app_id' => env('FB_APP_ID'), 
+        'app_secret' => env('FB_APP_SECRET'),
+        'default_graph_version' => 'v2.2'
+    ]);
+
+    $next = url()->current() ?? url('/');
+    
+    //$scopes = ['email', 'user_birthday', 'user_gender'];
+    $scopes = ['email'];
+    $callbackUrl = url('/fb-callback');
+
+    //REGISTER FROM POP UP
+    $helper_register = $fb->getRedirectLoginHelper();
+    $pdata_register = $helper_register->getPersistentDataHandler(); 
+    $pdata_register->set('state', json_encode(['act' => 'registration', 'next' => $next, 'show_registration_form' => true]));
+
+    $registrationUrl = $helper_register->getLoginUrl( $callbackUrl, $scopes);
+    $this->page['fb_registration_url'] = $registrationUrl;
+
+    //REGISTER FROM INDOMARET
+    $helper_register_indomaret = $fb->getRedirectLoginHelper();
+    $pdata_register_indomaret = $helper_register_indomaret->getPersistentDataHandler(); 
+    $pdata_register_indomaret->set('state', json_encode(['act' => 'registration', 'next' => $next]));
+
+    //REGISTER FROM ALFAMART
+    $helper_register_alfamart = $fb->getRedirectLoginHelper();
+    $pdata_register_alfamart = $helper_register_alfamart->getPersistentDataHandler(); 
+    $pdata_register_alfamart->set('state', json_encode(['act' => 'registration', 'next' => $next]));
+
+    $registrationUrl = $helper_register->getLoginUrl( $callbackUrl, $scopes);
+    $this->page['fb_registration_indomaret_url'] = $registrationUrl;
+    $this->page['fb_registration_alfamart_url'] = $registrationUrl;
+
+    //LOGIN
+    $helper_login = $fb->getRedirectLoginHelper();
+    $pdata_login = $helper_login->getPersistentDataHandler(); 
+    $pdata_login->set('state', json_encode(['act' => 'login', 'next' => $next]));
+
+    $loginUrl = $helper_login->getLoginUrl( $callbackUrl, $scopes );
+    $this->page['fb_login_url'] = $loginUrl;
+
+    
+    /*
+    ini script BARBAR, kita hapus aja dan simpan untuk jaga-jaga 
+
+    $getURL = Request::path();
+    $implodeURL = explode('/', $getURL);
+
+    if (!empty($_SERVER['HTTP_USER_AGENT'])) {
+        $useragent = $_SERVER['HTTP_USER_AGENT'];
+
+        $pages_list = ['milkpedia', 'produk'];
+
+        if (preg_match('@(iPad|iPod|iPhone|Android|BlackBerry|SymbianOS|SCH-M\d+|Opera Mini|Windows CE|Nokia|SonyEricsson|webOS|PalmOS)@', $useragent) && isset($implodeURL[0]) && in_array($implodeURL[0], $pages_list)) {
+            //header("HTTP/1.1 301 Moved Permanently"); 
+            header("Location: ".'/amp/'.$getURL); 
+            exit();   
+        }
+    }
+
+    $req_uri = $_SERVER['REQUEST_URI'];
+
+    $this['amp_html_uri'] = null;
+
+    foreach($pages_list as $pl){
+        if (strpos($req_uri, '/'.$pl) === 0) {
+            $this['amp_html_uri'] = (isset($_SERVER['HTTP_USESSL']) || isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]/amp$req_uri";
+            return;
+        }
+    }
+    */
+
+    // amp page for this page is exist
+    if($this->page->amp_url){
+        //check params
+           $inputString = Request::getRequestUri();
+           $query       = parse_str ( parse_url ( $inputString , PHP_URL_QUERY ) , $params );
+          
+          
+        // check user agent, will redirect to AMP page if mobile
+        if (!empty($_SERVER['HTTP_USER_AGENT'])) {
+            $useragent = $_SERVER['HTTP_USER_AGENT'];
+            $is_mobile = preg_match('@(iPad|iPod|iPhone|Android|BlackBerry|SymbianOS|SCH-M\d+|Opera Mini|Windows CE|Nokia|SonyEricsson|webOS|PalmOS)@', $useragent);
+        
+          if($is_mobile){
+                
+                
+                if($params)
+                {
+                    $utm_campaign = http_build_query($params,'','&');
+                    header("Location: ".$this->page->amp_url."?".$utm_campaign); 
+                }else{
+                     header("Location: ".$this->page->amp_url); 
+                }    
+               
+                exit(); 
+            }
+        }
+
+        $this['amp_html_uri'] = $this->page->amp_url;        
+    }else{
+        $this['amp_html_uri'] = null;
+    }
+
+    $this['GTM_ID'] = env('GTM_ID');
+    $this['GA_ID'] = env('GA_ID');
+ $path        = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+     $this['full_url'] = (isset($_SERVER['HTTP_USESSL']) || isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]".$path;
+}
+?>
+==
+{% component 'SessionClose' %}
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="robots" content="index,follow">
+        <title>{{ this.page.title }} | Frisian Flag Indonesia</title>
+        <meta name="title" content="{{ this.page.meta_title}}">
+        <meta name="description" content="{{ this.page.meta_description }}">
+        <meta name="keywords" content="{{ this.page.meta_keywords }}">
+        <meta name="author" content="Frisian Flag Indonesia">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <meta name="facebook-domain-verification" content="t2ubto7jn7dd9h6si4fk19a8gd88ks" />
+        <meta name=“facebook-domain-verification” content=“74hs9dbda87d9cawoguzz2w7pjviwl” />
+        <meta name="ahrefs-site-verification" content="112d70195f4804d5ec8b0a26f6808e96afa04708dac83c5ded305ccf923cb44e">
+        
+        <meta property="fb:app_id" content="872847836388420" />
+        <meta property="og:url"           content="{{ this.page.id | page }}" />
+        <meta property="og:type"          content="website" />
+        <meta property="og:title"         content="{{ this.page.title }}" />
+        {% set og_description = this.page.og_description %}
+        {% set og_image = this.page.og_image %}
+        <meta property="og:description"   content="{{ og_description }}" />
+        <meta name="twitter:title"        content="{{ this.page.title }}">
+        <meta name="twitter:description"  content="{{ og_description }}">
+         {% if og_image %}
+        <meta property="og:image"         content="https://www.frisianflag.com/storage/app/media{{ og_image }}" />
+       
+        <meta name="twitter:image"        content="https://www.frisianflag.com/storage/app/media{{ og_image }}">  
+         {% else %}
+        <meta property="og:image"         content="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img/share-facebook.jpg"/>
+         {% endif %}
+
+        {% if amp_html_uri %}
+            <link rel="amphtml" href="{{ amp_html_uri }}">
+        {% endif %}
+
+        {% if this.page.fileName == 'home.htm' %}
+            <link rel="canonical" href="{{ 'home' | page }}">
+        {% elseif this.page.fileName == 'news-archive.htm' %}
+            <link rel="canonical" href="{{ 'home' | page }}/perusahaan-kami/berita/year/{{ this.param.slug }}">
+        {% elseif this.page.fileName == 'press-release-archive.htm' %}
+            <link rel="canonical" href="{{ 'home' | page }}/perusahaan-kami/siaran-pers-archive/year/{{ this.param.slug }}">
+        {% else %}
+            <link rel="canonical" href="{{ full_url }}">
+        {% endif %}
+
+        <!-- FAVICONS -->
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ 'assets/favicon/apple-touch-icon.png'|theme }}">
+        <link rel="icon" type="image/png" href="{{ 'assets/favicon/favicon-32x32.png'|theme }}" sizes="32x32">
+        <link rel="icon" type="image/png" href="{{ 'assets/favicon/favicon-16x16.png'|theme }}" sizes="16x16">
+        <link rel="manifest" href="{{ 'assets/favicon/manifest.json'|theme }}">
+        <link rel="mask-icon" href="{{ 'assets/favicon/safari-pinned-tab.svg'|theme }}" color="#5bbad5">
+        <meta name="theme-color" content="#ffffff">
+        <link rel="stylesheet" href="{{ 'assets/libs/cookie/cookieconsent.min.css'|theme }}"/>
+        <!-- STYLESHEET -->
+        <link rel="stylesheet" href="{{ 'assets/css/app.css'|theme }}">
+        <link rel="stylesheet" href="{{ 'assets/css/style.css'|theme }}">
+        <script src="{{ 'assets/libs/cookie/cookieconsent.min.js'|theme }}" async></script>
+         <!-- STYLESHEET <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c35734915acab41" async></script>-->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.0/moment.min.js"></script>
+        <!-- Add fancyBox -->
+        <link rel="stylesheet" href="{{ 'assets/fancybox/jquery.fancybox.css'|theme }}" type="text/css" media="screen" />
+        <!-- Optionally add helpers - button, thumbnail and/or media -->
+        <link rel="stylesheet" href="{{ 'assets/fancybox/helpers/jquery.fancybox-buttons.css'|theme }}" type="text/css" media="screen" />
+        
+        <link rel="stylesheet" href="{{ 'assets/fancybox/helpers/jquery.fancybox-thumbs.css'|theme }}" type="text/css" media="screen" />
+        <style>.body-seru h1,
+.body-seru h3 {
+    color: #3ab9fe!important;
+    text-shadow: -2.5px -2.5px 0 #fff, 2.5px -2.5px 0 #fff, -2.5px 2.5px 0 #fff, 2.5px 2.5px 0 #fff;
+}
+
+.fancybox-inner {
+    height: 100%;
+}
+
+.body-seru {
+    background-color: #3ab9fe;
+    background-image: url("{{ 'milky-unicorn/bg-serunyatambahterus.png'|media  }}");
+    background-size: contain;
+    padding: 70px 0;
+}
+
+@media screen and (max-width:992px) {
+    .container-menutab {
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .m-bottom-15 {
+        margin-bottom: 15px;
+    }
+}
+        </style>
+        <!-- <script>
+            window.addEventListener("load", function(){
+            window.cookieconsent.initialise({
+              "palette": {
+                "popup": {
+                  "background": "#0f4d9a"
+                },
+                "button": {
+                  "background": "#009fe3",
+                  "color" : "#ffffff"
+                }
+              },
+              "content": {
+                "message": "We use cookies on this page ",
+                "dismiss": "Close",
+                "link": "What are cookies",
+                "href": "{{ 'home' | page }}/kebijakan-cookie"
+              }
+            })});
+            var home = "{{ 'home' | page }}";
+        </script> -->
+       <!--  <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+          ga('create', 'UA-99863611-1', 'auto');
+          ga('send', 'pageview');
+        </script> -->
+
+        <!-- Global site tag (gtag.js) - Google Analytics
+        <script async src="https://www.googletagmanager.com/gtag/js?id=123"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '123');
+        </script>  -->
+
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','123');</script>
+        <!-- End Google Tag Manager -->
+		
+		<!-- Facebook Pixel Code -->
+	<!--     <script>
+	!function(f,b,e,v,n,t,s)
+	{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+	n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+	if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+	n.queue=[];t=b.createElement(e);t.async=!0;
+	t.src=v;s=b.getElementsByTagName(e)[0];
+	s.parentNode.insertBefore(t,s)}(window,document,'script',
+	'https://connect.facebook.net/en_US/fbevents.js');
+	 fbq('init', '1152867051533614'); 
+	fbq('track', 'PageView');
+	function downloadEvent() {
+	    // Grab those link clickers!!
+	    window._fbq.push('track', 'RtdKidsUGCDownload');
+	}
+	</script>
+	<noscript>
+	 <img height="1" width="1" 
+	src="https://www.facebook.com/tr?id=1152867051533614&ev=PageView
+	&noscript=1"/>
+	</noscript> -->
+		<!-- End Facebook Pixel Code -->
+    </head>
+    <body>
+      <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+      </script>
+{% if this.page.layout == 'home-alt' %}
+   <!--
+        Start of DoubleClick Floodlight Tag: Please do not remove
+        Activity name of this tag: Frisian Flag - Homepage 2018
+        URL of the webpage where the tag is expected to be placed: https://www.frisianflag.com/
+        This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
+        Creation Date: 04/27/2018
+        -->
+        <script type="text/javascript">
+            var axel = Math.random() + "";
+            var a = axel * 10000000000000;
+            document.write('<iframe src="https://6614846.fls.doubleclick.net/activityi;src=6614846;type=frisi18;cat=frisi_h;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+            </script>
+            <noscript>
+            <iframe src="https://6614846.fls.doubleclick.net/activityi;src=6614846;type=frisi18;cat=frisi_h;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+            </noscript>
+            <!-- End of DoubleClick Floodlight Tag: Please do not remove -->
+    {% endif %}
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ GTM_ID }}"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <header class="header">
+        <!-- serunya -->
+        <!-- desktop menu -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2 col-xs-4">
+                    <a href="{{ 'home'|page }}" class="logo">
+                        <div class="logo__default">
+                            <img src="{{ 'assets/img/logo.png'|theme }}" srcset="{{ 'assets/img/logo2x.png'|theme }} 2x" alt="Frisian Flag"/>
+                             <span>BUILDING<br/>STRONG FAMILIES<br/>SINCE 1871</span>
+                        </div>
+                        <div class="logo__small">
+                            <img src="{{ 'assets/img/logo-small.png'|theme }}" srcset="{{ 'assets/img/logo-small2x.png'|theme }} 2x" alt="Frisian Flag">
+                            <span>BUILDING<br/>STRONG FAMILIES<br/>SINCE 1871</span>
+                        </div>
+                    </a>
+                </div>
+                {% if Agent.isDesktop()  %}
+                    <div class="col-md-10 navigation hidden-xs hidden-sm hidden-md">
+                        <ul class="top-menu">
+                            <li class="top-menu__list">
+                                <a href="{{ 'contact-us'|page }}">{{'hubungi-kami'|_}}</a>
+                            </li>
+                            <li class="top-menu__list">
+                                {% if user %}
+                                    <a href="{{ url('/user-dashboard') }}">{{ user.name }} | </a><a data-request="onLogout" data-request-data="redirect: '/'">{{'Logout'|_}}</a>
+                                {% else %}
+                                    <!-- <a data-toggle="modal" href="#content-confirmation">{{'masuk/daftar'|_}}</a> -->
+                                    
+                                    <!-- popup tim definite -->
+                                    <a href="javascript:;" data-fancybox data-src="#login">{{'masuk/daftar'|_}}</a>
+                                {% endif %}
+                            </li>
+                            {% if str_contains(url_current(), '/id') %} 
+                                {% set url_last = str_replace_first('/id','',url_current())  %}
+                            {% elseif str_contains(url_current(), '/en') %} 
+                                {% set url_last = str_replace_first('/en','',url_current())  %}
+                            {% else %}
+                                {% set url_last = url_current()  %}
+                            {% endif %}
+                            {% set url_trans = str_replace_first(url('/'),'',url_last) %}
+                            <li class="top-menu__list hide">
+                                <a href="{{ url('/id')}}{{url_trans}}">
+                                    <img src="{{ 'assets/img/id.png'|theme }}" srcset="{{ 'assets/img/id2x.png'|theme }} 2x" alt="Indonesian">
+                                </a>
+                            </li>
+                            <li class="top-menu__list hide">
+                                <a href="{{ url('/en')}}{{url_trans}}">
+                                    <img src="{{ 'assets/img/uk.png'|theme }}" srcset="{{ 'assets/img/uk2x.png'|theme }} 2x" alt="English">
+                                </a>
+                            </li>
+                        <li class="top-menu__list top-menu__list--button"><a href="javascript:;" class="searchbtn"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                        </ul>
+                        {% if str_contains(url_current(), '/en') %} 
+                            {% partial 'site/nav-en' %}
+                        {% else %}
+                            {% partial 'site/nav' %}
+                        {% endif %}
+                    </div>    
+                {% endif %}
+                <div class="col-xs-8 col-sm-8 pull-right">
+                    <div class="bar-mobile">
+                        <div class="wrp-navbar">
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end of desktop menu -->
+        <!-- Mobile Menu -->
+        <div class="headermenu-xs">
+            <div class="wrp-headmenu-xs">
+                {% if str_contains(url_current(), '/en') %} 
+                       
+                {% else %}
+                    {% partial 'site/mobilemenu' %}
+                {% endif %}
+                <div class="bottom">
+                    <ul>
+                        <li><a href="javascript:;" data-fancybox data-src="#login"><img src="{{ 'assets/img/user.png'|theme }}" alt="Icon User"/><span>MASUK /<br /> DAFTAR</span></a></li>
+                        <li><a href="{{ 'contact-us'|page }}"><img src="{{ 'assets/img/contact-us.png'|theme }}" alt="Icon Hubungi Kami"/><span>{{'hubungi-kami'|_|uppercase}}</span></a></li>
+                        <li><a href="javascript:;" class="searchbtn"><img src="{{ 'assets/img/search.png'|theme }}" alt="Icon Search"/><span>SEARCH</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- end of mobile menu -->
+        <!-- search form -->
+        <div class="searchform">
+          <form action="{{ 'home'|page }}/pencarian" method="get">
+            <input name="q" id="search-result" type="search" placeholder="Masukkan kata kunci dan tekan enter">
+            <a class="closesearch"><i class="fa fa-close"></i> </a>
+          </form>
+        </div>
+    </header>
+    {% partial 'site/login' %}
+    {% partial 'site/register' %}
+    {% partial 'site/forgot-password' %}

@@ -1,0 +1,10 @@
+name: Event
+form: $/leverate/careers/models/event/fields.yaml
+modelClass: Leverate\Careers\Models\Event
+defaultRedirect: leverate/careers/event
+create:
+    redirect: 'leverate/careers/event/update/:id'
+    redirectClose: leverate/careers/event
+update:
+    redirect: leverate/careers/event
+    redirectClose: leverate/careers/event

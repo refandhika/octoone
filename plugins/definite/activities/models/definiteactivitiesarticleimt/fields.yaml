@@ -1,0 +1,27 @@
+fields:
+    article:
+        label: Article
+        nameFrom: title
+        descriptionFrom: Title
+        span: full
+        type: relation
+    imt_label:
+        label: 'Kategori IMT'
+        options:
+            sangat_kurus: 'Sangat Kurus'
+            kurus: Kurus
+            normal: Normal
+            overweight: Overweight
+            obesity: Obesity
+        emptyOption: 'Pilih Kategori'
+        span: auto
+        type: dropdown
+    fr_label:
+        label: 'Kategori Food Recall'
+        options:
+            kurang: Kurang
+            cukup: Cukup
+            berlebih: Berlebih
+        emptyOption: 'Pilih Kategori'
+        span: auto
+        type: dropdown

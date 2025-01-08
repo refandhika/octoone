@@ -1,0 +1,196 @@
+title = "Our Milkpedia Single"
+url = "/amp/milkpedia/:category-slug?/:slug"
+layout = "basic-amp"
+description = "this"
+is_hidden = 0
+
+[builderDetails]
+modelClass = "Definite\Milkpedia\Models\Milkpedia"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+==
+<?php
+use \Definite\Milkpedia\Models\Category as Category;
+
+function onStart(){ 
+    $this['ramadan'] = isset($_GET['ramadan']) ? $_GET['ramadan'] : '';
+}
+
+function onEnd() {   
+   $param_slug    = $this->param('category-slug');
+   $slug         = $this->param('slug');
+   $cmsController = new Cms\Classes\Controller;   
+   if($slug == 'kapan-waktu-yang-tepat-bagi-orang-dewasa-minum-susu-penambah-berat-badan'){
+          return Redirect::to("/milkpedia/kapan-dan-bagaimana-cara-minum-susu/susu-penambah-berat-badan" , 301);
+    }
+   if(!$this->page->components["builderDetails"]->record){
+    
+        return Response::make( $cmsController->render("/404"), 404);
+   
+    }
+   
+    $category_slug = $this->page->components["builderDetails"]->record->categories->first();
+    $slug          = $this->page->components["builderDetails"]->record->attributes["slug"];
+  
+    if($param_slug == 'default')
+    {
+        return redirect()->to(url('/milkpedia/'.$category_slug->slug.'/'.$slug));
+    }
+    
+    //Redirect to milkpedia category
+    if($param_slug != $category_slug->slug){
+        return redirect()->to(url('/milkpedia/'.$category_slug->slug.'/'.$slug));        
+    }
+    
+    if(!Category::where('slug',$param_slug)->first()){
+        return Response::make( $cmsController->render("/404"), 404);
+    }
+
+      // get the post component
+    $_title      = $this->page->components["builderDetails"]->record->attributes["title"];
+    $_meta_title = $this->page->components["builderDetails"]->record->attributes["meta_title"];
+    
+    if($_meta_title){
+             $this->page->title      = $_meta_title;
+             $this->page->meta_title = $_meta_title;
+        }
+    else{
+             $this->page->title = $_title;
+        }    
+    
+    $_meta_description = $this->page->components["builderDetails"]->record->attributes["meta_description"] ?? NULL;
+    $_meta_keywords = $this->page->components["builderDetails"]->record->attributes["meta_keywords"] ?? NULL;
+    
+    $this->page->meta_description = $_meta_description;
+    $this->page->meta_keywords = $_meta_keywords;
+
+    $_title_en = $this->page->components["builderDetails"]->record->attributes["title_en"] ?? NULL;
+    $_meta_description_en = $this->page->components["builderDetails"]->record->attributes["meta_description_en"] ?? NULL;
+    $_meta_keywords_en = $this->page->components["builderDetails"]->record->attributes["meta_keywords_en"] ?? NULL;
+    $this->page->title_en = $_title_en;
+    $this->page->meta_title_en = $this->page->components["builderDetails"]->record->attributes["meta_title_en"] ?? NULL;
+    $this->page->meta_description_en = $_meta_description_en;
+    $this->page->meta_keywords_en = $_meta_keywords_en;
+
+    $this->page->category_slug = $this->param('category-slug');
+}
+?>
+==
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+{% put head_scripts %}
+<script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+{% endput %}
+
+{% if record %}
+    <!--<div class="cover">
+      {% if record.slug == 'resep-mudah-3-kue-istimewa-penghangat-suasana-hari-raya' %}
+        <amp-img 
+            src="{{ 'assets/img/product-header-mobile.png'|theme }}"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Product Header Mobile">
+        </amp-img>
+      {% else %}
+        <amp-img 
+            src="{{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }}"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Banner 95 Tahun Frisian Flag Mobile">
+        </amp-img>
+      {% endif %}
+    </div>-->
+
+    <div class="breadcrumb">
+        <a href="{{ url('/') }}">{{ 'beranda'|_ }}</a> /
+        <a href="#">Milkpedia</a> / 
+        <a href="{{ 'our-milkpedia'|page({ slug: record.categories.first.slug }) }}">{{ trans_pick(record.categories.first, 'title') }}</a> / 
+        <a href="{{ 'our-milkpedia-single-amp'|page({ slug: record.slug }) }}">{{ trans_pick(record, 'title') }}</a>
+    </div>
+
+    <div class="detail_text">
+        <div class="category">{{ trans_pick(record.categories.first, 'title') }}</div>
+        <div class="date">{{ record.created_at.format('d M Y') }}</div>
+        <h1>{{ trans_pick(record, 'title') }}</h1>
+        {% if record.featured_image %}
+        <div class="img_detail">
+          <amp-img 
+            src="{{ record.featured_image|media }}"
+            width="360"
+            height="280"
+            layout="responsive"
+            alt="{{record.title}}">
+          </amp-img>
+        </div>
+        {% endif %}
+        <div class="text">
+          {{ trans_pick(record, 'content')|convertAMPImg|raw }}
+        </div>
+        
+      <div class="share center mb-10">
+        
+        <p class="title-share">{{'Share This Entrys'}}</p>
+        
+              <amp-social-share width="35"
+              height="35" class="rounded" type="facebook"
+              data-param-app_id="872847836388420"></amp-social-share>
+              <amp-social-share width="35"
+              height="35" class="rounded" type="twitter"></amp-social-share>
+              <amp-social-share width="35"
+              height="35" class="rounded" type="whatsapp"></amp-social-share>
+              <amp-social-share width="35"
+              height="35" class="rounded" type="line"></amp-social-share>
+    </div>
+              
+    </div>
+
+    {% set related = record.related %}
+    {% if related %}
+      <!-- s:artikel Terkait -->
+      <div class="title_page">{{ 'artikel-terkait'|_ }}</div>
+      {% for milkpedia in related %}
+        <div class="list2">
+          <div class="img">
+            <amp-img 
+                src="{{ milkpedia.featured_image| mediathumb_resize('width', 640, 90)  }}"
+                srcset="{{ milkpedia.featured_image| mediathumb_resize('width', 640, 90)  }} 640w,
+                       {{ milkpedia.featured_image| mediathumb_resize('width', 640, 90)  }} 320w"
+                width="160"
+                height="90"
+                layout="responsive"
+                alt="an image">
+            </amp-img>
+          </div>
+          <div class="text">
+            <div class="info">
+              <span class="label">Milkpedia</span>
+            </div>
+            <a href="{{ 'our-milkpedia-amp-single'|page({
+                          'categories-slug': milkpedia.category.slug,
+                          'slug': milkpedia.slug
+                      }) }}" target="_self"><h3>{{ trans_pick(milkpedia, 'title') }}</h3></a>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      {% endfor %}
+    {% endif %}
+    <!-- e:artikel Terkait -->
+{% else %}
+    {% partial '404' %}
+{% endif %}
+
+{% if ramadan == 'true' %}
+    <style>
+        .floating-navigation-mobile{
+            height: 5rem !important;
+            width: 95% !important;
+        }
+    </style>
+    {% partial 'floating-navigation' %}
+{% endif %}

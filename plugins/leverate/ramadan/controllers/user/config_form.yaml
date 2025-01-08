@@ -1,0 +1,10 @@
+name: User
+form: $/leverate/ramadan/models/user/fields.yaml
+modelClass: Leverate\Ramadan\Models\User
+defaultRedirect: leverate/ramadan/user
+create:
+    redirect: 'leverate/ramadan/user/update/:id'
+    redirectClose: leverate/ramadan/user
+update:
+    redirect: leverate/ramadan/user
+    redirectClose: leverate/ramadan/user

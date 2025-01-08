@@ -1,0 +1,155 @@
+title = "Produk"
+url = "/amp/produk"
+layout = "basic-amp"
+meta_description = "Penuhi kebutuhan nutrisi keluarga Anda dengan produk susu Frisian Flag. Aneka produk olahan susu Bendera tersedia untuk ibu dan anak dengan beragam varian."
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/produk-amp"
+
+[builderList]
+modelClass = "Definite\Products\Models\Category"
+scope = "scopeIsParent"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+{% set records = builderList.records %}
+{% set displayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsPage = builderList.detailsPage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
+
+<div class="cover">
+    <amp-img 
+        src="{{ 'assets/Banner-Produk-mob.PNG'|theme }}"
+            srcset="{{ 'assets/Banner-Produk-mob.PNG'|theme|replace({' ':'%20'}) }} 640w,
+                   {{ 'assets/Banner-Produk-mob.PNG'|theme|replace({' ':'%20'}) }} 320w"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Banner Frisian Flag Produk Mobile">
+    </amp-img>
+</div>
+    {{key}}
+<amp-accordion class="title_home">
+    <section>
+        <h4 class="arrow_down"><a href="#" target="_self">{{ this.page.title }}</a></h4>
+        <p>
+            {% for category in records %}
+                {% if category.parent_id == null %}
+                    <a href="{{ 'our-products-archive-amp'|page({'slug': category.slug }) }}" {% if category.slug == record.slug %} class="active" {% endif %} target="_self">{{ trans_pick(category, 'title') }}</a>
+                {% endif %}
+            {% endfor %}
+            <!-- <a href="https://www.susubendera.com/" target="_blank">
+                Susu Bendera
+            </a>
+            <a href="https://www.friso.co.id/" target="_blank">
+                Friso
+            </a> -->
+        </p>
+    </section>
+</amp-accordion>
+
+<div class="breadcrumb">
+    <a href="{{ 'home'|page }}">{{ 'beranda'|_ }}</a> /
+    <a href="#">{{'produk'|_}}</a>
+</div>
+
+<div class="detail_text">
+    <h1>{{ trans_pick(this.page.settings, 'title') }}</h1>
+    <div class="text">
+                <p>
+                    Frisian Flag Indonesia adalah pemimpin pasar di industri susu Indonesia yang menyediakan produk susu terlengkap untuk setiap
+                    tahapan kehidupan mulai dari susu ibu hamil, susu anak-anak dan susu untuk keluarga. Frisian Flag telah menjadi bagian dari pertumbuhan keluarga
+                    Indonesia sejak tahun 1922 dengan merek susu pertamanya adalah ”Friesche Vlag” atau yang lebih dikenal sebagai Susu Bendera,
+                    diimpor dari Cooperative Condensfabriek Friesland di Belanda yang sekarang menjadi Royal FrieslandCampina.
+                </p>
+                <p>
+                    Frisian Flag Indonesia berkomitmen untuk selalu menyediakan produk susu berkualitas dengan rasa lezat, bernilai gizi baik
+                    dan harga terjangkau. Saat ini merek susu yang dipasarkan oleh Frisian Flag Indonesia adalah Frisian Flag dan Omela,
+                    tersedia dalam bentuk susu kental manis, susu cair UHT dan susu bubuk.
+                </p>
+                <p>
+                    Seluruh produk susu Frisian Flag Indonesia diproses di pabrik modern yang telah menerapkan standar Good Manufacturing Practices
+                    (GMP): Prinsip-prinsip produksi yang baik dan menggunakan teknologi proses yang modern dengan menerapkan sistem jaminan mutu
+                    & keamanan produk yang dijamin oleh sistem Food Safety System Certification (FSSC) serta menerapkan standar produk yang ketat
+                    sesuai dengan regulasi yang berlaku.
+                </p>
+    </div>
+</div>
+
+{% for category in records %}
+    <div class="list2 list2a">
+        <div class="img">
+            {% if category.featured_image %}
+                <amp-img 
+                    src="{{ category.featured_image|media|replace({' ':'%20'}) }}"
+                    srcset="{{ category.featured_image|media|replace({' ':'%20'}) }} 640w,
+                    {{ category.featured_image|media|replace({' ':'%20'}) }} 320w"
+                    width="160"
+                    height="160"
+                    layout="responsive"
+                    alt="{{ category.title }}">
+                </amp-img>
+            {% else %}
+                <amp-img 
+                    src="http://placehold.it/600x600/797979/666666?text=No+Image"
+                    srcset="http://placehold.it/600x600/797979/666666?text=No+Image 640w,
+                    http://placehold.it/600x600/797979/666666?text=No+Image 320w"
+                    width="160"
+                    height="160"
+                    layout="responsive"
+                    alt="No Image">
+                </amp-img>
+            {% endif %}
+        </div>
+        <div class="text">
+            <a href="{{ 'our-products-archive-amp'|page({'slug': category.slug }) }}" target="_self"><h3>{{ trans_pick(category, 'title') }}</h3></a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+{% endfor %}
+
+<!-- <div class="list2 list2a">
+        <div class="img">
+            
+                <amp-img 
+                    src="https://www.susubendera.com/images/produk/17904791.png"
+                    srcset="https://www.susubendera.com/images/produk/17904791.png 640w,
+                    https://www.susubendera.com/images/produk/17904791.png 320w"
+                    width="160"
+                    height="160"
+                    layout="responsive"
+                    alt="Susu Bendera Produk">
+                </amp-img>
+
+        </div>
+        <div class="text">
+            <a href="https://www.susubendera.com/" target="_blank"><h3>Susu Bendera</h3></a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    
+    <div class="list2 list2a">
+        <div class="img">
+            
+                <amp-img 
+                    src="{{ 'assets/img/banner/FRISO_BANNER FF_17JUN21.png'|theme }}"
+                    srcset="{{ 'assets/img/banner/FRISO_BANNER FF_17JUN21.png'|theme }}"
+                    width="160"
+                    height="160"
+                    layout="responsive"
+                    alt="Friso">
+                </amp-img>
+
+        </div>
+        <div class="text">
+            <a href="https://www.friso.co.id/" target="_blank"><h3>Friso</h3></a>
+        </div>
+        <div class="clearfix"></div>
+    </div> -->

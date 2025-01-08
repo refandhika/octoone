@@ -1,0 +1,196 @@
+[viewBag]
+
+[builderDetails]
+modelClass = "Definite\Products\Models\Category"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+
+[milkpediaList]
+==
+<?php
+function onEnd() {
+    
+    // get the post component
+    $_title = $this->page->components["builderDetails"]->identifierValue;
+    if($_title == "kids"){
+        $this->page->title = "Susu UHT untuk Anak";
+        $this->page->meta_description = "Dukung kecerdasan dan pertumbuhan anak dengan susu uht untuk anak. Rangkaian produk susu uht cair Frisian Flag kemasan kotak dan botol aman dikonsumsi.";
+        $this->page->meta_keywords = "susu uht, merk susu uht, susu uht untuk anak, merk susu uht untuk anak 1 tahun, susu uht untuk anak 1 tahun, susu cair frisian flag, susu kotak";
+    }elseif($_title == "minuman-susu-cokelat-kemasan-botol"){
+    
+        $this->page->title = "Minuman Susu Cokelat Kemasan Botol – PRODUK BARU!";
+        $this->page->meta_description = "Kini Frisian Flag menghadirkan sebuah produk inovasi baru, minuman coklat lezat dalam kemasan botol yang praktis yang bias ditutup kembali sehingga memastikan kelezatan terbaik di tiap tetesnya.";
+        $this->page->meta_keywords = "frisian flag purefarm, susu cair, harga susu cair, harga susu frisian flag cair, susu cair frisian flag, susu siap minum, minuman susu cokelat kemasan botol";
+    }else{
+        //$this->page->title = "Purefarm, Minuman Segar Susu Cair Penuh Gizi";
+        //$this->page->meta_description = "Susu cair dengan banyak pilihan rasa seru: Swiss Chocolate, Coconut Delight, Kacang Hijau, Strawberry, Full Cream, aneka varian Low Fat High Calcium";
+        $this->page->title = "Nikmati Beragam Manfaat Susu Cair Purefarm yang Penuh Gizi";
+        $this->page->meta_description = "Nikmati beragam manfaat dari susu cair Purefarm yang penuh gizi dan banyak varian rasa yang disukai siapa saja. Simak informasi lengkapnya di sini.";
+        $this->page->meta_keywords = "frisian flag purefarm, susu cair, harga susu cair, harga susu frisian flag cair, susu cair frisian flag, susu siap minum";
+    }
+
+}
+?>
+==
+{# Template file for product sub category archive #}
+
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+{% put head_scripts %}
+<script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+{% endput %}
+
+{% if record %}
+
+{% set category = record.categories().first %}
+    <!-- {{ attribute(record, displayColumn) }} -->
+
+<div class="cover">
+    <amp-img 
+        src="{{ 'assets/Banner-Susu-Siap-Minum-mob.JPG'|theme }}"
+        srcset="{{ 'assets/Banner-Susu-Siap-Minum-mob.JPG'|theme|replace({' ':'%20'}) }} 640w,
+        {{ 'assets/Banner-Susu-Siap-Minum-mob.JPG'|theme|replace({' ':'%20'}) }} 320w"
+        width="50"
+        height="50"
+        layout="responsive"
+        alt="Banner Mobile">
+    </amp-img>
+</div>
+    {{key}}
+<amp-accordion class="title_home">
+    <section>
+        <h4 class="arrow_down"><a href="#" target="_self">{{ record.title }}</a></h4>
+        <p>
+            {% for category in record.all %}
+                {% if category.parent_id == null %}
+                    <a href="{{ 'our-products-archive-amp'|page({'slug': category.slug }) }}" {% if category.slug == record.slug %} class="active" {% endif %} target="_self">{{ category.title }}</a>
+                {% endif %}
+            {% endfor %}
+            
+                <a href="https://www.susubendera.com/" target="_blank">
+                    Susu Bendera
+                </a>
+            <a href="https://www.friso.co.id/" target="_self">Friso</a>
+        </p>
+    </section>
+</amp-accordion>
+
+<div class="breadcrumb">
+    <a href="{{ 'home'|page }}">{{'beranda'|_}}</a> /
+    <a href="{{ 'our-products-amp'|page }}">{{'produk'|_}}</a> /
+    <a href="{{ 'our-products-archive-amp'|page({"slug": record.parent.slug}) }}">{{ record.parent.title }}</a> /
+    <a href="{{ 'our-products-single-amp'|page({'category-slug': record.parent.slug,
+                            "slug": record.slug}) }}">{{ record.title }}</a>
+</div>
+
+<div class="detail_text">
+    <h1>{{ trans_pick(record, 'title') }}</h1>
+    <div class="text">{{ trans_pick(record, 'description') | raw}}</div>    
+</div>
+
+{% for post in record.publishedProducts.sortBy('order') %}
+{% if post.published == 1 %}
+    <div class="list2 list2a">
+        <div class="img">
+            {% if post.featured_image %}
+                <amp-img 
+                    src="{{ post.featured_image|media }}"
+                    srcset="{{ post.featured_image|media|replace({' ':'%20'}) }} 640w,
+                    {{ post.featured_image|media|replace({' ':'%20'}) }} 320w"
+                    width="160"
+                    height="160"
+                    layout="responsive"
+                    alt="{{ category.title }}">
+                </amp-img>
+            {% else %}
+                <amp-img 
+                    src="http://placehold.it/600x600/797979/666666?text=No+Image"
+                    srcset="http://placehold.it/600x600/797979/666666?text=No+Image 640w,
+                    http://placehold.it/600x600/797979/666666?text=No+Image 320w"
+                    width="160"
+                    height="160"
+                    layout="responsive"
+                    alt="No Image">
+                </amp-img>
+            {% endif %}
+        </div>
+        <div class="text">
+            <a href="{{ 'our-products-sub-single-amp'|page({
+                "category-slug": record.parent.slug,
+                'sub-category-slug': record.slug,
+                "slug": post.slug
+            }) }}" target="_self">
+                <h3>{{ post.title }}</h3>
+            </a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    {% endif %}
+{% endfor %}
+
+{% if record.slug == 'purefarm' %}
+<amp-youtube
+    data-videoid="0CAdndWmycE"
+    layout="responsive"
+    width="480" height="270"></amp-youtube>
+    
+    
+    {% set milkpedias = milkpediaList.susu.take(3) %}
+
+
+    {% if milkpediaList.susu  %}
+    <div class="detail_text">
+        <h1>{{ 'manfaat-minum-susu'|_ }}</h1>
+       
+    </div>
+        <!-- s:milkpediaPost article -->
+		{% for milkpediaPost in milkpedias %}
+       <div class="list">
+            <div class="img">
+            {% if milkpediaPost.featured_image %}
+              <amp-img 
+                  src="{{ milkpediaPost.featured_image| mediathumb_resize('width', 720, 90)  }}"
+                  srcset="{{ milkpediaPost.featured_image| mediathumb_resize('width', 720, 90)  }} 640w,
+                         {{ milkpediaPost.featured_image| mediathumb_resize('width', 720, 90)  }} 320w"
+                  width="160"
+                  height="90"
+                  layout="responsive"
+                  alt="{{ milkpediaPost.title }}">
+              </amp-img>
+            {% else %}
+              <amp-img 
+                  src="http://placehold.it/703x545/797979/666666?text=No+Image"
+                  srcset="http://placehold.it/703x545/797979/666666?text=No+Image 640w,
+                         http://placehold.it/703x545/797979/666666?text=No+Image 320w"
+                  width="160"
+                  height="90"
+                  layout="responsive"
+                  alt="{{ milkpediaPost.title }}">
+              </amp-img>
+            {% endif %}
+            </div>
+            <div class="info">
+              <span class="label">Milkpedia</span>
+              | {{ milkpediaPost.created_at.format('d M Y') }}
+            </div>
+            <a href="{{ 'our-milkpedia-amp-single'|page({"category-slug": record.slug, "slug": milkpediaPost.slug}) }}" target="_self"><h3>{{ trans_pick(milkpediaPost, 'title') }}</h3></a>
+            <p>{{ trans_pick(milkpediaPost, 'excerpt')|raw }}</p>
+            <a href="{{ 'our-milkpedia-amp-single'|page({"category-slug": record.slug, "slug": milkpediaPost.slug}) }}" target="_self" class="btn_more">{{ 'lebih-lanjut'|_ }}</a>
+        </div>
+
+        <!-- e:milkpediaPost article -->
+		{% endfor %}
+    {% endif %}
+{% endif %}
+
+{% put footer %}
+    {{ record.additional_tags|raw }}
+{% endput %}
+
+{% else %}
+    {% partial '404-amp' %}
+{% endif %}

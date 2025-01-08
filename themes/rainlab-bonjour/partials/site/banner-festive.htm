@@ -1,0 +1,343 @@
+description = "Banner Festive Ramadan"
+
+[viewBag]
+
+[staticPage]
+useContent = 1
+default = 0
+==
+<?php
+function onStart() {
+    
+    // Get Router
+    $router             = $this->controller->getRouter();
+    $this->page['slug'] = $router->getURL();
+    $this['category']   = $this->param('category');
+    
+}
+?>
+==
+{% put styles %}
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="{{ 'assets/css/festive.css'|theme }}"/>
+    <link rel="stylesheet" href="{{ 'assets/css/app.css'|theme }}">
+    <link rel="stylesheet" href="{{ 'assets/css/style.css'|theme }}">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.0/moment.min.js"></script>
+        <!-- Add fancyBox -->
+    <link rel="stylesheet" href="{{ 'assets/fancybox/jquery.fancybox.css'|theme }}" type="text/css" media="screen" />
+        <!-- Optionally add helpers - button, thumbnail and/or media -->
+    <link rel="stylesheet" href="{{ 'assets/fancybox/helpers/jquery.fancybox-buttons.css'|theme }}" type="text/css" media="screen" />    
+    <link rel="stylesheet" href="{{ 'assets/fancybox/helpers/jquery.fancybox-thumbs.css'|theme }}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha256-UK1EiopXIL+KVhfbFa8xrmAWPeBjMVdvYMYkTAEv/HI=" crossorigin="anonymous" />
+    <style>
+        body{
+             font-size: 16px !important;   
+        }
+        .form-control{
+             font-size: 14px !important;   
+        }
+        .main-slide__bg {
+            max-height: 700px;
+        }
+    </style>
+{% endput %}
+
+
+{% put scripts %}
+<!-- <script
+  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+  crossorigin="anonymous"></script> -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha256-NXRS8qVcmZ3dOv3LziwznUHPegFhPZ1F/4inU7uC8h0=" crossorigin="anonymous"></script>
+  <script src="{{'assets/js/festive.js'|theme}}"></script>
+  <meta name="ahrefs-site-verification" content="112d70195f4804d5ec8b0a26f6808e96afa04708dac83c5ded305ccf923cb44e">
+{% endput %}
+
+
+{% partial 'site/header-without-login' %}
+
+<div id="main-slide" class="swiper-container main-slide">
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+                            
+                {% if category == 'resep-manis-7-langkah'%}
+
+                <div class="swiper-slide">
+                    <div id="slide-2" class="main-slide__bg slideshow ramadan-slideshow"
+                        data-image-desktop="{{ 'festive-ramadan/banner/banner-manis-desktop.jpg'|media}}"
+                        data-image-mobile="{{ 'festive-ramadan/banner/banner-manis-desktop.jpg'|media  }}"
+                    >
+                        <div class="main-slide__caption">
+                            <div class="col-md-8">
+                                <a href="/aktivitas-kami/resep-ramadan-kaya-rasa-dirumahaja/resep-manis-7-langkah"
+                                    class="button button--large slider-btn-ramadan">
+                                    Selengkapnya
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% elseif category == 'resep-kue-kering-pilihan' %}
+
+                <div class="swiper-slide">
+                    <div id="slide-3" class="main-slide__bg slideshow ramadan-slideshow"
+                        data-image-desktop="{{ 'festive-ramadan/banner/banner-kuekering-desktop.jpg'|media}}"
+                        data-image-mobile="{{ 'festive-ramadan/banner/banner-kuekering-desktop.jpg'|media  }}"
+                    >
+                        <div class="main-slide__caption">
+                            <div class="col-md-8">
+
+                                <a href="/aktivitas-kami/resep-ramadan-kaya-rasa-dirumahaja/resep-kue-kering-pilihan"
+                                    class="button button--large">
+                                    Selengkapnya
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                {% elseif category == 'promo-ramadan' %}
+
+                <div class="swiper-slide">
+                    <div id="slide-7" class="main-slide__bg slideshow ramadan-slideshow"
+                        data-image-desktop="{{ 'festive-ramadan/banner/promo_banner.jpg'|media}}"
+                        data-image-mobile="{{ 'festive-ramadan/banner/promo_banner_mobile.jpg'|media  }}"
+                    >
+                        <div class="main-slide__caption">
+                            <div class="col-md-8">
+
+                                <a href="/aktivitas-kami/resep-ramadan-kaya-rasa-dirumahaja/promo-ramadan"
+                                    class="button button--large">
+                                    Selengkapnya
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% else %}
+
+                
+                <div class="swiper-slide">
+                    <div id="slide-4" class="main-slide__bg slideshow ramadan-slideshow"
+                        data-image-desktop="{{ 'festive-ramadan/banner/campaign-banner-desktop2.jpg'|media}}"
+                        data-image-mobile="{{ 'festive-ramadan/banner/campaign-banner-mobile2.jpg'|media  }}"
+                    >
+                        <div class="main-slide__caption">
+                            <div class="col-md-8">
+                                <a href="/aktivitas-kami/resep-ramadan-kaya-rasa-dirumahaja"
+                                    class="button button--large slider-btn-ramadan">
+                                    Selengkapnya
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="slide-6" class="main-slide__bg slideshow ramadan-slideshow"
+                        data-image-desktop="{{ 'festive-ramadan/banner/Resep-Sahur-Desktop.png'|media}}"
+                        data-image-mobile="{{ 'festive-ramadan/banner/RsepSahurMobile.png'|media  }}"
+                    >
+                        <div class="main-slide__caption">
+                            <div class="col-md-8">
+                                <a href="https://www.frisianflag.com/resepsahurterbaik/resep-terbaik"
+                                    class="button button--large slider-btn-ramadan">
+                                    Selengkapnya
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                {#<div class="swiper-slide">
+                    <div id="slide-1" class="main-slide__bg slideshow ramadan-slideshow"
+                        data-image-desktop="{{ 'festive-ramadan/banner/KartuDesktop.png'|media}}"
+                        data-image-mobile="{{ 'festive-ramadan/banner/KartuDesktop.png'|media  }}"
+                    >
+                        <div class="main-slide__caption">
+                            <div class="col-md-8">
+                                <a href="https://www.frisianflag.com/resepsahurterbaik/kartu-ucapan-terbaik"
+                                    class="button button--large slider-btn-ramadan">
+                                    Selengkapnya
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>#}
+                
+                <div class="swiper-slide">
+                    <div id="slide-2" class="main-slide__bg slideshow ramadan-slideshow"
+                        data-image-desktop="{{ 'festive-ramadan/banner/banner-manis-desktop.jpg'|media}}"
+                        data-image-mobile="{{ 'festive-ramadan/banner/banner-manis-desktop.jpg'|media  }}"
+                    >
+                        <div class="main-slide__caption">
+                            <div class="col-md-8">
+                                <a href="/aktivitas-kami/resep-ramadan-kaya-rasa-dirumahaja/resep-manis-7-langkah"
+                                    class="button button--large slider-btn-ramadan">
+                                    Selengkapnya
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {#
+                <div class="swiper-slide">
+                    <div id="slide-3" class="main-slide__bg slideshow ramadan-slideshow"
+                        data-image-desktop="{{ 'festive-ramadan/banner/banner-kuekering-desktop.jpg'|media}}"
+                        data-image-mobile="{{ 'festive-ramadan/banner/banner-kuekering-desktop.jpg'|media  }}"
+                    >
+                        <div class="main-slide__caption">
+                            <div class="col-md-8">
+
+                                <a href="/aktivitas-kami/resep-ramadan-kaya-rasa-dirumahaja/resep-kue-kering-pilihan"
+                                    class="button button--large">
+                                    Selengkapnya
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="swiper-slide">
+                    <div id="slide-5" class="main-slide__bg slideshow ramadan-slideshow"
+                        data-image-desktop="{{ 'festive-ramadan/banner/Promo-Desktop.png'|media}}"
+                        data-image-mobile="{{ 'festive-ramadan/banner/Promo-Mobile.png'|media  }}"
+                    >
+                        <div class="main-slide__caption">
+                            <div class="col-md-8">
+
+                                <a href="https://www.frisianflag.com/resepsahurterbaik/promo-terbaik"
+                                    class="button button--large">
+                                    Selengkapnya
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div id="slide-7" class="main-slide__bg slideshow ramadan-slideshow"
+                        data-image-desktop="{{ 'festive-ramadan/banner/promo_banner.jpg'|media}}"
+                        data-image-mobile="{{ 'festive-ramadan/banner/promo_banner_mobile.jpg'|media  }}"
+                    >
+                        <div class="main-slide__caption">
+                            <div class="col-md-8">
+
+                                <a href="/aktivitas-kami/resep-ramadan-kaya-rasa-dirumahaja/promo-ramadan"
+                                    class="button button--large">
+                                    Selengkapnya
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+#}
+                {% endif %}
+                
+                
+                
+
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+            <a class="main-slide__arrow to-section">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAiCAYAAAA3WXuFAAAAAXNSR0IArs4c6QAAAyBJREFUWAntl81rE0EUwGfSbJKm1CTiIQbBCl70poJHbeIHIib1EkHBolTryYN614DgTRG8JWpByaWFHhItSIv4B6j1ZFMphWDbbDRoY9uYtMmOb5JM3M1ks5tNIgidy9t57817v33zdncWozbGkdH3wmL60xkiSQMsDDHhlEBMbzKxkTWma0XiVpzlvrsCz/qLpPSOIHRYrqfXGOEkEvDx1clryXqb1tyk5aBmLyLpTiMY6k8Q2Uu2yAO1tc30hoEgK1eZukSH6ua6poaBoArmphkwEpraVYyGgVTita3eBtIq4XaF/rsKcY/u/ptT1szXpQOCIIjfJ66KWndk1O64FHWhfGGfrc88n345vMHiKHrIeT4ymEkuL5ISmt3MF1ec/vCjUIgofNjCdqQzEL6N1nMi2ip+KGTzyy5/5CKLV0vm8Ed8SCJThBBPxUgwfBpuPf74dKyTUM5AJEQIeogIsdA8cO2QEIpC/hE6LwPtHHp+ECMSB2MvVcoHAA53CqoCQ+7J41euCf3IR1xDkbNloJJUugvVsPOOVfcOQKnDsKywIxK5XwbCGFW3iRl52U6ltGGqN46wh/XQNI/Aa4xA6YWh2aBtpssHNHryWxBnX0OHneIxeA3G+AXAucFymrdWNRgvQPAo+DXoGX4V7NLnvh7rsTIQNQ9cGbP9/FGM6YWC25HgTMQq3CCDhl2xAs9ZMfJ+i11P14CofU9wvHetsApQ6KTCv6uTvzA0jQKIKv4tlBKG5udKvjRx4Xe/1RkA1Bnq0L2B5yw2s49ukzwHVyFmpJVaz2fjcFQ9wXQdlAmLTfA2+laqAtHkXYJShaE5mwJ1AaopjC6gGlQh+wreKT46Nzg0YWhczQqx5OXtMwqF8bxgtnkzk5dTLJ6a5J4yNUf69Nndbj+8pd+q+TTUtwBD1+uuEEvmGY3bc6IIRxUd29cijCEguqgClYKeQl4GykkDMDRGyxViiZtCYfwFemZQT8+weEzq7iG2gMmVsD9nd+8+16CnEgIy6WpgFksuDVeIBQkGx3tmNn/dgJ46CkeIhGWH9Yn8L4L56ZV/AM8HY6Gign9xAAAAAElFTkSuQmCC" width="19px">
+            </a>
+    </div>
+
+     <style>
+         
+         .main-slide{
+             margin-bottom: 0;
+         }
+        #slide-1 {
+            background-image: url("{{ 'festive-ramadan/banner/KartuDesktop.png' |media  }}");
+        }
+        #slide-2 {
+            background-image: url("{{ 'festive-ramadan/banner/banner-manis-desktop.jpg' |media  }}");
+        }
+        #slide-3 {
+            background-image: url("{{ 'festive-ramadan/banner/kuekering-desktop-v2.jpg' |media  }}");
+            background-size: cover;
+            background-position: unset;
+        }
+        #slide-4 {
+            background-image: url("{{ 'festive-ramadan/banner/campaign-banner-desktop2.jpg' |media  }}");
+        }
+        #slide-5 {
+            background-image: url("{{ 'festive-ramadan/banner/Promo-Desktop.png' |media  }}");
+        }
+        
+        #slide-6 {
+            background-image: url("{{ 'festive-ramadan/banner/Resep-Sahur-Desktop.png' |media  }}");
+        } 
+        #slide-7 {
+            background-image: url("{{ 'festive-ramadan/banner/promo_banner.jpg' |media  }}");
+        } 
+        @media (max-width: 768px) {
+            #slide-1 {
+            background-image: url("{{ 'festive-ramadan/banner/kartuMobile.png' |media  }}");
+	        }
+	        #slide-2 {
+	            background-image: url("{{ 'festive-ramadan/banner/banner-manis-mobile.jpg' |media  }}");
+	        }
+	        #slide-3 {
+	            background-image: url("{{ 'festive-ramadan/banner/kuekering_mobile_banner.jpg' |media  }}");
+	        }
+            #slide-4 {
+                background-image: url("{{ 'festive-ramadan/banner/campaign-banner-mobile2.jpg' |media  }}");
+            }   
+            #slide-5 {
+                background-image: url("{{ 'festive-ramadan/banner/Promo-Mobile.png' |media  }}");
+            }
+	        
+	        #slide-6 {
+	            background-image: url("{{ 'festive-ramadan/banner/RsepSahurMobile.png' |media  }}");
+	        } 
+	        #slide-7 {
+            background-image: url("{{ 'festive-ramadan/banner/promo_banner_mobile.jpg' |media  }}");
+        } 
+        }
+    </style>
+    
+    
+<!--s:menu-tab-->
+    
+<div class="container-menutab container-menutab--five">
+	<div class="container-one">
+	    <ul>
+
+         <li>
+          <a href="{{ 'https://www.frisianflag.com/resepsahurterbaik' }}" {{ (this.page.slug == "aktivitas-kami/resep-ramadan-kaya-rasa-dirumahaja/resep-sahur-terbaikmu" or category == "resep-sahur-terbaikmu" ? 'class="active"' : '') }}>
+                {{'Resep Sahur terbaikmu' | upper}}
+          </a>
+        </li>        
+        <li>
+          <a href="{{ '/aktivitas-kami/resep-ramadan-kaya-rasa-dirumahaja/resep-manis-7-langkah' }}" {{ (this.page.slug == "aktivitas-kami/resep-ramadan-kaya-rasa-dirumahaja/resep-manis-7-langkah" or category == "resep-manis-7-langkah" ? 'class="active"' : '') }}>
+                {{'Resep manis 7 langkah' | upper}}
+          </a>
+        </li>      
+        <li>
+          <a href="{{ '/aktivitas-kami/resep-ramadan-kaya-rasa-dirumahaja/resep-kue-kering-pilihan' }}" {{ (this.page.slug == "aktivitas-kami/resep-ramadan-kaya-rasa-dirumahaja/resep-kue-kering-pilihan" or category == "resep-kue-kering-pilihan" ? 'class="active"' : '') }}>
+                {{'Resep Kue kering pilihan' | upper}}
+          </a>
+        </li>   
+        {#<li>
+          <a href="{{ '/aktivitas-kami/resep-ramadan-kaya-rasa-dirumahaja/promo-ramadan' }}" {{ (this.page.slug == "aktivitas-kami/resep-ramadan-kaya-rasa-dirumahaja/promo-ramadan" or category == "promo-ramadan" ? 'class="active"' : '') }}>
+                {{'promo ramadan' | upper}}
+          </a>
+        </li>   #}
+        
+      
+      </ul>
+    </div>
+</div>
+    
+<!--e:menu-tab-->

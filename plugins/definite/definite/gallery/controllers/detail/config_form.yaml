@@ -1,0 +1,10 @@
+name: Detail
+form: $/definite/gallery/models/detail/fields.yaml
+modelClass: Definite\Gallery\Models\Detail
+defaultRedirect: definite/gallery/detail
+create:
+    redirect: 'definite/gallery/detail/update/:id'
+    redirectClose: definite/gallery/detail
+update:
+    redirect: definite/gallery/detail
+    redirectClose: definite/gallery/detail

@@ -1,0 +1,333 @@
+description = "Layout for karir challenge how to join"
+
+[staticPage]
+useContent = 1
+default = 0
+
+[subscriberform]
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "all"
+
+[SessionClose]
+load_js = 1
+==
+{% partial 'site/header-karir' %}
+
+	<section>
+
+  	<div class="static-baner-pages">
+    	<div class="imgwrp hidden-xs"><img src="{{ 'assets/img/karir/campus-challenge.jpeg'|theme }}" alt="Campus Challenge Desktop"></div>
+    	<div class="imgwrp visible-xs"><img src="{{ 'assets/img/karir/campus-challenge-mobile.jpg'|theme }}" alt="Campus Challenge Mobile"></div>
+   	</div>
+		<div class="container-menutab">
+			<div class="container-one">
+				<ul class="menutab-full">
+					<li class="toggle visible-xs visible-sm">
+						<a href="javascript:;" class="active">How to Join</a>
+					</li>
+					
+					<li>
+					    <a href="{{'/karir/FFCC2019/about'}}"><img class="icon--" src="{{ 'assets/img/karir/about.svg'|theme }}" alt="About" >About</a>
+					</li>
+					
+					<li>
+						<a href="{{'/karir/FFCC2019/how-to-join' }}"  class="active" ><img class="icon--" src="{{ 'assets/img/karir/how-to-join.svg'|theme }}" alt="Prizes" >How to Join</a>
+					</li>
+					
+					<li>
+						<a href="{{'/karir/FFCC2019/prizes'}}"><img class="icon--" src="{{ 'assets/img/karir/prizes.svg'|theme }}" alt="Prizes" >Prizes</a>
+					</li>
+					
+					<li>
+						<a href="{{ '/karir/FFCC2019/the-winner' }}"><img class="icon--" src="{{ 'assets/img/karir/teams.svg'|theme }}" alt="Top 7 Teams" >The Winner</a>
+					</li>
+					
+					<li>
+						<a href="{{ '/karir/FFCC2019/faq' }}" ><img class="icon--" src="{{ 'assets/img/karir/faq.svg'|theme }}" alt="Faq">FAQ</a>
+					</li>
+				
+				</ul>
+			</div>
+		</div>
+        
+    <div class="container-fluid view view-md view-sm">
+	     <div class="container view">
+	    
+	         <img class="icon---" src="{{ 'assets/img/karir/qualification.svg'|theme }}" alt="How to Join"><h1 class="title--"> Qualification</h1>
+	       
+	            <ol class="qualification">
+                    
+                      <li class="qualification--">
+                     <img class="item-" src="{{ 'assets/img/karir/item-1.png'|theme }}" alt="GPA">
+                      </li><span class="desc">Undergraduate or Master’s Student max age 24 years old with GPA min 3.00 from any faculties</span>
+                    
+                      <li class="qualification--">
+                       <img class="item--" src="{{ 'assets/img/karir/item-2.png'|theme }}" alt="Participate">
+                      </li> <span class="desc-" >Able to participate in Campus Challenge from Jan – Apr’19 (work from your campus).</span>
+                     
+                      
+                      <li class="qualification--">
+                       <img class="item--" src="{{ 'assets/img/karir/item-3.png'|theme }}" alt="Believe">
+                      </li><span class="desc-" >Believe in our purpose - “NOURISHING BY NATURE”.</span>
+                      
+                      <li class="qualification--">
+                      <img class="item--" src="{{ 'assets/img/karir/item-4.png'|theme }}" alt="Social Media">
+                     </li> <span class="desc-" >Active on social media and campus organization.</span>
+                    
+                     
+                     <li class="qualification--">
+                      <img class="item--" src="{{ 'assets/img/karir/item-5.png'|theme }}" alt="Business Strategic">
+                     </li><span class="desc--" >Has a great business strategic thinking.</span>
+                  
+                      
+                      <li class="qualification--">
+                       <img class="item--" src="{{ 'assets/img/karir/item-6.png'|theme }}" alt="Creative">
+                     </li> <span class="desc--" >Has creative and outgoing personality.</span>
+                     
+                     <li class="qualification--">
+                       <img class="item--" src="{{ 'assets/img/karir/item-8.png'|theme }}" alt="Creative">
+                     </li> <span class="desc--" >Fluent in english is a must.</span>
+                      
+                      
+                      <li class="qualification--">
+                      <img class="item--" src="{{ 'assets/img/karir/item-7.png'|theme }}" alt="Sign">
+                      </li><span class="desc- desc-final" >All finalists should sign a non-disclosure agreement.</span>
+        
+                </ol>    
+	           
+	     </div>
+	     
+	     
+	</div>
+
+    <div class="container-fluid steps">
+    
+    	<div class="container container-steps">
+    	
+    	   <img class="icon----" src="{{ 'assets/img/karir/steps.svg'|theme }}" alt="Steps"><h1 class="title--"> Steps</h1>
+    	   
+    	     <ol class="main-step">
+                    
+                      <li class="main-step-">
+                     <img class="step" src="{{ 'assets/img/karir/first-step.png'|theme }}" alt="Build a team">
+                     <span class="step-desc" >Build a team consists of 3 students</span>
+                      </li>
+                      
+                      <li class="main-step-">
+                       <img class="step" src="{{ 'assets/img/karir/second-step.png'|theme }}" alt="Create a video">
+                        <span class="step-desc desc-create" >Create a 3 minutes video of campaign strategy to resolve “How to Make You and Your Friends Drink Milk.”</span>
+                      </li>
+                     
+                      
+                      <li class="main-step-">
+                       <img class="step" src="{{ 'assets/img/karir/third-step.png'|theme }}" alt="Submit video">
+                       <span class="step-desc step-desc-">Submit your video, copy of ID, and application form to : <br>frisianflag.career@frieslandcampina.com with Subject : FFCC 2019_Name of University (file max 5 MB) <br><span class="deadline">Deadline : Jan 31<sup>st</sup> 2019</span><a class="btn btn-primary form" href="https://www.frisianflag.com/storage/app/media/karir/Application Form FFCC 2019.xlsx" role="button">Download Form Here</a></span>
+                        </li> 
+                      
+                      <li class="main-step-">
+                      <img class="step-four" src="{{ 'assets/img/karir/fourth-step.png'|theme }}" alt="Pass challenge">
+                      <span class="step-desc" >Pass the next business challenge</span>
+                        </li> 
+                    
+                     
+                     <li  class="main-step-">
+                      <img class="step-" src="{{ 'assets/img/karir/fifth-step.png'|theme }}" alt="Win the prize">
+                      <span class="step-desc step-desc--" >Win the Prize!</span>
+                   </li>
+                  
+                      
+                </ol>    
+    	</div>
+    	
+    </div>
+    
+    <div class="container-fluid view-step">
+    
+    	<div class="container view">
+    	
+            <h1 class="title--">Selection Process</h1>
+            
+            <h2 class="round"> Round 1</h2>
+    	   
+    	    <div class="round-">
+	           
+	              <div class= number->
+	                <div class="number--">1
+	                </div>
+	                <p class="p">Build a team consists of 3 students.</p>
+	              </div>
+	              
+	              <div class= number->
+	                <div class="number--">2
+	                </div>
+	                <p class="p">Create a 3 minutes video of campaign strategy to resolve “How
+to Make You and Your Friends Drink Milk.”</p>
+	              </div>
+	               
+	             <div class= number->
+	                <div class="number--">3
+	                </div>
+	                <p class="p p-">Submit your video, copy of ID, and application form to <span class="email">frisianflag.career@frieslandcampina.com</span> with Subject : FFCC 2019_Name of University (file max 5 mb)<br><span class="deadline">Deadline : Jan 31<sup>st</sup> 2019</span><a class="btn btn-primary form" href="https://www.frisianflag.com/storage/app/media/karir/Application Form FFCC 2019.xlsx" role="button">Download Form Here</a></p>
+	              </div>
+	              
+	                 
+	             <div class= number->
+	                <div class="number--">4
+	                </div>
+	                <p class="p p-">Videos will be judged based on the clarity and creativity of the
+campaign idea and how they answer the business challenge “How to make you and your friends drink milk.”</p>
+	              </div>
+	              
+	             <div class= number->
+	                <div class="number--">5
+	                </div>
+	                <p class="p ">Only several teams per campus will be invited to the 2nd round of selection process.</p>
+	              </div>
+	              
+	           </div>
+	           
+	           
+	           <h2 class="round"> Round 2</h2>
+    	   
+    	    <div class="round-">
+	           
+	              <div class= number->
+	                <div class="number--">1
+	                </div>
+	                <p class="p">Selected teams who passed the 1st round will be interviewed by Frisian Flag Indonesia.</p>
+	              </div>
+	              
+	              <div class= number->
+	                <div class="number--">2
+	                </div>
+	                <p class="p">If your qualifications are most aligned with our requirements,
+you will be contacted directly by us to proceed to the next stage.</p>
+	              </div>
+	                 
+	           </div>
+	           
+	           <h1 class="how"> How the competition works</h1>
+	           
+	             <div class="round-">
+	           
+	              <div class= number->
+	                <div class="number--">1
+	                </div>
+	                <p class="p p-">You will be challenged directly by Marketing Director of Frisian Flag Indonesia to create business proposal and implement them within the challenge period.</p>
+	              </div>
+	              
+	              <div class= number->
+	                <div class="number--">2
+	                </div>
+	                <p class="p p-">Top teams who deliver a great business proposal will be invited to Frisian Flag Indonesia HQ in Jakarta to attend exclusive marketing workshops in Feb 2019.</p>
+	              </div>
+	               
+	                <div class= number->
+	                <div class="number--">3
+	                </div>
+	                <p class="p p-">You will be the Project Leader in your campus (work-based in your campus) and answer the challenge by implementing your business proposal.</p>
+	              </div>
+	              
+	                 <div class= number->
+	                <div class="number--">4
+	                </div>
+	                <p class="p">During the challenge period, you will also get mentoring session with Frisian Flag Executives and expert in the marketing field.</p>
+	              </div>
+	              
+	              <div class= number->
+	                <div class="number--">5
+	                </div>
+	                <p class="p">There will be two elimination round during the challenge period :
+	                
+	                 <ol class="list">
+	                     <span class="dash">-</span> <li class="list-item">First elimination round : based on business proposal.</li>
+	                     <span class="dash">-</span> <li class= "list-item">Second elimination round : based on progress of business proposal implementation.</li>
+	                 </ol>
+	                
+	                
+	                </p>
+	              </div>
+	              
+	               <div class= number->
+	                <div class="number--">6
+	                </div>
+	                <p class="p">Winner of Frisian Flag Campus Challenge 2019 will be announced in late April 2019.</p>
+	              </div>
+	              
+	           </div>
+    	</div>
+    	
+    </div>
+    
+    
+    <div class="container-fluid timeline">
+    
+    	<div class="container container-timeline">
+    	
+    	     <h1 class="title--"> Timeline Frisian Flag Campus Challenge 2019<span class="art">***<span></h1>
+    	      <div id="date-lined"></div>
+    	       <p class="note"><b>Details of NDA will be shared during workshop session</b></p>
+    	      <p class="note"><b>*Any material that is included and submitted in the competition must be the original and personal creation of the Participant, has not been submitted to other parties or published, does not contain elements of violence, harassment, pornography, SARA and does not violate the intellectual property of any other party. Frisian Flag is not responsible for any loss or loss of any third party arising from the work of the Participant. This material is the property of Frisian Flag Indonesia and Frisian Flag Indonesia has the right to use it in accordance with the interests of Frisian Flag for an unlimited period of time.</b></p>
+    	      <p class="note"><b>**Frisian Flag are entitled to change the dates of every steps</b></p>
+    	</div>
+    	
+    </div>
+    
+  </section>
+  <style>
+  body{font-family:Brevia-Regular,Helvetica,Arial,sans-serif}.art{font-size:17px;position:relative;top:-15px;}.container-menutab::after,div.container-menutab.container-menutab--five:after{border-bottom:10px solid #00AEEE!important}h1{font-family:Brevia-Black,Helvetica,Arial,sans-serif}.step-desc.desc-create:after,.desc-.desc-final:after{color:#0F4D9A;font-weight:bold;}.step-desc.desc-create:after{content: "**";}.desc-.desc-final:after{content:  "*";}.container-menutab ul a.active::after,.container-menutab::after{color:#00AEEE}.container-menutab{margin-bottom:0}.icon--{margin-top:-3px;margin-right:20px;width:25px}.icon---,.icon----{margin-top:-10px;margin-right:5px;margin-bottom:40px;width:45px}.steps,.timeline,.view-step{background-color:#0098EC;background-repeat:no-repeat;background-size:cover}.steps{background-image:url("{{ 'assets/img/karir/how-bg-one.svg'|theme }}")}.timeline{background-image:url("{{ 'assets/img/karir/how-bg-three.svg'|theme }}")}.view,.view-step{background-color:#00AEEE}.container-steps,.container-timeline{margin-top:30px;margin-bottom:20px}.container.view,.container.view--{background-color:transparent;margin-bottom:15px}.container.view{margin-top:35px}.container.view--{margin-top:40px}.title--{display:inline;position:relative;top:-10px}.how,.title--{font-size:40px;font-weight:700;color:#0F4D9A}.how{margin-top:40px;margin-bottom:30px}.qualification--{font-size:17px;margin-left:-25px;margin-bottom:30px;text-align:justify;color:#FFF}.number--{text-align:center;font-weight:700}.item-,.item--{margin:-3px 10px 0 5px;width:35px}.item-{height:15px}.item--{height:35px}.main-step{margin-left:-25px;font-size:17px;color:#FFF}.step,.step-four{height:100px;width:85px}.step{margin:10px 10px -10px 5px}.step-four{margin:-7px 10px -10px 5px}.step-{margin:10px 10px 0 5px;height:80px;width:85px}.step-desc{margin:-64px 0 41px 111px;font-size:17px;display:block}.list,.number--,.p{display:inline-block}.step-desc-{margin-bottom:-7px}.step-desc.step-desc-{margin-top:-90px;margin-bottom:19px}.step-desc--{margin-top:-55px}.round{font-size:36px;color:#FFF;margin-bottom:30px;margin-top:40px}.number-{margin-bottom:15px}.number--{width:25px;line-height:25px;border-radius:50%;font-size:16px;color:#0F4D9A;background-color:#FFF;margin-right:10px}.list,.p{color:#FFF;font-size:17px}.list{list-style-type:none;line-height:30px;margin:10px 0 -10px}#date-lined{overflow:auto}.p-{margin-top:-25px;margin-left:40px}.desc,.desc-,.desc--{font-size:17px;color:#FFF;display:block}.desc{margin:-55px 0 30px 35px}.desc-{margin:-58px 0 30px 35px}.desc--{margin:-56px 0 25px 35px}.form{font-weight:700;font-size:10px;padding:4px 10px;margin-top:3px;margin-bottom:-3px}.dash{margin-left:0}.list-item{margin:-30px 0 0 20px}.note:before{content:'*'}.note{color:#0F4D9A;margin:0px 0px 10px 20px;text-align:justify;font-weight:700;font-size:17px;}.note.note-{margin-bottom:-5px}.deadline{font-size:12px;font-weight:700;color:#FFF;display:block}@media (max-width:768px){.list,.main-step{list-style-type:none}.list,.number--{line-height:20px}.steps,.timeline{background-image:none}.step-desc.step-desc-{margin-top:10px;margin-bottom:19px}.art{top:-5px;}.container.view{margin-bottom:15px}.icon--{margin-top:-3px;margin-right:15px;width:17px}.icon---{margin-left:5px;margin-top:10px;margin-bottom:25px;width:35px}.icon----{margin-top:-10px;margin-bottom:10px;width:45px}.step-four{margin:15px 10px -10px 5px}.view-sm{padding:0;margin-top:-20px}.title--,.title---{text-align:center;font-size:22px}.list,.main-step,.number--,.p,.qualification--,.step-desc{font-size:14px}.title--{display:inline;top:0;position:relative:}.title---{margin-top:25px;margin-bottom:30px}.qualification--{margin-left:-15px;color:#FFF}.desc{margin:-49px 0 10px 35px}.desc,.desc-,.desc--{display:block;font-size:14px;color:#FFF}.desc-{margin:-56px 0 10px 35px}.desc--{margin:-56px 0 25px 30px}.step-desc{margin:10px 0 5px -15px;display:block}.item-,.item--{margin:0 10px -5px 5px;width:35px}.item-{height:15px}.item--{height:35px}.main-step{text-align:center;color:#FFF}.step,.step-four{height:80px;width:70px}.step-{height:65px;width:70px}.number-{margin-bottom:10px}.number--{display:inline-block;width:20px}.list,.p{text-align:justify;display:block;color:#FFF;margin-left:25px;margin-top:-20px}.list{margin:10px 0 0 -20px}.list-item{margin:-20px 0 0 20px}.round{font-size:20px;margin-top:20px}.how{font-size:22px}.email{font-size:13px;font-weight:700}.note{margin:15px 0;font-size:14px}.note.note-{margin-bottom:-15px}}
+  </style>
+  
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="{{ 'assets/js/script.js'|theme }}"></script>
+    <script>
+        timelineFf({
+            width: 1140,
+            height: 300,
+            borderColor: '#FFFFFF',
+            background: '#FFFFFF',
+            textColor: '#0F4D9A',
+            backgroundLined : '#0098EC',
+            data: [{
+                month: 'January',
+                date: '2019',
+                mt : 15,
+                description: 'Video submission Deadline January 31st 2018'
+            }, {
+                month: 'End of January',
+                date: '2019',
+                mt : 0,
+                description: 'Interview Session for selected team'
+                
+            }, { month: 'Early February',
+                date: '2019',
+                mt : 0,
+                description: 'Director’s Challenge start!'
+            },{
+                month: 'February',
+                date: '2019',
+                mt : 15,
+                description: 'Business Proposal Submission'
+            }, {
+                month: 'March - April',
+                date: '2019',
+                mt : 0,
+                description: 'Business Proposal Implementation'
+            }, {
+                month: 'End Of April',
+                date: '2019',
+                mt : 0,
+                description: 'Winner Announcement'
+            }, {
+                month: 'image'
+            }]
+        })
+    </script>
+{% partial 'site/footer-karir' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

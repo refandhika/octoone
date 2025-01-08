@@ -1,0 +1,10 @@
+name: WhatsappBtn
+form: $/definite/ramadhan2024/models/whatsappbtn/fields.yaml
+modelClass: Definite\Ramadhan2024\Models\WhatsappBtn
+defaultRedirect: definite/ramadhan2024/whatsappbtn
+create:
+    redirect: 'definite/ramadhan2024/whatsappbtn/update/:id'
+    redirectClose: definite/ramadhan2024/whatsappbtn
+update:
+    redirect: definite/ramadhan2024/whatsappbtn
+    redirectClose: definite/ramadhan2024/whatsappbtn

@@ -1,0 +1,329 @@
+.card {
+	margin-bottom: 20px;
+
+	&-ovl {
+		&:after {
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.30);
+			left: 0;
+			top: 0;
+		}
+	}
+
+	.category {
+        position: absolute;
+        background: #fff;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        padding: 2px 15px;
+        border-radius: 20px;
+        font-family: $font-semibold;
+				z-index: 2;
+    }
+
+	&__meta {
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		padding: 0 20px;
+		z-index: 10;
+
+		@media screen and (min-width: $screen-md) {
+			padding: 28px;
+		}
+
+		&--relative {
+			position: relative;
+			padding: 0;
+			margin-top: 15px;
+
+			.card__head h3 {
+				color: $blue;
+				text-shadow: none;
+				margin-top: 5px;
+			}
+		}
+	}
+
+	&__thumbnail {
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+		position: relative;
+		overflow: hidden;
+		height:0;
+		padding-bottom: 100%;
+		@include border-radius (5px);
+		border: 1px solid #eee;
+
+		&--blue {
+			// background-color: #1AA0E0;
+			@media screen and (min-width: 767px) {
+				.card {
+					&__image {
+						background-size: 50% !important;
+				    background-position: top -25px !important;
+					}
+				}
+			}
+
+		}
+
+		&--half {
+			padding-bottom: 60%;
+		}
+	}
+
+	&__head {
+		color: white;
+		margin-bottom: 20px;
+
+		h3 {
+			font-size: 22px;
+			text-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+			color: white;
+			font-family: $font-semibold;
+			margin-bottom: 20px;
+
+			@media (min-width: $screen-sm){
+				// font-size: 30px;
+			}
+
+			> a {
+				color: #4A4A4A;
+				text-decoration: none;
+				transition: all ease-in-out .15s;
+				-webkit-transition: all ease-in-out .15s;
+				-moz-transition: all ease-in-out .15s;
+
+				&:hover, &:focus {
+					color: $brand-primary;
+				}
+
+				@media (min-width: $screen-xs) {
+					// font-size: 24px;
+				}
+				@media (min-width: $screen-sm) {
+					color: white;
+					// font-size: 30px;
+					&:hover, &:focus {
+						color: inherit;
+					}
+				}
+			}
+		}
+
+		h2 {
+			text-shadow: 5px 3px rgba(0, 0, 0, 0.14);
+			font-size: 24px;
+			font-family: $font-black;
+			color: $blue;
+
+			@media screen and (min-width: $screen-md) {
+				text-shadow: none;
+			}
+			@media screen and (min-width: $screen-lg) {
+				font-size: 36px;
+			}
+		}
+	}
+
+	&--large {
+		.card__thumbnail {
+			height: 0;
+			padding-bottom: 100%;
+
+			@media screen and (min-width: $screen-sm) {
+				height: 400px;
+				padding-bottom: 0;
+			}
+		}
+
+		.card__head {
+			text-transform: uppercase;
+			font-family: $font-black;
+			max-width: 100%;
+
+			h3 {
+				font-size: 24px;
+				font-family: $font-black;
+
+				@media screen and (min-width: $screen-sm) {
+					font-size: 36px;
+				}
+			}
+            h2 {
+                font-size: 24px;
+
+                @media screen and (min-width: $screen-sm) {
+										font-size: 36px;
+				}
+            }
+		}
+	}
+
+
+	&_featured &__meta {
+		float: left;
+		width: 70%;
+		box-sizing: border-box;
+		padding: 0 16px;
+		position: static;
+
+		@media (min-width: $screen-sm) {
+			width: 100%;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			padding: 32px;
+		}
+	}
+	&_featured &__image {
+		float: left;
+		width: 30%;
+
+		background-image: none;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+
+		img {
+			@include border-radius (5px);
+			width: 100%;
+
+			@media (min-width: $screen-sm) {
+				display: none;
+			}
+		}
+
+		@media (min-width: $screen-sm) {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+
+			&::before {
+				display: block;
+				content: '';
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				position: absolute;
+				background-color: rgba(0,0,0,.3);
+			}
+		}
+	}
+	&_featured &__thumbnail {
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+		position: relative;
+		overflow: hidden;
+		height: initial;
+		padding-bottom: 0;
+
+		&::after {
+			clear: both;
+			display: block;
+			content: '';
+		}
+
+		@media (min-width: $screen-sm) {
+			height: 0;
+			padding-bottom: 100%;
+			@include border-radius (5px);
+		}
+	}
+	&_featured &__head {
+		h3 {
+			font-size: 18px;
+			color: $blue;
+			text-shadow: none;
+
+			@media (min-width: $screen-sm) {
+				text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+				color: white;
+				font-size: 24px;
+			}
+		}
+	}
+
+	&_product {
+
+		.card {
+			&__thumbnail {
+				border: 1px solid transparent;
+			}
+			&__image {
+				border: 1px solid #eee;
+				@include border-radius(5px);
+			}
+		}
+		@media (min-width: 768px) {
+			.card {
+				&__thumbnail {
+					height: auto;
+					border-color: #eee;
+					padding-bottom: 0;
+				}
+				&__image {
+					width: 80%;
+				    height: auto;
+				    position: static;
+				    margin: auto;
+					float: none;
+					border: none;
+					text-align: center;
+					// margin-bottom: -50px;
+
+					&::before {
+						display: none;
+					}
+
+					img {
+						display: inline-block;
+						width: 100%;
+					}
+				}
+
+				&__meta {
+					width: 100%;
+					position: static;
+			    padding: 0px 32px 12px;
+					float: none;
+				}
+
+				&__head {h3 {
+						a {
+							color: $blue;
+							text-shadow: none;
+						}
+					}
+				}
+			}
+		}
+
+		@media (min-width: 1024px) {
+			.card {
+				&__head {
+				}
+			}
+		}
+	}
+}
+
+
+@media screen and (max-width: 340px) {
+	.card__thumbnail {
+		.slide-homesmall & {
+			background-size: 60% !important;
+		}
+	}
+}

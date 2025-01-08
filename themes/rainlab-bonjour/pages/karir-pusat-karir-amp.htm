@@ -1,0 +1,159 @@
+title = "Pusat Karir AMP"
+url = "/amp/karir/pusat-karir"
+layout = "basic-amp"
+is_hidden = 0
+
+[CareerMenu]
+
+[CareerCategory]
+
+[CareerCenter]
+==
+<?php
+function onEnd(){
+     
+    $result     = $this->page->components["CareerCenter"]->search;
+    
+    if($result){
+        
+         $this['result'] = $result;
+        }
+    $this->page->set_rule = "disable";
+    $this->page->title    =  "Pusat Karir";
+       
+}
+?>
+==
+<div class="cover">
+        <amp-img 
+            src="{{ 'assets/img/menukarir/home-mobile.jpg'|theme }}"
+            srcset="{{ 'assets/img/menukarir/home-mobile.jpg'|theme }} 640w,
+                  {{ 'assets/img/menukarir/home-mobile.jpg'|theme }} 320w"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Home Mobile">
+        </amp-img>
+</div>
+<amp-accordion class="title_home">
+    <section class="menus">
+        <h4 class="arrow_down"><a href="#" target="_self">{{ 'Pusat Karir' }}</a></h4>
+        <p>
+          {% set careermenus = CareerMenu.submenus %}
+                {% for menu in careermenus %}
+                    {% if menu.id == 2 %}
+                                
+                                <a href="{{url('/karir')}}/{{menu.slug}}" class="active">{{menu.title}}</a>
+                                
+                                 {% elseif menu.id == 1 %}
+                                
+                                 <a href="{{url('/karir')}}">{{menu.title}}</a>
+                                 
+                                 {% else %}
+                                 
+                                 <a href="{{url('/karir')}}/{{menu.slug}}">{{menu.title}}</a>
+                    {% endif %}            
+                {% endfor %}
+         
+        </p>
+    </section>
+</amp-accordion>
+
+<!--s:breadcrumb-->
+<div class="breadcrumb">
+    <a href="{{ 'home'|page }}">{{ 'beranda'|_ }}</a> /
+    <a href="{{ 'karir'|page }}">{{ 'Karir' }}</a> /
+    <a href="#">{{'Pusat Karir'}}</a> 
+</div>
+<!--s:breadcrumb-->
+
+<!--s:content-->
+<div class="detail_text">
+        <h1>Pusat karir</h1>
+        <div class="text">
+            <p> Frisian Flag mengajak Anda yang memiliki motivasi tinggi dan etos kerja yang baik untuk berpartisipasi mewujudkan komitmen kami dalam menyediakan produk berbasis susu yang berkualitas terbaik dan pendidikan mengenai gaya hidup sehat bagi masyarakat Indonesia. Bersama kami, Anda memiliki kesempatan untuk berkembang secara personal maupun profesional.</p>
+            
+            <p>
+                 Cari posisi karir yang sesuai dengan minat dan ketrampilan Anda.
+            </p>
+        </div>
+       <!-- Get METHOD -->
+        <form method="GET" action="/amp/karir/pusat-karir/"  target="_top">
+          <div class="input-group">
+          
+            <input type="text"name="keywords" class="keywords" placeholder="Cari berdasarkan kata kunci">
+            
+            {% set careercategory = CareerCategory.category %}
+             <select name="category" class="select-category">
+               {% for category in careercategory %}
+                 <option value="{{category.id}}">{{category.title}}</option>  
+               {% endfor %}
+              </select>
+              
+           </div>
+           
+              <input  class="button mb-20" type="submit"
+                value="CARI"
+                role="button" tabindex="0"
+                >
+                 
+          </form>
+           <!-- Get METHOD -->
+           
+</div>
+<!--s:content-->
+<section class="career">
+ 
+ {% if result == 'case-1' %}
+    {% set careers = CareerCenter.careers %}      
+    <div class="detail_text">
+    {% for career in careers %}
+        <div class="card">
+         <div class="card__content">
+                    <h3 class="career-position"><a href="{{career.title_url}}" target="_blank">
+                            {{ career.title }}
+                            </a>
+                    </h3>
+                         <div class="career-wrapper-desc">
+                             <div class="career-division">
+                                 {{career.category.title}}
+                             </div>
+                             <div class="career-location">
+                               {{career.regencies.name | title}}
+                             </div>
+                        </div>
+                 </div>
+             </div>
+        {% endfor %}
+ {% elseif result == 'case-2'%}
+       <div class="detail_text">    
+         <div class="not-found">
+                <h3 style="margin-top: 30px;">Maaf tidak dapat menemukan data yang di inginkan.</h3>
+         </div>  
+        </div>     
+ {% else %}
+     <div class="detail_text">
+    {% for res in result %}
+        <div class="card">
+         <div class="card__content">
+                    <h3 class="career-position"><a href="{{res.title_url}}" target="_blank">
+                            {{ res.title }}
+                            </a>
+                    </h3>
+                         <div class="career-wrapper-desc">
+                             <div class="career-division">
+                                 {{res.category.title}}
+                             </div>
+                             <div class="career-location">
+                               {{res.regencies.name | title}}
+                             </div>
+                        </div>
+                 </div>
+             </div>
+        {% endfor %}
+ {% endif%}
+ 
+ 
+<!--end result career GET-->
+
+</section>

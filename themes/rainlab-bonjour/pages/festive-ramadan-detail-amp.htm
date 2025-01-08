@@ -1,0 +1,208 @@
+title = "Resep Ramadan Kaya Rasa di Rumah Aja Detail AMP"
+url = "/amp/aktivitas-kami/resep-ramadan-kaya-rasa-dirumahaja/:category/:slug"
+layout = "default-amp"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/festive-ramadan-detail-amp"
+==
+<?php
+function onStart(){
+        
+        //get slug
+        $category        = $this->param('category');
+        $slug            = $this->param('slug');
+        
+        
+        $cmsController     = new Cms\Classes\Controller;
+         $arrContextOptions =array(
+            "ssl"=>array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
+        );
+        
+        $pages = Definite\Activities\Models\Activity::whereHas('categories',function($query) {
+           $query->where('id', 18);
+        })->where('slug',$category.'/'.$slug)->
+        get()->first();
+        if($pages){
+          $this['content'] = $pages;
+          $this['title'] = $pages->title;
+          
+          $this['featuredimage'] = $pages->featured_image;
+          $this['youtube'] = $pages->subtitle_en;
+          $this['bahan'] = $pages->description;
+          $this['caramemasak'] = $pages->description_en;
+          $this->page->title = ucwords(strtolower($pages->title));
+          $this->page->meta_title = $pages->meta_title;
+          $this->page->meta_description = $pages->meta_description;
+
+
+
+          $relatedresep = [];
+          $orderby = '';
+
+          if($category == "resep-manis-7-langkah"){
+            $this['selengkapnyaimage'] = 'ramadan-istimewa/scm/kue-that.jpg';
+            $relatedresep = [222,213,212];
+            $orderby = 'desc';
+
+          }else{
+            $this['selengkapnyaimage'] = 'ramadan-istimewa/bfc/almond_cookies.jpg';
+            $relatedresep = [218,219,239];
+            $orderby = 'asc';
+          }
+
+          $related = Definite\Activities\Models\Activity::whereHas('categories',function($query) {
+           $query->where('id', 18);
+          })->select('title', 'slug', 'featured_image')->where('slug','LIKE','%'.$category.'%')->
+          whereNotIn('id',[214,215,$pages->id])->
+          whereIn('id',$relatedresep)->
+          orderBy('id', $orderby)->get();
+          
+          $count = count($related);
+          
+          $tambahan = Definite\Activities\Models\Activity::whereHas('categories',function($query) {
+           $query->where('id', 18);
+          })->select('title', 'slug', 'featured_image')->where('slug','LIKE','%'.$category.'%')->
+          whereNotIn('id',[214,215,$pages->id])->
+          whereNotIn('id',$relatedresep)->
+          take(6-$count)->get();
+          
+          $collection = collect($related);
+          $merged     = $collection->merge($tambahan);
+
+          $this['related'] = $merged;
+        }else{
+          return $cmsController->render("/404");
+        }
+     
+        
+        switch ($category) {
+            case "resep-manis-7-langkah":
+                $class = "resep-manis";
+                break;
+            case "resep-kue-kering-pilihan":
+                $class = "resep-kue";
+                break;
+            
+        }
+
+        $this['class']          = $class;  
+        $this['category']       = $category;
+       
+}
+?>
+==
+<!--s:carousel-banner-->
+{% partial 'site/banner-festive-amp' %}
+<!--e:carousel-banner-->
+
+<div id="main-scroll" >
+
+
+<div id="main-detail" >
+
+<div class="main-section {{class}}">
+<div class="iframe-youtube">
+            <amp-youtube
+                    data-videoid="{{youtube}}"
+                    layout="responsive"
+                    width="480" 
+                    data-param-rel="0"
+                    height="300">
+                    <amp-img
+                      src="{{ featuredimage |media }}"
+                      placeholder
+                      layout="fill"
+                      />
+            </amp-youtube>
+</div>
+    <div class="content {{class}} padding-25">
+         
+             <div class="detail_text recipe__content ">
+                 <h2>{{title | title}}</h2>
+                
+            </div>
+            <amp-accordion class="accordion_items" animate>
+                <section expanded>
+                      <h4>Bahan <span class="arrow"></span></h4> 
+                      <div>
+                        {{bahan|raw}}
+                      </div>
+                     
+                </section>
+            </amp-accordion>
+
+            <amp-accordion class="accordion_items" animate>
+                <section expanded>
+                      <h4>Cara Memasak <span class="arrow"></span></h4> 
+                      <div>
+                        {{caramemasak|raw}}
+                      </div>
+                     
+                </section>
+            </amp-accordion>
+            
+             <div class="share center mb-10">
+              <amp-img 
+                src="{{ 'festive-ramadan/Sosmed-Ramadan.png'|media }}"
+                width="90"
+                height="5"
+                layout="responsive"
+                alt="Sosmed Ramadan">
+            </amp-img>
+            <br>
+            <br>
+        
+        
+              <amp-social-share width="35"
+              height="35" class="rounded" type="facebook"
+              data-param-app_id="872847836388420"></amp-social-share>
+              <amp-social-share width="35"
+              height="35" class="rounded" type="twitter"></amp-social-share>
+              <amp-social-share width="35"
+              height="35" class="rounded" type="whatsapp"></amp-social-share>
+              <amp-social-share width="35"
+              height="35" class="rounded" type="line"></amp-social-share>
+            </div>
+
+
+            
+           
+    </div>
+    {% if related.count > 0 %}
+            <div class="light-blue padding-25 related-resep">
+            <h2>Resep Lainnya</h2>
+    <amp-carousel width="480" height="600" id="related-carousel" layout="responsive" type="slides"  
+   autoplay  delay="500">
+    {% for ct in related %}
+            <div>
+              <a href="{{'festive-ramadan-homepage'|page}}/{{ct.slug}}">
+                <amp-img class="carousel-slider-img" src="{{ ct.featured_image |media }}" width="45vw" height="45vw" layout="responsive"></amp-img>
+              </a>
+
+                <a href="{{'festive-ramadan-homepage'|page}}/{{ct.slug}}"
+                            class="button-amp button  button--large">
+                           Lihat Resepnya
+                        </a>
+            </div>
+     {% endfor %}
+            <div>
+            <a href="{{'festive-ramadan-homepage'|page}}/{{category}}">
+                <amp-img class="carousel-slider-img img-overlay" src="{{ 'festive-ramadan/selengkapnya.png'|media }}" width="45vw" height="45vw" layout="responsive"></amp-img>
+                <amp-img class="carousel-slider-img img-back" src="{{ selengkapnyaimage |media }}" width="45vw" height="45vw" layout="responsive"></amp-img>
+            </a>
+                <a href="{{'festive-ramadan-homepage'|page}}/{{category}}"
+                            class="button-amp button  button--large">
+                           Lihat Selengkapnya
+                </a>
+            </div>    
+    </amp-carousel>
+ 
+    </div>
+    {% endif %}
+</div>
+</div>
+</div>

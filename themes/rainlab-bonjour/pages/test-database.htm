@@ -1,0 +1,23 @@
+title = "test-database"
+url = "/ksjdfhs8sdk/sdfskd7"
+layout = "default"
+is_hidden = 0
+==
+<?php
+function onStart(){
+    $servername = "frisianflagdb2.cpum6ymqt4g4.ap-southeast-1.rds.amazonaws.com";
+    $username = "frisianflag_v2";
+    $password = "ffwebdot.DB2";
+    
+    // Create connection
+    $conn = new mysqli($servername, $username, $password);
+    
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    } 
+    echo "Connected successfully";
+  }
+?>
+==
+test 123

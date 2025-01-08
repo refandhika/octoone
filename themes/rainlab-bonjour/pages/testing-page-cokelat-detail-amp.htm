@@ -1,0 +1,220 @@
+title = "Cokelatnya Bikin Semua Nikmat"
+url = "/amp/11cokelatnya-bikin-semua-nikmat/:slug"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/testing-page-cokelat-detail-amp"
+==
+<?php
+function onStart(){
+        
+        //get slug
+       
+        $category     = $this->param('category');
+        $slug         = $this->param('slug');
+        $this['alt']  = $this->param('alt');
+         
+        
+        $cmsController     = new Cms\Classes\Controller;
+         $arrContextOptions =array(
+            "ssl"=>array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
+        );
+        
+        $pages = Definite\Activities\Models\Activity::whereHas('categories',function($query) {
+           $query->where('id', 20);
+        })->where('slug',$slug)->
+        get()->first();
+        if($pages){
+          $this['content'] = $pages;
+          $this['title'] = $pages->title;
+          $this['featuredimage'] = $pages->featured_image;
+          $this['youtube'] = $pages->subtitle_en;
+          $this['bahan'] = $pages->description;
+          $this['caramemasak'] = $pages->description_en;
+          $this->page->title = ucwords(strtolower($pages->title));
+          $this->page->meta_title = $pages->meta_title;
+          $this->page->meta_description = $pages->meta_description;
+          
+          $relatedresep = [];
+          $orderby = '';
+
+          if($category == "resep-manis-7-langkah"){
+            $this['selengkapnyaimage'] = 'ramadan-istimewa/scm/kue-that.jpg';
+            $relatedresep = [222,213,212];
+            $orderby = 'desc';
+
+          }else{
+            $this['selengkapnyaimage'] = 'ramadan-istimewa/bfc/almond_cookies.jpg';
+            $relatedresep = [218,219,239];
+            $orderby = 'asc';
+          }
+
+          $related = Definite\Activities\Models\Activity::whereHas('categories',function($query) {
+           $query->where('id', 20);
+          })->select('title', 'slug', 'featured_image')->
+          whereNotIn('id',[214,215,$pages->id])->
+          orderBy('id', $orderby)->get();
+          
+          $count = count($related);
+          
+          $tambahan = Definite\Activities\Models\Activity::whereHas('categories',function($query) {
+           $query->where('id', 20);
+          })->select('title', 'slug', 'featured_image')->
+          whereNotIn('id',[214,215,$pages->id])->
+          take(6-$count)->get();
+          
+          $collection = collect($related);
+          $merged     = $collection->merge($tambahan);
+
+          $this['related'] = $merged;
+
+        }else{
+          return $cmsController->render("/404");
+        }
+     
+        
+        /*
+                 $min               = $collection->where('category',$category)->min('id');
+                 $slice             = $data->id - $min; 
+                 $data_category     = $collection->where('category',$category)->where('slug', '!=', $slug)->slice($slice)->take(3);
+                 $count             = count($data_category);
+                 if($count < 3){
+                         $before        = $collection->where('category',$category)->where('slug', '!=', $slug)->take(3 -$count);
+                         $data_category = $data_category->merge($before);
+                     }
+    
+        
+        switch ($category) {
+            case "resep-manis-7-langkah":
+                $class = "resep-manis";
+                break;
+            case "resep-kue-kering-pilihan":
+                $class = "resep-kue";
+                break;
+            
+        
+        }*/
+
+        $this['class']          = "resep-kue";  
+        $this['category']       = $slug;
+        
+        
+
+}
+?>
+==
+{% partial 'site/header-coklat-detail-amp.htm' %}
+
+<div class="body-1">
+
+   <div class="disresult row">
+
+
+
+    <div class="main-section {{color}}">
+    
+        <div class="resep-takjil-istimewa {{color}}">
+             
+                <amp-youtube
+                        data-videoid="{{youtube}}"
+                        layout="responsive"
+                        width="480" 
+                        data-param-rel="0"
+                        height="400" class="coklat-border">
+                        <amp-img
+                          src="{{ recipe.img |media }}"
+                          placeholder
+                          layout="fill"
+                          />
+                </amp-youtube>
+                <div class="content-text">
+                    <h1 class="text-center section__title title-h1">Resep {{ title }}</h1>
+                    <div class="bahan content-resep">
+                          {{ bahan|raw }}
+                    </div>
+                
+                <!--<h2 class="border-bot-white">Bahan :</h2>
+                    <div class="bahan">
+                          {{ bahan|raw }}
+                    </div>
+                <h2 class="border-bot-white">Cara Memasak :</h2>
+                    <div class="cara-memasak">
+                        {{ caramemasak|raw  }}
+                    </div>
+                </div>-->
+                
+                <!-- show now -->
+                
+        
+                </div>
+        </div>
+    </div>
+            <div class="social">
+                      <button class="btn-socmed" on="tap:AMP.setState({ social: !social })"><i class="fa fa-share-alt"></i> Bagikan</button>
+            </div>
+             <div hidden [hidden]="social" class="share right mb-10 social-position">
+                  <amp-social-share width="35"
+                  height="35" class="rounded" type="facebook"
+                  data-param-app_id="872847836388420" class="amp-social-share-facebook"  style="background-color:#E57B00"></amp-social-share>
+                  <amp-social-share width="35"
+                  height="35" class="rounded" type="twitter" class="amp-social-share-twitter"  style="background-color:#E57B00"></amp-social-share>
+                  <amp-social-share width="35"
+                  height="35" class="rounded" type="whatsapp" class="amp-social-share-whatsapp" style="background-color:#E57B00"></amp-social-share>
+                  <amp-social-share width="35"
+                  height="35" class="rounded" type="line" class="amp-social-share-line" style="background-color:#E57B00"></amp-social-share>
+            </div>
+    </div>
+    </div>
+    <section class="beli-sekarang">
+            <h3 class="white-left-2">Beli Sekarang</h3>
+    <div class="flex">
+               <a href="https://www.blibli.com/brand/frisian-flag-official-store?page=1&start=0&multiCategory=true&promoTab=false&excludeProductList=false&brandSearchTerm=Kental%20Manis&intent=false&sort=0&brandName=frisian-flag-official-store">
+                   <div class="shop-now-odd-1"></div>
+                </a>
+                <a href="https://www.alfacart.com/promo/frisian-flag-fair">
+                   <div class="shop-now-even-1" ></div>
+                </a>
+                <a href="https://www.klikindomaret.com/frisianflag-kental-manis">
+                   <div class="shop-now-odd-2"></div>
+                </a>
+                <a href="https://www.jd.id/category/jual-beverages-875061563.html?category=875061563&pvid=b91f13579a5c4ff28c8511fa8d6dcbe6&brandId=692">
+                   <div class="shop-now-even-2" ></div>
+                </a>
+                <a href="https://www.tokopedia.com/frisian-flag/etalase/kental-manis">
+                   <div class="shop-now-odd-3"></div>
+                </a>
+                <a href="https://shopee.co.id/shop/70448302/search?shopCollection=19395096">
+                   <div class="shop-now-even-3" ></div>
+                </a>
+    </div>
+</section>
+<div class="body-coklat">
+<div class="body-4">
+    {% if related.count > 0 %}
+            <div class="padding-5 related-resep">
+            <h3 class="white-left-2">Lihat resep COKELAT NIKMAT lainnya.</h3>
+    <amp-base-carousel class="related-carousel" width="370" height="240" visible-count="2" snap="true" advance-count="1" loop="true" auto-advance-interval="1">
+    {% for ct in related %}
+            <div class="padding-5">
+              <a href="/cokelatnya-bikin-semua-nikmat/{{ct.slug}}">
+                <amp-img class="carousel-slider-img coklat-border" src="{{ ct.featured_image |media }}" width="20vh" height="20vh" layout="responsive" ></amp-img>
+              </a>
+             <div class="div-2"><a href="/cokelatnya-bikin-semua-nikmat/{{ct.slug}}" class="button2 selengkapnya">Lihat Resepnya</a></div>
+                <!-- <a href="{{'festive-ramadan-homepage'|page}}/{{ct.slug}}"
+                            class="button-amp button center button--large" style="margin-left: 5%; line-height: 40px; font-size: 5px;">
+                           Lihat Resepnya
+                        </a> -->
+            </div>
+     {% endfor %}
+            
+            
+    </amp-base-carousel>
+ 
+    </div>
+    {% endif %}
+</div>
+</div>
+{% partial 'site/footer-amp' %}

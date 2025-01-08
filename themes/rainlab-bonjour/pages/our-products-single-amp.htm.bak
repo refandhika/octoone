@@ -1,0 +1,185 @@
+title = "Our Products Single"
+url = "amp/produk/:category-slug/:slug"
+layout = "default-amp"
+is_hidden = 0
+
+[builderDetails]
+modelClass = "Definite\Products\Models\Product"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+==
+<?php
+function onEnd() {
+    if (!$this->page->components["builderDetails"]->record) {
+        return;
+    }
+
+    // get the post component
+    $_title = $this->page->components["builderDetails"]->record->attributes["meta_title"];
+    $_meta_description = $this->page->components["builderDetails"]->record->attributes["meta_description"];
+    $_meta_keywords = $this->page->components["builderDetails"]->record->attributes["meta_keywords"];
+    $this->page->title = $_title;
+    $this->page->meta_title = $_title;
+    $this->page->meta_description = $_meta_description;
+    $this->page->meta_keywords = $_meta_keywords;
+    
+    $this->page->meta_title_en = $this->page->components["builderDetails"]->record->attributes["meta_title_en"];
+    $this->page->meta_description_en = $this->page->components["builderDetails"]->record->attributes["meta_description_en"];
+    $this->page->meta_keywords_en = $this->page->components["builderDetails"]->record->attributes["meta_keywords_en"];
+
+    // add this line in page with "ADDTHIS" plugin
+    $this->page->addthis_allowed = $this->builderDetails->record;
+}
+?>
+==
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+{% if record %}
+{% set category = record.categories().first %}
+
+<div class="cover">
+    {% if record.slug == 'produk/purefarm' %}
+        <amp-img 
+        src="{{ 'assets/img/staticbaner-xs.jpg'|theme }}"
+            srcset="{{ 'assets/img/staticbaner-xs.jpg'|theme }} 640w,
+            {{ 'assets/img/staticbaner-xs.jpg'|theme }} 320w"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Banner Static">
+        </amp-img>
+    {% elseif record.slug == 'Frisian-Flag-Mama' or record.slug == 'frisian-flag-jelajah-1-3' or record.slug == 'frisian-flag-karya-4-6' or record.slug == 'frisian-flag-1-2-3-primanutri' or record.slug == 'frisian-flag-1-2-3-primanutri-vanila' or record.slug == 'frisian-flag-1-2-3-primanutri-cokelat' or record.slug == 'frisian-flag-4-5-6-primanutri' or record.slug == 'frisian-flag-4-5-6-primanutri-madu' or record.slug == 'frisian-flag-4-5-6-primanutri-cokelat' %}
+        <amp-img 
+        src="{{ 'assets/img/banner/Banner link 4-mobile.jpg'|theme }}"
+            srcset="{{ 'assets/img/banner/Banner link 4-mobile.jpg'|theme|replace({' ':'%20'}) }} 640w,
+            {{ 'assets/img/banner/Banner link 4-mobile.jpg'|theme|replace({' ':'%20'}) }} 320w"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Banner Link 4 Mobile">
+        </amp-img>
+    {% elseif record.slug == 'frisian-flag-susu-bubuk-full-cream' or record.slug == 'frisian-flag-susu-bubuk-coklat' or record.slug == 'frisian-flag-susu-bubuk-Instant-Plain' or record.slug == 'frisian-flag-susu-bubuk-instant-kids-madu' or record.slug == 'frisian-flag-susu-bubuk-instant-kids-cokelat' %}
+        <amp-img 
+        src="{{ 'assets/img/banner/Banner link 3-mobile.jpg'|theme }}"
+            srcset="{{ 'assets/img/banner/Banner link 3-mobile.jpg'|theme|replace({' ':'%20'}) }} 640w,
+            {{ 'assets/img/banner/Banner link 3-mobile.jpg'|theme|replace({' ':'%20'}) }} 320w"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Banner Link 3 Mobile">
+        </amp-img>
+    {% elseif record.slug == 'purefarm-full-cream' or record.slug == 'purefarm' or record.slug == 'purefarm-flavour-milk' or record.slug == 'purefarm-low-fat' or record.slug == 'milky-uht' or record.slug == 'milky-sterilized' or record.slug == 'kid' or record.slug == 'purefarm-flavour-milk-strawberry' or record.slug == 'purefarm-flavour-chocolate' or record.slug == 'frisian-flag-purefarm-kacang-hijau' or record.slug == 'purefarm-low-fat-coklat' or record.slug == 'purefarm-low-fat-strawberry' or record.slug == 'purefarm-low-fat-french-vanilla' or record.slug == 'milky-uht-strawberry' or record.slug == 'purefarm-sweet-delight' %}
+        <amp-img 
+        src="{{ 'assets/img/banner/Banner link 2-mobile.jpg'|theme }}"
+            srcset="{{ 'assets/img/banner/Banner link 2-mobile.jpg'|theme|replace({' ':'%20'}) }} 640w,
+            {{ 'assets/img/banner/Banner link 2-mobile.jpg'|theme|replace({' ':'%20'}) }} 320w"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Banner Link 2 Mobile">
+        </amp-img>
+    {% else %}
+        <amp-img 
+        src="{{ 'assets/img/product-header-mobile.png'|theme }}"
+            srcset="{{ 'assets/img/product-header-mobile.png'|theme }} 640w,
+            {{ 'assets/img/product-header-mobile.png'|theme }} 320w"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Product Header Mobile">
+        </amp-img>
+    {% endif %}
+</div>
+    {{key}}
+
+<div class="breadcrumb">
+    <a href="{{ 'home'|page }}">{{'beranda'|_}}</a> /
+    <a href="{{ 'our-products-amp'|page }}">{{'produk'|_}}</a> /
+    <a href="{{ 'our-products-archive-amp'|page({"slug": category.slug}) }}">{{ trans_pick(category, 'title') }}</a> /
+    <a href="{{ 'our-products-single-amp'|page({"category-slug": category.slug,"slug": record.slug}) }}">{{ trans_pick(record, 'title') }}</a>
+</div>
+
+<div class="detail_text">
+    <h1>{{ trans_pick(record, 'title') }}</h1>
+    <div class="img_detail">
+        <amp-carousel
+            width="360"
+            height="360"
+            layout="responsive"
+            autoplay
+            type="slides">
+            {% for image in record.image_gallery %}
+            <amp-img 
+                src="{{ image.image|media }}"
+                srcset="{{ image.image|media|replace({' ':'%20'}) }} 640w,
+                {{ image.image|media|replace({' ':'%20'}) }} 320w"
+                width="360"
+                height="360"
+                layout="responsive"
+                alt="{{ image.image|media }}">
+            </amp-img>
+            {% endfor %}
+        </amp-carousel>
+
+        {% if record.detail_kemasan %}
+        <div>
+            <h4>{{'ukuran-kemasan'|_}}</h4>
+            {% for package in record.detail_kemasan %}
+            <div>
+                <label>
+                    {{ package.value }}
+                    <sub>{{ package.satuan }}</sub>
+                </label>
+                {{ package.jenis }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if record.link_e_commerce %}
+        <div class="wrp-marketplace">
+            <h4>{{'beli-disini'|_}}</h4>
+            {% for shop in record.link_e_commerce %}
+                <amp-img 
+                    src="{{ shop.image|media }}"
+                    srcset="{{ shop.image|media|replace({' ':'%20'}) }} 640w,
+                    {{ shop.image|media|replace({' ':'%20'}) }} 320w"
+                    width="100"
+                    height="40"
+                    layout="responsive"
+                    alt="{{ shop.image|media }}">
+                </amp-img>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="text">
+            {{ trans_pick(record, 'content') | raw }}
+            <div class="clearfix"></div>
+            <div class="title_inside">{{'tabel-nutrisi'|_}}</div>
+
+            {%for ringkasan in record.ringkasan_gizi %}
+                <div class="wrp-sectiongray">
+                    <h4 class="subtitle">{{ trans_pick(ringkasan, 'title') }}</h4>
+                    {{ trans_pick(ringkasan, 'description') | raw }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="wrp-sharesocemd">
+    <amp-addthis height="92" data-pub-id="ra-5afeb9f5b270ae02" data-widget-id="e4ll"></amp-addthis>
+</div>
+
+{% put footer %}
+    {{ record.additional_tags|raw }}
+{% endput %}
+
+{% else %}
+    {% partial 'site/our-products-sub-archive-amp' %}
+{% endif %}

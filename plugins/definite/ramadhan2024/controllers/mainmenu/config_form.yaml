@@ -1,0 +1,10 @@
+name: MainMenu
+form: $/definite/ramadhan2024/models/mainmenus/fields.yaml
+modelClass: Definite\Ramadhan2024\Models\MainMenus
+defaultRedirect: definite/ramadhan2024/mainmenu
+create:
+    redirect: 'definite/ramadhan2024/mainmenu/update/:id'
+    redirectClose: definite/ramadhan2024/mainmenu
+update:
+    redirect: definite/ramadhan2024/mainmenu
+    redirectClose: definite/ramadhan2024/mainmenu

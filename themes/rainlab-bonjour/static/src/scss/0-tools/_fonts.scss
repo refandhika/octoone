@@ -1,0 +1,20 @@
+@include font-face(Brevia-Regular, "../fonts/Brevia-Regular", 500, normal, eot woff ttf svg);
+@include font-face(material, "../fonts/material", 500, normal, eot woff ttf svg);
+@include font-face(Brevia-Semibold, "../fonts/Brevia-Semibold", 500, normal, eot woff ttf svg);
+@include font-face(Brevia-Black, "../fonts/Brevia-Black", 500, normal, eot woff ttf svg);
+@include font-face(Brevia-Bold, "../fonts/Brevia-Bold", 500, normal, eot woff woff2 svg);
+
+$font-regular : "Brevia-Regular", Helvetica, Arial, sans-serif !default;
+$font-semibold : "Brevia-Semibold", Helvetica, Arial, sans-serif !default;
+$font-black : "Brevia-Black", Helvetica, Arial, sans-serif !default;
+$font-bold : "Brevia-Bold", Helvetica, Arial, sans-serif !default;
+
+@font-face {
+    font-family: 'material';
+    src: url('../fonts/material.eot');
+    src: url('../fonts/material.eot') format('embedded-opentype'),
+         url('../fonts/material.woff2') format('woff2'),
+         url('../fonts/material.woff') format('woff'),
+         url('../fonts/material.ttf') format('truetype'),
+         url('../fonts/material.svg#material') format('svg');
+}

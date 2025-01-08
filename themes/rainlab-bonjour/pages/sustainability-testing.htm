@@ -1,0 +1,230 @@
+title = "sustainability-testing"
+url = "/sustainability-testing/:category"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/sustainability-testing"
+==
+<?php
+function onStart(){
+    
+        $this->page->amp_url = $this->pageUrl('sustainability-category-amp-page');
+        $slug         = $this->param('category');
+         
+        $cmsController     = new Cms\Classes\Controller;
+         $arrContextOptions =array(
+            "ssl"=>array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
+        );
+
+        
+        $pages = Definite\Activities\Models\Activity::whereHas('categories',function($query) {
+           $query->where('id', 23);
+        })->where('slug',$slug)->get()->first();
+        
+        if($pages){
+          
+          
+          $this['content'] = $pages;
+          $this['pageid'] = $pages->id;
+          $this['title'] = $pages->title;
+          $this['image_banner'] = $pages->image_banner;
+          $this['description'] = $pages->description;
+          
+          $this->page->title = ucwords(strtolower($pages->title));
+          $this->page->meta_title = $pages->meta_title;
+          $this->page->meta_description = $pages->meta_description;
+          $this->page->og_image = $pages->featured_image;
+          $this->page->og_description = $pages->meta_description;
+
+        
+        }else{
+          return $cmsController->render("/404");
+        }
+
+}
+?>
+==
+{% partial 'site/header' %}
+<style>
+.sustainability-pages p.description {
+    margin-bottom : 30px !important;    
+}
+.sustainability-pages .box.sehat, .sustainability-pages .box.sejahtera, .sustainability-pages .box.selaras {
+    margin-bottom : unset !important;    
+}
+.banner-commerce {
+position : relative;
+display : flex;
+align-items : center;
+margin-bottom : 30px;
+}
+.banner-commerce .img-banner{
+    width : 100%;
+}
+.banner-commerce .content {
+position : absolute;
+padding : 10px 50px;
+}
+.banner-commerce .content img {
+width : 100px;
+}
+.overlay-store {
+   visibility : hidden;
+   opacity : 0;
+   transition : 0.3s;
+   background : rgba(0,0,0,0.8);
+   height : 100vh;
+   width : 100%;
+   position : fixed;
+   top : 0;
+   display : flex !important;
+   align-items : center;
+   justify-content : center;
+   left : 0;
+   z-index : 1000;
+}.overlay-store.show {
+   opacity : 1;
+   visibility : visible;
+}
+.overlay-store .card {
+   position : relative;
+   width : 95%;
+   background : #0F4D9A;
+   border-radius : 20px;
+}
+.overlay-store .card-body {
+   padding : 20px;
+}
+@media (min-width : 768px){
+   .overlay-store .card {
+       width : 35%;
+   }
+}
+.overlay-store h4, .overlay-store a{
+   color : white !important;   
+   text-align : center;
+}
+.overlay-store a.btn-outline-light{
+   color : white !important;
+   border : 1px solid white;
+   margin-bottom : 10px;
+   width : 100%;
+   transition : 0.3s;
+}
+.overlay-store a.btn-outline-light:hover{
+   background : #2875D5 !important;
+}
+.overlay-store .btn-close {
+   background : white !important;
+   border : unset !important;
+   color : black;
+   text-align : center;
+   width : 30px !important;
+   height : 30px !important;
+   position : absolute;
+   right : -10px;
+   top : -10px;
+   border-radius : 50%;
+   font-weight : bold;
+}
+</style>
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp banner-lp" style='background:url({{ image_banner |media }})'>
+    	<div class="container">
+    	    
+        	<div class="banner-panel">
+        	    <div class="banner-description">
+        			<h2>{{title}}</h2>
+        		</div>
+        	</div>
+    	</div>
+    	
+    </div>
+</div>
+
+<div class="section">
+    <div id='main-section' class="container sustainability-pages">
+        {{ description | raw }}
+        
+        <div class="row" id="banner-ecommerce">
+            
+            <div class="col-md-12">
+                <div class=" banner-commerce">
+                    <img src="{{ 'Banner/ecommerce-banner.png' | media  }}" class="img-banner" alt="ecommerce-banner"/>
+                    <div class="content">
+                        <h4>Sedia Frisian Flag<br/>Pilihanmu Sekarang</h4>
+                       <a href="javascript:void(0)" data-target="#popup-ecommerce" class="btn-modal">
+                           <img loading="lazy" src="{{ 'button-ecommerce.png' | media }}" />
+                       </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</div>
+
+<div id="popup-ecommerce" class="overlay-store">
+   <div class="card">
+    <button class="btn-close">x</button>
+        <div class="card-body">
+            <h4>Temukan Produk Kami di:</h4>
+            
+                <a class="btn btn-outline-light btn-commerce" href="https://www.alfacart.com/promo/frisian-flag-fair" target="_blank">
+                    Alfacart
+                </a>
+                <a class="btn btn-outline-light btn-commerce" href="https://www.blibli.com/brand/frisian-flag-official-store?page=1&start=0&multiCategory=true&promoTab=false&excludeProductList=false&brandSearchTerm=Kental%20Manis&intent=false&sort=0&brandName=frisian-flag-official-store&utm_source=Frisian_Flag_Indonesia&utm_medium=refpartner_FF_Ecommerce_Button&utm_campaign=FFI_Website" target="_blank">
+                    Blibli
+                </a>
+                <a class="btn btn-outline-light btn-commerce" href="https://www.jd.id/category/jual-beverages-875061563.html?category=875061563&pvid=b91f13579a5c4ff28c8511fa8d6dcbe6&brandId=692" target="_blank">
+                    jd.id
+                </a>
+                <a class="btn btn-outline-light btn-commerce" href="https://www.klikindomaret.com/frisianflag-kental-manis" target="_blank">
+                    klikindomaret
+                </a>
+                <a class="btn btn-outline-light btn-commerce" href="https://shopee.co.id/universal-link/shop/70448302/search?deep_and_web=1&shopCollection=19395096&smtt=9&utm_campaign=p70448302_ss_id_othr_ff-cd-websiteff&utm_content=ff-cd-scm&utm_medium=seller&utm_source=website" target="_blank">
+                    shopee
+                </a>
+                <a class="btn btn-outline-light btn-commerce" href="https://www.tokopedia.com/frisian-flag/etalase/kental-manis" target="_blank">
+                    tokopedia
+                </a>
+                
+        </div>
+   </div>
+</div>
+<!--test-->
+<link rel="stylesheet" href="{{ 'assets/css/sustainability.css'|theme }}?v=32">
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	
+<script>
+$(document).ready(function () {
+    var banner = $('#banner-ecommerce').hide()
+    var target = $('#main-section .description')
+    
+    banner.insertAfter(target)
+    banner.show()
+    
+    
+    var button = $('.btn-modal')
+    button.click(function () {
+        var target = $(this).data('target')
+        $(target).addClass('show')
+    })
+    
+    var overlay = $('.overlay-store')
+    var close_btn = $('.overlay-store .btn-close')
+    close_btn.click(function () {
+        overlay.removeClass('show')    
+    })
+})
+</script>
+
+{% partial 'site/footer' %}

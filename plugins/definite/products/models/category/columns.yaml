@@ -1,0 +1,13 @@
+columns:
+    title:
+        label: Title
+        type: text
+        searchable: true
+        sortable: true
+    slug:
+        label: Slug
+        type: text
+    description:
+        label: 'definite.products::lang.plugin.description'
+        type: text
+        searchable: true

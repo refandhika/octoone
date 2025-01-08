@@ -1,0 +1,32 @@
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('sekotak-tiap-hari-amp');
+}
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pa{% component 'staticPage' %}ges">
+    <div class="imgwrp">
+    	<img src="{{ 'sekotak-tiap-hari/frisian-flag-sekotak-tiap-hari-static-banner.jpg'|media }}" alt="Banner Frisian Flag Sekotak Tiap Hari">
+    </div>
+</div>
+
+<div id='main-section' class="container" style="padding: 30px 15px;">
+    <h1 style="display: none;">Sekotak Tiap Hari | Frisian Flag Indonesia</h1>
+    <div class="col-md-12">
+        <div class="default-content">
+            <div class="center-img" style="text-align: center;">
+                <img src="{{ 'sekotak-tiap-hari/frisian-flag-sekotak-tiap-hari-mekanisme.jpg'|media  }}">
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="https://www.frisianflag.com/aktivitas-kami/sekotaktiaphari/app" class="button btnblue">Ikutan di Sini</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% partial 'site/footer' %}

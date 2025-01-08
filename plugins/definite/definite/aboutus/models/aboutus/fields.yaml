@@ -1,0 +1,76 @@
+fields:
+    title:
+        label: Title (id)
+        oc.commentPosition: ''
+        span: full
+        type: text
+    title_en:
+        label: Title (en)
+        oc.commentPosition: ''
+        span: full
+        type: text
+    description:
+        label: Description (id)
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: richeditor
+    description_en:
+        label: Description (en)
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: richeditor
+    friesland:
+        label: 'Friesland Campina (id)'
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: richeditor
+    friesland_en:
+        label: 'Friesland Campina (en)'
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: richeditor
+    flag:
+        label: '95 Year Frisian Flag (id)'
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: richeditor
+    flag_en:
+        label: '95 Year Frisian Flag (en)'
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: richeditor
+tabs:
+    fields:
+        meta_description:
+            label: 'Meta Description'
+            size: ''
+            oc.commentPosition: ''
+            span: auto
+            type: textarea
+            tab: 'Meta Tag (id)'
+        meta_title:
+            label: 'Meta Title'
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            tab: 'Meta Tag (id)'
+        
+        meta_description_en:
+            label: 'Meta Description (en)'
+            size: ''
+            oc.commentPosition: ''
+            span: auto
+            type: textarea
+            tab: 'Meta Tag (en)'
+        meta_title_en:
+            label: 'Meta Title (en)'
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            tab: 'Meta Tag (en)'

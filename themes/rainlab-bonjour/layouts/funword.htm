@@ -1,0 +1,181 @@
+description = "Layout for FunWord"
+
+[staticPage]
+useContent = 1
+default = 0
+
+[subscriberform]
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "all"
+
+[SessionClose]
+load_js = 1
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+      <img src="{{ 'assets/img/funword/banner-desktop.jpg'|theme }}" class="hidden-xs" />
+        <img src="{{ 'assets/img/funword/banner-mobile.jpg'|theme }}" class="visible-xs" />
+    </div>
+</div>
+
+<div class="container-menutab">
+    <div class="container-one">
+        <ul>
+            <li class="toggle visible-xs visible-sm"><a href="javascript:;" class="active">FunWord</a></li>
+              <li>
+                <a href="#" class="active">
+                  FunWord
+                </a>
+              </li>
+             <li>
+                <a href="{{ '/aktivitas-kami/fun-word/syarat-dan-ketentuan' }}">
+                  {{ 'syarat-&-ketentuan'|_ }}
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div id='main-section' class="container funword" style="padding: 60px 0;">
+    <div class="col-md-12">
+
+          <div class="col-sm-12 col-md-6">
+            <img src="{{ 'assets/img/funword/product-1.png'|theme }}"/>            
+           </div> <!--  .col-sm-12 col-md-6 -->
+           <div class="col-sm-12 col-md-6">
+            <img src="{{ 'assets/img/funword/product-2.png'|theme }}"/>             
+           </div> <!--  .col-sm-12 col-md-6 -->
+       
+            <di class="col-sm-12 text-center mg-20-b">
+              <br />
+              <img src="{{ 'assets/img/funword/title-dapatkan-hadiah.png'|theme }}"/>
+              <br />
+            </di> <!--  .col-sm-12 -->
+            <div class="col-sm-12 col-md-12 no-padding">
+              <img src="{{ 'assets/img/funword/dapatkan-hadiah.jpg'|theme }}" class="hidden-xs"  />
+              <img src="{{ 'assets/img/funword/dapatkan-hadiah-mobile.png'|theme }}" class="visible-xs" />
+            </div> <!--  .col-sm-12 col-md-6 -->
+           
+
+            <di class="col-sm-12 text-center mg-20-b">
+              <br /><br /><br />
+              <img src="{{ 'assets/img/funword/title-caranya.png'|theme }}"/>
+              <br />
+            </di> <!--  .col-sm-12 -->
+            <div class="col-md-12 no-padding">
+              <img src="{{ 'assets/img/funword/caranya.png'|theme }}" class="hidden-xs full-width" />
+              <img src="{{ 'assets/img/funword/caranya-mobile.png'|theme }}" class="visible-xs" />
+            </div>
+
+
+            <di class="col-sm-12 text-center mg-20-b">
+              <br /><br /><br />
+              <img src="{{ 'assets/img/funword/title-tukar-hadiah.png'|theme }}"/>
+              <br />
+            </di> <!--  .col-sm-12 -->
+            <div class="col-sm-12 col-md-12 no-padding">
+              <img src="{{ 'assets/img/funword/tukar-hadiah-1.jpg'|theme }}" class="hidden-xs" />
+              <img src="{{ 'assets/img/funword/tukar-hadiah-1-mobile.png'|theme }}" class="visible-xs"/>
+            </div> <!--  .col-sm-12 col-md-6 -->
+            <div class="col-sm-12 col-md-12 no-padding">
+              <img src="{{ 'assets/img/funword/tukar-hadiah-2.jpg'|theme }}" class="hidden-xs" />
+              <img src="{{ 'assets/img/funword/tukar-hadiah-2-mobile.png'|theme }}" class="visible-xs" />
+            </div> <!--  .col-sm-12 col-md-6 -->
+
+
+            <div class="col-md-12 list-syarat">
+              <br />              
+              <p><sup>*</sup>{{'gambar-hanya-ilustrasi'|_}}</a></p>
+              <p><sup>*</sup>{{'syarat-&-ketentuan-berlaku'|_}}</a></p>
+              <p><sup>*</sup>{{'stok-bervariasi-tergantung-persediaan-di-toko'|_}}</a></p>
+              <p><sup>*</sup>{{'hadiah-tersedia-selama-periode-promosi'|_}}</a></p>
+              <p><sup>*</sup>{{'berlaku-untuk-label-botol-bertanda-khusus'|_}}</a></p>
+              <p><sup>*</sup><a href="/storage/app/media/uploaded-files/hackathon-area-toko-province-based.pdf">{{'download-list-toko-disini'|_}}</a></a></p>
+              <br />
+              <br />
+           </div>
+
+            <div class="col-md-12 hidden-xs">
+              <br />
+              <h5 class="link">{{'info-lebih-lanjut'|_}}, <a href="/aktivitas-kami/fun-word/syarat-dan-ketentuan">{{'klik-di-sini'|_}}</a></h5>
+           </div>
+
+           <div class="col-sm-12">
+            <hr />            
+           </div> <!--  .col-sm-12 -->
+
+           <!-- <div class="col-md-12 milkybox no-padding m-bottom-15" style="text-align: center;">
+              <a data-fancybox href="https://www.youtube.com/watch?v=Pd40WhdhGWI&autoplay=1&rel=0&controls=0&showinfo=0">
+                <img src="{{ 'assets/img/milkyspiderman/yt.jpg'|theme }}"/>
+              </a>
+           </div> -->
+        </div>
+    </div>
+</div>
+
+<style>
+  .funword hr {
+    border-top: 1px dashed #eee;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  .funword .warning {
+    text-transform: uppercase;
+    border: 2px solid #2f3490;
+    color: #2f3490;
+    display: inline-block;
+    padding: 0 5px;
+    float: right;
+    font-weight: bold;
+  }
+
+  .funword .link {
+    display: inline-block;
+  }
+
+  .default-content h3 {
+      font-size: 22px;
+      line-height: 1.2;
+  }
+
+  .list-syarat p {
+    margin: 0;
+    line-height: 20px;
+    font-weight: bold;
+  }
+
+  @media screen and (min-width: 767px) {
+    .default-content h3 {
+      font-size: 30px;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .m-bottom-15 {
+      margin-bottom: 15px;
+    }
+  }
+
+  .mg-20-b {
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+</style>
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

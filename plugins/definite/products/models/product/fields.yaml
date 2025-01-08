@@ -1,0 +1,208 @@
+fields:
+    title:
+        label: 'Title (id)'
+        oc.commentPosition: ''
+        span: auto
+        required: 1
+        type: text
+    title_en:
+        label: 'Title (en)'
+        oc.commentPosition: ''
+        span: auto
+        required: 1
+        type: text
+    slug:
+        label: Slug
+        oc.commentPosition: ''
+        span: full
+        required: 1
+        preset:
+            field: title
+            type: slug
+        type: text
+    published:
+        label: Published
+        span: full
+        default: 1
+        type: switch
+    subtitle:
+        label: 'Subtitle (id)'
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    subtitle_en:
+        label: 'Subtitle (en)'
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    content:
+        label: 'Content (id)'
+        size: large
+        oc.commentPosition: ''
+        span: auto
+        type: richeditor
+    content_en:
+        label: 'Content (en)'
+        size: large
+        oc.commentPosition: ''
+        span: auto
+        type: richeditor
+    categories:
+        label: Categories
+        oc.commentPosition: ''
+        nameFrom: title
+        descriptionFrom: Categories
+        span: full
+        type: relation
+    parent:
+        label: 'Parent Variant'
+        oc.commentPosition: ''
+        nameFrom: title
+        descriptionFrom: description
+        emptyOption: None
+        span: auto
+        type: relation
+    order:
+        label: Order
+        oc.commentPosition: ''
+        span: auto
+        type: number
+    additional_tags:
+        label: 'Additonal Tags'
+        size: huge
+        language: html
+        span: full
+        type: codeeditor
+        commentAbove: 'Paste your additional tags here'
+tabs:
+    fields:
+        small_packshot_image:
+            label: 'Small Packshot Image'
+            oc.commentPosition: ''
+            mode: image
+            span: auto
+            type: mediafinder
+            tab: Image
+        featured_image:
+            label: 'Featured Image'
+            oc.commentPosition: ''
+            mode: image
+            span: auto
+            type: mediafinder
+            tab: Image
+        image_gallery:
+            label: 'Image Gallery'
+            oc.commentPosition: ''
+            prompt: 'Add new image'
+            span: auto
+            type: repeater
+            tab: Image
+            form:
+                fields:
+                    image:
+                        label: 'Image Gallery'
+                        oc.commentPosition: ''
+                        mode: image
+                        prompt: 'Add new image'
+                        span: auto
+                        type: mediafinder
+        link_e_commerce:
+            label: 'Link E-Commerce'
+            oc.commentPosition: ''
+            prompt: 'Add new link'
+            span: full
+            type: repeater
+            tab: 'Link Ecommerce'
+            form:
+                fields:
+                    link:
+                        label: Link
+                        oc.commentPosition: ''
+                        span: auto
+                        type: text
+                    image:
+                        label: Image
+                        oc.commentPosition: ''
+                        mode: image
+                        span: auto
+                        type: mediafinder
+        detail_kemasan:
+            label: 'Detail Kemasan'
+            oc.commentPosition: ''
+            prompt: 'Add detail kemasan'
+            span: full
+            type: repeater
+            tab: 'Detil Kemasan'
+            form:
+                fields:
+                    value:
+                        label: Value
+                        oc.commentPosition: ''
+                        span: auto
+                        type: text
+                    satuan:
+                        label: Satuan
+                        oc.commentPosition: ''
+                        span: auto
+                        type: text
+        ringkasan_gizi:
+            label: 'Ringkasan Gizi'
+            oc.commentPosition: ''
+            prompt: 'Add ringkasan gizi'
+            span: full
+            type: repeater
+            tab: 'Ringkasan Gizi'
+            form:
+                fields:
+                    description:
+                        label: 'Description (id)'
+                        size: ''
+                        oc.commentPosition: ''
+                        span: full
+                        type: richeditor
+                    description_en:
+                        label: 'Description (en)'
+                        size: ''
+                        oc.commentPosition: ''
+                        span: full
+                        type: richeditor
+secondaryTabs:
+    fields:
+        meta_description:
+            label: 'Meta Description'
+            size: ''
+            oc.commentPosition: ''
+            span: auto
+            type: textarea
+            tab: 'Meta Tag (id)'
+        meta_keywords:
+            label: 'Meta Keywords'
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            tab: 'Meta Tag (id)'
+        meta_title:
+            label: 'Meta Title'
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            tab: 'Meta Tag (id)'
+        meta_description_en:
+            label: 'Meta Description (en)'
+            size: ''
+            oc.commentPosition: ''
+            span: auto
+            type: textarea
+            tab: 'Meta Tag (en)'
+        meta_keywords_en:
+            label: 'Meta Keywords (en)'
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            tab: 'Meta Tag (en)'
+        meta_title_en:
+            label: 'Meta Title (en)'
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            tab: 'Meta Tag (en)'

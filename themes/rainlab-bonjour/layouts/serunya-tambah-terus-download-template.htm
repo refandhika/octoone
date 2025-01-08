@@ -1,0 +1,50 @@
+description = "Serunya Tambah Terus - Download Template"
+
+[staticPage]
+useContent = 1
+default = 0
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('serunya-tambah-terus-download-template-amp');
+    $this->page->meta_description = "Ikuti aktivitas seru mewarnai gambar dari Frisian Flag. Download template gambarnya di sini. Dijamin #SerunyaTambahTerus!";
+}
+?>
+==
+{% partial 'site/header-serunya' %}
+<style>
+.container-menutab ul a.active::after{color:#3ab9fe}.container-menutab:after{border-bottom:10px solid #3ab9fe}
+</style>
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+    	<img src="{{ 'milky-unicorn/desktop_statik_serunyatambahterus.jpg'|media }}" class="hidden-xs" />
+        <img src="{{ 'milky-unicorn/mobile-serunya-tambah-terus.jpg'|media  }}" class="visible-xs" />
+    </div>
+</div>
+
+{% partial 'site/milky-unicorn-menu' %}
+
+<div id='main-section' class="body-seru">
+    <div class="col-md-12">
+        <div class="default-content" style="text-align: center;">
+           <div class="row">
+               <h1>Download Template</h1>
+               <div class="col-md-2 col-md-offset-4">
+                   <img src="{{ 'milky-unicorn/image_unicorn.jpg'|media  }}" style="width:200px; border-radius: 35px;     margin: 50px 0;" alt="Cinque Terre">
+                   <br>
+                   <a href="{{ 'milky-unicorn/serunya-tambah-terus-clipart-unicorn.jpg'|media  }}" class="button" onclick="downloadEvent();" download>Klik di Sini</a>
+                </div>
+                <div class="col-md-2"> 
+                  <img src="{{ 'milky-unicorn/image_plane.jpg'|media  }}" style="width:200px; border-radius: 35px;margin: 50px 0;"  alt="Cinque Terre">
+                   <br>
+                    <a href="{{ 'milky-unicorn/serunya-tambah-terus-clipart-pesawat.jpg'|media  }}" class="button" onclick="downloadEvent();" download>Klik di Sini</a>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+</div>
+            
+{% partial 'site/footer' %}

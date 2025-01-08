@@ -1,0 +1,32 @@
+description = "Serunya Tambah Terus Syarat dan Ketentuan"
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('milky-unicorn-serunya-tambah-terus-amp');
+    $this->page->meta_description = "Baca syarat dan ketentuan kontes digital #SerunyaTambahTerus bersama Frisian Flag Milky di sini. Mulai dari periode kontes hingga pengumuman pemenang.";
+}
+?>
+==
+{% partial 'site/header-serunya' %}
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+    	<img src="{{ 'milky-unicorn/desktop_statik_syarat.jpg'|media }}" class="hidden-xs" />
+        <img src="{{ 'milky-unicorn/mobile-serunya-tambah-terus-syarat-dan-ketentuan.jpg'|media  }}" class="visible-xs" />
+    </div>
+</div>
+
+{% partial 'site/milky-unicorn-menu' %}
+
+<div id='main-section' style="padding: 40px 0;">
+    <h1 style="display: none;">Serunya Tambah Terus -  Syarat dan Ketentuan | Frisian Flag Indonesia</h1>
+    <div class="col-md-8 col-md-offset-2">
+        <div class="default-content">
+          {% page %}
+        </div>
+    </div>
+</div>
+
+
+{% partial 'site/footer' %}

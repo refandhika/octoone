@@ -1,0 +1,99 @@
+title = "Resep Nusantara Archive"
+url = "/aktivitas-kami/resep-nusantara/:category"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/resep-nusantara-archive"
+==
+<?php
+function onStart(){
+        
+        //get slug
+        $category           = $this->param('category');
+        $this['page_slug']  = $category;
+        //get json data
+        if($category == 'resep-khas-jawa-bali-nusa-tenggara'){
+            return redirect('/resep-kami' , 301);
+        }
+               //get pages meta from CMS
+        $pages = Definite\Activities\Models\Activity::where('slug',$category)->get()->first();
+		if($pages){
+            $this->page->meta_title = $pages->meta_title;
+            $this->page->meta_description = $pages->meta_description;
+        }
+      
+        $path              = url('/themes/rainlab-bonjour/assets/resep-nusantara/resep-nusantara.json');
+        $cmsController     = new Cms\Classes\Controller;
+        $arrContextOptions =array(
+            "ssl"=>array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
+        );
+
+         if(json_decode(file_get_contents($path, true))){
+                 $collection    = collect(json_decode(file_get_contents($path, true)));
+                 $data          = $collection->where('category', $category );
+            }
+         else{
+               
+               return Response::make( $cmsController->render("/404"), 404);
+           }
+           
+        if(count($data) == 0){
+                return Response::make( $cmsController->render("/404"), 404);
+            }
+        
+          switch ($category) {
+             case 'resep-khas-sumatera':
+                 $this['content']    = ['banner_desktop'=>'assets/img-ramadhan/banner/recipe page_sumatera_desktop.jpg','banner_mobile'=>'assets/img-ramadhan/banner/recipe page_sumatera_mobile.jpg','name'=>'RESEP KHAS SUMATERA'];
+                  $this->page->title  = 'Resep Khas Sumatera';
+                 break;
+             case 'resep-khas-jawa-bali-nusa-tenggara':
+                 $this['content']    = ['banner_desktop'=>'assets/img-ramadhan/banner/recipe page_jawa_desktop.jpg','banner_mobile'=>'assets/img-ramadhan/banner/recipe page_jawa_mobile.jpg','name'=>'RESEP KHAS JAWA, BALI & NUSA TENGGARA'];
+                   $this->page->title  = 'Resep Khas Jawa, Bali & Nusa Tenggara';
+                 break; 
+             case 'resep-khas-kalimantan':
+                 $this['content']    = ['banner_desktop'=>'assets/img-ramadhan/banner/recipe page_kalimantan_desktop.jpg','banner_mobile'=>'assets/img-ramadhan/banner/recipe page_kalimantan_mobile.jpg','name'=>'RESEP KHAS KALIMANTAN'];
+                   $this->page->title  = 'Resep Khas Kalimantan';
+                 break;  
+             case 'resep-khas-sulawesi-maluku-papua':
+                 $this['content']    = ['banner_desktop'=>'assets/img-ramadhan/banner/recipe page_sulawesi_desktop.jpg','banner_mobile'=>'assets/img-ramadhan/banner/recipe page_sulawesi_mobile.jpg','name'=>'RESEP KHAS SULAWESI, & PAPUA'];
+                   $this->page->title  = 'Resep Khas Sulawesi, Maluku & Papua';
+                 break;       
+        }
+        
+          $this['data']       = $data;
+          $this->page->amp_url = $this->pageUrl('resep-nusantara-archive-amp');
+}
+?>
+==
+{% partial 'site/header-resep' %}
+	<section>
+	{% partial 'site/banner-resep-nusantara' %}
+		<div class="container">
+      <h1 class="testeran" style="display: none;">{{category}}</h1>
+			<div class="main-content">
+			<div class="row">
+	        {% for ct in data %}
+				<div class="col-sm-12 col-md-4">
+					<div class="recipe">
+						<div class="recipe-title">
+							<h4>{{ct.title}}</h4>							
+						</div> 
+							<img src="{{ct.img | theme}}" alt="image FF " />
+					</div> 
+					<div class="btn__resep">
+					<a  href="{{'resep-nusantara-archive'|page}}/{{ct.slug}}" style=""class="button {{ ct.button_class}}" target=_blank>lihat resepnya</a>
+					</div>
+				
+				</div> <!--  .col-sm-12 col-md-6 col-xmd-4 mg-b-20 -->
+            {%endfor%}
+			    </div> <!--  .row -->			
+            </div>
+		</div> <!--  .container -->
+  </section>
+
+{% partial 'site/footer-resep' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

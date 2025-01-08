@@ -1,0 +1,1904 @@
+title = "Kartu Seru Milky"
+url = "/aktivitas-kami/duniazuzhu/kartu-seru-milky"
+layout = "aniversary"
+meta_description = "Kumpulkan kartu seru Milky untuk si Kecil dan cari tahu cara untuk ikut keseruan kartunya di sini! Ada video cara bermain Milky Race juga lho."
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/kartu-seru-milky"
+==
+{% put meta %}
+    <meta name="description" content="Kartu Seru Milky">
+{% endput %}
+{% put link %}
+<link href="{{ 'assets/css/bootstrap5.css'|theme }}" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+{% endput %}
+
+{% put styles %}
+
+        #milkytitle-top{
+            font-family: 'Brevia-Bold';
+        }
+        a{
+            outline: none !important;    
+        }
+        h2{
+            font-family: 'Brevia-Bold';
+        }
+        h3{
+            font-family: 'Brevia-SemiBold';    
+        }
+        span{
+            font-family: 'Brevia-Regular';    
+        }
+        .accordion-header{
+            margin: unset !important;    
+        }
+        .pyc-5{
+            padding: 0 5%;
+        }
+        .custom-blue{
+            color: #003F7C !important;    
+        }
+        .ov-hidden{
+            overflow: hidden !important;
+        }
+        .op-0{
+            opacity: 0;    
+        }
+        @media screen and (max-width: 1400px) and (min-width: 1201px){
+            
+            .wrapper2 .youtube-wrapper .icon-m {
+                left: -85px !important;
+            }
+            .container-card .img-wrapper span {
+                padding: 15px 20px 30px 20px !important;
+            }
+            .container-card {
+                grid-gap: 50px !important;
+            }
+            .container-card .img-wrapper {
+                height: 450px !important;
+            }
+            .container-card .img-wrapper .image img {
+                height: 250px !important;
+            }
+            .wrapper .wrapper-button {
+                grid-gap: 50px !important;
+            }   
+            .wrapper2 .wrapper-button{
+                grid-gap: 25px;
+            }
+            .wrapper3 .ecom-list a {
+                width: 70px !important;
+                height: 70px !important;
+            }
+            .wrapper .wrapper-img .funrally-banner2 {
+                height: 500px !important;
+                 width: 110% !important;
+            }
+            .wrapper .wrapper-img .funrally-banner3 {
+                height: 350px !important;
+            }
+            .bg-btn h3 {
+                font-size: 18.5px !important;
+                text-shadow: 1px 1px 2px #000;
+            }
+            .wrapper2 .bg-btn h3 {
+                font-size: 25px !important;
+            }
+            .container-card .img-wrapper .planet-1 {
+                top: -30px !important;
+                left: -40px !important;
+                width: 130px !important;
+                height: 100px !important;
+            }
+            .container-card .img-wrapper .planet-2 {
+                bottom: 200px !important;
+                right: -40px !important;
+                width: 125px !important;
+                height: 95px !important;
+            }
+            .wrapper2 .wrapper-button a:nth-child(2) div::after {
+                width: 125px !important;
+                height: 85px !important;
+                transform: rotate(321deg);
+                top: -10px !important;
+                left: -50px !important;
+            }
+        }
+        @media screen and (max-width: 1200px) and (min-width: 1001px){
+            .container-card .img-wrapper .planet-1 {
+                top: -20px !important;
+                left: -40px !important;
+                width: 110px !important;
+                height: 85px !important;
+            }
+            .container-card .img-wrapper .planet-2 {
+                right: -38px !important;
+                width: 100px !important;
+                height: 85px !important;
+                bottom: 170px !important;
+            }
+            .wrapper2 .youtube-wrapper .icon-m {
+                width: 250px !important;
+                height: 250px !important;
+                left: -80px !important;
+            }
+            .container-card {
+                grid-gap: 50px !important;
+            }
+            .container-card .img-wrapper {
+                height: auto;
+            }
+            .container-card .img-wrapper .image img {
+                height: 200px !important;
+            }
+            .wrapper .wrapper-button {
+                grid-gap: 50px !important;
+            }   
+            .wrapper2 .wrapper-button{
+                grid-gap: 20px !important;
+                padding: 0 0 20px 0;
+            }
+            .wrapper3 .ecom-list a {
+                width: 60px !important;
+                height: 60px !important;
+            }
+            .wrapper .wrapper-img .funrally-banner2 {
+                height: 400px !important;
+                 width: 110% !important;
+            }
+            .wrapper .wrapper-img .funrally-banner3 {
+                height: 250px !important;
+            }
+            .container-card .img-wrapper span{
+                font-family: 'Brevia-Semibold';
+                color: #fff;
+                font-size: 12.5px !important;
+                padding: 10px !important;
+            }
+            .wrapper1 .bg-btn h3 {
+                padding: 15px 30px 22.5px 28px !important;
+            }
+            .bg-btn h3 {
+                font-size: 15px !important;
+                padding: 20px 30px 25px 30px !important;
+            }
+            .wrapper2 .bg-btn h3 {
+                font-size: 20px !important;
+                text-shadow: 1px 1px 2px #000;
+            }
+            .wrapper2 .wrapper-button a div::after {
+                width: 50px !important;
+                height: 50px !important;
+                left: -10px !important;
+                top: 5px !important;
+            }
+            .wrapper2 .wrapper-button a:nth-child(2) div::after {
+                content: "";
+                width: 90px !important;
+                transform: rotateZ(328deg) !important;
+                height: 75px !important;
+                top: -13px !important;
+                left: -25px !important;
+            }
+            .fire {
+                height: 700px !important;
+            }
+            .accordion-button::before {
+                width: 25px !important;
+                height: 5px !important;
+                right: 22px !important;
+                top: 25px !important;
+            }
+            .accordion-button::after {
+                width: 5px !important;
+                height: 25px !important;
+                right: 32.5px !important;
+                top: 15px !important;
+            }
+        }
+        @media screen and (min-width: 600px) and (max-width: 1000px){
+            .wrapper2 .milky-youtube .milky-youtube-title h2 {
+                font-size: 30px !important;
+            }
+            .wrapper1 .bg-btn h3 {
+                padding: 11px 20px 17px 20px !important;
+                font-size: 12px !important;
+            }
+            .bg-btn h3 {    
+                padding: 20px 20px 25px 20px !important;    
+                font-size: 14px !important;
+            }
+            .wrapper .wrapper-card h2 {
+                font-size: 32px !important;
+            }
+            .wrapper .wrapper-card h1 {
+                font-size: 32px !important;
+            }
+            
+            .wrapper .wrapper-button {
+                grid-gap: 20px !important;
+            }
+            .wrapper .wrapper-img .funrally-banner {
+                height: 400px !important;    
+            }
+            .container-card {
+                grid-gap: 20px !important;
+            }
+            .wrapper .wrapper-img .funrally-banner2 {
+                height: 400px !important;
+                 width: 110% !important;
+            }
+            .wrapper .wrapper-img .funrally-banner3 {
+                height: 400px !important;
+            }
+            .container-card .img-wrapper .image img {
+                height: 200px !important;
+            }
+            .container-card .img-wrapper h3{
+                font-size: 11px !important;
+                padding: 15px 20px 20px 20px !important;
+            }
+            .container-card .img-wrapper span{
+                font-family: 'Brevia-Semibold';
+                color: #fff;
+                font-size: 10px !important;
+                padding: 5px 0 0 0!important;
+            }
+            
+            .container-card .img-wrapper .planet-1 {
+                top: -20px !important;
+                left: -30px !important;
+                width: 80px !important;
+                height: 60px !important;
+            }
+            .container-card .img-wrapper .planet-2 {
+                bottom: 120px !important;
+                right: -25px !important;
+                width: 75px !important;
+                height: 60px !important;
+            }
+            .wrapper2 .wrapper-button {
+                grid-gap: 20px !important;
+            }
+            
+            .wrapper2 .wrapper-button a div::after {
+                width: 50px !important;
+                height: 50px !important;
+                left: -15px !important;
+            }
+            .accordion-zhuzu {
+                width: 150px !important;
+                height: 150px !important;
+            }
+            .fire {
+                width: 100% !important;
+                height: 650px !important;
+                background-size: 100% 100% !important;
+            }
+            .wrapper2 .youtube-wrapper .icon-f {
+                width: 150px !important;
+                height: 150px !important;
+                right: -70px !important;
+                bottom: 100px !important;
+            }
+            .wrapper2 .youtube-wrapper .icon-m {
+                width: 200px !important;
+                height: 200px !important;
+                top: 0 !important;
+                left: -55px !important;
+            }
+            .wrapper2 .youtube-wrapper .planet2 {
+                top: 0 !important;
+            }
+        }
+        @media screen and (min-width: 768px) {  
+            .mainwrap{
+                background-image: url('https://www.frisianflag.com/storage/app/media/funrally/bg-fix.jpeg');    
+                background-size: cover;
+            }
+            #milky-id{
+                margin-left: 5px;
+                font-size: 22.5px;
+                color: #00a0e2;
+                text-shadow: 1px 1px 2px #c8c8c8;
+            }
+            .fire{
+                width: 100% !important;
+                height: 850px;
+                background-image: url(https://www.frisianflag.com/storage/app/media/funrally/fire.png);
+                background-size: cover;
+                margin: 50px 0;
+                background-repeat: no-repeat;
+                z-index: 1;
+                bottom: -50px;
+                left: 0;
+                position: absolute;
+            }
+            .rally-title{
+                color: #009fe3;
+                margin-bottom: 10px !important;
+                font-size: 20px;
+                font-family: 'Brevia-Black';
+            }
+            .rallydesc{
+                font-size: 15px;
+                margin: unset !important;
+                margin-bottom: 10px !important;    
+            }
+            .rally-sub{
+                color:#003F7C;
+                font-size: 14px;
+                margin-bottom: 10px !important;
+            }
+            
+            /* wrapper 1 */
+            .wrapper{
+                //background-image: url('https://www.frisianflag.com/storage/app/media/funrally/bg-fix.jpeg');
+                background-size: cover;
+                overflow:hidden;
+            }        
+            .wrapper .wrapper1{
+                padding-top: 200px !important;    
+            }
+            .wrapper .wrapper-button{
+                grid-template-columns: repeat(4, 1fr);
+                grid-gap: 50px;
+                padding: 0 50px;
+            }
+            .wrapper1 .wrapper-button .bg-btn{
+                background: url(https://www.frisianflag.com/storage/app/media/funrally/btn-bg.png);
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                position: relative;
+            }
+            .wrapper1 .wrapper-button .bg-btn h3{
+                margin: unset;
+                padding: 22.5px 30px 25px 30px;
+                color: #fff;
+                font-family: 'Brevia-Bold';
+                font-size: 20px;
+                text-shadow: 1px 1px 2px #000;
+                display: flex;
+                height: 100%;
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+            .wrapper .wrapper-button a{
+                text-decoration: none;
+                width: 100%;
+                height: auto;
+                z-index: 5;
+            }
+            .wrapper .wrapper-card h2{
+                margin: 50px 0 75px;
+                background: linear-gradient(1deg, #009FFF 30%, #ec2F4B 100%);
+                -webkit-background-clip: text;
+                -webkit-text-stroke: 12px transparent;
+                color: #fff;
+                font-size: 40px;
+            }
+            .wrapper .wrapper-card h1{
+                margin: 50px 0 75px;
+                background: linear-gradient(1deg, #009FFF 30%, #ec2F4B 100%);
+                -webkit-background-clip: text;
+                -webkit-text-stroke: 12px transparent;
+                color: #fff;
+                font-size: 40px;
+                font-family:'Brevia-Bold';
+            }
+            .wrapper .wrapper-img{
+                grid-template-columns: 1fr;
+                height: auto;
+                align-items: center;
+                flex-direction: column;
+            }
+            .wrapper .wrapper-img .funrally-banner{
+                width: 100% !important;
+                height: 500px !important;
+                margin: 50px 0;
+            }
+            .wrapper .wrapper-img .funrally-banner img{
+                border-radius: 50px;
+                box-shadow: 2px 2px 10px #000;
+            }
+            .wrapper .wrapper-img .funrally-banner2{
+                    width: 130%;
+                    height: 600px;
+                    background-image: url(https://www.frisianflag.com/storage/app/media/funrally/Zuzuzaza---Banner.png);
+                    background-size: 100% 100%;
+                    margin: 50px 0;
+                    background-repeat: no-repeat;
+                    z-index: 2;
+                    bottom: 0;
+                    position: absolute;
+            }
+            .wrapper .wrapper-img .funrally-banner3{
+                width: 100% !important;
+                height: 425px;
+                margin: 50px 0;
+                z-index: 2;  
+            }
+            .wrapper .wrapper-img .sun{
+                width: 200px !important;
+                height: 200px !important;
+                background-image: url('https://www.frisianflag.com/storage/app/media/funrally/sun.svg');
+                background-repeat: no-repeat;
+                left: -20%;
+                bottom: -30%;
+                display: none;
+            }
+            .wrapper .wrapper-img .planet-top{
+                width: 200px !important;
+                height: 200px !important;
+                background-image: url(https://www.frisianflag.com/storage/app/media/funrally/planet.svg);
+                background-repeat: no-repeat;
+                right: -22.5%;
+                top: -350px;
+            }
+            .wrapper .wrapper-img > div {
+                width: 50%;
+            }
+            .wrapper .wrapper-img > div .image-title{
+                width: 80%;
+                align-self: center;
+            }
+            .wrapper hr{
+                color: #42B4E7 !important;
+                opacity: 1 !important;
+            }
+
+            .container-card{
+                grid-template-columns: repeat(3, 1fr);
+                grid-gap: 50px;
+            }
+            .container-card .img-wrapper{
+                height: auto;
+                background: url(https://www.frisianflag.com/storage/app/media/funrally/bgcard.png);
+                padding: 20px;
+                width: 100%;
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                position: relative;
+            }
+            .container-card .img-wrapper .bg-btn{
+                background: url(https://www.frisianflag.com/storage/app/media/funrally/btn-bg.png);
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+            }
+            .container-card .img-wrapper .bg-btn h3{
+                margin: unset;
+                padding: 25px 30px 30px 30px;
+                color: #fff;
+                font-family: 'Brevia-Bold';
+                font-size: 20px;
+                text-shadow: 1px 1px 2px #000;
+                text-align: center;
+            }
+            .container-card .img-wrapper .image img{
+                height: 300px;
+            }
+            .container-card .img-wrapper span{
+                padding: 15px 20px 20px;
+                font-family: 'Brevia-Semibold';
+                color: #fff;
+                font-size: 15px;
+            }
+            .container-card .img-wrapper .planet-1{
+                top: -30px;
+                left: -80px;
+                background: url(https://www.frisianflag.com/storage/app/media/funrally/Cowsmos.png);
+                width: 160px;
+                height: 120px;
+                background-size: 100% 100%;
+                transform: rotateZ(336deg);
+            }
+            .container-card .img-wrapper .planet-2{
+                bottom: 250px;
+                right: -100px;
+                background: url(https://www.frisianflag.com/storage/app/media/funrally/Cowsmoship.png);
+                width: 150px;
+                height: 120px;
+                background-size: 100% 100%;
+            }
+            /* end wrapper 1 */
+
+            /* wrapper 2 */
+            .wrapper2{
+                //background-image: url('https://www.frisianflag.com/storage/app/media/funrally/bg-fix.jpeg');
+                height: auto;
+                background-size: cover;
+                overflow: hidden;
+                position: relative;
+            }  
+            .wrapper2 .wrapper-button{
+                padding: 50px 0 30px 0;
+                grid-template-columns: repeat(4, 1fr);
+                grid-gap: 50px;
+            }
+            .wrapper2 .wrapper-button .bg-btn{
+                background: url(https://www.frisianflag.com/storage/app/media/funrally/btn-bg.png);
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                position: relative;
+            }
+            .wrapper2 .wrapper-button a:nth-child(1) div::after{
+                content: "";
+                //background: url(https://www.frisianflag.com/storage/app/media/funrally/planet.svg);
+                position: absolute;
+                width: 75px;
+                height: 75px;
+                top: 0;
+                left: -25px;
+                background-size: 100% 100%;
+            }
+            .wrapper2 .wrapper-button a:nth-child(2) div::after{
+                content: "";
+                //background: url(https://www.frisianflag.com/storage/app/media/funrally/planet2.svg);
+                position: absolute;
+                width: 125px;
+                height: 100px;
+                transform: rotate(319deg);
+                top: -15px;
+                left: -50px;
+                background-size: 100% 100%;           
+            }
+            .wrapper2 .wrapper-button a:nth-child(3) div::after{
+                content: "";
+                //background: url(https://www.frisianflag.com/storage/app/media/funrally/mars.png);
+                position: absolute;
+                width: 75px;
+                height: 75px;
+                top: 0;
+                left: -25px;
+                background-size: 100% 100%;                
+            }
+            .wrapper2 .wrapper-button a:nth-child(4) div::after{
+                content: "";
+                //background: url(https://www.frisianflag.com/storage/app/media/funrally/sun.svg);
+                position: absolute;
+                width: 75px;
+                height: 75px;
+                top: 0;
+                left: -25px;
+                background-size: 100% 100%;                
+            }
+            .wrapper2 .wrapper-button .bg-btn h3{
+                margin: unset;
+                padding: 25px 30px 30px 30px;
+                color: #fff;
+                font-family: 'Brevia-Bold';
+                font-size: 25px;
+                text-shadow: 1px 1px 2px #000;
+                display: flex;
+                height: 100%;
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+            .wrapper2 .wrapper-button img{
+                width: 100%;
+                height: 100px;
+            }
+            .wrapper2 .youtube-wrapper{
+                padding: 0 7.5%;
+                height: 450px;
+                position: relative;
+            }
+            .wrapper2 .youtube-wrapper .planet1{
+                width: 200px;
+                height: 150px;
+                bottom: 15px;
+                left: -10%;
+                background-image: url(https://www.frisianflag.com/storage/app/media/funrally/planet2.svg);
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+            .wrapper2 .youtube-wrapper .planet2{
+                width: 100px;
+                height: 100px;
+                top: -50px;
+                right: -50px;
+                background-image: url(https://www.frisianflag.com/storage/app/media/funrally/mars.png);
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+            .wrapper2 .milky-youtube .milky-youtube-title h2{
+                margin: 20px 0 30px;
+                background: linear-gradient(1deg, #009FFF 30%, #ec2F4B 100%);
+                -webkit-background-clip: text;
+                -webkit-text-stroke: 12px transparent;
+                color: #fff;
+                font-size: 40px;
+            }
+            .wrapper2 .youtube-wrapper .icon-m{
+                width: 300px;
+                height: 300px;
+                top: -40px;
+                left: -125px;
+                background-image: url(https://www.frisianflag.com/storage/app/media/funrally/milkyicon-m.png);
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+            .wrapper2 .youtube-wrapper .icon-f{
+                    width: 200px;
+                    height: 200px;
+                    bottom: 100px;
+                    right: -70px;
+                    background-image: url(https://www.frisianflag.com/storage/app/media/funrally/milkyicon-f.png);
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    z-index: 2;
+            }
+            .wrapper2 .youtube-wrapper .iframewrapper{
+                height: 500px;
+                width: 85%;
+                background: url('https://www.frisianflag.com/storage/app/media/funrally/youtubewrapper.png');
+                background-size: 100% 100%;
+                position: absolute;
+                top: 0;
+                right: 7.5%;
+                z-index: 2;
+            }
+            .wrapper2 .youtube-wrapper #yt-1{
+                position: absolute;
+                top: 6%;
+                right: 19%;
+                width: 62%;
+                height: 88%;
+                border-radius: 50px;
+                z-index: 2;
+            }
+            .wrapper2 .youtube-wrapper #yt-2{
+                position: absolute;
+                top: 6%;
+                right: 24%;
+                width: 52%;
+                height: 78.5%;
+                z-index: 1;
+                border-radius: 50px;
+                z-index: 1;
+            }
+            .wrapper2 .youtube-wrapper .iframewrapper #yt-3{
+                left: 123px;
+                position: absolute;
+                top: 25px;
+                width: 72.5%;
+                height: 77.5%;
+                transform: rotateZ(357deg);
+                border-radius: 50px;
+                border: 4px solid #116dc6;
+            }
+            .wrapper2 .gallery-card a, .wrapper2 .gallery-card div img, .wrapper2 .gallery-card img{
+                z-index:2;   
+            }
+            .wrapper2 .gallery-card a img{
+                height: 100px;
+                z-index:2;
+            }
+            .wrapper2 .gallery-card .bg-btn{
+                background: url(https://www.frisianflag.com/storage/app/media/funrally/btn-bg.png);
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                position: relative;
+                z-index:2;
+            }
+            .wrapper2 .gallery-card .bg-btn h3{
+                margin: unset;
+                padding: 25px 30px 30px 30px;
+                color: #fff;
+                font-family: 'Brevia-Bold';
+                font-size: 20px;
+                text-shadow: 1px 1px 2px #000;
+                display: flex;
+                height: 100%;
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+            /* end wrapper 2 */
+
+            /* wrapper 3 */
+            .wrapper3{
+                padding: 50px 0 20px 0 !important; 
+                background: #fff;
+            }
+            .wrapper3 .image-wrapper, .wrapper3 .product-ecom-wrapper{
+                height: auto;
+                width: 50%;
+                object-fit: contain;
+            }
+            .wrapper3 .ecom-wrapper{
+                padding-left: 50px;
+            }
+            .wrapper3 .ecom-list a {
+                width: 80px;
+                height: 80px;
+                margin-right: 15px;
+            }
+            .wrapper3 .ecom-list a img{
+                object-fit: contain;
+            }
+            .wrapper3 .another-ecom{
+                width: 100%;
+                max-width: 100%;
+                flex-wrap: wrap;
+            }
+            .wrapper3 .title-mid{
+                font-size: 25px;
+                font-family: 'Brevia-Semibold';
+            }
+            .wrapper3 .title-bot{
+                font-size: 20px;
+                font-family: 'Brevia-Semibold';
+            }
+            .wrapper3 .another-ecom img{
+                width: 12%;
+                height: 50px;
+                padding-right: 20px;
+                object-fit: contain;
+            }
+            /* end wrapper 3 */
+
+            /* accordion  */
+            .accordion-wrappers{
+                margin-top: 50px;    
+            }
+            .accordion-item, .accordion-button{
+                border-radius: 10px !important;    
+            }
+            .accordion-button{
+                padding: 20px 30px !important;    
+                font-size: 20px;
+            }
+            .accordion-button:focus {
+                border-color: #86b7fe;
+                box-shadow: unset !important;
+            }
+            .accordion-button:not(.collapsed) {
+                color: #003F7C !important;
+                background-color: #fff !important;
+                box-shadow: 0px 2px 20px 2px #928d8d !important
+            }
+            .accordion-button{
+                color: #003F7C !important;
+            }
+            .show .accordion-body{
+                box-shadow: 1px 2px 15px #000;
+            }  
+            .accordion-wrapper{
+                padding: 20px 50px;  
+                color:#0f4d9a;
+            }
+            .accordion-wrapper ol[type='1']{
+                margin-top: 20px;    
+            }
+            .accordion-wrapper ol[type='1'] li{
+                position: relative;    
+                margin-left: 25px;
+                padding-left: 20px;
+            }
+            .accordion-wrapper ol[type='1'] li::marker{
+                color: #009fe3;    
+            }
+            .accordion-wrapper ol[type='1'] li::before{
+            position:absolute;
+            left:-20px;
+            background-color:#009fe3;
+            z-index:-1;
+            display:inline-block;
+            width:16px;
+            height:16px;
+            border-radius:5px;
+            }
+            .accordion-wrapper ol[type='1'] li::after{
+            content: "";
+            position:absolute;
+            left:-20px;
+            background-color:#009fe3;
+            z-index:-1;
+            display:inline-block;
+            width:16px;
+            height:16px;
+            border-radius:5px;
+            }
+            .accordion-zhuzu{
+                background-image: url(https://www.frisianflag.com/storage/app/media/funrally/zhuzu-acordion.png);
+                width: 200px;
+                height: 200px;
+                background-size: contain;
+                right: -12%;
+                top: 20%;
+                z-index: 2;
+                background-repeat: no-repeat;
+            }
+            .accordion-zhaza{
+                background-image: url(https://www.frisianflag.com/storage/app/media/funrally/zazha-accordion.png);
+                width: 200px;
+                height: 200px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                left: -5%;
+                bottom: 20%;
+            }
+            
+            .accordion-button::after {
+                flex-shrink: 0;
+                width: 6px;
+                height: 25px;
+                transition: transform .2s ease-in-out;
+                content: "";
+                background-color: #EE74A3;
+                position: absolute;
+                right: 32.5px;
+                background-image: unset !important;
+                top: 20px;
+            }
+            .accordion-button::before {
+                flex-shrink: 0;
+                width: 27px;
+                height: 6px;
+                transition: transform .2s ease-in-out;
+                content: "";
+                background: #EE74A3 !important;
+                position: absolute;
+                right: 21px;
+                visibility: visible;
+                top: 29px;
+            }
+            .accordion-button:not(.collapsed)::after{
+                
+                transform: rotate(90deg) !important; 
+            }
+            /* modal */
+            .modal-kartu{
+                visibility: hidden;
+                opacity: 0;
+                transition: 0.3s;
+                background: #003F7C;
+                height: 100vh;
+                width: 100%;
+                padding: 0 10%;
+                position: fixed;
+                top: 0;
+                display: flex !important;
+                //align-items: center;
+                justify-content: center;
+                left: 0;
+                z-index: 1000; 
+                overflow: auto;
+            }
+            .modal-kartu.show{
+                visibility: visible;
+                opacity: 1;
+            }
+            .modal-kartu .container > div{
+                flex-direction: column; 
+                padding: 100px 50px 50px;
+                position: relative;
+            }
+            .modal-kartu .close{
+                position: absolute;
+                top: 50px;
+                right: 0;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: #fff;
+                border: unset;
+                border-radius: 50px;
+                box-shadow: 3px 5px 5px #000000;
+            }
+            .modal-kartu .print-img{
+                width: 40%;
+                margin: 10px 0 30px 0 !important;
+            }
+        }
+        @media screen and (max-width: 767px) {
+            #milky-id{
+                font-size: 15px;
+                color: #00a0e2;
+                text-shadow: 1px 1px 2px #c8c8c8;
+            }
+            .mainwrap{
+                background-image: url('https://www.frisianflag.com/storage/app/media/funrally/bg-fix.jpeg');    
+                background-size: cover;
+            }
+            .accordion-button::after {
+                
+                flex-shrink: 0;
+                width: 5px;
+                height: 20px;
+                transition: transform .5s ease-in-out;
+                content: "";
+                background-color: #EE74A3;
+                position: absolute;
+                right: 20px;
+                background-image: unset !important;
+                top: 27.5px;
+
+            }
+            .accordion-button::before {
+                flex-shrink: 0;
+                width: 20px;
+                height: 5px;
+                transition: transform .2s ease-in-out;
+                content: "";
+                background: #EE74A3 !important;
+                position: absolute;
+                right: 12px;
+                visibility: visible;
+                top: 35px;
+            }
+            .accordion-button:not(.collapsed)::after {
+                background-image: unset !important;
+                transform: rotate(90deg);
+            }
+            .fire{
+                width: 110% !important;
+                height: 450px;
+                background-image: url(https://www.frisianflag.com/storage/app/media/funrally/fire.png);
+                background-size: 100% 100%;
+                margin: 50px 0;
+                background-repeat: no-repeat;
+                z-index: 1;
+                bottom: -100px;
+                left: -5%;
+                position: absolute;
+            }
+            .wrapper{
+                //background-image: url('https://www.frisianflag.com/storage/app/media/funrally/bg-fix.jpeg');
+                background-size: cover;
+                overflow: hidden;
+            }   
+            .wrapper .container{
+                padding-bottom: unset !important;    
+            }
+            .wrapper .wrapper1{
+                padding-top: 200px !important;    
+                padding: 0 20px;
+            }
+            .wrapper .wrapper1 .wrapper-button{
+                display: grid !important;
+                grid-template-columns: 1fr;
+                grid-gap: 20px;
+                padding: 0 30px;
+                z-index: 2;
+            }
+            .wrapper1 .wrapper-button .bg-btn{
+                background: url(https://www.frisianflag.com/storage/app/media/funrally/btn-bg.png);
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+            }
+            .wrapper1 .wrapper-button .bg-btn h3{
+                margin: unset;
+                padding: 22.5px 30px 27.5px 30px;
+                color: #fff;
+                font-family: 'Brevia-Bold';
+                font-size: 26px;
+                text-shadow: 1px 1px 2px #000;
+                display: flex;
+                justify-content: center;
+                text-align: center;
+            }
+            .wrapper .wrapper1 .wrapper-button a{
+                z-index: 2;
+            }
+            .wrapper .wrapper1 .wrapper-img{
+                flex-direction: column !important; 
+            }
+            .wrapper .wrapper-img .funrally-banner{
+                width: 100% !important;
+                height: 300px !important;
+                background-image: url(https://www.frisianflag.com/storage/app/media/funrally/rallymobilebanner.png);
+                background-size: 100% 100%;
+                margin: 50px 0;
+                border-radius: 20px;
+                background-repeat: no-repeat;
+                box-shadow: 2px 2px 10px #000;
+                z-index: 2;
+            }
+            .wrapper .wrapper-img .funrally-banner2{
+                width: 120% !important;
+                height: 400px !important;
+                background-image: url(https://www.frisianflag.com/storage/app/media/funrally/ZuzuzazaM---Banner.png);
+                background-size: 100% 100%;
+                margin: 50px 0;
+                background-repeat: no-repeat;
+                z-index: 2;
+                bottom: 0;
+                left: -10%;
+                position: absolute;
+            }
+            .wrapper .wrapper-img .funrally-banner3{
+                width: 100% !important;
+                height: 375px !important;
+                margin: 50px 0;
+                z-index: 2;  
+            }
+            .wrapper .wrapper-img .funrally-banner img{
+                display: none;    
+            }
+            .wrapper .wrapper1 .wrapper-img img{
+                margin-bottom: 50px;    
+            }
+            .wrapper .wrapper-img .sun{
+                width: 150px !important;
+                height: 150px !important;
+                background-image: url(https://www.frisianflag.com/storage/app/media/funrally/sun.svg);
+                background-repeat: no-repeat;
+                right: -24%;
+                top: -40px;
+                background-size: contain;
+                display: none;
+            }
+            .wrapper .wrapper-img .planet-top{
+                width: 225px;
+                height: 200px;
+                top: -50%;
+                left: -30%;
+                background-image: url(https://www.frisianflag.com/storage/app/media/funrally/planet.svg);
+                background-repeat: no-repeat;
+                background-size: contain;
+                z-index: 1;
+                transform: rotateZ(332deg);
+            }
+            .wrapper .wrapper-img{
+                margin-top: unset !important;    
+            }
+            .wrapper .wrapper1 .wrapper-card{
+                margin-top: 50px !important;   
+                margin-bottom: unset !important;
+            }
+            .wrapper .wrapper1 .wrapper-card-title{
+                margin: 50px 0;
+            }
+            .wrapper .wrapper1 .wrapper-card .img-wrapper{
+                height: auto;
+                background: url(https://www.frisianflag.com/storage/app/media/funrally/bgcard.png);
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                padding: 30px 20px;
+                margin-bottom: 50px;
+                position: relative;
+            }
+            /* new edit */
+            
+            .container-card .img-wrapper .bg-btn{
+                background: url(https://www.frisianflag.com/storage/app/media/funrally/btn-bg.png);
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+            }
+            .container-card .img-wrapper .bg-btn h3{
+                margin: unset;
+                padding: 20px 30px 25px 30px !important;
+                color: #fff;
+                font-family: 'Brevia-Bold';
+                font-size: 17.5px !important;
+                text-shadow: 1px 1px 2px #000;
+                text-align: center;
+            }
+            /* end new edit */
+            
+            .wrapper .wrapper1 .wrapper-card .img-wrapper img{
+                height: auto;    
+            }
+            .wrapper .wrapper1 .wrapper-card .img-wrapper:nth-child(3) img{
+                padding: 30px;
+            }
+            .wrapper .wrapper1 .wrapper-card .img-wrapper h3{
+                font-size: 20px;
+                margin: unset;
+                padding: 10px;    
+            }
+            .wrapper .wrapper1 .wrapper-card .img-wrapper span{
+                font-size: 15px;
+                padding: 10px 20px 0 20px;
+                font-family: 'Brevia-Bold';
+                color: #fff;
+            }
+            .container-card .img-wrapper .planet-1{
+                top: -30px;
+                left: -80px;
+                background: url(https://www.frisianflag.com/storage/app/media/funrally/Cowsmos.png);
+                width: 130px;
+                height: 100px;
+                background-size: 100% 100%;
+                transform: rotateZ(336deg);
+            }
+            .container-card .img-wrapper .planet-2{
+                top: 125px;
+                right: -50px;
+                background: url(https://www.frisianflag.com/storage/app/media/funrally/Cowsmoship.png);
+                width: 100px;
+                height: 100px;
+                background-size: 100% 100%;
+            }
+            
+            
+            .wrapper2{
+                //background-image: url('https://www.frisianflag.com/storage/app/media/funrally/bg-fix.jpeg');
+                height: auto;
+                background-size: cover;
+                overflow: hidden;
+            }
+            .wrapper2 .wrapper-button{
+                display: grid !important;
+                grid-template-columns: 1fr;
+                padding: 50px 50px 20px;
+                align-items: center;
+                justify-content: center;
+            }
+            .wrapper2 .wrapper-button .bg-btn{
+                background: url(https://www.frisianflag.com/storage/app/media/funrally/btn-bg.png);
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+            }
+            .wrapper2 .wrapper-button .bg-btn h3{
+                margin: unset;
+                padding: 20px 30px 25px 30px !important;
+                color: #fff;
+                font-family: 'Brevia-Bold';
+                font-size: 27px !important;
+                text-shadow: 1px 1px 2px #000;
+                display: flex;
+                justify-content: center;
+                text-align: center;
+            }
+            .wrapper2 .wrapper-button a{
+                height: 100%;    
+            }
+            .wrapper2 .wrapper-button .slick-next:before{
+                left: -10px !important;    
+                bottom: -20px !important;
+            }
+            .wrapper2 .wrapper-button .slick-prev:before{
+                left: 10px !important;  
+                bottom: -20px !important;
+            }
+            .wrapper2 .milky-youtube div > h2{
+                margin: unset;    
+                background: linear-gradient(1deg, #009FFF 30%, #ec2F4B 100%);
+                -webkit-background-clip: text;
+                -webkit-text-stroke: 12px transparent;
+                color: #fff;
+                margin-top: 20px;
+            }
+            .wrapper2 .youtube-wrapper{
+                text-align: center;    
+            }
+            .wrapper2 .iframewrapper{
+                /*height: 400px;
+                width: 70%;
+                background: url('https://www.frisianflag.com/storage/app/media/funrally/youtubewrapper.png');
+                background-size: 100% 100%;
+                position: absolute;
+                top: 0;
+                right: 15%;
+                z-index: 1;
+                */
+            }
+            .wrapper2 iframe{
+                width: 90%;
+                z-index: 2;
+                border-radius: 30px;
+            }
+            .wrapper2 .gallery-card{
+                width: 100%;
+                margin-top: 20px;    
+                position: relative;
+            }
+            #cara-mendapatkankartu{
+                position: relative;    
+            }
+            .wrapper2 .gallery-card > div{
+                padding-top: unset !important;    
+            }
+            .wrapper2 .gallery-card .bg-btn{
+                background: url(https://www.frisianflag.com/storage/app/media/funrally/btn-bg.png);
+                background-size: 100% 100%;
+                background-repeat: no-repeat;    
+                z-index:2;
+                margin-top: 10px;
+            }
+            .wrapper2 .gallery-card .bg-btn h3{
+                margin: unset;
+                padding: 20px 30px 25px 30px !important;
+                color: #fff;
+                font-family: 'Brevia-Bold';
+                font-size: 17.5px !important;
+                text-shadow: 1px 1px 2px #000;
+                display: flex;
+                justify-content: center;
+                z-index: 2;
+                text-align: center;
+            }
+            .triggermodal img{
+                margin: 20px 0 0 0 !important;
+                padding: 0 70px !important;
+                z-index: 2;
+            }
+            .wrapper2 .gallery-card > div > img{
+                height: 150px;
+                object-fit: contain;    
+                z-index: 2;
+            }
+            .wrapper2 .trigger-modal img{
+                padding: 25px 50px 0;  
+                z-index:2;
+            }
+            .wrapper3{
+                background: #fff;    
+            }
+            .wrapper3 .product-wrapper{
+                flex-direction: column;
+            }
+            .wrapper3 .product-ecom-wrapper{
+                padding: 0 50px;    
+            }
+            .wrapper3 .product-ecom-wrapper h2{
+                font-size: 17.5px;
+                margin: 20px 0;
+            }
+            .wrapper3 .product-ecom-wrapper .ecom-list{
+                display: grid !important;
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+                grid-gap: 10px;    
+            }
+            .wrapper3 .ecom-wrapper{
+                padding: 0 50px;
+            }
+            .wrapper3 .ecom-wrapper h2{
+                font-size: 15px;
+            }
+            .wrapper3 .another-ecom{
+                display: grid !important;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                grid-gap: 20px;
+                place-items: center    
+            }
+            .wrapper3 .another-ecom img{
+                object-fit: contain;
+                height: 40px;
+            }
+            
+            .wrapper4 img{
+                height: 150px !important;
+                object-fit: fill;    
+            }
+            
+            /* modal */
+            .modal-kartu{
+                visibility: hidden;
+                opacity: 0;
+                transition: 0.3s;
+                background: #003F7C;
+                height: 100vh;
+                width: 100%;
+                padding: 0 10%;
+                position: fixed;
+                top: 0;
+                display: flex !important;
+                //align-items: center;
+                justify-content: center;
+                left: 0;
+                z-index: 1000; 
+                overflow: auto;
+            }
+            .modal-kartu.show{
+                visibility: visible;
+                opacity: 1;
+            }
+            .modal-kartu .container > div{
+                flex-direction: column;
+                height: 100%;
+                position: relative;
+            }
+            .modal-kartu .container > div > img{
+                height: 300px !important;
+                object-fit: fill;    
+            }
+            .modal-kartu .close{
+                position: absolute;
+                top: 90px;
+                right: -15px;
+                width: 30px;
+                height: 30px;
+                font-size: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: #fff;
+                border: unset;
+                border-radius: 50px;
+                box-shadow: 3px 5px 5px #000000;
+            }
+            .modal-kartu .print-img{
+                width: 40%;
+                margin: 10px 0 30px 0 !important;
+                height: auto !important;
+            }
+            .slick-slider .slick-next:before, .slick-slider .slick-prev:before {
+                font-size: 20px;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                background: #fff;
+                width: 30px;
+                height: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50px;
+                box-shadow: 2px 2px 5px #000;
+            }
+            .slick-slider .slick-next{
+                right: 0 !important;    
+            }
+            .slick-slider .slick-prev{
+                left: -10px !important;    
+            }
+            
+            /* accordion */
+            .accordion-item, .accordion-button{
+                border-radius: 10px !important;    
+            }
+            .accordion-button{
+                padding: 20px 30px 20px 50px !important;    
+                font-size: 20px;
+            }
+            .accordion-button:focus {
+                border-color: #86b7fe;
+                box-shadow: unset !important;
+            }
+            .accordion-button:not(.collapsed) {
+                color: #003F7C !important;
+                background-color: #fff !important;
+                box-shadow: 0px 2px 20px 2px #928d8d !important
+            }
+            .accordion-button{
+                color: #003F7C !important;
+                display: inline-block;
+                font-size: 15px;
+            }
+            .show .accordion-body{
+                box-shadow: 1px 2px 15px #000;
+            }
+            
+            .accordion-wrapper{
+                padding: 20px;  
+                color:#0f4d9a;
+            }
+            .accordion-wrapper h3{
+                font-size: 20px;    
+                margin: unset !important;
+            }
+            .accordion-wrapper h4{
+                font-size: 12.5px;
+            }
+            .accordion-wrapper ol[type='1']{
+                margin-top: 20px;    
+            }
+            .accordion-wrapper ol[type='1'] li{
+                position: relative;    
+                margin-left: 15px;
+                padding-left: 10px;
+                font-size: 10px;
+            }
+            .accordion-wrapper ol[type='1'] li::marker{
+                color: #009fe3;    
+            }
+            .accordion-wrapper ol[type='1'] li::before{
+            position:absolute;
+            left:-20px;
+            background-color:#009fe3;
+            z-index:-1;
+            display:inline-block;
+            width:16px;
+            height:16px;
+            border-radius:5px;
+            }
+            .accordion-wrapper ol[type='1'] li::after{
+            content: "";
+            position:absolute;
+            left:-20px;
+            background-color:#009fe3;
+            z-index:-1;
+            display:inline-block;
+            width:16px;
+            height:16px;
+            border-radius:5px;
+            }
+            .accordion-wrapper hr{
+                margin: 10px 0 !important;    
+            }
+{% endput %}
+    <div class="mainwrap"> 
+    <div class="wrapper">
+            <div class="container pb-5">
+                <div class="wrapper1 pt-5">
+                    <div class="wrapper-button d-grid justify-content-center align-items-center text-white">
+                        <a href="#cara-bermain">
+                            <div class="bg-btn">
+                                <h3>Cara Bermain<br></h3>
+                            </div>
+                        </a>
+                        <a href="#cara-mendapatkankartu">
+                            <img src="https://www.frisianflag.com/storage/app/media/funrally/btn-caramendapatkankartu.png" width="222.5" height="70">
+                        </a>
+                        <a href="javascript:void(0)" id="triggermodal">
+                            <img src="https://www.frisianflag.com/storage/app/media/funrally/btn-cekkelengkapankartu.png">
+                        </a>
+                        <a href="#beli-produkmilky">
+                            <img src="https://www.frisianflag.com/storage/app/media/funrally/btn-beliproductfrisianflag.png">
+                        </a>
+                    </div>
+                    <div class="wrapper-img d-flex my-5 position-relative">
+                       <!--  <div class="d-flex flex-column">
+                           <img src="https://www.frisianflag.com/storage/app/media/funrally/milkytop-text.png" alt="kumpulkan kartu" title="kumpulkan kartu" class="image-title">    
+                           <img src="https://www.frisianflag.com/storage/app/media/funrally/cardtop.png" alt="contoh kartu" title="Kartu Zhuzu Zhazha">
+                       </div>
+                       <div class="d-flex flex-column">
+                           <img src="https://www.frisianflag.com/storage/app/media/funrally/zuzhu-zaza.png" alt="Zhuzu Zhaza" title="kumpulkan kartu" class="image-title">    
+                           <img src="https://www.frisianflag.com/storage/app/media/funrally/milkyproduct.png" alt="contoh kartu" title="Frisian Flag Milky">
+                       </div> -->
+                        <!-- <div class="funrally-banner position-relative">
+                            <img src="https://www.frisianflag.com/storage/app/media/funrally/rallydesktopbanner.png">
+                        </div> -->
+                        <div class="funrally-banner2"></div>
+                        <div class="funrally-banner3"></div>
+                        <div class="sun position-absolute"></div>
+                        <div class="planet-top position-absolute"></div>
+                    </div>
+                    <hr id="cara-mendapatkankartu">
+                    <div class="wrapper-card mb-5">
+                        <div class="wrapper-card-title text-center text-white mt-5">
+                            <h1>Cara untuk ikut keseruan Kartu Seru Milky</h1>
+                        </div>
+                        <div class="container-card d-grid mt-5">
+                            <div class="img-wrapper d-flex flex-column justify-content-start align-items-center w-100 text-center custom-blue">
+                                <div class="image">
+                                    <img src="https://www.frisianflag.com/storage/app/media/funrally/milky-card.png" alt="funrally-product" title="funrally-product" class="w-100" width="300" height="300">
+                                </div>
+                                <a href="#beli-produkmilky">
+                                <div class="bg-btn">
+                                    <h3>1. Beli Produk</h3>
+                                </div>
+                                </a>
+                                <span>Beli produk Frisian Flag Milky di toko terdekat</span>
+                                <div class="planet-1 position-absolute"></div>
+                            </div>
+                            <div class="img-wrapper d-flex flex-column justify-content-start align-items-center w-100 text-center custom-blue">
+                                <div class="image">
+                                    <img src="https://www.frisianflag.com/storage/app/media/funrally/cardcard.png" alt="funrally-card" title="funrally-card" class="w-100" width="300" height="300">
+                                </div>
+                                <a href="#gallery-card">
+                                <div class="bg-btn">
+                                    <h3>2. Kumpulkan Kartunya</h3>
+                                </div>
+                                </a>
+                                <span>Temukan Kartu Seru Milky di balik kemasan baru Frisian Flag Milky dan kumpulkan semua serinya!</span>
+                            </div>
+                            <div class="img-wrapper d-flex flex-column justify-content-start align-items-center w-100 text-center custom-blue">
+                                <div class="image">
+                                    <img src="https://www.frisianflag.com/storage/app/media/funrally/card-3.png" alt="funrally-games" title="funrally-games" class="w-100"  height="300" width="300">
+                                </div>
+                                <a href="#cara-bermain">
+                                <div class="bg-btn">
+                                    <h3>3. Mainkan Gamesnya</h3>
+                                </div>
+                                </a>
+                                <span>Scroll ke bawah untuk mempelajari cara main 4 games yang seru!</span>
+                                <div class="planet-2 position-absolute"></div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wrapper2">
+            <div class="container pb-5" id="cara-bermain">
+                <div class="wrapper-button d-grid justify-content-center align-items-center text-white" >
+                    <a href="javascript:void(0)" data-src="https://www.youtube.com/embed/bhBpAXdKFzI" data-name="Milky Race" data-accordion="
+                                      <h4 class='rallydesc'>Jumlah Pemain:<span> 2 atau lebih</span></h4>
+                                      <h4 class='rallydesc'>Tipe kartu yg diperlukan:<span> Kartu Race, Kartu Aksi & Kartu Dadu</span></h4>
+                                      <h4 class='rallydesc'>Cara Bermain:</h4>
+                                      <p>
+                                          <ol type='1'>
+                                              <li>Susun & sambungkan kartu race sesuai dengan keinginanmu untuk membentuk sebuah trek</li>
+                                              <hr>
+                                              <li>Tentukan titik awal & akhir dari trek yang telah dibentuk</li>
+                                              <hr>
+                                              <li>Letakkan pion pilihanmu (bebas untuk ditentukan sendiri) di titik awal</li>
+                                              <hr>
+                                              <li>Kumpulkan kartu aksi mejadi satu tumpukkan dan letakkan di tengah, menghadap ke bawah</li>
+                                              <hr>
+                                              <li>Pemain pertama akan melemparkan dadu dan maju sesuai dengan angka yang didapatkan</li>
+                                              <hr>
+                                              <li>Ikuti dan selesaikan instruksi yang ada di kartu atau trek dimana kamu mendarat. Berikut contoh  instruksi yang bisa kamu temukan:
+                                                  <ol type='a'>
+                                                      <li><span class='custom-blue'>Maju 1 – 3 Langkah:</span> Maju 1 sampai 3 langkah sesuai dengan instruksi di kartu race </li>
+                                                      <li><span class='custom-blue'>Kamu Kehilangan 1 Putaran:</span> Kamu kehilangan giliran lempar dadu di putaran selanjutnya</li>
+                                                      <li><span class='custom-blue'>Ambil Kartu Aksi:</span> Ambil 1 kartu dari tumpukkan kartu aksi di tengah, kemudian ikuti instruksi yang  tertulis di bagian bawah kartu aksi</li>
+                                                      <li><span class='custom-blue'>Tukar Posisi Dengan Temanmu:</span> Pilih 1 pemain lainnya untuk bertukar posisi denganmu</li>
+                                                      <li><span class='custom-blue'>Mundur 1 atau 2 Langkah:</span> Mundur 1 atau 2 langkah sesuai dengan instruksi di kartu race</li>
+                                                      <li><span class='custom-blue'>Lempar Dadu Lagi:</span> Silahkan melempar dadu lagi di putaran yang sama untuk mendapatkan langkah  tambahan</li>
+                                                      <li><span class='custom-blue'>Balik ke Titik Awal:</span> Kembali ke titik awal trek dan mulai perjalanan dari awal</li>
+                                                  </ol>
+                                              </li>
+                                              <hr>
+                                              <li>Di dalam satu putaran, 1 pemain hanya boleh menyelesaikan 1 instruksi atau tantangan</li>
+                                              <hr>
+                                              <li>Lanjutkan permainan secara bergilir</li>
+                                              <hr>
+                                              <li>Pemain pertama yang berhasil sampai ke titik akhir trek adalah pemenangnya</li>
+                                              <hr>
+                                          </ol>
+                                      </p>">
+                        <div class="bg-btn">
+                            <h3>Milky Race</h3>
+                        </div>
+                    </a>
+                    <a href="javascript:void(0)" data-src="https://www.youtube.com/embed/NXGD1oH1WE4" data-name="Milky Aha" data-accordion="
+                                      <h4 class='rallydesc'>Jumlah Pemain:<span> 2 atau lebih</span></h4>
+                                      <h4 class='rallydesc'>Tipe kartu yg diperlukan:<span> Kartu Aksi</span></h4>
+                                      <h4 class='rallydesc'>Cara Bermain:</h4>
+                                      <p>
+                                          <ol type='1'>
+                                              <li>Bagikan kartu aksi menghadap ke bawah secara merata ke setiap pemain, sampai habis</li>
+                                              <hr>
+                                              <li>Tanpa dibuka (masih menghadap ke bawah), setiap pemain akan mengumpulkan kartu
+aksi masing-masing menjadi satu tumpukkan untuk diletakkan di depannya</li>
+                                              <hr>
+                                              <li>Secara bergilir, pemain akan membuka satu kartu dari tumpukkan kartu aksi miliknya
+sambil mengamati simbol di bagian kanan atas kartu aksi yang dikeluarkan pemain
+selanjutnya</li>
+                                              <hr>
+                                              <li>Jika ada 5 simbol yang sama (secara total) di kartu-kartu yang telah dikeluarkan,
+pemain harus bersaing untuk menjadi yang pertama menepuk meja atau lantai dan
+teriak “Aha!”</li>
+                                              <hr>
+                                              <li>Jika benar, pemain yang menyebutkan “Aha” di ronde itu akan mendapatkan kartu-
+kartu tersebut yang menjumlahkan 5 simbol yang sama</li>
+                                              <hr>
+                                              <li>Jika salah, pemain yang menyebutkan “Aha” di ronde itu harus membagikan 1 kartu
+dari tumpukkan kartu miliknya ke setiap pemain lainnya
+                                              </li>
+                                              <hr>
+                                              <li>Lanjutkan permainan secara bergilir</li>
+                                              <hr>
+                                              <li>Jika ada pemain yang kehabisan kartu, pemain tersebut akan gugur dari ronde
+permainan</li>
+                                              <hr>
+                                              <li>Pemenangnya adalah pemain yang berhasil bertahan ketika semua pemain lainnya
+telah kehabisan kartu dan gugur dari ronde permainan</li>
+                                              <hr>
+                                          </ol>
+                                      </p>">
+                        <div class="bg-btn">
+                            <h3>Milky Aha</h3>
+                        </div>
+                    </a>
+                    <!-- <a href="#" style="height: 100px; background-image: url('../image/btn-milkyaksi.png'); width: 100%; background-size: contain;background-repeat: no-repeat;"> -->
+                    <a href="javascript:void(0)" data-src="https://www.youtube.com/embed/g_Sug7kYGj4" data-name="Milky Aksi" data-accordion="
+                                      <h4 class='rallydesc'>Jumlah Pemain:<span> 2 atau lebih</span></h4>
+                                      <h4 class='rallydesc'>Tipe kartu yg diperlukan:<span> Kartu Aksi</span></h4>
+                                      <h4 class='rallydesc'>Cara Bermain:</h4>
+                                      <p>
+                                          <ol type='1'>
+                                              <li>Kumpulkan kartu aksi menjadi satu tumpukkan dan letakkan di tengah, menghadap ke bawah</li>
+                                              <hr>
+                                              <li>Di setiap bagian atas kartu aksi terdapat instruksi atau tantangan yang berbeda untuk
+dilakukan selama permainan</li>
+                                              <hr>
+                                              <li>Pemain pertama akan mengambil dan membuka satu kartu dari tumpukkan kartu aksi di
+tengah, dimana tantangan di kartu tersebut harus dilakukan oleh pemain selanjutnya</li>
+                                              <hr>
+                                              <li>Jika berhasil, pemain yang menyelesaikan tantangan tersebut akan mendapatkan kartu
+tersebut dan melanjutkan permainan dengan mengambil dan membuka satu kartu aksi
+lainnya untuk memberikan tantangannya ke pemain selanjutnya</li>
+                                              <hr>
+                                              <li>Lanjutkan permainan secara bergilir dari satu pemain ke pemain selanjutnya sampai
+tumpukkan kartu aksi habis</li>
+                                              <hr>
+                                              <li>Jika ada pemain yang tidak berhasil menyelesaikan tantangan yang tertulis di kartu aksi,
+pemain tersebut akan gugur dari ronde permainan
+                                              </li>
+                                              <hr>
+                                              <li>Pemenangnya adalah pemain yang berhasil menyelesaikan tantangan terbanyak dan
+mengumpulkan kartu aksi paling banyak di akhir ronde permainan</li>
+                                              <hr>
+                                          </ol>
+                                      </p>">
+                        <div class="bg-btn">
+                            <h3>Milky Aksi</h3>
+                        </div>
+                    </a>
+                    <a href="javascript:void(0)" data-src="https://www.youtube.com/embed/age1qTKZY8o" data-name="Milky Boom" data-accordion="
+                                      <h4 class='rallydesc'>Jumlah Pemain:<span> 2 atau lebih</span></h4>
+                                      <h4 class='rallydesc'>Tipe kartu yg diperlukan:<span> Kartu Race & Kartu Aksi (Full Set)</span></h4>
+                                      <h4 class='rallydesc'>Cara Bermain:</h4>
+                                      <p>
+                                          <ol type='1'>
+                                              <li>Gabungkan full set kartu race & aksi</li>
+                                              <hr>
+                                              <li>Bagikan 7 kartu secara acak ke setiap pemain menghadap ke bawah dan kumpulkan kartu yang tersisa
+menjadi satu tumpukkan untuk diletakkan di tengah</li>
+                                              <hr>
+                                              <li>Mulai permainan dengan mengambil dan membuka satu kartu dari tumpukkan kartu di tengah</li>
+                                              <hr>
+                                              <li>Pemain pertama memulai dengan memilih dan mengeluarkan satu kartu dari kartu-kartu miliknya dengan
+warna, angka atau simbol yang sama dengan kartu yang telah dibuka dari langkah sebelumnya</li>
+                                              <hr>
+                                              <li>Pemain selanjutnya akan mengulangi proses tersebut. Lanjutkan permainan secara bergilir ke pemain
+selanjutnya.</li>
+                                              <hr>
+                                              <li>Jika ada pemain yang tidak memiliki kartu dengan warna, angka atau simbol yang sama dengan kartu yang
+dimainkan oleh pemain sebelumnya, maka pemain tersebut harus mengambil 1 kartu dari tumpukkan
+kartu di tengah<ul>
+    <li>Kartu ini dapat langsung dimainkan jika memiliki warna, angka atau simbol yang sama dengan kartu
+yang dimainkan oleh pemain sebelumnya</li>
+<li>Jika kartu tersebut tidak memiliki warna, angka atau simbol yang sama dengan kartu yang dimainkan
+oleh pemain sebelumnya, maka kartu itu harus disimpan dan permainan berlanjut ke pemain
+selanjutnya.</li>
+</ul>
+                                              </li>
+                                              <hr>
+                                              <li>Jika pemain hanya memiliki 1 kartu tersisa di tangannya, pemain tersebut harus segera mengucapkan kata
+“Milky!”<ul><li>Jika pemain tersebut tidak mengucapkan kata “Milky”, pemain lainnya dapat menunjuk pemain
+tersebut dan mengatakan “Milky” terlebih dahulu. Pemain yang memiliki 1 kartu tersebut kemudian
+akan mendapatkan penalti dan harus mengambil 2 kartu ekstra dari tumpukkan kartu di tengah.</li></ul></li>
+                                              <hr>
+                                              <li>Pemenangnya adalah pemain pertama yang dapat menghabiskan semua kartu di tangannya</li>
+                                              <hr>
+                                          </ol>
+                                      </p>">
+                        <div class="bg-btn">
+                            <h3>Milky Boom</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="milky-youtube">
+                    <div class="milky-youtube-title text-white text-center pb-5">
+                        <h2>Tonton videonya untuk cara main <span id="milkytitle-top">milky race</span<</h2>
+                    </div> 
+                    <div class="youtube-wrapper position-relative">
+                        <div class="iframewrapper"></div>
+                        <iframe  src="https://www.youtube.com/embed/bhBpAXdKFzI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="yt-1"></iframe>
+                        <div class="icon-m position-absolute"></div>
+                        <div class="icon-f position-absolute"></div>
+                    </div>
+                    <!-- <div class="youtube-wrapper">
+                        <div class="iframewrapper"></div>
+                        <iframe  src="https://www.youtube.com/embed/zEFRr8jiJ_s?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="yt-2"></iframe>
+                    </div>
+                    <div class="youtube-wrapper">
+                        <div class="iframewrapper">
+                        <iframe  src="https://www.youtube.com/embed/zEFRr8jiJ_s?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="yt-3"></iframe>  
+                    </div> -->
+                </div>
+                    <div class="accordion-wrappers py-5">
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                              <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Click di sini untuk instruksi lengkap games <span id="milky-id" style="font-family: 'brevia-bold';">Milky Race</span>
+                                </button>
+                              </h2>
+                              <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body position-relative">
+                                    <div class='accordion-wrapper'>
+                                      
+                                      <h4 class='rallydesc'>Jumlah Pemain:<span> 2 atau lebih</span></h4>
+                                      <h4 class='rallydesc'>Tipe kartu yg diperlukan:<span> Kartu Race, Kartu Aksi & Kartu Dadu</span></h4>
+                                      <h4 class='rallydesc'>Cara Bermain:</h4>
+                                      <p>
+                                          <ol type='1'>
+                                              <li>Susun & sambungkan kartu race sesuai dengan keinginanmu untuk membentuk sebuah trek</li>
+                                              <hr>
+                                              <li>Tentukan titik awal & akhir dari trek yang telah dibentuk</li>
+                                              <hr>
+                                              <li>Letakkan pion pilihanmu (bebas untuk ditentukan sendiri) di titik awal</li>
+                                              <hr>
+                                              <li>Kumpulkan kartu aksi mejadi satu tumpukkan dan letakkan di tengah, menghadap ke bawah</li>
+                                              <hr>
+                                              <li>Pemain pertama akan melemparkan dadu dan maju sesuai dengan angka yang didapatkan</li>
+                                              <hr>
+                                              <li>Ikuti dan selesaikan instruksi yang ada di kartu atau trek dimana kamu mendarat. Berikut contoh  instruksi yang bisa kamu temukan:
+                                                  <ol type='a'>
+                                                      <li><span class='custom-blue'>Maju 1 – 3 Langkah:</span> Maju 1 sampai 3 langkah sesuai dengan instruksi di kartu race </li>
+                                                      <li><span class='custom-blue'>Kamu Kehilangan 1 Putaran:</span> Kamu kehilangan giliran lempar dadu di putaran selanjutnya</li>
+                                                      <li><span class='custom-blue'>Ambil Kartu Aksi:</span> Ambil 1 kartu dari tumpukkan kartu aksi di tengah, kemudian ikuti instruksi yang  tertulis di bagian bawah kartu aksi</li>
+                                                      <li><span class='custom-blue'>Tukar Posisi Dengan Temanmu:</span> Pilih 1 pemain lainnya untuk bertukar posisi denganmu</li>
+                                                      <li><span class='custom-blue'>Mundur 1 atau 2 Langkah:</span> Mundur 1 atau 2 langkah sesuai dengan instruksi di kartu race</li>
+                                                      <li><span class='custom-blue'>Lempar Dadu Lagi:</span> Silahkan melempar dadu lagi di putaran yang sama untuk mendapatkan langkah  tambahan</li>
+                                                      <li><span class='custom-blue'>Balik ke Titik Awal:</span> Kembali ke titik awal trek dan mulai perjalanan dari awal</li>
+                                                  </ol>
+                                              </li>
+                                              <hr>
+                                              <li>Di dalam satu putaran, 1 pemain hanya boleh menyelesaikan 1 instruksi atau tantangan</li>
+                                              <hr>
+                                              <li>Lanjutkan permainan secara bergilir</li>
+                                              <hr>
+                                              <li>Pemain pertama yang berhasil sampai ke titik akhir trek adalah pemenangnya</li>
+                                              <hr>
+                                          </ol>
+                                      </p>
+                                    </div>
+                                  
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="gallery-card px-5" id="gallery-card">
+                        <div class="d-flex">
+                        <img src="https://www.frisianflag.com/storage/app/media/funrally/listcardmilky.png" alt="gallery-card" title="gallery-card" class="w-100 h-100">
+                        </div>
+                        <a href="javascript:void(0)" class="d-flex justify-content-center triggermodal">
+                            <div class="bg-btn">
+                                <h3>Cek Kelengkapan Kartumu</h3>
+                            </div>
+                        </a>
+                        <div class="d-flex justify-content-center pt-5">
+                            <img src="https://www.frisianflag.com/storage/app/media/funrally/text.png" alt="" width="870" height="300">
+                        </div>
+                        <div class="fire"></div>
+                    </div>
+                </div>
+                <!-- <div class="section-print" style="height: 900px">
+                    <a href="#" class="">
+                        <img src="https://www.frisianflag.com/storage/app/media/funrally/collectioncard.png" alt="">
+                    </a>
+                </div> -->
+            </div>
+        </div>
+    </div>
+        <div class="wrapper3 pt-5" id="beli-produkmilky">
+            <div class="container">
+                <div class="product-wrapper d-flex justify-content-between">
+                    <div class="image-wrapper">
+                        <img src="https://www.frisianflag.com/storage/app/media/funrally/milkyproduct.png" alt="w-100 h-100" class="w-100 h-100">
+                    </div>
+                    <div class="product-ecom-wrapper d-flex flex-column justify-content-center custom-blue">
+                        <h2 class="title-mid">Beli Product Frisian Flag Milky di sini dan kumpulkan 58 Kartu Seru Milky!</h2>
+                        <div class="ecom-list d-flex pt-1">
+                            <a href="https://www.tokopedia.com/frisian-flag">
+                                <img src="https://www.frisianflag.com/storage/app/media/funrally/tokopedia.png" alt="tokopedia" title="tokopedia" class="w-100 h-100">
+                            </a>
+                            <a href="https://shopee.co.id/universal-link/frisianflagofficial?deep_and_web=1&page=0&shopCollection=19321013&smtt=9&utm_campaign=p70448302_ss_id_othr_ff-assets-2022&utm_content=ff-assets-2022-websitertd&utm_medium=seller&utm_source=website">
+                                <img src="https://www.frisianflag.com/storage/app/media/funrally/shoope.png" alt="shoope" title="shoope" class="w-100 h-100">
+                            </a>
+                            <a href="https://www.lazada.co.id/beli-makanan-minuman-susu-uht/?frisian-flag&q=All-Products&from=wangpu&sc=KVUG&spm=a2o4j.8553159.cutImages_2237746408.2">
+                                <img src="https://www.frisianflag.com/storage/app/media/funrally/lazada.png" alt="lazada" title="lazada" class="w-100 h-100">
+                            </a>
+                            <a href="https://www.jd.id/product/frisian-flag-zuzhu-cokelat-botol-carton-24pcs-x-180ml_12622083/106166450.html?utm_source=websiteffi&utm_medium=productpage&utm_id=organic">
+                                <img src="https://www.frisianflag.com/storage/app/media/funrally/jdid.png" alt="jdid" title="jdid" class="w-100 h-100">
+                            </a>
+                            <a href="https://www.klikindomaret.com/frisianflag-susu-siap-minum?utm_medium=display&utm_source=websiteffi&utm_campaign=ffisususiapminum-websiteffi-201221">
+                                <img src="https://www.frisianflag.com/storage/app/media/funrally/klikindomaret.png" alt="klikindomaret" title="klikindomaret" class="w-100 h-100">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="ecom-wrapper py-5 custom-blue">
+                    <h2 class="pb-3 title-bot">Product Kami Juga Tersedia di:</h2>
+                    <div class="d-flex justify-content-center another-ecom pb-4">
+                        
+                            <img src="https://www.frisianflag.com/storage/app/media/funrally/alfa.png" alt="" width="300" height="300">
+                        
+                        
+                            <img src="https://www.frisianflag.com/storage/app/media/funrally/indomaret.png" alt="" width="300" height="300">
+                        
+                        
+                            <img src="https://www.frisianflag.com/storage/app/media/funrally/alfamidi.png" alt="" width="300" height="300">
+                        
+                        
+                            <img src="https://www.frisianflag.com/storage/app/media/funrally/yomart.png" alt="" width="300" height="300">
+                        
+                        
+                            <img src="https://www.frisianflag.com/storage/app/media/funrally/superindo.png" alt="" width="300" height="300">
+                        
+                        
+                            <img src="https://www.frisianflag.com/storage/app/media/funrally/yogya.png" alt="" width="300" height="300">
+                        
+                        
+                            <img src="https://www.frisianflag.com/storage/app/media/funrally/ramayana.png" alt="" width="300" height="300">
+                        
+                        
+                            <img src="https://www.frisianflag.com/storage/app/media/funrally/aeon.png" alt="" width="300" height="300">
+                        
+                    </div>
+                    <div class="d-flex justify-content-center another-ecom">
+                        
+                        
+                            <img src="https://www.frisianflag.com/storage/app/media/funrally/lulu.png" alt="" width="300" height="300">
+                        
+                        
+                            <img src="https://www.frisianflag.com/storage/app/media/funrally/hypermart.png" alt="" width="300" height="300">
+                        
+                            <img src="https://www.frisianflag.com/storage/app/media/funrally/lotte.png" alt="" width="300" height="300">
+                        
+                            <img src="https://www.frisianflag.com/storage/app/media/funrally/carefur.png" alt="" width="300" height="300">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="wrapper4"> 
+            <img src="https://www.frisianflag.com/storage/app/media/funrally/bannerbot.png" alt="" class="w-100 h-100">
+        </div>
+        
+        <div class="modal-kartu">
+            <div class="container">
+                <div class="d-flex justify-content-center align-items-center">
+                    <button class="close closemodal">X</button>
+                    <img src="https://www.frisianflag.com/storage/app/media/funrally/cardlist.png" alt="FullCard Zhuzu Zhaza" title="FullCard Zhuzu Zhaza" class="w-100 h-100">
+                    <a href="https://www.frisianflag.com/storage/app/media/funrally/cardlist.png" class="text-center" download>
+                        <img src="https://www.frisianflag.com/storage/app/media/funrally/btn-print.png" alt="Print Milky Card" title="Print Milky Card" class="print-img h-100">
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        {% partial 'site/footer' %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        
+        <script>
+        $(function(){
+             var data = {
+                triggermodal: $(".triggermodal"),
+                triggermodal2: $("#triggermodal"),
+                closemodal: $(".closemodal"),
+                modal: $(".modal-kartu"),
+                showmodal: function () {
+                    this.triggermodal.click(() => this.modal.addClass("show") );
+                },
+                showmodaltop: function() {
+                    this.triggermodal2.click(() => this.modal.addClass("show") );      
+                },
+                close: function() {
+                    this.closemodal.click(() => this.modal.removeClass("show") );
+                },
+                init: function(){
+                  this.showmodal(),
+                  this.showmodaltop(),
+                  this.close()
+                }
+            }
+            data.init();  
+            
+            
+            $(".wrapper2 .wrapper-button a").click( function(){
+                let src = $(this).attr("data-src");
+                let title = $(this).attr("data-name");
+                let data = $(this).attr('data-accordion');
+                $('.accordion-wrapper').html(data);
+                $('#yt-1').removeAttr("src").attr("src", src);
+                $('#milkytitle-top').text(title);
+                $('#milky-id').text(title);
+                
+            } )
+        })
+        if( window.innerWidth <= 767 ){
+                $(".wrapper-button").slick({
+                    slidesToShow: 1, 
+                    adaptiveHeight: true
+                })
+                
+                $('.wrapper2 .wrapper-button').on('afterChange', function(event, slick, currentSlide, nextSlide){
+                  $(".wrapper2 .wrapper-button a:not(.slick-cloned")[currentSlide].click()
+                });
+        }
+        </script>

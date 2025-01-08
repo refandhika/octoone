@@ -1,0 +1,72 @@
+title = "Kreasi Takjil galeri amp"
+url = "/amp/aktivitas-kami/kreasi-takjil/galeri"
+layout = "basic-amp"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/kreasi-takjil-galeri-amp"
+==
+<?php
+function onStart(){
+    $this->page->meta_description = "Terima kasih atas partisipasi Moms! Frisian Flag mendonasikan kreasi takjil para pemenang mingguan di panti asuhan berikut.";
+}
+?>
+==
+<div class="cover">
+        <amp-img 
+            src="{{ 'kreasi-takjil/banner/kreasi-takjil-mobile.png'|media }}"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Kreasi Takjil Mobile">
+        </amp-img>
+</div>
+<amp-accordion class="title_home">
+    <section>
+        <h4 class="arrow_down"><a href="#" target="_self">Galeri</a></h4>
+        <p>
+            <a href="/aktivitas-kami/kreasi-takjil">Cara Mengikuti</a>
+            <a href="/aktivitas-kami/kreasi-takjil/syarat-dan-ketentuan" class="active">Syarat dan ketentuan</a>
+            <a href="/aktivitas-kami/kreasi-takjil/galeri">Galeri</a>
+          <a href="/aktivitas-kami/kreasi-takjil/pemenang">Pemenang</a>                  
+        </p>
+    </section>
+</amp-accordion>
+
+
+
+<!--s:event-->
+<section class="event">
+   <div class="detail_text mb-20 mt-20">
+       <div class="content mb-10">
+           <div class="card-amp">
+               <a href="/aktivitas-kami/kreasi-takjil/galeri/yayasan-darul-rahmah-ragunan">
+                    <amp-img class="card-amp-img" src="{{'kreasi-takjil/darul-rahmah-ragunan.jpg'|media }}" width="1" height="1" layout="responsive"></amp-img> 
+                    <div class="card-amp-meta">
+                        <h3 style="color: white">Yayasan Darul Rahmah Ragunan</h3>
+                    </div>
+                </a>              
+            </div>
+            <br />             
+            <div class="card-amp">
+              <a href="/aktivitas-kami/kreasi-takjil/galeri/yatim-piatu-amanah-pondok-labu">
+                    <amp-img class="card-amp-img" src="{{'kreasi-takjil/yatim-piatu-amanah-pondok-labu.jpg'|media }}" width="1" height="1" layout="responsive"></amp-img> 
+                    <div class="card-amp-meta">
+                        <h3 style="color: white">Yatim Piatu Amanah Pondok Labu</h3>
+                    </div>
+                </a>  
+            </div>
+            <br />  
+            <div class="card-amp">
+              <a href="/aktivitas-kami/kreasi-takjil/galeri/yayasan-bangun-kecerdasan-bangsa-pasar-rebo">
+                    <amp-img class="card-amp-img" src="{{'kreasi-takjil/yayasan-bangun-kecerdasan-bangsa-pasar-rebo.jpg'|media }}" width="1" height="1" layout="responsive"></amp-img> 
+                    <div class="card-amp-meta">
+                        <h3 style="color: white">Yayasan Bangun Kecerdasan Bangsa Pasar Rebo</h3>
+                    </div>
+                </a>  
+            </div>            
+            <br /> 
+         </div>
+    </div>
+</section>
+<!--s:event-->

@@ -1,0 +1,387 @@
+[viewBag]
+
+[\Flynsarmy\Menu\Components\Menu menu]
+menu_id = 2
+==
+<?php
+function onStart()
+{
+    $this['AMP_GTM_ID'] = env('AMP_GTM_ID');
+    $this['AMP_GA_ID'] = env('AMP_GA_ID');
+    $param = Request::input('testing') ? Request::input('testing') : '';
+    $this['param'] = $param;
+
+
+$this['GTMETRIX'] = 'NO';
+if(
+strpos($_SERVER['HTTP_USER_AGENT'], 'X11; Linux x86_64) AppleWebKit/537.36') !== false ||
+strpos($_SERVER['HTTP_USER_AGENT'], 'GTmetrix') !== false ||
+strpos($_SERVER['HTTP_USER_AGENT'], 'Linux; Android 6.0.1; SAMSUNG SM-G930F Build/MMB29K') !== false
+){
+  $this['GTMETRIX'] = 'YES';
+}
+
+}
+?>
+==
+<!doctype html>
+<html ⚡ lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <title>Beranda | Frisian Flag Indonesia</title>
+    <link rel="canonical" href="frisianflag.com/">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+	<meta name="title" content="{{ this.page.meta_title}}">
+    <meta name="description" content="{{ this.page.meta_description }}">
+
+    <meta name="facebook-domain-verification" content="t2ubto7jn7dd9h6si4fk19a8gd88ks" />
+    <meta name=“facebook-domain-verification” content=“74hs9dbda87d9cawoguzz2w7pjviwl” />
+    <meta name="ahrefs-site-verification" content="112d70195f4804d5ec8b0a26f6808e96afa04708dac83c5ded305ccf923cb44e">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/themes/rainlab-bonjour/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/themes/rainlab-bonjour/assets/favicon/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/themes/rainlab-bonjour/assets/favicon/favicon-32x32.png" sizes="32x32">
+    <style amp-boilerplate>
+        body {
+            -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            animation: -amp-start 8s steps(1, end) 0s 1 normal both
+        }
+
+        @-webkit-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @-moz-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @-ms-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @-o-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+        </style>
+    <noscript>
+        <style amp-boilerplate>
+            body {
+                -webkit-animation: none;
+                -moz-animation: none;
+                -ms-animation: none;
+                animation: none
+            }
+        </style>
+    </noscript>
+
+    <style amp-custom>
+    @font-face {
+            font-family: Brevia-semibold;
+            font-style: normal;
+            font-weight: 500;
+            src: url(/themes/rainlab-bonjour/assets/fonts/Brevia-Semibold.woff);
+        }
+        @font-face {
+            font-family: Brevia-black;
+            font-style: normal;
+            font-weight: 500;
+            src: url(/themes/rainlab-bonjour/assets/fonts/Brevia-Black.woff);
+        }
+        @font-face {
+            font-family: Brevia-Regular;
+            font-style: normal;
+            font-weight: 500;
+            src: url(/themes/rainlab-bonjour/assets/fonts/Brevia-Regular.woff);
+        }
+        /* reset a link */
+        a {
+            color: inherit; /* blue colors for links too */
+            text-decoration: inherit; /* no underline */
+        }          
+        /* --- */
+
+        .body-amp {
+            font-family: Brevia-semibold,Helvetica,Arial,sans-serif;
+            font-size: 14px;
+        } 
+
+        .svg-inline--fa{
+            height: 22px;
+            margin: 12px;
+        }
+        
+        .h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6{font-family:inherit;font-weight:500;line-height:1.1;color:inherit}footer,ul{padding:0;margin:0}.carousel-child{border-radius:5px;border:1px solid #eee;padding:20px;box-sizing:border-box}.carousel-img{max-height:70%;max-width:70%;margin:0 auto}.home-amp-container{padding:15px;margin:0 auto;display:block;max-width:480px}.card-amp{background-size:cover;background-repeat:no-repeat;background-position:center;position:relative;overflow:hidden;height:0;padding-bottom:100%;-webkit-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;border-radius:5px;color:#fff;border:1px solid #eee}.card-amp-img{position:absolute;top:0;left:0;right:0;bottom:0}.card-amp-img:after{content:"";top:0;left:0;right:0;bottom:0;position:absolute;background:rgba(0,0,0,.3)}.card-amp-img img{object-fit:cover}.card-amp-meta{position:absolute;bottom:0;padding:20px}.card-amp-container>*{margin-bottom:10px}.section-amp-title{text-align:center;font-size:25px;font-family:Brevia-black,Helvetica,Arial,sans-serif;color:#0F4D9A}.card-amp-category{background:#fff;color:#337ab7;position:absolute;top:20px;right:20px;padding:6px 15px;border-radius:20px;z-index:2}.amp-slider-costum{height:100vw}.amp-slider-costum2{height:100vw}.carousel-slider-img img{object-fit:cover;object-position:center}.carousel-container{position:relative}.caraousel-dots{position:absolute;bottom:0;padding:40px 0;width:auto;left:50%;transform:translateX(-50%);height:20px}.caraousel-dots>*{width:10px;height:10px;border-radius:10px;display:inline-block;margin:0 2px;background-color:#fff}.caraousel-dots>.current{background-color:#0F4D9A}.button-amp{display:block;-webkit-appearance:none;width:max-content;height:40px;border:0;-webkit-border-radius:25px;-moz-border-radius:25px;-ms-border-radius:25px;border-radius:25px;font-size:14px;background-color:#009FE3;color:#fff;padding:0 30px;line-height:38px;transition:background-position .75s ease-in-out;background-position:0 -50%;background-repeat:repeat-x}.menus-amp,.sidebar-amp{width:100%;box-sizing:border-box}.button-amp:focus,.button-amp:hover{background-position:100% 50%;color:#fff;text-decoration:none}#target-element-left,.sidebar-amp{background:#fff}.carousel-header{position:absolute;bottom:0;padding-bottom:20px}.sidebar-amp{max-width:unset}.menus-amp{position:absolute;top:0;left:0;right:0;z-index:10;padding:10px 20px}.menus-amp.scroll{background:#fff;box-shadow:0 1px 10px rgba(0,0,0,.3)}.menus-amp.scroll .menu-amp-action{color:#000}.menu-amp-action{color:#fff}.menu-amp-action.active{color:#000}.menu-amp{display:flex;justify-content:space-between;align-items:center}.wrp-navbar{width:30px;float:right;margin:5px 0 5px 15px;display:block}.toolbar-amp{margin-top:120px}.toolbar-amp ul{list-style-type:none;padding:0}.toolbar-amp li{text-align:center;margin:20px;color:#45acd9}.title-blue>h3{text-shadow:5px 3px rgba(0,0,0,.14);font-size:24px;color:#0F4D9A;font-family:Brevia-Black,Helvetica,Arial,sans-serif}amp-accordion section,amp-accordion section>ul{margin:20px 0;display:block}.dropdown-header-menu{color:#124a9d;background:unset;border:unset;text-align:center;font-size:16px}.menus--footer a,.newsletter__meta,.text-center{text-align:center}amp-accordion section>h3.ic-dropdown:after{content:"";display:inline-block;background:url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='angle-down' class='svg-inline--fa fa-angle-down fa-w-10' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath fill='%23124a9d' d='M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat;margin-left:5px;width:18px;position:absolute;height:18px;vertical-align:bottom}amp-accordion section:not([expanded]) .show-less{display:none}footer{font-size:16px}.footer__copyright{font-size:12px;padding:20px 0 30px;text-align:center;line-height:1.4;font-family:Brevia-Regular,Helvetica,Arial,sans-serif}.footer__menu li{margin-right:7px;display:inline-block}.footer__menu li:not(:last-child) a:after{content:'|';margin-left:5px}.footer__menu{list-style:none;margin:0}.footerblue{background:#0F4D9A;color:#fff;box-sizing:border-box}.footerblue>*{border-bottom:1px solid #225DA4;padding:18px}.fs-15{font-size:15px}.newsletter__meta p{font-family:Brevia-Regular,Helvetica,Arial,sans-serif}.content-fullhalf h3,.footer__widget__title,.newsletter__meta h3{font-family:Brevia-Black,Helvetica,Arial,sans-serif}.newsletter__form{width:100%;max-width:400px;margin:0 auto}.newsletter__form input[type=email]{height:56px;padding:0 60px 0 25px;background:#033B80;border-radius:50px;border:0;color:#fff;width:100%;outline:0;font-size:16px;-webkit-appearance:none;box-sizing:border-box}.newsletter__form form{position:relative}.newsletter__form__btn{width:46px;height:46px;position:absolute;right:5px;top:5px;display:block;background:#ABDAF1;-webkit-border-radius:46px;-moz-border-radius:46px;-ms-border-radius:46px;border-radius:46px;border:0;-webkit-appearance:none;color:#0F4D9A;font-size:25px}.newsletter__meta h3{font-size:20px;margin-bottom:10px}.footer__widget__title{font-size:28px;margin-top:0;margin-bottom:32px}.sites-list{margin:15px 10px;display:inline-block}.footer__widget__box{padding-top:30px;padding-bottom:30px;line-height:1.428571429;font-family:Brevia-Regular,Helvetica,Arial,sans-serif}.footer__widget__box a{color:#337ab7;text-decoration:none;text-decoration-line:none;text-decoration-style:initial;text-decoration-color:initial}.social-follow a{width:50px;height:50px;-webkit-border-radius:50px;-moz-border-radius:50px;-ms-border-radius:50px;border-radius:50px;background:#fff;color:#0F4D9A;font-size:24px;line-height:48px;margin:0 3px;opacity:1;display:inline-block}.menus--footer{display:flex;justify-content:center;align-items:center}.menus--footer a{display:block;height:58px;width:58px;border-radius:58px;background:#0f4d9a;margin:20px;color:#fff}.menus--footer svg{display:block;margin:18px auto}.menus--footer i{color:#0f4d9a;font-style:unset;padding:10px 0;display:block}.main-slide__caption{top:0;left:0;color:#fff;margin-top:20vh;position:absolute;z-index:1;padding:0 23px;box-sizing:border-box;font-family:Brevia-semibold,Helvetica,Arial,sans-serif;font-size:14px}.main-slide__caption p{line-height:1.57;text-shadow:0 2px 10px rgba(0,0,0,.6)}.main-slide__caption h2{font-family:Brevia-Black,Helvetica,Arial,sans-serif;text-shadow:5px 3px rgba(0,0,0,.14);margin-top:0}.logo__text{font-size:10px;margin-top:-10px;text-shadow:0 0 2px rgba(0,0,0,.5);margin-left:0;display:block;color:#fff;text-align:center;font-family:Brevia-Black,Helvetica,Arial,sans-serif;}.uppercase{text-transform: uppercase}
+        
+            .object-fit-cover {
+                object-fit : cover;    
+            }
+            
+            .carousel-container .button-amp.button--large{
+            position:absolute;
+            bottom:5%;
+            left:5%;
+            font-size: 12px;
+            padding: 0px 20px;
+            margin:auto;
+            z-index:5;
+            }
+            {% if param != '' %}
+            .carousel-container .button-amp.button--large{
+             bottom:5%;
+             left:5%;
+             right:auto;
+             font-size: 12px;
+            padding: 0px 20px;
+            }
+            {% endif %}
+            {% if param == '2' %}
+            .carousel-container{padding-top:122px;}.menus-amp{background-color:#009FE3}
+            {% elseif param == '1'%}
+            
+            {% endif %}
+    </style>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+    <script async custom-element="amp-accordion" src="https://cdn.ampproject.org/v0/amp-accordion-0.1.js"></script>
+
+    {% if GTMETRIX == 'NO' %}
+        <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+        <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+        <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+        <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+         <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
+    {% endif %}
+</head>
+
+<body class="body-amp">
+<!-- Google Tag Manager -->
+<amp-analytics config="https://www.googletagmanager.com/amp.json?id=GTM-KZZGV9Q&gtm.url=SOURCE_URL" data-credentials="include"></amp-analytics>
+<amp-analytics type="googleanalytics">
+    <script type="application/json">
+    {
+      "vars": {
+        "account": "UA-9912630-22"
+      },
+      "triggers": {
+        "videoplay": {
+          "on": "video-play",
+          "selector": "amp-youtube",
+          "request": "event",
+          "vars": {
+            "eventLabel": "${title}",
+            "eventAction": "Play",
+            "eventCategory": "Youtube"
+          }
+        },
+        "myVideoEnded": {
+            "on": "video-ended",
+            "request": "event",
+            "selector": "amp-youtube",
+            "vars": {
+                "eventLabel": "${title}",
+                "eventAction": "Complete Watched",
+                "eventCategory": "Youtube"
+              }
+          },
+          "myVideoPercentagePlayed25": {
+            "on": "video-percentage-played",
+            "request": "event",
+            "selector": "amp-youtube",
+            "videoSpec": {
+              "percentages": [25]
+            },
+            "vars": {
+                "eventLabel": "${title}",
+                "eventAction": "Watched 25%",
+                "eventCategory": "Youtube"
+            }
+          },
+          "myVideoPercentagePlayed50": {
+            "on": "video-percentage-played",
+            "request": "event",
+            "selector": "amp-youtube",
+            "videoSpec": {
+              "percentages": [50]
+            },
+            "vars": {
+                "eventLabel": "${title}",
+                "eventAction": "Watched 50%",
+                "eventCategory": "Youtube"
+            }
+          },
+          "myVideoPercentagePlayed75": {
+            "on": "video-percentage-played",
+            "request": "event",
+            "selector": "amp-youtube",
+            "videoSpec": {
+              "percentages": [75]
+            },
+            "vars": {
+                "eventLabel": "${title}",
+                "eventAction": "Watched 75%",
+                "eventCategory": "Youtube"
+            }
+          },
+          "myVideoPercentagePlayed100": {
+            "on": "video-percentage-played",
+            "request": "event",
+            "selector": "amp-youtube",
+            "videoSpec": {
+              "percentages": [100]
+            },
+            "vars": {
+                "eventLabel": "${title}",
+                "eventAction": "Watched 100%",
+                "eventCategory": "Youtube"
+            }
+          },
+          "myVideoPause": {
+            "on": "video-pause",
+            "request": "event",
+            "selector": "amp-youtube",
+            "vars": {
+                "eventLabel": "${title}",
+                "eventAction": "Pause",
+                "eventCategory": "Youtube"
+            }
+          }
+    }
+}
+    </script>
+    </amp-analytics>
+<!--
+   <amp-analytics config="https://www.googletagmanager.com/amp.json?id={{ AMP_GTM_ID }}&gtm.url=SOURCE_URL" data-credentials="include"></amp-analytics>
+        <amp-analytics type="googleanalytics">
+            <script type="application/json">
+                {
+                    "vars": {
+                        "account": "{{ AMP_GA_ID }}"
+                    },
+                    "triggers": {
+                        "sampledOnRandom": {
+                            "on": "visible",
+                            "request": "pageview",
+                            "sampleSpec": {
+                                "sampleOn": "${random}",
+                                "threshold": 50
+                            }
+                        },
+                        "sampledOnClientId": {
+                            "on": "visible",
+                            "request": "pageview",
+                            "sampleSpec": {
+                                "sampleOn": "${clientId(cookieName)}",
+                                "threshold": 50
+                            }
+                        }
+                    }
+                }
+            </script>
+        </amp-analytics>
+        -->
+    <!-- Facebook Pixel Analytics tracking -->
+       <!--  <amp-analytics type="facebookpixel" id="facebook-pixel">
+           <script type="application/json">
+           {
+               "vars": {
+                   "pixelId": "1152867051533614"
+               },
+               "triggers": {
+                   "trackPageview": {
+                       "on": "visible",
+                       "request": "pageview"
+                   }
+               }
+           }
+           </script>
+       </amp-analytics> -->
+        <!-- End Facebook Pixel Analytics example -->    
+    <amp-sidebar 
+        id="sidebar-left"
+        class="sidebar-amp"
+        layout="nodisplay"
+        side="right">
+            <div class="menus-amp">
+                <div class="menu-amp">
+                    <amp-img src="/themes/rainlab-bonjour/assets/img/logo_ff_low.png" width="80" height="80"></amp-img>
+                    <a class="menu-amp-action active" on="tap:sidebar-left.close">
+                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" class="svg-inline--fa fa-bars fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <nav class="toolbar-amp" toolbar="(width: 100%)" toolbar-target="target-element-left">
+                <ul>
+                    <amp-accordion expand-single-section>
+                        {% for menu in menu.getList['data'] %}
+                        	<section>
+                        		{% if menu['children'] is not empty %}
+                        			<h3 class="ic-dropdown dropdown-header-menu uppercase"><a href="{{ menu['url'] }}" target="_self">{{ menu['label'] }}</a></h3>
+                        			<ul>
+                        			{% for child in menu['children'] %}
+                        				{% if(child['enabled']) %}
+                        				    <li><a href="{{ child['url'] }}" target="_self">{{ child['label'] }}</a></li>
+                        				{% endif %}
+                        			{% endfor %}
+                        			</ul>
+                        		{% else %}
+                        		<h3 class="dropdown-header-menu uppercase"><a href="{{ menu['url'] }}" target="_self">{{ menu['label'] }}</a></h3>
+                        		<ul></ul>
+                        		{% endif %}
+                        	</section>
+                        {% endfor %}
+                    </amp-accordion>
+                </ul>
+            </nav> 
+            <div class="menus--footer">
+                <a href="/login" target="_blank">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" class="svg-inline--fa fa-user fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path></svg>
+                    <i>Masuk / Daftar</i>
+                </a>
+                <a href="/hubungi-kami">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="envelope" class="svg-inline--fa fa-envelope fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path></svg>
+                    <i>Hubungi Kami</i>                
+                </a>
+                <a href="/pencarian" target="_blank">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg>
+                    <i>Search</i>                                
+                </a>
+            </div>
+    </amp-sidebar>

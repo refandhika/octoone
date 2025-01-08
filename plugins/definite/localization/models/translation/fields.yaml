@@ -1,0 +1,20 @@
+fields:
+    key:
+        label: Key
+        oc.commentPosition: ''
+        span: full
+        required: 1
+        attributes:
+            maxlength: '191'
+        type: text
+    trans_id:
+        label: 'Translation (id)'
+        size: small
+        span: full
+        required: 1
+        type: richeditor
+    trans_en:
+        label: 'Trans (en)'
+        size: small
+        span: full
+        type: richeditor

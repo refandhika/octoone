@@ -1,0 +1,190 @@
+title = "sample-recomendation-menu"
+url = "/sample-recomendation-menu"
+is_hidden = 0
+==
+<?php
+function onStart(){
+    $recomendation = collect(Definite\Activities\Models\RecomendationMenu::get()[0]);
+    
+    $total_imt = 2150;
+    $tier = null;
+    $label = null;
+    
+    $tier_1 = $recomendation['tier_1'][0];
+    $periode_1 =  $recomendation['periode_1'];
+    
+    $tier_2 = $recomendation['tier_2'][0];
+    $periode_2 =  $recomendation['periode_2'];
+    
+    $tier_3 = $recomendation['tier_3'][0];
+    $periode_3 =  $recomendation['periode_3'];
+    
+    $tier_4 = $recomendation['tier_4'][0];
+    $periode_4 =  $recomendation['periode_4'];
+    
+    $tier_5 = $recomendation['tier_5'][0];
+    $periode_5 =  $recomendation['periode_5'];
+    
+    if($total_imt <= 1700 ){
+        
+        $tier = $tier_1;
+        $label = $periode_1;
+    } elseif($total_imt <= 1900 ){
+        $tier = $tier_2;
+        $label = $periode_2;
+        
+    }elseif($total_imt <= 2100 ){
+        $tier = $tier_3;
+        $label = $periode_3;
+        
+    }elseif($total_imt <= 2300 ){
+        $tier = $tier_4;
+        $label = $periode_4;
+        
+    }else {
+        $tier = $tier_5;
+        $label = $periode_5;
+    }
+    $data = [
+        'label' => [$periode_1, $periode_2 , $periode_3 , $periode_4 , $periode_5],
+        'menu' => $tier
+    ];
+    
+    $this['data'] = $data;
+}
+?>
+==
+<html>
+<head>
+<style>
+
+    input.input-trigger {
+      position: absolute;
+      opacity: 0;
+      z-index: -1;
+    }
+    .recomendation-menu {
+        display : flex;
+        align-items : center;
+        margin-top : 20px;
+        gap : 50px
+    }
+    .recomendation-menu .img-wrapper {
+        position : relative;
+        background : #4BB0F7;
+        width : 30%;
+        padding-top : 25%;
+        border-radius : 10px;
+        margin-bottom : 20px;
+    }
+    
+    /* Accordion styles */
+    .tabs {
+      overflow: hidden;
+      background : #E7F5FF
+    }
+    
+    .tab {
+      width: 100%;
+      color: white;
+      overflow: hidden;
+      margin-bottom : 15px;
+    }
+    .tab-label {
+      display: flex;
+      justify-content: space-between;
+      border-radius: 50px;
+      padding: 1em;
+      background: #4BB0F7;
+      font-weight: bold;
+      cursor: pointer;
+      /* Icon */
+    }
+    .tab-label:hover {
+      background: #4BB0F3;
+    }
+    .tab-label::after {
+      content: "❯";
+      width: 1em;
+      height: 1em;
+      text-align: center;
+      transition: all 0.35s;
+    }
+    .tab-content {
+      max-height: 0;
+      padding: 0 5em;
+      background: white;
+      transition: all 0.35s;
+      width: 100%;
+      margin: auto;
+      color : #3B5C98;
+      margin-top : 20px;
+      border-radius : 8px
+    }
+    .tab-close {
+      display: flex;
+      justify-content: flex-end;
+      padding: 1em;
+      font-size: 0.75em;
+      background: #4BB0F7;
+      cursor: pointer;
+    }
+    .tab-close:hover {
+      background: #4BB0F3;
+    }
+    
+    input.input-trigger:checked + .tab-label {
+      background: #4BB0F3;
+    }
+    input.input-trigger:checked + .tab-label::after {
+      transform: rotate(90deg);
+    }
+    input.input-trigger:checked ~ .tab-content {
+      max-height: 1000vh;
+      height : max-content;
+      padding: 4em;
+    }
+</style>
+</head>
+<body>
+        <div class="tabs">
+            <div class="container">
+                {% set index = 0 %}
+                {% for key , item in data.menu %}
+                {% set index = index + 1 %}
+                  <div class="tab">
+                    <input type="radio" class="input-trigger" id="rd{{ index }}" name="rd">
+                    <label class="tab-label" for="rd{{ index }}">{{ data.label[index - 1] }}</label>
+                    <div class="tab-content">
+                      <h3>Total Kalori : Kal</h3>
+                      
+                    {% set index_1 = 0 %}
+                      {% for menu in item %}
+                    {% set index_1 = index_1 + 1 %}
+                      <div class="recomendation-menu">
+                        <div class="img-wrapper">
+                            <img src="" />
+                        </div>
+                        <div class="menu-content">
+                            <h4>{{menu.name}}</h4>
+                            <ul>
+                                <li>Berat : {{ menu.berat }} g</li>
+                                <li>Kalori : {{ menu.kalori }} Kal</li>
+                                <li>Protein : {{ menu.protein }} g</li>
+                                <li>Karbohidrat : {{ menu.karbohidrat }} g</li>
+                                <li>Lemak : {{ menu.lemak }} g</li>
+                            </ul>
+                        </div>
+                      </div>
+                      {% if index_1 != (item | length)  %}
+                          <hr>
+                      {% endif %}
+                      {% endfor %}
+        
+                    </div>
+                  </div>
+                  {% endfor %}
+            </div>
+        </div>
+</body>
+</html>

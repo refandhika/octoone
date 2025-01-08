@@ -1,0 +1,88 @@
+fields:
+    main_banner:
+        label: 'Main Banner'
+        mode: image
+        span: full
+        type: mediafinder
+    banners:
+        label: 'Banners Slider'
+        prompt: 'Add new banner'
+        span: full
+        type: repeater
+        commentAbove: 'Auto swipes with Carousel/ Banner Slider product images (USP) and snapshots of product & appetizing dishes/snacks (Brand image with a touch of breakfast)'
+        form:
+            fields:
+                link:
+                    label: 'Banner Link'
+                    span: auto
+                    type: text
+                image:
+                    label: 'Banner Image'
+                    mode: image
+                    span: right
+                    type: mediafinder
+                content:
+                    label: 'Banner Content'
+                    size: small
+                    span: full
+                    type: richeditor
+    promos:
+        label: Promos
+        prompt: 'Add new promo'
+        span: full
+        type: repeater
+        commentAbove: 'Auto swipes with promo visuals i.e. clear discounts'
+        form:
+            fields:
+                name:
+                    label: 'Promo Name'
+                    span: auto
+                    type: text
+                link:
+                    label: 'Promo Link'
+                    span: auto
+                    type: text
+                image:
+                    label: 'Promo Image'
+                    mode: image
+                    span: full
+                    type: mediafinder
+tabs:
+    fields:
+        recipes:
+            label: Recipes
+            prompt: 'Add new Recipes'
+            span: full
+            type: repeater
+            commentAbove: 'Breakfast inspiration based on high searched recipe keywords'
+            tab: Recipe
+            form:
+                fields:
+                    recipe:
+                        label: 'Recipe Item'
+                        nameFrom: title
+                        descriptionFrom: description
+                        emptyOption: 'Select Recipe'
+                        select: title
+                        span: left
+                        type: relation
+                    recipe_url:
+                        label: 'Recipe Url'
+                        span: right
+                        type: text
+        articles:
+            label: Articles
+            prompt: 'Add new item'
+            span: full
+            type: repeater
+            commentAbove: 'Updates on most recent brand activities i.e. local activation summary, new tvc'
+            tab: Article
+            form:
+                fields:
+                    article:
+                        label: 'Article item'
+                        nameFrom: title
+                        descriptionFrom: description
+                        emptyOption: 'Select Article'
+                        span: full
+                        type: relation

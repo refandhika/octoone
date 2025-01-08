@@ -1,0 +1,13 @@
+columns:
+    title:
+        label: 'Submenu Karir'
+        type: text
+        searchable: true
+        sortable: true
+    is_enabled:
+        label: 'Status Tampil'
+        type: text
+        searchable: true
+        sortable: true
+        select: title
+        relation: status

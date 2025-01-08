@@ -1,0 +1,4 @@
+title: Categories
+modelClass: Definite\Activities\Models\Category
+toolbar:
+    buttons: reorder_toolbar

@@ -1,0 +1,17 @@
+plugin:
+    name: 'definite.funfact::lang.plugin.name'
+    description: 'definite.funfact::lang.plugin.description'
+    author: Definite
+    icon: oc-icon-lightbulb-o
+    homepage: ''
+navigation:
+    fun-fact:
+        label: 'Fakta Seru'
+        url: definite/funfact/funfact
+        icon: icon-lightbulb-o
+        permissions:
+            - manage_fun_fact
+permissions:
+    manage_fun_fact:
+        tab: 'Fakta Seru'
+        label: 'Manage Fakta Seru Menu'

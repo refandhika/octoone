@@ -1,0 +1,10 @@
+name: CareerCenter
+form: $/leverate/careers/models/careercenter/fields.yaml
+modelClass: Leverate\Careers\Models\CareerCenter
+defaultRedirect: leverate/careers/careercenter
+create:
+    redirect: 'leverate/careers/careercenter/update/:id'
+    redirectClose: leverate/careers/careercenter
+update:
+    redirect: leverate/careers/careercenter
+    redirectClose: leverate/careers/careercenter

@@ -1,0 +1,57 @@
+plugin:
+    name: 'definite.activities::lang.plugin.name'
+    description: 'definite.activities::lang.plugin.description'
+    author: Definite
+    icon: oc-icon-dribbble
+    homepage: ''
+navigation:
+    activity:
+        label: 'Aktivitas Kami'
+        url: definite/activities/activities
+        icon: icon-dribbble
+        permissions:
+            - manage_activity_menu
+        sideMenu:
+            activity-category:
+                label: 'Kategori Aktivitas Kami'
+                url: definite/activities/categories
+                icon: icon-sitemap
+                permissions:
+                    - manage_activity_category
+            activity-gallery:
+                label: 'Galeri Aktivitas'
+                url: definite/activities/gallery
+                icon: icon-image
+                permissions:
+                    - manage_activity_gallery
+            activity-list:
+                label: Activities
+                url: definite/activities/activities
+                icon: icon-dribbble
+                permissions:
+                    - manage_activity_content
+            article-imt:
+                label: 'Article IMT'
+                url: definite/activities/articleimt
+                icon: icon-sitemap
+            recomendation-menu:
+                label: 'Recomendation Menu'
+                url: definite/activities/recomendationmenu
+                icon: icon-sliders
+            winning-scm-menu:
+                label: 'SCM Winner'
+                url: definite/activities/winningscm
+                icon: icon-trophy
+permissions:
+    manage_activity_menu:
+        tab: 'Aktivitas Kami'
+        label: 'Manage Aktivitas Menu'
+    manage_activity_category:
+        tab: 'Aktivitas Kami'
+        label: 'Manage Aktivitas Kategori'
+    manage_activity_gallery:
+        tab: 'Aktivitas Kami'
+        label: 'Manage Aktivitas Galeri'
+    manage_activity_content:
+        tab: 'Aktivitas Kami'
+        label: 'Manage Aktivitas Kontent'

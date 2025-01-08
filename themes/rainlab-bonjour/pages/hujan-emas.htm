@@ -1,0 +1,59 @@
+title = "Undian Hujan Emas 2019"
+url = "/aktivitas-kami/hujan-emas"
+layout = "default"
+is_hidden = 1
+
+[viewBag]
+localeUrl[en] = "/hujan-emas"
+==
+<?php
+/*function onEnd(){
+    $this->page->amp_url = $this->pageUrl('hujan-emas-amp');
+    }*/
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+    	<img src="{{ 'hujan-emas/banner/Frisian-Flag-Hujan-Emas-Banner.jpg'|media }}" class="hidden-xs" alt="Banner Frisian Flag Hujan Emas Desktop" />
+        <img src="{{ 'hujan-emas/banner/Frisian-Flag-Hujan-Emas-Banner-m.jpg'|media  }}" class="visible-xs" alt="Banner Frisian Flag Hujan Emas Mobile"  />
+    </div>
+</div>
+
+{% partial 'site/hujan-emas-menu' %}
+
+<div id='main-section' style="padding:0">
+        <div class="default-content">
+             <div class="center-img" style="text-align: center;">
+                <img src="{{ 'hujan-emas/asset/Frisian-Flag-Hujan-Emas-Pemenang.jpg'|media  }}"  width="100%" class="hidden-xs" >
+                <img src="{{ 'hujan-emas/asset/Frisian-Flag-Hujan-Emas-Pemenang.jpg'|media  }}"  width="100%" class="visible-xs">
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="https://www.frisianflag.com/storage/app/media/hujan-emas/asset/Frisian-Flag-Hujan-Emas-Pemenang-Hires.jpg" class="button btnblue" download>Unduh di Sini</a>
+            </div>
+        </div>
+</div>
+
+<style>
+    .default-content h3 {
+        font-size: 22px;
+        line-height: 1.2;
+    }
+
+    @media screen and (min-width: 767px) {
+        .default-content h3 {
+            font-size: 30px;
+        }
+    }
+
+  @media screen and (max-width: 767px) {
+    .m-bottom-15 {
+      margin-bottom: 15px;
+    }
+  }
+</style>
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

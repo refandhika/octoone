@@ -1,0 +1,91 @@
+description = "Layout Ramadan Istimewa - Promo"
+
+[staticPage]
+useContent = 1
+default = 0
+==
+{% partial 'site/banner-ramadan-istimewa' %}
+
+<div id='main-section'>
+    <section class="ri-promo ri-promo-rtd">
+        <div class="container">
+            <h1>Frisian Flag Susu UHT</h1>
+    		<div class="row">
+    			<div class="col-sm-12 col-md-12 ri-promo-img">
+    			    <img src="{{ 'ramadan-istimewa/Alfamart_RTD-min.jpg'|media  }}" class="hidden-xs img-rounded" />
+                    <img src="{{  'ramadan-istimewa/Alfamart_RTD-mobile.jpg'|media  }}" class="visible-xs img-rounded" />
+    			    <a href="{{ '/aktivitas-kami/ramadan-istimewa/resep-sahur' }}" target="_blank" class="button">Lihat Promo</a>
+                    <a href="{{ '/aktivitas-kami/ramadan-istimewa/syarat-dan-ketentuan-alfamart-rtd' }}" target="_blank" class="button">Syarat dan Ketentuan</a>
+    			</div> <!--  .col-sm-12 col-md-4 -->
+                <div class="col-sm-12 col-md-12 ri-promo-img">
+                    <img src="{{ 'ramadan-istimewa/Alfamidi_RTD-min.jpg'|media  }}" class="hidden-xs img-rounded" />
+                    <img src="{{  'ramadan-istimewa/Alfamidi_RTD-mobile.jpg'|media  }}" class="visible-xs img-rounded" />
+                    <a href="{{ '/aktivitas-kami/ramadan-istimewa/alfamidi/rtd' }}" target="_blank" class="button">Lihat Promo</a>
+                    <a href="{{ '/aktivitas-kami/ramadan-istimewa/syarat-dan-ketentuan-alfamidi-rtd' }}" target="_blank" class="button">Syarat dan Ketentuan</a>
+                </div>
+    		</div> <!--  .row -->
+		</div>
+	</section>
+    <section class="ri-promo ri-promo-scm">
+        <div class="container">
+            <h1>Frisian Flag Kental Manis</h1>
+            <div class="row">
+                <div class="col-sm-12 col-md-12 ri-promo-img">
+                    <img src="{{ 'ramadan-istimewa/Alfamart_SCM-min.jpg'|media  }}" class="hidden-xs img-rounded" />
+                    <img src="{{  'ramadan-istimewa/Alfamart_SCM-mobile.jpg'|media  }}" class="visible-xs img-rounded" />
+    			    <a href="{{ '/aktivitas-kami/ramadan-istimewa/resep-takjil-istimewa' }}" target="_blank" class="button">Lihat Promo</a>
+                    <a href="{{ '/aktivitas-kami/ramadan-istimewa/syarat-dan-ketentuan-alfamart-skm' }}" target="_blank" class="button">Syarat dan Ketentuan</a>
+                </div>
+                <div class="col-sm-12 col-md-12 ri-promo-img">
+                   <img src="{{ 'ramadan-istimewa/Alfamidi_SCM-min.jpg'|media  }}" class="hidden-xs img-rounded" />
+                    <img src="{{  'ramadan-istimewa/Alfamidi_SCM-mobile.jpg'|media  }}" class="visible-xs img-rounded" />
+                    <a href="{{ '/aktivitas-kami/ramadan-istimewa/alfamidi/skm' }}" target="_blank" class="button">Lihat Promo</a>
+                    <a href="{{ '/aktivitas-kami/ramadan-istimewa/syarat-dan-ketentuan-alfamidi-skm' }}" target="_blank" class="button">Syarat dan Ketentuan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+  <!--   <section class="ri-promo ri-promo-sk">
+      <div class="container">
+          <h1>SYARAT DAN KETENTUAN</h1>
+      </div>
+  </section> -->
+</div>
+<style>
+    .ri-promo {
+        font-family: Brevia-Black,Helvetica,Arial,sans-serif;
+        color: #0F4D9A;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 45px 0;
+    }
+    .ri-promo h1 {
+        font-size: 36px;
+        margin-bottom: 35px;
+    }
+    .ri-promo-rtd {
+        background: #91e5ff;
+        background-image: url({{ 'ramadan-istimewa/pattern-ramadan.png'|media }});
+        background-size: contain;
+    }
+    .ri-promo-scm {
+        background: #6acbee;
+        background-image: url({{ 'ramadan-istimewa/pattern-ramadan.png'|media }});
+        background-size: contain;
+    }
+    .ri-promo-sk {
+        background: #6acbee;
+        background-image: url({{ 'ramadan-istimewa/pattern-ramadan.png'|media }});
+        background-size: contain;
+    }
+    .ri-promo-img {
+        text-align: left;
+        margin-bottom: 15px;
+    }
+    .ri-promo-img a {
+        margin-left: 50px;
+        position: relative;
+        top: -100px;
+    }
+</style>
+{% partial 'site/footer-without-login' %}

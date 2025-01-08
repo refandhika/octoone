@@ -1,0 +1,34 @@
+[viewBag]
+==
+<div class="cover">
+        <amp-img 
+            src="{{ 'assets/img/staticbaner-xs.jpg'|theme }}"
+            srcset="{{ 'assets/img/staticbaner-xs.jpg'|theme }} 640w,
+                 {{ 'assets/img/staticbaner-xs.jpg'|theme }} 320w"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Banner static">
+        </amp-img>
+</div>
+
+<section class="event">
+	
+	<div class="main-section center mt-10">
+		<amp-img 
+            src="{{ 'assets/img/icon-gear.png'|theme }}"
+            srcset="{{ 'assets/img/icon-gear.png'|theme }} 640w,
+                 {{ 'assets/img/icon-gear.png'|theme }} 320w"
+            width="100"
+            height="100"
+            layout="fixed"
+            alt="Icon Gear">
+        </amp-img>
+            <div class="detail_text mt-10">
+                        <h1 style="font-size:22px">Maaf saat ini kamu tidak dapat mengakses halaman ini karena sedang dalam perbaikan</h1>   
+            </div>
+		   <div style="margin-bottom: 50px; margin-top: 20px;"><a href="{{ 'home' | page }}" class="button">{{ 'beranda'|_ }}</a></div>
+		
+		</div>
+
+</section>

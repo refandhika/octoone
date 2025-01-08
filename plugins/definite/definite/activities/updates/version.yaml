@@ -1,0 +1,68 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table definite_activities_category'
+    - builder_table_create_definite_activities_category.php
+1.0.3:
+    - 'Created table definite_activities_activity'
+    - builder_table_create_definite_activities_activity.php
+1.0.4:
+    - 'Created table definite_activities_categories_activities'
+    - builder_table_create_definite_activities_categories_activities.php
+1.0.5:
+    - 'Updated table definite_activities_activity'
+    - builder_table_update_definite_activities_activity.php
+1.0.6:
+    - 'Updated table definite_activities_category'
+    - builder_table_update_definite_activities_category.php
+1.0.7:
+    - 'Updated table definite_activities_category'
+    - builder_table_update_definite_activities_category_2.php
+1.0.8:
+    - 'Updated table definite_activities_category'
+    - builder_table_update_definite_activities_category_3.php
+1.0.9:
+    - 'Updated table definite_activities_category'
+    - builder_table_update_definite_activities_category_4.php
+1.0.10:
+    - 'Created table definite_activities_gallery'
+    - builder_table_create_definite_activities_gallery.php
+1.0.11:
+    - 'Created table definite_activities_gallery_category'
+    - builder_table_create_definite_activities_gallery_category.php
+1.0.12:
+    - 'Updated table definite_activities_gallery'
+    - builder_table_update_definite_activities_gallery.php
+1.0.13:
+    - 'Updated table definite_activities_gallery_category'
+    - builder_table_update_definite_activities_gallery_categories.php
+1.0.14:
+    - 'Updated table definite_activities_category'
+    - builder_table_update_definite_activities_category_5.php
+1.0.15:
+    - 'Updated table definite_activities_gallery'
+    - builder_table_update_definite_activities_gallery_2.php
+1.0.16:
+    - 'Updated table definite_activities_gallery'
+    - builder_table_update_definite_activities_gallery_3.php
+1.0.17:
+    - 'Updated table definite_activities_gallery'
+    - builder_table_update_definite_activities_gallery_4.php
+1.0.18:
+    - 'Drop table definite_activities_gallery'
+    - builder_table_delete_definite_activities_gallery.php
+1.0.19:
+    - 'Drop table definite_activities_gallery_categories'
+    - builder_table_delete_definite_activities_gallery_categories.php
+1.0.20:
+    - 'Created table definite_activities_gallery'
+    - builder_table_create_definite_activities_gallery.php
+1.0.21:
+    - 'Updated table definite_activities_gallery'
+    - builder_table_update_definite_activities_gallery.php
+1.0.22:
+    - 'Updated table definite_activities_activity'
+    - builder_table_update_definite_activities_activity_2.php
+1.0.23:
+    - 'Updated table definite_activities_category'
+    - builder_table_update_definite_activities_category_6.php

@@ -1,0 +1,172 @@
+description = "Layout for Indomaret - Main"
+
+[staticPage]
+useContent = 1
+default = 0
+
+[subscriberform]
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "all"
+
+[SessionClose]
+load_js = 1
+==
+<?php
+function onStart() {
+  if (!Auth::check()) {
+    return \Redirect::to('/aktivitas-kami/promo-indomaret/daftar');
+  }
+}
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+    	<img src="{{ 'assets/img/indomaret/header-main-desktop.jpg'|theme }}" class="hidden-xs" />
+      <img src="{{ 'assets/img/indomaret/header-main-mobile.jpg'|theme }}" class="visible-xs" />
+    </div>
+</div>
+
+{% partial 'site/indomaret-menu' %}
+
+<div id='main-section' class="container" style="padding: 60px 0;">
+    <div class="col-md-10 col-md-offset-1">
+      <img src="{{ 'assets/img/indomaret/quiz.png'|theme }}" />
+
+      <form action="" method="POST" class="form" style="padding: 30px 15px" id="formQuizIndomaret" enctype="multipart/form-data">
+        <div class="row" style="margin-bottom: 30px">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="jumlah">Berapa Jumlah Frisian Flag Purefarm pada gambar di atas?</label>
+            </div>
+          </div>
+          <div class="col-md-1">
+            <div class="form-group">
+              <input name="jumlah" class="form-control" id="jumlah" type="text">
+            </div>
+          </div>
+        </div>
+        
+        <div class="row" style="margin-bottom: 20px">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="alasan">Sebutkan rasa favoritmu dan ceritakan pengalaman serumu bersama Frisian Flag Purefarm 225 ml</label>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="form-group">
+              <textarea name="alasan" id="alasan" cols="30" rows="10" class="form-control" required></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="margin-bottom: 30px">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="">
+                <p>Upload struk belanja / tanda terima dari Indomaret seperti contoh di sini: Syarat dan Ketentuan</p>
+                <p>* struk wajib memperlihatkan tanggal pembelian dan nama produk Frisian Flag.</p>
+              </label>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="form-group">
+              <input id="struk" type="file" name="struk_upload[]" required multiple>
+            </div>
+            <div class="form-group">
+              <input id="agreement" name="agreement" type="checkbox" required>
+              <label for="agreement">
+                Menyetujui dengan syarat dan ketentuan*
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <input type="submit" class="button medium pull-right" id="kirimQuiz" value="Kirim" />
+          </div>
+        </div>
+      </form>
+    </div>
+</div>
+
+<input type="hidden" id="submitFormURL" value="{{ url('/form/indomaret') }}">
+
+<style>
+	.default-content h3 {
+	    font-size: 22px;
+	    line-height: 1.2;
+	}
+
+	@media screen and (min-width: 767px) {
+		.default-content h3 {
+			font-size: 30px;
+		}
+	}
+
+  @media screen and (max-width: 767px) {
+    .m-bottom-15 {
+      margin-bottom: 15px;
+    }
+  }
+</style>
+{% put scripts %}
+<script>
+  /* Docs here: http://plugins.krajee.com/file-input */
+  $(document).ready(function(e) {
+    $('#struk').fileinput({
+      maxFileCount: 5,
+      theme: 'fa',
+      showCaption: false,
+      browseOnZoneClick: true,
+      showUpload: false,
+      fileActionSettings: {
+        showRemove: true,
+        showUpload: false,
+        showDownload: false,
+        showZoom: false,
+        removeIcon: 'x',
+      },
+      layoutTemplates: {
+        btnBrowse: '<div tabindex="500" class="{css}"{status}>Upload struk di sini</div>'
+      }
+    });
+
+    $('body').on('submit', '#formQuizIndomaret', function(e){
+      e.preventDefault();
+      $('#kirimQuiz').attr('disabled', 'disabled');
+      var formData = new FormData(this);
+
+      $.ajax({
+        type: 'POST',
+        url: $('#submitFormURL').val(),
+        data:formData,
+        cache:false,
+        contentType: false,
+        processData: false,
+        success: function(data) {
+          if (data.status == 'success') {
+            window.location.href= "{{ url('/aktivitas-kami/promo-indomaret/terima-kasih') }}"
+          } else {
+            $('#kirimQuiz').removeAttr('disabled', 'disabled');
+            alert(data.errors);
+          }
+        }
+      });
+    })
+  });
+</script>
+{% endput %}
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

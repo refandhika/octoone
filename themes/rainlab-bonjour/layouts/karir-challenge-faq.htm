@@ -1,0 +1,121 @@
+description = "Layout for karir challenge faq"
+
+[staticPage]
+useContent = 1
+default = 0
+
+[subscriberform]
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "all"
+
+[SessionClose]
+load_js = 1
+==
+{% partial 'site/header-karir' %}
+
+	<section>
+
+  	<div class="static-baner-pages">
+    	<div class="imgwrp hidden-xs"><img src="{{ 'assets/img/karir/campus-challenge.jpeg'|theme }}" alt="Campus Challenge Desktop"></div>
+    	<div class="imgwrp visible-xs"><img src="{{ 'assets/img/karir/campus-challenge-mobile.jpg'|theme }}" alt="Campus Challenge Mobile"></div>
+   	</div>
+		<div class="container-menutab">
+			<div class="container-one">
+				<ul class="menutab-full">
+					<li class="toggle visible-xs visible-sm">
+						<a href="javascript:;" class="active">FAQ</a>
+					</li>
+					
+					<li>
+					    <a href="{{ '/karir/FFCC2019/about' }}"><img class="icon--" src="{{ 'assets/img/karir/about.svg'|theme }}" alt="About" >About</a>
+					</li>
+					
+					<li>
+						<a href="{{'/karir/FFCC2019/how-to-join' }}"><img class="icon--" src="{{ 'assets/img/karir/how-to-join.svg'|theme }}" alt="Prizes" >How to Join</a>
+					</li>
+					
+					<li>
+						<a href="{{'/karir/FFCC2019/prizes' }}"><img class="icon--" src="{{ 'assets/img/karir/prizes.svg'|theme }}" alt="Prizes" >Prizes</a>
+					</li>
+					
+					<li>
+						<a href="{{ '/karir/FFCC2019/the-winner' }}"><img class="icon--" src="{{ 'assets/img/karir/teams.svg'|theme }}" alt="Top 7 Teams" >The Winner</a>
+					</li>
+					
+					<li>
+						<a href="{{  '/karir/FFCC2019/faq' }}" class="active" ><img class="icon--" src="{{ 'assets/img/karir/faq.svg'|theme }}" alt="Faq">FAQ</a>
+					</li>
+				
+				</ul>
+			</div>
+		</div>
+        
+    <div class="container-fluid faq">
+	     <div class="container view">
+	    
+	         <img class="icon---" src="{{ 'assets/img/karir/faq.svg'|theme }}" alt="FAQ"><h1 class="title--"> FAQ</h1>
+	       
+	            <ul class="term-lists">
+                      <li class="term-lists--"><span>Are there any age limit for applying into Frisian Flag Campus Challenge 2019?</span>
+                          
+                      </li>
+                      <p class="answer">Undergraduate and master’s student with max age of 24 years in Apr 2019 are welcomed to apply.</p>
+                      
+                      <li class="term-lists--"><span>Is Frisian Flag campus Challenge 2019 open for all universities across Indonesia?</span></li>
+                      <p class="answer">Yes, we welcome all university students across Indonesia to apply.</p>
+                        
+                      <li class="term-lists--"><span>How do I apply?</span></li>
+                       <p class="answer" >Steps to join this program : Submit a 3 minutes video explaining your campaign strategy to resolve “How to make you and your friends drink milk”, copy of ID, and application form to <span class="email">frisianflag.career@frieslandcampina.com</span> with Subject : <b>FFCC 2019_Name of University (file max 5 mb).</b> <br><span class="deadline">Deadline : Jan 31<sup>st</sup> 2019</span> <a class="btn btn-primary form" href="https://www.frisianflag.com/storage/app/media/karir/Application Form FFCC 2019.xlsx" role="button">Download Form Here</a></p>
+                      
+                      <li class="term-lists--"><span>Is it acceptable to apply individually?</span></li>
+                      <p class="answer" >No, unfortunately we will only proceed those in teams of 3 students format.</p>
+                      
+                      <li class="term-lists--"><span>Does all the team members need to have a same major?</span></li>
+                      <p class="answer" >No, we will gladly accept teams consist of different major. We welcome all major / faculty to join this program.</p>
+                     
+                     <li class="term-lists--"><span>When are the closing dates for applying Frisian Flag Campus Challenge 2019?</span></li>
+                      <p class="answer" >We will accept your application until 31 Jan 2019.</p>
+                      
+                      <li class="term-lists--"><span>How will I know if my team are selected to participate in the next selection process (interview)?</span></li>
+                      <p class="answer" >If your qualifications are most aligned with our requirements, your application will be reviewed and considered. If you are selected to proceed, you will be contacted directly by Frisian Flag Indonesia.</p>
+                      
+                       <li class="term-lists--"><span>Do I need to work (physically present) at Frisian Flag HQ during this program?</span></li>
+                      <p class="answer" >No, you will create and implement your business proposal by working indirectly from your own campus. Therefore this program will not interfered with your academic schedule. However, we require you to come to Frisian Flag Indonesia HQ in Jakarta during these exclusive events :</p>
+                      
+                          <table class="main-table">
+                          
+                              <tr>
+                                <td>Marketing Workshop</td>
+                                <td>Mid of Feb 2019</td>
+                                
+                              </tr>
+                              
+                              <tr>
+                              
+                                <td>Awarding Night of FFCC 2019</td>
+                                <td>End of Apr 2019</td>
+                              
+                              </tr> 
+                            
+                            </table>
+                        <p class="note"><b>Frisian Flag are entitled to change the dates</b></p>
+                        
+                       <li class="term-lists--"><span>Contact us</span></li>
+                      <p class="answer" >For any further questions email to : <span class="email">Frisianflag.career@frieslandcampina.com<span></p>
+                </ul>    
+	           
+	     </div>
+	</div>
+  </section>
+  <style>
+  .deadline,.email,.form,.note,.term-lists .term-lists-- span{font-weight:700}.top-menu__list a{color:#0F4D9A}body{font-family:Brevia-Regular,Helvetica,Arial,sans-serif}.container-menutab::after,div.container-menutab.container-menutab--five:after{border-bottom:10px solid #00AEEE!important}h1{font-family:Brevia-Black,Helvetica,Arial,sans-serif}.container-menutab ul a.active::after,.container-menutab::after{color:#00AEEE}table,td{border:1px solid #FFF}.answer,td{font-size:17px;color:#FFF}.answer{margin-bottom:10px}td{text-align:center;padding:15px}table{width:75%;margin:20px 0 10px}.container-menutab{margin-bottom:0}.deadline{font-size:12px;color:#FFF;display:block}.icon--{margin-top:-3px;margin-right:20px;width:25px}.icon---{margin-top:-10px;margin-right:5px;margin-bottom:40px;width:45px}.faq{background-image:url("{{ 'assets/img/karir/faq-bg.svg'|theme }}");background-repeat:no-repeat;background-size:cover;background-color:#00AEEE}.view{background-color:transparent;margin-top:35px;margin-bottom:50px}.title--{display:inline;position:relative;top:-10px}.title---{margin-top:45px;margin-bottom:40px}.title--,.title---{font-size:40px;font-weight:700;color:#0F4D9A}.term-lists .term-lists-- span{font-size:17px}.term-lists--{text-align:justify;font-size:27px;color:#0F4D9A}.form{font-size:10px;padding:4px 10px;margin-top:3px;margin-bottom:-3px}.note:before{content:'*'}.note{color:#0F4D9A;margin-bottom:10px;margin-left:20px}@media (max-width:768px){.faq{background-image:none}.view{margin-top:5px;margin-bottom:10px}.icon---,.title---{margin-bottom:30px}.icon--{margin-top:-3px;margin-right:15px;width:17px}.icon---{margin-left:0;margin-top:10px;width:35px}.title--,.title---{text-align:center;font-size:22px}.title--{display:inline;top:0;position:relative:}.title---{margin-top:25px}.term-lists .term-lists-- span{font-weight:700;font-size:14px}.answer,.term-lists--{margin-left:-30px;text-align:justify;font-size:14px}.term-lists--{color:#0F4D9A}.answer,td{color:#FFF;font-size:14px}.answer{margin-bottom:10px}td{text-align:center;padding:5px}table{width:100%;margin:20px 0 20px -20px}.note{margin-bottom:10px;margin-left:-20px;font-size:11px}.email{display:block;font-size:13px}}
+  </style>
+
+{% partial 'site/footer-karir' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

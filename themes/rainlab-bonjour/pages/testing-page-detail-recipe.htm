@@ -1,0 +1,1820 @@
+title = "Resep Kami Detail"
+url = "/resep-kami/:category/:slug"
+layout = "resep-layout"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/testing-page-detail-recipe"
+==
+<?php
+function hariIndo ($hariInggris) {
+  switch ($hariInggris) {
+    case 'Sunday':
+      return 'Minggu';
+    case 'Monday':
+      return 'Senin';
+    case 'Tuesday':
+      return 'Selasa';
+    case 'Wednesday':
+      return 'Rabu';
+    case 'Thursday':
+      return 'Kamis';
+    case 'Friday':
+      return 'Jumat';
+    case 'Saturday':
+      return 'Sabtu';
+    default:
+      return 'hari tidak valid';
+  }
+}
+
+function onStart(){
+        $this['ramadan'] = isset($_GET['ramadan']) ? $_GET['ramadan'] : '';
+        $slug = $this->param('slug');
+        $disableList = [
+            'disable-all-pages'
+        ];
+        
+        if (!in_array($slug,$disableList) && !in_array('disable-all-pages',$disableList)){
+            $this->page->amp_url = $this->pageUrl('testing-page-detail-recipe-amp');
+        }
+        //get slug
+        //$category        = "resep-manis-7-langkah";
+        //$slug            = "strawberry-cheese-tea";
+        $preview = Input::get('preview') ? 1 : 0;
+        $category     = $this->param('category');
+        $slug         = $this->param('slug');
+        $cookie = Cookie::get('october_session');
+        
+        
+        
+        //$like = DB::getSchemaBuilder()->getColumnListing('definite_activities_like_history');
+         
+        $cmsController     = new Cms\Classes\Controller;
+         $arrContextOptions =array(
+            "ssl"=>array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
+        );
+        
+        /*$pages = Definite\Activities\Models\Activity::whereHas('categories',function($query) {
+           $query->where('id', 18);
+        })->where('slug',$category.'/'.$slug)->
+        get()->first();*/
+        $resepcategory = array("rtd"=>19, "scm"=>22, "fmp"=>21);
+
+$itemList = explode("/", ucwords(trim(str_replace('-',' ',str_replace('https://www.frisianflag.com/','',$_SERVER['REQUEST_URI'])))));
+$itemListElement = [];
+foreach($itemList as $key => $val){
+ $itemListElement[] = [
+  "@type" => "ListItem",
+  "position" => $key + 1,
+  "item" => [
+     "@id" => "https://www.frisianflag.com/",
+     "name" => ucwords($val)
+   ] 
+ ];
+}
+
+$this['breadcrumb_schema'] = json_encode($itemListElement);
+        
+        //$category = "";
+        $idcategory = 0;
+        if($this->param('category') == "resep-dengan-susu-bubuk"){
+            //$category = "FMP";
+            $idcategory = 21;
+            $this["headertitle"] = "Resep Nikmat Bergizi <i>dengan</i> Susu Bubuk Frisian Flag";
+            $this['class'] = "content-festive";
+            $this["categoryfestive"] = "resep-kue-kering-pilihan";
+            $this['milkpedia'] = DB::select("SELECT t1.title, t1.slug, t1.featured_image, t1.excerpt, t3.slug as category_slug from definite_milkpedia_post t1 left join definite_milkpedia_posts_categories t2 on t2.milkpedia_id = t1.id left join definite_milkpedia_category t3 on t3.id = t2.category_id  where t1.id IN (480,404,398,455,418);");
+            $this['ecommerce'] = [
+                //"page-cokelat/lazada.png" => "https://s.lazada.co.id/s.WrymU"
+                "page-cokelat/lazada.png" => "https://c.lazada.co.id/t/c.b2xwue?intent=false&fallback=true&url=https%3A%2F%2Fwww.lazada.co.id%2Fshop%2Ffrisian-flag",
+                //"page-cokelat/tokopedia.png" => "https://tokopedia.link/9O57yEzHDfb",
+                "page-cokelat/tokopedia.png" => "https://www.tokopedia.com/frisian-flag",
+                //"page-cokelat/shopee.png" => "https://shopee.co.id/product/70448302/4716610962?smtt=0.278299262-1619017991.9",
+                "page-cokelat/shopee.png" => "https://shopee.co.id/frisianflagofficial",
+                //"page-cokelat/jdid.png" => "https://m.jd.id/product/frisian-flag-purefarm-susu-full-cream-box-800gr_712043/10053279.html",
+                //"page-cokelat/blibli.png" => "https://www.blibli.com/p/frisian-flag-purefarm-susu-bubuk-full-cream-800-g/ps--BLD-60037-00109?ds=BLD-60037-00109-00001",
+                "page-cokelat/blibli.png" => "https://www.blibli.com/brand/frisian-flag?utm_source=frisianflag&utm_medium=website_partner_cpc&utm_campaign=frisian-flag",
+                //"page-cokelat/klik-indomaret.png" => "https://www.klikindomaret.com/product/susu-bubuk",
+                "page-cokelat/tiktokshop.png" => "https://bit.ly/FrisianFlagOfficialStore",
+                'klikindomaret-logo.png' => 'https://www.klikindomaret.com/page/frisian-flag-official-store',
+                'alfagift-1.png' => 'https://alfagift.id/official-store?id=5ffd22c83283810f3df83415',
+                
+            ];
+        }
+        elseif($this->param('category') == "resep-dengan-susu-cair")
+        {
+            //$category = "RTD";
+            $idcategory = 19;
+            $this["headertitle"] = "Resep Praktis Bergizi <i>dengan</i> Susu Cair Frisian Flag";
+            
+            $check = Definite\Activities\Models\Activity::whereHas('categories',function($query) {
+               $query->where('id', 18);
+             })->where('slug',$slug)->count();
+             if($check > 0 ){
+                 $this['class'] = "content-festive";
+                 $this['milkpedia'] = DB::select("SELECT t1.title, t1.slug, t1.featured_image, t1.excerpt, t3.slug as category_slug from definite_milkpedia_post t1 left join definite_milkpedia_posts_categories t2 on t2.milkpedia_id = t1.id left join definite_milkpedia_category t3 on t3.id = t2.category_id  where t1.id IN (411,412,301,415);");   
+             }
+             $this['ecommerce'] = [ 
+                "page-cokelat/lazada.png" => "https://c.lazada.co.id/t/c.b2xwue?intent=false&fallback=true&url=https%3A%2F%2Fwww.lazada.co.id%2Fshop%2Ffrisian-flag",
+                //"page-cokelat/tokopedia.png" => "https://www.tokopedia.com/frisian-flag/etalase/susu-uht",
+                "page-cokelat/tokopedia.png" => "https://www.tokopedia.com/frisian-flag",
+                //"page-cokelat/klik-indomaret.png" => "https://www.klikindomaret.com/search/?key=Frisian%20Flag%20Susu%20Cair",
+                //"page-cokelat/shopee.png" => "https://shopee.co.id/universal-link/shop/70448302/search?deep_and_web=1&page=0&shopCollection=19321013&smtt=9&utm_campaign=p70448302_ss_id_othr_ff-cd-websiteff&utm_content=ff-cd-rtd&utm_medium=seller&utm_source=website",
+                "page-cokelat/shopee.png" => "https://shopee.co.id/frisianflagofficial",
+                //"page-cokelat/blibli.png" => "https://www.blibli.com/brand/frisian-flag-official-store?excludeProductList=false&promoTab=false&brandSearchTerm=susu%20UHT&sort=&utm_source=Frisian_Flag_Indonesia&utm_medium=refpartner_FF_Ecommerce_Button&utm_campaign=FFI_Website",
+                "page-cokelat/blibli.png" => "https://www.blibli.com/brand/frisian-flag?utm_source=frisianflag&utm_medium=website_partner_cpc&utm_campaign=frisian-flag",
+                //"page-cokelat/jdid.png" => "https://www.jd.id/promotion/Frisian-Flag-Official-Store/2UNKdjnR1bxXyHAbKRR7uxC2qLG3.html",
+                "page-cokelat/tiktokshop.png" => "https://bit.ly/FrisianFlagOfficialStore",
+                'klikindomaret-logo.png' => 'https://www.klikindomaret.com/page/frisian-flag-official-store',
+                'alfagift-1.png' => 'https://alfagift.id/official-store?id=5ffd22c83283810f3df83415',
+                
+            ];
+            
+             $this['promoterbaik'] = 0;
+        }
+        elseif($this->param('category') == "resep-dengan-kental-manis")
+        {
+            //$category = "SCM";
+            $idcategory = 22;
+            $this["headertitle"] = "Resep MANTUL Frisian Flag Kental Manis MAnis Nikmat TUjuh Langkah";
+            $this["categoryfestive"] = "resep-manis-tujuh-langkah";
+            $check = Definite\Activities\Models\Activity::whereHas('categories',function($query) {
+               $query->where('id', 18);
+             })->where('slug',$slug)->count();
+             if($check > 0 ){
+                 $this['class'] = "content-festive";
+                 $this['milkpedia'] = DB::select("SELECT t1.title, t1.slug, t1.featured_image, t1.excerpt, t3.slug as category_slug from definite_milkpedia_post t1 left join definite_milkpedia_posts_categories t2 on t2.milkpedia_id = t1.id left join definite_milkpedia_category t3 on t3.id = t2.category_id  where t1.id IN (419,431,430,425);");   
+             }
+             $this['ecommerce'] = [ 
+                "page-cokelat/lazada.png" => "https://c.lazada.co.id/t/c.b2xwue?intent=false&fallback=true&url=https%3A%2F%2Fwww.lazada.co.id%2Fshop%2Ffrisian-flag",
+                //"page-cokelat/tokopedia.png" => "https://www.tokopedia.com/frisian-flag/etalase/kental-manis",
+                "page-cokelat/tokopedia.png" => "https://www.tokopedia.com/frisian-flag",
+                //"page-cokelat/shopee.png" => "https://shopee.co.id/universal-link/shop/70448302/search?deep_and_web=1&shopCollection=19395096&smtt=9&utm_campaign=p70448302_ss_id_othr_ff-cd-websiteff&utm_content=ff-cd-scm&utm_medium=seller&utm_source=website",
+                "page-cokelat/shopee.png" => "https://shopee.co.id/frisianflagofficial",
+                //"page-cokelat/alfacart.png" => "https://www.alfacart.com/promo/frisian-flag-fair",
+                //"page-cokelat/blibli.png" => "https://www.blibli.com/brand/frisian-flag-official-store?page=1&start=0&multiCategory=true&promoTab=false&excludeProductList=false&brandSearchTerm=Kental%20Manis&intent=false&sort=0&brandName=frisian-flag-official-store&utm_source=Frisian_Flag_Indonesia&utm_medium=refpartner_FF_Ecommerce_Button&utm_campaign=FFI_Website",
+                "page-cokelat/blibli.png" => "https://www.blibli.com/brand/frisian-flag?utm_source=frisianflag&utm_medium=website_partner_cpc&utm_campaign=frisian-flag",
+                //"page-cokelat/jdid.png" => "https://www.jd.id/category/jual-beverages-875061563.html?category=875061563&pvid=b91f13579a5c4ff28c8511fa8d6dcbe6&brandId=692",
+                //"page-cokelat/klik-indomaret.png" => "https://www.klikindomaret.com/frisianflag-kental-manis",
+                "page-cokelat/tiktokshop.png" => "https://bit.ly/FrisianFlagOfficialStore",
+                'klikindomaret-logo.png' => 'https://www.klikindomaret.com/page/frisian-flag-official-store',
+                'alfagift-1.png' => 'https://alfagift.id/official-store?id=5ffd22c83283810f3df83415',
+            ];
+        }
+        
+        
+        $pages = Definite\Activities\Models\Activity::whereHas('categories',function($query) use ($idcategory) {
+           $query->where('id',$idcategory);
+        })->where('slug',$slug)->
+        get()->first();
+        
+        if($pages){
+          
+          $total_like = DB::table('definite_activities_like')->select('total')->where('activity_id', '=', $pages->id)->get();
+          
+          //dd($total_like);
+          if($total_like->isEmpty()){
+              $total_like = 0;
+          }else{
+              $total_like = $total_like[0]->total;
+          }
+          
+          $this['total_like'] = $total_like;
+          $check_like = DB::table('definite_activities_like_history')->where('activity_id', '=', $pages->id)->where('cookies', $cookie)->exists();
+          //dd($check_like);
+          $this['user_like'] = ($check_like ? 'active' : '');
+          $this['content'] = $pages;
+          $this['pageid'] = $pages->id;
+          $this['title'] = $pages->title;
+          $this['products'] = $pages->products;
+          $this['featuredimage'] = $pages->featured_image;
+          $date = $pages->updated_at != '0000-00-00' && $pages->updated_at != null ? $pages->updated_at : $pages->created_at;
+          $bulan = date('M',strtotime($date));
+          if($bulan == "May"){
+            $bulan = "Mei";   
+          }
+          elseif($bulan == "Aug"){
+              $bulan = "Agu"; 
+          }
+          elseif($bulan == "Oct"){
+              $bulan = "Okt"; 
+          }
+          elseif($bulan == "Dec"){
+              $bulan = "Des"; 
+          }
+$this['schemadate'] = $date;
+          $publishdate = $this->hariIndo(date('l',strtotime($date))). ", ".date('d',strtotime($date))." ".$bulan." ". date('Y',strtotime($date));
+          $this['date'] = $publishdate;
+          $this['youtube'] = $pages->subtitle_en;
+          $this['bahan'] = $pages->description;
+          $this['energi'] = $pages->energi;
+          $this['lemak'] = $pages->lemak;
+          $this['protein'] = $pages->protein;
+          $this['karbohidrat'] = $pages->karbohidrat;
+          
+
+	$this['ingredient'] = json_encode(array_values(array_filter(explode("\n",str_replace(array("\r","\t","<li>","</li>","<ul>","</ul>"),'',$pages->bahan)), 'strlen')));
+          $this['howtocook'] = json_encode(array_values(array_filter(explode("\n",str_replace(array("\r","\t","<li>","</li>","<ul>","</ul>"),'',$pages->caramemasak)), 'strlen')));
+          $this['caramemasak'] = $pages->description_en;
+          $this->page->title = ucwords(strtolower($pages->title));
+          $this->page->meta_title = $pages->meta_title;
+          $this->page->meta_description = $pages->meta_description;
+          $this->page->og_image = $pages->featured_image;
+          $this->page->og_description = $pages->meta_description;
+
+          
+          $relatedresep = [];
+          $orderby = '';
+
+          if($category == "resep-manis-7-langkah"){
+            $this['selengkapnyaimage'] = 'ramadan-istimewa/scm/kue-that.jpg';
+            $relatedresep = [222,213,212];
+            $orderby = 'desc';
+
+          }else{
+            $this['selengkapnyaimage'] = 'ramadan-istimewa/bfc/almond_cookies.jpg';
+            $relatedresep = [218,219,239];
+            $orderby = 'asc';
+          }
+          
+          
+            //->where('slug','LIKE','%'.$category.'%')
+          $related = Definite\Activities\Models\Activity::whereHas('categories',function($query) use ($idcategory) {
+           $query->where('id', $idcategory);
+          })->select('title', 'slug', 'featured_image')->
+          whereNotIn('id',[214,215,$pages->id])->
+          
+          orderBy('id', $orderby)->take(4)->get();
+          
+          $count = count($related);
+          
+          $tambahan = Definite\Activities\Models\Activity::whereHas('categories',function($query) use ($idcategory) {
+           $query->where('id', $idcategory);
+          })->select('title', 'slug', 'featured_image')->
+          whereNotIn('id',[214,215,$pages->id])->
+          whereNotIn('id',$relatedresep)->
+          take(6-$count)->get();
+          
+          
+          $collection = collect($related);
+          $merged     = $collection->merge($tambahan);
+
+          $this['related'] = $merged;
+          
+
+        }else{
+          return $cmsController->render("/404");
+        }
+     
+        
+        /*
+                 $min               = $collection->where('category',$category)->min('id');
+                 $slice             = $data->id - $min; 
+                 $data_category     = $collection->where('category',$category)->where('slug', '!=', $slug)->slice($slice)->take(3);
+                 $count             = count($data_category);
+                 if($count < 3){
+                         $before        = $collection->where('category',$category)->where('slug', '!=', $slug)->take(3 -$count);
+                         $data_category = $data_category->merge($before);
+                     }*/
+    
+        
+       /* switch ($category) {
+            case "resep-manis-7-langkah":
+                $class = "resep-manis";
+                break;
+            case "resep-kue-kering-pilihan":
+                $class = "resep-kue";
+                break;
+            
+        
+        }
+
+        $this['class']          = $class;  */
+        
+        $this['category']       = $category;
+        $this['GTMETRIX'] = 'NO';
+        if(strpos($_SERVER['HTTP_USER_AGENT'], 'X11; Linux x86_64) AppleWebKit/537.36') !== false || 
+        strpos($_SERVER['HTTP_USER_AGENT'], 'GTmetrix') !== false
+        ){
+         $this['GTMETRIX'] = 'YES';
+        }
+        $this['GTM_ID'] = env('GTM_ID');
+        $this['GA_ID'] = env('GA_ID');
+        $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $this['full_url'] = (isset($_SERVER['HTTP_USESSL']) || isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]".$path;
+        
+        
+
+}
+function onHandleForm()
+{
+    $title = Input::get('title');
+    $cookie = Cookie::get('october_session');
+    $category = "";
+    $idcategory = 0;
+    $slug         = $this->param('slug');
+    if($this->param('category') == "resep-dengan-susu-bubuk"){
+        $category = "FMP";
+        $idcategory = 21;
+    }
+    elseif($this->param('category') == "resep-dengan-susu-cair")
+    {
+        $category = "RTD";
+        $idcategory = 19;
+    }
+    elseif($this->param('category') == "resep-dengan-kental-manis")
+    {
+        $category = "SCM";
+        $idcategory = 22;
+    }
+    
+    $pages = Definite\Activities\Models\Activity::whereHas('categories',function($query) use ($idcategory) {
+       $query->where('id',$idcategory);
+    })->where('slug',$slug)->select('id')->
+    get()->first();
+    
+    
+    $check_like = DB::table('definite_activities_like_history')->where('activity_id', '=', $pages->id)->where('cookies', $cookie)->exists();
+    if($check_like){
+        DB::table('definite_activities_like_history')->where('activity_id', '=', $pages->id)->where('cookies', $cookie)->delete();
+    }else{
+        DB::table('definite_activities_like_history')->insert([
+            'activity_id' => $pages->id,
+            'cookies' => $cookie,
+            'created_at' => date("Y-m-d h:i:s")
+        ]);
+
+    }
+    
+    $total = DB::table('definite_activities_like_history')->where('activity_id', '=', $pages->id)->count();
+    DB::table('definite_activities_like')->
+    updateOrInsert(
+        ['activity_id' => $pages->id],
+        ['total' => $total]
+    );
+    
+    $this['result'] = $total;
+    
+
+}
+?>
+==
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<head>
+    <!-- <link rel="preload" href="{{ 'assets/css/style-ramadhan2024.css'|theme }}" as="style" media="print" onload="this.media='all'"> -->
+    <link href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/css/style-ramadhan2024.css" rel="stylesheet" media="print" onload="this.media='all'">
+</head>
+<style>
+.content-text img{
+    width: 80%;
+    margin: 25px 0;
+}
+.content-text .slider-container img{
+    width: 100%;
+}
+.image-explicit{
+    width:100%;
+    height:auto;
+}
+@media(min-width : 769px){
+    .container, .container-fluid{
+        padding-left : 25px !important;
+        padding-right : 25px !important;
+    }
+}
+.bg-blue{
+ background-color:#5AC9F7;   
+ position : relative ;
+ overflow-x : hidden !important;
+ width : 100%;
+}.bg-orange{
+ background-color:#fd9e02;   
+}
+.disresult{
+    padding:50px 0;   
+}
+.item-thumb{
+    margin-bottom:30px;
+}
+.item-thumb-img{
+    padding-top:100%;   
+    position:relative;
+    border-radius : 30px;
+    background:#CCC;
+    margin-bottom:20px;
+}
+.item-thumb-img a img{
+    border-radius : 30px;
+}
+
+.btn-filter-floating{
+    position : fixed;
+    top : 25%;
+    right : 5%;
+    cursor : pointer;
+    border : solid 4px #FFD77F;
+    border-radius : 50px;
+    width : 60px;
+    height : 60px;
+    z-index : 1500;
+}
+.btn-filter-floating.active{
+    border : solid 4px blue;
+}
+
+.btn-filter-floating:nth-child(1){
+    transform : translateY(70px);
+}
+.btn-filter-floating:nth-child(2){
+    transform : translateY(140px);
+}
+.btn-filter-floating:nth-child(3){
+    transform : translate(0px , 210px); 
+}
+#susu-kental-manis:hover:after{
+    width : 100px;
+    text-align : center;
+    content : 'Susu Kental Manis';
+    position : absolute;
+    bottom : -20px;
+    z-index : 2000;
+    right : 50%;
+    padding : 10px;
+    border-radius : 10px;
+    background : black;
+    color : white;
+}
+#susu-bubuk:hover:after{
+    width : 100px;
+    content : 'Susu Bubuk';
+    text-align : center;
+    position : absolute;
+    top : -40px;
+    z-index : 2000;
+    right : 50%;
+    padding : 10px;
+    border-radius : 10px;
+    background : black;
+    color : white;
+}
+#susu-fullcream:hover:after{
+    width : 100px;
+    content : 'Susu Cair';
+    text-align : center;
+    position : absolute;
+    top : 0;
+    right : 50%;
+    z-index : 2000;
+    padding : 10px;
+    border-radius : 10px;
+    background : black;
+    color : white;
+}
+.btn-filter-floating img{
+    border-radius : 50px;
+}
+
+.loading{
+    display:none;
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    z-index:9999;
+}
+.loading-button:before, .loading:before {
+    display: block;
+    background: hsla(0,0%,100%,.8);
+    content: "";
+    position: absolute;
+}
+.loading:before {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 4;
+}
+.loading:after{
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    margin:auto;
+}
+
+.image-object {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.search-container{
+    height : 55px;
+    width : 100%;  
+    display : flex;
+    position : relative;    
+    border : none;
+}
+.search-container input{
+    height : 100%;
+    background : linear-gradient(to bottom, #00AAF6 ,#009DE0) !important;
+    width : 100%;    
+    padding-left : 60px;
+    font-size : 18pt;
+    border-radius : 30px;    
+    border : none;
+}
+.search-container input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+.search-container input:focus{
+    outline: none;
+}
+.search-container button{
+    position : absolute;
+    width : 60px; 
+    height : 100%;
+    border : none;
+    background : transparent;
+    left : 0;
+    top : 0;
+}
+.search-container button:focus{
+    outline: none;
+}
+.search-container button i{
+    color : #FFD77F;
+    font-size : 18pt;
+}
+
+.mt-5{margin-top : 50px}
+.mb-5{margin-bottom : 50px}
+
+
+.btn-filter-floating{
+    position : fixed;
+    top : 25%;
+    right : 5%;
+    cursor : pointer;
+    border : solid 4px #FFD77F;
+    border-radius : 50px;
+    width : 60px;
+    height : 60px;
+    z-index : 1500;
+}
+.collapse {
+    opacity: 0;
+    transition : 0.3s;
+}
+.collapse.in {
+    transition : 0.3s;
+    opacity: 1;
+}
+.item-thumb .text-center{
+    display : none !important;    
+}
+.card-header h2 button {
+    color : white;
+    outline : none;
+    font-size : 1em;
+    font-weight : bold;
+}
+.card-header h2 button:focus {
+    outline : none;
+}
+.iframe_youtube {
+    position : relative;
+    height : 70vh;
+    border-radius : 50px;
+}
+.iframe_youtube iframe{
+    height : 100%;
+    width:100%;
+    border-radius : 50px;
+}
+.card-body {
+    opacity : 1;    
+}
+.overlay {
+    width : 100%;
+    height : 30%;
+    background : linear-gradient(to bottom , rgba(0,0,0,0) , white);
+    position : absolute;
+    z-index : 10;
+    bottom : 0;
+    display : block;
+    left : 0;
+    border-radius : 0px 0px 50px 50px;
+}
+.overlay.hide {
+    display : block;
+}
+.overlay .action-button-overlay{
+    position : absolute;
+    display : flex;
+    width : 300px;
+    height : 100%;
+    bottom : 0;
+    right : 0;
+    font-size : 1.6em;
+}
+.overlay .action-button-overlay .btn-action{
+    cursor : pointer;
+    margin : 70px 15px;
+}
+
+.overlay .action-button-overlay .btn-action span{
+    margin-left : 10px;
+    color : black;
+}
+.section {
+    margin-top : 60px;    
+}
+
+.slider .recipe{
+    margin : 20px 0px;
+    border-radius: 50px;
+    position : relative;
+}
+.slider.rel--festive .recipe, .slider.rel--festive .recipe a img{
+    border-radius: 12px;
+}
+.aktivitas-kami .recipe{
+    margin : 20px 0px;
+    width: 100%;
+    padding-top: 100%;
+    background-size: auto;
+    border-radius: 50px;
+    position : relative;
+}
+.recipe a img{
+    border-radius : 50px;
+}
+
+.image-overlay {
+    content : '';
+    background : linear-gradient(to top,rgba(0,0,0,0.7), rgba(255,255,255,0.3));
+    position : absolute;
+    border-radius : 50px;
+    width : 100%;
+    height : 100%;
+    top : 0;
+    left : 0;    
+}
+.social button {
+    border : none !important
+
+}
+.social a {
+    margin-top : 20px;
+    text-decoration : none;
+    color : white;
+
+}
+.social {
+    display : flex;
+    justify-content : flex-start;
+}
+.social .btn-socmed{
+    padding : 10px 15px;
+    border-radius : 50px;
+    background : linear-gradient(to bottom , orange, #E57B00);
+    margin : 0px 5px;    
+    cursor : pointer;
+}
+.social .btn-socmed:hover{
+    background : #E57B00;
+}
+.social .btn-socmed {
+    font-size : 1.2em;
+    font-weight : bold;
+}
+.social .btn-socmed i{
+    margin-right : 5px;
+}
+section.aktivitas-kami {
+    margin-top : 50px;
+    padding : 50px 0px;
+}
+.summary-overlay {
+    position : absolute;
+    width : 100%;
+    height : 50%;
+    bottom : 0;
+    left : 0;
+}
+.summary-overlay p{
+    font-size: 22px !important;
+    text-shadow: 0 0 5px rgba(0,0,0,.25) !important;
+}
+
+
+#summary{
+    position : absolute;
+    bottom : 0; 
+    left : 0;
+    width : 100%;
+    height : 100%;
+    display : flex;
+    align-items : flex-end;
+}
+
+#summary .content {
+    margin : 0px 5%;    
+}
+#summary-2 .content {
+    margin : 0px 5%;    
+    margin-top : -20px;    
+}
+
+#summary .content p {
+    font-weight : 800;
+    font-size : 1.3em;
+    margin : 20px 0px;    
+}
+#summary-2 .content p {
+    font-weight : 800;
+    font-size : 0.8em;
+    margin-bottom : 10px;    
+}
+.btn-campaign{
+    position : absolute;
+    top : 5%;
+    right : 5%;
+}
+.btn-campaign .button{
+    background-color : white !important; 
+    color : rgb(35 82 124) !important    
+}
+.btn-campaign .button:hover{
+    background-color : rgb(35 82 124) !important; 
+    color : white !important    
+}
+.btn-campaign .button:focus{
+    background-color : rgb(35 82 124) !important; 
+    color : white !important    
+}
+.slick-slider .slick-next::before{
+    color : white !important;    
+}
+.slick-slider .slick-prev::before{
+    color : white !important;    
+}
+.slick-slider .slick-next{
+    margin-right : -60px;
+}
+.slick-slider .slick-prev{
+    margin-left : -60px;
+}
+
+.content-resep h2, .content-resep h3{
+ color : #0D62A7; font-weight : bold; text-decoration : none; font-family : Brevia-Black,Helvetica,Arial,sans-serif;   
+}
+
+.content-resep ol li, .content-resep ul li{
+font-size:16px;
+line-height:22px;
+margin-bottom:5px;
+}
+.content-resep ol, .content-resep ul{
+margin-bottom:30px;
+}
+.at-icon-wrapper.at-share-btn {
+    background-image: linear-gradient(to bottom,#FD9C00, #DF8200) !important;
+}
+.addthis_inline_share_toolbox{
+    text-align:left;
+    margin: 25px 0 0px;
+}
+a:focus, a:active, button:focus, button:active{
+outline:none;
+}
+.btn-like{
+background:none;
+border:none;
+font-size:24px;
+padding:5px;
+margin:5px 0;
+float:right;
+
+}
+.btn-like i{
+transition:0.3s;
+}
+
+.btn-like:hover i{
+color:red;
+}
+.btn-like.active i{
+    color:red;
+}
+.btn-like.active:hover i{
+color:#FFF;
+}
+
+.ecommerce-item a{
+    display: block;
+    background: #FFF;
+    padding: 25px;
+    border-radius: 30px;
+    text-align:center;
+    width:100%;
+    padding-top:35%;
+    position:relative;
+}
+.ecommerce-item a img{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    /* max-height: 90px; */
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 45px;
+
+}
+.publishdate{
+ display:inline-block;
+ font-size:18px;
+ margin-top:10px;
+}
+
+.content-festive {
+    padding-top: 75px;
+    padding-bottom: 75px;
+    background-color: #55B8FC;
+    background-size: 100% !important;
+    background-image: url(/storage/app/media/festive2021/desktop/Repeat_Grid_3-res.png);
+}
+
+.star-1{
+    width: 6vw;
+    height: 10vw;
+    background-size: cover !important;
+    background: url(/storage/app/media/festive2021/desktop/Group_11126.png);
+    position: absolute;
+    top: 0px;
+    background-position: 0 10vw;
+    left: 30px;
+    z-index: 5;
+
+}
+
+.star-2{
+width: 9vw;
+    height: 12vw;
+    background-size: cover !important;
+    background: url(/storage/app/media/festive2021/desktop/Group_11186.png);
+    position: absolute;
+    top: 0;
+    right: 30px;
+    z-index: 5;
+    background-position: 0px 12vw;
+}
+
+
+.moon-1{
+    width: 12vw;
+    height: 10vw;
+    background-size: cover !important;
+    background: url(/storage/app/media/festive2021/desktop/Group_11122.png);
+    position: absolute;
+    bottom: -15px;
+    right: 0;
+    z-index: 5;
+
+}
+
+.title-bg {
+    background: linear-gradient( 45deg, #5BBEFF, #3A9BEF);
+    padding: 18px 25px;
+    margin-bottom:30px;
+}
+.title-bg .section__title{
+ margin:0;
+ color:#FFF;
+}
+.section-ecommerce{
+ background : #1FACE7 !important; margin-top : 40px;   
+}
+
+.section-ecommerce.bg--blue {
+    background-color: #0091E0 !important;
+    padding-top: 40px;
+}
+.underline {
+    color: #FFF;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+    margin: 20px 0 30px;
+    font-size: 32px;
+    border-bottom: 2px solid rgb(255 255 255 / 65%);
+    font-family: 'Brevia-semibold';
+text-align:left;
+}
+.button.btn-orange {
+    height: auto;
+    text-align: center;
+    padding: 10px 30px;
+    background-color: #FF9F02;
+    box-shadow: 0px 2px 8px 1px rgb(49 53 59 / 40%);
+    background-image: none;
+    border: 0;
+    width: 90%;
+    margin: auto;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    height: auto;
+    letter-spacing: .1px;
+}
+.milkpedia--item{
+padding:0 8px;
+position:relative;
+overflow:hidden;
+}
+.box-milkpedia {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.milkpedia--item h5 {
+    color: #FFF;
+    font-family: 'Brevia-semibold', Arial;
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 10px;
+min-height:45px;
+}
+
+.milkpedia--item p{
+color:#FFF;
+margin-bottom:20px;
+}
+
+.milkpedia--item .button-amp {
+    background: #006CC9;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 10px 15px;
+    font-size: 14px;
+    height: auto;
+    font-family: 'Brevia-semibold', Arial;
+    box-shadow: 0px 3px 8px 0px rgb(0 0 0 / 25%);
+    width: 80%;
+    margin: 0 auto;
+    border: 0;
+    display: block;
+height:auto;
+padding:10px 30px;
+line-height:24px;
+margin-bottom:10px;
+}
+.sticky-button{
+position:fixed;
+right:15px;
+top:0;
+bottom:0;
+margin:auto;
+background:#FFF;
+border-radius:35px;
+padding:15px 8px;
+text-align:center;
+height:385px;
+width:60px;
+z-index:10;
+}
+.sb-btn img{
+width:40px;
+margin-bottom:3px;
+}
+.sb-btn p{
+color:#53575b;
+line-height:12px;
+font-size:10px;
+font-weight:bold;
+}
+.sb-btn{
+border-bottom:1px solid #53575b;
+padding-bottom:5px;
+padding-top:5px;
+}
+.sticky-button a:last-child .sb-btn{
+border:0;
+padding-bottom:0;
+}
+.header-ornamen{
+position:fixed;
+width:100%;
+top:0;
+left:0;
+
+z-index:2;
+}
+.promoterbaik {
+    position: fixed;
+    display: none;
+    visibility: none;
+    right: 0;
+    bottom: 25px;
+    z-index: 6;
+    width: 130px;
+}
+
+.commerce-list {
+    margin: 50px 0;
+}
+
+/** 22-04-24 **/
+@media(max-width: 1024px){
+    .header {
+        height: 125px;
+    }
+    .content-festive {
+        padding-top: 65px;
+    }
+    .iframe_youtube {
+        height : auto;
+    }
+    .content-text {
+        padding: 10px;
+    }
+    .content-text img{
+        width: 100%;
+        margin: 15px 0;
+    }
+    .underline {
+        font-size: 20px;
+    }
+    .commerce-list {
+        margin: 15px 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .commerce-list > div {
+        width: 50%;
+    }
+    .ecommerce-item a img {
+        padding: 10%;
+    }
+    .milkpedia--item .button-amp {
+        padding: 15px 10px;
+    }
+}
+</style>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": {{ breadcrumb_schema|raw }}
+}
+</script>
+{% if class == 'content-festive'%}
+<!--
+<div class="header-ornamen">
+    <img src="{{ 'festive2021/Header-Desktop.png' |media }}" alt="Resep Ramadan" class="w-100"/>
+</div>
+-->
+{% endif %}
+{% if(promoterbaik == 1)%}
+<div class="promoterbaik">
+<a href="https://www.frisianflag.com/resepsahurterbaik/promo-terbaik" target="_blank">
+<img loading="lazy" src="{{ 'festive2021/Icon-PromoTerbaik.png' |media }}" class="w-100" layout="responsive" alt="Promo Terbaik"/>
+</a>
+</div>
+{% endif %}
+<div class="bg-blue {{ class }}">
+ {% if class != 'content-festive' %}
+<a href="/resep-kami/resep-dengan-susu-cair" class="btn-filter-floating" style="background-image : url({{ 'susu-1.png' | media}}); background-size : 127%; background-position : center !important" id="susu-fullcream">
+</a>
+<a href="/resep-kami/resep-dengan-susu-bubuk" class="btn-filter-floating" style="background-image : url({{ 'susu-2.png' | media}}); background-size : 127%; background-position : center !important" id="susu-kental-manis">
+</a>
+<a href="/resep-kami/resep-dengan-susu-bubuk" class="btn-filter-floating" style="background-image : url({{ 'susu-3.png' | media}}); background-size : 127%; background-position : center !important" id="susu-bubuk">
+</a>
+{% endif %}
+  <section class="content {{class}}">
+    <div class="container">
+    
+     <div class="row content-ramadan">
+        <div class="col-sm-12">
+          {% if content %}
+          
+          {% if class != 'content-festive' %}
+          <div class="row justify-content-center" style="margin-top:250px; justify-content : center !important">
+            <div class="col-md-12 text-center">
+                <h2 ><b>{{ headertitle | raw }}</b></h2>
+            </div>
+        </div> 
+        {% endif %}
+        {#
+          <div class="row" style="margin-top:50px">
+                <div class="col-md-12">
+                    <input type="text" id="inputURL" style="display:none"/>
+                    <form action="{{'testing-page.htm' | page}}" method="GET">
+                        <div class="search-container">
+                                
+                                <input type="text"  name="q" placeholder="Ketik Resep atau Bahan" id="searchresep"><button type="submit" id="btn-search" ><i class="fa fa-search text-warning"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            #}
+          {% if youtube %}
+<!-- aaaa -->
+          {% if GTMETRIX == 'NO' %}
+              <div class="iframe_youtube">
+                <iframe loading="lazy" src="https://www.youtube.com/embed/{{youtube}}?enablejsapi=1&rel=0" id="ik_player_iframe" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"  allowfullscreen></iframe>
+                <!-- <div class="overlay">
+                    <div class="action-button-overlay">
+                        <div class="btn-action"> <i class="fa fa-heart text-danger"></i><span>25</span></div>
+                        <div class="btn-action"><i class="fa fa-share text-danger"></i><span>125</span></div>
+                    </div>
+                </div> -->
+                {#{% if class == 'content-festive'%}
+                    <div class="star-1"></div>
+                    <div class="star-2"></div>
+                    <div class="moon-1"></div>
+                {% endif %}#}
+              </div>
+          {% endif %}
+          
+          <script>
+          /*document.addEventListener("load", function() {
+              let iFrameYoutubeContainer = document.querySelector('.iframe_youtube');
+              let dataSrc = iFrameYoutubeContainer.getAttribute('data-src');
+              
+              let myIframe = document.createElement('iframe');
+              myIframe.setAttribute('src', dataSrc);
+              myIframe.id = "ik_player_iframe";
+              myIframe.setAttribute('frameborder', 0);
+              myIframe.setAttribute('allow', "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture");
+              myIframe.setAttribute('allowfullscreen', '');
+              iFrameYoutubeContainer.appendChild(myIframe);
+              alert('ok')
+          });*/
+          </script>
+          {% endif %}
+           <div class="publishdate">
+ <!-- asdasds -->
+               {{ date }}
+           </div>
+          
+          <button type="button" class="btn-like {{user_like}}" onclick="like()"><span>{{total_like}}</span> <i class="fa fa-heart"></i></button>
+          
+          {% if class == 'content-festive'%}
+         </div>
+         </div>
+         </div>
+         <div class="title-bg">
+             <h1 class="text-center section__title title-h1">{{ title }}</h1>
+         </div>
+         <div class="container">
+         <div class="row content-ramadan content-text">
+            <div class="col-sm-12">
+         {% else %}
+         <h1 class="text-center section__title" style="margin-top: 50px; color: #fff; margin-bottom: 4%; font-size: 36px; text-align : left">{{ title }}</h1>
+        {% endif %}
+          
+          {% if products %}
+           <style>
+               .eccomerce-card {
+                   background : white !important;
+                   border-radius : 15px !important;
+               }
+               .eccomerce-card .card-body {
+                    padding : 15px 20px !important;
+               }
+               .eccomerce-card p, .eccomerce-card h5 {
+                    color : #0D62A7 !important;    
+               }
+               .eccomerce-card h4 {
+                      font-size : 20px;
+               }
+               .eccomerce-card .row {
+                      display : flex; 
+                      align-items : center;
+               }
+               .eccomerce-card .imgproduct{
+                    border : unset !important;
+               }
+               .eccomerce-card .btn-modal img {
+                   width : 100px;    
+               }
+               .overlay-store {
+                   visibility : hidden;
+                   opacity : 0;
+                   transition : 0.3s;
+                   background : rgba(0,0,0,0.8);
+                   height : 100vh;
+                   width : 100%;
+                   position : fixed;
+                   top : 0;
+                   display : flex !important;
+                   align-items : center;
+                   justify-content : center;
+                   left : 0;
+                   z-index : 1000;
+               }.overlay-store.show {
+                   opacity : 1;
+                   visibility : visible;
+               }
+               .overlay-store .card {
+                   position : relative;
+                   width : 95%;
+                   background : #0F4D9A;
+                   border-radius : 20px;
+               }
+               .overlay-store .card-body {
+                   padding : 20px;
+               }
+               @media (min-width : 768px){
+                   .overlay-store .card {
+                       width : 35%;
+                   }
+               }
+               .overlay-store h4, .overlay-store a{
+                   color : white !important;   
+                   text-align : center;
+               }
+               .overlay-store a.btn-outline-light{
+                   color : white !important;
+                   border : 1px solid white;
+                   margin-bottom : 10px;
+                   width : 100%;
+                   transition : 0.3s;
+               }
+               .overlay-store a.btn-outline-light:hover{
+                   background : #2875D5 !important;
+               }
+               .overlay-store .btn-close {
+                   background : white !important;
+                   border : unset !important;
+                   color : black;
+                   text-align : center;
+                   width : 30px !important;
+                   height : 30px !important;
+                   position : absolute;
+                   right : -10px;
+                   top : -10px;
+                   border-radius : 50%;
+                   font-weight : bold;
+               }
+               @media (max-width: 1024px){
+                   .eccomerce-card h4 {
+                      font-size : 16px;
+                   }
+                   .eccomerce-card img {
+                       margin: 0;
+                   }
+                   .eccomerce-card .imgproduct {
+                       padding: 0;
+                   }
+               }
+           </style>
+           <div class="row related-product">
+               <div class="col-12 col-sm-9 col-lg-5">                       
+                   <div class="card bg-light eccomerce-card">
+                       <div class="card-body">  
+                           <div class="row">
+                               <div class="col-xs-5">
+                                    <div class="imgproduct">
+                                        <img loading="lazy" class="image-explicit" loading="lazy" src="{{ products.featured_image | media }}" alt="{{ trans_pick(record, 'title') }}" width="700" height="700"/>
+                                    </div>
+                               </div>
+                               <div class="col-xs-7">
+                                   <p>Yang anda perlukan : </p>
+                                   <h4>{{ products.title }}</h4>
+                                   <a href="javascript:void(0)" data-target="#popup-ecommerce" class="btn-modal">
+                                       <img loading="lazy" class="image-explicit" width="100" height="20" src="{{ 'button-ecommerce.png' | media }}" />
+                                   </a>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <div id="popup-ecommerce" class="overlay-store">
+               <div class="card">
+                <button class="btn-close">x</button>
+                    <div class="card-body">
+                        <h4>Temukan Produk Kami di:</h4>
+                        {% for shop in products.link_e_commerce %}
+                            <a class="btn btn-outline-light btn-commerce" href="{{ shop.link }}" target="_blank">
+                                {{shop.title}} test
+                            </a>
+                        {% endfor %}
+                    </div>
+               </div>
+           </div>
+           {% endif %}
+          <!-- <p style="width : 90vh; margin-right : auto; margin-top : -50px; margin-bottom : 60px; text-align : left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, minus, eum sequi esse quidem ratione blanditiis cum distinctio vel aliquam tenetur quas enim fugit iusto rerum nobis odio doloribus est.</p> -->
+        <div id="bahan" class="content-resep">
+            {{ bahan|raw }}
+        </div>
+          
+        <!--<div id="cara-memasak">
+          <h3 style="color : #0D62A7; font-weight : bold; text-decoration : none; font-family : Brevia-Black,Helvetica,Arial,sans-serif">Cara Memasak</h3>
+          
+              {{ caramemasak|raw }}
+        </div>-->
+                  
+          {% endif %}
+          
+          {% put schema %}
+<script type="application/ld+json">
+            {
+              "@context": "https://schema.org/", 
+              "@type": "Recipe", 
+              "name": "{{ title }}",
+              "image": "https://frisianflag.com/storage/app/media{{ featuredimage }}",
+              "description": "{{ title }} - Resep Praktis Bergizi dengan Susu Cair Frisian Flag",
+              "keywords": "{{ title }}, Susu Cair Frisian Flag",
+              "author": {
+                "@type": "Person",
+                "name": "Frisian Flag Indonesia"
+              },
+              "datePublished": "{{ schemadate }}",
+              "prepTime": "PT10M",
+              "cookTime": "PT20M", 
+              "totalTime": "PT30M", 
+              "nutrition": {
+                "@type": "NutritionInformation",
+                "calories": "270 cal"
+              },
+              "recipeIngredient": {{ ingredient|raw }},
+              "recipeInstructions": {{ 
+howtocook|raw }},
+              "video": {
+                "@type": "VideoObject",
+                "name": "{{ title }}",
+                "description": "{{ title }} - Resep Praktis Bergizi dengan Susu Cair Frisian Flag",
+                "thumbnailUrl": "https://frisianflag.com/storage/app/media{{ featuredimage }}",
+                "uploadDate": "2021-03-08", 
+                "contentUrl": "https://www.youtube.com/watch?v={{youtube}}",
+                "embedUrl": "https://www.youtube.com/embed/{{youtube}}"
+              }  
+            }
+          </script>
+          {% endput %}
+          <div class="row mt-5 mb-5">
+              <div class="col-12 text-right">
+              <div class="addthis_inline_share_toolbox">
+              </div>
+                  <!--<div class="social">
+                      <button class="btn-socmed" data-toggle="collapse" data-target="#collapseExample"><i class="fa fa-share-alt"></i> Bagikan</button>
+                  </div>
+                  
+                  <div class="collapse" style="margin-top : 15px !important" id="collapseExample">
+                  
+                      
+                    </div>-->
+              </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </section>
+  
+  {% if ramadan == 'true' %}
+        <style>
+        .recipe-headline, .recipe-title{
+            color: white !important;   
+            font-family: Uni-Sans;
+        }
+        .recipe-title{
+            font-size: 24px !important;    
+        }
+        .recipe-btn{
+            font-size: 20px !important;    
+        }
+        #the-other-recipes{
+            margin: 0 auto !important;    
+        }
+        @media only screen and (max-width: 431px){
+            .other-recipe-item{
+                width: 100% !important;
+            }
+            .card-bottom {
+                min-height: 8rem !important;
+            }
+            .recipe-title{
+                font-size: 20px !important;
+                margin-bottom: 1rem !important;
+            }
+        }
+        @media only screen and (min-width: 432px) and (max-width: 1281px){
+            .recipe-title{
+                font-size: 22px !important    
+            }
+            .recipe-btn{
+                font-size: 16px !important;
+            }
+            .card-bottom {
+                min-height: 12rem !important;
+            }
+        }
+        @media only screen and (min-width: 1025px) and (max-width: 1270px){
+            .recipe-title{
+                font-size: 18px !important;    
+            }    
+        }
+        </style>
+        {% partial 'ramadhan2024-other-recipe' %}
+  {% endif %}
+    
+  {% if category == 'resep-dengan-kental-manis' or  class == 'content-festive' %}
+  <section class="section-ecommerce {{ class == 'content-festive' ? 'bg--blue' : '' }}">
+      <div class="container">
+        {% if class == 'content-festive' %}
+            <h2 class="underline">Beli Sekarang</h2>
+        {% endif %}
+        <div class="row commerce-list">
+        {% for image, link in ecommerce %}
+            <div class="col-sm-6 col-lg-4 text-center">
+                  <div class="card ecommerce-item">
+                      <div class="card-body">
+                          <a href="{{link}}">
+                              <img loading="lazy" width="50%" src="{{image | media}}" alt="Ecommerce">
+                          </a>
+                      </div>
+                  </div>
+              </div>
+        {% endfor %}
+              
+          </div>
+      </div>
+  </section>
+  {% endif %}
+    {% if related.count > 0 %}
+
+    <div class="resep-kue content-text">
+      <div class="section text-center text-white">
+           <div class="container slider-container">
+              <div class="row">
+                   <div class="col-xs-12">
+                   {% if class == 'content-festive' %}
+                    <h2 class="underline">Resep Lainnya</h2>
+                {% else %}
+                    <h2 class="section__title text-left" style="color : white; text-align : center">{{'Coba Resep Lainnya' | upper}}</h2>
+                {% endif %}
+                      
+                   </div>
+              </div>
+              <div class="row content-ramadan slider {{ class == 'content-festive' ? 'rel--festive' : '' }}">
+                {% for ct in related %}
+                    <div class="col-sm-12 col-md-3">
+                        <div class="recipe">
+                              <a href="/resep-kami/{{category}}/{{ct.slug}}">
+                                <img  loading="lazy" class="image-explicit" src="{{ct.featured_image | media}}" alt ="{{ct.title | title}}" width="358px" height="357px"/>
+                              </a>
+                        </div>
+                        {% if class == 'content-festive' %}
+                          <a class="button btn-orange" href="/resep-kami/{{category}}/{{ct.slug}}">
+                              Lihat Resepnya
+                          </a>
+                          {% endif %}
+                     </div> 
+                {%endfor%}
+                <div class="col-sm-12 col-md-3">
+                    <div class="recipe">
+                      <div class="img-overlay">
+                          <a href="/resep-kami">
+                        <img loading="lazy" class="image-explicit" src="{{ 'festive-ramadan/selengkapnya.png'|media }}" alt ="{{category}}" width="358px" height="357px"/>
+                        </a>
+                      </div>
+                    </div>
+                 </div> 
+                
+              </div>
+              <button class="slick-prev prev"></button> 
+                <button class="slick-next next"></button>   
+              
+            </div>
+       </div>
+   </div>
+   {% endif %}
+    {% if class == 'content-festive' %}
+    <section class="aktivitas-kami content-text">
+       <div class="container">
+           <div class="row">
+               <div class="col-xs-12">
+                      <h2 class="underline">{{'Artikel Terkait' | upper}}</h2>
+               </div>
+           </div>
+           <div class="milkpedia-slider">
+               {% for ct in milkpedia %}
+                    <div class="milkpedia--item">
+                      <a href="/milkpedia/{{ct.category_slug}}/{{ct.slug}}">
+                      <div>
+                      <div class="box-milkpedia">
+                        <div style="width:100%; height:25rem;">
+                            <img loading="lazy" style="width:100%; height:100%; object-fit: cover;" src="{{ ct.featured_image |media }}" alt="{{ ct.title }}"></img>
+                        </div>
+                        </div>
+                        <h5>{{ ct.title }}</h5>
+                        <p>{{ str_limit(ct.excerpt, 80)}}</p>
+                        <span class="button-amp button center ">Selengkapnya</span>
+                        </div>
+                      </a>
+            
+                    </div>
+             {% endfor %} 
+           </div>
+       </div>
+   </section>
+    {% else %}
+   <section class="aktivitas-kami">
+       <div class="container">
+           <div class="row">
+               <div class="col-12">
+                      <h2 class="section__title text-left" style="color : #fff; text-align : center">{{'Aktivitas Kami' | upper}}</h2>
+               </div>
+               
+               <div class="col-md-4 col-sm-12">
+                <div class="recipe" style="background : url(https://www.frisianflag.com/storage/app/media/tips-menu-menjaga-nutrisi-anak.jpeg); background-size : cover !important">
+                  <div class="img-overlay">
+                    <a href="{{'festive-ramadan-homepage'|page}}/{{category}}">
+                      <div class="image-overlay"></div>
+                    </a>
+                    <div class="summary-overlay">
+                        <div id="summary" class="container-fluid">
+                            <div class="content">
+                                <p><b>Tips dan Menu Menjaga Nutrisi Anak</b></p>
+                                <a href="" class="button">{{'lebih lanjut' | upper}}</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-campaign">
+                        <a href="" class="button">Berita</a>
+                    </div>
+                  </div>
+                </div>
+               </div>
+              <!-- -->
+               <div class="col-md-4 col-sm-12">
+                <div class="recipe"  style="background : url(https://www.frisianflag.com/storage/app/media/Gerakan-Nusantara-Thumbnail_b5aad6f5fc0cd6a62257235b2215ab9f.jpg); background-size : cover !important">
+                  <div class="img-overlay">
+                    <a href="{{'festive-ramadan-homepage'|page}}/{{category}}">
+                      <div class="image-overlay"></div>
+                    </a>
+                    <div class="summary-overlay">
+                        <div id="summary" class="container-fluid">
+                            <div class="content">
+                                <p><b>#Gerakan Nusantara</b></p>
+                                <a href="" class="button">{{'lebih lanjut' | upper}}</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-campaign">
+                        <a href="" class="button">Berita</a>
+                    </div>
+                  </div>
+                </div>
+               </div>
+              <!-- -->
+               <div class="col-md-4 col-sm-12">
+                <div class="recipe" style="background : url(https://www.frisianflag.com/storage/app/media/5.jpg); background-size : cover !important">
+                  <div class="img-overlay">
+                    <a href="{{'festive-ramadan-homepage'|page}}/{{category}}">
+                      <div class="image-overlay"></div>
+                    </a>
+                    <div class="summary-overlay">
+                        <div id="summary" class="container-fluid">
+                            <div class="content">
+                                <p><b>#ibudanbalita</b></p>
+                                <a href="" class="button">{{'lebih lanjut' | upper}}</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-campaign">
+                        <a href="" class="button">Berita</a>
+                    </div>
+                  </div>
+                </div>
+               </div>
+              
+                  
+           </div>
+       </div>
+   </section>
+    {% endif %}
+    
+    {% if ramadan == 'true' %}
+        {% partial 'floating-navigation' %}
+    {% endif %}
+       
+	</div> 
+	<script>
+	    /*
+	    
+	    //youtube player event to hide overlay 
+        var ik_player;
+        function onYouTubeIframeAPIReady() {
+          ik_player = new YT.Player('ik_player_iframe');
+          console.log('Video API is loaded');
+          ik_player.addEventListener("onReady",       "onYouTubePlayerReady");
+          ik_player.addEventListener("onStateChange", "onYouTubePlayerStateChange");
+        }
+        
+        function onYouTubePlayerReady() {
+          console.log('Video is ready to play');
+        }
+        
+        function onYouTubePlayerStateChange(event) {
+            switch (event.data) {
+                case YT.PlayerState.UNSTARTED:
+                  console.log('unstarted');
+                  $('.overlay').show()
+                  break;
+                case YT.PlayerState.ENDED:
+                  $('.overlay').show()
+                  break;
+                case YT.PlayerState.PLAYING:
+                  $('.overlay').hide()
+                  break;
+                case YT.PlayerState.PAUSED:
+                  $('.overlay').show()
+                  break;
+                case YT.PlayerState.BUFFERING:
+                  $('.overlay').show()
+                  break;
+                case YT.PlayerState.CUED:
+                  console.log('video cued');
+                  break;
+              }
+        }   
+        */
+        var images = document.querySelectorAll('p img');
+
+        images.forEach(function(image) {
+            image.setAttribute('height', '700');
+            image.classList.add('image-explicit');
+        });
+
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val(window.location.href).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+
+        $(document).ready(function(){
+            //ecomerce button 
+            var button = $('.btn-modal')
+            button.click(function () {
+                var target = $(this).data('target')
+                $(target).addClass('show')
+            })
+            
+            var overlay = $('.overlay-store')
+            var close_btn = $('.overlay-store .btn-close')
+            close_btn.click(function () {
+                overlay.removeClass('show')    
+            })
+            
+            $('.btn-commerce').each(function () {
+                var link = $(this).attr('href')
+                link = link.toLowerCase()
+                if(link.indexOf('lazada') >= 0){
+                    $(this).text('Lazada')    
+                } else if(link.indexOf('jd.id') >= 0){
+                    $(this).text('jd.id')
+                } else if(link.indexOf('alfagift') >= 0){
+                    $(this).text('Alfamart')
+                } else if(link.indexOf('blibli') >= 0){
+                  $(this).text('Blibli')
+                } else if(link.indexOf('klikindomaret') >= 0){
+                  $(this).text('Klikindomaret')
+                } else if(link.indexOf('tokopedia') >= 0){
+                  $(this).text('Tokopedia')
+                } else if(link.indexOf('shopee') >= 0){
+                  $(this).text('Shopee')
+                } else if(link.indexOf('bukalapak') >= 0){
+                  $(this).text('Bukalapak')
+                } else if(link.indexOf('tiktok') >= 0){
+                  $(this).text('Tiktok')
+                }
+            })
+            
+            $("#inputURL").val(window.location.href);
+            var a = setInterval( function() {
+                if ( $(".at-share-btn-elements").length < 1 ) {
+                    return;
+                }
+                clearInterval( a );
+        
+                $(".at-share-btn-elements").append('<a type="button" role="button" id="copyURL" class=" " tabindex="0" style="border-radius: 24px;font-size: 15px;padding: 13.5px 15px;background-image: linear-gradient(to bottom,#FD9C00, #DF8200) !important;color: #FFF;display: inline-block;line-height: 0;margin-right: 5px;"><span class="at4-visually-hidden">Copy URL</span><i class="fa fa-clone" aria-hidden="true" style=" font-size: 15px; "></i> Copy Link</a></div>');
+                $("#copyURL").addClass("at-share-btn");
+                $("#copyURL").click(function(e){
+                    
+                    e.preventDefault();
+                    copyToClipboard();
+                    return false;
+                });
+            }, 500 );
+           
+            
+            //$('ul.main-menu').append('<li class="main-menu__list menu-item-237 menu-item-level-0 has-child"><a href="https://www.frisianflag.com/resep-kami" title="" target="_self">Resep Kami </a><ul class="val-submenu"><li class=""><a href="https://www.frisianflag.com/resep-kami?category=FMP" title="" target="_self">Susu Bubuk</a></li><li class=""><a href="https://www.frisianflag.com/resep-kami?category=SCM" title="" target="_self">Susu Kental Manis</a></li><li class=""><a href="https://www.frisianflag.com/resep-kami?category=RTD" title="" target="_self">Susu Fullcream</a></li></ul></li>')
+            
+            //$('<li class="main-menu__list menu-item-237 menu-item-level-0 has-child"><a href="https://www.frisianflag.com/resep-kami" title="" target="_self">Resep Kami </a><ul class="val-submenu"><li class=""><a href="https://www.frisianflag.com/resep-kami?category=FMP" title="" target="_self">Susu Bubuk</a></li><li class=""><a href="https://www.frisianflag.com/resep-kami?category=SCM" title="" target="_self">Susu Kental Manis</a></li><li class=""><a href="https://www.frisianflag.com/resep-kami?category=RTD" title="" target="_self">Susu Fullcream</a></li></ul></li>').insertAfter('ul.main-menu > li.main-menu__list:nth-child(1)')
+            
+    //$('li.main-menu__list:nth-child(3) > ul:nth-child(2)').append('<li class=""><a href="https://www.frisianflag.com/cokelatnya-bikin-semua-nikmat" title="" target="_self">Cokelatnya Bikin Semua Nikmat</a></li>')
+            
+    //$('li.main-menu__list:nth-child(4) > ul:nth-child(2)').prepend('<li class=""><a href="https://www.frisianflag.com/cokelatnya-bikin-semua-nikmat" title="" target="_self">Cokelatnya Bikin Semua Nikmat</a></li>')
+            })
+        $('.aktifitas-slider').slick({
+          infinite: true,
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          arrows : false,
+          autoplay: true,
+          autoplaySpeed: 2000,
+        });
+        //$('.collapse').addClass('in');
+        $('.slider').slick({
+          infinite: true,
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          arrows : true,
+          autoplay: true,
+          autoplaySpeed: 2000,
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+              },
+            }
+          ],
+        });
+        $('.milkpedia-slider').slick({
+          infinite: true,
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          arrows : true,
+          autoplay: true,
+          autoplaySpeed: 2000,
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+              },
+            }
+          ],
+        });
+	var indexresep = 2;
+    
+    
+    function like(){
+    
+    
+    $.request('onHandleForm',                       
+    {
+        data : {
+            id : ''
+        },
+        update: {'checkresult': '.disresults1'},
+        beforeUpdate: function(data) { 
+            
+            if($(".btn-like").hasClass("active")){
+                $(".btn-like").removeClass("active");
+            }else{
+                $(".btn-like").addClass("active");
+            }
+            $(".btn-like span").html(data.checkresult);
+            console.log("checknext",data.checkresult);
+            
+            
+        }
+    });  
+}
+    
+	</script>
+{# The following code will not be executed and nothing will be outputted
+{% if class == 'content-festive'%}
+{% partial 'festive-sticky-desktop' %}
+{% endif %}
+#}

@@ -1,0 +1,21 @@
+columns:
+    id:
+        label: id
+        type: number
+    article_slug:
+        label: article_slug
+        type: text
+        searchable: true
+    created_at:
+        label: created_at
+        type: datetime
+    updated_at:
+        label: updated_at
+        type: datetime
+    link:
+        label: link
+        type: text
+    category:
+        label: category
+        type: text
+        searchable: true

@@ -1,0 +1,58 @@
+description = "Layout Ketan Hitam Makin Asyik - Mekanisme"
+
+[staticPage]
+useContent = 1
+default = 0
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('ketan-hitam-makin-asyik-mekanisme-amp');
+}
+?>
+==
+{% partial 'site/header-d-opt' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pa{% component 'staticPage' %}ges">
+    <div class="imgwrp">
+    	<img src="{{ 'ketan-hitam-makin-asyik/frisian-flag-ketan-hitam-makin-asyik-banner-mekanisme.jpg'|media }}" class="hidden-xs" />
+    	<img src="{{ 'ketan-hitam-makin-asyik/frisian-flag-ketan-hitam-makin-asyik-banner-mekanisme-mobile.jpg'|media }}" class="visible-xs" />
+    </div>
+</div>
+
+{% partial 'site/ketan-hitam-makin-asyik' %}
+
+<div id='main-section' class="container" style="padding: 30px 15px;">
+    <div class="col-md-12">
+        <div class="default-content">
+            <div class="cen{% component 'staticPage' %}ter-img" style="text-align: center;margin-bottom:10px;">
+                <img src="{{ 'ketan-hitam-makin-asyik/frisian-flag-ketan-hitam-makin-asyik-mekanisme-d.jpg'|media  }}" style="" class="hidden-xs">
+                <img src="{{ 'ketan-hitam-makin-asyik/frisian-flag-ketan-hitam-makin-asyik-mekanisme-m.jpg'|media  }}" style="" class="visible-xs">
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .default-content h3 {
+        font-size: 22px;
+        line-height: 1.2;
+    }
+
+    @media screen and (min-width: 767px) {
+        .default-content h3 {
+            font-size: 30px;
+        }
+    }
+
+  @media screen and (max-width: 767px) {
+    .m-bottom-15 {
+      margin-bottom: 15px;
+    }
+  }
+</style>
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

@@ -1,0 +1,476 @@
+title = "Our Milkpedia Single Double"
+url = "/milkpedia/:category-slug?/:slug"
+layout = "default"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/our-milkpedia-single-double"
+
+[builderDetails]
+modelClass = "Definite\Milkpedia\Models\Milkpedia"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+==
+<?php
+use \Definite\Milkpedia\Models\Category as Category;
+
+function onStart(){ 
+    $this['ramadan'] = isset($_GET['ramadan']) ? $_GET['ramadan'] : '';
+}
+
+function onEnd() {
+   $slug         = $this->param('slug');    
+   $param_slug    = $this->param('category-slug');
+   $cmsController = new Cms\Classes\Controller;   
+   if($slug == 'kapan-waktu-yang-tepat-bagi-orang-dewasa-minum-susu-penambah-berat-badan'){
+          return Redirect::to("/milkpedia/kapan-dan-bagaimana-cara-minum-susu/susu-penambah-berat-badan" , 301);
+    }
+   if(!$this->page->components["builderDetails"]->record){
+    
+        return Response::make( $cmsController->render("/404"), 404);
+   
+    }
+   
+    $category_slug = $this->page->components["builderDetails"]->record->categories->first();
+    $slug          = $this->page->components["builderDetails"]->record->attributes["slug"];
+
+    if($param_slug == 'default')
+    {
+        return redirect()->to(url('/milkpedia/'.$category_slug->slug.'/'.$slug));
+    }
+    
+    //Redirect to milkpedia category
+    if($param_slug != $category_slug->slug){
+        return redirect()->to(url('/milkpedia/'.$category_slug->slug.'/'.$slug));        
+    }
+    
+    
+    if(!Category::where('slug',$param_slug)->first()){
+        return Response::make( $cmsController->render("/404"), 404);
+    }
+
+      // get the post component
+    $_title      = $this->page->components["builderDetails"]->record->attributes["title"];
+    $_meta_title = $this->page->components["builderDetails"]->record->attributes["meta_title"];
+    
+    if($_meta_title){
+             $this->page->title      = $_meta_title;
+             $this->page->meta_title = $_meta_title;
+        }
+    else{
+             $this->page->title = $_title;
+        }    
+    $_meta_description = $this->page->components["builderDetails"]->record->attributes["meta_description"] ?? NULL;
+    $_meta_keywords = $this->page->components["builderDetails"]->record->attributes["meta_keywords"] ?? NULL;
+   
+    $this->page->meta_description = $_meta_description;
+    $this->page->meta_keywords = $_meta_keywords;
+
+    $_title_en = $this->page->components["builderDetails"]->record->attributes["title_en"] ?? NULL;
+    $_meta_description_en = $this->page->components["builderDetails"]->record->attributes["meta_description_en"] ?? NULL;
+    $_meta_keywords_en = $this->page->components["builderDetails"]->record->attributes["meta_keywords_en"] ?? NULL;
+    $this->page->title_en = $_title_en;
+    $this->page->meta_title_en = $this->page->components["builderDetails"]->record->attributes["meta_title_en"] ?? NULL;
+    $this->page->meta_description_en = $_meta_description_en;
+    $this->page->meta_keywords_en = $_meta_keywords_en;
+
+    $this->page->category_slug = $this->param('category-slug');
+    $og_desc =  $this->page->components["builderDetails"]->record->attributes["excerpt"];
+    $og_img  =  $this->page->components["builderDetails"]->record->attributes["featured_image"];
+    
+    if(!$og_desc){
+        $this->page->og_description = 'Halo! Ada artikel yang menarik dan bermanfaat untuk Anda baca dari Frisian Flag Milkpedia. Temukan juga berbagai artikel lainnya di https://www.frisianflag.com/milkpedia';
+    }
+   
+    $this->page->og_description = $og_desc;    
+    $this->page->og_image = $og_img;
+    
+    $slug = $this->param('slug');
+    $disableList = [
+        'disable-all-pages'
+    ];
+    
+    if (!in_array($slug,$disableList) && !in_array('disable-all-pages',$disableList)){
+        $this->page->amp_url = $this->pageUrl('our-milkpedia-single-amp', ['category-slug' => $this->param('category-slug'), 'slug' => $slug]);
+    }
+
+}
+?>
+==
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+{% if record %}
+<style>
+               .eccomerce-card {
+                   background : white !important;
+                   border-radius : 15px !important;
+               }
+               .eccomerce-card.style-2 {
+                   background : #0F4D9A !important; 
+                   display : none;
+               }
+               .eccomerce-card.style-3 {
+                   display : none;
+                   background : #F6902A !important; 
+               }
+               .eccomerce-card.style-2 p ,.eccomerce-card.style-2 h4 , .eccomerce-card.style-3 p ,.eccomerce-card.style-3 h4 {
+                   color : white !important; 
+               }
+               .eccomerce-card .card-body {
+                    padding : 15px 20px !important;
+               }
+               .eccomerce-card p, .eccomerce-card h5 {
+                    color : #0D62A7 !important;    
+               }
+               .eccomerce-card h4 {
+                      font-size : 20px !important
+               }
+               .eccomerce-card .row {
+                      display : flex; 
+                      align-items : center;
+               }
+               .eccomerce-card .imgproduct{
+                    border : unset !important;
+                    border-radius : 10px;
+                    background : white;
+               }
+               .eccomerce-card .btn-modal img {
+                   width : 100px;    
+               }
+               .overlay-store {
+                   visibility : hidden;
+                   opacity : 0;
+                   transition : 0.3s;
+                   background : rgba(0,0,0,0.8);
+                   height : 100vh;
+                   width : 100%;
+                   position : fixed;
+                   top : 0;
+                   display : flex !important;
+                   align-items : center;
+                   justify-content : center;
+                   left : 0;
+                   z-index : 1000;
+               }.overlay-store.show {
+                   opacity : 1;
+                   visibility : visible;
+               }
+               .overlay-store .card {
+                   position : relative;
+                   width : 95%;
+                   background : #0F4D9A;
+                   border-radius : 20px;
+               }
+               .overlay-store .card-body {
+                   padding : 20px;
+               }
+               @media (min-width : 768px){
+                   .overlay-store .card {
+                       width : 35%;
+                   }
+               }
+               .overlay-store h4, .overlay-store a{
+                   color : white !important;   
+                   text-align : center;
+               }
+               .overlay-store a.btn-outline-light{
+                   color : white !important;
+                   border : 1px solid white;
+                   margin-bottom : 10px;
+                   width : 100%;
+                   transition : 0.3s;
+               }
+               .overlay-store a.btn-outline-light:hover{
+                   background : #2875D5 !important;
+               }
+               .overlay-store .btn-close {
+                   background : white !important;
+                   border : unset !important;
+                   color : black;
+                   text-align : center;
+                   width : 30px !important;
+                   height : 30px !important;
+                   position : absolute;
+                   right : -10px;
+                   top : -10px;
+                   border-radius : 50%;
+                   font-weight : bold;
+               }
+           </style>
+    <style>
+   h3 {
+       font-size: 23px !important;
+   }
+   .image-explicit{
+        width:100%;
+        height:auto;
+    }
+</style>
+
+    {% if ramadan == 'true' %}
+        {% partial 'floating-navigation' %}
+    {% endif %}
+    
+    <h1 aria-hidden="true" class="seo-heading">{{ record.title }}</h1>
+
+    <div id='main-section'>
+
+      <div class="static-baner-pages testerans">
+        {% if this.page.category_slug == 'kapan-dan-bagaimana-cara-minum-susu' %}
+        <div class="imgwrp hidden-xs">
+          <img src="{{ 'assets/img/milkypedia/Kapan-dan-bagaimana-cara-minum-susu-Desktop.jpg'|theme }}" alt="Banner"/>
+        </div>
+        <div class="imgwrp visible-xs">
+          <img class="image-explicit" src="{{ 'assets/img/milkypedia/Kapan-dan-bagaimana-cara-minum-susu-Mobile.jpg'|theme }}" alt="Banner" height="500" width="500"/> 
+        </div>
+        {% elseif this.page.category_slug == 'manfaat-minum-susu' %}
+        <div class="imgwrp hidden-xs">
+          <img src="{{ 'assets/img/milkypedia/Manfaat-Minum-Susu-Desktop.jpg'|theme }}" alt="Banner" height="500" width="500"/> 
+        </div>
+        <div class="imgwrp visible-xs">
+          <img src="{{ 'assets/img/milkypedia/Manfaat-Minum-Susu-Mobile.jpg'|theme }}" alt="Banner" height="500" width="500"/> 
+        </div>
+        {% elseif this.page.category_slug == 'nutrisi-dan-kesehatan' %}        
+        <div class="imgwrp hidden-xs">
+          <img width="1440" height="479" src="{{ 'assets/img/milkypedia/Nutrisi-dan-Kesehatan-Desktop.jpg'|theme }}" alt="Banner"/> 
+        </div>
+        <div class="imgwrp visible-xs">
+          <img class="image-explicit" height="500" width="500" src="{{ 'assets/img/milkypedia/Nutrisi-dan-Kesehatan-Mobile.jpg'|theme }}" alt="Banner"/> 
+        </div>
+        {% else %}
+        <div class="imgwrp hidden-xs">
+          <img src="{{ 'assets/img/95-TAHUN-FF_desktop-banner.jpg'|theme }}" alt="Banner" height="500" width="500"/>
+        </div>
+        <div class="imgwrp visible-xs">
+          <img src="{{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }}" alt="Banner" height="500" width="500"/>
+        </div>
+        {% endif %}
+      </div>
+
+      <div class="col-md-12">
+          <div class="breadcrumb">
+              <div class="container-two">
+                  <ul>
+                      <li><a href="#">{{ 'beranda'|_ }}</a> </li>
+                      <li><a href="#">Milkpedia</a> </li>
+                      <li><a href="{{ 'our-milkpedia'|page({ slug: record.categories.first.slug }) }}">{{ trans_pick(record.categories.first, 'title') }}</a> </li>
+                      <li><a href="{{ 'our-milkpedia-single'|page({ slug: record.slug }) }}">{{ trans_pick(record, 'title') }}</a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+
+      <div class="col-md-12">
+          <div class="container-two">
+              <div class="date date-main">
+                  <label>{{ trans_pick(record.categories.first, 'title') }}</label>
+                  <span> | {{ record.created_at.format('d M Y') }}</span>
+              </div>
+          </div>
+      </div>
+
+      <div class="col-md-12">
+          <div id="article" class="default-content">
+              <div class="container-two heres">
+                  <h3>{{ trans_pick(record, 'title') }}</h3>
+
+                   {% if record.featured_image %}
+                      <div class="imgwrp">
+                          <img width="564" height="369" src="{{ record.featured_image|media }}" alt="{{ trans_pick(record, 'title') }}"/>
+                      </div>
+                  {% endif %}
+
+                  {{ trans_pick(record, 'content')|raw }}
+                  
+                  {% if record.products %}
+           
+           <div class="row related-product">
+               <div class="col-12 col-sm-9 col-lg-5">                       
+                   <div class="card bg-light eccomerce-card">
+                       <div class="card-body">  
+                           <div class="row">
+                               <div class="col-xs-5">
+                                    <div class="imgproduct">
+                                        <img loading="lazy" src="{{ record.products.featured_image | media }}" alt="{{ trans_pick(record, 'title') }}"/>
+                                    </div>
+                               </div>
+                               <div class="col-xs-7">
+                                   <p>Yang anda perlukan : </p>
+                                   <h4>{{ record.products.title }}</h4>
+                                   <a href="javascript:void(0)" data-target="#popup-ecommerce" class="btn-modal">
+                                       <img width="50" height="50" loading="lazy" src="{{ 'button-ecommerce.png' | media }}" />
+                                   </a>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <div id="popup-ecommerce" class="overlay-store">
+               <div class="card">
+                <button class="btn-close">x</button>
+                    <div class="card-body">
+                        <h4>Temukan Produk Kami di:</h4>
+                        {% for shop in record.products.link_e_commerce %}
+                            <a class="btn btn-outline-light btn-commerce" href="{{ shop.link }}" target="_blank">
+                                {{shop.title}}
+                            </a>
+                        {% endfor %}
+                    </div>
+               </div>
+           </div>
+           {% endif %}
+           
+                  <div class="wrp-sharesocemd">
+                      <label>{{'share'|_}}</label>
+                      <div class="addthis_inline_share_toolbox"
+                        data-url="{{ this.page.id | page }}" 
+                        data-title="{{ this.page.title }} - Frisian Flag Milkpedia"
+                        data-description="Halo!\nAda artikel yang menarik dan bermanfaat untuk Anda baca dari Frisian Flag Milkpedia\n\n(link artikel)\n\nTemukan juga berbagai artikel lainnya di  (link)."></div>
+                   </div>
+                   <script type="text/javascript" defer>
+                        var addthis_config = addthis_config||{};
+                        addthis_config.ui_email_note = 'Halo!\n\nAda artikel yang menarik dan bermanfaat untuk Anda baca dari Frisian Flag Milkpedia\n\nTemukan juga berbagai artikel lainnya di ' + "{{ str_replace_first('https://', '', url('/milkpedia')) }}";
+                    </script>
+              </div>
+          </div>
+      </div>
+
+    {% set related = record.related %}
+    {% if related %}
+        <div class="title-center"><h3 style="text-transform: uppercase">{{ 'artikel-terkait'|_ }}</h3></div>
+        <div class="wrp-related clearfix section section_card">
+              {% for milkpedia in related %}
+                <div class="col-sm-4 itemhomefade">
+                  <div class="card card_featured">
+                      <div class="card__thumbnail">
+                          <div class="card__image">
+                              <img src="{{ milkpedia.featured_image| mediathumb_resize('width', 640, 90)  }}" alt="{{ trans_pick(milkpedia, 'title') }}">
+                          </div>
+
+                          <div class="card__meta">
+                              <header class="card__head">
+                                  <h3>
+                                    <a href="{{ 'our-milkpedia-single'|page({
+                                        'categories-slug': milkpedia.category.slug,
+                                        'slug': milkpedia.slug
+                                    }) }}">{{ trans_pick(milkpedia, 'title') }}</a>
+                                </h3>
+                              </header>
+                             <a href="{{ 'our-milkpedia-single'|page({
+                                'categories-slug': milkpedia.category.slug,
+                                'slug': milkpedia.slug
+                            }) }}" class="button hidden-xs">{{ 'lebih-lanjut'|_ }}</a>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    {% endif %}
+    </div> <!-- end mainsection -->
+     <!-- end mainsection -->
+    {% put scripts %}
+    <script>
+        var gambar1 = document.querySelector('#article > div > ol:nth-child(12) > li:nth-child(1) > p:nth-child(2) > img');
+        gambar1.setAttribute('width', '300');
+        gambar1.setAttribute('height', '200');
+        
+        var gambar2 = document.querySelector('#article > div > ol:nth-child(12) > li:nth-child(2) > p:nth-child(2) > img');
+        gambar2.setAttribute('width', '300');
+        gambar2.setAttribute('height', '200');
+        
+        var gambar3 = document.querySelector('#article > div > ol:nth-child(12) > li:nth-child(3) > p:nth-child(2) > img');
+        gambar3.setAttribute('width', '300');
+        gambar3.setAttribute('height', '200');
+        
+        var gambar4 = document.querySelector('#article > div > ol:nth-child(12) > li:nth-child(4) > p:nth-child(2) > img');
+        gambar4.setAttribute('width', '300');
+        gambar4.setAttribute('height', '200');
+        
+        var gambar5 = document.querySelector('#article > div > ol:nth-child(12) > li:nth-child(5) > p:nth-child(2) > img');
+        gambar5.setAttribute('width', '300');
+        gambar5.setAttribute('height', '200');
+    
+        
+    </script>
+    <script>
+        $(document).ready(function () {
+            //ecomerce button 
+            var button = $('.btn-modal')
+            button.click(function () {
+                var target = $(this).data('target')
+                $(target).addClass('show')
+            })
+            
+            var overlay = $('.overlay-store')
+            var close_btn = $('.overlay-store .btn-close')
+            close_btn.click(function () {
+                overlay.removeClass('show')    
+            })
+            
+            $('.btn-commerce').each(function () {
+                var link = $(this).attr('href')
+                link = link.toLowerCase()
+                if(link.indexOf('lazada') >= 0){
+                    $(this).text('lazada')    
+                } else if(link.indexOf('jd.id') >= 0){
+                    $(this).text('jd.id')
+                } else if(link.indexOf('alfagift') >= 0){
+                    $(this).text('Alfamart')
+                } else if(link.indexOf('blibli') >= 0){
+                  $(this).text('blibli')
+                } else if(link.indexOf('klikindomaret') >= 0){
+                  $(this).text('klikindomaret')
+                } else if(link.indexOf('tokopedia') >= 0){
+                  $(this).text('tokopedia')
+                } else if(link.indexOf('shopee') >= 0){
+                  $(this).text('shopee')
+                } else if(link.indexOf('bukalapak') >= 0){
+                  $(this).text('bukalapak')
+                }
+            })
+        })
+        
+        
+            //var produk = $('.related-product').hide() 
+            if(!$(produk).length > 0){
+                
+            }
+            var target = $('.default-content .imgwrp img')[0]
+            if($('.default-content').find('h3').length > 1){                
+                target = $('.default-content').find('h3')[1]
+            }
+            if($('.default-content').find('h2').length > 1){                
+                target = $('.default-content').find('h2')[0]
+            }
+            if($('.product-detail-target').length > 0) {               
+                target = $('.product-detail-target')
+            }
+            if($(target).text().toLowerCase().indexOf('bahan') >= 0){ 
+                //$(produk).insertAfter(target).show()
+            } else {               
+                //$(produk).insertBefore(target).show()
+            }
+    </script>
+    <script>
+        const images = document.querySelectorAll('div#article > div.container-two > p > img.fr-fic');
+        images.forEach(img => {
+          img.style.height = 'auto';
+        });
+        
+        const imga = document.querySelectorAll('div#article > div.container-two > p > img.fr-fic');
+        images.forEach(img => {
+          img.setAttribute('height', '500');
+          img.setAttribute('width', '500');
+        });
+    </script>
+    {% endput %}
+{% else %}
+    {% partial '404' %}
+{% endif %}

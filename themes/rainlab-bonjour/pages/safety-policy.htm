@@ -1,0 +1,57 @@
+title = "Safety Policy"
+url = "/perusahaan-kami/safety-policy"
+layout = "default"
+is_hidden = 0
+==
+<?php
+use definite\aboutus\models\BusinessSafety;
+
+function onEnd() {
+    $pages = BusinessSafety::where('slug', 'safety-policy')->get()->first();
+    	if($pages){
+            $this->page->meta_title = $pages->meta_title;
+            $this->page->meta_description = $pages->description;
+        }
+    // hardcoded on purpose. sorry.
+    $this['record'] = BusinessSafety::where('slug', 'safety-policy')->first();
+    $this['baseUrl'] = url(Config::get('cms.storage.media.path'));
+
+    $this->page->amp_url = $this->pageUrl('safety-policy-amp');
+}
+?>
+==
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(record, 'title') }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp hidden-xs"><img src="{{ 'assets/img/95-TAHUN-FF_desktop-banner.jpg'|theme }}" alt="Banner 95 Tahun Frisian Flag Desktop"/> </div>
+    <div class="imgwrp visible-xs"><img src="{{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }}" alt="Banner 95 Tahun Frisian Flag Mobile"/> </div>
+</div>
+
+<div id='main-section' class="container" style="padding: 60px 0;">
+    <div class="col-md-12">
+        <div class="breadcrumb">
+            <ul>
+                <li>
+                    <a href="{{ 'home' | page }}">{{ 'beranda'|_ }}</a>
+                </li>
+                <li>
+                    <a href="javascript:;">{{ trans_pick(record, 'title') }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="default-content">
+            <h3>{{ trans_pick(record, 'title') }}</h3>
+            <p>{{record.description}}</p>
+            
+            <p>
+                <br>
+            </p>
+
+            <p>
+                <a class="button button--large" download="" href="{{baseUrl}}{{record.attachment}}">Unduh Safety Policy</a>
+            </p>
+        </div>
+    </div>
+</div>

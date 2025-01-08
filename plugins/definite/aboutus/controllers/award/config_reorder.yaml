@@ -1,0 +1,4 @@
+title: Award
+modelClass: Definite\Aboutus\Models\Award
+toolbar:
+    buttons: reorder_toolbar

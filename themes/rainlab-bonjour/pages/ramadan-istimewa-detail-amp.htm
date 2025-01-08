@@ -1,0 +1,279 @@
+title = "Ramadan Istimewa Detail AMP"
+url = "/amp/aktivitas-kami/ramadan-istimewa/:category?/:slug?"
+layout = "default-amp"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/ramadan-istimewa-detail-amp"
+==
+<?php
+function onStart(){
+        
+        //get slug
+        $category        = $this->param('category');
+        $slug            = $this->param('slug');
+        
+        if($category == 'resep-takjil-istimewa' && $slug == 'resep-popsicle-cocopandan'){
+            return redirect('/resep-kami' , 301);
+        }
+        //get json data
+        $path              = url('/themes/rainlab-bonjour/assets/ramadan-istimewa/ramadan-recipes.json');
+        $cmsController     = new Cms\Classes\Controller;
+        $arrContextOptions =array(
+            "ssl"=>array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
+        );
+
+         if(json_decode(file_get_contents($path, false, stream_context_create($arrContextOptions)))){
+                 $collection    = collect(json_decode(file_get_contents($path, false, stream_context_create($arrContextOptions))));
+                 $data              = $collection->where('category',$category)->where('slug', $slug)->first();
+              
+            }
+       else{
+                
+              return $cmsController->render("/404");
+           }
+       
+        if(count($data) == 0){
+            
+             return $cmsController->render("/404");
+        }
+        
+                 $min               = $collection->where('category',$category)->min('id');
+                 $slice             = $data->id - $min; 
+                 $data_category     = $collection->where('category',$category)->where('slug', '!=', $slug)->slice($slice)->take(1);
+                 $count             = count($data_category);
+                 if($count < 1){
+                         $before        = $collection->where('category',$category)->where('slug', '!=', $slug)->take(1 -$count);
+                         $data_category = $data_category->merge($before);
+                     }
+        
+        if( $category == 'rtd' ||  $category == 'skm'){
+            return $cmsController->render("/404");
+        }
+        
+         switch ($category) {
+            case "resep-takjil-istimewa":
+                $color  = "content light-green text-center";
+                $title  = "Resep Takjil Istimewa";
+                $banner = "ramadan-istimewa/banner/takjil-mobile.jpg";
+                $this['product'] = 1;
+                $this['market']  = 1;
+                break;
+            case "resep-sahur":
+                $color = "content light-blue text-center";
+                $title = "Resep Sahur Terbaik";
+                $banner = "ramadan-istimewa/banner/sahur-terbaik-mobile.jpg";
+                $this['product'] = 2;
+                $this['market']  = 1;
+                break;
+            case "resep-kue-kering-pilihan":
+                $color = "content light-cream text-center";
+                $title = "Resep Sahur Terbaik";
+                $banner = "ramadan-istimewa/banner/kue-kering-mobile.jpg";
+                break;
+        
+        }
+         if (session::get('data')) {
+        
+           $this['messages'] = session::get('data');
+        }
+        //set value attributes
+        $this['color']          = $color;  
+        $this['recipe']         = $data;
+        $this['next_recipe']    = $data_category;
+        $this['banner']         = $banner;
+        $this['title']          = $title;
+        $this['category']       = $category;
+        $this['social_share']   = "allow";
+        $this->page->title = ucwords(strtolower($data->title));
+       
+}
+?>
+==
+<!--s:carousel-banner-->
+{% partial 'site/banner-ramadan-istimewa-amp' %}
+<!--e:carousel-banner-->
+
+<div id="main-scroll" >
+{% if category == "hidden"%}
+
+<amp-accordion class="title_home btn-accordion {{color}} hidden">
+    <section>
+        <h4 class="arrow_down btn-ac-costum"><a href="#" target="_self">JADWAL SAHUR</a></h4>
+ 
+        <div class="detail_text center">
+             <div class="mb-20 text-center"></div>
+              <h3 class="mb-20 center">Dapatkan jadwal puasa langsung di layar hapemu #SiapPuasa </h3>
+              <a class="content-ramadan" href="http://www.leveratedev.com/resep-ramadhan/auth/google"><button class="button">Jadwal Sahur</button></a>
+         </div>
+    </section>
+</amp-accordion>
+{% endif %}
+
+<div id="main-detail" >
+{% if category == "hidden"%}    
+<amp-accordion class="title_home btn-accordion {{color}} hidden">
+    <section>
+{% if messages %}    
+      <div id="message" style="color: #721c24;background-color: #f8d7da;border-color: #f5c6cb;position:relative;padding:12px;">
+      {%if messages.first('email') == 'wrong' or  messages.first('phone') == 'wrong'%}
+         <p style="font-size:16px;">Maaf, format Nomor Hp / Alamat email yang Anda masukkan tidak valid, mohon isi kembali dengan data yang benar.</p>
+      {%else%}
+         <p style="font-size:16px;">Maaf, permintaan redeem kupon tidak dapat kami proses, karena permintaan Anda telah melebihi ketentuan yang telah di tetapkan sesuai dengan Syarat dan Ketetuan yang berlaku.</p>
+      {%endif%}
+         
+         <button on="tap:message.hide" style="position: absolute;right: 0;top: 0;background-color:transparent;border:none">x</button>
+      </div>   
+{%endif%}        
+        <h4 class="arrow_down  flex-menu arrow-down-center  btn-ac-costum"><a href="#" target="_self">
+        <span class="flex-center">PROMO  <amp-img height="40" width="80" src="{{ "ramadan-istimewa-alfamart-logo.png" | media}}"></amp-img> TERBAIK</span>
+        </a></h4>
+                    
+         <div class="detail_text">
+        {% if category == "resep-sahur"%}
+            <amp-img 
+                src="{{ 'ramadan-rtd-mobile.jpg' |media }}"
+                width="50"
+                height="50"
+                layout="responsive"
+                alt="{{ct.title | title}}">
+                </amp-img>
+            {% else %}
+                <amp-img 
+                    src="{{ 'ramadan-skm-mobile.jpg' |media }}"
+                    width="50"
+                    height="50"
+                    layout="responsive"
+                    alt="{{ct.title | title}}">
+                    </amp-img>
+            {% endif %}
+            
+            
+             <div class="mb-20 p-20"></div>
+              <form class="form"
+              method="get"
+              action="/aktivitas-kami/ramadan-istimewa/redeem-amp"
+              target="_top">
+              <input type="hidden" name="product_category" value="{{product}}">
+              <input type="hidden" name="market_place"     value="{{market}}">
+              
+              <label class="label-input">Nama</label>
+              <input type="text"
+                name="name"
+                class="keywords user-valid valid"
+                placeholder="*Nama"
+                required>
+                
+                <label class="label-input">Tanggal Lahir</label>    
+               <input name="date"
+                class="keywords user-valid valid"
+                type="date"
+                required
+                >
+                
+                <label class="label-input">No Handphone</label>
+              <input type="tel"
+                name="phone"
+                class="keywords user-valid valid"
+                placeholder="*08xxxxxxxxxx"
+                required>
+                
+                <label class="label-input">Email</label>
+              <input type="email"
+                name="email"
+                class="keywords user-valid valid"
+                placeholder="*example@mail.com"
+                required>    
+                
+            <input type="radio"
+                name="gender"
+                placeholder="Email"
+                value="Laki - Laki"
+                id="male"
+                checked
+                required> <label for="male">Laki - Laki</label>
+                
+            <input type="radio"
+                name="gender"
+                placeholder="Email"
+                value="Perempuan"
+                id="female"
+                required> <label for="female">Perempuan</label>
+            <div class="mb-20"></div>
+            <input type="checkbox"
+                id="agree"
+                name="agree"
+                tabindex=""
+                role=""
+                on="tap:AMP.setState({ active: !active })"
+               >
+              <label for="Syarat">Setuju dengan <a href="{{product == 1  ? '/amp/aktivitas-kami/ramadan-istimewa/syarat-dan-ketentuan-alfamart-skm' : '/amp/aktivitas-kami/ramadan-istimewa/syarat-dan-ketentuan-alfamart-rtd'}}">Syarat & Ketentuan.</a></label>
+            <div class="mb-20"></div>
+              <input type="submit"
+                class="button mb-20"
+                value="Redeem"
+                disabled
+                [disabled] = "active ? false : true"
+                >
+            </form>
+         </div>
+    </section>
+</amp-accordion>
+    {% endif %}
+
+
+
+<div class="main-section {{color}}">
+
+    <div class="resep-takjil-istimewa {{color}} padding-25">
+         
+            <amp-youtube
+                    data-videoid="{{recipe.data_video}}"
+                    layout="responsive"
+                    width="480" 
+                    data-param-rel="0"
+                    height="300">
+                    <amp-img
+                      src="{{ recipe.img |media }}"
+                      placeholder
+                      layout="fill"
+                      />
+            </amp-youtube>
+            
+             <div class="detail_text recipe__content mt-10">
+                 <h2>{{recipe.title | title}}</h2>
+                {{recipe.recipe_details| raw}}
+            </div>
+            
+             <div class="share center mb-10">
+        
+        <p class="title-share">{{'Share This Entry'}}</p>
+        
+              <amp-social-share width="35"
+              height="35" class="rounded" type="facebook"
+              data-param-app_id="872847836388420"></amp-social-share>
+              <amp-social-share width="35"
+              height="35" class="rounded" type="twitter"></amp-social-share>
+              <amp-social-share width="35"
+              height="35" class="rounded" type="whatsapp"></amp-social-share>
+              <amp-social-share width="35"
+              height="35" class="rounded" type="line"></amp-social-share>
+            </div>
+           
+    </div>
+    <div class="menu-floating" [class]="visible ? 'menu-floating open' : 'menu-floating'" >
+        <div tabindex="1" role="floatingmenu" class="next-floating" on="tap:AMP.setState({ visible: !visible })">
+            <span>Resep <br/>Selanjutnya</span>
+        </div>
+        <div class="next-recipe">
+            {% for ct in next_recipe %}
+            <a href="{{'ramadan-istimewa-archive'|page}}/{{ct.slug}}#main-detail">{{ct.title}}</a>
+            {%endfor%}
+        </div>
+    </div>
+</div>
+</div>
+</div>

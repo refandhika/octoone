@@ -1,0 +1,18 @@
+fields:
+    'no':
+        label: Number
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    description:
+        label: Description (id)
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: richeditor
+    description_en:
+        label: Description (en)
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: richeditor

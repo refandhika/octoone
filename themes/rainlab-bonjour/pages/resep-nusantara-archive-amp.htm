@@ -1,0 +1,106 @@
+title = "Resep Nusantara Archive | AMP"
+url = "/amp/aktivitas-kami/resep-nusantara/:category"
+layout = "basic-amp"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/resep-nusantara-archive-amp"
+==
+<?php
+function onStart(){
+        
+        //get slug
+        $category           = $this->param('category');
+        $this['page_slug']  = $category;
+        //get json data
+        if($category == 'resep-khas-jawa-bali-nusa-tenggara'){
+            return redirect('/resep-kami' , 301);
+        }
+        $path              = url('/themes/rainlab-bonjour/assets/resep-nusantara/resep-nusantara.json');
+        $cmsController     = new Cms\Classes\Controller;
+        $arrContextOptions =array(
+            "ssl"=>array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
+        );
+
+         if(json_decode(file_get_contents($path, true))){
+                 $collection    = collect(json_decode(file_get_contents($path, true)));
+                 $data          = $collection->where('category', $category );
+            }
+         else{
+               
+                return Response::make( $cmsController->render("/404"), 404);
+           }
+          if(count($data) == 0){
+                return Response::make( $cmsController->render("/404"), 404);
+            } 
+          switch ($category) {
+             case 'resep-khas-sumatera':
+                 $this['content']    = ['banner_desktop'=>'assets/img-ramadhan/banner/recipe page_sumatera_desktop.jpg','banner_mobile'=>'assets/img-ramadhan/banner/recipe page_sumatera_mobile.jpg','name'=>'RESEP KHAS SUMATERA'];
+                  $this->page->title  = 'Resep Khas Sumatera';
+                 break;
+             case 'resep-khas-jawa-bali-nusa-tenggara':
+                 $this['content']    = ['banner_desktop'=>'assets/img-ramadhan/banner/recipe page_jawa_desktop.jpg','banner_mobile'=>'assets/img-ramadhan/banner/recipe page_jawa_mobile.jpg','name'=>'RESEP KHAS JAWA, BALI & NUSA TENGGARA'];
+                   $this->page->title  = 'Resep Khas Jawa, Bali & Nusa Tenggara';
+                 break; 
+             case 'resep-khas-kalimantan':
+                 $this['content']    = ['banner_desktop'=>'assets/img-ramadhan/banner/recipe page_kalimantan_desktop.jpg','banner_mobile'=>'assets/img-ramadhan/banner/recipe page_kalimantan_mobile.jpg','name'=>'RESEP KHAS KALIMANTAN'];
+                   $this->page->title  = 'Resep Khas Kalimantan';
+                 break;  
+             case 'resep-khas-sulawesi-maluku-papua':
+                 $this['content']    = ['banner_desktop'=>'assets/img-ramadhan/banner/recipe page_sulawesi_desktop.jpg','banner_mobile'=>'assets/img-ramadhan/banner/recipe page_sulawesi_mobile.jpg','name'=>'RESEP KHAS SULAWESI, & PAPUA'];
+                   $this->page->title  = 'Resep Puding Khas Nusantara';
+                 break;       
+        }
+        
+          $this['data']       = $data;
+            $this->page->set_rule = "disable";
+}
+?>
+==
+<div class="cover">
+        <amp-img 
+            src="{{content.banner_mobile|theme }}"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="{{content.name | title}}">
+        </amp-img>
+</div>
+
+<amp-accordion class="title_home">
+    <section>
+      <h4 class="arrow_down"><a href="#" target="_self">{{content.name | title}}</a></h4>
+      <p>
+          <a href="/aktivitas-kami/resep-nusantara" target="_self"> {{'Resep Nusantara'| _}}</a>
+          <a href="/aktivitas-kami/resep-nusantara/resep-khas-sumatera" target="_self"> {{'Resep Khas Sumatera'| _}}</a>
+          <a href="/aktivitas-kami/resep-nusantara/resep-khas-jawa-bali-nusa-tenggara" target="_self">{{'Resep Khas Jawa, Bali &amp; Nusa Tenggara'|_}}</a>
+          <a href="/aktivitas-kami/resep-nusantara/resep-khas-kalimantan" target="_self">{{'Resep Khas Kalimantan'|_}}</a>
+          <a href="/aktivitas-kami/resep-nusantara/resep-khas-sulawesi-maluku-papua">{{'Resep Khas Sulawesi, Maluku &amp; Papua'|_}}</a>
+      </p>
+    </section>
+</amp-accordion>
+
+<div class="main-section center padding-15">
+
+    <div class="section">
+     {% for ct in data%}
+        <div class="main__recipe">
+            <div class="detail_text mt-10">
+                <h1 style="font-size:22px">{{ct.title | title}}</h1>   
+            </div>
+                   <amp-img 
+                    src="{{ct.img|theme }}"
+                    width="50"
+                    height="50"
+                    layout="responsive"
+                    alt="{{ct.title | title}}">
+                    </amp-img>
+             <a  class="{{ct.button_class}}" href="{{'resep-nusantara-archive-amp'|page}}/{{ct.slug}}"><p class="share-resep">LIHAT RESEPNYA</p></a>
+		    </div>
+		 {% endfor%}   
+	    </div>	
+	</div>
+</div>

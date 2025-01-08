@@ -1,0 +1,113 @@
+description = "ini section promo untuk page ramadhan 2024"
+
+[viewBag]
+==
+<style>
+.container{
+    margin: 3rem auto;
+}
+.promo {
+    background-color: #2AC6F3;  
+    border-radius: 18px;
+    width:100%;
+    display:flex;
+    flex-direction: column;
+}
+.rows {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
+}
+.col-8{
+    flex: 0 0 auto;
+    width: 66.66666667%;
+}
+.col-4{
+    flex: 0 0 auto;
+    width: 33.33333333%;    
+}
+.col-5{
+    flex: 0 0 auto;
+    width: 33.33333333%;    
+}
+.col-7{
+    flex: 0 0 auto;
+    width: 58.33333333%;
+}
+.title-promo{
+    color:#224C95;
+    font-family: Amino-Black;
+    font-size: 40px;
+    margin-bottom:30px;
+    
+}
+.container-promo {
+    display:flex;
+    flex-direction: column;
+}
+.image-promo{
+    object-fit: cover;
+    width: 100%;
+}
+.button-click {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    touch-action: manipulation;
+    cursor: pointer;
+    white-space: nowrap;
+    padding: 10px 100px;
+    font-size: 26px;
+    line-height: 1.428571429;
+    border-radius: 30px;
+    -moz-user-select: none;
+    user-select: none;
+    color: #fff;
+    background-image: linear-gradient(#51b3f7,#285ba4); 
+    font-family: Amino;
+    margin-top:2rem; 
+}
+.button-click:hover{
+    color: white;
+}
+.centering-promo{
+    width:100%; 
+    padding: 2rem;
+    
+}
+
+@media screen and (min-width: 768px) {
+    .promo {
+        flex-direction: row;
+    }
+    .centering-promo {
+        width: 50%; 
+        padding: 4rem 6rem;
+    }
+    .button-click {
+        margin-top: 7rem;
+    }
+}
+</style>
+<div class="container">
+    <div class="promo">
+        <div style="width:60%;height: 100%;display: flex;flex-direction: column;justify-content: center;">
+            <div class="container container-promo">
+                <div class="centering-promo">
+                    <h2 class="title-promo">Lihat promo lebih lengkap</h2>
+                    <a href="" class="button-click">Klik disini</a>
+                </div>
+            </div>
+        </div>
+        <div style="width:40%">
+            <div class="image-promo">
+                <img src="{{'assets/ramadhan2024/promo-spesial-shopee.png' | theme}}" alt="" width="470" height="450">
+            </div>
+        </div>
+    </div>
+</div>

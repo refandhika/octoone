@@ -1,0 +1,103 @@
+$color: #4a6e78;
+$border: 1px solid #d4d4d4;
+
+.accordion {
+  &_product-detail {
+    h3 {
+      font-size: 22px !important;
+      background-color: #EFEFEF;
+      padding: 10px;
+      position: relative;
+
+      &::after {
+        font-family: "FontAwesome";
+        content: '\f107';
+        color: inherit;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+
+      &.ui-state-active {
+        &::after {
+          content: '\f106';
+        }
+      }
+    }
+  }
+
+  &__content {
+    margin-bottom: 20px;
+  }
+
+  &__simple {    
+    background: #f8f8f8;
+    margin: 20px auto 50px;
+    padding: 0;
+    list-style: none;
+
+    li {
+      border: $border;
+      position: relative;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      
+      figure {
+        display: none;
+        padding: 10px 25px 30px;
+        color: lighten( $color, 15% );
+      }
+
+    }
+
+    span {
+      width: 100%;
+		  display: block;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 18px;
+      user-select: none;
+      padding: 15px 20px;
+      color: #0F4D9A;
+
+      &:after {
+        width: 8px;
+        height: 8px;
+        border-right: 1px solid #999;
+        border-bottom: 1px solid #999;
+        position: absolute;
+        right: 22px;
+        content: " ";
+        top: 22px;
+        transform: rotate(-45deg);
+        -webkit-transition: all 0.2s ease-in-out;
+        -moz-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+      }
+
+      &.active {
+        &:after {
+          transform: rotate(45deg);
+	        -webkit-transition: all 0.2s ease-in-out;
+          -moz-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+        }
+      }
+    }
+
+    h3, h4, h5 {
+      color: #0F4D9A;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #4a4a4a;
+    }
+			
+  }
+}
+
+.accordion-toggle {cursor: pointer;}
+.accordion-content {display: none;}
+.accordion-content.default {display: block;}

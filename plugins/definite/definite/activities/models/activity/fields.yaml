@@ -1,0 +1,114 @@
+fields:
+    title:
+        label: Title
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    title_en:
+        label: Title (en)
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    slug:
+        label: Slug
+        oc.commentPosition: ''
+        span: auto
+        preset:
+            field: title
+            type: slug
+        type: text
+    subtitle:
+        label: Subtitle
+        oc.commentPosition: ''
+        span: full
+        type: text
+    subtitle_en:
+        label: Subtitle (en)
+        oc.commentPosition: ''
+        span: full
+        type: text
+    description:
+        label: Description
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: richeditor
+    description_en:
+        label: Description (en)
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: richeditor
+    featured_image:
+        label: 'Featured Image'
+        oc.commentPosition: ''
+        mode: image
+        span: auto
+        type: mediafinder
+    image_banner:
+        label: 'Image Banner'
+        oc.commentPosition: ''
+        mode: image
+        span: auto
+        type: mediafinder
+    info:
+        label: Info
+        oc.commentPosition: ''
+        prompt: 'Add new item'
+        span: auto
+        type: repeater
+        form:
+            fields:
+                title:
+                    label: Title
+                    oc.commentPosition: ''
+                    span: auto
+                    type: text
+                button_text:
+                    label: 'Button Text'
+                    oc.commentPosition: ''
+                    span: auto
+                    type: text
+                button_link:
+                    label: 'Button Link'
+                    oc.commentPosition: ''
+                    span: auto
+                    type: text
+    categories:
+        label: Categories
+        oc.commentPosition: ''
+        nameFrom: title
+        descriptionFrom: Title
+        span: auto
+        type: relation
+
+tabs:
+    fields:
+        meta_description:
+            label: 'Meta Description'
+            size: ''
+            oc.commentPosition: ''
+            span: auto
+            type: textarea
+            tab: 'Meta Tag (id)'
+        meta_title:
+            label: 'Meta Title'
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            tab: 'Meta Tag (id)'
+        
+        meta_description_en:
+            label: 'Meta Description (en)'
+            size: ''
+            oc.commentPosition: ''
+            span: auto
+            type: textarea
+            tab: 'Meta Tag (en)'
+        meta_title_en:
+            label: 'Meta Title (en)'
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            tab: 'Meta Tag (en)'
+

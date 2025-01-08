@@ -1,0 +1,328 @@
+title = "Our Activities Archive Amp"
+url = "/amp/aktivitas-kami/:slug"
+layout = "basic-amp"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/our-activities-archive-amp"
+
+[activityCategories]
+
+[builderDetails]
+modelClass = "Definite\Activities\Models\Category"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+
+[builderDetails gallery]
+modelClass = "Definite\Activities\Models\Gallery"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+==
+<?php
+function onEnd() {
+    if($slug == 'lombamewarnai2022'){
+          return Redirect::to("/amp/aktivitas-kami/duniazuzhu/ff-milky-colouring-and-drawing-competition" , 301);
+    }
+}
+?>
+==
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+{% set records = gallery.record %}
+{% set displayColumn = gallery.displayColumn %}
+{% set notFoundMessage = gallery.notFoundMessage %}
+
+{% if record %}
+<div class="static-baner-pages">
+     {% if record.slug == 'keluargaminumsusu' %}
+       <amp-img src="{{  'assets/img/keluargaminumsusu/FF-perayaan-susu-480x480.jpg'|theme  }}" alt="Welcome" height="400" width="400" layout="responsive"></amp-img>
+     {% elseif record.slug == 'jr-nba' %}
+       <amp-img src="{{ 'assets/img/activities/JrNBA-mobile.jpg'|theme }}" alt="Welcome" height="400" width="400" layout="responsive"></amp-img>
+     {% elseif record.slug == 'gerakan-nusantara' %}
+        <div class="imgwrp visible-xs"><amp-img src="{{ 'assets/img/activities/Gerakan-Nusantara-mobile.jpg'|theme }}" alt="Welcome" height="400" width="400" layout="responsive"></amp-img> </div>
+
+     {% else %}
+       <amp-img src="{{ 'assets/img/staticbaner-xs.jpg'|theme }}" alt="Welcome" height="400" width="400" layout="responsive"></amp-img>
+    {% endif %}
+</div>
+
+<amp-accordion class="title_home">
+    <section>
+        <h4 class="arrow_down"><a href="#" target="_self">{{ record.title }}</a></h4>
+        <p>
+          {% for category in record.all %}
+            <a href="/aktivitas-kami/{{ category.slug }}" {% if category.slug == record.slug %} class="active" {% endif %} target="_self">{{ trans_pick(category, 'title') }}</a>
+          {% endfor %}
+        </p>
+    </section>
+</amp-accordion>
+<div class="breadcrumb">
+    <a href="{{ 'home'|page }}">{{ 'beranda'|_ }}</a> /
+    <a href="#">Aktivitas Kami</a> /
+    <a href="{{ 'our-milkpedia'|page({ "slug": record.slug }) }}">{{ trans_pick(record, 'title') }}</a>
+</div>
+
+<div class="default-content detail_text">
+    <h1 class="post__title" style="margin-bottom: 0;">{{ record.title }}</h1>
+         {% if record.slug == 'keluargaminumsusu' %}
+
+         <h1>Manfaat kesehatan dan informasi nutrisi.</h1>
+
+        <div class="visible-xs">
+        <amp-accordion class="title_home">
+            <section>
+                <h4 class="arrow_down accordion-small"><a href="#" target="_self">#KeluargaMinumSusu</a></h4>
+                <div class="accordion-text">
+                    <a href="https://www.frisianflag.com/produk/susu-kental-manis/frisian-flag-gold">
+                      <amp-img src="{{ 'assets/img/activities/PackShoot.png'|theme }}" width="333" height="273" layout="responsive">
+                  </a>
+                  <p>Frisian Flag Indonesia (FFI) mengajak keluarga Indonesia merayakan Hari Susu Sedunia sebagai puncak rangkaian kegiatan 'Saatnya Keluarga Minum Susu Sekarang!'. Frisian Flag Indonesia berhasil menggalang 11.295 komitmen keluarga Indonesia untuk minum susu setidaknya satu gelas per hari dan FFI mendapat penghargaan dari Museum Rekor Indonesia (MURI) berkat kegiatan ini.</p>
+                </div>
+            </section>
+            <section>
+                <h4 class="arrow_down accordion-small"><a href="#" target="_self">Mengapa Satu Gelas per Hari?</a></h4>
+                <div class="accordion-text">
+                  <p><!-- <iframe width="100%" height="390" src="https://www.youtube.com/embed/GiBoJzoAfSg" frameborder="0" allowfullscreen=""></iframe> -->
+                  Susu merupakan sumber gizi lengkap yang dapat mendukung pemenuhan kebutuhan gizi harian keluarga. Segelas susu dapat menyumbang kebutuhan energi harian untuk seluruh anggota keluarga setidaknya hingga 130 kkal. Selain energi, segelas susu juga menyediakan protein, vitamin, dan mineral yang dibutuhkan oleh seluruh anggota keluarga.
+
+                  Saat ini angka konsumsi susu masyarakat Indonesia masih rendah, hanya 12 liter per orang per tahun (hasil pengolahan data Nielsen RUU Data (non-projected) 2014 dan BPS) jauh di bawah konsumsi susu negara tetangga seperti Malaysia sebesar 39 liter per orang per tahun. Oleh karena itu, Frisian Flag Indonesia berkomitmen untuk meningkatkan angka konsumsi susu dengan menghadirkan produk susu berkualitas untuk keluarga.
+                  </p>
+                </div>
+            </section>
+              <section>
+                <h4 class="arrow_down accordion-small"><a href="#" target="_self">Komitmen Keluarga Minum Susu</a></h4>
+                <div class="accordion-text">
+                  <p>
+                   Komitmen ini berwujud dengan deretan stiker-stiker yang ditulis oleh keluarga dari seluruh Indonesia. Komitmen minum susu yang masyarakat tuliskan dalam stiker berbentuk gelas susu tersebut merefleksikan tekad keluarga Indonesia untuk minum susu setidaknya satu gelas per hari. Komitmen itu lahir setelah para keluarga Indonesia berpartisipasi dalam kegiatan-kegiatan edukasi Frisian Flag Indonesia ‘Saatnya Keluarga Minum Susu Sekarang!’ yang digelar sejak Maret 2017.
+
+                  Upaya Frisian Flag Indonesia dalam mengedukasi masyarakat Indonesia melalui kegiatan “Saatnya Keluarga Minum Susu Sekarang!’ ini mendapat pengakuan dari Museum Rekor Indonesia (MURI) yang mencatatnya sebagai ‘Komitmen Keluarga Minum Susu Terbanyak di Indonesia’. Sebanyak 11.295 komitmen keluarga yang telah dikumpulkan melalui kegiatan ini dan Frisian Flag Indonesia ingin mengapresiasi kepada keluarga Indonesia yang telah berpartisipasi dengan berbagi kebaikan susu kepada keluarga lainnya dalam bentuk 11.295 gelas susu bagi mereka yang membutuhkan.
+
+                  Frisian Flag Indonesia berkomitmen untuk terus berinovasi menghadirkan produk susu kualitas terbaik bagi keluarga Indonesia.
+                  </p>
+                </div>
+            </section>
+        </amp-accordion>
+
+        </div>
+
+        
+
+        <div style="margin: 20px auto; background: #009FE3; color: white; overflow: hidden; max-width: 380px">
+          <div class="col-md-6 text-center mh" style="padding: 0;">
+            <amp-img src="{{ 'assets/img/keluargaminumsusu/Desktop-Banner.jpg'|theme }}" alt="Desktop Banner" width="400" height="240">
+          </div>
+
+          <div style="padding: 40px">
+            <h1 style="padding-bottom: 0;font-size: 27px;font-family:Brevia-Black,Helvetica,Arial,sans-serif; color: white">Selamat Datang di Milkpedia!</h1>
+            <p style="padding-top: 5px;">Dapatkan informasi seputar nutrisi, kesehatan, serta segala manfaat dan kebaikan susu disini.</p>
+            <a href="https://www.frisianflag.com/produk/susu-kental-manis/frisian-flag-gold" target="_blank" class="btn_more" style="background-color: white;color: #45acd9;">{{ 'lebih-lanjut'|_ }}</a>
+          </div>
+        </div>
+
+            {% if records.image_gallery %}
+              <div class="gallery-activity">
+                <h1>Galeri</h1>
+                <div class="row">
+                    {% for image in records.image_gallery %}
+                        <div class="list">
+                          <a class="img" href="{{ image.image|media }}" data-fancybox="images">
+                            <amp-img src="{{ image.image|media }}" width="365" height="300" layout="responsive"></div>
+                          </a>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            {% elseif record.slug == 'coconut-delight' %}
+                <h4>Refresh your day with Coconut Delight, <br class="hidden-xs" />feel the freshness of young coconut through milk</h4>
+                <p><br /></p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <iframe width="100%" height="400" src="https://www.youtube.com/embed/5I7rwMoqNLE" frameborder="0" allowfullscreen></iframe>
+                        <p><b>Aenean id elit ac diam varius imperdiet. Aliquam vel justo quis augue posuere feugiat in et magna.</b></p>
+                    </div>
+                    <div class="col-md-6">
+                        <iframe width="100%" height="400" src="https://www.youtube.com/embed/iT3hCgxbPwU" frameborder="0" allowfullscreen></iframe>
+                        <p><b>Aenean id elit ac diam varius imperdiet. Aliquam vel justo quis augue posuere feugiat in et magna.</b></p>
+                    </div>
+                </div>
+                <p><br /></p>
+
+                {{ record.description|raw }}
+
+        {% else %}
+
+            <p>{{ record.description|raw }}</p>
+        {% endif %}
+                    
+        {% if record.image %}
+
+            <div class="list">
+                <div class="img">
+                   <!-- set as link if there image link is set -->
+                    {% if record.image_link %}
+                        <a href="{{ record.image_link }}">
+                    {% endif %}
+
+                    <amp-img src="{{ record.image|media }}" alt="Record Image" width="315" height="172" layout="responsive"></amp-image>
+
+                    {% if record.image_link %}
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+
+        {% endif %}
+
+
+        {% if record.slug != 'keluargaminumsusu' %}
+        <br><br>
+        <h1 class="text-center">
+          {% if record.slug == 'rtd' %}
+            CARA BERMAIN
+          {% elseif record.slug == 'scm' %}
+            CARI TAHU LEBIH
+          {% else %}
+            {% if not record.activities.isEmpty %}
+                Aktivitas {{ record.title }}
+            {% endif %}
+          {% endif %}
+        </h1>
+
+        {% if record.slug != 'rtd' and record.slug != 'scm' %}
+            <div class="container-fluid activities__thumbnail">
+                <div class="row">
+                    {% for post in record.activities %}
+                        <div class="list">
+                            <div class="img">
+                                <amp-img src="{{ post.featured_image|media }}" width="314" height="314" layout="responsive" alt="placehold.it"></amp-img>
+                            </div>
+                            <div class="activities__thumbnail-link mh-activities">
+                                <h3><a href="{{ 'our-activities-single'|page({
+                                    'category-slug': record.slug,
+                                    'slug': post.slug
+                                }) }}">{{ post.title }}</a></h3>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% else %}
+            <div class="container">
+              <div class="row">
+                {% for post in record.activities %}
+                    <div class="col-xs-12 col-sm-3">
+                        <div class="card">
+                            <div class="card__thumbnail" style="background-image: url({{ post.featured_image|media }});">
+
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+              </div>
+            </div>
+        {% endif %}
+
+            {% if record.slug == 'gerakan-nusantara' or record.slug == 'jr-nba' %}
+                <br><br>
+                <h1 class="text-center">
+                  {% if record.slug == 'rtd' %}
+                    AYO MAINKAN!
+                  {% elseif record.slug == 'scm' %}
+                    AYO KUNJUNGI
+                  {% else %}
+                    Galeri {{ record.title }}
+                  {% endif %}
+                </h1>
+                <div class="container-fluid activities__gallery">
+                    <div class="row">
+                        <div class="list" style="position: relative">
+                        <a href="{{ 'our-activities-gallery'|page({
+                                    'slug': record.slug
+                                }) }}" >
+                            <div class="img">
+                                {% if record.slug == 'rtd' %}
+                                <img src="{{ 'assets/img/activity-gallery-rtd.png'|theme }}" alt="Gallery">
+                                {% elseif record.slug == 'scm' %}
+                                <img src="{{ 'assets/img/activity-gallery-scm.jpg'|theme }}" alt="Gallery">
+                                {% elseif record.slug == 'gerakan-nusantara' %}
+                                <amp-img src="{{ 'assets/img/activities/thumbnail/gerakannusantara.jpg'|theme }}" alt="Gallery" width="314" height="177" layout="responsive">
+                                {% else %}
+                                <img src="{{ 'assets/img/activities/thumbnail/JrNBA.jpg'|theme }}" alt="Gallery">
+                                {% endif %}
+                            </div>
+                            {% if record.slug != 'rtd' or record.slug != 'scm' %}
+                            <div class="activities__gallery-link">
+                                <h3 style="color: white">{{ record.title }} Gallery 2014-2018</h3>
+                            </div>
+                            {% endif %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+        {% endif %}
+    </section>
+
+    {% if record.slug == 'keluargaminumsusu' %}
+        <div class="section"></div>
+    {% endif %}
+
+    {% if record.slug == 'coconut-delight' %}
+        <div class="blue-panel">
+           <div class="container">
+                <div class="text-center">
+                    <h3 class="blue-panel__title">Our Recipe</h3>
+                </div>
+
+                <div class="col-md-10" style="float: none; margin: auto;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <iframe width="100%" height="280" src="https://www.youtube.com/embed/kR2KExoR7ao" frameborder="0" allowfullscreen></iframe>
+                            <p><b>Frisian Flag Purefarm Coconut Delight - Es Jelly Buah</b></p>
+                            <p><br /></p>
+                        </div>
+
+                        <div class="col-md-6">
+                            <iframe width="100%" height="280" src="https://www.youtube.com/embed/vv9dxv1vEUk" frameborder="0" allowfullscreen></iframe>
+                            <p><b>Frisian Flag Purefarm Coconut Delight - Coconut Matcha</b></p>
+                            <p><br /></p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <iframe width="100%" height="280" src="https://www.youtube.com/embed/4vpGtVJYlCc" frameborder="0" allowfullscreen></iframe>
+                            <p><b>Frisian Flag Purefarm Coconut Delight - Bola Ubi Ungu</b></p>
+                            <p><br /></p>
+                        </div>
+
+                        <div class="col-md-6">
+                            <iframe width="100%" height="280" src="https://www.youtube.com/embed/pEqXBasQG1Q" frameborder="0" allowfullscreen></iframe>
+                            <p><b>Frisian Flag Purefarm Coconut Delight - Smoothie Bowl</b></p>
+                            <p><br /></p>
+                        </div>
+                    </div>
+
+                     <div class="row">
+                        <div class="col-md-6">
+                            <iframe width="100%" height="280" src="https://www.youtube.com/embed/sOGulVCo5Ko" frameborder="0" allowfullscreen></iframe>
+                            <p><b>Frisian Flag Purefarm Coconut Delight -  Coconut Pudding</b></p>
+                            <p><br /></p>
+                        </div>
+                    </div>
+                </div>
+           </div>
+        </div>
+    {% endif %}
+</div>
+
+{% else %}
+    {% partial '404-amp' %}
+{% endif %}

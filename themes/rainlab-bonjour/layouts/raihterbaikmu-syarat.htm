@@ -1,0 +1,61 @@
+description = "layout for raihterbaikmu syarat dan ketentuan"
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('raihterbaikmu-syarat-dan-ketentuan-amp');
+    }
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+    	<img src="{{ 'raihterbaikmu/raihterbaikmu-sb-desktop.jpg'|media }}" class="hidden-xs" />
+        <img src="{{ 'raihterbaikmu/raihterbaikmu-sb-mobile.jpg'|media  }}" class="visible-xs" />
+    </div>
+</div>
+
+{% partial 'site/raihterbaikmu-menu' %}
+
+<div id='main-section' class="container" style="padding: 30px 20px;">
+    <h1 style="display: none;">raihterbaikmu - Syarat dan Ketentuan | Frisian Flag Indonesia</h1>
+    <div class="col-md-8 col-md-offset-2">
+        <div class="default-content">
+          {% page %}
+        </div>
+
+<!--         <div class="text-center" style="margin-top: 30px;">
+  <a href="/aktivitas-kami/promo-alfamart/main" class="button button--small" style="margin-right: 1em;">Ikuti Sekarang</a>
+  <a href="/aktivitas-kami/promo-alfamart/hadiah" class="button button--small">Lihat Hadiah</a>
+</div> -->
+    </div>
+</div>
+
+<style>
+    .default-content {
+         text-align: justify;
+        }
+	.default-content h3 {
+	    margin-bottom : 15px;
+	    line-height: 1.2;
+	     font-size: 22px;
+	    
+	}
+
+	ol.sub__list{
+	    list-style-type:lower-alpha;
+	}
+    ul.sub__list{
+	   list-style-type:disc;
+	}
+    .default-content p {
+         line-height : 1.5;
+         
+        }
+</style>
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

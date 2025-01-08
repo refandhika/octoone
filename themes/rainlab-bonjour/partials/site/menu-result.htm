@@ -1,0 +1,544 @@
+description = "Google Vision"
+
+[viewBag]
+==
+<?php
+function onStart(){
+ $this['milkpedia'] = DB::select("SELECT t1.title, t1.slug, t1.featured_image, t1.excerpt, t3.slug as category_slug from definite_milkpedia_post t1 left join definite_milkpedia_posts_categories t2 on t2.milkpedia_id = t1.id left join definite_milkpedia_category t3 on t3.id = t2.category_id  where t1.id IN (411,412,301,415);"); 
+ 
+}
+?>
+==
+<div class="container" id="resultdes">
+
+    <button class="button" onclick="handleBack()">Back</button>
+    <div class="result-wrapper">
+        <div class="result-left">
+            <div class="total-wrapper">
+                <div class="icon">
+                    <img src="https://www.frisianflag.com/storage/app/media/resep-kami-images/Group%20131.svg" alt="">
+                </div>
+                <div class="text-wrapper">
+                    <h3>Hasil:</h3>
+                    <div class="total">
+                        <h3>Total</h3>
+                        <div class="total-wrap">
+                            <span id="total">{{ total.energi }}</span><sup>kal</sup>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="result-right">
+            <div id="slider">
+                <div class="dp-wrap">
+                    <div class="modal-wrapper">
+                        <div class="modal-mobile">
+                            <div class="content"></div>
+                            <button class="close" type="button">
+                                x
+                            </button>
+                        </div>
+                    </div>
+                    <div id="dp-slider">
+
+<!-- <div style="margin-left : 10px; width : 200px">
+    <img src="/storage/app/media/{{item.result.featured_image}}" height="100" />
+    <h4>{{ item.day | capitalize }} : {{item.text}}</h4>
+    <h5>Porsi : {{item.portion}} Gram</h5>
+    <p>Karbohidrat : {{item.k}} Gram</p>
+    <p>Protein : {{item.p}} Gram</p>
+    <p>Lemak : {{item.l}} Gram</p>
+    <p>Energi : {{item.e}} Kal</p>
+</div> -->
+                        {% for key , item in data %}
+                        <div data-energi="{{item.e}}" data-waktu="{{item.day | capitalize}}" data-menu="{{ item.text }}" class="dp_item {{ key == 0 ? 'active' : '' }}" data-class="{{ key }}" data-position="{{ key }}" data-pa="{{ key }}">
+                            <div class="dp-content">
+                                <div class="wrap-img">
+                                    <img src="/storage/app/media/{{item.result.featured_image}}" alt="" />
+                                </div>
+                                <!-- <div class="wrap-text">
+                                </div> -->
+                                <div class="modal-section"></div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <span id="dp-next">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51.401 51.401">
+                            <defs>
+                                <style>
+                                    .cls-1 {
+                                        fill: none;
+                                        stroke: #0d62a7;
+                                        stroke-miterlimit: 10;
+                                        stroke-width: 7px;
+                                    }
+                                </style>
+                            </defs>
+                            <path id="Rectangle_4_Copy" data-name="Rectangle 4 Copy" class="cls-1" d="M32.246,0V33.178L0,31.953" transform="translate(0.094 25.276) rotate(-45)" />
+                        </svg>
+                    </span>
+
+                    <span id="dp-prev">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51.401 51.401">
+                            <defs>
+                                <style>
+                                    .cls-1 {
+                                        fill: none;
+                                        stroke: #0d62a7;
+                                        stroke-miterlimit: 10;
+                                        stroke-width: 7px;
+                                    }
+                                </style>
+                            </defs>
+                            <path id="Rectangle_4_Copy" data-name="Rectangle 4 Copy" class="cls-1" d="M32.246,0V33.178L0,31.953" transform="translate(0.094 25.276) rotate(-45)" />
+                        </svg>
+                    </span>
+
+                    <ul id="dp-dots">
+                        {% for key , item in data %}
+                        <li data-class="{{ key }}" class="{{ key == 0 ? 'active' : '' }}"></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="detail-cal">
+                    
+                    <div class="wrapper-energi">
+                        <span id="energi-menu"></span>
+                        <span id="energi-waktu"></span>
+                        <div class="">
+                            <img src="https://www.frisianflag.com/storage/app/media/resep-kami-images/Group%20131.svg" alt="">
+                            <span id="energi-display"></span> Kalori
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="container-result">
+        <div class="container-result-text">
+            Hasil perhitungan kalori dari seluruh makanan yang kamu pilih
+        </div>
+        <div class="slider-wrapper calorie-info">
+            <div class="wrap">
+                <div class="col-sm-12 col-md-3 slide">
+                    <div class="slide-img">
+                        <img src="https://www.frisianflag.com/storage/app/media/resep-kami-images/Group 131.svg" alt="">
+                    </div>
+                    <div class="slide-text">
+                        <p class="detail">Energi</p>
+                        <p class="number">{{ total.energi }}</p><sup>kal</sup>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="wrap">
+                <div class="col-sm-12 col-md-3 slide">
+                    <div class="slide-img">
+                        <img src="https://www.frisianflag.com/storage/app/media/resep-kami-images/Group 130.svg" alt="">
+                    </div>
+                    <div class="slide-text">
+                        <p class="detail">Lemak</p>
+                        <p class="number">{{ total.lemak }}</p><sup>g</sup>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="wrap">
+                <div class="col-sm-12 col-md-3 slide">
+                    <div class="slide-img">
+                        <img src="https://www.frisianflag.com/storage/app/media/resep-kami-images/Group 132.svg" alt="">
+                    </div>
+                    <div class="slide-text">
+                        <p class="detail">Protein</p>
+                        <p class="number">{{ total.protein }}</p><sup>g</sup>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="wrap">
+                <div class="col-sm-12 col-md-3 slide">
+                    <div class="slide-img">
+                        <img src="https://www.frisianflag.com/storage/app/media/resep-kami-images/Group 133.svg" alt="">
+                    </div>
+                    <div class="slide-text">
+                        <p class="detail">Karbohidrat</p>
+                        <p class="number">{{ total.karbohidrat }}</p><sup>g</sup>
+                    </div>
+                </div>                  
+            </div>
+            
+        </div>
+    </div>
+</div>
+    
+     <div id="timetabs" class="tabs" style="padding-bottom : 50px; margin-top : 100px">
+            <div class="container">
+                <h4 class="msg text-center" style="padding-top : 50px">{{ msg }}</h4>
+                <p class="text-center">{{ suggest }} {{ typeMsg | raw }}</p>
+                <br>
+                <br>
+                <h4 class="text-center" style="padding-bottom : 50px">Yuk, cek rekomendasi menu untuk kebutuhan gizi harianmu!</h4>
+                {% set index = 0 %}
+                {% for key , item in data_menu.menu %}
+                {% set index = index + 1 %}
+                  <div class="tab">
+                    <input type="checkbox" class="input-trigger" id="rd{{ index }}" name="rd">
+                    <label class="tab-label" for="rd{{ index }}">{{ data_menu.label[index - 1] }}</label>
+                    <div class="tab-content">
+                      <h3>Total Kalori : {{total_kal[index - 1]}} Kal</h3>
+                      
+                    {% set index_1 = 0 %}
+                      {% for menu in item %}
+                    {% set index_1 = index_1 + 1 %}
+                      <div class="recomendation-menu">
+                        <div class="img-wrapper">
+                            <div class="content">
+                                <img src="{{menu.image | media}}" alt="test" />
+                            </div>
+                        </div>
+                        <div class="menu-content">
+                            <h4>{{menu.name}}</h4>
+                            <ul>
+                                <li>Berat : {{ menu.berat }} g</li>
+                                <li>Kalori : {{ menu.kalori }} Kal</li>
+                                <li>Protein : {{ menu.protein }} g</li>
+                                <li>Karbohidrat : {{ menu.karbohidrat }} g</li>
+                                <li>Lemak : {{ menu.lemak }} g</li>
+                            </ul>
+                        </div>
+                      </div>
+                      {% if index_1 != (item | length)  %}
+                          <hr>
+                      {% endif %}
+                      {% endfor %}
+        
+                    </div>
+                  </div>
+                  {% endfor %}
+            </div>
+        </div>
+        
+<div class="container" id="resultdes">
+    <hr style="border: 1px solid #54B8FC; width: 80%;">
+        
+    <div class="row related-product">
+        <div class="card bg-light eccomerce-card">
+            <div class="card-body">   
+                    <div class="imgproduk">
+                        <img loading="lazy" src="https://www.frisianflag.com/storage/app/media/imt/susuimt.png" />
+                    </div>
+                    <div class="detailproduk">
+                        Frisian Flag Full Cream,<br>Bantu Penuhi Gizi Harian Kamu!
+                    </div>
+            </div>
+        <a href="javascript:void(0)" data-target="#popup-ecommerce" class="btn btn-light btn-modal sizing-btn" id="btnecom">
+            <span style="font-size: 25px; pointer-events: none;">
+                <i class="fa fa-plus"> </i>
+                Belanja
+            </small>
+        </a>
+        </div>
+        <div class="wrapper-imt">
+            <div class="img-wrapper">
+                <img src="https://www.frisianflag.com/storage/app/media/imt/imticon2.png" alt="">
+            </div>
+            <div class="btn-wrapper">
+                <!-- <button type="button" class="btn-1">Coba Hitung IMT & Gizi</button> -->
+                <a id="imt-calculate-btn-link" href="{{'imt' | page}}">Hitung Massa Tubuh kamu lagi</a>
+            </div>
+        </div>
+    </div>
+        
+    <div id="popup-ecommerce" class="overlay-store">
+        <div class="card">
+        <button class="btn-close">x</button>
+            <div class="card-body">
+                <h4>Temukan Produk Kami di:  </h4>
+                {% for shop in product_link %}
+                    <a class="btn btn-outline-light btn-commerce" href="{{ shop.link }}" target="_blank">
+                        {{shop.title}}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div id="faqtabs2" class="tabs" style="padding-bottom : 50px; margin-top : 100px; background: none;">
+        <div>
+            <br>
+            <h4 class="text-center" style="padding-bottom : 50px">Pertanyaan Seputar Gizi Harian</h4>
+            <div class="tab">
+                <input type="checkbox" class="input-trigger" id="addfaqb1" name="addfaqb">
+                <label class="tab-label" for="addfaqb1">Berapa kalori yang dibutuhkan tubuh?</label>
+                <div class="tab-content" style="background: #E7F5FF;">
+                    <p>Kebutuhan kalori harian tubuh setiap orang berbeda-beda, tergantung pada usia, jenis kelamin, tingkat aktivitas fisik, dan kondisi kesehatannya. Secara umum, kebutuhan kalori yang dibutuhkan tubuh orang dewasa adalah sekitar 2.000 kalori untuk wanita dan 2.500 kalori untuk pria. Namun, kebutuhan kalori ini dapat lebih tinggi atau lebih rendah, tergantung pada faktor-faktor yang disebutkan di atas.</p>
+                    <br>
+                    <p>Cara menghitung kebutuhan kalori harian yang paling tepat adalah dengan menggunakan kalkulator gizi harian. Jika Anda ingin menurunkan berat badan, Anda perlu mengurangi asupan kalori harian Anda. Anda dapat melakukannya dengan makan makanan yang lebih sehat, mengurangi ukuran porsi, dan meningkatkan aktivitas fisik.</p>
+                    <br>
+                    <p>Jika Anda ingin menambah berat badan, Anda perlu meningkatkan asupan kalori harian Anda. Anda dapat melakukannya dengan makan makanan yang lebih banyak, meningkatkan ukuran porsi, dan menambahkan makanan yang tinggi kalori, seperti kacang-kacangan dan biji-bijian.</p>
+                </div>
+            </div>
+            <div class="tab">
+                <input type="checkbox" class="input-trigger" id="addfaqb2" name="addfaqb">
+                <label class="tab-label" for="addfaqb2">Apa saja makanan yang mengandung nutrisi?</label>
+                <div class="tab-content" style="background: #E7F5FF;">
+                    <p>Agar mendapatkan tubuh yang sehat dengan berat badan yang ideal, Anda perlu memerhatikan makanan yang mengandung nutrisi. Berikut adalah beberapa contoh makanan yang mengandung nutrisi:</p>
+                    <br>
+                    <ol>
+                        <li>Sayuran : Sayuran adalah sumber vitamin, mineral, dan serat yang baik. Beberapa sayuran yang kaya nutrisi termasuk brokoli, bayam, wortel, dan tomat.</li>
+                        <li>Buah-buahan : Buah-buahan juga merupakan sumber vitamin, mineral, dan serat yang baik. Beberapa buah yang kaya nutrisi termasuk apel, pisang, jeruk, dan anggur.</li>
+                        <li>Kacang-kacangan : Kacang-kacangan adalah sumber protein, serat, vitamin, dan mineral yang baik. Beberapa kacang-kacangan yang kaya nutrisi termasuk kacang kedelai, kacang tanah, kacang almond, dan kacang merah.</li>
+                        <li>Biji-bijian : Biji-bijian adalah sumber karbohidrat, serat, vitamin, dan mineral yang baik. Beberapa biji-bijian yang kaya nutrisi termasuk gandum, beras merah, quinoa, dan oatmeal.</li>
+                        <li>Ikan : Ikan adalah sumber protein, lemak sehat, vitamin, dan mineral yang baik. Beberapa ikan yang kaya nutrisi termasuk salmon, tuna, sarden, dan mackerel.</li>
+                        <li>Telur : Telur adalah sumber protein, lemak sehat, vitamin, dan mineral yang baik. Telur juga merupakan sumber kolin yang baik, yang merupakan nutrisi penting untuk otak dan perkembangan saraf.</li>
+                        <li>Daging tanpa lemak : Daging tanpa lemak adalah sumber protein, zat besi, zinc, dan vitamin B yang baik. Beberapa jenis daging tanpa lemak yang baik untuk kesehatan termasuk ayam tanpa kulit, kalkun, ikan, dan daging sapi tanpa lemak.</li>
+                        <li>Produk susu rendah lemak : Produk susu rendah lemak adalah sumber protein, kalsium, vitamin D, dan kalium yang baik. Beberapa jenis produk susu rendah lemak yang baik untuk kesehatan termasuk susu skim, yogurt rendah lemak, dan keju rendah lemak.</li>
+                    </ol>
+                    <br>
+                    <p>Selain makanan-makanan di atas, ada banyak makanan lain yang juga mengandung nutrisi. Penting untuk mengonsumsi berbagai macam makanan dari setiap kelompok makanan untuk mendapatkan semua nutrisi yang dibutuhkan tubuh.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <div class="related-article ">
+        <div class="container">
+            <h2>Inspirasi Gaya Hidup, Tips & Nutrisi Keluarga</h2>
+            <div class="main">
+                {% for a in artikel %}
+            <div class="slide art-1">
+                <img src="{{a.article.featured_image | mediathumb_resize('width', 640, 90) }}" class="img-fit" alt="" />
+                <div class="related-text-wrap">
+                    <h3>{{a.article.title}}</h3>
+                    <a href="/milkpedia/{{a.article.categories.first().slug}}/{{a.article.slug}}">Lebih Lanjut</a>
+                </div>
+            </div>
+            {% endfor %}
+            
+            </div>
+            <a href="https://www.frisianflag.com/milkpedia" class="btn-more">Lihat Artikel Lainnya</a>
+        </div>
+    </div>
+</div>
+       
+<div style="display : none">
+    <h4>Result :</h4>
+
+    <div style="display : flex; margin-top : 10px; margin-bottom : 100px;" class="">
+    {% for item in data %}
+        <div style="margin-left : 10px; width : 200px">
+            <img src="/storage/app/media/{{item.result.featured_image}}" height="100" />
+            <h4>{{ item.day | capitalize }} : {{item.text}}</h4>
+            <h5>Porsi : {{item.portion}} Gram</h5>
+            <p>Karbohidrat : {{item.k}} Gram</p>
+            <p>Protein : {{item.p}} Gram</p>
+            <p>Lemak : {{item.l}} Gram</p>
+            <p>Energi : {{item.e}} Kal</p>
+        </div>
+    {% endfor %}
+    </div>
+
+    <hr>
+
+    <h4>Energi</h4>
+    {{ total.energi }} Kalori
+    <br>
+    <h4>Karbohidrat</h4>
+    {{ total.karbohidrat }} Gram
+    <br>
+    <h4>Protein</h4>
+    {{ total.protein }} Gram
+    <br>
+    <h4>Lemak</h4>
+    {{ total.lemak }} Gram
+    <br>
+
+    <br>
+    <br>
+    <hr>
+
+    <h4>Result :</h4>
+
+    <div style="margin-left : 10px; width : 200px">
+        <p>tee : {{imt_data.tee}}</p>
+        <p>imt : {{imt_data.imt}}</p>
+        <p>desc : {{imt_data.desc}}</p>
+        <p>bbi : {{imt_data.bbi}}</p>
+        <p>kbb : {{imt_data.kbb}}</p>
+    </div>
+
+    
+</div>
+
+
+<script>
+$("body").change(function(){
+    if( $(".result-wrapper").is(":visible") ){
+         console.log("test");   
+    }
+    
+})
+
+    
+    //modalpopup ecom
+    $("#btnecom").click(function(){
+        $("#popup-ecommerce").addClass("show");    
+    })
+    //close popupecom
+    $("#popup-ecommerce .btn-close").click(function(){
+        $("#popup-ecommerce").removeClass("show");        
+    })
+    
+    $('.btn-commerce').each(function () {
+                var link = $(this).attr('href')
+                link = link.toLowerCase()
+                if(link.indexOf('lazada') >= 0){
+                    $(this).text('lazada')    
+                } else if(link.indexOf('jd.id') >= 0){
+                    $(this).text('jd.id')
+                } else if(link.indexOf('alfagift') >= 0){
+                    $(this).text('Alfamart')
+                } else if(link.indexOf('blibli') >= 0){
+                  $(this).text('blibli')
+                } else if(link.indexOf('klikindomaret') >= 0){
+                  $(this).text('klikindomaret')
+                } else if(link.indexOf('tokopedia') >= 0){
+                  $(this).text('tokopedia')
+                } else if(link.indexOf('shopee') >= 0){
+                  $(this).text('shopee')
+                } else if(link.indexOf('bukalapak') >= 0){
+                  $(this).text('bukalapak')
+                }
+            })
+$('#timetabs .input-trigger').click(function () {
+    $('#timetabs .input-trigger:checked ~ label').click()    
+})
+
+$('#faqtabs2 .input-trigger').click(function () {
+    $('#faqtabs2 .input-trigger:checked ~ label').click()    
+})
+
+$('html, body').animate({
+    scrollTop: $("body").offset().top
+}, 400);
+//slider result
+function detect_active(){
+    // get active
+    var get_active = $("#dp-slider .dp_item:first-child").data("class");
+    $("#dp-dots li").removeClass("active");
+    $("#dp-dots li[data-class="+ get_active +"]").addClass("active");
+    SetEnergi()
+
+}
+$("#dp-next").click(function(){
+    var total = $(".dp_item").length;
+    $("#dp-slider .dp_item:first-child").hide().appendTo("#dp-slider").fadeIn();
+    $.each($('.dp_item'), function (index, dp_item) {
+        $(dp_item).attr('data-position', index + 1);
+    });
+    detect_active();
+});
+
+$("#dp-prev").click(function(){
+    var total = $(".dp_item").length;
+    $("#dp-slider .dp_item:last-child").hide().prependTo("#dp-slider").fadeIn();
+    $.each($('.dp_item'), function (index, dp_item) {
+        $(dp_item).attr('data-position', index + 1);
+    });
+
+    detect_active();
+});
+
+$("#dp-dots li").click(function(){
+    $("#dp-dots li").removeClass("active");
+    $(this).addClass("active");
+    var get_slide = $(this).attr('data-class');
+    console.log(get_slide);
+    $("#dp-slider .dp_item[data-class=" + get_slide + "]").hide().prependTo("#dp-slider").fadeIn();
+    $.each($('.dp_item'), function (index, dp_item) {
+        $(dp_item).attr('data-position', index + 1);
+    });
+});
+
+
+$("body").on("click", "#dp-slider .dp_item:not(:first-child)", function(){
+    var get_slide = $(this).attr('data-class');
+    console.log(get_slide);
+    $("#dp-slider .dp_item[data-class=" + get_slide + "]").hide().prependTo("#dp-slider").fadeIn();
+    $.each($('.dp_item'), function (index, dp_item) {
+        $(dp_item).attr('data-position', index + 1);
+    });
+
+    detect_active();
+});
+
+$('#dp-next').click()
+$('#dp-prev').click()
+if($('.dp_item').length == 1){
+    $('#dp-next').hide()
+    $('#dp-prev').hide()
+}
+function SetEnergi () {
+    var selector = $('.dp_item[data-position="1"]');
+    var target = $('#energi-display');
+    var targetmenu = $('#energi-waktu')
+    var targetwaktu = $('#energi-menu')
+    
+    var energi = Math.round($(selector).data('energi'));
+    var waktu = selector.data('waktu');
+    var menu = $(selector).data('menu');
+    console.log(waktu);
+    
+    if( waktu == 'Pagi' ){
+        waktu = "Sarapan";    
+    }
+    if( waktu == 'Siang' ){
+        waktu = "Makan Siang";    
+    }if ( waktu == 'Malam' ){
+        waktu = "Makan Malam";    
+    }
+    //chechk bug malam
+    
+    
+    
+    targetwaktu.text(waktu);
+    targetmenu.text(menu);
+    target.text(energi);
+}
+
+if( window.innerWidth < 767 ){
+    $(".main").slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        dots: true,
+        infinite: false,
+        adaptiveHeight: true,
+        centerPadding: '30px',
+        centerMode: true,    
+    })  
+            
+    $('.slider-wrapper').slick({
+      dots: true,
+      infinite: false,
+      speed: 300,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+    });
+}else{
+    $('.slider-wrapper').slick({
+      dots: true,
+      infinite: false,
+      speed: 300,
+      slidesToShow: 4,
+      slidesToScroll: 1,
+    });
+}
+
+detect_active();
+
+</script>

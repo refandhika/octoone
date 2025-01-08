@@ -1,0 +1,27 @@
+columns:
+    title:
+        label: Title
+        type: text
+        searchable: true
+        sortable: true
+    slug:
+        label: Slug
+        type: text
+        searchable: true
+        sortable: true
+    excerpt:
+        label: Excerpt
+        type: text
+        searchable: true
+        sortable: true
+    created_at:
+        label: 'Created At'
+        type: datetime
+    published:
+        label: Published
+        type: text
+        sortable: true
+    updated_at:
+        label: 'Updated At'
+        type: date
+        searchable: true

@@ -1,0 +1,81 @@
+title = "ramadan-istimewa-kontes-pemenang"
+url = "/aktivitas-kami/kreasi-takjil/pemenang"
+is_hidden = 0
+role = 0
+permission = 0
+anonymous_only = 0
+logged_only = 0
+
+[viewBag]
+localeUrl[en] = "/ramadan-istimewa-kontes-pemenang"
+==
+<?php
+function onStart(){
+  $this->page->amp_url = $this->pageUrl('kreasi-takjil-pemenang-amp');
+  $this->page->meta_description = "Selamat! Ini pengumuman pemenang Frisian Flag Ramadan Istimewa. Apakah kamu salah satu pemenangnya? Cek di sini!";
+}
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+    	<img src="{{ 'ramdan-istimewa-promo-banner-sm.png'|media }}" class="hidden-xs" alt="Banner Ramadan Istimewa Promo Desktop" />
+        <img src="{{ 'ramdan-istimewa-promo-banner-sm-mobile.png'|media  }}" class="visible-xs" alt="Banner Ramadan Istimewa Promo Mobile" />
+    </div>
+</div>
+
+
+{% partial 'site/ramadan-istimewa-kontes-menu' %}
+
+<div id='main-section' style="background: #6ab3e0; padding: 100px 20px">
+<h1 style="display: none;">Ramadan Istimewa Kontes Pemenang | Frisian Flag Indonesia</h1>
+<div class="container view text-center">
+    <div class="row">
+        <div class="col-sm-6 col-md-offset-3 px py " style="margin-bottom: 40px">
+        <img src="{{ 'kreasi-takjil/winner/winner4.png' | media}}" width="500px" alt="Kreasi Takjil Winner 4">                
+      </div>   
+      <br />
+    	<div class="col-sm-6 px py" >
+    		<img src="{{ 'kreasi-takjil/winner/winner1.png' | media}}" width="500px" alt="Kreasi Takjil Winner 1">								
+    	</div>
+      <div class="col-sm-6 px py">
+        <img src="{{ 'kreasi-takjil/winner/winner2.png' | media}}" width="500px" alt="Kreasi Takjil Winner 2">                
+      </div>
+      <br />
+      <div class="col-sm-6 col-md-offset-3 px py " style="margin-top: 40px">
+        <img src="{{ 'kreasi-takjil/winner/winner3.png' | media}}" width="500px" alt="Kreasi Takjil Winner 3">                
+      </div>      
+    </div>
+</div>
+    <!-- <div class="text-center" style="margin-top: 30px;">
+      <a href="{{ '/aktivitas-kami/promo-alfamart/daftar' }}" class="button button--small">Ikuti Sekarang</a>
+      <a style="display:none !important;" href="{{ '/aktivitas-kami/promo-alfamart/pemenang' }}" class="button button--small">Lihat Pemenang</a>
+    </div> -->
+</div>
+
+<style>
+	.default-content h3 {
+	    font-size: 22px;
+	    line-height: 1.2;
+	}
+
+	@media screen and (min-width: 767px) {
+		.default-content h3 {
+			font-size: 30px;
+		}
+	}
+
+  @media screen and (max-width: 767px) {
+    .m-bottom-15 {
+      margin-bottom: 15px;
+    }
+  }
+</style>
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

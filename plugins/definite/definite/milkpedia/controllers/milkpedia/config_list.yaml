@@ -1,0 +1,11 @@
+title: Milkpedia
+modelClass: Definite\Milkpedia\Models\Milkpedia
+list: $/definite/milkpedia/models/milkpedia/columns.yaml
+recordUrl: 'definite/milkpedia/milkpedia/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

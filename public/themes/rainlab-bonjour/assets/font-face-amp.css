@@ -1,0 +1,18 @@
+@font-face {
+    font-family: Brevia-semibold;
+    font-style: normal;
+    font-weight: 500;
+    src: url(/themes/rainlab-bonjour/assets/fonts/Brevia-Semibold.woff);
+}
+@font-face {
+    font-family: Brevia-black;
+    font-style: normal;
+    font-weight: 500;
+    src: url(/themes/rainlab-bonjour/assets/fonts/Brevia-Black.woff);
+}
+@font-face {
+    font-family: Brevia-Regular;
+    font-style: normal;
+    font-weight: 500;
+    src: url(/themes/rainlab-bonjour/assets/fonts/Brevia-Regular.woff);
+}

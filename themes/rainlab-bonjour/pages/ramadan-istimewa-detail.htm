@@ -1,0 +1,294 @@
+title = "Ramadan Istimewa Detail"
+url = "/aktivitas-kami/ramadan-istimewa/:category/:slug"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/ramadan-istimewa-detail"
+==
+<?php
+function onStart(){
+        
+        //get slug
+        $category        = $this->param('category');
+        $slug            = $this->param('slug');
+        
+        if($category == 'resep-takjil-istimewa' && $slug == 'resep-popsicle-cocopandan'){
+            return redirect('/resep-kami' , 301);
+        }
+        //get json data
+        $path              = url('/themes/rainlab-bonjour/assets/ramadan-istimewa/ramadan-recipes.json');
+        $cmsController     = new Cms\Classes\Controller;
+         $arrContextOptions =array(
+            "ssl"=>array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
+        );
+        
+        $db_data = Definite\Activities\Models\Activity::where('slug',$slug)->get()->first();
+        
+        if(count($db_data) > 0) {
+            $db_data = $db_data;
+        }
+        
+        if(json_decode(file_get_contents($path, false, stream_context_create($arrContextOptions)))){
+            
+                 $collection        = collect(json_decode(file_get_contents($path, false, stream_context_create($arrContextOptions))));
+                 
+                 $data              = $collection->where('category',$category)->where('slug', $slug)->first();
+                 if(!$data){
+                    $data = $db_data;
+                    
+                 }
+                 
+                 if(isset($db_data->title)){
+                     $data->title = $db_data->title;
+                 }
+                
+        } else{
+          return $cmsController->render("/404");
+        }
+       
+        if(count($data) == 0){
+            
+             return $cmsController->render("/404");
+        }
+        
+         $min               = $collection->where('category',$category)->min('id');
+         $slice             = $data->id - $min; 
+         $data_category     = $collection->where('category',$category)->where('slug', '!=', $slug)->slice($slice)->take(3);
+         $count             = count($data_category);
+         if($count < 3){
+             $before        = $collection->where('category',$category)->where('slug', '!=', $slug)->take(3 -$count);
+             $data_category = $data_category->merge($before);
+         }
+        
+        if( $category == 'rtd' ||  $category == 'skm'){
+            return $cmsController->render("/404");
+        }
+        
+        switch ($category) {
+            case "resep-takjil-istimewa":
+                $color = "content light-green";
+                $title = "Resep Takjil Istimewa";
+                $background = "light-green";
+                $this['product'] = 1;
+                $this['market']  = 1;
+                break;
+            case "resep-sahur":
+                $color = "content light-blue ";
+                $title = "Resep Sahur Terbaik";
+                $background = "light-blue";
+                $this['product'] = 2;
+                $this['market']  = 1;
+                break;
+            case "resep-kue-kering-pilihan":
+                $color = "content light-cream";
+                $title = "Resep Sahur Terbaik";
+                $background = "light-cream";
+                break;
+        
+        }
+        
+        if (session::get('data')) {
+          
+           $this['messages'] = session::get('data');
+        }
+        //set value attributes
+        $this['color']          = $color;  
+        $this['recipe']         = $data;
+        $this['recipes']        = $data_category;
+        $this['background']     = $background;
+        $this['category']       = $category;
+        $this['og_image']       = $data->img;
+        $this['og_twitter']     = $data->img;
+        $this['og_description'] = $data->desc;
+        $this->page->title = ucwords(strtolower($data->title));
+        $this->page->amp_url = $this->pageUrl('ramadan-istimewa-detail-amp');
+        $this->page->meta_title = ucwords(strtolower($data->title));
+        $pages = Definite\Activities\Models\Activity::where('slug',$category.'/'.$slug)->get()->first();
+        if($pages){
+            $this->page->meta_title = $pages->meta_title;
+            $this->page->meta_description = $pages->meta_description;
+        }
+
+}
+?>
+==
+<!--s:carousel-banner-->
+
+{% partial 'site/banner-ramadan-istimewa' %}
+<div id="proposalAccordian" class="hidden">
+    {% if category == "resep-sahur"%}
+
+    <section class="content">
+         <div class="content-ramadan">
+            <button class="btn btn-primary clspe collapsed {{category}}" type="button" data-toggle="collapse" data-target="#collapseGGCalendar" data-parent="#proposalAccordian" aria-expanded="false"  aria-controls="collapseExample">
+                 JADWAL SAHUR
+              <i class="fa fa-chevron-up" aria-hidden="true"></i>
+            </button>
+        </div>
+    </section>
+        
+        
+     <section class="content {{background}}">
+            <div class="collapse" id="collapseGGCalendar" >
+                <div class="content-ramadan main-detail jadwal-sahur" style="padding: 20px; text-align: center">
+                    <h1>Dapatkan jadwal puasa langsung di layar hapemu #SiapPuasa </h1>
+                    <a class="content-ramadan" href="http://www.leveratedev.com/resep-ramadhan/auth/google"><button class="button">Jadwal Sahur</button></a>
+                </div>
+            </div>
+    </section>
+    {% endif %}
+    
+    
+    {% if category != "resep-kue-kering-pilihan"%}    
+    <section class="content">
+     <div class="content-ramadan">
+        <button class="btn btn-primary clspe collapsed" type="button" data-toggle="collapse" data-target="#collapseRamadan" aria-expanded="false" data-parent="#proposalAccordian" aria-controls="collapseExample">
+               Dapatkan Promo <img height="60px" src="{{ "ramadan-istimewa-alfamart-logo.png" | media}}" /> Terbaik
+          <i class="fa fa-chevron-up" aria-hidden="true"></i>
+        </button>
+    </div>
+    </section>
+    
+     <section class="content {{background}}">
+             
+            <div class="collapse" id="collapseRamadan" >
+            <div class="main-detail" style="padding: 20px">
+              <div class="collapse__section">    
+                {% if category == "resep-sahur"%}
+                    <img src="{{ 'ramadan-rtd.jpeg' | media }}" />
+                {% else %}
+                    <img src="{{ 'ramadan-skm.jpeg' | media }}" />
+                {% endif %}
+                <br />
+              <div class="mb-20"></div>
+              <div class="content-ramadan">
+        		<form class="form-primary" method="post" action="/aktivitas-kami/ramadan-istimewa/redeem">
+        		    <input type="hidden" name="product_category" value="{{product}}">
+        		    <input type="hidden" name="market_place" value="{{market}}">
+        			<div class="form-group"> 
+        				<span class="title" for="name">Nama</span> 
+        				<input type="text" class="form-control" name="name" placeholder="*Nama" required="required" autocomplete="off"> 
+        			</div>
+        			
+        			<div class="form-group"> 
+        				<span class="title" for="date">Tanggal Lahir</span> 
+        				 <input class="form-control" id="date" name="date" placeholder="*DD/MM/YYY" type="text" required="required"/>
+        			</div>
+        			
+        			    			
+        			<div class="form-group"> 
+        				<span class="title" for="phone">No Handphone</span> 
+        				<input type="number" class="form-control" name="phone" placeholder="*08xxxxxxxxxx" required="required" autocomplete="off" maxlength="12"> 
+        			</div>
+     			    			
+        			<div class="form-group"> 
+        				<span class="title" for="email">Email</span> 
+        				<input type="text" class="form-control" name="email" placeholder="*example@mail.com" required="required" autocomplete="off"> 
+        			</div>
+        			
+        			
+        			<div class="row text-center">
+        				<div class="col-xs-12 col-sm-6">
+        					<div class="checkbox"> 
+                                <label class="container-chekbox">Laki - Laki
+                                  <input type="radio"  name="gender" value="Laki - Laki" checked>
+                                  <span class="checkmark"></span>
+                                </label>
+        					</div>				
+        				</div> <!--  .col-sm-6 -->
+        				<div class="col-xs-12 col-sm-6">
+        					<div class="checkbox"> 
+                                <label class="container-chekbox">Perempuan
+                                  <input type="radio" name="gender" value="Perempuan">
+                                  <span class="checkmark"></span>
+                                </label>
+        					</div>				
+        				</div> <!--  .col-sm-6 -->
+        			</div> <!--  .row -->
+        			
+        			<div class="checkbox costum-checkbox">
+                        <label style="font-size:14px;">
+                          <input type="checkbox" onchange="document.getElementById('ramadanSubmit').disabled = !this.checked;" required>Setuju dengan <a href="{{product == 1  ? '/aktivitas-kami/ramadan-istimewa/syarat-dan-ketentuan-alfamart-skm' : '/aktivitas-kami/ramadan-istimewa/syarat-dan-ketentuan-alfamart-rtd'}}" target="_blank" style="top: unset">Syarat & Ketentuan.</a>
+                        </label>
+                      </div>
+                      
+        			<div class="form-submit text-center">
+        				<input type="submit" class="button full-width" id="ramadanSubmit" value="Klik Disini untuk Redeem Kuponnya" style="font-size:22px;" disabled/>				
+        			</div> <!--  .form-submit -->
+        		
+        			</form>	
+              </div>
+            </div>
+            </div>
+        </div>
+        
+        <!--form-->
+        </section>
+        {% endif %}
+</div>
+
+
+<div class="main-detail testing" style="font-size: 16px;">
+    <section class="{{color}}">
+{% if messages %}
+  <div class="content-ramadan alert alert-danger alert-dismissible fade show">
+      {%if messages.first('email') == 'wrong' or  messages.first('phone') == 'wrong'%}
+      <p style="font-size:20">Maaf, format Nomor Hp / Alamat email yang Anda masukkan tidak valid, mohon isi kembali dengan data yang benar.</p>
+      {%else%}
+      <p style="font-size:20">Maaf, permintaan redeem kupon tidak dapat kami proses, karena permintaan Anda telah melebihi ketentuan yang telah di tetapkan sesuai dengan Syarat dan Ketetuan yang berlaku.</p>
+      {%endif%}
+    
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+  </div>
+{%endif%}  
+
+		      <div class="row content-ramadan">
+				<div class="col-sm-12">
+				    <div class="recipe" style="text-align:center">
+					<a data-fancybox href="https://youtu.be/{{recipe.data_video}}" class="content-ramadan images">
+						<img src="{{ recipe.img |media }}" alt="{{recipe.title |title}}" />
+					</a>
+					</div>
+				 	
+					<div class="default-content container">
+					    <h1>{{recipe.title | title}}</h1>
+					    {{recipe.recipe_details ? recipe.recipe_details | raw : recipe.description | raw}}
+					</div>
+					
+					</br>
+					
+					 <div class="content-ramadan wrp-sharesocemd text-center">
+                        <label>{{'share'|_}}</label>
+                        <div class="addthis_inline_share_toolbox"></div>
+                     </div>
+                   
+				    
+				  </div>
+			 </div>
+			 <div class="section text-center">
+			     <h2 class="section__title">{{'Resep Lainnya' | upper}}</h2>
+			     
+			 <div class="row content-ramadan">
+                {% for ct in recipes %}
+                    <div class="col-sm-12 col-md-4">
+                        <div class="recipe">
+                            <div class="recipe-title">
+                                <h4>{{ct.title}}</h4>                            
+                            </div> 
+                                <img src="{{ct.img | media}}" alt ="{{ct.title | title}}" />
+                        </div>
+                        
+                        <div class="content-ramadan">
+                        <a  href="{{'ramadan-istimewa-archive'|page}}/{{ct.slug}}" class="{{ ct.button_class}}" target=_blank>lihat resepnya</a>
+                        </div>
+                        
+                     </div> 
+            {%endfor%}
+                </div>   
+			 </div>
+</section>
+	</div> 
+{% partial 'site/footer-without-login' %}

@@ -1,0 +1,123 @@
+description = "Layout for Alfamart - Login"
+
+[subscriberform]
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "all"
+
+[staticPage]
+useContent = 1
+default = 0
+
+[SessionClose]
+load_js = 1
+==
+<?php
+function onStart() {
+  if (Auth::check()) {
+    return Redirect::to('aktivitas-kami/promo-alfamart/main');
+  }
+}
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+    	<img src="{{ 'assets/img/alfamart/daftar/daftar-header-desktop.png'|theme }}" class="hidden-xs" />
+      <img src="{{ 'assets/img/alfamart/daftar/daftar-header-mobile.png'|theme }}" class="visible-xs" />
+    </div>
+</div>
+
+{% partial 'site/alfamart-menu' %}
+
+<div id='main-section' class="container" style="padding: 30px 15px;">
+  <h1 style="display: none;">Alfamart - Login | Frisian Flag Indonesia</h1>
+    <div class="col-md-6 col-md-offset-3">
+        <div class="default-content">
+          <a href="{{ this.page.fb_login_url }}" id="login-alfamartcampaign-facebook" class="button full-width"><i class="fa fa-facebook" aria-hidden="true"></i> masuk dengan facebook</a>
+
+          <div class="separator separator__text" style="line-height: 35px;">
+            <span>atau</span>
+          </div> <!--  .separator .separator__text -->
+
+          <form class="form-primary"  data-request="onSignin" id="login-form-alfamart" data-request-data="redirect: '/aktivitas-kami/promo-alfamart/main'">
+          
+            <div class="form-group"> 
+              <span for="email">Email</span> 
+              <input type="email" class="form-control" name="login" id="emails" placeholder="Email" required="required" autocomplete="off"> 
+            </div>
+            
+            <div class="form-group"> 
+              <span for="password">Password</span> 
+              <input type="password" class="form-control" name="password" id="passwords" placeholder="Password" required="required" autocomplete="off"> 
+            </div>
+            
+            <div class="row">
+              <div class="col-xs-6 col-sm-6">
+                <div class="checkbox"> 
+                  <span><input type="checkbox"> Ingat Saya</span> 
+                </div>        
+              </div> <!--  .col-sm-6 -->
+              <div class="col-xs-6 col-sm-6">
+                <a href="javascript:;" class="link" id="click-forgot">Lupa password?</a>
+              </div> <!--  .col-sm-6 -->
+            </div> <!--  .row -->
+            
+            <div class="form-submit">
+              <input id="login-alfamartcampaign-account" type="submit" class="button full-width" value="masuk" />       
+            </div> <!--  .form-submit -->
+          </form>
+
+          <hr />
+
+          <p class="popup-text">Belum punya akun?</p>
+
+          <a href="{{ '/aktivitas-kami/promo-alfamart/daftar' }}" class="button full-width" id="click-register">daftar</a>
+        </div>
+    </div>
+</div>
+
+<style>
+	.default-content h3 {
+	    font-size: 22px;
+	    line-height: 1.2;
+	}
+
+	@media screen and (min-width: 767px) {
+		.default-content h3 {
+			font-size: 30px;
+		}
+	}
+
+  @media screen and (max-width: 767px) {
+    .m-bottom-15 {
+      margin-bottom: 15px;
+    }
+  }
+</style>
+
+{% partial 'site/footer' %}
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    var formLoginAlfamart = $('#login-form-alfamart');
+
+    formLoginAlfamart.validate({
+        rules: {
+          email:{
+            required  : true,
+            email:true
+          }
+        }
+    });
+  });
+</script>
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

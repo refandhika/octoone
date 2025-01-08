@@ -1,0 +1,365 @@
+description = "Layout for Indomaret - Daftar"
+
+[staticPage]
+useContent = 1
+default = 0
+
+[subscriberform]
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "all"
+
+[builderList propinsi]
+modelClass = "Definite\Cities\Models\Propinsi"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "city_name"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList city]
+modelClass = "Definite\Cities\Models\Cities"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "city_name"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[SessionClose]
+load_js = 1
+==
+<?php
+function onStart(){
+  if (Auth::check()) {
+    return Redirect::to('aktivitas-kami/promo-indomaret/main', 301);
+  }
+
+  try {
+    // return Redirect::to('/indomaret/main');
+
+    if (Request::segment(1) == 'aktivitas-kami' && Request::segment(2) == 'promo-indomaret' && Request::segment(3) == 'daftar' && $_GET['activate']) {
+        $code = $_GET['activate'];
+
+        $errorFields = ['code' => Lang::get(/*Invalid activation code supplied.*/'rainlab.user::lang.account.invalid_activation_code')];
+
+        /*
+         * Break up the code parts
+         */
+        $parts = explode('!', $code);
+        if (count($parts) != 2) {
+            throw new ValidationException($errorFields);
+        }
+
+        list($userId, $code) = $parts;
+
+        if (!strlen(trim($userId)) || !strlen(trim($code))) {
+            throw new ValidationException($errorFields);
+        }
+
+        if (!$user = Auth::findUserById($userId)) {
+            throw new ValidationException($errorFields);
+        }
+
+        if (!$user->attemptActivation($code)) {
+            throw new ValidationException($errorFields);
+        }
+
+        Flash::success(Lang::get(/*Successfully activated your account.*/'rainlab.user::lang.account.success_activation'));
+
+        /*
+         * Sign in the user
+         */
+        Auth::login($user);
+
+        return Redirect::to('/aktivitas-kami/promo-indomaret/main');
+    }
+
+  }
+  catch (Exception $ex) {
+      if (Request::ajax()) throw $ex;
+      else Flash::error($ex->getMessage());
+  }
+
+  if($fb_user = Session::get('fb_user', null)){
+		$this->page['first_name'] = $fb_user['first_name'];
+		$this->page['last_name'] = $fb_user['last_name'];
+		$this->page['email'] = $fb_user['email'];
+		//$this->page['birthday'] = $fb_user['birthday'];
+		//$this->page['female_selected'] = ' seleted';
+		$this->page['hide_button_fb'] = true;
+	}else{
+		$this->page['first_name'] = '';
+		$this->page['last_name'] = '';
+		$this->page['email'] = '';
+		$this->page['birthday'] = '';
+		$this->page['female_selected'] = '';
+		$this->page['hide_button_fb'] = false;
+	}
+}
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+    	<img src="{{ 'assets/img/indomaret/header-register-desktop.jpg'|theme }}" class="hidden-xs" />
+      <img src="{{ 'assets/img/indomaret/header-mobile.jpg'|theme }}" class="visible-xs" />
+    </div>
+</div>
+
+{% partial 'site/indomaret-menu' %}
+
+<div id='main-section' class="container" style="padding: 60px 0;">
+    <div id="register-indomaret" class="col-md-6 col-md-offset-3">
+        {% if this.page.hide_button_fb == false %}
+          <a href="{{ this.page.fb_registration_indomaret_url }}" class="button full-width" id="daftar-indomaretcampaign-facebook"><i class="fa fa-facebook" aria-hidden="true"></i> daftar dengan facebook</a>
+
+          <div class="separator separator__text"><span>atau</span></div> <!--  .separator .separator__text -->
+
+          <p class="popup-text">Daftar dengan email</p>
+        {% endif %}
+
+        <form data-request="onRegister" data-request-data="redirect: '/aktivitas-kami/promo-indomaret/main'" id="register-form-indomaret" class="form-primary">
+
+          <div class="row">
+            
+            <div class="col-sm-12 col-md-6">
+              <div class="form-group"> 
+                <span for="firstname2">Nama Depan</span> 
+                <input type="text" class="form-control" name="name" id="firstname2" placeholder="Nama Depan" value="{{ this.page.first_name }}" required autocomplete="off">
+              </div>
+            </div> <!--  .col-sm-12 col-md-6 -->
+            <div class="col-sm-12 col-md-6">
+              <div class="form-group"> 
+                <span for="lastname2">Nama Belakang</span> 
+                <input type="text" class="form-control" name="surname" id="lastname2" placeholder="Nama Belakang" value="{{ this.page.last_name }}" required autocomplete="off"> 
+              </div>
+            </div> <!--  .col-sm-12 col-md-6 -->
+
+          </div> <!--  .row -->
+
+          <div class="row">
+            
+            <div class="col-sm-12 col-md-6">
+              <div class="form-group"> 
+                <span for="gender2">Jenis Kelamin</span> 
+                <select class="form-control" name="jk" id="gender2" required>
+                  <option>Laki-laki</option>
+                  <option{{ this.page.female_selected }}>Perempuan</option>
+                </select>
+              </div>
+            </div> <!--  .col-sm-12 col-md-6 -->
+            <div class="col-sm-12 col-md-6">
+              <div class="form-group"> 
+                <span for="dob2">Tanggal Lahir</span> 
+                <input type="text" class="form-control" name="tgl_lahir" id="dob2" placeholder=" " value="{{ this.page.birthday }}" required autocomplete="off"> 
+              </div>
+            </div> <!--  .col-sm-12 col-md-6 -->
+            
+          </div> <!--  .row -->
+
+          <div class="row">
+            
+            <div class="col-sm-12 col-md-12">
+              <div class="form-group"> 
+                <span for="phone2">Nomor Telepon</span> 
+                <input type="text" class="form-control" name="telp" id="phone2" placeholder="Nomor Telepon" required autocomplete="off"> 
+              </div>
+            </div> <!--  .col-sm-12 col-md-12 -->
+            
+          </div> <!--  .row -->
+
+          <div class="row">
+            
+            <div class="col-sm-12 col-md-6">
+              <div class="form-group"> 
+                <span for="province2">Provinsi</span> 
+                <select class="form-control" name="prof" id="province2" required>
+                  <option value="">Pilih Provinsi</option>
+                  {% set records = propinsi.records %}
+                  {% set displayColumn = propinsi.displayColumn %}
+                  {% set noRecordsMessage = propinsi.noRecordsMessage %}
+                  {% set detailsPage = propinsi.detailsPage %}
+                  {% set detailsKeyColumn = propinsi.detailsKeyColumn %}
+                  {% set detailsUrlParameter = propinsi.detailsUrlParameter %}
+                  {% for record in records %}
+                  <option data-id="{{ record.id }}" value="{{record.province_slug}}">
+                    {{record.province_name}}
+                  </option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div> <!--  .col-sm-12 col-md-6 -->
+            <div class="col-sm-12 col-md-6">
+              <div class="form-group"> 
+                <span for="cities2">Kota</span> 
+                <select class="form-control" name="kota" id="cities2" required>
+                  <option>Pilih Kota</option> 
+                  {% set records = city.records %}
+                  {% set displayColumn = city.displayColumn %}
+                  {% set noRecordsMessage = city.noRecordsMessage %}
+                  {% set detailsPage = city.detailsPage %}
+                  {% set detailsKeyColumn = city.detailsKeyColumn %}
+                  {% set detailsUrlParameter = city.detailsUrlParameter %}
+                  {% for record in records %}
+                  <option data-id="{{ record.province_id }}" value="{{record.city_slug}}" style="display:none">
+                    {{record.city_name}}
+                  </option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div> <!--  .col-sm-12 col-md-6 -->
+
+          </div> <!--  .row -->
+
+          <div class="row">
+            
+            <div class="col-sm-12 col-md-12">
+              <div class="form-group"> 
+                <span for="address2">Alamat</span> 
+                <input type="text" class="form-control" name="alamat" id="address2" placeholder="Alamat" required autocomplete="off"> 
+              </div>
+            </div> <!--  .col-sm-12 col-md-12 -->
+            
+          </div> <!--  .row -->
+
+          <div class="row">
+            
+            <div class="col-sm-12 col-md-12">
+              <div class="form-group"> 
+                <span for="email2">Email</span> 
+                <input type="email" class="form-control" name="email" id="email2" placeholder="Email" value="{{ this.page.email }}" required autocomplete="off"> 
+              </div>
+            </div> <!--  .col-sm-12 col-md-6 -->
+
+          </div> <!--  .row -->
+
+
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="form-group"> 
+                <span for="password2">Password</span> 
+                <input type="password" class="form-control" name="password" id="password2" placeholder="Password" required autocomplete="off"> 
+              </div>
+            </div> <!--  .col-sm-12 col-md-6 -->
+            <div class="col-sm-12 col-md-6">
+              <div class="form-group"> 
+                <span for="password2">Retype Password</span> 
+                <input type="password" class="form-control" name="repassword" id="repassword2" placeholder="Retype Password" required autocomplete="off"> 
+              </div>
+            </div> <!--  .col-sm-12 col-md-6 -->
+          </div>
+
+          <input type="hidden" name="source" value="indomaret"> 
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="checkbox">
+                <span for="agreement"><input data-msg="" name="agreement" id="agreement" type="checkbox"> Dengan mendaftar akun di situs ini, Anda setuju dengan <a target="_blank" style="top: auto;" href="https://www.frisianflag.com/syarat-ketentuan">syarat dan ketentuan</a> dan <a style="top: auto; target="_blank" href="https://www.frisianflag.com/kebijakan-cookie">Kebijakan Privasi</a> di situs ini</span>
+              </div>
+            </div> <!--  .col-sm-6 -->
+          </div> <!--  .row -->
+
+          <div class="form-submit">
+            <input id="daftar-indomaretcampaign-account" type="submit" class="button full-width" value="buat akun" />
+          </div> <!--  .form-submit -->
+
+
+        </form>
+        
+        <hr />
+
+        <p class="popup-text">Sudah punya akun?</p>
+        <a href="{{ '/aktivitas-kami/promo-indomaret/login' }}" class="button full-width" id="click-login">masuk</a>
+    </div>
+</div>
+
+<style>
+	.default-content h3 {
+	    font-size: 22px;
+	    line-height: 1.2;
+	}
+
+	@media screen and (min-width: 767px) {
+		.default-content h3 {
+			font-size: 30px;
+		}
+	}
+
+  @media screen and (max-width: 767px) {
+    .m-bottom-15 {
+      margin-bottom: 15px;
+    }
+  }
+</style>
+
+{% partial 'site/footer' %}
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    // Register
+    var $registerFormIndomaret = $('#register-form-indomaret');
+    if ($registerFormIndomaret.length) {
+      var $province = $registerFormIndomaret.find('[id="provinces"]');
+      var $cities = $registerFormIndomaret.find('[id="cities"] option');
+      
+      // On Change
+      $province.on('change', function(e) {
+        // Get ID
+        var val = $(this).val();
+
+        // Get selected option
+        var opt = $(this).children().filter(function(index, row) {
+          return $(row).val() == val;
+        });
+
+        if (opt.length) {
+          var optID = $(opt[0]).data('id');
+
+          // Map Cities
+          $cities.map(function(index, row) {
+            // Object
+            var $row = $(row);
+
+            // Hide First
+            $row.hide();
+
+            // Show if the val same with data id
+            var id = $row.data('id');
+            if (id == optID) $(row).show();
+
+            return row;
+          });
+        }
+
+      });
+    }
+
+    var formRegisterIndomaret = $('#register-form-indomaret');
+
+    formRegisterIndomaret.validate({
+      rules: {
+        email:{
+          required  : true,
+          email:true
+        }
+      }
+    });
+
+    $('#phoneIndomaret').mask('0000000000000');
+
+    {{ this.page.redirect_indomaret_main|raw }}
+  });
+</script>
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

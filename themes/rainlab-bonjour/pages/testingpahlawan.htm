@@ -1,0 +1,1820 @@
+title = "testingpahlawan"
+url = "/testingpahlawan"
+layout = "aniversary"
+is_hidden = 0
+==
+<?php
+function onStart(){
+     $this['data'] = Definite\News\Models\Aniversary::all();
+     $this['nominate'] = Definite\News\Models\Aniversary::whereIn('id', [170, 153, 194, 139, 196, 142, 141, 158, 198])->get();
+     
+}
+?>
+==
+{% put meta %}
+    <meta name="description" content="Selama 100 tahun, Frisian Flag telah berinovasi dan akan terus berkontribusi untuk Indonesia yang lebih sehat, sejahtera dan selaras dengan lingkungan">
+{% endput %}
+<style>
+    .d-none{
+        display: none !important;    
+    }
+    .t-d-u{    
+        text-decoration: underline;    
+    }   
+    .ov-hidden{
+        overflow:hidden;    
+    }
+    @media only screen and (min-width: 768px) and (max-width: 1024px){
+        .hut-fifthsection .wrapper-card .card .desc .pekerjaan{
+            font-size: 13px;    
+        }
+        .hut-fifthsection{
+            padding: 50px 10% 0;
+            height: auto;
+            background: #e4f5fd;
+        }
+        .bg-gallery{
+            width: 100%;
+            height: auto !important;
+        }
+        .bg-gallery .hut-bg{
+            height:auto !important;
+            width: 100%;
+            object-fit:fill;
+        }
+        .hut-forthsection .top-section .main-title {
+            font-size: 25px !important;
+            line-height: 1.25;
+            color: #0a3f7c;
+            font-family: 'Brevia-Bold';
+        }   
+        .hut-forthsection .top-section .desc {
+            margin-top: 22.5px;
+            color: #0a3f7c;
+            font-size: 14px !important;
+            line-height: 1.75;
+        }
+        .hut-forthsection .wrapper {
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column !important;
+            padding: 200px 0 100px;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .hut-forthsection{
+            padding: 50px 10% 0;
+            background: linear-gradient(#e5f6fd, #fff 90%);
+            height: auto;
+        }    
+        .hut-fifthsection .wrapper-card, .nominate-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr !important;
+            grid-gap: 2vw !important;
+        }
+        .hut-fifthsection .filter #filter-hero {
+            width: 40% !important;
+            border: 2px solid #42B4E7;
+            height: 40px;
+            padding-left: 30px;
+            font-size: 15px;
+            color: #0a3f7c;
+            background: transparent;
+            border-radius: 7.5px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-repeat: no-repeat;
+            background-position: 97% 20%;
+            background-size: 6.5% 75%;
+            background-image: url(data:image/svg+xml;utf8,<svg width="15" height="20" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 10.127L12 18.127L20 10.127H4Z" fill="%2346b4e7"/></svg>);
+            outline: none;
+        }
+        .hut-fifthsection .btn-hero {
+            border: unset;
+            width: max-content;
+            margin: 50px 0 !important;
+            height: 50px;
+            border-radius: 50px;
+            background: #277ad6;
+            color: #fff;
+            box-shadow: 1px 3px 1px #275ad6;
+            font-size: 16px;
+            font-family: 'Brevia-Bold';
+            padding: 10px 150px;
+        }
+        .hut-forthsection .wrapper .img-wrapper {
+            width: 100% !important;
+        }
+        .hut-forthsection .pos-forth {
+            width: 100% !important;
+            margin-top: 50px;
+        }
+        .hut-forthsection .bottom-section {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center !important;
+        }
+        .hut-forthsection .wrapper .forth-img {
+            width: 100% !important;
+            height: 30vh !important;
+            object-fit: contain !important;
+        }
+    }
+
+    @media(min-width : 769px){
+        .hut-fifthsection .wrapper-card .card .desc .pekerjaan, .nominate-card .card .desc .pekerjaan{
+            font-size: 13px;    
+        }
+        .btm-csdk{
+            display: flex;
+            width: 100%;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 0 20%;
+            margin-top: 20px;    
+        }
+        .btm-csdk > a{
+            color: #fff;
+            text-decoration: none;
+            position: relative;
+        }
+        .btm-csdk > a:not(:last-child)::after{
+            content: "|";
+            height: 100%;
+            top: 0;
+            right: -30px;
+            position: absolute;
+            cursor: not-allowed;
+        }
+        .desc-data-p{
+            font-size: 16px;    
+        }
+        .span-mail{
+            color: #fff !important;
+            text-decoration: underline;    
+        }
+        .link{
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+        }
+        .link:hover{
+            color: #fff !important;    
+        }
+        .e-m{
+            font-size: 20px !important;    
+        }
+        .t-m-k{
+            font-size: 25px;    
+        }
+        .wrapper-syarat-alamat{
+            margin-top: 20px;
+            line-height: 1.5;
+            text-align: center;
+            padding: 0 5%;
+            font-size: 17px;
+        }
+        
+        .hut-forthsection{
+            padding: 50px 10% 0;
+            background: linear-gradient(#e5f6fd, #fff 90%);
+            height: auto;
+        }    
+        .hut-forthsection .wrapper{
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: row-reverse;
+            padding: 200px 0 100px;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .hut-forthsection .wrapper .img-wrapper{
+            width: 45%;    
+        }
+        .hut-forthsection .wrapper .forth-img{
+            width: 100%;
+            height: 50vh;
+        }
+        .hut-forthsection .pos-forth{
+            width: 45%;
+        }
+        .hut-forthsection .top-section{
+            
+        }
+        .hut-forthsection .top-section .main-title{
+            font-size: 33px;
+            line-height: 1.25;
+            color: #0a3f7c;
+            font-family: 'Brevia-Bold';
+        }
+        .hut-forthsection .top-section .desc{
+            margin-top: 22.5px;
+            color: #0a3f7c;
+            font-size: 16px;
+            line-height: 1.75;
+        }
+        .hut-forthsection .bottom-section {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+        .hut-forthsection .bottom-section .btn-daftar{
+            color: #0f4d9a;
+            background: #f7ba44;
+            border-radius: 50px;
+            box-shadow: 1px 1px 1px #0c386e;
+            margin-bottom: 20px;
+            font-size: 16px;
+            font-family: 'Brevia-Bold';
+            padding: 15px 24px;
+            width: max-content;
+        }
+        .hut-forthsection .bottom-section .btn-daftar:nth-child(1){
+            display: none;
+        }
+        .hut-forthsection .bottom-section .btn-syarat{
+            color: #fff;
+            background: #277ad6;
+            border-radius: 50px;
+            box-shadow: 1px 1px 1px #000;
+            font-size: 16px;
+            font-family: 'Brevia-Bold';
+            width: max-content;
+            padding: 15px 75px;
+        }        
+        
+        
+        .hut-fifthsection{
+            padding:50px 10% 0;
+            height: auto;
+            background: #e4f5fd;
+        }
+        .hut-fifthsection .wrapper-title{
+            padding: 50px 0;           
+        }
+        .hut-fifthsection .wrapper-title .title{
+            margin: unset;
+            font-size: 33px;
+            color: #0c3b73;
+            line-height: 1.25;
+            font-family: 'Brevia-Bold';
+        }
+        .hut-fifthsection .wrapper-title .subtitle{
+            margin: unset;
+            font-size: 22px;
+            color: #0c3b73;
+            line-height: 1.25;
+            font-family: 'Brevia-Regular';
+        }
+        .hut-fifthsection .filter{
+            margin-bottom: 50px;
+        }
+        .hut-fifthsection .filter #filter-hero{
+            width: 30%;
+            border: 2px solid #42B4E7;
+            height: 40px;
+            padding-left: 30px;
+            font-size: 15px;
+            color: #0a3f7c;
+            background: transparent;
+            border-radius: 7.5px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-repeat: no-repeat;
+            background-position: 97% 20%;
+            background-size: 6.5% 75%;
+            background-image: url('data:image/svg+xml;utf8,<svg width="15" height="20" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 10.127L12 18.127L20 10.127H4Z" fill="%2346b4e7"/></svg>');
+            outline: none;
+        }
+        .hut-fifthsection .wrapper-card, .nominate-card{
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-gap: 4vw;
+        }
+        .nominate-card{
+            margin-bottom:50px;
+        }
+        
+        .hut-fifthsection .wrapper-card .card, .nominate-card .card{
+            position: relative;
+            border-radius: 10px;
+            height: 405px;
+            width: 100%;
+            margin-bottom: unset;
+            cursor: pointer;
+        }
+        .hut-fifthsection .wrapper-card .card[data-show='false']{
+            display: none;    
+        }
+        .hut-fifthsection .wrapper-card .card[data-show='true']{
+            display: block;    
+            cursor: pointer;
+        }        
+        .hut-fifthsection .wrapper-card .card img, .nominate-card .card img{
+            position: absolute;
+            height: 400px;
+            width: 100%;
+            top: 0;
+            left: 0;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .hut-fifthsection .wrapper-card .card .card-overlay, .nominate-card .card .card-overlay{
+            position: absolute;
+            height: 50%;
+            bottom: 0;
+            width: 100%;
+            background-image: linear-gradient(0deg, black, transparent);
+            z-index: 0;
+            border-radius: 10px;
+        }
+        .hut-fifthsection .more-wrapper{
+            display: flex;
+            justify-content: center;
+            width: 100%;    
+        }
+        .hut-fifthsection .btn-hero{
+            border: unset;
+            width: max-content;
+            margin: 50px 0;
+            height: 50px;
+            border-radius: 50px;
+            background: #277ad6;
+            color: #fff;
+            box-shadow: 1px 3px 1px #275ad6;
+            font-size: 16px;
+            font-family: 'Brevia-Bold';
+            padding: 10px 150px;
+        }
+        .hut-fifthsection .wrapper-card .card .desc, .nominate-card .card .desc{
+            z-index: 2;
+            position: absolute;
+            bottom: 30px;
+            padding: 0 7.5%;
+            width: 100%;
+            justify-content: center;
+        }
+        .hut-fifthsection .wrapper-card .card .desc .nama, .nominate-card .card .desc .nama{
+            font-size: 14px;
+            color: #fff;
+            margin: unset;
+            font-family: 'Brevia-Semibold';
+        }
+        .hut-fifthsection .wrapper-card .card .desc .pekerjaan, .nominate-card .card .desc .pekerjaan{
+            color: #fff;
+            font-size: 12px;
+            margin: 5px 0;
+        }
+        
+        .bg-gallery{
+            width: 100%;
+            height: auto;
+        }
+        .bg-gallery .hut-bg{
+            height:auto !important;
+            width: 100%;
+            object-fit:fill;
+        }
+        
+        
+        
+        .overlay-syarat{
+                visibility: hidden;
+                opacity: 0;
+                transition: 0.3s;
+                background: rgba(0,0,0,0.8);
+                height: 100vh;
+                width: 100%;
+                position: fixed;
+                top: 0;
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+                left: 0;
+                z-index: 1000; 
+        }
+        .overlay-syarat.show{
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        
+        .overlay-hero{
+                visibility: hidden;
+                opacity: 0;
+                transition: 0.3s;
+                background: rgba(15,60,116,0.9);
+                height: 100vh;
+                width: 100%;
+                padding: 0 7.5%;
+                position: fixed;
+                top: 0;
+                display: flex !important;
+                //align-items: center;
+                justify-content: center;
+                left: 0;
+                z-index: 1000; 
+        }
+        .overlay-hero.show{
+            visibility: visible;
+            opacity: 1;
+        }
+        .overlay-hero .wrapper{
+            width: 100%;
+            margin: 100px 0;  
+            overflow-x: auto;
+        }
+        .overlay-hero .wrapper .content{
+            display: flex;
+            height: 100%;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 100%;
+            width: 100%;
+            flex-direction: row;
+        }
+        .overlay-hero .wrapper .card{
+            width: 30%;
+            height: 325px;
+            position: relative;
+            max-height: 325px;
+            border-radius: 30px;
+            margin-bottom: unset !important;
+        }
+        .overlay-hero .wrapper .card img{
+            position: absolute;
+            height: 325px;
+            width: 100%;
+            border-radius: 20px;    
+            object-fit: cover;
+        }
+        .overlay-hero .wrapper .card .desc{
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            width: 100%;    
+            z-index:2;
+        }
+        .overlay-hero .wrapper .card .desc .nama{
+            margin: 0 auto;
+            color: #fff;
+            font-size: 17.5px;
+            padding: 0 7.5%;
+            text-align: center;    
+            
+        }
+        .overlay-hero .wrapper .card .card-overlay{
+            position: absolute;
+            height: 50%;
+            bottom: 0;
+            width: 100%;
+            background-image: linear-gradient(0deg, black 0, transparent 50%, transparent 100%);
+            z-index: 0;
+            border-radius: 20px;       
+            z-index:1;
+        }
+        .overlay-hero .wrapper .pekerjaan{
+            color: #fff;
+            font-size: 14px;
+            width: 62.5%;    
+            text-align: justify;
+            height: 325px;
+        }
+        
+        .overlay-hero .btn-close-hero{
+            position: absolute;
+            top: 7.5%;
+            right: 10%;
+            border-radius: 50px;
+            border: 1px solid #000;
+            height: 40px;
+            box-shadow: 2px 1px 1px #000;
+            width: 40px;
+            max-width: 50px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+        }
+        
+        /* modal daftar */
+        .overlay-daftar{
+                visibility: hidden;
+                opacity: 0;
+                transition: 0.3s;
+                background: rgba(0,0,0,0.8);
+                height: 100vh;
+                width: 100%;
+                position: fixed;
+                top: 0;
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+                left: 0;
+                z-index: 1000; 
+        }
+        .overlay-daftar.show{
+            visibility: visible;
+            opacity: 1;
+        }
+        .overlay-daftar .wrapper{
+            position: relative;
+            width: 100%;
+            background: #e4f5fd;
+            height: 100%;
+            overflow: auto;
+        }
+        .overlay-daftar .wrapper .daftar-img{
+            height: 70vh;
+            width: 100%;
+        }
+        .overlay-daftar .wrapper .form{
+            padding: 0 5%;
+        }
+        .overlay-daftar .wrapper .form-1{
+                padding: 30px 5% 0 5%;
+                width: 100%;
+                max-width: 100%;
+                display: flex;
+                flex-direction: column;    
+        }
+        .overlay-daftar .wrapper .form-2{
+                padding: 30px 5%;
+                width: 100%;
+                max-width: 100%;
+                display: flex;
+                flex-direction: column;    
+        }
+        .overlay-daftar .wrapper .title-hut-form{
+            font-size: 20px;
+            color: #0a3f7c;
+            margin-bottom: 25px;
+        }
+        .overlay-daftar .wrapper .bd-t{
+            border-top: 1px solid #4f9bed;
+            padding-top: 50px;
+        }
+        .overlay-daftar form input[type='text'],.overlay-daftar form input[type='number'] {        
+            height: 40px;
+            width: 100%;
+            border-radius: 7.5px;
+            border: unset;
+            margin-bottom: 10px;
+            padding-left: 5%;
+            color: #0a3f7c;
+            outline: none;
+            box-shadow: none;
+            font-size: 15px;
+        }
+        .overlay-daftar form input[type='text']::placeholder,.overlay-daftar form input[type='number']::placeholder {
+            color: #0a3f7c;
+        }
+        .overlay-daftar form #narasi{
+            height: 200px;
+            margin-bottom: 20px;
+            font-size: 15px;
+            overflow-x: auto;
+            border: unset;
+            border-radius: 10px;
+            padding-left: 15px;
+            padding-top: 10px;
+            color: #0a3f7c;
+        }
+        .overlay-daftar form #naras::placeholder{
+            color: #0a3f7c;    
+        }
+        textarea::placeholder{
+            color: #0a3f7c;    
+        }
+        .overlay-daftar form .wrapper-submit{
+            padding: 0 5%;    
+            display: flex;
+            flex-direction: column;
+        }
+        .overlay-daftar form .wrapper-submit .wrapper-1{
+            padding-top: 30px;
+            border-top: 1px solid #378dea;
+            color: #0f4d9a;
+        }
+        .overlay-daftar form .wrapper-submit .wrapper-1 input[type='checkbox']{
+            margin: unset;
+            padding: unset;
+        }
+        .overlay-daftar form .wrapper-submit .wrapper-1 .checkbox{
+            color: #277ad6    
+            
+        }
+        .overlay-daftar form .hut-submit {
+            width: 100%;
+            height: 45px;
+            border-radius: 40px;
+            border: unset;
+            background: #f7ba44;
+            color: #277ad6;
+            box-shadow: 1px 1px 1px #8d701b;
+            font-size: 15px;
+            margin: 50px 0;
+        }
+        .overlay-daftar form .hut-upload{
+            height: 45px;
+            border: unset;
+            background: #277ad6;
+            border-radius: 40px;
+            color: #fff;
+            box-shadow: 3px 2px 1px #275ad6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        .overlay-daftar form .photo{
+            opacity: 0;
+        }
+        .overlay-daftar form .form-hut-img-wrapper{
+            width: 80%;
+            margin: 0 auto;
+            padding: 30px 0;    
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            display: none;
+        }
+        .overlay-daftar form .form-hut-img-wrapper .image-display{
+            width: 100%;
+            height: 250px;
+        }
+        .overlay-daftar form .form-hut-img-wrapper .image-name{
+            margin-top: 10px;
+            font-size: 17.5px;
+            color: #277ad6;
+        }
+        .overlay-daftar .wrapper .btn-close-daftar{
+            width: 35px;
+            height: 35px;
+            max-width: 35px;
+            position: fixed;
+            top: 3%;
+            right: 5.5%;
+            font-size: 15px;
+            box-shadow: 1px 2px 3px #1a1a1a;
+            background: #fff;
+            border-radius: 35px;
+            outline: none;
+            border: 1px solid #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .show{
+            display: block;    
+        }
+        
+        .overlay-syarat .wrapper{
+            position: relative;
+            background: #0F4D9A;
+            width: 100%;
+            height: 100%;
+            padding: 2.5% 10%;
+            overflow: auto;
+        }
+        
+        .overlay-syarat .btn-close-syarat{
+            position: fixed;
+            border: 2px solid #fff;
+            background: #fff;
+            top: 5%;
+            right: 5%;
+            width: 40px;
+            height: 40px;
+            max-width: 40px;
+            border-radius: 30px;
+            font-size: 20px;
+            box-shadow: 2px 3px 0px #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .overlay-syarat .wrapper .content{
+            margin-top: 50px;    
+            color: #fff;
+            font-size: 12px;
+        }
+        .overlay-syarat .wrapper .syarat-title{
+            padding: 15px 0 30px 0;
+            color: #fff;
+            font-size: 33px;
+            font-family: 'Brevia-Bold';
+            display: block;
+        }
+        .overlay-syarat .wrapper .desc{
+            color: #fff;    
+            font-size: 16px;
+            font-family: 'Brevia-Regular';
+            margin-bottom: 20px;
+        }
+        
+        
+
+        
+        
+        .vh-100{
+            height: 100vh;    
+        }
+        .fw-bold{
+            font-weight: bold;
+        }
+        .text-white{
+            color: #fff;    
+        }
+        .sdk-1{
+            color: #fff;
+            font-size: 16px;
+        }
+        .sdk-1 > li{
+            font-family: 'Brevia-Bold';  
+            margin-top: 20px;
+            font-size: 20px;
+            padding-bottom: 10px;
+        }
+        .t-bold{
+            font-family: 'Brevia-Bold';    
+            color: #fff;
+        }
+        .data-p{
+            font-family: 'Brevia-Bold';    
+            text-decoration: underline;
+            color: #fff;
+        }
+        .d-c{
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+    }
+
+    @media(max-width : 768px){   
+        .btm-csdk{
+            display: flex;
+            width: 100%;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 0 10%;
+            margin-top: 20px;    
+        }
+        .btm-csdk > a{
+            color: #fff;
+            text-decoration: none;
+            position: relative;
+        }
+        .btm-csdk > a:not(:last-child)::after{
+            content: "";
+            height: 30px;
+            top: 0;
+            right: 0;
+            background: #fff;
+            position: absolute;
+            cursor: not-allowed;
+            color: #fff;
+            z-index: 10000;
+            width: 1px;
+        }
+        .link{
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+        }
+        .link:hover{
+            color: #fff !important;    
+        }
+        .wrapper-syarat-alamat{
+            text-align: center;    
+        }
+        .t-m-k{
+            display: inline-block;
+            height: 27px;
+            font-size: 14.5px;    
+        }
+        .bg-gallery{
+            width: 100%;
+            height: auto;
+        }
+        .bg-gallery .hut-bg{
+            height:auto;
+            width: 100%;
+            object-fit: fill;
+        }
+        
+        .hut-forthsection{
+            padding: 50px 5% 0;
+            background: linear-gradient(#e5f6fd, #fff 90%);
+            height: 100vh;
+        }    
+        .hut-forthsection .wrapper{
+            position: relative;
+            height:100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .hut-forthsection .wrapper .forth-img{
+                width: 300px;
+                margin-top: 100px;
+                height: 200px;
+            
+        }
+        .hut-forthsection .pos-forth{
+            position: absolute;
+            bottom: 50px;    
+            
+        }
+        .hut-forthsection .top-section{
+            
+        }
+        .hut-forthsection .top-section .main-title{
+            font-size: 21px;
+            line-height: 1.25;
+            color: #0a3f7c;
+            font-family: 'Brevia-Bold';
+        }
+        .hut-forthsection .top-section .desc{
+            margin-top: 22.5px;
+            color: #0a3f7c;
+            font-size: 12px;
+            line-height: 1.75;
+        }
+        .hut-forthsection .bottom-section {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+        .hut-forthsection .bottom-section .btn-daftar{
+            color: #0f4d9a;
+            background: #f7ba44;
+            border-radius: 50px;
+            height: 50px;
+            box-shadow: 1px 1px 1px #0c386e;
+            margin-bottom: 20px;
+            font-size: 16px;
+            font-family: 'Brevia-Bold';
+                line-height: 35px;
+        }
+        .hut-forthsection .bottom-section .btn-daftar:nth-child(1){
+            display: none;
+        }
+        .hut-forthsection .bottom-section .btn-syarat{
+            color: #fff;
+            background: #277ad6;
+            border-radius: 50px;
+            height: 50px;
+            box-shadow: 1px 1px 1px #000;
+            font-size: 16px;
+            font-family: 'Brevia-Bold';
+        }        
+        
+        
+        .hut-fifthsection{
+            padding: 50px 5% 0;
+            height: auto;
+            background: #e4f5fd;
+        }
+        .hut-fifthsection .wrapper-title{
+            padding: 50px 0 30px 0;           
+        }
+        .hut-fifthsection .wrapper-title .title{
+            margin: unset;
+            font-size: 22px;
+            color: #0c3b73;
+            line-height: 1.25;
+            font-family: 'Brevia-Bold';
+        }
+        .hut-fifthsection .wrapper-title .subtitle{
+            margin: 10px 0 0 0;
+            font-size: 15px;
+            color: #0c3b73;
+            line-height: 1.25;
+            font-family: 'Brevia-Regular';
+        }
+        .hut-fifthsection .filter{
+            height: 35px;
+            margin-bottom: 30px;
+        }
+        .hut-fifthsection .filter #filter-hero{
+            width: 100%;
+            border: 1px solid #5bbeea;
+            height: 100%;
+            padding-left: 20px;
+            color: #0a3f7c;
+            background: transparent;
+            border-radius: 7.5px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-repeat: no-repeat;
+            background-position: 97% 40%;
+            background-size: 6.5% 60%;
+            background-image: url('data:image/svg+xml;utf8,<svg width="15" height="20" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 10.127L12 18.127L20 10.127H4Z" fill="%2346b4e7"/></svg>');
+            outline: none;
+        }
+        .hut-fifthsection .wrapper-card, .nominate-card{
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-gap: 10px;
+        }
+        
+        .hut-fifthsection .wrapper-card .card, .nominate-card .card{
+            position: relative;
+            border-radius: 10px;
+            height: 200px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .hut-fifthsection .wrapper-card .card[data-show='false']{
+            display: none;    
+        }
+        .hut-fifthsection .wrapper-card .card[data-show='true']{
+            display: block;    
+        }        
+        .hut-fifthsection .wrapper-card .card img, .nominate-card .card img{
+            position: absolute;
+            height: 200px;
+            width: 100%;
+            top: 0;
+            left: 0;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .hut-fifthsection .wrapper-card .card .card-overlay, .nominate-card .card .card-overlay{
+            position: absolute;
+            height: 50%;
+            bottom: 0;
+            width: 100%;
+            background-image: linear-gradient(0deg, black, transparent);
+            z-index: 0;
+            border-radius: 10px;
+        }
+        .hut-fifthsection .btn-hero{
+            border: unset;
+            width: 100%;
+            margin: 30px 0 70px 0;
+            height: 50px;
+            border-radius: 50px;
+            background: #277ad6;
+            color: #fff;
+            box-shadow: 1px 3px 1px #275ad6;
+            font-size: 16px;
+            font-family: 'Brevia-Bold';
+        }
+        .hut-fifthsection .wrapper-card .card .desc, .nominate-card .card .desc{
+            z-index: 2;
+            position: absolute;
+            bottom: 10px;
+            padding: 0 7.5%;
+            width: 100%;
+            justify-content: center;
+        }
+        .hut-fifthsection .wrapper-card .card .desc .nama, .nominate-card .card .desc .nama{
+            font-size: 12px;
+            color: #fff;
+            margin: unset;
+            font-family: 'Brevia-Semibold';
+        }
+        .hut-fifthsection .wrapper-card .card .desc .pekerjaan, .nominate-card .card .desc .pekerjaan{
+            color: #fff;
+            font-size: 12px;
+            margin: 5px 0;
+        }
+        
+        
+        
+        .overlay-syarat{
+                visibility: hidden;
+                opacity: 0;
+                transition: 0.3s;
+                background: rgba(0,0,0,0.8);
+                height: 100vh;
+                width: 100%;
+                position: fixed;
+                top: 0;
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+                left: 0;
+                z-index: 1000; 
+        }
+        .overlay-syarat.show{
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        
+        .overlay-hero{
+                visibility: hidden;
+                opacity: 0;
+                transition: 0.3s;
+                background: rgba(15,60,116,0.9);
+                height: 100vh;
+                width: 100%;
+                padding: 0 7.5%;
+                position: fixed;
+                top: 0;
+                display: flex !important;
+                //align-items: center;
+                justify-content: center;
+                left: 0;
+                z-index: 1000; 
+        }
+        .overlay-hero.show{
+            visibility: visible;
+            opacity: 1;
+        }
+        .overlay-hero .wrapper{
+            width: 100%;
+            margin-top: 70px;  
+            overflow-x: auto;
+        }
+        .overlay-hero .wrapper .card{
+                width: 100%;
+                height: 325px;
+                position: relative;
+                max-height: 325px;
+                border-radius: 30px;
+             
+        }
+        .overlay-hero .wrapper .card img{
+            position: absolute;
+            height: 325px;
+            width: 100%;
+            border-radius: 20px;    
+            object-fit: cover;
+        }
+        .overlay-hero .wrapper .card .desc{
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            width: 100%;    
+            z-index:2;
+        }
+        .overlay-hero .wrapper .card .desc .nama{
+            margin: 0 auto;
+            color: #fff;
+            font-size: 17.5px;
+            padding: 0 7.5%;
+            text-align: center;    
+            
+        }
+        .overlay-hero .wrapper .card .card-overlay{
+            position: absolute;
+            height: 50%;
+            bottom: 0;
+            width: 100%;
+            background-image: linear-gradient(0deg, black 0, transparent 50%, transparent 100%);
+            z-index: 0;
+            border-radius: 20px;       
+            z-index:1;
+        }
+        .overlay-hero .wrapper .pekerjaan{
+            color: #fff;
+            font-size: 14px;
+            margin-top: 30px;    
+            text-align: justify;
+        }
+        
+        .overlay-hero .btn-close-hero{
+            position: absolute;
+            top: 3%;
+            right: 5%;
+            border-radius: 50px;
+            border: 1px solid #000;
+            height: 30px;
+            //box-shadow: 2px 1px 1px #000;
+            width: 30px;
+            max-width: 30px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* modal daftar */
+        .overlay-daftar{
+                visibility: hidden;
+                opacity: 0;
+                transition: 0.3s;
+                background: rgba(0,0,0,0.8);
+                height: 100vh;
+                width: 100%;
+                position: fixed;
+                top: 0;
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+                left: 0;
+                z-index: 1000; 
+        }
+        .overlay-daftar.show{
+            visibility: visible;
+            opacity: 1;
+        }
+        .overlay-daftar .wrapper{
+            position: relative;
+            width: 100%;
+            background: #e4f5fd;
+            height: 100%;
+            overflow: auto;
+        }
+        .overlay-daftar .wrapper .daftar-img{
+            height: 70vh;
+            width: 100%;
+        }
+        .overlay-daftar .wrapper .form{
+            padding: 0 5%;
+        }
+        .overlay-daftar .wrapper .form-1{
+                padding: 30px 5% 0 5%;
+                width: 100%;
+                max-width: 100%;
+                display: flex;
+                flex-direction: column;    
+        }
+        .overlay-daftar .wrapper .form-2{
+                padding: 30px 5%;
+                width: 100%;
+                max-width: 100%;
+                display: flex;
+                flex-direction: column;    
+        }
+        .overlay-daftar .wrapper .title-hut-form{
+            font-size: 20px;
+            color: #0a3f7c;
+            margin-bottom: 25px;
+        }
+        .overlay-daftar .wrapper .bd-t{
+            border-top: 1px solid #4f9bed;
+            padding-top: 50px;
+        }
+        .overlay-daftar form input[type='text'],.overlay-daftar form input[type='number'] {        
+            height: 40px;
+            width: 100%;
+            border-radius: 7.5px;
+            border: unset;
+            margin-bottom: 10px;
+            padding-left: 5%;
+            color: #0a3f7c;
+            outline: none;
+            box-shadow: none;
+            font-size: 15px;
+        }
+        .overlay-daftar form input[type='text']::placeholder,.overlay-daftar form input[type='number']::placeholder {
+            color: #0a3f7c;
+        }
+        .overlay-daftar form #narasi{
+            height: 200px;
+            margin-bottom: 20px;
+            font-size: 15px;
+            overflow-x: auto;
+            border: unset;
+            border-radius: 10px;
+            padding-left: 15px;
+            padding-top: 10px;
+            color: #0a3f7c;
+        }
+        .overlay-daftar form #naras::placeholder{
+            color: #0a3f7c;    
+        }
+        textarea::placeholder{
+            color: #0a3f7c;    
+        }
+        .overlay-daftar form .wrapper-submit{
+            padding: 0 5%;    
+            display: flex;
+            flex-direction: column;
+        }
+        .overlay-daftar form .wrapper-submit .wrapper-1{
+            padding-top: 30px;
+            border-top: 1px solid #378dea;
+            color: #0f4d9a;
+        }
+        .overlay-daftar form .wrapper-submit .wrapper-1 input[type='checkbox']{
+            margin: unset;
+            padding: unset;
+        }
+        .overlay-daftar form .wrapper-submit .wrapper-1 .checkbox{
+            color: #277ad6    
+            
+        }
+        .overlay-daftar form .hut-submit {
+            width: 100%;
+            height: 45px;
+            border-radius: 40px;
+            border: unset;
+            background: #f7ba44;
+            color: #277ad6;
+            box-shadow: 1px 1px 1px #8d701b;
+            font-size: 15px;
+            margin: 50px 0;
+        }
+        .overlay-daftar form .hut-upload{
+            height: 45px;
+            border: unset;
+            background: #277ad6;
+            border-radius: 40px;
+            color: #fff;
+            box-shadow: 3px 2px 1px #275ad6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        .overlay-daftar form .photo{
+            opacity: 0;
+        }
+        .overlay-daftar form .form-hut-img-wrapper{
+            width: 80%;
+            margin: 0 auto;
+            padding: 30px 0;    
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            display: none;
+        }
+        .overlay-daftar form .form-hut-img-wrapper .image-display{
+            width: 100%;
+            height: 250px;
+        }
+        .overlay-daftar form .form-hut-img-wrapper .image-name{
+            margin-top: 10px;
+            font-size: 17.5px;
+            color: #277ad6;
+        }
+        .overlay-daftar .wrapper .btn-close-daftar{
+            width: 35px;
+            height: 35px;
+            max-width: 35px;
+            position: fixed;
+            top: 3%;
+            right: 5.5%;
+            font-size: 15px;
+            box-shadow: 1px 2px 3px #1a1a1a;
+            background: #fff;
+            border-radius: 35px;
+            outline: none;
+            border: 1px solid #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .show{
+            display: block;    
+        }
+        
+        .overlay-syarat .wrapper{
+            position: relative;    
+            background: #0F4D9A;
+            width: 100%;
+            height: 100%;
+            padding: 25px;
+            overflow: auto;
+        }
+        
+        .overlay-syarat .btn-close-syarat{
+            position: fixed;
+            border: 2px solid #fff;
+            background: #fff;
+            top: 2.5vh;
+            right: 20px;
+            width: 30px;
+            height: 30px;
+            max-width: 30px;
+            border-radius: 30px;
+            font-size: 15px;
+            box-shadow: 2px 3px 0px #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .overlay-syarat .wrapper .content{
+            margin-top: 50px;    
+            color: #fff;
+            font-size: 12px;
+        }
+        .overlay-syarat .wrapper .syarat-title{
+            color: #fff;
+            font-size: 16px;
+            font-family: 'Brevia-Bold';
+            padding: 10px 0;
+            display: block;
+        }
+        .overlay-syarat .wrapper .desc{
+            color: #fff;    
+            font-size: 12px;
+            font-family: 'Brevia-Regular';
+        }
+        
+        
+
+        
+        
+        .vh-100{
+            height: 100vh;    
+        }
+        .fw-bold{
+            font-weight: bold;
+        }
+        .text-white{
+            color: #fff;    
+        }
+        .sdk-1{
+            color: #fff;
+        }
+        .sdk-1 > li{
+            font-family: 'Brevia-Bold';
+    font-size: 12.5px;
+    padding: 10px 0;
+        }
+        .t-bold{
+            font-family: 'Brevia-Bold';    
+            color: #fff;
+        }
+        .data-p{
+            font-family: 'Brevia-Bold';    
+            text-decoration: underline;
+            color: #fff;
+        }
+        .d-c{
+            display: flex;
+            text-align: center;
+        }
+    }    
+</style>
+
+
+<div class="hut-forthsection">
+    
+    <div class="wrapper">
+        <div class="img-wrapper">
+            <img src="https://www.frisianflag.com/storage/app/media/hut100/world@2x.png" class="forth-img">  
+        </div>
+        <div class="pos-forth">
+            <div class="top-section">
+                <h1 class="main-title fw-bold">Pahlawan Kemajuan Keluarga untuk Indonesia yang<br>Sehat Sejahtera Selaras</h1>
+                <p class="desc">Ayo daftarkan pahlawan kemajuan keluarga yang ada di sekitarmu untuk menginspirasi keluarga Indonesia. Atau siapa tahu kamu adalah salah satu nya!<br>
+                    Kirim data diri dan cerita pahlawanmu melalui email <a href="mailto:kickandy.pahlawankeluarga@metrotvnews.com" class="t-d-u">kickandy.pahlawankeluarga@metrotvnews.com</a>
+                    Dengan mengikuti dan mengirimkan email, berarti kamu sudah membaca dan menyetujui <a href="javascript:void(0)" class="sdk-text t-d-u">syarat dan ketentuan</a> yang berlaku.
+                </p>
+            </div>
+    
+            <div class="bottom-section">
+                <button type="button" class="btn btn-daftar w-100 fw-bolder">
+                     Daftarkan Pahlawanmu Sekarang!
+                </button>
+                
+                <a href="mailto:kickandy.pahlawankeluarga@metrotvnews.com" class="btn btn-daftar w-100 fw-bolder">
+                     Kirim Data Pahlawanmu Sekarang!
+                </a>
+                
+                <button type="button" class="btn btn-syarat w-100 fw-bolder" data-target="#syaratModal">
+                     Syarat Dan Ketentuan
+                </button>
+            </div>    
+        </div>
+        
+    </div>
+    
+</div>
+
+
+
+
+<!-- Modal -->
+<!-- 
+    modal syarat & regist
+-->
+<div id="syaratModal" class="overlay-syarat">
+   <div class="wrapper">
+       <button class="btn-close-syarat">&#x2715;</button>
+       <div class="content">
+           <h2 class="syarat-title">SYARAT DAN KETENTUAN PAHLAWAN KEMAJUAN KELUARGA INDONESIA dan PENGHARGAAN ARKATAMA</h2>
+           <p class="desc">
+               Program PAHLAWAN KEMAJUAN KELUARGA INDONESIA (“Program“) ini diselenggarakan oleh PT FRISIAN FLAG INDONESIA (FFI), berkantor di Jalan Raya Bogor KM.5 Jakarta 13760, Indonesia, untuk selanjutnya disebut sebagai “Penyelenggara” atau “FFI”.
+Setiap orang yang terlibat dan mengikuti Program ini, dengan ini dianggap telah membaca dan memahami dengan baik, serta setuju tanpa syarat untuk patuh dan taat terhadap semua syarat dan ketentuan yang berlaku sebagaimana tercantum di bawah ini termasuk seluruh perubahannya jika ada. Keputusan Penyelenggara mengenai semua hal-hal yang terkait dengan Program ini bersifat final dan tidak dapat diganggu gugat.
+                <br><br>
+                <span class="syarat-title">HATI-HATI PENIPUAN</span>
+                
+                Program ini tidak dipungut biaya apapun. Biaya pengiriman hadiah, biaya administrasi dan pajak hadiah ditanggung oleh Penyelenggara. Apabila terdapat informasi atau permintaan yang mengarahkan peserta untuk membayar sejumlah biaya dalam nominal tertentu, maka dapat dipastikan hal tersebut bermotif penipuan. Informasi lebih lanjut silahkan kunjungi website resmi di www.frisianflag.com atau menghubungi Call Centre Frisian Flag Indonesia (021) 80615181 pulsa berbayar atau Layanan Peduli Frisian Flag 0-80018-21-406 bebas pulsa.
+               <ol class="sdk-1">
+                   <li>PERIODE PROGRAM</li>
+                   14 Februari 2022 – 31 Mei 2022.
+                   <li>PERSYARATAN PESERTA</li>
+                   Peserta harus memenuhi persyaratan sebagai berikut:
+                       <ul>
+                           <li>Warga Negara Indonesia (WNI)</li>
+                           <li>Berusia minimal 17 (tujuh belas) tahun pada saat mengikuti Program.</li>
+                           <li>Berdomisili di Indonesia.</li>
+                           <li>Memiliki Kartu Tanda Penduduk (KTP)/SIM/KK/Paspor yang masih berlaku</li>
+                           <li>Bukan merupakan karyawan, keluarga inti karyawan (ayah/ibu/istri/suami/anak) Penyelenggara dan/atau semua pihak ketiga yang bekerja sama dengan Penyelenggara dalam pelaksanaan aktivitas yang terkait dengan Program ini termasuk namun tidak terbatas kepada para supplier, distributor, agen, pedagang (trader), agensi, sub-kontraktor, serta karyawan pihak-pihak tersebut.</li>
+                           <li>Tidak pernah atau sedang terikat kontrak dan/atau pernah menjadi bintang iklan produsen susu selain PT Frisian Flag Indonesia.</li>
+                           <li>Penyelenggara berhak dan setiap saat, memiliki kewenangan mutlak untuk mendiskualifikasi peserta yang dianggap tidak beritikad baik, termasuk di antaranya:</li>
+                           <ol type="a">
+                               <li>Dikategorikan oleh Penyelenggara sebagai “pemburu hadiah/quiz hunter”.</li>
+                               <li>Mencemarkan nama baik, melanggar, memfitnah, merendahkan, melecehkan, mengancam Penyelenggara.</li>
+                               <li>Melakukan kecurangan, penipuan, pemalsuan dan memberikan informasi yang tidak benar dan/atau menyesatkan.</li>
+                               <li>Melakukan tindakan yang menurut kebijakan Penyelenggara merupakan tindakan yang bertentangan dengan kesusilaan, kesopanan, kepatutan dan/atau kebiasaan baik yang berlaku; dan/atau</li>
+                               <li>Melakukan tindakan yang melanggar atau bertentangan dengan ketentuan peraturan perundang-undangan yang berlaku di Indonesia.</li>
+                           </ol>
+                       </ul>
+                       
+                       
+                           <ol>
+                           
+                       </ol>
+                   <li>MEKANISME PROGRAM</li>
+                   Program ini merupakan inisiatif dari pihak Penyelenggara untuk mengundang masyarakat Indonesia, untuk mengajukan/mendaftarkan Pahlawan Kemajuan Keluarga Indonesia dengan syarat dan ketentuan pada mekanisme Program berikut ini: 
+                   <ol type="a">
+                       <li>Penyelenggara bekerja sama dengan Kick Andy  mencari 100 sosok Pahlawan Kemajuan Keluarga Indonesia.</li>
+                       <li>Masyarakat dapat mendaftarkan diri sendiri atau orang lain sebagai Pahlawan Kemajuan Keluarga Indonesia di salah satu atau kombinasi beberapa pilar : SEHAT, SEJAHTERA, SELARAS.</li>
+                       <li>Kriteria dari sosok yang boleh didaftarkan adalah :</li>
+                       <ul>
+                           <li>Dengan pekerjaannya sendiri telah berkontribusi untuk membuat Indonesia menjadi lebih sehat, lebih sejahtera, dan lebih selaras dengan lingkungan. Baik kombinasi ketiganya ataupun hanya salah satu.</li>
+                           <li>Selain itu juga telah dapat membawa atau memberikan kemajuan baik untuk keluarganya dan/atau masyarakat sekitar.</li>
+                           <li>Sosok yang didaftarkan memiliki pola pikir maju/progresif.</li>
+                           <li>Kriteria tambahan untuk Pilar Sehat :
+                               <ol>
+                                   <li>Sosok pejuang keluarga yang berhasil meningkatkan status kesehatan keluarganya</li>
+                                   <li>Sosok pejuang keluarga yang juga peduli pada kesehatan masyarakat sekitar</li>
+                                   <li>Sosok yang melakukan kegiatan atau aktivitas nyata untuk mengatasi berbagai permasalahan kesehatan baik di lingkungan keluarga ataupun masyarakat sekitar</li>
+                                   <li>Kisah zero to hero sebagai pejuang keluarga dan pemberdayaan masyarakat sekitar di bidang kesehatan</li>
+                                   <li>Konsisten melakukan kegiatan minimal selama 1 tahun</li>
+                               </ol>
+                           </li>
+                           <li>
+                               Kriteria tambahan untuk Pilar Sejahtera :
+                               <ol>
+                                   <li>Sosok pejuang keluarga yang berhasil meningkatkan kesejahteraan atau taraf hidup keluarganya</li>
+                                   <li>Sosok pejuang keluarga yang tidak hanya berhasil meningkatkan kesejahteraan keluarganya namun juga mampu memberdayakan dan meningkatkan kesejahteraan masyarakat sekitar baik dalam skala kecil maupun besar</li>
+                                   <li>Kisah zero to hero sebagai pejuang keluarga dan pemberdayaan masyarakat sekitar dalam peningkatan kesejahteraan ekonomi</li>
+                                   <li>Konsisten melakukan kegiatan minimal selama 1 tahun</li>
+                               </ol>
+                           </li>
+                           <li>
+                               Kriteria tambahan untuk Pilar Selaras :
+                               <ol>
+                                   <li>Sosok pejuang keluarga yang peduli pada isu lingkungan hidup</li>
+                                   <li>Sosok yang melakukan kegiatan atau aktivitas nyata untuk mengatasi berbagai permasalahan lingkungan hidup baik dalam lingkup keluarga maupun masyarakat sekitar</li>
+                                   <li>Sosok yang melakukan inovasi terhadap permasalahan lingkungan hidup</li>
+                                   <li>Kisah zero to hero sebagai pejuang keluarga dan pemberdayaan masyarakat sekitar di bidang lingkungan hidup</li>
+                                   <li>Konsisten melakukan kegiatan minimal selama 1 tahun</li>
+                               </ol>
+                           </li>                           
+                       </ul>
+                       <li>Konsumen harus mengajukan pendaftaran sosok Pahlawan Kemajuan Keluarga Indonesia melalui email: <a href="mailto:kickandy.pahlawankeluarga@metrotvnews.com" class="span-mail">kickandy.pahlawankeluarga@metrotvnews.com</a> yang berisi : cerita singkat disertai 3-5 foto yang menunjukkan kegiatan sesuai kriteria serta data diri lengkap dengan nomor telpon.</li>
+                       <li>Pastikan menggunakan email dan nomor handphone yang bisa dihubungi setiap saat</li>
+                       <li>Pihak Penyelenggara akan bekerja sama dengan pihak Kick Andy untuk melakukan validasi lebih lanjut atas pengisian data yang telah dikirimkan melalui email di atas.</li>
+                       <li>Peserta boleh mengajukan lebih dari 1 (satu) nama untuk Pahlawan Kemajuan Keluarga Indonesia.</li>
+                       <li>Pemilihan kandidat Pahlawan Kemajuan Keluarga Indonesia akan dilakukan oleh juri tertutup yang ditunjuk dan dilakukan oleh pihak Kick Andy.</li>
+                       <li>Proses penjurian tidak bersifat real time, dan disesuaikan untuk memenuhi jadwal pengumuman berikut:
+                           <ul>
+                               <li>10 Juni 2022 : Pengumuman 100 Pahlawan Kemajuan Keluarga</li>
+                               <li>18 Juli 2022 : Pengumuman Top 10 Pahlawan Kemajuan Keluarga</li>
+                               <li>Agustus 2022 : Malam Penghargaan Arkatama</li>
+                           </ul>
+                       </li>
+                       <li>Seluruh notifikasi hanya akan dilakukan oleh tim Kick Andy melalui email dan/atau telepon.</li>
+                       <li>Pastikan data diri yang diberikan konsumen sudah benar dan lengkap sesuai ketentuan. Jika alamat di KTP/identitas diri berbeda dengan alamat domisili, agar dicantumkan di dalam email yang dikirimkan. Penyelenggara tidak bertanggung jawab atas kesalahan data yang dikirimkan lewat email.</li>
+                       <li>Setiap peserta harus menjamin bahwa informasi yang diberikan adalah benar dan tepat serta dapat dipertanggung jawabkan.</li>
+                       <li>Jika peserta mengajukan orang lain yang bukan dirinya sendiri menjadi Pahlawan Kemajuan Keluarga Indonesia, Peserta wajib mendapatkan ijin tertulis dari orang tersebut, yang bisa dibuktikan di kemudian hari jika diperlukan.</li>
+                       <li>Penyelenggara tidak bertanggung jawab jika Peserta gagal mendapatkan ijin dari orang yang diajukan sebagai Pahlawan Kemajuan Keluarga Indonesia menolak untuk mengikuti atau menuntut Peserta dalam bentuk apapun, dan dalam hal ini peserta melindungi dan membebaskan Penyelengara, Manajemen dan karyawan Penyelenggara dari segala tuntutan, gugatan dan/atau permintaan ganti rugi dalam bentuk apapun dan atas dasar apapun terkait dengan penolakan dari Pahlawan Kemajuan Keluarga Indonesia yang didaftarkannya tersebut.</li>
+                       <li>Pendaftaran dan pengisian data harus dilakukan dalam periode yang ditentukan oleh Penyelenggara. Jika pengisian data dilakukan di luar tanggal di atas, maka tidak akan diproses ke tahap selanjutnya oleh Penyelenggara dan gugur dengan sendirinya.
+                           <ul>
+                               <li>Jika terdapat kecurangan dalam pemberian data dan/atau data yang dikirimkan lewat email tidak lengkap, maka pihak Penyelenggara berhak untuk mendiskualifikasikan peserta.</li>
+                           </ul>
+                       </li>
+                       <li>Penyelenggara melalui Kick Andy  menyediakan hadiah menarik untuk 50 pengirim pertama dan uang tunai total ratusan juta rupiah untuk para Peserta yang terpilih sebagai Pahlawan Kemajuan Keluarga Indonesia. Jumlah peserta yang terpilih mendapatkan hadiah sepenuhnya tergantung pada keputusan dewan juri, pihak Kick Andy dan Penyelenggara. Jumlah 100 orang yang dituliskan pada point 3a di atas bukan merepresentasikan jumlah peserta yang akan mendapatkan hadiah.</li>
+                       <li>Pemberian / pengiriman hadiah akan dikonfirmasi ulang oleh Kick Andy disertai bukti yang menunjukkan partisipasi Peserta pada Program.</li>
+                       <li>Hadiah akan diserahkan kepada Pahlawan Kemajuan Keluarga Indonesia, bukan kepada yang mengirimkan data kandidat.</li>
+                   </ol>
+                   <li>KETENTUAN UMUM</li>
+                   <ol type="a">
+                       <li>Peserta tidak dipungut biaya apapun (termasuk biaya pajak dan administrasi)</li>
+                       <li>Hati-hati penipuan, Penyelenggara tidak menunjuk pihak manapun untuk meminta pembayaran apapun dari peserta Program.</li>
+                       <li>Program ini dilaksanakan berdasarkan hukum yang berlaku di Republik Indonesia.</li>
+                       <li>Jika terdapat perbedaan pada detail syarat dan ketentuan yang tertera dalam website dan media promosi lainnya, maka detail syarat dan ketentuan yang akan berlaku adalah yang tercantum pada website FrisianFlag.</li>
+                       <li>PT Frisian Flag Indonesia tidak bertanggung jawab terhadap hal-hal di luar wewenang/kemampuan PT Frisian Flag Indonesia termasuk namun tidak terbatas pada force majeure (antara lain bencana alam, perubahan peraturan pemerintah), penipuan atau tindak kriminal yang dilakukan oleh pihak lain, jaringan internet, sistem informasi, pengiriman yang dilakukan dengan menggunakan jasa pihak ketiga, kesalahan peserta dalam memberikan informasi, dan kesalahan/kelalaian pihak lainnya.</li>
+                       <li>Peserta dengan ini membebaskan PT Frisian Flag Indonesia, afiliasinya, pihak agensi yang ditunjuk, dan pihak ketiga lainnya yang bekerjasama dengan Penyelenggara termasuk Manajemen dan karyawannya dari segala bentuk kerugian dan atau tuntutan hukum dalam bentuk dan dasar apapun, termasuk terhadap penyelenggaraan Program ini dan/atau terhadap penipuan yang dilakukan oleh pihak-pihak manapun yang mengatasnamakan FFI melalui website palsu atau panggilan (telepon/sms) palsu kepada peserta dan/atau melalui media komunikasi lainnya (surat kabar, surat elektronik, social media, dll.</li>
+                       <li>Penyelenggara, agensi, dan/atau pihak ketiga yang ditunjuk Penyelenggara berhak melakukan verifikasi keabsahan peserta, baik yang mengajukan Pahlawan Kemajuan Keluarga Indonesia, maupun sang Pahlawan Kemajuan Keluarga Indonesia langsung.</li>
+                       <li>Apabila dalam proses verifikasi tersebut Penyelenggara menyimpulkan bahwa peserta tidak memenuhi persyaratan keabsahan peserta sesuai Syarat dan Ketentuan ini, maka Penyelenggara memiliki hak penuh untuk mendiskualifikasikan Peserta dan/atau Pahlawan Kemajuan Keluarga Indonesia yang diajukan.</li>
+                       <li>Keputusan Penyelenggara bersifat mutlak dan final. Penyelenggara tidak berkewajiban menanggapi pertanyaan, permintaan klarifikasi atau komunikasi apapun terkait keputusan tersebut.</li>
+                       <li>Seluruh perselisihan yang terkait dengan Program akan diselesaikan secara musyarawah untuk mufakat. Apabila tidak tercapai penyelesaian secara kekeluargaan maka penyelesaian perselisihan dilakukan di Pengadilan Negeri Jakarta Timur atau badan peradilan lain yang ditentukan oleh PT Frisian Flag Indonesia.</li>
+                       <li>Penyelenggara berhak untuk mengubah, membatalkan, menghapus, memperpendek atau memperpanjang, menunda Program atau mengubah Syarat dan Ketentuan sewaktu-waktu, dengan alasan apapun, sebagian ataupun keseluruhan, tanpa pemberitahuan sebelumnya. Setiap perubahan pada Syarat dan ketentuan akan diinformasikan pada website resmi Penyelenggara di <span class="data-p"><a class="link" href="https://www.frisianflag.com" target="_blank">www.frisianflag.com.</a></span></li>
+                   </ol>
+                  <li>Data Pribadi</li>
+                  <ol type="a">
+                   <li>Setiap data yang dikirimkan sebagai bagian dari Program ini akan disimpan dan diproses atas nama Penyelenggara oleh pengatur data sesuai dengan perundang-undangan perlindungan data yang berlaku.</li>
+                   <li>Dengan mengikuti Program ini, Peserta dengan ini memahami sepenuhnya, menyetujui dan memberikan izin bagi FFI dan Kick Andy untuk menyimpan dan memproses data berupa:
+                       <ul>
+                           <li>data diri peserta dan orang lain yang di-submit pada Program ini</li>
+                           <li>foto, video, dan materi lain sehubungan dengan Program yang di-post oleh peserta, baik melalui email, maupun pada sosial media melalui tag atau mention official account Penyelenggara dan Kick Andy.</li>
+                       </ul>
+                   </li>
+                   </ol>
+                  
+               </ol>
+               <ol class="desc-data-p">Untuk menghindari keraguan dan tanpa batasan, Peserta setuju dan memberikan izin bahwa Penyelenggara akan menggunakan data dari keikutsertaan di atas untuk kepentingan FFI yang terkait dengan Program ini, termasuk untuk kepentingan komunikasi dan publikasi dari pihak Penyelenggara (baik internal maupun eksternal), materi iklan (termasuk dan tidak pada testimoni, buku, aset digital, dan materi komunikasi lainnya) untuk keperluan komersial dan non komersial, tanpa membutuhkan kebijaksanaan dan pertimbangan dan tanpa diperlukan persetujuan tertulis terpisah dari peserta dan/atau orang lain yang didaftarkan pada Program ini serta tanpa memberi kontribusi keuangan apapun kepada peserta dan sosok yang didaftarkan. Peserta setuju bahwa materi sehubungan dengan Program menjadi hak milik FFI sepenuhnya. Peserta menjamin telah mendapatkan izin tertulis dari orang lain yang didaftarkan untuk mengikuti Program ini dan mematuhi semua syarat dan ketentuan terkait Program, karenanya melindungi dan membebaskan Penyelenggara, agensi dan pihak ketiga lainnya yang ditunjuk oleh Penyelenggara terkait Program ini atas segala tuntutan, permintaan kompensasi, ganti rugi dalam bentuk apapun atas dasar apapun terkait dengan hal-hal tersebut di atas.
+                   Dalam hal ketentuan-ketentuan tersebut di atas, dengan mengikuti Program berarti Peserta menyetujui untuk memberikan Penyelenggara konten non eksklusif, bebas royalti, terus menerus, dapat dipindahtangankan, memberikan lisensi di seluruh dunia untuk menggunakan, menampilkan, memproduksi ulang, memodifikasi, mengatur ulang dan mendistribusikan konten keikutsertaaan Anda pada Program ini pada media apapun dari waktu ke waktu, termasuk namun tidak terbatas pada media sosial.
+                   Data pribadi peserta akan digunakan oleh Penyelenggara 1 tahun setelah Program berakhir, setelahnya akan dimusnahkan oleh agensi Penyelenggara.
+                   <ol type='a'>
+                   <li>Dalam hal ketentuan-ketentuan tersebut di atas, dengan mengikuti Program berarti Peserta menyetujui untuk memberikan Penyelenggara konten non eksklusif, bebas royalti, terus menerus, dapat dipindahtangankan, memberikan lisensi di seluruh dunia untuk menggunakan, menampilkan, memproduksi ulang, memodifikasi, mengatur ulang dan mendistribusikan konten keikutsertaaan Anda pada Program ini pada media apapun dari waktu ke waktu, termasuk namun tidak terbatas pada media sosial.</li>
+                   <li>Data pribadi peserta dan sosok Pahlawan Kemajuan Keluarga Indonesia yang didaftarkan akan digunakan oleh Penyelenggara 1 tahun setelah Program berakhir, setelahnya akan dimusnahkan oleh agensi Penyelenggara, kecuali untuk informasi yang sudah tercakup dalam materi komunikasi dan publikasi yang dibuat oleh pihak Penyelenggara.</li>
+                   </ol>
+                   </ol>
+               </ol>
+               <div class="wrapper-syarat-alamat">
+               <span class="t-bold t-m-k">Informasi Penyelenggara:</span>
+                   <br> 
+                    Jl. Raya Bogor KM 5, Pasar Rebo, Jakarta Timur, Indonesia 13760 Map Telp +62 21 8410945 | PO BOX 4047 Jakarta 13040 Indonesia
+                    <br>Toll Free Layanan Peduli Frisian Flag 0-80018-21-406; Senin - Jumat, 08:00 - 16:30 WIB, E-mail: layanan.peduli@frieslandcampina.com<br><br>
+                    <span class="t-bold d-c">Frisian Flag Indonesia is a subsidiary of Royal FrieslandCampina N.V. Copyright &copy; 2017. All rights reserved.</span>
+                    <div class="btm-csdk">
+                        <a href="https://www.frisianflag.com/kebijakan-cookie">Kebijakan Cookies</a>
+                        <a href="https://www.frisianflag.com/syarat-ketentuan">Syarat & Ketentuan</a>
+                        <a href="https://www.frisianflag.com/kebijakan-privasi">Kebijakan Privasi</a>
+                    </div>
+
+           </p>
+             </div>
+       </div>
+   </div>
+</div>
+
+<div id="daftarModal" class="overlay-daftar">
+    <div class="wrapper">
+    <button class="btn-close-daftar">&#x2715;</button>
+        {% partial 'hut100form' %}
+    </div>
+</div> 
+
+<div class="bg-gallery">
+        <picture>
+            <source media="(max-width: 768px)" srcset="https://www.frisianflag.com/storage/app/media/hut100/mainbanner_mobile.jpg">
+            <source media="(min-width: 769px)" srcset="https://www.frisianflag.com/storage/app/media/hut100/hutdesktop/mainbanner_desktop.jpg">
+            <img src="https://www.frisianflag.com/storage/app/media/hut100/hutdesktop/mainbanner_desktop.jpg" class="hut-bg" loading='lazy' alt="1">
+        </picture>
+</div>
+<div class="hut-fifthsection ">
+    <div class="nomination">
+    <div class="wrapper-title">
+        <h2 class="title">10 Nominasi</h2>
+        <h3 class="subtitle">*hasil kurasi tim kick andy</h3>
+    </div>
+    <div class="nominate-card">
+        <div class="card" data-show="false" data-img="https://www.frisianflag.com/storage/app/media/100thpahlawan/ewaldinasawimeo.png" data-desc="Bidan Walde, telah mengabdi hampir tiga dekade dan memiliki prestasi yang luar biasa dalam membantu menekan angka kematian ibu dan anak di Kabupaten Nagekeo, NTT. Keprihatinan Bidan Walde dimulai dengan tingginya kematian ibu dan anak di kampung halamannya. Pada tahun 1994, setelah melanjutkan pendidikan khusus kebidanan, Bidan Walde mengawali pengabdiannya di Puskesmas Nangaroro, Kabupaten Nagekeo, NTT. Melihat kinerjanya yang bagus, otoritas kesehatan setempat akhirnya menarik Bidan Walde untuk ditempatkan di Puskesmas Kecamatan sejak 2010 hingga saat ini. Pada tahun 2016 - 2017 kematian ibu di wilayahnya mencapai puncaknya dibandingkan tahun – tahun sebelumnya. Dari hasil monitoring dan catatan kematian ibu dan anak yang dikumpulkannya sejak tahun 2014, beliau menyimpulkan bahwa tingkat kematian ibu dan anak yang tinggi tersebut merupakan dampak dari ketidaktahuan para ibu hamil akan tanda-tanda bahaya selama masa kehamilan, sehingga ketika melahirkan terjadi cacat dan bahkan berujung kematian.
+Salah satu inovasi yang diluncurkan Bidan Walde pada tahun 2018 adalah Program Kartu Tanda Pengingat Ibu Hamil (KTP BUMIL), model edukasi yang bisa dengan mudah dipahami oleh ibu hamil dan anggota keluarga serta masyarakat. Hasilnyapun langsung terlihat, karena di tahun yang sama angka kematian ibu langsung nol dan angka kematian bayi cenderung menurun. Bidan Walde bersyukur bahwa aneka program yang dicanangkannya mendapat dukungan yang sangat luar biasa, karena tiap desa di Kecamatan Keo Tengah mengalokasikan dana yang lumayan besar untuk membantu berjalannya program - program yang menyasar ibu hamil.
+Selain mendapatkan penghargaan dari Pemerintah Kabupaten Nagekeo sebagai Bidan Teladan tahun 2009, Bidan Walde juga mendapatkan penghargaan sebagai Bidan Teladan oleh Pemerintah Provinsi NTT pada tahun 2019. Bidan Walde dianggap mampu menciptakan solusi praktis bagi kehidupan masyarakat di 16 desa di Keo Tengah. Kedepannya Bidan Walde akan terus berinovasi dan menciptakan berbagai macam program sehingga para ibu hamil di desa – desa ini  benar-benar sehat baik selama masa kehamilan maupun setelah melahirkan.
+" data-nama="Ewaldina Sawi Meo" data-id="1">
+            <img src="https://www.frisianflag.com/storage/app/media/100thpahlawan/ewaldinasawimeo.png" loading='lazy' alt="Ewaldina Sawi Meo">
+            <div class="desc">
+                <h4 class="nama">Ewaldina Sawi Meo</h4>
+                <p class="pekerjaan">Penuh prestasi dan melahirkan berbagai inovasi, dedikasi 30 tahun seorang bidan untuk menekan angka kematian ibu dan anak di Kabupaten Nagekeo, NTT</p>
+            </div>
+            <div class="card-overlay"></div>
+        </div>
+        {% for i in nominate %}
+            <div class="card" data-show="false" data-img="{{ i.photo_source.path }}" data-desc="{{ i.narasi }}" data-nama="{{ i.nama_kandidat }}" data-id="{{ i.id }}">
+            <img src="{{ i.photo_source.path }}" loading='lazy' alt="hut100ff-{{ i.nama_kandidat }}">
+            <div class="desc">
+                <h4 class="nama">{{ i.nama_kandidat }}</h4>
+                <p class="pekerjaan">{{ i.short_desc }}</p>
+            </div>
+            <div class="card-overlay"></div>
+        </div>
+        {% endfor %}
+    </div>    
+    </div>
+    <div class="wrapper-title">
+        <h2 class="title">100 Sosok Pahlawan Kemajuan Keluarga</h2>
+        <h3 class="subtitle">*hasil kurasi tim kick andy</h3>
+    </div>
+    <div class="filter">
+        <select name="filter-hero" id="filter-hero">
+          <option value="terbaru" selected="selected">Terbaru</option>
+          <option value="terlama">Terlama</option>
+        </select>
+    </div>
+    
+    <div class="wrapper-card">
+    
+    {% for i in data %}
+        <!-- <div class="card" data-show="false" data-img="{{i.photo_source.path}}" data-desc="{{i.narasi}}" data-nama="{{i.nama_kandidat}}" data-id="{{i.id}}">
+            <img src="{{i.photo_source.path}}" loading='lazy' alt="hut100ff-{{i.nama_kandidat}}">
+            <div class="desc">
+                <h4 class="nama">{{i.nama_kandidat}}</h4>
+                <p class="pekerjaan">Lorem Ipsum</p>
+            </div>
+            <div class="card-overlay"></div>
+        </div> -->
+        <div class="card" data-show="false" data-img="{{ i.photo_source.path }}" data-desc="{{ i.narasi }}" data-nama="{{ i.nama_kandidat }}" data-id="{{ i.id }}">
+            <img src="{{ i.photo_source.path }}" loading='lazy' alt="hut100ff-{{ i.nama_kandidat }}">
+            <div class="desc">
+                <h4 class="nama">{{ i.nama_kandidat }}</h4>
+                <p class="pekerjaan">{{ i.short_desc }}</p>
+            </div>
+            <div class="card-overlay"></div>
+        </div>
+    {% endfor %}        
+    </div>    
+    
+    <div class="more-wrapper">
+        <button class="btn-hero">Lihat Lainnya</button>
+    </div>
+</div>
+
+<!-- 
+    modal hero
+-->
+<div id="heroModal" class="overlay-hero">
+   <button class="btn-close-hero">&#x2715;</button>
+   <div class="wrapper">
+
+       <div class="content">
+           <div class="card">
+               <img src="https://unsplash.it/400/650?image=17" loading='lazy' alt="15">
+               <div class="desc">
+                   <h4 class="nama">Pahlawan 1</h4>
+               </div>
+               <div class="card-overlay"></div>
+               
+           </div>
+            
+           <div class="pekerjaan"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, voluptatum in fuga necessitatibus ipsum perferendis sit asperiores laboriosam eum illum! Quis, eligendi, dolor, facere vel earum odit facilis laborum deleniti aliquam vero adipisci cumque reiciendis inventore? Ex, aut autem laboriosam reiciendis nam eveniet culpa praesentium accusamus numquam nobis a necessitatibus quidem est rem quas vero saepe sunt iusto debitis voluptas excepturi eaque aliquam quo. Doloribus cum amet est aut et maiores nesciunt iste aperiam sunt repellendus. Molestiae, nisi, non, sequi, reiciendis deserunt saepe inventore quod ipsam aliquid magnam commodi laborum dicta quibusdam delectus ex consectetur veniam temporibus hic iusto facere.</p>
+           </div>     
+           
+       </div>
+   </div>
+</div>
+
+
+{% partial 'site/footer' %}
+
+
+<script>
+$('a[href*="friso"]').css('display', 'none');
+$('.sites-list').css('width', '30%');
+
+var searchParams = new URLSearchParams(window.location.search);
+if( searchParams.has('display') ){
+    $('.hut-forthsection').css("display", "none"); 
+    $(".wrapper-title").css("padding-top", "unset");
+}else {
+    $('.bg-gallery').css("display", "none");
+    $('.nomination').css("display", "none");
+}
+
+function maxLength(maxLen)
+{
+    return function truncateToNearestSpace(idx, text)
+    {
+        // this may chop in the middle of a word
+        var truncated = text.substr(0, maxLen);
+
+        if (/[^\s]$/.test(truncated))
+            return truncated.replace(/\s[^\s]+$/, "..");
+        else
+            return truncated.trim();
+    }
+}
+$(function () {
+       
+    //$(".card .pekerjaan").text(maxLength(40));
+    var btn_login = $(".btn-daftar")
+    var title = sessionStorage.getItem("hut_nama")
+    
+    //nav login / register hero
+    if ( title == null ){
+        btn_login.click( function () {
+            window.location.href = "login";    
+        } )    
+    }else {
+        btn_login.click(function () {
+            window.location.href = "registpahlawan";
+        } )
+           
+    }
+    
+    
+    
+    
+    //modal
+    $('.sdk-text').click(function() {
+       $('#syaratModal').addClass('show');     
+    });
+    
+    var button = $('.bottom-section .btn-syarat')
+    button.click(function () {
+        var target = $(this).data('target')
+        $(target).addClass('show')
+        
+    })
+    
+    var card = $('.hut-fifthsection .card')   
+    card.click(function (){
+        var modal = $('.overlay-hero')
+        var image = $(this).data('img')
+        var nama = $(this).data('nama')
+        var desc = $(this).data('desc')
+        
+        modal.find('img').attr('src', image)
+        modal.find('h4').text(nama)
+        modal.find('p').text(desc)
+        
+        modal.addClass('show')
+        $("body").addClass('ov-hidden');
+    })    
+    
+    var overlay = $('.overlay-syarat, .overlay-daftar, .overlay-hero')
+    var close_btn = $('.btn-close-syarat, .btn-close-daftar, .btn-close-hero')
+    close_btn.click(function () {
+        overlay.removeClass('show');  
+        $("body").removeClass('ov-hidden');
+    })
+    
+    
+    //view
+    //desktop or mobile view
+    var width = $(window).width();
+    if( width < 679) {
+    //view hero
+    $(".hut-fifthsection .wrapper-card .card[data-show='false']").slice(0, 6).attr('data-show', true).show();
+    $('.btn-hero').click(function (){
+        $(".hut-fifthsection .wrapper-card .card[data-show='false']").slice(0, 6).attr('data-show', true).show();
+    })
+    } else{
+    $(".hut-fifthsection .wrapper-card .card[data-show='false']").slice(0, 9).attr('data-show', true).show();    
+    $('.btn-hero').click(function (){
+        $(".hut-fifthsection .wrapper-card .card[data-show='false']").slice(0, 9).attr('data-show', true).show();
+    })
+    }
+    //click loadmore
+    
+    
+    
+    //input file
+    var photo = $('.photo');
+    
+    function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            
+            $('.image-display').attr('src', e.target.result);
+            var val = photo.val().split('\\').pop();
+            $('.image-name').text(val);
+            $('.form-hut-img-wrapper').css('display', 'flex');
+        }
+
+        reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    $('.hut-upload').click(function () {
+        photo.click();
+    });  
+    
+    
+    photo.change(function() {
+        readURL(this);
+    });
+    
+    //sort
+    var wrapper = $('.wrapper-card');
+    $('#filter-hero').change(function () {
+      var val = $(this).val();
+          if ( val == 'terbaru' ){
+              wrapper.find('.card').sort(function(a, b) {
+                return +a.dataset.id - +b.dataset.id;
+             })
+             .appendTo(wrapper);
+          }else{
+              wrapper.find('.card').sort(function(a, b) {
+                return +b.dataset.id - +a.dataset.id;
+             })
+             .appendTo(wrapper);              
+          }
+    });
+    
+    
+    
+
+    
+})
+  
+    
+    
+</script>

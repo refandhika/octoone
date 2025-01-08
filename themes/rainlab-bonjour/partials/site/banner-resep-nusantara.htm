@@ -1,0 +1,57 @@
+description = "Banner for resep nusantara"
+
+[viewBag]
+==
+<?php
+function onStart() {
+    
+    // Get Router
+    $router             = $this->controller->getRouter();
+    $this->page['slug'] = $router->getURL();
+    $this['category']   = $this->param('category');
+    
+}
+?>
+==
+<div class="static-baner-pages">
+    	<div class="imgwrp hidden-xs"><img src="{{ content.banner_desktop|theme }}" alt="Banner Desktop"> </div>
+    	<div class="imgwrp visible-xs"><img src="{{ content.banner_mobile|theme }}" alt="Banner Mobile"> </div>
+</div>
+<!--s:menu-tab-->
+    
+	<div class="container-menutab container-menutab--five">
+			<div class="container-one">
+				<ul class="menutab-full">
+					<li class="toggle visible-xs visible-sm">
+						<a href="javascript:;" class="active">{{content.name}}</a>
+					</li>
+					<li>
+						<a href="{{ '/aktivitas-kami/resep-nusantara' }}"><span>RESEP NUSANTARA</span></a>
+					</li>
+				     
+					    <li>
+					    	<a href="/aktivitas-kami/resep-nusantara/resep-khas-sumatera" {{ (this.page.slug == "aktivitas-kami/resep-nusantara/resep-khas-sumatera" or category == "resep-khas-sumatera" ? 'class="active"' : '') }}><span>{{'RESEP KHAS SUMATERA' | upper}}</span>
+					    	</a>
+					    
+				    	</li>
+				    	  <li>
+					    	<a href="/aktivitas-kami/resep-nusantara/resep-khas-jawa-bali-nusa-tenggara" {{ (this.page.slug == "aktivitas-kami/resep-nusantara/resep-khas-jawa-bali-nusa-tenggara" or category == "resep-khas-jawa-bali-nusa-tenggara" ? 'class="active"' : '') }}><span>  RESEP KHAS JAWA, BALI & <br>
+                NUSA TENGGARA</span>
+					    	</a>
+					    
+				    	</li>
+				    	  <li>
+					    	<a href="/aktivitas-kami/resep-nusantara/resep-khas-kalimantan" {{ (this.page.slug == "aktivitas-kami/resep-nusantara/resep-khas-kalimantan" or category == "resep-khas-kalimantan" ? 'class="active"' : '') }}><span>{{'RESEP KHAS KALIMANTAN' | upper}}</span>
+					    	</a>
+					    
+				    	</li>
+				    	  <li>
+					    	<a href="/aktivitas-kami/resep-nusantara/resep-khas-sulawesi-maluku-papua" {{ (this.page.slug == "aktivitas-kami/resep-nusantara/resep-khas-sulawesi-maluku-papua" or category == "resep-khas-sulawesi-maluku-papua" ? 'class="active"' : '') }}><span>RESEP KHAS SULAWESI, <br> MALUKU &  PAPUA</span>
+					    	</a>
+					    
+				    	</li>
+				</ul>
+			</div>
+		</div>
+    
+<!--e:menu-tab-->

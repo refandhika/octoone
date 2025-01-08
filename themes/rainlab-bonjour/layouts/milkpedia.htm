@@ -1,0 +1,256 @@
+description = "Layout for Milkpedia Archive"
+
+[staticPage]
+useContent = 1
+default = 0
+
+[milkpediaList]
+
+[milkpediaCategories]
+
+[subscriberform]
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "all"
+
+[SessionClose]
+load_js = 1
+==
+<?php
+function onEnd(){
+    //$this->page->amp_url = "https://www.frisianflag.com/amp/milkpedia";
+    $this['ResultCode'] = Definite\Milkpedia\Models\Milkpedia::orderBy('updated_at', 'desc')->limit(3)->get(); 
+    $this['nutrisilists'] = Definite\Milkpedia\Models\Milkpedia::leftJoin('definite_milkpedia_posts_categories', 'definite_milkpedia_posts_categories.milkpedia_id', '=', 'definite_milkpedia_post.id')->where('category_id',1)->orderBy('updated_at', 'desc')->limit(4)->get(); 
+    $this['manfaatlists'] = Definite\Milkpedia\Models\Milkpedia::leftJoin('definite_milkpedia_posts_categories', 'definite_milkpedia_posts_categories.milkpedia_id', '=', 'definite_milkpedia_post.id')->where('category_id',2)->orderBy('updated_at', 'desc')->limit(4)->get(); 
+    $this['caraminumlists'] = Definite\Milkpedia\Models\Milkpedia::leftJoin('definite_milkpedia_posts_categories', 'definite_milkpedia_posts_categories.milkpedia_id', '=', 'definite_milkpedia_post.id')->where('category_id',3)->orderBy('updated_at', 'desc')->limit(4)->get(); 
+}
+?>
+==
+{% partial 'site/header' %}
+
+<link rel="preload" href="{{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }}" as="image">
+
+<h1 aria-hidden="true" class="seo-heading">Milkpedia | Frisian Flag</h1>
+
+<div class="static-baner-pages lay">
+    <div class="imgwrp hidden-xs">
+        <img src="{{ 'assets/img/95-TAHUN-FF_desktop-banner.jpg'|theme }}" alt="Banner 95 Tahun Frisian Flag Desktop"/>
+    </div>
+    <div class="imgwrp visible-xs">
+        <img src="{{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }}" alt="Banner 95 Tahun Frisian Flag Mobile"/> 
+    </div>
+</div>
+
+<div class="container-menutab">
+    <div class="container-one">
+        <ul class="menutab-full">
+            <li class="toggle visible-xs visible-sm"><a href="javascript:;" class="active">Milkpedia</a></li><li>
+                <a href="{{ 'our-milkpedia'|page({ "slug": "nutrisi-dan-kesehatan" }) }}">
+                    <span>{{'nutrisi-dan-kesehatan'|_}}</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ 'our-milkpedia'|page({ "slug": "manfaat-minum-susu" }) }}">
+                    <span>{{'manfaat-minum-susu'|_}}</span>
+                </a>
+            </li>
+           <li>
+                <a href="{{ 'our-milkpedia'|page({ "slug": "kapan-dan-bagaimana-cara-minum-susu" }) }}">
+                    <span>{{'kapan-dan-bagaimana-cara-minum-susu'|_}}</span>
+                </a>
+            </li>
+            <li><a href="/milkpedia/faq"><span>FAQ</span></a></li>
+        </ul>
+    </div>
+</div>
+
+<div id='main-section' class="container" style="padding: 60px 0;">
+    <div class="col-md-12">
+        <div class="breadcrumb">
+                <ul>
+                    <li><a href="{{ 'home' | page }}">{{'beranda'|_}}</a> </li>
+                    <li><a href="javascript:;">{{ trans_pick(page, 'title')|raw }}</a> </li>
+                </ul>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="default-content">
+            {% page %}
+        </div>
+    </div>
+     <div class="col-md-12">
+        <div classs="container">
+        
+            <div class="banner-commerce" style="margin-top : 40px">
+                <img src="{{ 'Banner/Portfolio-FFI_2024_1095x245-01.jpg' | media  }}" alt="ecommerce-banner"/>
+                <div class="content" style="right:50px">
+                    <h4>Sedia Frisian Flag<br/>Pilihanmu Sekarang</h4>
+                   <a href="javascript:void(0)" data-target="#popup-ecommerce" class="btn-modal">
+                       <img loading="lazy" src="{{ 'button-ecommerce.png' | media }}" />
+                   </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+
+    <div class="col-md-12">
+        <div class="text-center default-content">
+            <h4 data-attr={{ ResultCode }}>{{ 'artikel-terbaru'|_ }}</h4>
+            <br />
+        </div>
+    </div>
+    {% if milkpediaList.records %}
+    {% set milkpedias = milkpediaList.records.take(3) %}
+    {% for milkpediaPost in ResultCode %}
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card__thumbnail card__thumbnail--half" style="background-image: url('{{ milkpediaPost.featured_image | mediathumb_resize('width', 640, 90)  }}');">
+            </div>
+            <div class="card__meta card__meta--relative">
+                <div class="date">
+                    <label>Milkpedia</label> | {{ milkpediaPost.updated_at.format('d M Y') }}
+                </div>
+                <header class="card__head">
+                    <h3>{{ trans_pick(milkpediaPost, 'title')|raw }}</h3>
+                </header>
+                <p>{{ trans_pick(milkpediaPost, 'excerpt')|raw }}</p>
+                <a href="{{ 'our-milkpedia-single'|page({"category-slug": milkpediaPost.categories.first().slug, "slug": milkpediaPost.slug}) }}" class="button">{{'lebih-lanjut'|_}}</a>
+            </div>
+        </div>
+    </div>
+     {% endfor %}
+     {% endif %}
+</div>
+
+<div class="container-fluid">
+
+    {% if milkpediaList.nutrisi  %}
+    
+    {% set milkpedias = milkpediaList.nutrisi.take(4) %}
+    <div class="col-md-4 small-news__wrapper">
+        <h3 class="small-news__title">{{'nutrisi-dan-kesehatan'|_}}</h3>
+         {# for milkpediaPost in milkpedias #}
+          {% for milkpediaPost in nutrisilists %}
+        <div class="small-news">
+            <div class="small-news__thumbnail" style="background-image: url('{{ milkpediaPost.featured_image | mediathumb_resize('width', 640, 90)  }}');">
+                <a href="{{ 'our-milkpedia-single'|page({"category-slug": milkpediaPost.categories.first().slug, "slug": milkpediaPost.slug}) }}"></a>
+            </div>
+            <div class="small-news__meta">
+                <div class="date">
+                    <label>milkpedia</label><br />
+                    {{milkpediaPost.updated_at|date('d M Y')}}
+                </div>
+                <h3><a href="{{ 'our-milkpedia-single'|page({"category-slug": milkpediaPost.categories.first().slug, "slug": milkpediaPost.slug}) }}">{{trans_pick(milkpediaPost, 'title')|raw}}</a></h3>
+            </div>
+        </div>
+        {% endfor %}
+        <a href="{{ 'our-milkpedia'|page({ "slug": "nutrisi-dan-kesehatan" }) }}" class="button">{{'lihat-semua-artikel'|_}}</a>
+    </div>
+    {% endif %}
+    <!-- end Nutrisi and Kesehatan -->
+
+    {% if milkpediaList.susu  %}
+    {% set milkpedias = milkpediaList.susu.take(4) %}
+    <div class="col-md-4 small-news__wrapper">
+        <h3 class="small-news__title">{{'manfaat-minum-susu'|_}}</h3>
+
+        
+        {% for milkpediaPost in manfaatlists %}
+        <div class="small-news">
+            <div class="small-news__thumbnail" style="background-image: url('{{ milkpediaPost.featured_image | mediathumb_resize('width', 640, 90)  }}');">
+                <a href="{{ 'our-milkpedia-single'|page({"category-slug": milkpediaPost.categories.first().slug, "slug": milkpediaPost.slug}) }}"></a>
+            </div>
+            <div class="small-news__meta">
+                <div class="date">
+                    <label>milkpedia</label><br />
+                    {{milkpediaPost.updated_at|date('d M Y')}}
+                </div>
+                <h3><a href="{{ 'our-milkpedia-single'|page({"category-slug": milkpediaPost.categories.first().slug, "slug": milkpediaPost.slug}) }}">{{trans_pick(milkpediaPost, 'title')|raw}}</a></h3>
+            </div>
+        </div>
+        {% endfor %}
+
+
+        <a href="{{ 'our-milkpedia'|page({ "slug": "manfaat-minum-susu" }) }}" class="button">{{'lihat-semua-artikel'|_}}</a>
+    </div>
+    {% endif %}
+    <!-- end Manfaat Minum Susu -->
+
+    {% if milkpediaList.cara_minum_susu  %}
+    {% set milkpedias = milkpediaList.cara_minum_susu.take(4) %}
+    <div class="col-md-4 small-news__wrapper">
+        <h3 class="small-news__title">{{'kapan-dan-bagaimana-cara-minum-susu'|_}}</h3>
+
+        {% for milkpediaPost in caraminumlists %}
+        <div class="small-news">
+            <div class="small-news__thumbnail" style="background-image: url('{{ milkpediaPost.featured_image | mediathumb_resize('width', 640, 90)  }}');">
+                <a href="{{ 'our-milkpedia-single'|page({"category-slug": milkpediaPost.categories.first().slug, "slug": milkpediaPost.slug}) }}"></a>
+            </div>
+            <div class="small-news__meta">
+                <div class="date">
+                    <label>milkpedia</label><br />
+                    {{milkpediaPost.updated_at|date('d M Y')}}
+                </div>
+                <h3><a href="{{ 'our-milkpedia-single'|page({"category-slug": milkpediaPost.categories.first().slug, "slug": milkpediaPost.slug}) }}">{{trans_pick(milkpediaPost, 'title')|raw}}</a></h3>
+            </div>
+        </div>
+        {% endfor %}
+
+        <a href="{{ 'our-milkpedia'|page({ "slug": "kapan-dan-bagaimana-cara-minum-susu" }) }}" class="button">{{'lihat-semua-artikel'|_}}</a>
+    </div>
+    {% endif %}
+    <!-- end Kapan &amp; Bagaimana Cara Minum Susu -->
+</div>
+
+
+<div id="popup-ecommerce" class="overlay-store">
+   <div class="card">
+    <button class="btn-close">x</button>
+        <div class="card-body">
+            <h4>Temukan Produk Kami di:</h4>
+                <a class="btn btn-outline-light btn-commerce" href="https://www.tokopedia.com/frisian-flag?utm_source=others&utm_medium=brand&utm_campaign=ao_frisianflag_221121_311222" target="_blank">
+                    Tokopedia
+                </a>
+                <a class="btn btn-outline-light btn-commerce" href="https://shopee.co.id/frisianflagofficial" target="_blank">
+                    Shopee
+                </a>
+                <a class="btn btn-outline-light btn-commerce" href="https://www.lazada.co.id/shop/frisian-flag" target="_blank">
+                    Lazada
+                </a>
+                <a class="btn btn-outline-light btn-commerce" href="https://www.bukalapak.com/frisian-flag-official-store-official" target="_blank">
+                    Bukalapak
+                </a>
+                <a class="btn btn-outline-light btn-commerce" href="https://www.klikindomaret.com/page/frisian-flag-official-store" target="_blank">
+                    Klikindomaret
+                </a>
+                
+        </div>
+   </div>
+</div>
+
+
+{% partial 'site/footer' %}
+
+<script>
+$(document).ready(function () {
+    var button = $('.btn-modal')
+    button.click(function () {
+        var target = $(this).data('target')
+        $(target).addClass('show')
+    })
+    
+    var overlay = $('.overlay-store')
+    var close_btn = $('.overlay-store .btn-close')
+    close_btn.click(function () {
+        overlay.removeClass('show')    
+    })    
+})
+</script>
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

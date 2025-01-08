@@ -1,0 +1,19 @@
+columns:
+    id:
+        label: id
+        type: number
+    periode_1:
+        label: periode_1
+        type: text
+    periode_2:
+        label: periode_2
+        type: text
+    periode_3:
+        label: periode_3
+        type: text
+    periode_4:
+        label: periode_4
+        type: text
+    periode_5:
+        label: periode_5
+        type: text

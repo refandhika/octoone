@@ -1,0 +1,10 @@
+name: Categories
+form: $/definite/pressrelease/models/categories/fields.yaml
+modelClass: Definite\Pressrelease\Models\Categories
+defaultRedirect: definite/pressrelease/categories
+create:
+    redirect: 'definite/pressrelease/categories/update/:id'
+    redirectClose: definite/pressrelease/categories
+update:
+    redirect: definite/pressrelease/categories
+    redirectClose: definite/pressrelease/categories

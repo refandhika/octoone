@@ -1,0 +1,178 @@
+title = "sample-menufull"
+url = "/sample-menufull"
+layout = "aniversary"
+is_hidden = 0
+==
+<?php
+function onStart(){
+     
+    
+    /*
+    contains
+    $a = Db::table('definite_activities_activity')->where('title', 'like','rawon%')->get();
+    
+    $a = Db::table('definite_activities_activity')->where('slug', 'like','%mentega%')->get();
+    */
+    $detail = Db::table('definite_activities_detailsbahan')->get();
+    $resep = Db::table('definite_activities_activity')
+    //->join('definite_activities_detailsbahan', 'definite_activities_activity.title', 'like'. '%' . $detail . '%')
+    ->join('definite_activities_detailsbahan', 'definite_activities_activity.title', 'like', 'definite_activities_detailsbahan.resep')
+    ->get();
+    
+    
+    
+    $this['data'] = $detail;
+    
+}
+?>
+==
+{% put link %}
+<link href="{{ 'assets/css/bootstrap5.css'|theme }}" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+{% endput %}
+<style>
+    body{
+        background-color: #009fe3!important;    
+    }
+    form{
+        display: flex;
+        flex-direction: column;    
+        color: #fff;
+    }
+    form button{
+            margin: 20px 0;
+        width: fit-content;
+        color: #000;
+        padding: 7.5px 45px;
+        border: unset;
+        border-radius: 20px;    
+    }
+    form select{
+        width: fit-content;
+    color: #000;    
+    margin: 20px 0;
+    }
+    .result{
+        color: #fff;
+        font-size: 15px;
+        margin-top: 30px;
+    }
+    
+</style>
+<div style="margin: 250px 0;">
+    <div class="container">
+        <form id="form1">
+        <span>Pilih Sarapan</span>
+        <input type="hidden" name="k">
+        <input type="hidden" name="p">
+        <input type="hidden" name="l">
+        <input type="hidden" name="e">
+        <input type="hidden" name="kalsium">
+        <input type="hidden" name="gula">
+        <input type="hidden" name="vita">
+        <input type="hidden" name="vitd">
+        <select name="sarapan" id="menu" onchange="changeSelect(this)" required>
+            <option value="" disabled selected>Menu Sarapan</option>
+            {% for i in data %}
+                <option value="{{i.resep}}" data-k="{{i.k ? i.k : 0}}"
+                data-p="{{i.p ? i.p : 0}}"
+                data-l="{{i.l ? i.l : 0}}"
+                data-e="{{i.e ?  i.e : 0}}"
+                data-kalsium="{{i.kalsium ?  i.kalsium : 0}}"
+                data-gula="{{ i.gula ? i.gula : 0}}"
+                data-vita="{{i.vita ? i.vita : 0 }}"
+                data-vitd="{{i.vitd ?  i.vitd : 0}}"
+                data-featured_image="{{i.featured_image}}"
+                >{{i.resep}}</option>
+            {% endfor %}
+        </select>
+        <div class="image">
+        
+        </div>
+        <div class="ukuran">
+            <span>Porsi: </span>
+            <input type="radio" name="ukuran" value=".25" checked>
+            <span>1/4</span>
+            
+            <input type="radio" name="ukuran" value=".5" >
+            <span>1/2</span>
+            
+            <input type="radio" name="ukuran" value="1" >
+            <span>1</span>
+            
+            <input type="radio" name="ukuran" value="2" >
+            <span>2</span>
+        </div>
+        <button type="submit">submit</button>
+        </form>
+        <div class="result100">
+            
+        </div>
+        <div class="result">
+            
+        </div>
+    </div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script>
+    function changeSelect(val){
+         var opt = val.options[val.selectedIndex];
+         $("input[name='k']").val(opt.dataset.k);
+         $("input[name='p']").val(opt.dataset.p);
+         $("input[name='l']").val(opt.dataset.l);
+         $("input[name='e']").val(opt.dataset.e);
+         $("input[name='kalsium']").val(opt.dataset.kalsium);
+         $("input[name='gula']").val(opt.dataset.gula);
+         $("input[name='vita']").val(opt.dataset.vita);
+         $("input[name='vitd']").val(opt.dataset.vitd);
+         var img = opt.dataset.featured_image;
+         $(".result100").html("<img src='/storage/app/media/" + img +"' style='width: 300px; height: 300px'>");
+    }
+    
+     $("form").submit(function(e){
+         e.preventDefault();
+         var k = $('input[name="k"]').val();
+         var p = $('input[name="p"]').val(); 
+         var l = $('input[name="l"]').val();
+         var e = $('input[name="e"]').val();
+         var kalsium = $('input[name="kalsium"]').val();
+         var gula = $('input[name="gula"]').val();
+         var vita = $('input[name="vita"]').val();
+         var vitd = $('input[name="vitd"]').val();
+         
+         var ukuran = $('input[name="ukuran"]:checked').val(); 
+         var select = $("#menu").val();
+         $.ajax({ 
+			type: "post",
+            url: "#",
+            success: function() {
+                    k = k*ukuran;
+                    p = p*ukuran;
+                    l = l*ukuran;
+                    e = e*ukuran;
+                    kalsium = kalsium*ukuran;
+                    gula = gula*ukuran;
+                    vita = vita*ukuran;
+                    vitd = vitd*ukuran;
+                    
+                $(".result").html(`
+                Karbohidrat: ${k} (g)<br>
+                Protein: ${p} (g)<br>
+                Lemak: ${l} (g)<br>
+                Energi: ${e} (kal)<br>
+                Kalsium: ${kalsium} (mg)<br>
+                Gula: ${gula}<br>
+                Vit A: ${vita} (mcg)<br>
+                Vit D: ${vitd} (mcg)<br>`)
+            }
+        
+         });
+         
+     })
+</script>
+
+{% partial 'site/footer' %}

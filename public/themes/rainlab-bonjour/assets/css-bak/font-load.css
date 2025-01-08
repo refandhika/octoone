@@ -1,0 +1,63 @@
+@font-face {
+	font-family: Brevia-Regular;
+	font-style: normal;
+	font-weight: 500;
+	src: url(../fonts/Brevia-Regular.eot?) format("eot"), url(../fonts/Brevia-Regular.woff) format("woff"), url(../fonts/Brevia-Regular.ttf) format("truetype"), url(../fonts/Brevia-Regular.svg#Brevia-Regular) format("svg");
+	font-display: swap
+}
+
+@font-face {
+	font-family: material;
+	font-style: normal;
+	font-weight: 500;
+	src: url(../fonts/material.eot?) format("eot"), url(../fonts/material.woff) format("woff"), url(../fonts/material.ttf) format("truetype"), url(../fonts/material.svg#material) format("svg");
+	font-display: swap
+}
+
+@font-face {
+	font-family: Brevia-Semibold;
+	font-style: normal;
+	font-weight: 500;
+	src: url(../fonts/Brevia-Semibold.eot?) format("eot"), url(../fonts/Brevia-Semibold.woff) format("woff"), url(../fonts/Brevia-Semibold.ttf) format("truetype"), url(../fonts/Brevia-Semibold.svg#Brevia-Semibold) format("svg");
+	font-display: swap
+}
+
+@font-face {
+	font-family: Brevia-Black;
+	font-style: normal;
+	font-weight: 500;
+	src: url(../fonts/Brevia-Black.eot?) format("eot"), url(../fonts/Brevia-Black.woff) format("woff"), url(../fonts/Brevia-Black.ttf) format("truetype"), url(../fonts/Brevia-Black.svg#Brevia-Black) format("svg");
+	font-display: swap
+}
+
+@font-face {
+	font-family: Brevia-Bold;
+	font-style: normal;
+	font-weight: 500;
+	src: url(../fonts/Brevia-Bold.eot?) format("eot"), url(../fonts/Brevia-Bold.woff) format("woff"), url(../fonts/Brevia-Bold.woff2) format("woff2"), url(../fonts/Brevia-Bold.svg#Brevia-Bold) format("svg");
+	font-display: swap
+}
+
+@font-face {
+	font-family: material;
+	src: url(../fonts/material.eot);
+	src: url(../fonts/material.eot) format("embedded-opentype"), url(../fonts/material.woff2) format("woff2"), url(../fonts/material.woff) format("woff"), url(../fonts/material.ttf) format("truetype"), url(../fonts/material.svg#material) format("svg");
+	font-display: swap
+}
+
+@font-face {
+	font-family: slick;
+	src: url(../fonts/slick.eot);
+	src: url(../fonts/slick.eot?#iefix) format("embedded-opentype"), url(../fonts/slick.woff) format("woff"), url(../fonts/slick.ttf) format("truetype"), url(../fonts/slick.svg#slick) format("svg");
+	font-weight: 400;
+	font-display: swap;
+	font-style: normal
+}
+
+@font-face {
+	font-family: FontAwesome;
+	src: url(../fonts/fontawesome-webfont.eot?v=4.6.3);
+	src: url(../fonts/fontawesome-webfont.eot?#iefix&v=4.6.3) format("embedded-opentype"), url(../fonts/fontawesome-webfont.woff2?v=4.6.3) format("woff2"), url(../fonts/fontawesome-webfont.woff?v=4.6.3) format("woff"), url(../fonts/fontawesome-webfont.ttf?v=4.6.3) format("truetype"), url(../fonts/fontawesome-webfont.svg?v=4.6.3#fontawesomeregular) format("svg");
+	font-weight: 400;
+	font-style: normal font-display: swap
+}

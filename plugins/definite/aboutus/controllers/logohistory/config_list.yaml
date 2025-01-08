@@ -1,0 +1,16 @@
+title: LogoHistory
+modelClass: Definite\Aboutus\Models\LogoHistory
+list: $/definite/aboutus/models/logohistory/columns.yaml
+recordUrl: 'definite/aboutus/logohistory/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+recordsPerPage: 20
+showSetup: true
+showCheckboxes: true
+showSorting: 1
+defaultSort:
+    column: title
+    direction: asc
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

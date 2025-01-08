@@ -1,0 +1,11 @@
+name: Milkpedia
+modelClass: Definite\Milkpedia\Models\Milkpedia
+form: $/definite/milkpedia/models/milkpedia/fields.yaml
+defaultRedirect: definite/milkpedia/milkpedia
+create:
+    redirect: 'definite/milkpedia/milkpedia/update/:id'
+    redirectClose: definite/milkpedia/milkpedia
+update:
+    redirect: definite/milkpedia/milkpedia
+    redirectClose: definite/milkpedia/milkpedia
+preview: {  }

@@ -1,0 +1,25 @@
+tabs:
+    fields:
+        title:
+            label: 'Nama Submenu'
+            span: left
+            required: 1
+            type: text
+            tab: 'Informasi Detail'
+        status:
+            label: 'Status Aktif'
+            span: left
+            type: switch
+            tab: 'Informasi Detail'
+        meta_description:
+            label: 'Meta Description'
+            size: ''
+            span: left
+            type: textarea
+            tab: 'Informasi Detail'
+        meta_keywords:
+            label: 'Meta Keywords'
+            span: left
+            type: text
+            tab: 'Informasi Detail'
+

@@ -1,0 +1,18 @@
+[viewBag]
+title = "Indomaret - Daftar"
+url = "/aktivitas-kami/promo-indomaret/daftar"
+layout = "indomaret-daftar"
+is_hidden = 0
+navigation_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[account]
+redirect = "/aktivitas-kami/promo-indomaret/daftar"
+==
+<?php
+function onEnd(){
+    $this->page->meta_description = "Daftarkan dirimu untuk dapat akun di website Frisian Flag dan jangan lewatkan berita terbaru serta promo menarik Indomart setiap waktu.";
+}
+?>
+==

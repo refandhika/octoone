@@ -1,0 +1,61 @@
+[viewBag]
+==
+<?php
+function onStart() {
+    // Get Router
+    $router = $this->controller->getRouter();
+    $this->page['slug'] = $router->getURL();
+}
+?>
+==
+<div class="container-menutab">
+    <div class="container-one">
+      <ul>
+          <li class="toggle visible-xs visible-sm"><a href="javascript:;" class="active">
+          {% if ( this.page.slug == 'cokoperimen' ) %}
+          Cara Mengikuti
+          {% elseif ( this.page.slug == 'cokoperimen/login' or this.page.slug == 'cokoperimen/daftar' or this.page.slug == 'cokoperimen/main' ) %}
+          Main
+          {% elseif ( this.page.slug == 'aktivitas-kami/cokoperimen/syarat-dan-ketentuan' ) %}
+          Syarat dan ketentuan
+          {% elseif ( this.page.slug == 'aktivitas-kami/cokoperimen/hadiah' ) %}
+          Hadiah
+          {% elseif ( this.page.slug == 'aktivitas-kami/cokoperimen/ide-cokoperimen' ) %}
+          Ide Cokoperimen
+          {% elseif ( this.page.slug == 'aktivitas-kami/cokoperimen/pemenang' ) %}
+          Pemenang
+          {% endif %}
+          </a>
+        </li>
+        <!--
+        <li>
+          <a href="{{ '/aktivitas-kami/cokoperimen' }}" {{ (this.page.slug == 'aktivitas-kami/cokoperimen' ? 'class="active"' : '') }}>
+            Cara Mengikuti
+          </a>
+        </li>
+        -->
+        <li>
+          <a href="{{ '/aktivitas-kami/cokoperimen/ide-cokoperimen' }}" {{ (this.page.slug == 'aktivitas-kami/cokoperimen/ide-cokoperimen' ? 'class="active"' : '') }}>
+            Ide Cokoperimen
+          </a>
+        </li>
+        <!--
+        <li>
+          <a href="{{ '/aktivitas-kami/cokoperimen/hadiah' }}" {{ (this.page.slug == 'aktivitas-kami/cokoperimen/hadiah' ? 'class="active"' : '') }}>
+            Hadiah
+          </a>
+        </li>
+        <li>
+          <a href="{{ '/aktivitas-kami/cokoperimen/syarat-dan-ketentuan' }}" {{ (this.page.slug == 'aktivitas-kami/cokoperimen/syarat-dan-ketentuan' ? 'class="active"' : '') }}>
+            Syarat dan ketentuan
+          </a>
+        </li>
+      <li>
+        <a href="{{ '/aktivitas-kami/cokoperimen/pemenang' }}" {{ (this.page.slug == 'aktivitas-kami/cokoperimen/pemenang' ? 'class="active"' : '') }}>
+          Pemenang
+        </a>
+      </li>
+      -->
+      </ul>
+    </div>
+</div>

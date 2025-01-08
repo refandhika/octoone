@@ -1,0 +1,114 @@
+description = "Banner for ramadan istimewa amp"
+
+[viewBag]
+==
+<?php
+function onStart() {
+    // Get Router
+    $router             = $this->controller->getRouter();
+    $this->page['slug'] = $router->getURL();
+    $this['category']   = $this->param('category');
+}
+?>
+==
+<div class="carousel-container">
+    <amp-carousel width="480" height="480" layout="responsive" type="slides" class="amp-slider-costum" autoplay loop delay="5000">
+    
+        <div>
+            <div class="main-slide__caption ramadan">
+                    <div class="col-md-8">
+                        <a href="/aktivitas-kami/ramadan-istimewa#main-scroll"
+                            class="button-amp button btn-opacity button--large">
+                           Selengkapnya
+                        </a>
+                    </div>
+                </div>
+                <amp-img class="carousel-slider-img" src="{{ 'ramadan-istimewa/banner/static_banner_ramadan_istimewa_mobile_comp.jpg' |media }}" width="480" height="480" layout="responsive"></amp-img>
+            </div>
+            
+            <div>
+                <div class="main-slide__caption ramadan">
+                    <div class="col-md-8">
+                        <a href="/aktivitas-kami/ramadan-istimewa/resep-takjil-istimewa#main-scroll"
+                            class="button-amp button btn-opacity button--large">
+                            Selengkapnya
+                        </a>
+                    </div>
+                </div>
+                <amp-img class="carousel-slider-img" src="{{ 'ramadan-istimewa/banner/takjil-mobile_comp.jpg' |media }}" width="480" height="480" layout="responsive"></amp-img>
+            </div>    
+             <div>
+                <div class="main-slide__caption ramadan">
+                    <div class="col-md-8">
+                        <a href="/aktivitas-kami/ramadan-istimewa/resep-sahur#main-scroll"
+                            class="button-amp button btn-opacity button--large">
+                             Selengkapnya
+                        </a>
+                    </div>
+                </div>
+                <amp-img class="carousel-slider-img " src="{{ 'ramadan-istimewa/banner/sahur-terbaik-mobile.jpg' |media }}" width="480" height="480" layout="responsive"></amp-img>
+            </div>    
+         <div>
+                <div class="main-slide__caption ramadan">
+                    <div class="col-md-8">
+                        <a href="/aktivitas-kami/ramadan-istimewa/resep-kue-kering-pilihan"
+                            class="button-amp button button--large">
+                             Selengkapnya
+                        </a>
+                    </div>
+                </div>
+                <amp-img class="carousel-slider-img" src="{{ 'ramadan-istimewa/banner/kue-kering-mobile.jpg' |media }}" width="480" height="480" layout="responsive"></amp-img>
+            </div>    
+            
+              <div>
+                <div class="main-slide__caption ramadan">
+                    <div class="col-md-8">
+                        <a href="/aktivitas-kami/ramadan-istimewa/promo#main-scroll"
+                            class="button-amp button btn-opacity button--large">
+                           Selengkapnya
+                        </a>
+                    </div>
+                </div>
+                <amp-img class="carousel-slider-img" src="{{ 'static_banner_ramadan_promo_mobile.jpg' |media }}" width="480" height="480" layout="responsive"></amp-img>
+            </div>
+            
+           <!--  <div>
+               <div class="main-slide__caption ramadan">
+                   <div class="col-md-8">
+                       <a href="/kreasi-takjil" class="button-amp button button--large">
+                          Selengkapnya
+                       </a>
+                   </div>
+               </div>
+               <amp-img class="carousel-slider-img" src="{{ 'kreasi-takjil-mobile.jpg' |media }}" width="480" height="480" layout="responsive"></amp-img>
+           </div> -->
+    </amp-carousel>
+</div>
+
+
+{% if menus != "dont-allow"  %}
+    <amp-accordion class="title_home">
+    <section>
+     {% if ( this.page.slug == "amp/aktivitas-kami/ramadan-istimewa/resep-takjil-istimewa" or category == "resep-takjil-istimewa" ) %}
+        <h4 class="arrow_down"><a href="#" target="_self">{{'resep takjil istimewa'|upper}}</a></h4>
+     {% elseif ( this.page.slug == "amp/aktivitas-kami/ramadan-istimewa/resep-sahur" or category == "resep-sahur") %}    
+        <h4 class="arrow_down"><a href="#" target="_self">{{'resep sahur terbaikmu'|upper}}</a></h4>
+     {% elseif ( this.page.slug == "amp/aktivitas-kami/ramadan-istimewa/resep-kue-kering-pilihan" or category == "resep-kue-kering-pilihan") %}    
+        <h4 class="arrow_down"><a href="#" target="_self">{{'resep kue kering pilihan'|upper}}</a></h4> 
+     {% elseif ( this.page.slug == "amp/aktivitas-kami/ramadan-istimewa/promo") %}    
+        <h4 class="arrow_down"><a href="#" target="_self">{{'promo'|upper}}</a></h4>  
+     {% elseif ( this.page.slug == "amp/aktivitas-kami/ramadan-istimewa/kontes" ) %}  
+        <h4 class="arrow_down"><a href="#" target="_self">{{'kontes'|upper}}</a></h4>  
+     {% else %}
+     
+     {% endif %}    
+         <p>
+            <a href="/aktivitas-kami/ramadan-istimewa/resep-sahur#main-scroll">{{'Resep Sahur Terbaikmu'|upper}}</a>
+            <a href="/aktivitas-kami/ramadan-istimewa/resep-takjil-istimewa#main-scroll">{{'Resep Takjil Istimewa'|upper}}</a>
+ 
+            <a href="/aktivitas-kami/ramadan-istimewa/resep-kue-kering-pilihan">{{'Resep Kue Kering Pilihan'|upper}}</a>
+         
+         </p>
+    </section>
+</amp-accordion>
+{%endif%}

@@ -1,0 +1,50 @@
+title = "MomenExtraPemenang"
+url = "/amp/momenekstra/pemenang"
+layout = "default-amp"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/momenextrapemenang"
+==
+<div class="cover">
+        <amp-img 
+            src="{{ 'assets/img/momenekstra/valentine-mobile.jpg'|theme }}"
+            srcset="{{ 'assets/img/momenekstra/valentine-mobile.jpg'|theme }} 640w,
+                  {{ 'assets/img/momenekstra/valentine-mobile.jpg'|theme }} 320w"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Valentine Mobile">
+        </amp-img>
+</div>
+
+<amp-accordion class="title_home">
+    <section>
+        <h4 class="arrow_down"><a href="#" target="_self">Pemenang</a></h4>
+        <p>
+            <a href="/momenekstra">#MomenEkstraValentine</a>
+            <a href="/momenekstra/pemenang" class="active">Pemenang</a>
+        </p>
+    </section>
+</amp-accordion>
+<section class="main">
+<div id='main-section' style="padding: 40px 0; background-color: #F7FFD8;">
+ <div class="detail_text">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+              <amp-img 
+                    src="{{ 'momenextra_winner.jpg'|media }}"
+                    srcset="{{  'momenextra_winner_mobile.jpg'|media }} 640w,
+                              {{  'momenextra_winner_mobile.jpg'|media }} 320w"
+                    width="50"
+                    height="100"
+                    layout="responsive"
+                    alt="Momen Extra Winner">
+                </amp-img>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</endsection>

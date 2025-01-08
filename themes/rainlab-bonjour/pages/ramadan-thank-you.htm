@@ -1,0 +1,56 @@
+title = "Ramadan - Thank you"
+url = "/aktivitas-kami/ramadan-istimewa/thank-you"
+is_hidden = 0
+role = 0
+permission = 0
+anonymous_only = 0
+logged_only = 0
+
+[viewBag]
+localeUrl[en] = "/ramadan-thank-you"
+==
+<?php
+function onStart(){
+        
+        if (session::get('data')) {
+            
+            $this['data'] = session::get('data');
+        }else{
+            return redirect()->to(url('/'));    
+        }
+    
+    }
+?>
+==
+<!--add: ramadan css-->
+{% put styles %}
+    <link href="/themes/rainlab-bonjour/assets/css/ramadan-istimewa.css" rel="stylesheet" />
+{% endput %}
+
+{% partial 'site/header-without-login' %}
+
+<!--s:static-banner-->
+
+{% partial 'site/banner-ramadan-istimewa' %}
+
+<!--e:static-banner-->
+
+
+
+<div id='main-section' class="container-fluid">
+	<div class="col-md-8 float-center text-center" style="float:none; margin:auto; padding: 60px 0;">
+		<div class="default-content">
+		
+			<h2 class="message">{{data.messages}}</h2>
+			
+			<div class="main-code">
+			   <p class="main-code__code">{{data.code}}</p>
+			</div>
+			
+			<h4 class="message">Tunjukkan kode kupon ini saat melakukan pembayaran di kasir. Kode kupon juga telah kami kirimkan ke email Anda.</h4>
+			
+		</div>
+	</div>
+</div>
+
+{% partial 'site/footer-without-login' %}

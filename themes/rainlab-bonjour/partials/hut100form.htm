@@ -1,0 +1,80 @@
+[viewBag]
+==
+<form id="ff100" method="post" enctype="multipart/form-data" accept-charset="UTF8" action-xhr="https://www.frisianflag.com/submit-form-aniversary" target="_blank" >
+    {{form_token()}}
+    {{form_sessionKey}}
+    
+    
+    <div class="form-2">
+    
+        <button class="title-hut-form bd-t open" type="button" id="btn-pengirim"><h1>Data Pengirim</h1></button>
+        <div class="wrapper-pengirim">
+            <input type="text"
+              name="namapengirim"
+              onKeyup="check(this)"
+              placeholder="Nama Pengirim?"
+              onkeypress="return /[0-9a-zA-Z-.\s]/i.test(event.key)">
+            <input type="text"
+              name="telppengirim"
+              placeholder="No. Telpon / No. Hp?"
+              maxlength="14"
+              oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1');"
+              >
+            <!-- <textarea id="alamatpengirim" name="alamatpengirim" placeholder="Alamat Pengirim"></textarea> -->
+            <input type="email" id="emailpengirim" name="emailpengirim" placeholder="Email Pengirim?" onkeypress="return /[0-9a-zA-Z-@.]/i.test(event.key)"required>
+        </div>
+    </div>
+    
+    <div class="form-1">
+        <button class="title-hut-form open" type="button" id="btn-kandidat">Data Pahlawan Kemajuan Keluarga</button>
+        
+        <div class="wrapper-kandidat">
+            <input type="text"
+              name="namakandidat"
+              placeholder="Data Pahlawan Kemajuan keluarga?"
+              id="namakandidat" onkeypress="return /[0-9a-zA-Z-.\s]/i.test(event.key)"
+              required>
+            <input type="text"
+              name="telpkandidat"
+              id="telpkandidat"
+              placeholder="Nomor Telpon / No Hp Kandidat?"
+              maxlength="14"
+              onkeypress="return /[0-9a-zA-Z-@]/i.test(event.key)"
+              required>
+            <!-- <textarea id="alamatkandidat" name="alamatkandidat" rows="4" cols="50" placeholder="Alamat Pendaftar"></textarea> -->
+            <input type="email" id="emailkandidat" name="emailkandidat"  placeholder="Email Kandidat? (Opsional)" onkeypress="return /[0-9a-zA-Z-@.,]/i.test(event.key)">
+            <input type="text" id="alamatkandidat" name="alamatkandidat" rows="4" cols="50" placeholder="Alamat Kandidat?" minlength="30" onkeypress="return /[0-9a-zA-Z-@/.,\s]/i.test(event.key)">
+            
+            <textarea id="narasi" name="narasi" rows="4" cols="50" placeholder="Ceritakan apa yang telah dilakukan Pahlawan Kemajuan Keluarga pilihanmu (Min 100 karakter)." minlength="100" onkeyup="checkLength(this)" required onkeypress="return /[0-9a-zA-Z-)(/.,\s]/i.test(event.key)"></textarea>
+            <span class="narasi-length"></span>
+            <div class="wrapper-photo-btn">
+            
+            <div class="hut-upload">Upload Foto</div>
+            <span class="photo-desc">Max 3 Mb</span>
+            </div>    
+            <input type="file"
+          name="photo"
+          class="photo">
+            <div class="g-recaptcha" data-sitekey="6LfgWCYeAAAAAAb31Cq0m7JnMgxHwg8mqKFuJgxY"></div>
+        </div>    
+        <div class="form-hut-img-wrapper">
+            <img class="image-display" src="">
+            <span class="image-name"></span>
+        </div>
+        
+    </div>
+     
+     <div class="wrapper-submit">   
+      <div class="wrapper-1">
+        <input type="checkbox"
+          id="check"
+          name="check"
+          value="check">
+        <p class="checkbox-desc">Saya bersedia mengikuti <span class="s-k">syarat dan ketentuan</span>  yang berlaku</p>
+     </div>
+     
+     <button class="hut-submit" type="submit" value="Submit">Submit</button>
+     
+     </div>
+     
+  </form>

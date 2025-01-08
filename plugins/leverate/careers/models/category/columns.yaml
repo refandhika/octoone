@@ -1,0 +1,6 @@
+columns:
+    title:
+        label: Kategori
+        type: text
+        searchable: true
+        sortable: true

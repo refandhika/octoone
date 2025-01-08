@@ -1,0 +1,282 @@
+title = "Sustainability Detail Sub Page"
+url = "/sustainability/:category/:slug/:detail"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/sustainability-detail-sub-page"
+==
+<?php
+function onStart(){
+    
+        $this->page->amp_url = $this->pageUrl('sustainability-detail-sub-amp-page');
+        $slug         = $this->param('slug');
+        $category     = $this->param('category');
+        $detail     = $this->param('detail');
+        $pageslug = $category."/".$slug."/".$detail;
+         
+        $cmsController     = new Cms\Classes\Controller;
+         $arrContextOptions =array(
+            "ssl"=>array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
+        );
+
+        
+        $pages = Definite\Activities\Models\Activity::whereHas('categories',function($query) {
+           $query->where('id', 23);
+        })->where('slug',$pageslug)->get()->first();
+        
+        if($pages){
+          
+          
+          $this['content'] = $pages;
+          $this['pageid'] = $pages->id;
+          $this['title'] = $pages->title;
+          $this['image_banner'] = $pages->image_banner;
+          $this['description'] = $pages->description;
+          
+          $this->page->title = ucwords(strtolower($pages->title));
+          $this->page->meta_title = $pages->meta_title;
+          $this->page->meta_description = $pages->meta_description;
+          $this->page->og_image = $pages->featured_image;
+          $this->page->og_description = $pages->meta_description;
+
+        
+        }else{
+          return $cmsController->render("/404");
+        }
+
+}
+?>
+==
+{% partial 'site/header' %}
+<div class="banner-image">
+    <img src="{{ image_banner|media  }}" alt="Paper Straw" class="w-100"/>
+</div>
+
+
+<div class="section">
+        {{ description | raw }}
+</div>
+
+
+<script>
+function checkVariable(){
+   if ( window.jQuery){
+       $(document).ready(function(){
+           setTimeout(function(){
+            $(".box-utube").slick({
+                rows: 0,
+                dots:false,
+                arrows:true
+            });console.log("ready");
+            },800);
+       });
+       
+       
+      
+   }
+   else{
+      window.setTimeout("checkVariable();",100);
+   }
+}
+checkVariable();
+
+   var elh2 = document.querySelector('.peduli-lingkungan h2');
+   var elh1 = document.createElement("h1");
+   console.log(elh2.textContent);
+   elh1.textContent = elh2.textContent;
+   elh2.parentNode.replaceChild(elh1, elh2);
+
+</script>
+<style>
+.mt-30{
+ margin-top:30px;   
+}
+.mb-30{
+ margin-bottom:30px;   
+}
+p.description{
+    font-size: 24px;
+    color: #444;
+    
+}
+.tab-links{
+ overflow:hidden;   
+}
+.tab-links a{
+width:48%;
+display:inline-block;
+float:left;
+padding:20px 15px;
+border-top-left-radius:30px;
+border-top-right-radius:30px;
+text-align:center;
+background-color:#BCE1FB;
+color:#FFF;
+font-size:24px;
+font-weight:bold;
+font-family:Brevia-SemiBold, Arial;
+margin:50px 0;
+}
+.tab-links a.active{
+background-color:#7AC3F8;
+}
+.tab-links a:last-child{
+float:right;
+}
+.wm .tab-links a{
+width:32%;
+font-size:16px;
+margin:30px 0;
+margin-right:1.5%
+}
+.wm .tab-links a:last-child{
+ float:none;   
+ margin-right:0;
+}
+.peduli-lingkungan{
+text-align:center;
+margin-bottom: 100px;
+}
+.peduli-lingkungan h1{
+margin:30px 0 25px;
+color:#A4DD7E;
+font-family:Brevia-Bold, Arial;
+font-size:34px;
+}
+
+.peduli-lingkungan p{
+font-family:Brevia-SemiBold, Arial;
+margin-bottom:50px;
+}
+
+.section-faq{
+background-color:#F4F4F4;
+padding:50px 0;
+}
+
+.section-faq h2{
+font-family:Brevia-Bold, Arial;
+color:#FC7A7C;
+font-size:46px;
+margin-bottom:50px;
+text-align:center;
+}
+
+#accordion .panel-heading{
+background-color: #FFF;
+border:0;
+padding:0;
+}
+#accordion .panel-body{
+padding:20px 45px;
+font-size: 16px;
+    line-height: 1.5;
+}
+#accordion .panel-heading a{
+width:100%;
+display:block;
+padding: 25px 90px 25px 45px;
+position:relative;
+font-size:20px;
+font-family:Brevia-SemiBold, Arial;
+}
+#accordion .panel-heading a:after{
+font: normal normal normal 14px/1 FontAwesome;
+content:'\f068';
+position:absolute;
+right:45px;
+background:#FC7A7C;
+border-radius:50%;
+width:35px;
+height:35px;
+line-height:36px;
+font-size:24px;
+text-align:center;
+color:#FFF;
+top:0;
+bottom:0;
+margin:auto;
+}
+#accordion .panel-heading a.collapsed:after{
+content:'\f067';
+}
+#accordion .panel-default{
+border-color:#eee;
+box-shadow:none;
+margin-bottom:25px;
+}
+
+.mb-3{
+ margin-bottom:30px;   
+}
+.video-youtube iframe{
+height:43vw;
+}
+.box-utube{
+ background:#EEE;
+ width:100%;
+ height:43vw;
+ border-radius:8px;
+}
+.video-youtube .slick-prev{
+    left:-35px;
+}
+.video-youtube .slick-next{
+    right:-35px;
+}
+.video-youtube .slick-next:before, .video-youtube .slick-prev:before{
+ font-weight:bold;
+ font-size:56px;
+}
+.w-100{
+ width:100%;   
+}
+.section-syaratketentuan{/* background:url(/storage/app/media/jingle-rasa-nusantara/BG-Milk_Splash.png); */background-repeat:no-repeat !important;background-size:100% !important;padding:3% 0 5%;background-position:bottom;}
+.section-syaratketentuan h1 {
+    text-align: center;
+    color: #225DA4;
+    font-weight: bold;
+    font-size:42px;
+    margin-bottom: 30px;
+}
+.box-sk{
+background:#02489e;
+padding:50px;
+border-radius:40px;
+height:600px;
+overflow:hidden;
+}
+.sk-content{
+height:100%;
+overflow-y:auto;
+}
+.sk-content p{
+color:#FFF;
+margin-bottom:20px;
+font-size:18px;
+}
+.sk-content h2,.sk-content h5, .sk-content h3{
+ color:#FFF;   
+}
+.sk-content a{
+ color:orange;   
+}
+.sk-content ul li, .sk-content ol li{
+ color:#FFF;
+ font-size:17px;
+ margin-bottom:10px;
+}
+.sk-content ul li > ol, .sk-content ul li > ul, .sk-content ol li > ul, .sk-content ol li > ol{
+ margin-top:10px;   
+}
+.sk-content ul li>ol li, .sk-content ul li>ul li{
+ font-size:16px;   
+}
+.sk-list > li{
+ margin-bottom:25px !important;   
+}
+</style>
+{% partial 'site/footer' %}

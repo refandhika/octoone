@@ -1,0 +1,56 @@
+description = "layout for raih terbaikmu pemenang"
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('raihterbaikmu-pemenang-amp');
+    }
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+    	<img src="{{ 'raihterbaikmu/raihterbaikmu-sb-desktop.jpg'|media }}" class="hidden-xs" />
+        <img src="{{ 'raihterbaikmu/raihterbaikmu-sb-mobile.jpg'|media  }}" class="visible-xs" />
+    </div>
+</div>
+
+{% partial 'site/raihterbaikmu-menu' %}
+
+
+<div id='main-section' class="container" style="padding: 30px 15px;">
+    <h1 style="display: none;">raihterbaikmu - Pemenang | Frisian Flag Indonesia</h1>
+    <div class="col-md-12">
+        <div class="default-content">
+             <div class="center-img" style="text-align: center;margin-bottom:10px;">
+                <img src="{{ 'raihterbaikmu/winner/winner.jpg'|media  }}" style="" class="hidden-xs">
+                <img src="{{ 'raihterbaikmu/winner/winner-mobile.jpg'|media  }}" style="" class="visible-xs">
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .default-content h3 {
+        font-size: 22px;
+        line-height: 1.2;
+    }
+
+    @media screen and (min-width: 767px) {
+        .default-content h3 {
+            font-size: 30px;
+        }
+    }
+
+  @media screen and (max-width: 767px) {
+    .m-bottom-15 {
+      margin-bottom: 15px;
+    }
+  }
+</style>
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

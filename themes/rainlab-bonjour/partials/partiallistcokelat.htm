@@ -1,0 +1,16 @@
+[viewBag]
+==
+{% for ct in result %}
+    <div class="col-sm-6 col-md-4 item-thumb">
+        <div class="item-thumb-img">
+            <a href="/resep-kami/resep-dengan-kental-manis/{{ct.slug}}">
+             <img src="{{ct.featured_image | media}}" class="image-object" alt ="{{ct.title | title}}" />
+            </a>
+        </div>
+        
+        <div class=" text-center">
+        <a  href="/resep-kami/resep-dengan-kental-manis/{{ct.slug}}" class="button bg-orange" >lihat resepnya</a>
+        </div>
+        
+     </div> 
+{%endfor%}

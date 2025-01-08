@@ -1,0 +1,11 @@
+list: $/definite/milkpedia/models/faq/columns.yaml
+modelClass: Definite\Milkpedia\Models\Faq
+title: FAQ
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'definite/milkpedia/faq/update/:id'

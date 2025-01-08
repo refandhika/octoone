@@ -1,0 +1,10 @@
+name: PressRelease
+form: $/definite/pressrelease/models/pressrelease/fields.yaml
+modelClass: Definite\Pressrelease\Models\PressRelease
+defaultRedirect: definite/pressrelease/pressrelease
+create:
+    redirect: 'definite/pressrelease/pressrelease/update/:id'
+    redirectClose: definite/pressrelease/pressrelease
+update:
+    redirect: definite/pressrelease/pressrelease
+    redirectClose: definite/pressrelease/pressrelease

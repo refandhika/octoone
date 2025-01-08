@@ -1,0 +1,10 @@
+name: News
+form: $/definite/news/models/news/fields.yaml
+modelClass: Definite\News\Models\News
+defaultRedirect: definite/news/news
+create:
+    redirect: 'definite/news/news/update/:id'
+    redirectClose: definite/news/news
+update:
+    redirect: definite/news/news
+    redirectClose: definite/news/news

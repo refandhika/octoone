@@ -1,0 +1,6 @@
+plugin:
+    name: 'definite.karir::lang.plugin.name'
+    description: 'definite.karir::lang.plugin.description'
+    author: Definite
+    icon: oc-icon-adjust
+    homepage: ''

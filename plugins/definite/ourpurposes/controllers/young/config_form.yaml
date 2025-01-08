@@ -1,0 +1,10 @@
+name: Young
+form: $/definite/ourpurposes/models/young/fields.yaml
+modelClass: Definite\Ourpurposes\Models\Young
+defaultRedirect: definite/ourpurposes/young
+create:
+    redirect: 'definite/ourpurposes/young/update/:id'
+    redirectClose: definite/ourpurposes/young
+update:
+    redirect: definite/ourpurposes/young
+    redirectClose: definite/ourpurposes/young

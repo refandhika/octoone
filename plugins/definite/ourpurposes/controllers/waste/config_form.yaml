@@ -1,0 +1,10 @@
+name: Waste
+form: $/definite/ourpurposes/models/waste/fields.yaml
+modelClass: Definite\Ourpurposes\Models\Waste
+defaultRedirect: definite/ourpurposes/waste
+create:
+    redirect: 'definite/ourpurposes/waste/update/:id'
+    redirectClose: definite/ourpurposes/waste
+update:
+    redirect: definite/ourpurposes/waste
+    redirectClose: definite/ourpurposes/waste

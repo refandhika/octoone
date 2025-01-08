@@ -1,0 +1,123 @@
+title = "FMP Promo Klik Indomaret 2022"
+url = "/bc"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/fmp-promo-klik-indomaret-2022"
+==
+<?php
+function onStart(){
+        $this->page->amp_url = $this->pageUrl('sample-promofmp-amp');
+}
+?>
+==
+{% partial 'site/header' %}
+<style>
+    body{
+        background: #55B8FC !important;
+        }
+    .my-5{
+            margin: 2.5rem auto !important;
+        }
+        .main-wrap{
+            margin: 150px 0;    
+        }
+        .wrapper{
+            margin: 50px 0;    
+            display: flex;
+            justify-content: space-around;
+        }
+        .wrapper:nth-child(odd){
+            flex-direction: row-reverse;    
+        }
+        .image-fmp{
+            width: 40%;
+            overflow: hidden;
+            height: 475px;
+            box-shadow: 7px 10px 10px #014e91a6;
+            border-radius: 15px;
+        }
+        .image-fmp img{
+            height: 100%;
+            width: 100%;
+        }
+        .desc-wrapper{
+            width: 60%;
+            align-self:center;
+        }
+        .desc-fmp{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            height: auto;
+            padding:5%;
+            background: #fff;
+            
+        }
+        .br-1{
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+        }
+        .br-2{
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+        .desc-fmp p{
+            color: #0f4d9a; 
+            margin-bottom: 15px;
+        }
+        .desc-fmp .cta-buy{
+            padding: 10px 30px;
+            background: #0f4d9a;
+            width: fit-content;
+            border-radius: 25px;
+            color: #fff;   
+            align-self: center;
+        }
+        .ud{
+            text-decoration: underline;    
+        }
+        
+</style>
+<div class="container my-5">
+    <div class="d-flex main-wrap">
+        <div class="d-flex wrapper">
+            <div class="image-fmp">
+                <img src="https://www.frisianflag.com/storage/app/media/KOMPLETA%20Choco_Geotargetting%20Ads_KlikIDM.jpg" alt="choco" title="choco" class="h-100">
+            </div>
+            <div class="desc-wrapper">
+                <div class="desc-fmp br-1">
+                    <p>
+                       Susu Bubuk Frisian Flag KOMPLETA Cokelat kini dengan rasa yang lebih lezat, memberikan rasa cokelat, manis, dan gurih yang pas. Dengan aroma cokelat, warna, dan kekentalan yang pas untuk dinikmati. Telah terbukti disukai oleh 9 dari 10 ibu dan anak.<br><br>
+Susu Bubuk Frisian Flag KOMPLETA Cokelat memiliki banyak nutrisi! Tinggi Kalsium untuk bantu perkuat tulang dan gigi, Tinggi Zat Besi untuk bantu oksigen ke seluruh tubuh, Sumber Protein untuk bantu tumbuh kembang anak, serta 10 Vitamin dan 4 Mineral .
+<br><br>
+Dalam 1 gelas (35 gram bubuk) Frisian Flag KOMPLETA penuhi 25% kebutuhan vitamin A dan Zink harian, bantu daya tahan tubuh!*
+<br>
+Rasakan kelezatan Frisian Flag KOMPLETA, banyak nutrisinya, bantu daya tahan tubuh!*
+<br>
+*disertai diet gizi seimbang
+                    </p>
+                    <a href="https://www.klikindomaret.com/frisianflag-susu-bubuk?utm_medium=display&utm_source=websiteffi&utm_campaign=ffisusububuk-websiteffi-250522" class="cta-buy" id="cta-1">Beli Sekarang</a>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex wrapper">
+            <div class="image-fmp">
+                <img src="https://www.frisianflag.com/storage/app/media/FULLCREAM_Geotargetting%20Ads_KlikIDM.jpg" alt="choco" title="choco" class="h-100">
+            </div>
+            <div class="desc-wrapper">
+                <div class="desc-fmp br-2">
+                    <p>
+                        Susu Bubuk Frisian Flag Purefarm Full Cream diproduksi dengan 98% dari susu, memberikan kebaikan sepenuhnya susu! Mengandung tinggi Vitamin A, B2 dan D3, serta tinggi Kalsium dan lebih terasa full cream yang gurih dan lezat.<br><br>
+Dalam 1 gelas (25 gram bubuk) Frisian Flag Purefarm Full Cream mengandung protein sebanyak 6 gram (setara dengan kandungan protein dalam satu butir telur ayam) dan mengandung 0 gram Sukrosa atau tanpa gula tambahan!<br><br>
+Sarapan bernutrisi dengan kebaikan sepenuhnya susu!
+                    </p>
+                    <a href="https://www.klikindomaret.com/frisianflag-susu-bubuk?utm_medium=display&utm_source=websiteffi&utm_campaign=ffisusububuk-websiteffi-250522" class="cta-buy" id="cta-2">Beli Sekarang</a>
+                </div>
+            </div>
+        </div>      
+    </div>
+</div>
+
+{% partial 'site/footer' %}

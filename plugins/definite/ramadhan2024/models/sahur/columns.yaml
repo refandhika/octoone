@@ -1,0 +1,10 @@
+columns:
+    id:
+        label: id
+        type: number
+    recipes:
+        label: recipes
+        type: number
+    title:
+        label: title
+        type: text

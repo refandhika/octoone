@@ -1,0 +1,47 @@
+columns:
+    name:
+        label: Nama
+        type: text
+        searchable: true
+        sortable: true
+    date:
+        label: Tgl Lahir
+        type: date
+        searchable: true
+        sortable: true        
+    email:
+        label: Email
+        type: text
+        searchable: true
+        sortable: true
+    phone:
+        label: 'No Handphone'
+        type: text
+        searchable: true
+        sortable: true
+    product_category_id:
+        label: Produk
+        type: text
+        searchable: true
+        sortable: true
+        select: name
+        relation: category
+    market_place_id:
+        label: 'Market Place'
+        type: text
+        searchable: true
+        sortable: true
+        select: name
+        relation: market       
+    code:
+        label: 'Kode Voucher'
+        type: text
+        searchable: true
+        sortable: true
+    created_at:
+        label: 'Tanggal Submit'
+        type: datetime
+        searchable: true
+        sortable: true
+        ignoreTimezone: true
+    

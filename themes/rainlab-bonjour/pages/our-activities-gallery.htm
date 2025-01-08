@@ -1,0 +1,137 @@
+title = "Our Activities Gallery"
+url = "/bc/aktivitas-kami/gerakan-nusantara/galeri-bc"
+layout = "default"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/our-activities-gallery"
+
+[activityCategories]
+
+[filtergallery]
+
+[builderDetails]
+modelClass = "Definite\Activities\Models\Category"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+==
+<?php
+function onEnd() {
+
+    $this->page->amp_url = $this->pageUrl('our-activities-gallery-amp');
+    // get the post component
+    $_title = "Gerakan Nusantara";
+    $this->page->title = $_title;
+    
+    $_title_en = $this->page->components["builderDetails"]->record["attributes"]["title_en"];
+    $this->page->title_en = $_title_en;
+
+    $this->page->meta_description = "Lihat foto-foto terbaik dari berbagai aktivitas yang diadakan oleh Frisian Flag seperti pembagian susu ke anak-anak sekolah.";
+
+}
+?>
+==
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ record.title }}</h1>
+
+<div class="static-baner-pages">
+    {% if record.slug == 'jr-nba' %}
+        <div class="imgwrp hidden-xs"><img src="{{  'assets/img/activities/JrNBA-desktop.jpg'|theme }}" alt="JrNBA Desktop" /> </div>
+        <div class="imgwrp visible-xs"><img src="{{ 'assets/img/activities/JrNBA-mobile.jpg'|theme }}" alt="JrNBA Mobile" /> </div>
+    {% elseif record.slug == 'keluargaminumsusu' %}
+        <div class="imgwrp hidden-xs"><img src="{{  'assets/img/keluargaminumsusu/FF-perayaan-susu-1440x460.jpg'|theme }}" alt="Frisian Flag Perayaan Susu Desktop" /> </div>
+        <div class="imgwrp visible-xs"><img src="{{ 'assets/img/keluargaminumsusu/FF-perayaan-susu-480x480.jpg'|theme }}" alt="Frisian Flag Mobile" /> </div>
+    {% elseif record.slug == 'gerakan-nusantara' %}
+        <div class="imgwrp hidden-xs"><img src="{{  'assets/img/activities/Gerakan-Nusantara-desktop.jpg'|theme }}" alt="Gerakan Nusantara Desktop" /> </div>
+        <div class="imgwrp visible-xs"><img src="{{ 'assets/img/activities/Gerakan-Nusantara-mobile.jpg'|theme }}" alt="Gerakan Nusantara Mobile" /> </div>
+    {% else %}
+        <div class="imgwrp"><img src="{{ 'assets/img/our-milkpedia.png'|theme }}" alt="Our Milkpedia"/> </div>
+    {% endif %}
+</div>
+
+
+<div class="container-menutab container-menutab--five">
+    <div class="container-one">
+        <ul class="breadcrumb">
+            <li class="toggle visible-xs visible-sm"><a href="javascript:;" class="active">{{ record.title }}</a></li>
+            {% if activityCategories.published %}
+                {% for category in activityCategories.published %}
+                <li>
+                    <a href="{{ 'our-activities-archive'|page({'slug': category.slug}) }}" class="{{ record.slug == category.slug ? 'active' : '' }}">
+                        {{ category.title }}
+                    </a>
+                </li>
+                {% endfor %}
+            {% endif %}
+        </ul>
+    </div>
+</div>
+
+
+<div id='main-section'>
+  <h1 style="display: none;">Gerakan Nusantara | Frisian Flag Indonesia</h1>
+  <div class="container">
+      <div class="row">
+          <div class="breadcrumb">
+              <div class="container-two breadcrumb__left">
+                  <ul>
+                      <li>
+                          <a href="{{ 'home'|page }}">{{ 'beranda'|_ }}</a>
+                      </li>
+                      <li>
+                          <a href="javascript:;">Aktivitas Kami</a>
+                      </li>
+                      <li>
+                          <a href="{{ 'our-activities-archive'|page({
+                              'slug': record.slug
+                              }) }}">{{ record.title|raw }}</a>
+                      </li>
+                      <li>
+                          <a href="#">Gallery</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+    <div class="col-md-12">
+        <div class="default-content">
+            <div class="container-two">
+                <h3>Gallery</h3>
+              <div class="row gallery">
+                    <div class="col-xs-12">
+                        <label for="">Sort by :</label>
+                        <select class="select--custom" name="year" id="filter-gallery">
+                         <option></option>
+                         <option value="2019">2019</option>
+                         <option value="2018">2018</option>
+                          <option value="2017">2017</option>
+                          <option value="2016">2016</option>
+                          <option value="2015">2015</option>
+                          <option value="2014">2014</option>
+                          <option value="2013">2013</option>
+                          <option value="2012">2012</option>
+                          <option value="2011">2011</option>
+                          <option value="2010">2010</option>
+                        </select>
+                        <select class="select--custom" name="category" id="filter-activities">
+                          <option value="">A-Z</option>
+                          {% if record.slug != 'rtd' and record.slug != 'scm' %}
+                          {% for post in record.activities %}
+                          <option value="{{post.title}}">{{post.title}}</option>
+                          {% endfor %}
+                          {% endif %}
+                        </select>
+                        <br><br>
+                    </div>
+                {% component 'filtergallery' %}
+            </div>
+        </div>
+    </div>
+  </div>
+</div> <!-- end mainsection -->

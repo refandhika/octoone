@@ -1,0 +1,10 @@
+name: HomeBanners
+form: $/definite/ramadhan2024/models/homebanners/fields.yaml
+modelClass: Definite\Ramadhan2024\Models\HomeBanners
+defaultRedirect: definite/ramadhan2024/homebanners
+create:
+    redirect: 'definite/ramadhan2024/homebanners/update/:id'
+    redirectClose: definite/ramadhan2024/homebanners
+update:
+    redirect: definite/ramadhan2024/homebanners
+    redirectClose: definite/ramadhan2024/homebanners

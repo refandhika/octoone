@@ -1,0 +1,10 @@
+name: Ddp
+form: $/definite/ourpurposes/models/ddp/fields.yaml
+modelClass: Definite\Ourpurposes\Models\Ddp
+defaultRedirect: definite/ourpurposes/ddp
+create:
+    redirect: 'definite/ourpurposes/ddp/update/:id'
+    redirectClose: definite/ourpurposes/ddp
+update:
+    redirect: definite/ourpurposes/ddp
+    redirectClose: definite/ourpurposes/ddp

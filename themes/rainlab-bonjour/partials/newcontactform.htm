@@ -1,0 +1,262 @@
+[viewBag]
+==
+<?php
+function onSend()
+{
+    if ('karir' == Input::get('question')) {
+        $vars = ['firstname' => Input::get('first-name'), 'lastname' => Input::get('last-name'), 'email' => Input::get('email'), 'mobile' => Input::get('phone'), 'content' => Input::get('messages')];
+
+        Mail::send('definite.contact::mail.message', $vars, function ($message) {
+            $message->from('contactUs@frisianflag.com');
+            $message->to('frisianflag.career@frieslandcampina.com');//->cc('aldo@definite.co.id');
+            $message->subject('Topik pertanyaan anda: Karir');
+        });
+
+        return Redirect::to('/hubungi-kami');
+    } elseif ('produk' == Input::get('question')) {
+        $vars = ['firstname' => Input::get('first-name'), 'lastname' => Input::get('last-name'), 'email' => Input::get('email'), 'mobile' => Input::get('phone'), 'content' => Input::get('messages')];
+
+        Mail::send('definite.contact::mail.message', $vars, function ($message) {
+            $message->from('contactUs@frisianflag.com');
+            $message->to('Layanan.peduli@frieslandcampina.com');//->cc('aldo@definite.co.id');
+            $message->subject('Topik pertanyaan anda: Produk');
+        });
+
+        return Redirect::to('/hubungi-kami');
+    } elseif ('program-promosi' == Input::get('question')) {
+        $vars = ['firstname' => Input::get('first-name'), 'lastname' => Input::get('last-name'), 'email' => Input::get('email'), 'mobile' => Input::get('phone'), 'content' => Input::get('messages')];
+
+        Mail::send('definite.contact::mail.message', $vars, function ($message) {
+            $message->from('contactUs@frisianflag.com', 'Layanan Peduli');
+            $message->to('Layanan.peduli@frieslandcampina.com');//->cc('aldo@definite.co.id');
+            $message->subject('Topik pertanyaan anda: Program-promosi');
+        });
+
+        return Redirect::to('/hubungi-kami');
+    } elseif ('supplier-distributors' == Input::get('question')) {
+        $vars = ['firstname' => Input::get('first-name'), 'lastname' => Input::get('last-name'), 'email' => Input::get('email'), 'mobile' => Input::get('phone'), 'content' => Input::get('messages')];
+
+        Mail::send('definite.contact::mail.message', $vars, function ($message) {
+            $message->from('contactUs@frisianflag.com', 'Layanan Peduli');
+            $message->to('Layanan.peduli@frieslandcampina.com');//->cc('aldo@definite.co.id');
+            $message->subject('Topik pertanyaan anda: Supplier-distributors');
+        });
+
+        return Redirect::to('/hubungi-kami');
+    } elseif ('media-press' == Input::get('question')) {
+        $vars = ['firstname' => Input::get('first-name'), 'lastname' => Input::get('last-name'), 'email' => Input::get('email'), 'mobile' => Input::get('phone'), 'content' => Input::get('messages')];
+
+        Mail::send('definite.contact::mail.message', $vars, function ($message) {
+            $message->from('contactUs@frisianflag.com', 'Layanan Peduli');
+            $message->to('editorial@frieslandcampina.com');//->cc('aldo@definite.co.id');
+            $message->subject('Topik pertanyaan anda: Media-press');
+        });
+
+        return Redirect::to('/hubungi-kami');
+    } else {
+        $vars = ['firstname' => Input::get('first-name'), 'lastname' => Input::get('last-name'), 'email' => Input::get('email'), 'mobile' => Input::get('phone'), 'content' => Input::get('messages')];
+
+        Mail::send('definite.contact::mail.message', $vars, function ($message) {
+            $message->from('contactUs@frisianflag.com', 'Layanan Peduli');
+            $message->to('Layanan.peduli@frieslandcampina.com');//->cc('aldo@definite.co.id');
+            $message->subject('Topik pertanyaan anda: Others');
+        });
+
+        return Redirect::to('/hubungi-kami');
+    }
+}
+?>
+==
+<script src="https://www.google.com/recaptcha/api.js?render=6Lf6GAwqAAAAAMQr0YEB9lTsUcyxVzITctQwUkft"></script>
+
+<style>
+.hide-loader{
+    display: none !important;    
+}
+
+.loader-container{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.loader {
+  width: 50px;
+  padding: 8px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #ffffff;
+  --_m: 
+    conic-gradient(#0000 10%,#000),
+    linear-gradient(#000 0 0) content-box;
+  -webkit-mask: var(--_m);
+          mask: var(--_m);
+  -webkit-mask-composite: source-out;
+          mask-composite: subtract;
+  animation: l3 1s infinite linear;
+}
+@keyframes l3 {to{transform: rotate(1turn)}}
+</style>
+
+<div id='main-section' class="container-fluid">
+
+    <div class="col-md-12">
+        <div class="breadcrumb">
+            <div class="container-two">
+                <ul>
+                    <li><a href="{{ 'home'|page }}">Home</a> </li>
+                    <li><a href="{{ 'contact-us'|page }}">{{ this.page.title }}</a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="default-content contactpage">
+            <div class="container-two">
+                <h3>{{ this.page.title }}</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="imgwrp"><img src="{{ 'assets/img/imgcontact.jpg'|theme }}" alt=""/></div>
+                        <h4>Untuk informasi lebih lanjut, hubungi kami pada:</h4><br>
+
+                        <p><strong>Layanan Bebas Pulsa</strong></p>
+                        <p>Senin-Jum'at, 08.00-16.30 WIB<br/> 0800-1821-406</p><br>
+                        <p><strong>Alamat</strong></p>
+                        <p>Jl. Raya Bogor KM 5, Pasar Rebo, Jakarta Timur, Indonesia 13760</p><br>
+                        <p><strong>Email:</strong></p>
+                        <p><a href="mailto:layanan.peduli@frieslandcampina.com">layanan.<wbr>peduli@frieslandcampina.com</a></p><br>
+                        <p><strong>Alamat Pengiriman</strong></p>
+                        <p>PO BOX 4047 JKT 13040</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="contactform contactform--contact">
+                          <form id="form-contact">
+                            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.6879747557878!2d106.86233580032058!3d-6.3046643134339995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ed8270f024bf%3A0x28376d129bd2241f!2sFrisian+Flag%2C+Jl.+Raya+Bogor+No.Km5%2C+Gedong%2C+Ps.+Rebo%2C+Kota+Jakarta+Timur%2C+Daerah+Khusus+Ibukota+Jakarta+13760!5e0!3m2!1sen!2sid!4v1495451361377" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                            <br>
+                            <h4>Atau kirim pesan menggunakan form ini</h4>
+                            <div class="row">
+                              <div class="col-md-6"><input type="text" id="first-name" name="first-name" placeholder="Nama Depan" required ></div>
+                              <div class="col-md-6"><input type="text" id="last-name" name="last-name" placeholder="Nama Belakang" required ></div>
+                              <div class="col-md-12"><input type="text" name="email" id="email" placeholder="Alamat Email" required ></div>
+                              <div class="col-md-12"><input type="text" name="phone"  placeholder="No. Telephone / Handphone" required  id="mobile" onkeyup="enterNumber()" maxlength="13"></div>
+                              <div class="col-md-12">
+                                <select id="question" name="question" required>
+                                  <option value="">Silahkan pilih topik pertanyaan Anda</option>
+                                  <option value="karir">Karir</option>
+                                  <option value="produk">Produk</option>
+                                  <option value="program-promosi">Program Promosi</option>
+                                  <option value="supplier-distributors">Supplier/Distributors</option>
+                                  <option value="media-press">Media/Press Release</option>
+                                  <option value="others">Others</option>
+                                </select>
+                              </div>
+                              <div class="col-md-12"><textarea id="messages" name="messages" placeholder="Tulis Pesan Anda (maksimum 500 karakter)" required maxlength="500"></textarea></div>
+                              <div class="col-md-12"> <input type="submit" value="SEND MESSAGE" class="button medium" /></div></div>
+                            </div>
+
+                          </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> <!-- end mainsection -->
+
+<div class="loader-container hide-loader">
+    <div class="loader"></div>
+</div>
+
+<script>
+
+grecaptcha.ready(function() {
+  grecaptcha.execute('6Lf6GAwqAAAAAMQr0YEB9lTsUcyxVzITctQwUkft', {action: 'contactFF'}).then(function(token) {
+      document.getElementById('g-recaptcha-response').value = token;
+  });
+});
+
+function showLoader(){
+    document.querySelector('.loader-container').classList.remove('hide-loader');    
+}
+
+function hideLoader(){
+    document.querySelector('.loader-container').classList.add('hide-loader');  
+}
+
+document.querySelector('#form-contact').addEventListener('submit', function(e){
+    showLoader();
+    e.preventDefault();
+    let data = {
+      "event": {
+        "token": document.getElementById('g-recaptcha-response').value,
+        "expectedAction": "USER_ACTION",
+        "siteKey": "6Lf6GAwqAAAAAMQr0YEB9lTsUcyxVzITctQwUkft",
+      }
+    }
+    
+    fetch('https://recaptchaenterprise.googleapis.com/v1/projects/ibudanbalita-1720541203711/assessments?key=AIzaSyBjV7rfVaSLue7PR-0pfWTZUIHSloP30c0', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        if(data.riskAnalysis.score > 0.7){
+            let formData = {
+                'first-name': document.getElementById('first-name').value,
+                'last-name': document.getElementById('last-name').value,
+                'email': document.getElementById('email').value,
+                'phone': document.getElementById('mobile').value,
+                'messages': document.getElementById('messages').value,
+                'question': document.getElementById('question').value
+            };
+            $.request('onSend', {
+                data: formData,
+                success: function(response) {
+                    hideLoader();
+                    alert("Terima kasih telah menghubungi kami");
+                    window.location.reload();
+                },
+                error: function(xhr) {
+                    hideLoader();
+                    throw xhr;
+                }
+            });
+        } else {
+            hideLoader();
+            alert('Mohon isi kembali data anda dengan benar'); 
+        }
+    })
+    .catch(error => {
+        hideLoader();
+        throw error;
+    });
+
+})
+
+function enterNumber(){
+
+  var e = document.getElementById('mobile');
+
+  if (!/^[0-9]+$/.test(e.value)) 
+{ 
+
+e.value = e.value.substring(0,e.value.length-1);
+}
+}   
+</script>

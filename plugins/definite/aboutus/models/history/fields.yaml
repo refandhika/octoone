@@ -1,0 +1,30 @@
+fields:
+    title:
+        label: Title
+        oc.commentPosition: ''
+        span: full
+        type: text
+    description:
+        label: Description (id)
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: richeditor
+    description_en:
+        label: Description (en)
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: richeditor
+    file_upload:
+        label: 'File Upload'
+        oc.commentPosition: ''
+        mode: image
+        span: full
+        type: mediafinder
+    published_date:
+        label: 'Published date'
+        oc.commentPosition: ''
+        mode: date
+        span: auto
+        type: datepicker

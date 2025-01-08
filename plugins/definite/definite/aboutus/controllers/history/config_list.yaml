@@ -1,0 +1,11 @@
+list: $/definite/aboutus/models/history/columns.yaml
+modelClass: Definite\Aboutus\Models\History
+title: History
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'definite/aboutus/history/update/:id'

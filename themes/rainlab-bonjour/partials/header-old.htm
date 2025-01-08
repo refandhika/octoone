@@ -1,0 +1,620 @@
+description = "backup old header (Before Revamp)"
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[Agent]
+
+[viewBag]
+==
+<?php
+function onStart(){
+    $this->page['fb_app_id'] = env('FB_APP_ID');
+    $this->page['fb_app_secret'] = env('FB_APP_SECRET');
+
+    $fb = new Facebook\Facebook([
+        'app_id' => env('FB_APP_ID'), 
+        'app_secret' => env('FB_APP_SECRET'),
+        'default_graph_version' => 'v2.2'
+    ]);
+    
+    $this["preview"] = Input::get('preview') ? Input::get('preview') : 0;
+
+    //$next = url()->current() ?? url('/');
+    $next = url()->current();
+    
+    //$scopes = ['email', 'user_birthday', 'user_gender'];
+    $scopes = ['email'];
+    $callbackUrl = url('/fb-callback');
+
+    //REGISTER FROM POP UP
+    $helper_register = $fb->getRedirectLoginHelper();
+    $pdata_register = $helper_register->getPersistentDataHandler(); 
+    $pdata_register->set('state', json_encode(['act' => 'registration', 'next' => $next, 'show_registration_form' => true]));
+
+    $registrationUrl = $helper_register->getLoginUrl( $callbackUrl, $scopes);
+    $this->page['fb_registration_url'] = $registrationUrl;
+
+    //REGISTER FROM INDOMARET
+    $helper_register_indomaret = $fb->getRedirectLoginHelper();
+    $pdata_register_indomaret = $helper_register_indomaret->getPersistentDataHandler(); 
+    $pdata_register_indomaret->set('state', json_encode(['act' => 'registration', 'next' => $next]));
+
+    //REGISTER FROM ALFAMART
+    $helper_register_alfamart = $fb->getRedirectLoginHelper();
+    $pdata_register_alfamart = $helper_register_alfamart->getPersistentDataHandler(); 
+    $pdata_register_alfamart->set('state', json_encode(['act' => 'registration', 'next' => $next]));
+
+    $registrationUrl = $helper_register->getLoginUrl( $callbackUrl, $scopes);
+    $this->page['fb_registration_indomaret_url'] = $registrationUrl;
+    $this->page['fb_registration_alfamart_url'] = $registrationUrl;
+
+    //LOGIN
+    $helper_login = $fb->getRedirectLoginHelper();
+    $pdata_login = $helper_login->getPersistentDataHandler(); 
+    $pdata_login->set('state', json_encode(['act' => 'login', 'next' => $next]));
+
+    $loginUrl = $helper_login->getLoginUrl( $callbackUrl, $scopes );
+    $this->page['fb_login_url'] = $loginUrl;
+
+    
+    /*
+    ini script BARBAR, kita hapus aja dan simpan untuk jaga-jaga 
+
+    $getURL = Request::path();
+    $implodeURL = explode('/', $getURL);
+
+    if (!empty($_SERVER['HTTP_USER_AGENT'])) {
+        $useragent = $_SERVER['HTTP_USER_AGENT'];
+        $pages_list = ['milkpedia', 'produk'];
+
+        if (preg_match('@(iPad|iPod|iPhone|Android|BlackBerry|SymbianOS|SCH-M\d+|Opera Mini|Windows CE|Nokia|SonyEricsson|webOS|PalmOS)@', $useragent) && isset($implodeURL[0]) && in_array($implodeURL[0], $pages_list)) {
+            //header("HTTP/1.1 301 Moved Permanently"); 
+            header("Location: ".'/amp/'.$getURL); 
+            exit();   
+        }
+    }
+
+    $req_uri = $_SERVER['REQUEST_URI'];
+
+    $this['amp_html_uri'] = null;
+
+    foreach($pages_list as $pl){
+        if (strpos($req_uri, '/'.$pl) === 0) {
+            $this['amp_html_uri'] = (isset($_SERVER['HTTP_USESSL']) || isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]/amp$req_uri";
+            return;
+        }
+    }
+    */
+
+    // amp page for this page is exist
+    if($this->page->amp_url){
+          //check params
+           $inputString = Request::getRequestUri();
+           $query       = parse_str ( parse_url ( $inputString , PHP_URL_QUERY ) , $params );
+         
+            
+        // check user agent, will redirect to AMP page if mobile
+        if (!empty($_SERVER['HTTP_USER_AGENT'])) {
+            $useragent = $_SERVER['HTTP_USER_AGENT'];
+            $is_mobile = preg_match('@(iPad|iPod|iPhone|Android|BlackBerry|SymbianOS|SCH-M\d+|Opera Mini|Windows CE|Nokia|SonyEricsson|webOS|PalmOS)@', $useragent);
+        
+           if($is_mobile){
+                 
+                if($params)
+                {
+                    $utm_campaign = http_build_query($params,'','&');
+                    header("Location: ".$this->page->amp_url."?".$utm_campaign); 
+                }else{
+                     header("Location: ".$this->page->amp_url); 
+                }    
+            }
+        }
+
+        $this['amp_html_uri'] = $this->page->amp_url;        
+    }else{
+        $this['amp_html_uri'] = null;
+    }
+
+$this['GTMETRIX'] = 'NO';
+if(strpos($_SERVER['HTTP_USER_AGENT'], 'X11; Linux x86_64) AppleWebKit/537.36') !== false || 
+strpos($_SERVER['HTTP_USER_AGENT'], 'GTmetrix') !== false
+){
+ $this['GTMETRIX'] = 'YES';
+}
+
+    $this['GTM_ID'] = env('GTM_ID');
+    $this['GA_ID'] = env('GA_ID');
+      $path        = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+     $this['full_url'] = (isset($_SERVER['HTTP_USESSL']) || isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]".$path;
+}
+?>
+==
+{% component 'SessionClose' %}
+<!doctype html>
+<html class="no-js" lang="id">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>{{ this.page.title }} | Frisian Flag Indonesia</title>
+        <meta name="title" content="{{ this.page.meta_title}}">
+        {% placeholder meta %}
+        <meta name="description" content="{{ this.page.meta_description }}">
+        <meta name="keywords" content="{{ this.page.meta_keywords }}">
+        
+        <meta name="facebook-domain-verification" content="t2ubto7jn7dd9h6si4fk19a8gd88ks" />
+        <meta name=“facebook-domain-verification” content=“74hs9dbda87d9cawoguzz2w7pjviwl” />
+        <meta name="ahrefs-site-verification" content="112d70195f4804d5ec8b0a26f6808e96afa04708dac83c5ded305ccf923cb44e">
+        
+        
+        
+        <meta name="author" content="Frisian Flag Indonesia">
+         {% if no_index %}
+        <meta name="robots" content="noindex,nofollow">
+         {% else %}
+	<meta content="index,follow" name="googlebot">
+	<meta name="robots" content="index, follow">
+         {% endif %}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="fb:app_id" content="872847836388420" />
+        <meta property="og:url"           content="{{ this.page.id | page }}" />
+        <meta property="og:type"          content="website" />
+        <meta property="og:title"         content="{{ this.page.title }}" />
+        {% set og_description = this.page.og_description %}
+        {% set og_image = this.page.og_image %}
+        <meta property="og:description"   content="{{ og_description }}" />
+        <meta name="twitter:title"        content="{{ this.page.title }}">
+        <meta name="twitter:description"  content="{{ og_description }}">
+         {% if og_image %}
+        <meta property="og:image"         content="//frisianflag.com/storage/app/media{{ og_image }}" />
+       
+        <meta name="twitter:image"        content="//frisianflag.com/storage/app/media{{ og_image }}">  
+         {% else %}
+        <meta property="og:image"         content="//frisianflag.com/themes/rainlab-bonjour/assets/img/share-facebook.jpg"/>
+         {% endif %}
+
+        {% placeholder head %}
+        {% placeholder link %}
+
+        {% if amp_html_uri %}
+            <link rel="amphtml" href="{{ amp_html_uri }}">
+        {% endif %}
+
+        {% if this.page.fileName == 'home.htm' %}
+            <link rel="canonical" href="{{ 'home' | page }}">
+        {% elseif this.page.fileName == 'news-archive.htm' %}
+            <link rel="canonical" href="{{ 'home' | page }}/perusahaan-kami/berita/year/{{ this.param.slug }}">
+        {% elseif this.page.fileName == 'press-release-archive.htm' %}
+            <link rel="canonical" href="{{ 'home' | page }}/perusahaan-kami/siaran-pers-archive/year/{{ this.param.slug }}">
+        {% else %}
+            <link rel="canonical" href="{{ full_url }}">
+        {% endif %}
+        
+       {% if GTMETRIX == 'NO' %}
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c35734915acab41" async></script>
+        {% endif %}
+
+	{% if this.page.fileName == 'home-skeleteon.htm' %}
+            <script rel="dns-prefetch" src="//cdn.jsdelivr.net/npm/@shinsenter/defer.js/dist/defer_plus.min.js"></script>
+            <script rel="preconnect" src="//cdn.jsdelivr.net/npm/@shinsenter/defer.js/dist/defer_plus.min.js" crossorigin></script>
+            <script type="text/javascript">
+            // This will lzay-load FontAwesome icons
+            
+            console.log('ini', 'https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/css/app.css')
+            </script>
+            
+            
+            <script>
+            
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = 'https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js?v=3';    
+            
+            document.head.appendChild(script);
+            
+            
+            
+            </script>
+            <link rel="stylesheet" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/libs/cookie/cookieconsent.min.css' }}"  as="style" media="none" onload="if(media!='all')media='all'"/>    
+            <link rel="stylesheet" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fancybox/helpers/jquery.fancybox-buttons.css"   as="style" media="none" onload="if(media!='all')media='all'" />
+            <link rel="stylesheet" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fancybox/helpers/jquery.fancybox-thumbs.css"  as="style" media="none" onload="if(media!='all')media='all'" />
+            <link rel="stylesheet" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fancybox/jquery.fancybox.css" as="style" media="none" onload="if(media!='all')media='all'" />
+            
+            <link rel="stylesheet" href="/themes/rainlab-bonjour/assets/css/app.css"  as="style" media="none" onload="if(media!='all')media='all'"/>
+            <link rel="stylesheet" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/css/style.css"  as="style" media="none" onload="if(media!='all')media='all'"/>
+              
+       
+        {% endif %}
+
+        <!-- FAVICONS -->
+        <link rel="apple-touch-icon" sizes="180x180" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/favicon/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/favicon/favicon-16x16.png" sizes="16x16">
+        <link rel="manifest" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/favicon/manifest.json">
+        <link rel="mask-icon" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="theme-color" content="#ffffff">
+        
+        
+        {% if this.page.fileName != 'home-skeleteon.htm' %}
+                
+            <link rel="stylesheet" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/libs/cookie/cookieconsent.min.css" media="screen"  type="text/css"/>
+            <link rel="stylesheet" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fancybox/helpers/jquery.fancybox-buttons.css" type="text/css" media="screen" />
+            
+            <link rel="stylesheet" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fancybox/helpers/jquery.fancybox-thumbs.css" type="text/css" media="screen" />
+            <link rel="stylesheet" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+            <link rel="stylesheet" href="/themes/rainlab-bonjour/assets/css/app.css?v=2" >
+            <link rel="stylesheet" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/css/style.css?v=22">
+        
+        
+        {% endif %}
+ 
+        <!-- STYLESHEET -->
+         {% if GTMETRIX == 'NO' %}
+        <link rel="preload" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fonts/Brevia-Black.woff" as="font" crossorigin="anonymous">
+            <link rel="preload" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fonts/Brevia-Regular.woff" as="font" crossorigin="anonymous">
+            <link rel="preload" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fonts/Brevia-Semibold.woff" as="font" crossorigin="anonymous">
+            <link rel="preload" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fonts/Brevia-Bold.woff" as="font" crossorigin="anonymous">
+            <link rel="preload" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fonts/slick.woff" as="font" crossorigin="anonymous"> 
+             <link rel="preload" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fonts/fontawesome-webfont.woff2?v=4.6.3" as="font" crossorigin="anonymous"> 
+        <script src="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/libs/cookie/cookieconsent.min.js" async></script>
+        <!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c35734915acab41" async></script>  -->
+        
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.0/moment.min.js" defer></script>
+       {% endif %}
+
+        <!-- Add fancyBox -->
+        <!-- Optionally add helpers - button, thumbnail and/or media -->
+<script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "url": "https://www.frisianflag.com/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.frisianflag.com/pencarian?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+        <style>
+        {% placeholder styles %}
+            @media screen and (min-width:767px){
+                .desk-none{
+                     display:none;   
+                }
+                
+            }
+            @media screen and (max-width:768px){
+                .mob-none{
+                    display: none;
+                }
+                .omela{
+                    background: url('https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/other-sites/omela2x.png');
+                    width: 100px;
+                    height: 35px;
+                    background-position: 100% 100%;
+                    background-size: 100%;
+                    background-repeat: no-repeat;
+                }
+                .suben{
+                    background: url('https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/other-sites/Logo_Susu_Bendera.png');
+                    width: 100px;
+                    height: 35px;
+                    background-position: 100% 100%;
+                    background-size: 100%;
+                    background-repeat: no-repeat;
+                }
+                .swiper-slide a.button {
+                    position: absolute;
+                    left: 20px;
+                    font-size: 12.5px;
+                    line-height: 1;
+                    height: fit-content;
+                    bottom: 0;
+                    padding: 12.5px 25px;
+                }
+                .swiper-button-next, .swiper-button-prev {
+                    display: none !important;
+                }
+                
+                
+                .omela-img{
+                    width: 84px;
+                    height: 36px;    
+                    background: url('https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/other-sites/omela2x.png');
+                }
+                .suben-img{
+                    width: 84px;
+                    height: 36px;
+                    background: url('https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/other-sites/Logo_Susu_Bendera.png');
+                }
+            }            
+            .fancybox-inner {
+                height: 100%;
+            }
+             @media screen and (max-width:1465px){
+                 .main-menu__list>a {
+                     padding:0 15px;
+                 }
+             }
+        </style>
+        <!-- <script>
+            window.addEventListener("load", function(){
+            window.cookieconsent.initialise({
+              "palette": {
+                "popup": {
+                  "background": "#0f4d9a"
+                },
+                "button": {
+                  "background": "#009fe3",
+                  "color" : "#ffffff"
+                }
+              },
+              "content": {
+                "message": "We use cookies on this page ",
+                "dismiss": "Close",
+                "link": "What are cookies",
+                "href": "{{ 'home' | page }}/kebijakan-cookie"
+              }
+            })});
+            var home = "{{ 'home' | page }}";
+        </script> -->
+       <!--  <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+          ga('create', 'UA-99863611-1', 'auto');
+          ga('send', 'pageview');
+        </script> -->
+
+        <!-- Global site tag (gtag.js) - Google Analytics 
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ GA_ID }}"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '{{ GA_ID }}');
+        </script> -->
+
+{% if GTMETRIX == 'NO' %}
+        <!-- Google Tag Manager -->
+        <script>
+setTimeout(function(){
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','{{ GTM_ID }}');
+}, 4500);
+</script>
+{% endif %}
+        <!-- End Google Tag Manager -->
+
+        <!-- Facebook Pixel Code -->
+        
+          {% if this.page.fileName != 'home-skeleteon.htm' %}
+          
+{% if GTMETRIX == 'NO' %}          
+        <!-- <script>
+        setTimeout(function(){          
+        !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', '1152867051533614');
+          fbq('track', 'PageView');
+        }, 4500);
+        </script>
+        
+        <noscript><img height="1" width="1" style="display:none"
+          src="https://www.facebook.com/tr?id=1152867051533614&ev=PageView&noscript=1" alt="Facebook Pixel"/></noscript> -->
+{% endif %}
+          
+          {% endif %}
+          
+        {% if this.page.fileName == 'home-skeleteon.htm' %}
+ {% if GTMETRIX == 'NO' %}       
+     <!--    <script>
+         defer(function() {
+              !function(f,b,e,v,n,t,s)
+       {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+       n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+       if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+       n.queue=[];t=b.createElement(e);t.async=!0;
+       t.src=v;s=b.getElementsByTagName(e)[0];
+       s.parentNode.insertBefore(t,s)}(window, document,'script',
+       'https://connect.facebook.net/en_US/fbevents.js');
+       fbq('init', '1152867051533614');
+       fbq('track', 'PageView');
+         },4500);
+     
+     </script>
+     <noscript><img height="1" width="1" style="display:none"
+       src="https://www.facebook.com/tr?id=1152867051533614&ev=PageView&noscript=1" alt="Facebook Pixel"
+     /></noscript> -->
+{% endif %}
+        {% endif %}
+        <!-- End Facebook Pixel Code -->
+
+<script type='application/ld+json'>
+{
+  "@context" : "https://schema.org",
+  "@type" : "Organization",
+  "name" : "Frisian Flag Indonesia",
+  "url" : "https://www.frisianflag.com/",
+  "sameAs" : [
+    "https://www.facebook.com/FrisianFlagID",
+    "https://twitter.com/FrisianFlagID",
+    "https://www.instagram.com/frisianflagid/",
+    "https://www.youtube.com/user/frisianflagger",
+    "https://www.linkedin.com/company/pt-frisian-flag-indonesia/"
+  ],
+  "logo": "https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo2x.png"
+}
+</script>
+    
+    {% placeholder schema %}
+    </head>
+    <body>    
+{% if GTMETRIX == 'NO' %}
+     <!--  <script>
+     setTimeout(function(){
+     (function(d, s, id) {
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) return;
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+     fbq('track', 'ViewContent')
+     }, 4500);
+     </script>
+     <div id="fb-root"></div> -->
+{% endif %}
+{% if this.page.layout == 'home-alt' %}
+   <!--
+        Start of DoubleClick Floodlight Tag: Please do not remove
+        Activity name of this tag: Frisian Flag - Homepage 2018
+        URL of the webpage where the tag is expected to be placed: https://www.frisianflag.com/
+        This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
+        Creation Date: 04/27/2018
+        -->
+{% if GTMETRIX == 'NO' %}
+        <script type="text/javascript">
+            var axel = Math.random() + "";
+            var a = axel * 10000000000000;
+            document.write('<iframe src="https://6614846.fls.doubleclick.net/activityi;src=6614846;type=frisi18;cat=frisi_h;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+</script>
+            <noscript>
+
+            <iframe src="https://6614846.fls.doubleclick.net/activityi;src=6614846;type=frisi18;cat=frisi_h;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+            </noscript>
+    {% endif %}
+            <!-- End of DoubleClick Floodlight Tag: Please do not remove -->
+    {% endif %}
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ GTM_ID }}"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <header class="header">
+        <!-- desktop menu -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2 col-xs-4">
+{% if GTMETRIX == 'NO' %}
+                    <a href="{{ 'home'|page }}" class="logo">
+                        <div class="logo__default">
+                            <img src="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo.png" srcset="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo2x.png 2x" alt="Frisian Flag"/>
+                             <span>BUILDING<br/>STRONG FAMILIES<br/>SINCE 1871</span>
+                        </div>
+                        <div class="logo__small">
+                            <img src="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo-small.png" srcset="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo-small2x.png 2x" alt="Frisian Flag">
+                            <span>BUILDING<br/>STRONG FAMILIES<br/>SINCE 1871</span>
+                        </div>
+                    </a>
+{% endif %}
+                </div>
+                {% if Agent.isDesktop()  %}
+                    <div class="col-md-10 navigation hidden-xs hidden-sm hidden-md">
+ {% if GTMETRIX == 'NO' %}
+                        <ul class="top-menu">
+                            <li class="top-menu__list">
+                                <a href="{{ 'contact-us'|page }}">{{'hubungi-kami'|_}}</a>
+                            </li>
+                            <li class="top-menu__list">
+                                {% if user %}
+                                    <a href="{{ url('/user-dashboard') }}">{{ user.name }} | </a><a data-request="onLogout" data-request-data="redirect: '/'">{{'Logout'|_}}</a>
+                                {% else %}
+                                    <!-- <a data-toggle="modal" href="#content-confirmation">{{'masuk/daftar'|_}}</a> -->
+                                    
+                                    <!-- popup tim definite -->
+                                    <!--<a href="javascript:;" data-fancybox data-src="#login">{{'masuk/daftar'|_}}</a>-->
+                                    <a href="javascript:;"  onclick="getpopuplogin()">{{'masuk/daftar'|_}}</a>
+                                {% endif %}
+                            </li>
+                            {% if str_contains(url_current(), '/id') %} 
+                                {% set url_last = str_replace_first('/id','',url_current())  %}
+                            {% elseif str_contains(url_current(), '/en') %} 
+                                {% set url_last = str_replace_first('/en','',url_current())  %}
+                            {% else %}
+                                {% set url_last = url_current()  %}
+                            {% endif %}
+                            {% set url_trans = str_replace_first(url('/'),'',url_last) %}
+                            <li class="top-menu__list hide">
+                                <a href="{{ url('/id')}}{{url_trans}}">
+                                    <img src="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/id.png" srcset="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/id2x.png 2x" alt="Indonesian">
+                                </a>
+                            </li>
+                            <li class="top-menu__list hide">
+                                <a href="{{ url('/en')}}{{url_trans}}">
+                                    <img src="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/uk.png" srcset="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/uk2x.png 2x" alt="English">
+                                </a>
+                            </li>
+{% endif %}
+                        <li class="top-menu__list top-menu__list--button"><a href="javascript:;" class="searchbtn"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                        </ul>
+ {% if GTMETRIX == 'NO' %}
+                        {% if str_contains(url_current(), '/en') %} 
+                            {% partial 'site/nav-en' %}
+                        {% else %}
+                            {% partial 'site/nav' %}
+                        {% endif %}
+ {% endif %}
+
+                    </div>    
+                {% endif %}
+                <div class="col-xs-8 col-sm-8 pull-right">
+                    <div class="bar-mobile">
+                        <div class="wrp-navbar">
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end of desktop menu -->
+        <!-- Mobile Menu -->
+        <div class="headermenu-xs">
+            <div class="wrp-headmenu-xs">
+                {% if str_contains(url_current(), '/en') %} 
+                       
+                {% else %}
+                    {% partial 'site/mobilemenu' %}
+                {% endif %}
+                <div class="bottom">
+                    <ul>
+                        <!--<li><a href="javascript:;" data-fancybox data-src="#login"><div class="user-img"></div><span>MASUK /<br /> DAFTAR</span></a></li>-->
+                        <li><a href="javascript:;" onclick="getpopuplogin()"><div class="user-img"></div><span>MASUK /<br /> DAFTAR</span></a></li>
+                        <li><a href="{{ 'contact-us'|page }}"><div class="contact-us-img"></div><span>{{'hubungi-kami'|_|uppercase}}</span></a></li>
+                        <li><a href="javascript:;" class="searchbtn"><div class="search-img"></div><span>SEARCH</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- end of mobile menu -->
+        <!-- search form -->
+        <div class="searchform">
+          <form action="{{ 'home'|page }}/pencarian" method="get">
+            <input name="q" id="search-result" type="search" placeholder="Masukkan kata kunci dan tekan enter">
+            <a class="closesearch"><i class="fa fa-close"></i> </a>
+          </form>
+        </div>
+    </header>
+    <div class="popup--login-panel">
+    
+    </div>
+    <div class="popup--register-panel">
+    
+    </div>
+    {# if preview != 1 %}
+    {% partial 'site/login' %}
+    {% partial 'site/register' %}
+    {% endif #}
+    {% partial 'site/forgot-password' %}

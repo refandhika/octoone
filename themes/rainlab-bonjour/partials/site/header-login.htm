@@ -1,0 +1,138 @@
+[viewBag]
+==
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        {% if this.page.meta_title %}
+        <title>{{ this.page.meta_title }} | Frisian Flag Indonesia</title>
+        {% else %}
+        <title>{{ this.page.title }} | Frisian Flag Indonesia</title>
+        {% endif %}
+        <meta name="description" content="{{ this.page.meta_description }}">
+        <meta name="keywords" content="{{ this.page.meta_keywords }}">
+        <meta name="author" content="Frisian Flag Indonesia">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <meta name="facebook-domain-verification" content="t2ubto7jn7dd9h6si4fk19a8gd88ks" />
+        <meta name="facebook-domain-verification" content="74hs9dbda87d9cawoguzz2w7pjviwl" />
+        <meta name="ahrefs-site-verification" content="112d70195f4804d5ec8b0a26f6808e96afa04708dac83c5ded305ccf923cb44e">
+        
+        <meta property="fb:app_id" content="872847836388420" />
+        <meta property="og:url"           content="{{ this.page.id | page }}" />
+        <meta property="og:type"          content="website" />
+        <meta property="og:title"         content="{{ this.page.title }}" />
+        {% set og_description = this.page.og_description %}
+        {% set og_image = this.page.og_image %}
+        <meta property="og:description"   content="{{ og_description }}" />
+        <meta name="twitter:title"        content="{{ this.page.title }}">
+        <meta name="twitter:description"  content="{{ og_description }}">
+         {% if og_image %}
+        <meta property="og:image"         content="https://www.frisianflag.com/storage/app/media{{ og_image }}" />
+       
+        <meta name="twitter:image"        content="https://www.frisianflag.com/storage/app/media{{ og_image }}">  
+         {% else %}
+        <meta property="og:image"         content="https://www.frisianflag.com/themes/rainlab-bonjour/assets/img/share-facebook.jpg"/>
+         {% endif %}
+
+        {% if amp_html_uri %}
+            <link rel="amphtml" href="{{ amp_html_uri }}">
+        {% endif %}
+
+        {% if this.page.fileName == 'home.htm' %}
+            <link rel="canonical" href="{{ 'home' | page }}">
+        {% elseif this.page.fileName == 'news-archive.htm' %}
+            <link rel="canonical" href="{{ 'home' | page }}/perusahaan-kami/berita/year/{{ this.param.slug }}">
+        {% elseif this.page.fileName == 'press-release-archive.htm' %}
+            <link rel="canonical" href="{{ 'home' | page }}/perusahaan-kami/siaran-pers-archive/year/{{ this.param.slug }}">
+        {% else %}
+            <link rel="canonical" href="{{ full_url }}">
+        {% endif %}
+
+        <!-- FAVICONS -->
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ 'assets/favicon/apple-touch-icon.png'|theme }}">
+        <link rel="icon" type="image/png" href="{{ 'assets/favicon/favicon-32x32.png'|theme }}" sizes="32x32">
+        <link rel="icon" type="image/png" href="{{ 'assets/favicon/favicon-16x16.png'|theme }}" sizes="16x16">
+        <link rel="manifest" href="{{ 'assets/favicon/manifest.json'|theme }}">
+        <link rel="mask-icon" href="{{ 'assets/favicon/safari-pinned-tab.svg'|theme }}" color="#5bbad5">
+        <meta name="theme-color" content="#ffffff">
+        <link rel="stylesheet" href="{{ 'assets/libs/cookie/cookieconsent.min.css'|theme }}"/>
+        <!-- STYLESHEET -->
+        <link rel="stylesheet" href="{{ 'assets/css/app.css'|theme }}">
+        <link rel="stylesheet" href="{{ 'assets/css/style.css'|theme }}">
+        <script src="{{ 'assets/libs/cookie/cookieconsent.min.js'|theme }}" async></script>
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c35734915acab41" async></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.0/moment.min.js"></script>
+        <!-- Add fancyBox -->
+        <link rel="stylesheet" href="{{ 'assets/fancybox/jquery.fancybox.css'|theme }}" type="text/css" media="screen" />
+        <!-- Optionally add helpers - button, thumbnail and/or media -->
+        <link rel="stylesheet" href="{{ 'assets/fancybox/helpers/jquery.fancybox-buttons.css'|theme }}" type="text/css" media="screen" />
+        
+        <link rel="stylesheet" href="{{ 'assets/fancybox/helpers/jquery.fancybox-thumbs.css'|theme }}" type="text/css" media="screen" />
+        <style>
+            .fancybox-inner {
+                height: 100%;
+            }
+        </style>
+        <!-- <script>
+            window.addEventListener("load", function(){
+            window.cookieconsent.initialise({
+              "palette": {
+                "popup": {
+                  "background": "#0f4d9a"
+                },
+                "button": {
+                  "background": "#009fe3",
+                  "color" : "#ffffff"
+                }
+              },
+              "content": {
+                "message": "We use cookies on this page ",
+                "dismiss": "Close",
+                "link": "What are cookies",
+                "href": "{{ 'home' | page }}/kebijakan-cookie"
+              }
+            })});
+            var home = "{{ 'home' | page }}";
+        </script> -->
+       <!--  <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+          ga('create', 'UA-99863611-1', 'auto');
+          ga('send', 'pageview');
+        </script> -->
+
+        <!-- Global site tag (gtag.js) - Google Analytics 
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ GA_ID }}"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '{{ GA_ID }}');
+        </script>  -->
+
+        <!-- Google Tag Manager
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','{{ GTM_ID }}');</script>
+         End Google Tag Manager -->
+         
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-PXZ46KJ');</script>
+        <!-- End Google Tag Manager -->
+
+    </head>
+    <body>
+     <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PXZ46KJ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->

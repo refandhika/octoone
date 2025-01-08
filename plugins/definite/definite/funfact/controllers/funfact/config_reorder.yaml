@@ -1,0 +1,4 @@
+title: FunFact
+modelClass: Definite\FunFact\Models\FunFact
+toolbar:
+    buttons: reorder_toolbar

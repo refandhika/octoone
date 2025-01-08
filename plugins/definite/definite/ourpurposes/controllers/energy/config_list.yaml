@@ -1,0 +1,11 @@
+list: $/definite/ourpurposes/models/energy/columns.yaml
+modelClass: Definite\Ourpurposes\Models\Energy
+title: Energy
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'definite/ourpurposes/energy/update/:id'

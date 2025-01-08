@@ -1,0 +1,47 @@
+[viewBag]
+==
+<div id="login" class="popup popup__login">
+	<div class="popup__login-heading">Frisian Flag Connect</div> <!--  .popup__login-heading -->
+	<div class="popup__login-body">
+		
+		<a href="{{ this.page.fb_login_url }}" class="button full-width sample"><i class="fa fa-facebook" aria-hidden="true"></i> masuk dengan facebook</a>
+
+		<div class="separator separator__text"><span>atau</span></div> <!--  .separator .separator__text -->
+
+		<form class="form-primary"  data-request="onSignin" data-request-data="redirect: '/user-dashboard'">
+		
+			<div class="form-group"> 
+				<span for="email">Email</span> 
+				<input type="email" class="form-control" name="login" id="emails" placeholder="Email" required="required" autocomplete="off"> 
+			</div>
+			
+			<div class="form-group"> 
+				<span for="password">Password</span> 
+				<input type="password" class="form-control" name="password" id="passwords" placeholder="Password" required="required" autocomplete="off"> 
+			</div>
+			
+			<div class="row">
+				<div class="col-xs-6 col-sm-6">
+					<div class="checkbox"> 
+						<span><input type="checkbox"> Ingat Saya</span> 
+					</div>				
+				</div> <!--  .col-sm-6 -->
+				<div class="col-xs-6 col-sm-6">
+					<a href="javascript:;" class="link" id="click-forgot">Lupa password?</a>
+				</div> <!--  .col-sm-6 -->
+			</div> <!--  .row -->
+			
+			<div class="form-submit">
+				<input type="submit" class="button full-width" value="masuk" />				
+			</div> <!--  .form-submit -->
+		</form>
+
+		<hr />
+
+		<p class="popup-text">Belum punya akun?</p>
+
+		<a href="javascript:;" class="button full-width" id="click-register">daftar</a>
+
+	</div> <!--  .popup__login-body -->
+
+</div>

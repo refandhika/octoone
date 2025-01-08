@@ -1,0 +1,5 @@
+title: LogoHistory
+modelClass: Definite\Aboutus\Models\LogoHistory
+nameFrom: title
+toolbar:
+    buttons: reorder_toolbar

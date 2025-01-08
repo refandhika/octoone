@@ -1,0 +1,78 @@
+description = "Layout for Sustainability Sehat Page"
+
+[staticPage]
+useContent = 1
+default = 0
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('sustainability/sustainability-sehat-amp');
+    }
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp banner-lp" style='background:url({{ 'sustainability/sehat/Asset_38@2x-100.jpg'|media  }})'>
+        <div class="container">
+        	<div class="banner-panel">
+        	    <div class="banner-description">
+        			<h2>Mewujudkan Indonesia Sehat</h2>
+        		</div>
+        	</div>
+    	</div>
+    </div>
+</div>
+
+
+
+<div class="section">
+    <div id='main-section' class="container sustainability-pages">
+        <div class="row">
+            <div class="col-md-12 top-copy">
+            <p class="description">Kami menyediakan produk susu berkualitas dengan rasa lezat, nilai gizi baik dan harga terjangkau, sambil juga mengajak seluruh keluarga Indonesia untuk memiliki pola makan sehat dan gaya hidup aktif.</p>
+            
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                
+                <a href="{{ 'sustainability/sustainability-sehat-nutrisi-lp' | page }}">
+                	<div class="box sehat" style='background:url({{ 'sustainability/nutrisi-terjangkau-100.jpg'|media  }})' >
+                		<div class="box-title">
+                            <h3>Nutrisi Terjangkau</h3>
+                        </div>
+                	</div>
+            	</a>
+            </div>
+            <div class="col-sm-4">
+                <a href="{{ 'sustainability/sustainability-sehat-gizi-lp' | page }}">
+                	<div class="box sehat" style='background:url({{ 'sustainability/sehat/Asset_41-100.jpg'|media  }})' >
+                		<div class="box-title">
+                            <h3>Gizi Lebih Baik</h3>
+                        </div>
+                	</div>
+            	</a>
+            </div>
+            <div class="col-sm-4">
+                <a href="{{ 'sustainability/sustainability-sehat-protein-lp' | page }}">
+                	<div class="box sehat" style='background:url({{ 'sustainability/protein-100.jpg'|media  }})' >
+                		<div class="box-title">
+                            <h3>Protein dan Hidup Aktif</h3>
+                        </div>
+                	</div>
+            	</a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="{{ 'assets/css/sustainability.css'|theme }}">
+
+
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

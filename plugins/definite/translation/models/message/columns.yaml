@@ -1,0 +1,16 @@
+columns:
+    key:
+        label: Key
+        type: text
+        searchable: true
+        sortable: true
+    value_id:
+        label: 'Value (Bahasa Indonesia)'
+        type: text
+        searchable: true
+        sortable: true
+    value_en:
+        label: 'Value (English)'
+        type: text
+        searchable: true
+        sortable: true

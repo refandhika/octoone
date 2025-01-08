@@ -1,0 +1,60 @@
+title = "Home kasjdkasjdkjsakklasjkj content"
+url = "/home-kasjdkasjdkjsakklasjkj-content"
+is_hidden = 0
+==
+{% partial 'site/slideshow' %}
+<div id='main-section' class="container-fluid">
+
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="slide-homesmall">
+                <div id="homesmall" class="item-homesmall">
+                    <div class="card__thumbnail card__thumbnail--blue lozad" data-background-image= "{{ '/KV SCM Packshot 500x500.jpg'| mediathumb_resize('width', 350, 90)  }}"
+                        
+                    >
+                        <div class="card__meta">
+                            <header class="card__head">
+                                <h2>SUSU<br>KENTAL<br>MANIS</h2>
+                            </header>
+                            <a href="{{ 'our-products-archive'|page({'slug': 'susu-kental-manis'}) }}" style="background-color: #124a9d;" class="button">{{ 'selengkapnya'|_ }}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-homesmall">
+                    <div class="card__thumbnail card__thumbnail--blue lozad" data-background-image="{{ '/KV RTD Packshot 500x500.jpg'| mediathumb_resize('width', 350, 90) }}">
+                        <div class="card__meta">
+                            <header class="card__head">
+                                <h2>MINUMAN<br>SIAP<br>MINUM</h2>
+                            </header>
+                            <a href="{{ 'our-products-archive'|page({'slug': 'minuman-siap-minum'}) }}" style="background-color: #124a9d;" class="button">{{ 'selengkapnya'|_ }}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-homesmall">
+                    <div class="card__thumbnail card__thumbnail--blue lozad" data-background-image="{{ 'fullcream.png'| mediathumb_resize('width', 350, 90)  }}" >
+                        <div class="card__meta">
+                            <header class="card__head">
+                                <h2>SUSU<br>BUBUK<br>KELUARGA</h2>
+                            </header>
+                            <a href="{{ 'our-products-archive'|page({'slug': 'susu-bubuk-keluarga'}) }}" style="background-color: #124a9d;" class="button">{{ 'selengkapnya'|_ }}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-homesmall">
+                    <div class="card__thumbnail card__thumbnail--blue lozad" data-background-image="{{ 'Kids Kid.jpg'| mediathumb_resize('width', 350, 90)  }}">
+                        <div class="card__meta">
+                            <header class="card__head">
+                                <h2>KIDS</h2>
+                            </header>
+                            <a href="{{ 'our-products'|page({'slug': 'kids'}) }}" style="background-color: #124a9d;" class="button">{{ 'selengkapnya'|_ }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    
+</div> <!-- end mainsection -->

@@ -1,0 +1,601 @@
+description = "A new header only for testing"
+
+[viewBag]
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[Agent]
+==
+<?php
+function onStart(){
+    $this->page['fb_app_id'] = env('FB_APP_ID');
+    $this->page['fb_app_secret'] = env('FB_APP_SECRET');
+
+    $fb = new Facebook\Facebook([
+        'app_id' => env('FB_APP_ID'), 
+        'app_secret' => env('FB_APP_SECRET'),
+        'default_graph_version' => 'v2.2'
+    ]);
+
+    //$next = url()->current() ?? url('/');
+    $next = url()->current();
+    
+    //$scopes = ['email', 'user_birthday', 'user_gender'];
+    $scopes = ['email'];
+    $callbackUrl = url('/fb-callback');
+
+    //REGISTER FROM POP UP
+    $helper_register = $fb->getRedirectLoginHelper();
+    $pdata_register = $helper_register->getPersistentDataHandler(); 
+    $pdata_register->set('state', json_encode(['act' => 'registration', 'next' => $next, 'show_registration_form' => true]));
+
+    $registrationUrl = $helper_register->getLoginUrl( $callbackUrl, $scopes);
+    $this->page['fb_registration_url'] = $registrationUrl;
+
+    //REGISTER FROM INDOMARET
+    $helper_register_indomaret = $fb->getRedirectLoginHelper();
+    $pdata_register_indomaret = $helper_register_indomaret->getPersistentDataHandler(); 
+    $pdata_register_indomaret->set('state', json_encode(['act' => 'registration', 'next' => $next]));
+
+    //REGISTER FROM ALFAMART
+    $helper_register_alfamart = $fb->getRedirectLoginHelper();
+    $pdata_register_alfamart = $helper_register_alfamart->getPersistentDataHandler(); 
+    $pdata_register_alfamart->set('state', json_encode(['act' => 'registration', 'next' => $next]));
+
+    $registrationUrl = $helper_register->getLoginUrl( $callbackUrl, $scopes);
+    $this->page['fb_registration_indomaret_url'] = $registrationUrl;
+    $this->page['fb_registration_alfamart_url'] = $registrationUrl;
+
+    //LOGIN
+    $helper_login = $fb->getRedirectLoginHelper();
+    $pdata_login = $helper_login->getPersistentDataHandler(); 
+    $pdata_login->set('state', json_encode(['act' => 'login', 'next' => $next]));
+
+    $loginUrl = $helper_login->getLoginUrl( $callbackUrl, $scopes );
+    $this->page['fb_login_url'] = $loginUrl;
+
+    
+    /*
+    ini script BARBAR, kita hapus aja dan simpan untuk jaga-jaga 
+
+    $getURL = Request::path();
+    $implodeURL = explode('/', $getURL);
+
+    if (!empty($_SERVER['HTTP_USER_AGENT'])) {
+        $useragent = $_SERVER['HTTP_USER_AGENT'];
+
+        $pages_list = ['milkpedia', 'produk'];
+
+        if (preg_match('@(iPad|iPod|iPhone|Android|BlackBerry|SymbianOS|SCH-M\d+|Opera Mini|Windows CE|Nokia|SonyEricsson|webOS|PalmOS)@', $useragent) && isset($implodeURL[0]) && in_array($implodeURL[0], $pages_list)) {
+            //header("HTTP/1.1 301 Moved Permanently"); 
+            header("Location: ".'/amp/'.$getURL); 
+            exit();   
+        }
+    }
+
+    $req_uri = $_SERVER['REQUEST_URI'];
+
+    $this['amp_html_uri'] = null;
+
+    foreach($pages_list as $pl){
+        if (strpos($req_uri, '/'.$pl) === 0) {
+            $this['amp_html_uri'] = (isset($_SERVER['HTTP_USESSL']) || isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]/amp$req_uri";
+            return;
+        }
+    }
+    */
+
+    // amp page for this page is exist
+    if($this->page->amp_url){
+          //check params
+           $inputString = Request::getRequestUri();
+           $query       = parse_str ( parse_url ( $inputString , PHP_URL_QUERY ) , $params );
+         
+            
+        // check user agent, will redirect to AMP page if mobile
+        if (!empty($_SERVER['HTTP_USER_AGENT'])) {
+            $useragent = $_SERVER['HTTP_USER_AGENT'];
+            $is_mobile = preg_match('@(iPad|iPod|iPhone|Android|BlackBerry|SymbianOS|SCH-M\d+|Opera Mini|Windows CE|Nokia|SonyEricsson|webOS|PalmOS)@', $useragent);
+        
+           if($is_mobile){
+                 
+                if($params)
+                {
+                    $utm_campaign = http_build_query($params,'','&');
+                    header("Location: ".$this->page->amp_url."?".$utm_campaign); 
+                }else{
+                     header("Location: ".$this->page->amp_url); 
+                }    
+            }
+        }
+
+        $this['amp_html_uri'] = $this->page->amp_url;        
+    }else{
+        $this['amp_html_uri'] = null;
+    }
+
+    $this['GTM_ID'] = env('GTM_ID');
+    $this['GA_ID'] = env('GA_ID');
+      $path        = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+     $this['full_url'] = (isset($_SERVER['HTTP_USESSL']) || isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]".$path;
+}
+?>
+==
+{% component 'SessionClose' %}
+<!doctype html>
+<html class="no-js" lang="id">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>{{ this.page.title }} | Frisian Flag Indonesia</title>
+        <meta name="title" content="{{ this.page.meta_title}}">
+        <meta name="description" content="{{ this.page.meta_description }}">
+        <meta name="keywords" content="{{ this.page.meta_keywords }}">
+        
+        <meta name="facebook-domain-verification" content="t2ubto7jn7dd9h6si4fk19a8gd88ks" />
+        <meta name=“facebook-domain-verification” content=“74hs9dbda87d9cawoguzz2w7pjviwl” />
+        <meta name="author" content="Frisian Flag Indonesia">
+         {% if no_index %}
+        <meta name="robots" content="noindex,nofollow">
+         {% else %}
+<meta content="index,follow" name="googlebot">
+<meta name="robots" content="index, follow">
+         {% endif %}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="fb:app_id" content="872847836388420" />
+        <meta property="og:url"           content="{{ this.page.id | page }}" />
+        <meta property="og:type"          content="website" />
+        <meta property="og:title"         content="{{ this.page.title }}" />
+        {% set og_description = this.page.og_description %}
+        {% set og_image = this.page.og_image %}
+        <meta property="og:description"   content="{{ og_description }}" />
+        <meta name="twitter:title"        content="{{ this.page.title }}">
+        <meta name="twitter:description"  content="{{ og_description }}">
+        
+         {% if og_image %}
+        <meta property="og:image"         content="//frisianflag.com/storage/app/media{{ og_image }}" />
+       
+        <meta name="twitter:image"        content="//frisianflag.com/storage/app/media{{ og_image }}">  
+         {% else %}
+        <meta property="og:image"         content="//frisianflag.com/themes/rainlab-bonjour/assets/img/share-facebook.jpg"/>
+         {% endif %}
+
+        {% if amp_html_uri %}
+            <link rel="amphtml" href="{{ amp_html_uri }}">
+        {% endif %}
+
+        {% if this.page.fileName == 'home.htm' %}
+            <link rel="canonical" href="{{ 'home' | page }}">
+        {% elseif this.page.fileName == 'news-archive.htm' %}
+            <link rel="canonical" href="{{ 'home' | page }}/perusahaan-kami/berita/year/{{ this.param.slug }}">
+        {% elseif this.page.fileName == 'press-release-archive.htm' %}
+            <link rel="canonical" href="{{ 'home' | page }}/perusahaan-kami/siaran-pers-archive/year/{{ this.param.slug }}">
+        {% else %}
+            <link rel="canonical" href="{{ full_url }}">
+        {% endif %}
+       
+          <script rel="dns-prefetch" src="//cdn.jsdelivr.net/npm/@shinsenter/defer.js/dist/defer_plus.min.js"></script>
+            <script rel="preconnect" src="//cdn.jsdelivr.net/npm/@shinsenter/defer.js/dist/defer_plus.min.js" crossorigin></script>
+            
+          <style>
+           /*
+        Animation is here since we can't do this in JS with inline styles :(
+      */
+      @keyframes skeletonAnimation {
+        0% {
+          opacity: 0.8;
+        }
+        50% {
+          opacity: 0.4;
+        }
+        100% {
+          opacity: 0.8;
+        }
+      }
+
+      /*
+        Reset all styles of an element
+      */
+     .reset-this {
+        animation : none;
+        animation-delay : 0;
+        animation-direction : normal;
+        animation-duration : 0;
+        animation-fill-mode : none;
+        animation-iteration-count : 1;
+        animation-name : none;
+        animation-play-state : running;
+        animation-timing-function : ease;
+        backface-visibility : visible;
+        background : 0;
+        background-attachment : scroll;
+        background-clip : border-box;
+        background-color : transparent;
+        background-image : none;
+        background-origin : padding-box;
+        background-position : 0 0;
+        background-position-x : 0;
+        background-position-y : 0;
+        background-repeat : repeat;
+        background-size : auto auto;
+        border : 0;
+        border-style : none;
+        border-width : medium;
+        border-color : inherit;
+        border-bottom : 0;
+        border-bottom-color : inherit;
+        border-bottom-left-radius : 0;
+        border-bottom-right-radius : 0;
+        border-bottom-style : none;
+        border-bottom-width : medium;
+        border-collapse : separate;
+        border-image : none;
+        border-left : 0;
+        border-left-color : inherit;
+        border-left-style : none;
+        border-left-width : medium;
+        border-radius : 0;
+        border-right : 0;
+        border-right-color : inherit;
+        border-right-style : none;
+        border-right-width : medium;
+        border-spacing : 0;
+        border-top : 0;
+        border-top-color : inherit;
+        border-top-left-radius : 0;
+        border-top-right-radius : 0;
+        border-top-style : none;
+        border-top-width : medium;
+        bottom : auto;
+        box-shadow : none;
+        box-sizing : content-box;
+        caption-side : top;
+        clear : none;
+        clip : auto;
+        color : inherit;
+        columns : auto;
+        column-count : auto;
+        column-fill : balance;
+        column-gap : normal;
+        column-rule : medium none currentColor;
+        column-rule-color : currentColor;
+        column-rule-style : none;
+        column-rule-width : none;
+        column-span : 1;
+        column-width : auto;
+        content : normal;
+        counter-increment : none;
+        counter-reset : none;
+        cursor : auto;
+        direction : ltr;
+        display : inline;
+        empty-cells : show;
+        float : none;
+        font : normal;
+        font-family : inherit;
+        font-size : medium;
+        font-style : normal;
+        font-variant : normal;
+        font-weight : normal;
+        height : auto;
+        hyphens : none;
+        left : auto;
+        letter-spacing : normal;
+        line-height : normal;
+        list-style : none;
+        list-style-image : none;
+        list-style-position : outside;
+        list-style-type : disc;
+        margin : 0;
+        margin-bottom : 0;
+        margin-left : 0;
+        margin-right : 0;
+        margin-top : 0;
+        max-height : none;
+        max-width : none;
+        min-height : 0;
+        min-width : 0;
+        opacity : 1;
+        orphans : 0;
+        outline : 0;
+        outline-color : invert;
+        outline-style : none;
+        outline-width : medium;
+        overflow : visible;
+        overflow-x : visible;
+        overflow-y : visible;
+        padding : 0;
+        padding-bottom : 0;
+        padding-left : 0;
+        padding-right : 0;
+        padding-top : 0;
+        page-break-after : auto;
+        page-break-before : auto;
+        page-break-inside : auto;
+        perspective : none;
+        perspective-origin : 50% 50%;
+        position : static;
+        /* May need to alter quotes for different locales (e.g fr) */
+        quotes : '\201C' '\201D' '\2018' '\2019';
+        right : auto;
+        tab-size : 8;
+        table-layout : auto;
+        text-align : inherit;
+        text-align-last : auto;
+        text-decoration : none;
+        text-decoration-color : inherit;
+        text-decoration-line : none;
+        text-decoration-style : solid;
+        text-indent : 0;
+        text-shadow : none;
+        text-transform : none;
+        top : auto;
+        transform : none;
+        transform-style : flat;
+        transition : none;
+        transition-delay : 0s;
+        transition-duration : 0s;
+        transition-property : none;
+        transition-timing-function : ease;
+        unicode-bidi : normal;
+        vertical-align : baseline;
+        visibility : visible;
+        white-space : normal;
+        widows : 0;
+        width : auto;
+        word-spacing : normal;
+        z-index : auto;
+        /* basic modern patch */
+        all: initial;
+        all: unset;
+    }
+
+
+
+      /*
+        Pending styles for CSS class based example
+      */
+      .pending {
+        color: #bdc3c7!important;
+        background-color: #bdc3c7!important;
+        border-color: #bdc3c7!important;
+        animation-name: skeletonAnimation;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+
+      .pending_el {
+        color: #ccc !important;
+        background-color: #ccc !important;
+        animation-name: skeletonAnimation;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+
+      }
+      .container2 {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        margin: auto;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        }
+        .avatar {
+            display: block;
+            width: 150px;
+            height: 150px;
+        }
+
+        .content {
+            background-color: #f0f0f0 !important;
+            padding: 10px 16px;
+            color: #34495e !important;
+            font-family: system-ui, sans-serif;
+            width: -webkit-calc(100% - 150px);
+            width: -moz-calc(100% - 150px);
+            width: calc(100% - 150px);
+        }
+      .demo:empty {
+        margin: auto;
+        width: 500px;
+        height: 600px; /* change height to see repeat-y behavior */
+        
+        background-image:
+          radial-gradient( circle 50px at 50px 50px, lightgray 99%, transparent 0 ),
+          linear-gradient( 100deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 80% ),
+          linear-gradient( lightgray 20px, transparent 0 ),
+          linear-gradient( lightgray 20px, transparent 0 ),
+          linear-gradient( lightgray 20px, transparent 0 ),
+          linear-gradient( lightgray 20px, transparent 0 );
+
+        background-repeat: repeat-y;
+
+        background-size:
+          100px 200px, /* circle */
+          50px 200px, /* highlight */
+          150px 200px,
+          350px 200px,
+          300px 200px,
+          250px 200px;
+
+        background-position:
+          0 0, /* circle */
+          0 0, /* highlight */
+          120px 0,
+          120px 40px,
+          120px 80px,
+          120px 120px;
+
+        animation: shine 1s infinite;
+      }
+
+      @keyframes shine {
+        to {
+          background-position:
+            0 0,
+            100% 0, /* move highlight to right */
+            120px 0,
+            120px 40px,
+            120px 80px,
+            120px 120px;
+        }
+      }
+
+    .bg-image {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    background-color: #f0f0f0;
+   /* background-image: url();*/
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 30%
+    }
+          
+          </style>
+   
+             <script src=" https://cdn.jsdelivr.net/npm/jquery.skeleton.loader@1.1.2/dist/jquery-1.9.1.min.js"></script>
+           
+           
+            
+                       <link rel="stylesheet" href="https://rawgit.com/enbifa/jquery.skeleton.loader/master/example/css/jquery.skeleton.css"/>
+            <script type="text/javascript">
+            // This will lzay-load FontAwesome icons
+            
+            console.log('ini', '{{ 'assets/css/app.css'|theme }}')
+            </script>
+
+            
+             <link rel="preload" href="https://www.frisianflag.com/themes/rainlab-bonjour/assets/fonts/Brevia-Black.woff" as="font" crossorigin="anonymous">
+            <link rel="preload" href="https://www.frisianflag.com/themes/rainlab-bonjour/assets/fonts/Brevia-Regular.woff" as="font" crossorigin="anonymous">
+            <link rel="preload" href="https://www.frisianflag.com/themes/rainlab-bonjour/assets/fonts/Brevia-Semibold.woff" as="font" crossorigin="anonymous">
+            <link rel="preload" href="https://www.frisianflag.com/themes/rainlab-bonjour/assets/fonts/Brevia-Bold.woff" as="font" crossorigin="anonymous">
+            <link rel="preload" href="https://www.frisianflag.com/themes/rainlab-bonjour/assets/fonts/slick.woff" as="font" crossorigin="anonymous"> 
+            <link rel="preload" href="https://www.frisianflag.com/themes/rainlab-bonjour/assets/fonts/fontawesome-webfont.woff2?v=4.6.3" as="font" crossorigin="anonymous"> 
+                                 
+            <link rel="stylesheet" href="{{ 'assets/libs/cookie/cookieconsent.min.css'|theme }}"  as="style" media="none" onload="if(media!='all')media='all'"/>    
+            <link rel="stylesheet" href="{{ 'assets/fancybox/helpers/jquery.fancybox-buttons.css'|theme }}"   as="style" media="none" onload="if(media!='all')media='all'" />
+            <link rel="stylesheet" href="{{ 'assets/fancybox/helpers/jquery.fancybox-thumbs.css'|theme }}"  as="style" media="none" onload="if(media!='all')media='all'" />
+            <link rel="stylesheet" href="{{ 'assets/fancybox/jquery.fancybox.css'|theme }}" as="style" media="none" onload="if(media!='all')media='all'" />
+            
+           
+          <link rel="stylesheet" href="{{ 'assets/css/app-home.css'|theme }}"/>
+              <link rel="stylesheet" href="{{ 'assets/css/style.css'|theme }}"/>
+<script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "url": "https://www.frisianflag.com/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.frisianflag.com/pencarian?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>            
+
+            
+    <header class="header">
+        <!-- desktop menu -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2 col-xs-4">
+                    <a href="{{ 'home'|page }}" class="logo">
+                        <div class="logo__default">
+                            <img src="{{ 'assets/img/logo.png'|theme }}" srcset="{{ 'assets/img/logo2x.png'|theme }} 2x" alt="Frisian Flag"/>
+                             <span>BUILDING<br/>STRONG FAMILIES<br/>SINCE 1871</span>
+                        </div>
+                        <div class="logo__small">
+                            <img src="{{ 'assets/img/logo-small.png'|theme }}" srcset="{{ 'assets/img/logo-small2x.png'|theme }} 2x" alt="Frisian Flag">
+                            <span>BUILDING<br/>STRONG FAMILIES<br/>SINCE 1871</span>
+                        </div>
+                    </a>
+                </div>
+                {% if Agent.isDesktop()  %}
+                    <div class="col-md-10 navigation hidden-xs hidden-sm hidden-md">
+                        <ul class="top-menu">
+                            <li class="top-menu__list">
+                                <a href="{{ 'contact-us'|page }}">{{'hubungi-kami'|_}}</a>
+                            </li>
+                            <li class="top-menu__list">
+                                {% if user %}
+                                    <a href="{{ url('/user-dashboard') }}">{{ user.name }} | </a><a data-request="onLogout" data-request-data="redirect: '/'">{{'Logout'|_}}</a>
+                                {% else %}
+                                    <!-- <a data-toggle="modal" href="#content-confirmation">{{'masuk/daftar'|_}}</a> -->
+                                    
+                                    <!-- popup tim definite -->
+                                    <a href="javascript:;" data-fancybox data-src="#login">{{'masuk/daftar'|_}}</a>
+                                {% endif %}
+                            </li>
+                            {% if str_contains(url_current(), '/id') %} 
+                                {% set url_last = str_replace_first('/id','',url_current())  %}
+                            {% elseif str_contains(url_current(), '/en') %} 
+                                {% set url_last = str_replace_first('/en','',url_current())  %}
+                            {% else %}
+                                {% set url_last = url_current()  %}
+                            {% endif %}
+                            {% set url_trans = str_replace_first(url('/'),'',url_last) %}
+                            <li class="top-menu__list hide">
+                                <a href="{{ url('/id')}}{{url_trans}}">
+                                    <img src="{{ 'assets/img/id.png'|theme }}" srcset="{{ 'assets/img/id2x.png'|theme }} 2x" alt="Indonesian">
+                                </a>
+                            </li>
+                            <li class="top-menu__list hide">
+                                <a href="{{ url('/en')}}{{url_trans}}">
+                                    <img src="{{ 'assets/img/uk.png'|theme }}" srcset="{{ 'assets/img/uk2x.png'|theme }} 2x" alt="English">
+                                </a>
+                            </li>
+                        <li class="top-menu__list top-menu__list--button"><a href="javascript:;" class="searchbtn"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                        </ul>
+                        {% if str_contains(url_current(), '/en') %} 
+                            {% partial 'site/nav-en' %}
+                        {% else %}
+                            {% partial 'site/nav' %}
+                        {% endif %}
+                    </div>    
+                {% endif %}
+                <div class="col-xs-8 col-sm-8 pull-right">
+                    <div class="bar-mobile">
+                        <div class="wrp-navbar">
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end of desktop menu -->
+        <!-- Mobile Menu -->
+        <div class="headermenu-xs">
+            <div class="wrp-headmenu-xs">
+                {% if str_contains(url_current(), '/en') %} 
+                       
+                {% else %}
+                    {% partial 'site/mobilemenu' %}
+                {% endif %}
+                <div class="bottom">
+                    <ul>
+                        <li><a href="javascript:;" data-fancybox data-src="#login"><div class="user-img"></div><span>MASUK /<br /> DAFTAR</span></a></li>
+                        <li><a href="{{ 'contact-us'|page }}"><div class="contact-us-img"></div><span>{{'hubungi-kami'|_|uppercase}}</span></a></li>
+                        <li><a href="javascript:;" class="searchbtn"><div class="search-img"></div><span>SEARCH</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- end of mobile menu -->
+        <!-- search form -->
+        <div class="searchform">
+          <form action="{{ 'home'|page }}/pencarian" method="get">
+            <input name="q" id="search-result" type="search" placeholder="Masukkan kata kunci dan tekan enter">
+            <a class="closesearch"><i class="fa fa-close"></i> </a>
+          </form>
+        </div>
+    </header>
+    {% partial 'site/login' %}
+    {% partial 'site/register' %}
+    {% partial 'site/forgot-password' %}

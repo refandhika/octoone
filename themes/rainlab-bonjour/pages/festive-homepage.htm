@@ -1,0 +1,56 @@
+title = "Resep Ramadan untuk Menangkan Puasamu"
+url = "/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu"
+layout = "ramadhan2024"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/resep-ramadan-kaya-rasa-di-rumah-aja"
+==
+<?php
+function onStart(){
+
+$cmsController     = new Cms\Classes\Controller;
+$pages = Definite\Activities\Models\Activity::where('id',209)->get()->first();
+if($pages){
+	$this['title'] = "Intip Inspirasi Resep Ramadan 30 Hari dari Frisian Flag";
+    $this->page->title = "Intip Inspirasi Resep Ramadan 30 Hari dari Frisian Flag";
+    $this->page->meta_title = "Intip Inspirasi Resep Ramadan 30 Hari dari Frisian Flag";
+    $this->page->meta_description = "Temukan inspirasi menu sahur, takjil, dan kue kering selama 30 hari Ramadan dari Frisian Flag untuk menjaga energi dan semangat Anda saat berpuasa.";
+    //$this->page->meta_description = $pages->meta_description;
+
+	$resepmanis = Definite\Activities\Models\Activity::whereHas('categories',function($query) {
+           $query->where('id', 22);
+        })->select('title', 'slug', 'featured_image')->
+	whereIn('id',[256,231,230])->
+	orderBy('created_at', 'desc')->take(3)->get();
+
+	$this['resepmanis'] = $resepmanis;
+
+	$kuekering = Definite\Activities\Models\Activity::whereHas('categories',function($query) {
+           $query->where('id', 21);
+        })->select('title', 'slug', 'featured_image')->
+	whereIn('id',[218,292,273])->
+	orderBy('created_at', 'asc')->take(3)->get();
+	$this['kuekering'] = $kuekering;
+
+$this['promo'] = [
+            'festive-ramadan/promo/Alfamart-rtd2.png' => 'https://www.frisianflag.com/resepsahurterbaik/promo-terbaik',
+            'festive-ramadan/promo/Blibli-rtd.png' => 'https://www.frisianflag.com/resepsahurterbaik/promo-terbaik',
+            'festive-ramadan/promo/Jdiid-rtd.png' => 'https://www.frisianflag.com/resepsahurterbaik/promo-terbaik'];
+}else{
+  return $cmsController->render("/404");
+}
+
+
+//$this->page->amp_url = $this->pageUrl('festive-ramadan-amp');
+//$this->page->amp_url = $this->pageUrl('amp-festive-homepage');
+}
+?>
+==
+{% partial 'ramadhan2024-banner' %}
+
+{% partial 'ramadhan2024-recipes' %}
+
+{% partial 'ramadhan2024-tips-2' %}
+
+{% partial 'ramadhan2024-promo-2' %}

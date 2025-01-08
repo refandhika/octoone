@@ -1,0 +1,81 @@
+description = "halaman ramadhan 2023"
+
+[viewBag]
+==
+{% partial 'site/banner-festive-2021' %}
+
+<div class="content-festive">
+<div class="container">
+    <div class="section-terlezat">
+        <h2 class="underline">Resep Terlezat Kami</h2>
+         <div class="row">
+             <div class="col-sm-6 col-md-4 item-thumb">
+                <a href="https://www.frisianflag.com/resepsahurterbaik">
+                    <div>
+                        <div class="item-thumb-img">
+                            <img src="{{ 'ramadan-2023/rtd.jpg'|media}}" class="w-100" alt="Resep Sahur Terbaik"/>
+                        </div>
+                        <div class="text-center">
+                            <span class="button bg-orange">lihat resepnya</span>
+                        </div>
+                    </div>
+                </a>
+                </div>
+                <div class="col-sm-6 col-md-4 item-thumb">
+                <a href="/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu/resep-takjil-manis-tujuh-langkah">
+                    <div>
+                        <div class="item-thumb-img">
+                            <img src="{{ 'ramadan-2023/scm.jpg'|media}}" class="w-100" alt="Resep Sahur Terbaik"/>
+                        </div>
+                        <div class="text-center">
+                            <span class="button bg-orange">lihat resepnya</span>
+                        </div>
+                    </div>
+                </a>
+                </div>
+                <div class="col-sm-6 col-md-4 item-thumb">
+                <a href="/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu/resep-ramadan-kue-kering-pilihan">
+                    <div>
+                        <div class="item-thumb-img">
+                            <img src="{{ 'ramadan-2023/fmp.jpg'|media}}" class="w-100" alt="Resep Kue Kering Pilihan"/>
+                        </div>
+                        <div class="text-center">
+                            <span class="button bg-orange">lihat resepnya</span>
+                        </div>
+                    </div>
+                </a>
+                </div>
+         </div>
+    </div>
+    <div class="section-terlezat">
+        <h2 class="underline">Video Resep Terbaik</h2>
+         <div class="row">
+             <div class="col-sm-6 col-md-4 item-thumb">
+                    <div>
+                        <div class="item-thumb-img video">
+                        <iframe src="https://www.youtube.com/embed/y1OEx29G2jY?enablejsapi=1&rel=0" id="ik_player_iframe" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"  allowfullscreen frameBorder="0" style="border:none;"></iframe>
+                        </div>
+                    </div>
+             </div>
+             <div class="col-sm-6 col-md-4 item-thumb">
+                    <div>
+                        <div class="item-thumb-img video">
+                        <!-- <iframe src="https://www.youtube.com/embed/XfbtfnBbhvk?enablejsapi=1&rel=0" id="ik_player_iframe" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"  allowfullscreen></iframe> -->
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/zjfe8g8b7xk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                    </div>
+             </div>
+             <div class="col-sm-6 col-md-4 item-thumb">
+                    <div>
+                        <div class="item-thumb-img video">
+                        <iframe src="https://www.youtube.com/embed/qKhkNcfxefI?enablejsapi=1&rel=0" id="ik_player_iframe" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"  allowfullscreen></iframe>
+                        </div>
+                    </div>
+             </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% partial 'festive-sticky-desktop' %}
+{% partial 'site/footer-without-login' %}

@@ -1,0 +1,44 @@
+title = "Safety Policy"
+url = "/amp/perusahaan-kami/safety-policy"
+layout = "basic-amp"
+is_hidden = 0
+==
+<?php
+use definite\aboutus\models\BusinessSafety;
+
+function onEnd() {
+
+    // hardcoded on purpose. sorry.
+    $this['record'] = BusinessSafety::where('slug', 'safety-policy')->first();
+    $this['baseUrl'] = url(Config::get('cms.storage.media.path'));
+    
+}
+?>
+==
+<div class="cover">
+    <amp-img 
+        src="{{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }}"
+        srcset="{{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }} 640w,
+               {{ 'assets/img/95-TAHUN-FF_mobile-banner.jpg'|theme }} 320w"
+        width="50"
+        height="50"
+        layout="responsive"
+        alt="an image">
+    </amp-img>
+</div>
+
+<div class="breadcrumb">
+    <a href="{{ 'home'|page }}">{{'beranda'|_}}</a> /
+    <a href="#">{{ trans_pick(record, 'title') }}</a>
+</div>
+
+<!-- s:business priciples -->
+<div class="detail_text">
+    <h1 aria-hidden="true" class="seo-heading">{{ trans_pick(record, 'title') }}</h1>
+    <div class="text">
+      <p>{{record.description}}<p>
+        <a class="btn_more" download="" href="{{baseUrl}}{{record.attachment}}" target="_self">Unduh Safety Policy</a>
+      </p>
+    </div>
+</div>
+<!-- e:business priciples -->

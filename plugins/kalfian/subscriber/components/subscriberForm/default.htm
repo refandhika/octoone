@@ -1,0 +1,9 @@
+<form data-request="subscriberform::onSaveKalfian" data-request-validate data-request-flash>
+    <input type="email" name="email" placeholder="Your email here" required>
+    <button type="submit" class="newsletter__form__btn"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+    <div id="result"></div>
+    <div data-validate-for="email"></div>
+    {% flash success %}
+        <p>{{ message }}</p>
+    {% endflash %}
+</form>

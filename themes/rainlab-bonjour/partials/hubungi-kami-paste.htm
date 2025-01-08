@@ -1,0 +1,166 @@
+[viewBag]
+==
+<?php
+
+
+namespace Definite\Contact\Components;
+
+use Cms\Classes\ComponentBase;
+use Input;
+use Mail;
+use Redirect;
+
+class ContactForm extends ComponentBase
+{
+    public function componentDetails()
+    {
+        return [
+            'name' => 'Contact Form',
+            'description' => 'Simple contact form',
+        ];
+    }
+
+    public function onSend()
+    {
+        if ('karir' == Input::get('question')) {
+            $vars = ['firstname' => Input::get('first-name'), 'lastname' => Input::get('last-name'), 'email' => Input::get('email'), 'mobile' => Input::get('phone'), 'content' => Input::get('messages')];
+
+            Mail::send('definite.contact::mail.message', $vars, function ($message) {
+                $message->from('contactUs@frisianflag.com');
+                $message->to('frisianflag.career@frieslandcampina.com');//->cc('aldo@definite.co.id');
+                $message->subject('Topik pertanyaan anda: Karir');
+            });
+
+            return Redirect::to('/hubungi-kami');
+        } elseif ('produk' == Input::get('question')) {
+            $vars = ['firstname' => Input::get('first-name'), 'lastname' => Input::get('last-name'), 'email' => Input::get('email'), 'mobile' => Input::get('phone'), 'content' => Input::get('messages')];
+
+            Mail::send('definite.contact::mail.message', $vars, function ($message) {
+                $message->from('contactUs@frisianflag.com');
+                $message->to('Layanan.peduli@frieslandcampina.com');//->cc('aldo@definite.co.id');
+                $message->subject('Topik pertanyaan anda: Produk');
+            });
+
+            return Redirect::to('/hubungi-kami');
+        } elseif ('program-promosi' == Input::get('question')) {
+            $vars = ['firstname' => Input::get('first-name'), 'lastname' => Input::get('last-name'), 'email' => Input::get('email'), 'mobile' => Input::get('phone'), 'content' => Input::get('messages')];
+
+            Mail::send('definite.contact::mail.message', $vars, function ($message) {
+                $message->from('contactUs@frisianflag.com', 'Layanan Peduli');
+                $message->to('Layanan.peduli@frieslandcampina.com');//->cc('aldo@definite.co.id');
+                $message->subject('Topik pertanyaan anda: Program-promosi');
+            });
+	    return Redirect::to('/hubungi-kami');
+        } elseif ('supplier-distributors' == Input::get('question')) {
+            $vars = ['firstname' => Input::get('first-name'), 'lastname' => Input::get('last-name'), 'email' => Input::get('email'), 'mobile' => Input::get('phone'), 'content' => Input::get('messages')];
+
+            Mail::send('definite.contact::mail.message', $vars, function ($message) {
+                $message->from('contactUs@frisianflag.com', 'Layanan Peduli');
+                $message->to('Layanan.peduli@frieslandcampina.com');//->cc('aldo@definite.co.id');
+                $message->subject('Topik pertanyaan anda: Supplier-distributors');
+            });
+
+            return Redirect::to('/hubungi-kami');
+        } elseif ('media-press' == Input::get('question')) {
+            $vars = ['firstname' => Input::get('first-name'), 'lastname' => Input::get('last-name'), 'email' => Input::get('email'), 'mobile' => Input::get('phone'), 'content' => Input::get('messages')];
+
+            Mail::send('definite.contact::mail.message', $vars, function ($message) {
+                $message->from('contactUs@frisianflag.com', 'Layanan Peduli');
+                $message->to('editorial@frieslandcampina.com');//->cc('aldo@definite.co.id');
+                $message->subject('Topik pertanyaan anda: Media-press');
+            });
+
+            return Redirect::to('/hubungi-kami');
+        } else {
+            $vars = ['firstname' => Input::get('first-name'), 'lastname' => Input::get('last-name'), 'email' => Input::get('email'), 'mobile' => Input::get('phone'), 'content' => Input::get('messages')];
+
+            Mail::send('definite.contact::mail.message', $vars, function ($message) {
+                $message->from('contactUs@frisianflag.com', 'Layanan Peduli');
+                $message->to('Layanan.peduli@frieslandcampina.com');//->cc('aldo@definite.co.id');
+                $message->subject('Topik pertanyaan anda: Others');
+            });
+
+            return Redirect::to('/hubungi-kami');
+        }
+    }
+}
+?>
+==
+<div id='main-section' class="container-fluid">
+
+    <div class="col-md-12">
+        <div class="breadcrumb">
+            <div class="container-two">
+                <ul>
+                    <li><a href="{{ 'home'|page }}">Home</a> </li>
+                    <li><a href="{{ 'contact-us'|page }}">{{ this.page.title }}</a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="default-content contactpage">
+            <div class="container-two">
+                <h3>{{ this.page.title }}</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="imgwrp"><img src="{{ 'assets/img/imgcontact.jpg'|theme }}" alt="Image Contact"/></div>
+                        <h4>Untuk informasi lebih lanjut, hubungi kami pada:</h4><br>
+
+                        <p><strong>Layanan Bebas Pulsa</strong></p>
+                        <p>Senin-Jum'at, 08.00-16.30 WIB<br/> 0800-1821-406</p><br>
+                        <p><strong>Alamat</strong></p>
+                        <p>Jl. Raya Bogor KM 5, Pasar Rebo, Jakarta Timur, Indonesia 13760</p><br>
+                        <p><strong>Email:</strong></p>
+                        <p><a href="mailto:layanan.peduli@frieslandcampina.com">layanan.<wbr>peduli@frieslandcampina.com</a></p><br>
+                        <p><strong>Alamat Pengiriman</strong></p>
+                        <p>PO BOX 4047 JKT 13040</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="contactform contactform--contact">
+                          <form id="form-contact" data-request="onSend">
+
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.6879747557878!2d106.86233580032058!3d-6.3046643134339995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ed8270f024bf%3A0x28376d129bd2241f!2sFrisian+Flag%2C+Jl.+Raya+Bogor+No.Km5%2C+Gedong%2C+Ps.+Rebo%2C+Kota+Jakarta+Timur%2C+Daerah+Khusus+Ibukota+Jakarta+13760!5e0!3m2!1sen!2sid!4v1495451361377" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                            <br>
+                            <h4>Atau kirim pesan menggunakan form ini</h4>
+                            <div class="row">
+                              <div class="col-md-6"><input type="text" name="first-name" placeholder="Nama Depan" required ></div>
+                              <div class="col-md-6"><input type="text" name="last-name" placeholder="Nama Belakang" required ></div>
+                              <div class="col-md-12"><input type="text" name="email" id="email" placeholder="Alamat Email" required ></div>
+                              <div class="col-md-12"><input type="text" name="phone"  placeholder="No. Telephone / Handphone" required  id="mobile" onkeyup="enterNumber()" maxlength="13"></div>
+                              <div class="col-md-12">
+                                <select name="question" required>
+                                  <option value="">Silahkan pilih topik pertanyaan Anda</option>
+                                  <option value="karir">Karir</option>
+                                  <option value="produk">Produk</option>
+                                  <option value="program-promosi">Program Promosi</option>
+                                  <option value="supplier-distributors">Supplier/Distributors</option>
+                                  <option value="media-press">Media/Press Release</option>
+                                  <option value="others">Others</option>
+                                </select>
+                              </div>
+                              <div class="col-md-12"><textarea name="messages" placeholder="Tulis Pesan Anda (maksimum 500 karakter)" required maxlength="500"></textarea></div>
+                              <div class="col-md-12"> <input type="submit" value="SEND MESSAGE" class="button medium" /></div></div>
+                            </div>
+
+                          </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> <!-- end mainsection -->
+<script>
+function enterNumber(){
+
+  var e = document.getElementById('mobile');
+
+  if (!/^[0-9]+$/.test(e.value)) 
+{ 
+
+e.value = e.value.substring(0,e.value.length-1);
+}
+}   
+</script>

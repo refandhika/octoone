@@ -1,0 +1,27 @@
+columns:
+    username:
+        label: Username
+        type: text
+        searchable: true
+        sortable: true
+    title:
+        label: Title
+        type: text
+        searchable: true
+        sortable: true
+    section:
+        label: Section
+        type: text
+        searchable: true
+        sortable: true
+    url:
+        label: Url
+        type: text
+        searchable: true
+        sortable: true
+    action:
+        label: Action
+        type: text
+    updated_at:
+        label: Time
+        type: datetime

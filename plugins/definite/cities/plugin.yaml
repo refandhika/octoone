@@ -1,0 +1,6 @@
+plugin:
+    name: 'definite.cities::lang.plugin.name'
+    description: 'definite.cities::lang.plugin.description'
+    author: Definite
+    icon: oc-icon-building
+    homepage: ''

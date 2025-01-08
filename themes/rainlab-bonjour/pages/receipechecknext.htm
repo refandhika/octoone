@@ -1,0 +1,76 @@
+title = "recipe-check-next"
+url = "/recipe-check-next"
+is_hidden = 0
+==
+<?php
+function onStart(){
+    $title = Input::get('title');
+    $sort = Input::get('sort');
+    $category = Input::get('category');
+    
+    
+    $limit = 2;
+    $next = 2;
+    if($title != ""){
+        $limit = 6;
+        $next = 6;
+    }
+    $index    = intval(Input::get('index')) + $next;
+    $count = 0;
+    if($title == ""){
+    if($category == "all" || $category == "SCM")
+    $scm = Definite\Activities\Models\Activity::leftJoin('definite_activities_categories_activities', 'definite_activities_categories_activities.activity_id', '=', 'definite_activities_activity.id')->
+    leftJoin('definite_activities_category', 'definite_activities_category.id', '=', 'definite_activities_categories_activities.category_id')->whereRaw('definite_activities_category.id = ? AND ( definite_activities_activity.title like ? OR definite_activities_activity.description like ?)', [ 22, '%'.$title.'%', '%'.$title.'%' ] )->
+            select('definite_activities_activity.title', 'definite_activities_activity.slug', 'definite_activities_activity.featured_image')->orderBy('definite_activities_activity.updated_at', $sort)->offset($index)->limit($limit)->get();
+    
+    if($category == "all" || $category == "RTD")
+    $rtd = Definite\Activities\Models\Activity::leftJoin('definite_activities_categories_activities', 'definite_activities_categories_activities.activity_id', '=', 'definite_activities_activity.id')->
+    leftJoin('definite_activities_category', 'definite_activities_category.id', '=', 'definite_activities_categories_activities.category_id')->whereRaw('definite_activities_category.id = ? AND ( definite_activities_activity.title like ? OR definite_activities_activity.description like ?)', [ 19, '%'.$title.'%', '%'.$title.'%' ] )->
+            select('definite_activities_activity.title', 'definite_activities_activity.slug', 'definite_activities_activity.featured_image')->orderBy('definite_activities_activity.updated_at', $sort)->offset($index)->limit($limit)->get();
+    
+    if($category == "all" || $category == "FMP")
+    $fmp = Definite\Activities\Models\Activity::leftJoin('definite_activities_categories_activities', 'definite_activities_categories_activities.activity_id', '=', 'definite_activities_activity.id')->
+    leftJoin('definite_activities_category', 'definite_activities_category.id', '=', 'definite_activities_categories_activities.category_id')->whereRaw('definite_activities_category.id = ? AND ( definite_activities_activity.title like ? OR definite_activities_activity.description like ?)', [ 21, '%'.$title.'%', '%'.$title.'%' ] )->
+            select('definite_activities_activity.title', 'definite_activities_activity.slug', 'definite_activities_activity.featured_image')->orderBy('definite_activities_activity.updated_at', $sort)->offset($index)->limit($limit)->get();
+    
+    
+    if($category == "SCM"){
+        
+       if(!$scm->isEmpty()) $count += 1;
+    }
+    elseif($category == "RTD")
+    {
+        if(!$rtd->isEmpty()) $count += 1;
+        
+    }
+    elseif($category == "FMP")
+    {
+        if(!$fmp->isEmpty()) $count += 1;
+        
+    }else{
+        if(!$scm->isEmpty()) $count += 1;
+        if(!$fmp->isEmpty()) $count += 1;
+        if(!$rtd->isEmpty()) $count += 1;
+        
+        
+    }
+    }
+    else{
+        
+        
+        $allquery = Definite\Activities\Models\Activity::leftJoin('definite_activities_categories_activities', 'definite_activities_categories_activities.activity_id', '=', 'definite_activities_activity.id')->
+    leftJoin('definite_activities_like', 'definite_activities_like.activity_id', '=', 'definite_activities_activity.id')->
+    leftJoin('definite_activities_category', 'definite_activities_category.id', '=', 'definite_activities_categories_activities.category_id')->whereRaw('(definite_activities_category.id = 19 AND ( definite_activities_activity.title like ? OR definite_activities_activity.description like ?)) or (definite_activities_category.id = 21 AND ( definite_activities_activity.title like ? OR definite_activities_activity.description like ?)) or (definite_activities_category.id = 22 AND ( definite_activities_activity.title like ? OR definite_activities_activity.description like ?))', [ '%'.$title.'%', '%'.$title.'%', '%'.$title.'%', '%'.$title.'%', '%'.$title.'%', '%'.$title.'%' ] )->
+            select('definite_activities_like.total as total_likes','definite_activities_category.slug as slug_category','definite_activities_activity.title', 'definite_activities_activity.slug', 'definite_activities_activity.featured_image')->orderByRaw(" CASE
+    WHEN definite_activities_activity.title LIKE '%".$title."%' THEN 1
+    WHEN definite_activities_activity.description LIKE '%".$title."%' THEN 2
+    ELSE 3
+  END, definite_activities_activity.updated_at DESC")->offset($index)->limit($limit)->get();
+  
+      if(!$allquery->isEmpty()) $count += 1;
+    }
+     $this['result'] = $count;   
+}
+?>
+==
+{"items":{{ result | raw  }}}

@@ -1,0 +1,25 @@
+description = "Wholesellers Layout"
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[SessionClose]
+load_js = 1
+
+[session]
+security = "all"
+==
+<?php
+function onStart(){
+    
+}
+?>
+==
+{% partial 'site/header' %}
+
+{% page %}
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

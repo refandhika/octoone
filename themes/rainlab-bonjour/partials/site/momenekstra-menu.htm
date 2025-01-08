@@ -1,0 +1,34 @@
+[viewBag]
+==
+<div class="container-menutab">
+    <div class="container-one">
+      <ul>
+        <li class="toggle visible-xs visible-sm">
+          <a href="javascript:;" class="active">
+              {% if ( this.page.url == '/momenekstra' ) %}
+                  #MomenEkstraValentine
+              {% elseif ( this.page.url == '/momenekstra/pemenang' ) %}
+                  Pemenang
+              {% elseif ( this.page.url == '/aktivitas-kami/momenekstra/indomaret' ) %}
+                  #MomenEkstraIndomaret
+              {% endif %}
+          </a>
+        </li>
+        <li>
+          <a href="{{ '/momenekstra' }}" {{ (this.page.url == '/momenekstra' ? 'class="active hidden-xs"' : '') }}>
+            #MomenEkstraValentine
+          </a>
+        </li>
+        <li>
+         <a href="{{ '/momenekstra/pemenang' }}" {{ (this.page.url == '/aktivitas-kami/momenekstra/alfamart' ? 'class="active hidden-xs"' : '') }}>
+            Pemenang
+          </a>
+        </li>
+         <!-- <li>
+          <a href="{{ '/aktivitas-kami/momenekstra/indomaret' }}" {{ (this.page.url == '/aktivitas-kami/momenekstra/indomaret' ? 'class="active hidden-xs"' : '') }}>
+            #MomenEkstraIndomaret
+          </a>
+        </li> -->
+      </ul>
+    </div>
+</div>

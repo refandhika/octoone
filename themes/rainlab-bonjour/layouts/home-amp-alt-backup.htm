@@ -1,0 +1,273 @@
+[staticPage]
+useContent = 1
+default = 0
+
+[activityCategories]
+
+[activityList]
+
+[filtergallery]
+
+[milkpediaList]
+
+[milkpediaCategories]
+
+[NewsCategories]
+
+[NewsList]
+
+[NewsList NewsList2]
+
+[productCategories]
+
+[productList]
+==
+{% component 'NewsList' %}{% partial 'site/header-home-amp' %}
+<div class="menus-amp">
+        <div class="menu-amp">
+            <div>
+                <amp-img src="/themes/rainlab-bonjour/assets/img/logo.png" width="80" height="80"></amp-img>
+                <span class="logo__text">BUILDING<br>STRONG FAMILIES<br>SINCE 1871</span>
+            </div>
+            <a class="menu-amp-action" on="tap:sidebar-left.toggle">
+                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" class="svg-inline--fa fa-bars fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg>
+            </a>
+        </div>
+        <div id="target-element-left">
+        </div>
+    </div>
+
+    <div class="carousel-container">
+    {% if param == '' %}
+        <amp-carousel width="480" height="480" layout="responsive" type="slides" class="amp-slider-costum" autoplay loop delay="5000">
+            {% for slider in sliders %}
+                <div>
+                    <div class="main-slide__caption">
+                        <div class="col-md-8">
+                            <h2>
+                               {{ slider.title|raw }}
+                            </h2>
+                            <p>{{ slider.description|raw }}</p>
+                            
+                            
+                            
+                        </div>
+                    </div>
+                    {% if slider.button_url or slider.button_text %}
+                    <a href="{{ slider.button_url }}"
+                                {% if slider.google_analytics %}
+                                onclick="{{ slider.google_analytics }}"
+                                {% endif %}
+                                class="button-amp button button--large">
+                                {{ slider.button_text|raw }}
+                            </a>
+                            {% endif %}
+                    <amp-img class="carousel-slider-img" src="{{ url(slider.image_mobile|media) }}" width="480" height="480" layout="responsive"></amp-img>
+                </div>
+            {% endfor %}        
+        </amp-carousel>
+        {% else %}
+        <amp-carousel width="480"
+  height="480"
+  delay="2000"
+  layout="responsive"
+  type="slides"
+  role="region"
+  type="slides"
+  autoplay
+">
+<div>
+
+  <amp-img src="/storage/app/media/Banner/Kebiasaan-Baru_Mobile_400x400px_1.png"
+    width="480"
+    height="480"
+    layout="responsive"
+    alt="a sample image"></amp-img>
+    <a href="#" class="button-amp button button--large">
+                                 Selengkapnya
+                            </a>
+    </div>
+<div>
+
+  <amp-img src="/storage/app/media/Banner/Frisian Flag Resep Nikmat Praktis DirumahAja sqr.jpeg"
+    width="480"
+    height="480"
+    layout="responsive"
+    alt="a sample image"></amp-img>
+    <a href="#" class="button-amp button button--large">
+                                 Selengkapnya
+                            </a>
+    </div>
+
+<div>
+
+  <amp-img src="/storage/app/media/Banner/Kebiasaan_Baru_Mobile_.png"
+    width="480"
+    height="480"
+    layout="responsive"
+    alt="a sample image"></amp-img>
+    <a href="#" class="button-amp button button--large">
+                                 Selengkapnya
+                            </a>
+    </div>
+    <div>
+   
+  <amp-img src="/storage/app/media/Banner/Slider_Konsumen-Cerdas_Mobile.jpg"
+    width="480"
+    height="480"
+    layout="responsive"
+    alt="a sample image"></amp-img>
+    <a href="#" class="button-amp button button--large">
+                                 Selengkapnya
+                            </a>
+    </div>
+
+    
+</amp-carousel>
+         <!--<amp-carousel width="480" height="480" layout="responsive" role="region" type="slides" class="amp-slider-costum2" autoplay delay="5000">
+            {% for slider in sliders %}
+                <div>
+                    <div class="main-slide__caption">
+                        <div class="col-md-8">
+                            <h2>
+                               {{ slider.title|raw }}
+                            </h2>
+                            <p>{{ slider.description|raw }}</p>
+                            
+                            
+                            
+                        </div>
+                    </div>
+                    {% if slider.button_url or slider.button_text %}
+                    <a href="{{ slider.button_url }}"
+                                {% if slider.google_analytics %}
+                                onclick="{{ slider.google_analytics }}"
+                                {% endif %}
+                                class="button-amp button button--large">
+                                {{ slider.button_text|raw }}
+                            </a>
+                            {% endif %}
+                    <amp-img class="carousel-slider-img" src="{{ url(slider.image_mobile|media) }}" width="480" height="480" layout="responsive"></amp-img>
+                </div>
+            {% endfor %}        
+        </amp-carousel>-->
+        {% endif %}
+    </div>
+
+    <div class="home-amp-container">
+       <amp-carousel width="300" height="300" layout="responsive" type="slides" class="amp-carousel-costum">
+             {% for category in productCategories.featured %}
+                    <div class="carousel-child">
+                        <amp-img class="carousel-img" src="{{ category.featured_image| mediathumb_resize('width', 350, 90)  }}" width="280" height="280" layout="responsive"></amp-img>
+                        <div class="carousel-header title-blue">
+                            <h3>{{ category.title }}</h3>
+                            <a class="button-amp" style="background-color: #124a9d" href="{{ 'our-products-archive'|page({'slug': category.slug}) }}">Selengkapnya</a>
+                        </div>
+                    </div>
+            {% endfor %}
+        </amp-carousel>
+
+        <br />
+
+        <div class="card-amp-container">
+        {% if milkpediaList.records %}
+        {% set milkpedias = milkpediaList.records.take(1) %}
+        {% for milkpediaPost in milkpedias %}
+           <div class="card-amp">
+                <amp-img class="card-amp-img" src="{{ milkpediaPost.featured_image | mediathumb_resize('width', 640, 90)  }}" width="300" height="300" layout="responsive"></amp-img> 
+                <a href="{{ 'our-milkpedia'|page({"slug": milkpediaPost.categories.first().slug}) }}" class="card-amp-category">Milkpedia</a>
+                <div class="card-amp-meta">
+                    <header class="card-amp-head">
+                        <h3>{{trans_pick(milkpediaPost, 'title')}}</h3>
+                    </header>
+                    <a class="button-amp" href="{{ 'our-milkpedia-single'|page({"category-slug": milkpediaPost.categories.first().slug, "slug": milkpediaPost.slug}) }}">Lebih Lanjut</a>
+                </div>
+            </div>
+         {% endfor %}
+        {% endif %}
+        
+        {% if NewsList.records %}
+        {% set News = NewsList.records %}
+        {% for NewsPost in News %}
+            <div class="card-amp">
+                <amp-img class="card-amp-img" src="{{ NewsPost.featured_image | mediathumb_resize('width', 640, 90)  }}" width="300" height="300" layout="responsive"></amp-img> 
+                <a href="{{'news'|page}}" class="card-amp-category">Berita</a>
+                <div class="card-amp-meta">
+                    <header class="card-amp-head">
+                        <h3>{{trans_pick(NewsPost, 'title')}}</h3>
+                    </header>
+                    <a class="button-amp" href="{{ 'news-single'|page({"slug": NewsPost.slug}) }}">Lebih Lanjut</a>
+                </div>
+            </div>
+        {% endfor %}
+        {% endif %}
+        </div>
+
+        <br />
+
+        <h2 class="section-amp-title">AKTIVITAS KAMI</h2>
+
+        <div class="card-amp-container">
+            {% for activity in activities %}
+                {% if _key < 3 %}
+                    {% if _key < 2 %}
+                    {% else %}
+                        <div class="card-amp">
+                            <amp-img class="card-amp-img" src="{{ activity.image|media }}" width="300" height="300" layout="responsive"></amp-img> 
+                            <div class="card-amp-meta">
+                                <header class="card-amp-head">
+                                    <h3>{{ trans_pick(activity, 'title')|raw }}</h3>
+                                </header>
+                                <a href="{{ activity.button_url }}" class="button-amp">Lebih Lanjut</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+    
+            {% for activity in activities %}
+                {% if _key > 2 %}
+                    <div class="card-amp">
+                        <amp-img class="card-amp-img" src="{{ activity.image|media }}?v=2" width="300" height="300" layout="responsive"></amp-img> 
+                        <div class="card-amp-meta">
+                            <header class="card-amp-head">
+                                <h3>{{ trans_pick(activity, 'title')|raw }}</h3>
+                            </header>
+                            <a href="{{ activity.button_url }}" class="button-amp">Lebih Lanjut</a>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    
+{% partial 'site/footer-home-amp' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->
+
+{# Please don't remove, the lines bellow for adding custom field to home page #}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->
+
+<!-- {repeater name="sliders" prompt="Add slider" tab="Slider"}
+    {text name="title" label="Title (id)" placeholder="Type title (id)"}{/text}
+    {text name="title_en" label="Title (en)" placeholder="Type title (en)"}{/text}
+    {richeditor name="description" label="Description (id)" placeholder="Type description (id)"}{/richeditor}
+    {richeditor name="description_en" label="Description (en)" placeholder="Type description (en)"}{/richeditor}
+    {mediafinder name="image" label="Image Desktop" placeholder="Insert an image for desktop" mode="image"}{/mediafinder}
+    {mediafinder name="image_mobile" label="Image Mobile" placeholder="Insert an image for mobile" mode="image"}{/mediafinder}
+    {text name="button_text" label="Button Text (id)" placeholder="Type button text (id)"}{/text}
+    {text name="button_text_en" label="Button Text (en)" placeholder="Type button text (en)"}{/text}
+    {text name="button_url" label="Button URL" placeholder="Type button url"}{/text}
+    {text name="google_analytics" label="Google Analytics" placeholder="Google Analytics"}{/text}
+{/repeater} -->
+
+<!-- {repeater name="activities" prompt="Add activities" tab="Section Activity"}
+    {text name="title" label="Title (id)" placeholder="Type title (id)"}{/text}
+    {text name="title_en" label="Title (en)" placeholder="Type title (en)"}{/text}
+    {mediafinder name="image" label="Image Desktop" placeholder="Insert an image for desktop" mode="image"}{/mediafinder}
+    {mediafinder name="image_mobile" label="Image Mobile" placeholder="Insert an image for mobile" mode="image"}{/mediafinder}
+    {text name="button_text" label="Button Text (id)" placeholder="Type button url (id)"}{/text}
+    {text name="button_text_en" label="Button Text (en)" placeholder="Type button url (en)"}{/text}
+    {text name="button_url" label="Button URL" placeholder="Type button url"}{/text}
+{/repeater} -->

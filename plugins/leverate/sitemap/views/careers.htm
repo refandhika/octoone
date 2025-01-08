@@ -1,0 +1,27 @@
+<?xml-stylesheet type='text/xsl' href="{{ url('/themes/rainlab-bonjour/assets/src/style.xsl') }}"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+	   {% for submenu in submenus %}
+        <url>
+            <loc>{{ submenu.url}}</loc>
+            <lastmod>{{ submenu.created_at|date('c') }}</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.3</priority>
+        </url>
+        {% endfor %}
+     {% for event in events %}
+	        <url>
+	            <loc>{{url('/karir/event')}}/{{event.slug}}</loc>
+	            <lastmod>{{ event.created_at|date('c') }}</lastmod>
+	            <changefreq>weekly</changefreq>
+	            <priority>0.6</priority>
+	        </url>
+	    {% endfor %}    
+    {% for article in articles %}
+        <url>
+            <loc>{{url('/karir/artikel')}}/{{article.slug}}</loc>
+            <lastmod>{{ article.created_at|date('c') }}</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+        </url>
+    {% endfor %}        
+</urlset>

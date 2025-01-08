@@ -1,0 +1,59 @@
+description = "Layout for Indomaret - Hadiah"
+
+[staticPage]
+useContent = 1
+default = 0
+[account]
+paramCode = "code"
+forceSecure = 0
+[session]
+
+[SessionClose]
+load_js = 1
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+    	<img src="{{ 'assets/img/indomaret/header-prize-desktop.jpg'|theme }}" class="hidden-xs" />
+      <img src="{{ 'assets/img/indomaret/header-prize-mobile.jpg'|theme }}" class="visible-xs" />
+    </div>
+</div>
+
+{% partial 'site/indomaret-menu' %}
+
+<div id='main-section' style="padding: 30px 0;">
+    <a href="{{ '/aktivitas-kami/promo-indomaret/daftar' }}">
+      <img src="{{ 'assets/img/indomaret/prize.jpg'|theme }}" class="hidden-xs" />
+      <img src="{{ 'assets/img/indomaret/prize-mobile.jpg'|theme }}" class="visible-xs" />
+    </a>
+
+    <div class="visible-xs text-center" style="margin-top: 30px;">
+      <a href="{{ '/aktivitas-kami/promo-indomaret/daftar' }}" class="button">Ikuti Sekarang</a>
+    </div>
+</div>
+
+<style>
+	.default-content h3 {
+	    font-size: 22px;
+	    line-height: 1.2;
+	}
+
+	@media screen and (min-width: 767px) {
+		.default-content h3 {
+			font-size: 30px;
+		}
+	}
+
+  @media screen and (max-width: 767px) {
+    .m-bottom-15 {
+      margin-bottom: 15px;
+    }
+  }
+</style>
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

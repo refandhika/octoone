@@ -1,0 +1,92 @@
+title = "Event AMP"
+url = "/amp/karir/event"
+layout = "basic-amp"
+is_hidden = 0
+
+[CareerMenu]
+
+[CareerEvent]
+==
+<?php
+function onEnd(){
+    $this->page->set_rule = "disable";
+    $this->page->title    =  "Event";
+}
+?>
+==
+<div class="cover">
+        <amp-img 
+            src="{{ 'assets/img/menukarir/home-mobile.jpg'|theme }}"
+            srcset="{{ 'assets/img/menukarir/home-mobile.jpg'|theme }} 640w,
+                  {{ 'assets/img/menukarir/home-mobile.jpg'|theme }} 320w"
+            width="50"
+            height="50"
+            layout="responsive"
+            alt="Home Mobile">
+        </amp-img>
+</div>
+<amp-accordion class="title_home">
+    <section class="menus">
+        <h4 class="arrow_down"><a href="#" target="_self">{{ 'Event' }}</a></h4>
+        <p>
+          {% set careermenus = CareerMenu.submenus %}
+                {% for menu in careermenus %}
+                    {% if menu.id == 3 %}
+                          	    
+                          	    <a href="{{url('/karir')}}/{{menu.slug}}" class="active">{{menu.title}}</a>
+                          	    
+                          	     {% elseif menu.id == 1 %}
+                          	    
+                          	     <a href="{{url('/karir')}}">{{menu.title}}</a>
+                          	     
+                          	     {% else %}
+                          	     
+                          	     <a href="{{url('/karir')}}/{{menu.slug}}">{{menu.title}}</a>
+                    {% endif %}      	     
+                {% endfor %}
+         
+        </p>
+    </section>
+</amp-accordion>
+
+<!--s:breadcrumb-->
+<div class="breadcrumb">
+    <a href="{{ 'home'|page }}">{{ 'beranda'|_ }}</a> /
+    <a href="{{ 'karir'|page }}">{{ 'Karir' }}</a> /
+    <a href="#">{{'Event'}}</a> 
+</div>
+<!--s:breadcrumb-->
+
+<!--s:content-->
+<div class="detail_text">
+        <h1>Event</h1>
+        <div class="text">
+            <p>Frisian Flag will hold a recruitment event for new graduates and professionals in order to give more chances to grow together with us. Prepare yourself for the event!
+            </p>
+        </div>           
+</div>
+<!--s:content-->
+
+<!--s:event-->
+<section class="event">
+   
+   <div class="detail_text ">
+      {% set events = CareerEvent.events %}
+      {% for event in events%}
+      <div class="card--large">
+               <div title ="{{event.alt_img}}" data-mobile="{{ event.thumb_img | media}}" class="card__thumbnail card-ovl card__activity event" style="background-image: url('{{ event.thumb_img | media}}');">
+                  <div class="card__meta">
+                     <!--div class="card__head event">
+                        <h3>{{ event.title }}</h3>
+                        <span class="date">{{event.start_date.format('d F ') }} - {{event.end_date.format('d F Y')}}</span>
+                        
+                     </div-->
+                     <a style="top: 8px;position: relative;" href="{{url('karir/event')}}/{{event.slug}}" class="button button-content">Lebih Lanjut</a>
+                  </div>
+               </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+</section>
+<!--s:event-->

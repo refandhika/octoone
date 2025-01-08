@@ -1,0 +1,37 @@
+columns:
+    id:
+        label: id
+        type: number
+    resep:
+        label: resep
+        type: text
+    k:
+        label: k
+        type: number
+    p:
+        label: p
+        type: number
+    l:
+        label: l
+        type: number
+    e:
+        label: e
+        type: number
+    kalsium:
+        label: kalsium
+        type: text
+    gula:
+        label: gula
+        type: text
+    vita:
+        label: vita
+        type: text
+    vitd:
+        label: vitd
+        type: text
+    resep_id:
+        label: resep_id
+        type: number
+    category:
+        label: category
+        type: text

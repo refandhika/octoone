@@ -1,0 +1,20 @@
+columns:
+    title:
+        label: Title
+        type: text
+        searchable: true
+        sortable: true
+    description:
+        label: Description
+        type: text
+        searchable: false
+    caption:
+        label: Caption
+        type: text
+    slug:
+        label: Slug
+        type: text
+    published_date:
+        label: 'Published Date'
+        type: date
+        searchable: false

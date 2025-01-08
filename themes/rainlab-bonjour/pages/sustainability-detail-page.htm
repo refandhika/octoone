@@ -1,0 +1,77 @@
+title = "Sustainability Detail Page"
+url = "/sustainability/:category/:slug"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/sustainability-detail-page"
+==
+<?php
+function onStart(){
+    
+        $this->page->amp_url = $this->pageUrl('sustainability-detail-amp-page');
+        $slug         = $this->param('slug');
+        $category     = $this->param('category');
+        $pageslug = $category."/".$slug;
+         
+        $cmsController     = new Cms\Classes\Controller;
+         $arrContextOptions =array(
+            "ssl"=>array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
+        );
+
+        
+        $pages = Definite\Activities\Models\Activity::whereHas('categories',function($query) {
+           $query->where('id', 23);
+        })->where('slug',$pageslug)->get()->first();
+        
+        if($pages){
+          
+          
+          $this['content'] = $pages;
+          $this['pageid'] = $pages->id;
+          $this['title'] = $pages->title;
+          $this['image_banner'] = $pages->image_banner;
+          $this['description'] = $pages->description;
+          
+          $this->page->title = ucwords(strtolower($pages->title));
+          $this->page->meta_title = $pages->meta_title;
+          $this->page->meta_description = $pages->meta_description;
+          $this->page->og_image = $pages->featured_image;
+          $this->page->og_description = $pages->meta_description;
+
+        
+        }else{
+          return $cmsController->render("/404");
+        }
+
+}
+?>
+==
+{% partial 'site/header' %}
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp banner-lp" style='background:url({{ image_banner |media }})'>
+    	<div class="container">
+    	    
+        	<div class="banner-panel">
+        	    <div class="banner-description">
+        			<h2>{{title}}</h2>
+        		</div>
+        	</div>
+    	</div>
+    	
+    </div>
+</div>
+
+<div class="section">
+    <div id='main-section' class="container sustainability-pages">
+        {{ description | raw }}
+    </div>
+</div>
+<link rel="stylesheet" href="{{ 'assets/css/sustainability.css'|theme }}?v=33">
+
+
+{% partial 'site/footer' %}

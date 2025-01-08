@@ -1,0 +1,7 @@
+columns:
+    id:
+        label: id
+        type: number
+    main_banner:
+        label: 'Main Banner'
+        type: text

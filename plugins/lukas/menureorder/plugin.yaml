@@ -1,0 +1,17 @@
+plugin:
+    name: 'Menu Reorder'
+    description: 'Plugin to reorder administration menu entries'
+    author: 'Lukas Dürrenberger'
+    icon: oc-icon-reorder
+    homepage: 'https://my-gate.net/'
+permissions:
+    manage_reorder:
+        tab: 'Menu Reorder'
+        label: 'Manage Reorder'
+navigation:
+    main-menu-item:
+        label: 'Menu Reorder'
+        url: lukas/menureorder/menu
+        icon: icon-align-justify
+        permissions:
+            - manage_reorder

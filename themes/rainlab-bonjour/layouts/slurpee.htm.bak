@@ -1,0 +1,97 @@
+description = "Layout for Slurpee Pages"
+
+[staticPage]
+
+==
+{% partial 'site/header' %}
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+    	<img src="{{ 'assets/img/slurpee/desktop/banner.jpg'|theme }}" class="hidden-xs" />
+        <img src="{{ 'assets/img/slurpee/mobile/banner.jpg'|theme }}" class="visible-xs" />
+    </div>
+</div>
+<div class="container-menutab container-menutab--five">
+    <div class="container-one">
+        <ul class="breadcrumb">
+            <li class="toggle visible-xs visible-sm"><a href="javascript:;" class="active">Sluurprise</a></li>
+               <li>
+                    <a href="/aktifitas-kami/sluurprise" class="active">
+                        Sluurprise
+                    </a>
+                </li>
+                <li>
+                    <a href="/aktifitas-kami/sluurprise/syarat-ketentuan/"  >
+                       Syarat &amp; Ketentuan
+                    </a>
+                </li>                  
+        </ul>
+    </div>
+</div>
+
+<div id='main-section' class="container" style="padding: 20px 0;">
+    <div class="col-md-12">
+        <div class="default-content">
+           <div class="col-md-12">
+             <h2 style="margin-top: 0;">CARANYA IKUTAN</h2> <br />
+           </div>
+           <div class="col-md-12">
+               <img src="{{ 'assets/img/slurpee/desktop/mechanism.png'|theme }}" class="hidden-xs" />
+               <img src="{{ 'assets/img/slurpee/mobile/mechanism.png?2'|theme }}" srcset="{{ 'assets/img/slurpee/mobile/mechanism@2x.png?2'|theme }} 2x" class="visible-xs" />
+           </div>
+
+           <div class="col-md-12">
+                <br />
+                <h5>Info lebih lanjut, <a href="/aktifitas-kami/sluurprise/syarat-ketentuan/">klik di sini</a></h5>
+           </div>
+
+           <div class="col-md-12">
+                <hr />
+                <h2>BANYAK SLUURPRISE-NYA</h2> <br />
+           </div>
+
+           <div class="col-md-12">
+               <img src="{{ 'assets/img/slurpee/desktop/prizes.png'|theme }}" class="hidden-xs" />
+               <img src="{{ 'assets/img/slurpee/mobile/pemenang.png'|theme }}" srcset="{{ 'assets/img/slurpee/mobile/pemenang@2x.png'|theme }} 2x" class="visible-xs" />
+           </div>
+
+            <div class="col-md-12">
+                <br />
+               
+              <!--   <h5><sup>*</sup>Gambar hanya ilustrasi <a href=""><sup>*</sup>Syarat dan ketentuan berlaku</a></h5> -->
+
+                <hr />
+             
+                <br />
+           </div>
+
+           <div class="col-md-6 milkybox no-padding" style="margin-bottom: 10px;">
+                <a data-fancybox href="https://www.youtube.com/watch?v=93JosmJF8mM&autoplay=1&rel=0&controls=0&showinfo=0">
+                   <img src="{{ 'assets/img/slurpee/vid-2.png'|theme }}"/>
+                </a>
+                <br>
+           </div>
+           <div class="col-md-6 milkybox no-padding" style="margin-bottom: 10px;">
+                <a data-fancybox href="https://www.youtube.com/watch?v=HPL82E-W4l0&autoplay=1&rel=0&controls=0&showinfo=0">
+                    <img src="{{ 'assets/img/slurpee/vid.png?2'|theme }}"/>
+                </a>
+
+           </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .default-content h3 {
+        font-size: 22px;
+        line-height: 1.2;
+    }
+
+    @media screen and (min-width: 767px) {
+        .default-content h3 {
+            font-size: 30px;
+        }
+    }
+</style>
+
+{% partial 'site/footer' %}

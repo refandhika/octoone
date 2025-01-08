@@ -1,0 +1,4 @@
+title: Young
+modelClass: Definite\Ourpurposes\Models\Young
+toolbar:
+    buttons: reorder_toolbar

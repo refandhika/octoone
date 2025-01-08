@@ -1,0 +1,54 @@
+<div data-control="toolbar">
+            <button
+        class="btn btn-default oc-icon-trash-o"
+        disabled="disabled"
+        onclick="$(this).data('request-data', {
+            checked: $('.control-list').listWidget('getChecked')
+        })"
+        data-request="onDelete"
+        data-request-confirm="<?= e(trans('backend::lang.list.delete_selected_confirm')) ?>"
+        data-trigger-action="enable"
+        data-trigger=".control-list input[type=checkbox]"
+        data-trigger-condition="checked"
+        data-request-success="$(this).prop('disabled', true)"
+        data-stripe-load-indicator>
+        <?= e(trans('backend::lang.list.delete_selected')) ?>
+    </button>
+
+    <button class="btn btn-primary oc-icon-cloud-download" id="exportLeads"> Export</button>
+</div>
+
+<script type="text/javascript">
+    $('#exportLeads').click(function() {
+        var filterSetting = $('.filter-setting').html();
+
+        if (filterSetting != 'all' && filterSetting != 'all periods') {
+            var settingFilt = $('.filter-setting').html();
+
+            if (settingFilt.indexOf('datetime') != -1 ) {
+                datesAttr = $('[data-scope-name="created_at"]').attr('data-scope-data');
+                dateParse = $.parseJSON(datesAttr);
+
+                start = dateParse['dates'][0];
+                end = dateParse['dates'][1];
+
+                if (end == null) {
+                    end = '∞ 23:59:59';
+                }
+            } else {
+                dateParse = settingFilt.split(" → ");
+
+                start = dateParse[0]+' 00:00:01';
+                end = dateParse[1]+' 23:59:59';
+            }
+
+            if (start == null) start = '';
+            if (end == null) end = '';
+        } else {
+            start = '';
+            end = '';
+        }
+
+        window.open("/campaign/export/indomaret?code=1LWrUKJiUi99"+"&start="+start+"&end="+end, '_blank');
+    });
+</script>

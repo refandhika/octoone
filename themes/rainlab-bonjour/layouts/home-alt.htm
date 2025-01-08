@@ -1,0 +1,2105 @@
+description = "Layout for Home Page Alt"
+
+[staticPage]
+useContent = 1
+default = 0
+
+[milkpediaList]
+
+[milkpediaCategories]
+
+[productCategories]
+
+[NewsList]
+
+[NewsCategories]
+
+[subscriberform]
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "all"
+
+[SessionClose]
+load_js = 1
+
+[Agent]
+
+[builderList]
+modelClass = "Definite\Products\Models\Category"
+scope = "scopeIsParent"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+<?php
+function onStart(){
+    $reorder = array(2, 1, 0, 3);
+    $newdata = [];
+    $data = DB::table('definite_products_category')->where("is_featured",1)->get();
+    foreach($reorder as $index) {
+        $newdata[$index] = $data[$index];
+    }
+    $this["customproductcategories"] = $newdata;
+    
+    $isLogin = Rainlab\User\Facades\Auth::check();
+    if( $isLogin ){
+        $users = Rainlab\User\Facades\Auth::getUser();    
+        $userId = $users->id;
+        
+    }else{
+            
+    }
+    
+    $cookie = "";
+    if(isset($_COOKIE['IMTCookie'])){
+        $this['cookie'] = true;
+         
+    }else{
+        $this['cookie'] = false;
+    }
+    //dd($this['cookie']);
+    
+    
+    $this['produk'] = \Definite\Activities\Models\Category::get();
+    $this['artikel'] = \Definite\Milkpedia\Models\Milkpedia::limit(4)->orderBy('id' , 'desc')->get();
+    $this['isLogin'] = $isLogin;
+    
+    $title = "";
+    $menu =Definite\Activities\Models\Activity::leftJoin('definite_activities_categories_activities', 'definite_activities_categories_activities.activity_id', '=', 'definite_activities_activity.id')->
+    leftJoin('definite_activities_detailsbahan', 'definite_activities_detailsbahan.resep', '=', 'definite_activities_activity.title')->
+    leftJoin('definite_activities_like', 'definite_activities_like.activity_id', '=', 'definite_activities_activity.id')->
+    leftJoin('definite_activities_category', 'definite_activities_category.id', '=', 'definite_activities_categories_activities.category_id')->whereRaw('(definite_activities_category.id = 19 AND ( definite_activities_activity.title like ? OR definite_activities_activity.bahan like ?)) or (definite_activities_category.id = 21 AND ( definite_activities_activity.title like ? OR definite_activities_activity.bahan like ?)) or (definite_activities_category.id = 22 AND ( definite_activities_activity.title like ? OR definite_activities_activity.bahan like ?))', [ '%'.$title.'%', '%'.$title.'%', '%'.$title.'%', '%'.$title.'%', '%'.$title.'%', '%'.$title.'%' ] )->
+            select('definite_activities_like.total as total_likes','definite_activities_category.slug as slug_category','definite_activities_activity.title', 'definite_activities_activity.slug', 'definite_activities_activity.featured_image','definite_activities_detailsbahan.e as energi','definite_activities_detailsbahan.l as lemak','definite_activities_detailsbahan.p as protein','definite_activities_detailsbahan.k as karbohidrat')->orderByRaw(" CASE
+    WHEN definite_activities_activity.title LIKE '%".$title."%' THEN 1
+    WHEN definite_activities_activity.bahan LIKE '%".$title."%' THEN 2
+    ELSE 3
+  END, definite_activities_detailsbahan.e DESC")->limit(3)->get();
+    $this['menu'] = $menu;
+    
+}
+
+function onEnd(){
+    //$this->page->amp_url = $this->pageUrl('home-amp');
+
+
+$this['GTMETRIX'] = 'NO';
+if(strpos($_SERVER['HTTP_USER_AGENT'], 'X11; Linux x86_64) AppleWebKit/537.36') !== false ||
+strpos($_SERVER['HTTP_USER_AGENT'], 'GTmetrix') !== false
+){
+ $this['GTMETRIX'] = 'YES';
+}
+
+
+}
+?>
+==
+{% set records = builderList.records %}
+{% set displayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsPage = builderList.detailsPage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
+{% set hiddenParts = false %}
+
+{% partial 'site/header' %}
+
+     <style>
+        @media screen and (max-width: 761px){
+            .main-slide .swiper-button-next, .main-slide .swiper-button-prev {
+                display: unset;
+            }
+            #main-slide.main-slide{
+                height: 50vh !important;    
+            }
+            .main-slide__bg{
+                height: 50vh !important;    
+            }
+            .swiper-slide a.button {
+                position: absolute;
+                left: 20px;
+                font-size: 12.5px;
+            }
+            
+            
+        }
+     
+        {% for slider in sliders %}
+        {% if Agent.isDesktop() %}
+            #slide-{{ _key + 1  }} {
+                background-image: url('{{ slider.image|media  }}');
+            }
+
+        {% endif %}
+        @media (max-width: 768px) {
+            #slide-{{ _key + 1 }} {
+                background-image: url('{{ slider.image_mobile|media }}');
+                background-position: center;
+                background-size: cover;
+            }
+
+        }
+        {% endfor %}
+    </style>
+
+
+<h1 aria-hidden="true" class="seo-heading">{{ 'selamat-datang-di-frisian-flag'|_ }}</h1>
+
+
+        
+{% if GTMETRIX == 'YES' %}
+<!--
+<style>
+.img-background {
+    position : relative;
+    top : 0;
+    left : 0;
+    object-fit : cover;
+    width : 100%;
+    height : 100%;
+}
+</style>
+                 <div class="swiper-slide">
+                    <div id="slide-1" class="main-slide__bg slideshow"
+                    >
+                        <picture>
+                          <source media="(max-width:767px)" srcset="{{ url(sliders[0].image_mobile|media) }}">
+                          <img src="{{ url(sliders[0].image|media) }}" class="img-background">
+                        </picture>
+                        <img src="" alt="" class="">
+                        <div class="main-slide__caption">
+                            <div class="col-md-8">
+                                <h2>
+                                   {{ sliders[0].title|raw }}
+                                </h2>
+                                <p>{{ sliders[0].description|raw }}</p>
+                                
+                                
+                                
+                            </div>
+                            
+                        </div>
+                        {% if sliders[0].button_url or sliders[0].button_text %}
+                        <a href="{{ sliders[0].button_url }}" class="button button--large">
+                                    {{ sliders[0].button_text|raw }}
+                                </a>
+                                {% endif %}
+                    </div>
+                </div> -->
+                <div class="static-baner-pages tt">
+                    <div class="imgwrp hidden-xs">
+                    <img src="{{ url(sliders[0].image|media) }}" alt="Desktop Banner FF"> 
+                </div>
+                <div class="imgwrp visible-xs">
+                    <img src="{{ url(sliders[0].image_mobile|media) }}" alt="Mobile Banner FF"> 
+                </div>
+            </div>
+{% endif %}
+
+{% if GTMETRIX == 'NO' %}
+<div id="slick-banner" class="swiper-container slick-banner new-banner home-alt-layout">
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            {% if GTMETRIX == 'NO' %}
+                {% for slider in sliders %}
+                    <div class="swiper-slide">
+                        <div id="slide-{{ _key + 1 }}" class="main-slide__bg slideshow"
+                            data-image-desktop="{{ url(slider.image|media) }}"
+                            data-image-mobile="{{ url(slider.image_mobile|media) }}">
+                            <div class="main-slide__caption">
+                                <div class="col-md-8">
+                                    <h2>
+                                       {{ slider.title|raw }}
+                                    </h2>
+                                    <p>{{ slider.description|raw }}</p>
+                                    
+                                </div>
+                                
+                            </div>
+                            {% if slider.button_url or slider.button_text %}
+                            <a href="{{ slider.button_url }}"
+                                        {% if slider.google_analytics %}
+                                        onclick="{{ slider.google_analytics }}"
+                                        {% endif %}
+                                        class="button button--large">
+                                        {{ slider.button_text|raw }}
+                                    </a>
+                                    {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+            <a class="main-slide__arrow to-section">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAiCAYAAAA3WXuFAAAAAXNSR0IArs4c6QAAAyBJREFUWAntl81rE0EUwGfSbJKm1CTiIQbBCl70poJHbeIHIib1EkHBolTryYN614DgTRG8JWpByaWFHhItSIv4B6j1ZFMphWDbbDRoY9uYtMmOb5JM3M1ks5tNIgidy9t57817v33zdncWozbGkdH3wmL60xkiSQMsDDHhlEBMbzKxkTWma0XiVpzlvrsCz/qLpPSOIHRYrqfXGOEkEvDx1clryXqb1tyk5aBmLyLpTiMY6k8Q2Uu2yAO1tc30hoEgK1eZukSH6ua6poaBoArmphkwEpraVYyGgVTita3eBtIq4XaF/rsKcY/u/ptT1szXpQOCIIjfJ66KWndk1O64FHWhfGGfrc88n345vMHiKHrIeT4ymEkuL5ISmt3MF1ec/vCjUIgofNjCdqQzEL6N1nMi2ip+KGTzyy5/5CKLV0vm8Ed8SCJThBBPxUgwfBpuPf74dKyTUM5AJEQIeogIsdA8cO2QEIpC/hE6LwPtHHp+ECMSB2MvVcoHAA53CqoCQ+7J41euCf3IR1xDkbNloJJUugvVsPOOVfcOQKnDsKywIxK5XwbCGFW3iRl52U6ltGGqN46wh/XQNI/Aa4xA6YWh2aBtpssHNHryWxBnX0OHneIxeA3G+AXAucFymrdWNRgvQPAo+DXoGX4V7NLnvh7rsTIQNQ9cGbP9/FGM6YWC25HgTMQq3CCDhl2xAs9ZMfJ+i11P14CofU9wvHetsApQ6KTCv6uTvzA0jQKIKv4tlBKG5udKvjRx4Xe/1RkA1Bnq0L2B5yw2s49ukzwHVyFmpJVaz2fjcFQ9wXQdlAmLTfA2+laqAtHkXYJShaE5mwJ1AaopjC6gGlQh+wreKT46Nzg0YWhczQqx5OXtMwqF8bxgtnkzk5dTLJ6a5J4yNUf69Nndbj+8pd+q+TTUtwBD1+uuEEvmGY3bc6IIRxUd29cijCEguqgClYKeQl4GykkDMDRGyxViiZtCYfwFemZQT8+weEzq7iG2gMmVsD9nd+8+16CnEgIy6WpgFksuDVeIBQkGx3tmNn/dgJ46CkeIhGWH9Yn8L4L56ZV/AM8HY6Gign9xAAAAAElFTkSuQmCC" width="19px">
+            </a>
+    </div>
+{% endif %}
+
+
+<style>
+body {
+    font-display: swap !important;
+}
+#section-produk-container {
+    width:100%; 
+    height:75rem;    
+}
+.ov-hidden{
+    overflow: hidden !important;    
+}
+.d-none{
+    display: none !important;    
+}
+.slick-dots li.slick-active button:before {
+    color: #0D62A7;
+}
+.new-banner {
+    max-width : 100% !important;
+}
+
+    .section-dua .produk-more{
+        border: unset;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 50px;
+        background: #f58d2a;
+        color: #fff;
+    }
+@media screen and (max-width: 767px){
+    #section-produk-container {
+        height:85rem;    
+    }
+    .fitur-wrapper .text-wrapper{
+        text-align: center;    
+    }
+    .container hr{
+        border: 0.5px solid #1674a4;
+        width: 90%;    
+    }
+    #main-slide{
+        height: 60vh !important;    
+    }
+    .overflow-unset {
+        overflow : unset !important;
+    }
+    .main-slide__bg{
+        height: 45vh !important;    
+    }
+    .swiper-slide a.button{
+        position: absolute;
+        bottom: 25px;
+        left: 10px;
+        font-size: 10px;
+        height: 30px;
+        display : flex;
+        align-items : center;
+        line-height: 0;    
+    }
+    .btn-wrapper-selengkapnya{
+        text-align: center;
+        margin-top: 35px;    
+    }
+    .btn-wrapper-selengkapnya a{
+        font-family: 'Brevia-Bold', sans-serif ;
+        text-decoration: underline;
+        font-size: 15px;    
+    }
+    
+    /* produk section */
+    .produk-section{
+        background: #54B8FC;
+        color: #fff;
+        padding: 0 0 25px 0;
+    }
+    .produk-section .slick-dots{
+        bottom: -35px !important;    
+    }
+    .produk-section .slick-list{
+        padding: unset !important;    
+    }
+    .produk-section .section-satu{
+        margin-bottom: 50px;    
+        padding: 50px 20px 0;
+        color: #1B4586;
+        font-size: 20px;
+    }
+    .produk-section .section-dua h2{
+        text-align: center;
+        font-size: 17.5px;
+        font-family: 'Brevia-Semibold', sans-serif;
+        margin-bottom: 30px;
+        color: #1B4586;
+    }
+    .produk-section .wrap{
+        width: 85vw !important;
+        display: inline-block;
+        padding: 7.5px;
+    }
+    .produk-section .wrap .produk-more{
+        border: unset;
+        padding: 10px 50px;
+        border-radius: 50px;
+        background: #f58d2a;
+        color: #fff;
+        display: flex;
+        margin: 25px auto 0;    
+    }
+    .produk-section .slider-produk .slick-slide h3{
+        font-size: 20px;
+        font-family: 'Brevia-Semibold', sans-serif;
+        transition: all .3s ease;
+        margin: unset !important;
+        text-align: center;
+    }
+    
+    .produk-section {
+        background: #fff;
+        padding: 20px;
+        border-bottom-left-radius: 20px;
+        box-shadow: 1px 1px 8px #6c6c6c;
+        height: auto;
+        transition: all .3s ease;
+        margin: 0;
+        border-bottom-right-radius: 20px;
+    }
+    .produk-section .slider-produk .slick-slide a{
+        transition: all .3s ease;
+    }
+    .produk-section .slider-produk .slick-slide:not(.slick-current){
+            
+    }
+    .produk-section .slider-produk .slick-slide:not(.slick-current) a{
+            display: flex;
+            align-items: center;    
+    }
+    .produk-section .slider-produk .slick-slide:not(.slick-current) .flex-produk{    
+        height: 250px;
+        margin-top: 50px;
+        overflow: hidden;
+    }
+    .produk-section .slider-produk .slick-slide:not(.slick-current) h3{
+        font-size: 0;
+    }
+    
+    .section-tiga{
+        width: 80%;
+        margin-left: 10%;    
+    }
+    .section-tiga .slick-dots{
+        bottom: -35px !important;    
+    }
+    .section-tiga h2{
+        color: #1B4586;
+        text-align: center;
+        font-size: 20px;
+        font-family: 'Brevia-Semibold', sans-serif;
+        margin: 50px 0;
+    }
+    .section-tiga .fitur-wrapper{
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+    }
+    .section-tiga div .img-wrapper{
+        margin-bottom: 20px;    
+    }
+    .section-tiga .btn-wrapper{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;    
+    }
+    .section-tiga .btn-wrapper .btn-1{
+        font-size: 12.5px;
+        color: #fff;
+        background: #1B4586;
+        border: unset;
+        padding: 10px;
+        border-radius: 50px;
+        font-family: 'Brevia-Semibold', sans-serif;
+    }
+    .section-tiga .btn-wrapper .btn-2{
+        font-size: 12.5px;
+        color: #fff;
+        background: #F58E29;
+        border: unset;
+        padding: 10px;
+        border-radius: 50px;
+        font-family: 'Brevia-Semibold', sans-serif;
+    }
+    
+    .related-article{
+        width: 100%;
+        overflow : hidden !important;
+    }
+    .related-article h2{
+        font-size: 22.5px;
+        color: #1a4586;
+        font-family: 'Brevia-Bold', sans-serif;
+        margin: 25px 0;
+        margin-left: 5%;
+    }
+    .related-article .main{
+        height: 250px;    
+    }
+    
+    .related-article .main .slick-list{
+        padding : unset !important
+    }
+    .related-article .slide > div{
+        position: relative;    
+        height: 250px;
+        border-radius: 20px;
+        overflow: hidden;
+        //background: linear-gradient(to top, rgb(0 0 0 / 30%) 44%, transparent 62%, transparent 80%);
+        transition: all .3s ease;
+    }
+    .related-article .slide.slick-current {
+        
+        
+    }
+    .related-article .slide:is(.slick-current) > div{
+        padding: 0 10px;    
+    }
+    .related-article .slide:not(.slick-current) > div{
+        height: 200px;
+        margin-top: 25px;
+    }
+    .related-article .slide img{
+        
+        top: 0;
+        left: 0;
+        z-index: -1;    
+        height: 250px;
+        object-fit: cover;
+        width: 100%;
+        border-radius: 20px;
+    }
+    
+    .related-article .main .slick-list{
+        overflow : unset !important;
+    }
+    .related-article .slide .related-text-wrap{
+        z-index: 2;
+        position: absolute;
+        bottom: 25px;
+    }
+    .related-article .slide .related-text-wrap h3{
+        color: #fff;
+        font-family: 'Brevia-Semibold', sans-serif;
+        padding: 20px;
+        font-size: 20px;
+    }
+    .related-article .slide .related-text-wrap a{
+        padding: 10px 20px;
+        background: #F58E29;
+        margin-left: 20px;
+        border-radius: 20px;
+        font-family: 'Brevia-Bold', sans-serif;
+        color: #fff;
+        font-size: 15px;
+    }
+    /* resep kami container */
+        .resep-kami-con{
+            margin: 50px 0 0;    
+        }
+        .resep-kami-con h2{
+            color: #1a4586;
+            font-family: 'Brevia-Bold', sans-serif;
+            margin-bottom: 50px;
+            margin-top: 0;
+            text-align: left;
+            font-size: 25px;
+            margin-left: 5%;
+        }
+        .resep-kami-con-wrapper .slick-track{
+            overflow: hidden;
+            display: flex;    
+        }
+        .resep-kami-con-wrapper .slick-list{
+            padding: unset !important;
+        }        
+        .resep-kami-con-wrapper .wrapper-tier {
+            width : 85vw !important    
+        }
+        .resep-kami-con .wrapper-tier:is(.slick-current){
+            padding: 10px;    
+            overflow-x: hidden;
+        }
+        .resep-kami-con .wrapper-tier:not(.slick-current) .card-wrapper{
+            margin-top: 60px;    
+        }
+        .resep-kami-con .wrapper-tier:not(.slick-current) .card-wrapper .image-wrapper{
+             height: 250px !Important;
+        }
+        .resep-kami-con .wrapper-tier:not(.slick-current) .card-wrapper .detail-wrapper{
+             height: 75px !Important;
+        }
+        .resep-kami-con .wrapper-tier:not(.slick-current) .card-wrapper .cta-wrapper{
+            height: 0px;
+            width: 0px;
+            display: none;
+        }
+        .resep-kami-con .resep-kami-con-wrapper{
+            display: flex;
+            gap: 20px;
+        }
+        .resep-kami-con .card-wrapper .wrapper-icon img{
+            width: 30px;
+            height: 30px;
+            margin: 15px 0 5px 0;
+        }
+        .resep-kami-con .card-wrapper .detail-wrapper{
+            display: flex;
+            justify-content: space-around;
+            background: #1B4586;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            padding: 10px 30px 0 30px;
+            text-align: center;
+        }
+        .resep-kami-con .card-wrapper .detail-wrapper .wrapper-icon{
+            display: flex;
+            flex-direction: column;
+            align-items: center;    
+        }
+        .resep-kami-con .card-wrapper .detail-wrapper .wrapper-text h3{
+            font-size: 20px;
+            font-family: 'Brevia-Bold', sans-serif;
+            margin: unset;
+        }
+        .resep-kami-con .card-wrapper .detail-wrapper .wrapper-text p{
+            font-size: 8px;
+            font-family: 'Brevia-Semibold', sans-serif;
+        }
+        .resep-kami-con .card-wrapper .detail-wrapper > div {
+            padding: 10px 0 20px 0;
+            color: #fff;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+        .resep-kami-con .card-wrapper .image-wrapper{
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: -15px;
+            z-index: 1;
+        }
+        .resep-kami-con .card-wrapper .cta-wrapper{
+            text-align: center;
+            display: flex;
+            flex-direction: column;    
+            transition: all .3s ease;
+        }
+        .resep-kami-con .card-wrapper .cta-wrapper h2{
+            font-family: 'Brevia-Bold', sans-serif;
+            color: #1a4586;    
+            text-align: left;
+            font-size: 22.5px;
+            margin: 30px 0 30px;
+        }
+        .resep-kami-con .card-wrapper .cta-wrapper a{
+            background: #F9901B;
+            color: #fff;
+            padding: 12.5px;
+            border-radius: 25px;
+            font-size: 17.5px;
+            font-family: 'Brevia-Bold', sans-serif;
+        }
+        .resep-kami-con .slick-dots {
+            bottom: 120px !important;
+        }
+    /* aktifitas kami */
+    .aktifitas-kami-wrapper{
+        width: 100%;
+        margin : auto;
+        padding: 0 0 30px 0 !important;
+    }
+    .aktifitas-kami-wrapper .container{
+        padding: unset !important;    
+    }
+    .aktifitas-kami-wrapper .container .slick-list{
+        padding: unset !important;    
+    }
+    .aktifitas-kami-wrapper .container .wrapper-content{
+        
+    }
+    .aktifitas-kami-wrapper .slick-dots{
+        bottom: -35px;    
+    }
+    .aktifitas-kami-wrapper .slick-list{
+        overflow-x: hidden !important; 
+        padding: unset !important;
+    }
+    .aktifitas-kami-wrapper h2{
+        font-size: 25px;
+        color: #1a4586;
+        font-family: 'Brevia-Semibold', sans-serif;
+        margin: 25px 0;
+        margin-left: 5%;
+    }
+    .aktifitas-kami-wrapper .aktifitas-kami{
+        height: 250px;    
+        margin-left : 5%;
+    }
+    .aktifitas-kami-wrapper .wrapper-content:is(.slick-current){
+        width: 300px !important;
+        margin: 0px !important;
+    }
+    .aktifitas-kami-wrapper .wrapper-content:not(.slick-current){
+        width: 300px !important;
+        height: 200px;
+        margin: 25px 10px !important;
+    }
+    .aktifitas-kami-wrapper .wrapper-content{
+        position: relative;    
+        height: 250px;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+    .aktifitas-kami-wrapper .wrapper-content img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;    
+        height: 250px;
+        object-fit: cover;
+        width: 100%;
+    }
+    .aktifitas-kami-wrapper .wrapper-content .text-wrapper{
+        z-index: 2;
+        position: absolute;
+        bottom: 25px;
+    }
+    .aktifitas-kami-wrapper .wrapper-content  .text-wrapper h3{
+        color: #fff;
+        font-family: 'Brevia-Semibold', sans-serif;
+        padding: 20px;
+        font-size: 15px;
+    }
+    .aktifitas-kami-wrapper .wrapper-content .text-wrapper a{
+        padding: 10px 20px;
+        background: #F58E29;
+        margin-left: 20px;
+        border-radius: 20px;
+        font-family: 'Brevia-Semibold', sans-serif;
+        color: #fff;
+        font-size: 12.5px;
+    }
+    
+    
+    .wrapper-bg-result{
+        height: 100vh;    
+        width: 100vw;
+        display: grid;
+        place-content: center;
+        background: rgb(0 0 0 / 70%);
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+    .wrapper-bg-result .modall{
+        position: relative;    
+    }
+    .wrapper-bg-result .modall .modal-body{
+        width: 85%;
+        margin-left: 7.5%;
+        border-radius: 15px;
+        height: 60vh;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 20px;
+    }   
+    .wrapper-bg-result .modall .modal-body p{
+        font-family: 'Brevia-Bold', sans-serif;
+        font-size: 20px;
+        text-align: center;
+        color: #1B4586;
+    }
+    .wrapper-bg-result .modall .modal-body .btn-wrapper{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .wrapper-bg-result .modall .modal-body .btn-wrapper button{
+        padding: 10px 20px;
+        border-radius: 50px;
+        border: 3px solid #53B8FB;
+        color: #1B4586;
+        font-family: 'Brevia-Semibold', sans-serif;
+        background: transparent;
+        font-size: 17.5px;
+        transition: all 0.3s ease;
+    }
+    .wrapper-bg-result .modall .modal-body .btn-wrapper button:hover{
+        border: unset !important;
+        color: #fff !important;
+        font-family: 'Brevia-Semibold', sans-serif;
+        background: #1B4586 !important;
+    }
+    .wrapper-bg-result .close{
+        position: absolute;
+        top: 10px;
+        right: 35px;
+        color: #1B4586;
+        border: 2px solid #1B4586;
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        display: grid;
+        place-content: center;
+        cursor: pointer;
+    }
+    .wrapper-bg{
+        height: 100vh;    
+        width: 100vw;
+        display: grid;
+        place-content: center;
+        background: rgb(0 0 0 / 70%);
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+    .wrapper-bg .modall{
+        height: 400px;
+        width: 90vw;
+        padding: 20px;
+        background: #fff;
+        position: relative;
+        border-radius: 15px;
+        z-index: 1000;
+        box-shadow: 3px 2px 6px #000;
+    }
+    .wrapper-bg .modall .modal-body{
+        
+    }
+    .wrapper-bg .modall .close{
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        width: 30px;
+        height: 30px;
+        border-radius: 20px;
+        display: grid;
+        place-items: center;
+        box-shadow: 2px 2px 5px rgb(0 0 0);
+        cursor: pointer;
+    }
+    
+    .wrapper-bg-mob{
+        height: 100vh;    
+        width: 100vw;
+        display: grid;
+        place-content: center;
+        background: rgb(0 0 0 / 70%);
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+    .wrapper-bg-mob .modall{
+        height: max-content;
+        width: 90vw;
+        padding: 45px;
+        background: #fff;
+        position: relative;
+        border-radius: 15px;
+        z-index: 1000;
+        box-shadow: 3px 2px 6px #000;
+    }
+    .wrapper-bg-mob .modall .modal-body{
+        height: max-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .wrapper-bg-mob .modall .modal-body img{
+        margin-bottom: 50px !important;
+    }
+    .wrapper-bg-mob .modall .close{
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        width: 30px;
+        height: 30px;
+        border-radius: 20px;
+        display: grid;
+        place-items: center;
+        box-shadow: 2px 2px 5px rgb(0 0 0);
+        cursor: pointer;
+    }   
+    .wrapper-bg-mob .modall .btnlanjut{
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1B4586;
+            color: #fff;
+            border: unset;
+            padding: 10px 35px;
+            border-radius: 50px;  
+    }
+}
+@media screen and (min-width: 762px){
+    
+    .produk-section .slider-produk .slick-slide .wrap .flex-produk button{
+        border: unset;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 50px;
+        background: #f58d2a;
+        color: #fff;
+    }
+    .btn-wrapper-selengkapnya{    
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 25px;
+    }
+    .btn-wrapper-selengkapnya a{
+        font-family: 'Brevia-Bold', sans-serif;
+        text-decoration: underline;  
+        font-size: 15px;
+    }
+    .desk-none{
+        display: none;    
+    }
+    .produk-section{
+        height: 75rem;
+        padding: 50px;
+        background: #54B8FC;
+    }
+    .produk-section .section-satu{
+        width: 50%;
+        margin-left: 25%;
+        text-align: center;
+        color: #fff;
+        font-family: 'Brevia-Regular', sans-serif;
+        margin-bottom: 50px;
+    }
+    .produk-section .section-dua .title{
+        text-align: center;
+        font-size: 20px;
+        font-family: 'Brevia-Semibold', sans-serif;
+        color: #fff;    
+    }
+    .section-tiga{
+        margin: 50px 0;    
+    }
+    .section-tiga h2{
+        color: #114a9d;
+        text-align: center;
+        font-family: 'Brevia-Bold', sans-serif;
+        margin-bottom: 50px;
+    }
+    .section-tiga .fitur-wrapper{
+        display: flex;
+        justify-content: space-between;    
+    }
+    .section-tiga div .img-wrapper img{
+        height: 460px;    
+    }
+    .section-tiga div .text-wrapper{
+        text-align : center;
+        margin-top: 10px;
+    }
+    .section-tiga div .btn-wrapper{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;    
+        align-items: center;
+        width: 80%;
+        margin-left: 10%;
+        margin-top: 10px;
+    }
+    .section-tiga div .btn-wrapper .btn-1{ 
+        background: #1B4586;
+        color: #fff;
+        width: 100%;
+        padding: 5px 20px;
+        border-radius: 50px;
+        font-family: 'Brevia-Semibold', sans-serif;
+        text-align: center;
+        border: unset;
+    }
+    .section-tiga div .btn-wrapper .btn-2{
+        background: #F58E29;
+        color: #fff;
+        width: 100%;
+        padding: 15px 20px;
+        border-radius: 50px;
+        font-family: 'Brevia-Semibold', sans-serif;
+        text-align: center;
+        border: unset;
+    }
+    
+    .wrapper-bg-result{
+        height: 100vh;    
+        width: 100vw;
+        display: grid;
+        place-content: center;
+        background: rgb(0 0 0 / 70%);
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+    .wrapper-bg-result .modall{
+        position: relative;    
+    }
+    .wrapper-bg-result .modall .modal-body{
+        width: 536px;
+        border-radius: 15px;
+        height: 480px;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 50px 75px;
+    }   
+    .wrapper-bg-result .modall .modal-body p{
+        font-family: 'Brevia-Black', sans-serif;
+        font-size: 20px;
+        width: 80%;
+        text-align: center;
+        margin-left: 10%;
+        color: #1B4586;
+    }
+    .wrapper-bg-result .modall .modal-body .btn-wrapper{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .wrapper-bg-result .modall .modal-body .btn-wrapper button{
+        padding: 10px 20px;
+        border-radius: 50px;
+        border: 3px solid #53B8FB;
+        color: #1B4586;
+        font-family: 'Brevia-Semibold', sans-serif;
+        background: transparent;
+        font-size: 17.5px;
+        transition: all 0.3s ease;
+    }
+    .wrapper-bg-result .modall .modal-body .btn-wrapper button:hover{
+        border: unset !important;
+        color: #fff !important;
+        font-family: 'Brevia-Semibold', sans-serif;
+        background: #1B4586 !important;
+    }
+    .wrapper-bg-result .close{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: #1B4586;
+        border: 2px solid #1B4586;
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        display: grid;
+        place-content: center;
+        cursor: pointer;
+    }
+    .wrapper-bg-picture{
+        height: 100vh;    
+        width: 100vw;
+        display: grid;
+        place-content: center;
+        background: rgb(0 0 0 / 70%);
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+    .wrapper-bg-picture .modall-picture{
+        width: 70vw;
+        height: 70vh;
+        background: rgb(227 227 227 / 90%);
+        padding: 40px;
+        border-radius: 25px;    
+        position: relative;
+    }
+    .wrapper-bg-picture .modall-picture .modal-body{
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+        border: 1px solid #000;
+        border-style: dashed;
+        background: #fff;
+        display: grid;
+        place-content: center;
+    }
+    .wrapper-bg-picture .modall-picture .modal-body.active{
+        border: 2px solid #000 !important;
+        border-style: solid !important;
+    }
+    .wrapper-bg-picture .modall-picture .modal-body img{
+        position: absolute;
+        top: 0;
+        object-fit : cover;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }    
+    .wrapper-bg-picture .upload{
+        border: unset;
+        background: transparent;
+        color: #1f54a1;
+    }
+    .wrapper-bg-picture .close{
+        position: absolute;
+        top: 0;
+        right: -40px;
+        color: #fff;
+        border: 1px solid #fff;
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        display: grid;
+        place-content: center;
+        cursor: pointer;
+    }
+    .wrapper-bg-picture .btnlanjut{
+        position: absolute;
+        bottom: 60px;
+        right: 60px;
+        padding: 10px 50px;
+        border-radius: 50px;
+        border: unset;
+        background: #53B8FC;
+        color: #fff;
+        font-family: 'Brevia-Semibold', sans-serif;
+        box-shadow: 1px 1px 4px #5a5a5a;
+    }
+    
+    
+    .wrapper-bg-imtinput {
+        height: 100vh;    
+        width: 100vw;
+        display: grid;
+        place-content: center;
+        background: rgb(0 0 0 / 70%);
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+    .wrapper-bg-imtinput .modall{
+        width: 100%;
+        height: max-content;
+        padding: 40px;
+        border-radius: 25px;
+        position: relative;
+    }
+    .wrapper-bg-imtinput  .modall .modal-body{
+        width: max-content;
+        height: max-content;
+        padding: 50px;
+        border-radius: 15px;
+        border: unset;
+        background: #fff;
+        display: grid;
+        place-content: center;
+    }
+    .wrapper-bg-imtinput form{
+        display: flex;
+        flex-direction: column;
+    }
+    .wrapper-bg-imtinput form > label{
+        font-family: 'Brevia-Semibold', sans-serif;
+        font-size: 20px;
+        color: #0d61a7;
+        margin: 10px;    
+    }
+    .wrapper-bg-imtinput form button{
+        width: max-content;
+        align-self: center;
+        border: unset;
+        padding: 10px 30px;
+        border-radius: 50px;
+        font-size: 15px;
+        font-family: 'Brevia-Semibold', sans-serif;
+        color: #fff;
+        background: #F58E1A;
+        margin-top: 40px;
+    }
+    .wrapper-bg-imtinput form > input[type="text"], .wrapper-bg-imtinput form > input[type="number"]{
+        width: 400px;
+        padding: 10px 20px;
+        border-radius: 50px;
+        border: unset;
+        box-shadow: inset 0px 2px 6px #434343;
+        background: rgb(237 237 237 / 50%);
+    }
+    .wrapper-bg-imtinput  .modall .modal-body.active{
+        border: 2px solid #000 !important;
+        border-style: solid !important;
+    }
+    .wrapper-bg-imtinput  .modall .modal-body img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }    
+    .wrapper-bg-imtinput  .close{
+        position: absolute;
+        top: 15px;
+        right: 0px;
+        color: #fff;
+        border: 1px solid #fff;
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        display: grid;
+        place-content: center;
+        cursor: pointer;
+    }
+    .wrapper-bg-imtinput  .btnlanjut{
+        position: absolute;
+        bottom: 60px;
+        right: 60px;
+        padding: 10px 50px;
+        border-radius: 50px;
+        border: unset;
+        background: #53B8FC;
+        color: #fff;
+        font-family: 'Brevia-Semibold', sans-serif;
+        box-shadow: 1px 1px 4px #5a5a5a;
+    }    
+    
+    
+    .wrapper-bg{
+        height: 100vh;    
+        width: 100vw;
+        display: grid;
+        place-content: center;
+        background: rgb(0 0 0 / 70%);
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+    .wrapper-bg .modall{
+        height: 400px;
+        width: 400px;
+        padding: 20px;
+        background: #fff;
+        position: relative;
+        border-radius: 15px;
+        z-index: 1000;
+        box-shadow: 3px 2px 6px #000;
+    }
+    .wrapper-bg .modall .modal-body{
+        
+    }
+    .wrapper-bg .modall .close{
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        width: 30px;
+        height: 30px;
+        border-radius: 20px;
+        display: grid;
+        place-items: center;
+        box-shadow: 2px 2px 5px rgb(0 0 0);
+        cursor: pointer;
+    }
+    
+    /* produk slider */
+    
+    .slider-produk .slick-list .slick-track{
+        gap: 20px;
+        display: flex;
+        margin: 20px 0;
+    }
+    .slider-produk .slick-list .slick-slide.slick-current{
+        
+    }
+    .slider-produk .slick-list .slick-track a{
+        padding: 20px;
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 2px 3px 10px #363636;  
+        min-height: 450px;
+    }
+    .slider-produk .slick-list .slick-track a .flex-produk{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .produk-section .slider-produk .slick-slide .wrap .flex-produk button{
+        border: unset;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 50px;
+        background: #f58d2a;
+        color: #fff;
+    }
+    .slider-produk .slick-list .slick-track a h3{
+        font-family: 'Brevia-Semibold', sans-serif;
+        font-size: 22px;
+        padding: 0 20px;
+        width: 100%;
+        text-align: center;
+    }
+    
+    
+    .aktifitas-kami-wrapper .container{
+        padding: unset !important    
+    }
+    .aktifitas-kami .slick-list, .related-article .slick-list{
+        overflow: unset !important;    
+        padding: unset !important;
+    }
+    /* related article */
+        .related-article{
+            margin-bottom: 50px;    
+        }
+        .related-article h2{
+            color: #1B4586;
+            font-family: 'Brevia-Bold', sans-serif;
+            font-size: 25px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .related-article .main{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-gap: 20px;    
+        }
+        .related-article .main .slide{
+            position: relative;
+            width: 100%;
+            height: auto;
+            border-radius: 25px;    
+            overflow: hidden;
+        }
+        .related-article .main .slide .related-text-wrap{
+            position: absolute;
+            bottom: 20px;
+            right: 0;
+            padding: 10px;    
+        }
+        .related-article .main .slide img{
+            width: 100%;
+            height: 275px;
+            object-fit: cover;
+        }
+        .related-article .main .slide .related-text-wrap h3{
+            margin: unset;
+            margin-bottom: 20px;
+            color: #fff;
+            font-family: 'Brevia-Bold', sans-serif;
+            font-size: 15px;
+        }
+        .related-article .main .slide .related-text-wrap a{
+            color: #fff;
+            background: #F58E1D;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 15px;
+            font-family: 'Brevia-Semibold', sans-serif;
+        }
+    
+        /* resep kami container */
+        .resep-kami-con{
+            margin: 50px 0;    
+        }
+        .resep-kami-con h2{
+            text-align: center;
+            color: #1a4586;
+            font-family: 'Brevia-Semibold', sans-serif;
+            margin-bottom: 50px;    
+        }
+        .resep-kami-con .card-wrapper{
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+        }
+        .resep-kami-con .resep-kami-con-wrapper{
+            display: flex;
+            gap: 20px;
+        }
+        .resep-kami-con .card-wrapper .wrapper-icon img{
+            width: 30px;
+            height: 30px;
+            margin: 15px 0 5px 0;
+        }
+        .resep-kami-con .card-wrapper .detail-wrapper{
+            display: flex;
+            justify-content: space-around;
+            background: #1B4586;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            padding: 0 30px;
+            text-align: center;
+        }
+        .resep-kami-con .card-wrapper .detail-wrapper .wrapper-text h3{
+            font-size: 20px;
+            font-family: 'Brevia-Bold', sans-serif;
+            margin: unset;
+        }
+        .resep-kami-con .card-wrapper .detail-wrapper .wrapper-text p{
+            font-size: 10px;
+            font-family: 'Brevia-Semibold', sans-serif;
+        }
+        .resep-kami-con .card-wrapper .detail-wrapper > div {
+            padding: 10px 0 20px 0;
+            color: #fff;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+        .resep-kami-con .card-wrapper .image-wrapper{
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            overflow: hidden;    
+            margin-bottom: -10px;
+            z-index: 1;
+        }
+        .resep-kami-con .card-wrapper .cta-wrapper{
+            text-align: center;
+            display: flex;
+            flex-direction: column;    
+        }
+        .resep-kami-con .card-wrapper .cta-wrapper h2{
+            font-family: 'Brevia-Bold', sans-serif;
+            color: #1a4586;    
+            text-align: center;
+            font-size: 25px;
+            margin: 25px 0 40px;
+        }
+        .resep-kami-con .card-wrapper .cta-wrapper a{
+            background: #F9901B;
+            color: #fff;
+            padding: 12.5px;
+            border-radius: 25px;
+            font-size: 20px;
+            font-family: 'Brevia-Semibold', sans-serif;
+        }
+        
+        /* aktifitas kami */
+        .aktifitas-kami-wrapper{
+            margin-bottom: 100px;    
+        }
+        .aktifitas-kami-wrapper h2{
+            text-align: center;
+            color: #1a4586;
+            font-family: 'Brevia-Semibold', sans-serif;
+            margin-bottom: 50px;
+        }
+        .aktifitas-kami-wrapper .aktifitas-kami{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: 20px;    
+        }
+        .aktifitas-kami-wrapper .aktifitas-kami .wrapper-content{
+            position: relative;
+            height: 250px;
+            border-radius: 25px;
+            overflow: hidden;    
+        }
+        .aktifitas-kami-wrapper .aktifitas-kami .wrapper-content img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            height: 250px;    
+            width: 100%;
+            object-fit: cover;
+        }
+        .aktifitas-kami-wrapper .aktifitas-kami .wrapper-content .text-wrapper{
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 20px;
+            place-content: flex-end;
+        }
+        .aktifitas-kami-wrapper .aktifitas-kami .wrapper-content .text-wrapper h3{
+            color: #fff;
+            font-family: 'Brevia-Semibold', sans-serif;
+            margin-bottom: 20px;
+        }
+        .aktifitas-kami-wrapper .aktifitas-kami .wrapper-content .text-wrapper a{
+            color: #fff;
+            background: #f98f1c;
+            width: fit-content;
+            padding: 7.5px 20px;
+            border-radius: 25px;
+            font-size: 12.5px;
+            font-family: 'Brevia-Semibold', sans-serif;
+        }
+        
+        
+}
+</style>
+<!-- layouts > home-alt.htm -->
+<h1 aria-hidden="true" class="seo-heading">{{ this.page.meta_title|_ }}</h1>
+<section id="section-produk-container">
+<div class="produk-section">
+    <div class="container">
+        <div class="section-satu">
+            Selamat datang di Frisian Flag. Temukan pilihan produk susu berkualitas, yang penuh manfaat dengan kandungan protein dan vitamin untuk setiap kebutuhan keluarga.
+        </div>
+        <div class="section-dua">
+            <h2 class="title">Nutrisi Untuk Keluarga</h2>
+            <div class="slider-produk">
+                <!-- loop here -->
+                {% for category in records %}
+                    <a class="wrap" href="/produk/{{ category.slug }}">
+                        <div class="flex-produk">
+                            <div class="image-product-{{category.id}}" data-image="{{ category.featured_image|media }}"><img loading="lazy" src="" alt=""></div>
+                            <div class=""><h3>{{ category.slug|replace({'-':' '}) }}</h3></div>
+                            <button type="button" class="produk-more">lihat selengkapnya</button>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<div class="section-tiga">
+    <div class="container">
+        <h2>Hitung Gizi Harian Keluargamu</h2>
+        {% if GTMETRIX == 'NO' %}
+        <div class="fitur-wrapper">
+            <div class="wrapper-imt">
+                <div class="img-wrapper">
+                    <img loading="lazy" src="https://www.frisianflag.com/storage/app/media/imt/IMT-THUMBNAIL.png" alt=""/>
+                </div>
+                <div class="text-wrapper">
+                    <h4>Kalkulator<br>Massa Tubuh</h4>
+                </div>
+                <div class="btn-wrapper">
+                    <!-- <button type="button" class="btn-1">Coba Hitung IMT & Gizi</button> -->
+                    <button type="button" class="btn-2" id="imt-btn-link">Hitung Sekarang</button>
+                </div>
+            </div>
+            <div class="wrapper-recall">
+                <div class="img-wrapper">
+                    <img loading="lazy" src="https://www.frisianflag.com/storage/app/media/imt/FR-THUMBNAIL.png" alt=""/>
+                </div>
+                <div class="text-wrapper">
+                    <h4>Kalkulator<br>Gizi Harian</h4>
+                </div>
+                <div class="btn-wrapper">
+                    <button type="button" class="btn-1" id="foodrecall-btn-camera">Foto Makananmu Disini</a>
+                    <button type="button" class="btn-2" id="foodrecall-btn-link">Hitung Sekarang</a>
+                </div>
+                <input type="file" name="mobphoto" id="mobphoto" capture="environtment" accept="image/*" class="d-none">
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="related-article">
+    <div class="container">
+    <h2>Inspirasi Gaya Hidup,<br>Tips & Nutrisi Keluarga</h2>
+        <div class="main">
+    	{% if milkpediaList.nutrisi  %}
+    	{% set milkpedias = milkpediaList.nutrisi.take(4) %}
+            {% for milkpediaPost  in milkpedias %}
+            <div class="slide">
+                <div class="related-img-{{loop.index}}" data-image="{{ milkpediaPost.featured_image | mediathumb_resize('width', 640, 90)  }}">
+                    <img loading="lazy" src="" alt="">
+                    <div class="related-text-wrap">
+                        <h3>{{milkpediaPost.title}}</h3>
+                        <a href="{{ 'our-milkpedia-single'|page({"category-slug": milkpediaPost.categories.first().slug, "slug": milkpediaPost.slug}) }}">LEBIH LANJUT</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% endif %}
+        </div>
+        <div class="btn-wrapper-selengkapnya">
+            <a href="{{'milkipedia' | page}}" id="article-all">Lihat Artikel Selengkapnya</a>
+        </div>
+    </div>
+</div>
+
+<div class="resep-kami-con">
+    <div class="container">
+        <h2>Kumpulan Resep Kami</h2>
+        <div class="resep-kami-con-wrapper">
+        {% for a in  menu %}
+        <div class="wrapper-tier">
+            <div class="card-wrapper">
+                <div class="image-wrapper imageContainer-{{a.slug}}" data-image="{{a.featured_image | media}}">
+                    <img src="" alt="" loading="lazy">
+                </div>
+                <div class="detail-wrapper">
+                    <div class="wrapper-1" data-image="https://www.frisianflag.com/storage/app/media/resep-kami-images/Group 131.svg">
+                        <div class="wrapper-icon">
+                            <img src="" alt="" loading="lazy">
+                            <div class="wrapper-text">
+                                <h3>{{ a.energi }}</h3>
+                                <p>Energy<br>(hcal)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper-2" data-image="https://www.frisianflag.com/storage/app/media/resep-kami-images/Group 130.svg">
+                        <div class="wrapper-icon">
+                            <img src="" alt="" loading="lazy">
+                            <div class="wrapper-text">
+                                <h3>{{ a.lemak }}</h3>
+                                <p>Lemak<br>(g)</p>
+                            </div>
+                        </div>                
+                    </div>
+                    <div class="wrapper-3" data-image="https://www.frisianflag.com/storage/app/media/resep-kami-images/Group 132.svg">
+                        <div class="wrapper-icon">
+                            <img src="" alt="" loading="lazy">
+                            <div class="wrapper-text">
+                                <h3>{{ a.protein }}</h3>
+                                <p>Protein<br>(g)</p>
+                            </div>
+                        </div>                
+                    </div>
+                    <div class="wrapper-4" data-image="https://www.frisianflag.com/storage/app/media/resep-kami-images/Group 133.svg">
+                        <div class="wrapper-icon">
+                            <img src="" alt="" loading="lazy">
+                            <div class="wrapper-text">
+                                <h3>{{ a.karbohidrat }}</h3>
+                                <p>Karbohidrat<br>(g)</p>
+                            </div>
+                        </div>                
+                    </div>
+                </div>
+                <div class="cta-wrapper">
+                    <h2>{{ a.title }}</h2>
+                    <a href="/resep-kami/{{a.slug_category}}/{{a.slug}}">Lihat Resepnya</a>
+                </div>
+            </div>
+            </div>
+            {% endfor %}
+            
+            
+        </div>
+        <div class="btn-wrapper-selengkapnya">
+            <a href="https://www.frisianflag.com/resep-kami"  id="recipe-all">Lihat Resep Lainnya</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <hr class="desk-none">
+</div>
+
+<div class="aktifitas-kami-wrapper">
+    <div class="container">
+        <h2>Aktivitas Kami</h2>
+        <div class="aktifitas-kami">
+            <div class="wrapper-content aktifitas-kami-content-1" data-image="/storage/app/media/tips-menu-menjaga-nutrisi-anak.jpeg">
+                <img loading="lazy" src="" alt="">
+                <div class="text-wrapper">
+                    <h3 class="title">
+                        Tips dan Menu Menjaga Nutrisi Anak
+                    </h3>
+                    <a href="https://www.frisianflag.com/milkpedia/nutrisi-dan-kesehatan/tips-dan-menu-menjaga-nutrisi-anak">LEBIH LANJUT</a>
+                </div>
+            </div>
+            <div class="wrapper-content aktifitas-kami-content-2" data-image="/storage/app/media/Gerakan-Nusantara-Thumbnail_b5aad6f5fc0cd6a62257235b2215ab9f.jpg">
+                <img loading="lazy" src="" alt="">
+                <div class="text-wrapper">
+                    <h3 class="title">
+                        #GERAKAN<br>NUSANTARA
+                    </h3>
+                    <a href="https://www.frisianflag.com/aktivitas-kami/gerakan-nusantara">LEBIH LANJUT</a>
+                </div>
+            </div>
+            <div class="wrapper-content aktifitas-kami-content-3" data-image="/storage/app/media/Banner Aktivitas Kami - Desktop.jpg">
+                <img loading="lazy" src="" alt="">
+                <div class="text-wrapper">
+                    <h3 class="title">
+                         #Ibu&Balita      
+                    </h3>
+                    <a href="https://www.ibudanbalita.com/">LEBIH LANJUT</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal -->
+<div class="wrapper-bg d-none">
+    <div class="modall">
+        <div class="modal-body">
+            <p>Silahkan Masuk Ke IMT</p>
+            <a href='{{"imt" | page }}'>Klik Untuk Mengisi IMT</a>
+        </div>
+        <!-- <div class="close">X</div> -->
+    </div>
+</div>
+
+<div class="wrapper-bg-result d-none">
+    <div class="modall">
+        <div class="modal-body">
+            <p>Kapan Kamu Mengonsumsi makanan yang sudah difoto?</p>
+            <div class="btn-wrapper">
+                <button>Sarapan</button>
+                <button>Makan Siang</button>
+                <button>Makan Malam</button>
+            </div>
+        </div>
+        <div class="close">X</div>
+    </div>
+</div>
+
+<!-- modal picture -->
+<div class="wrapper-bg-picture d-none">
+    <div class="modall-picture">
+        <div class="modal-body">
+            <div class="drag-wrapper" style="display: flex">
+                <p>Drag an image here or </p><button class="upload">upload a file</button>
+            </div>
+            <input type="file" name="uploadphoto" id="uploadphoto" style="display: none;">
+            <img src="" id="bg" class="d-none">
+        </div>
+        <div class="close">X</div>
+        <button class="btnlanjut d-none">Lanjut</button>
+    </div>
+</div>
+
+<div class="wrapper-bg-mob d-none">
+    <div class="modall">
+        <div class="modal-body">
+            <img src="" alt="">
+        </div>
+        <button class="btnlanjut">Lanjut</button>
+        <div class="close">X</div>
+    </div>
+</div>
+
+<div class="wrapper-bg-imtinput d-none">
+    <div class="modall">
+        <div class="modal-body">
+            <form action="">
+                <label for="">Name</label>
+                <input type="text" name="nama" id="" placeholder="masukan nama kamu">
+                <label for="">Tinggi Badan</label>
+                <input type="number" name="tinggi" id="" placeholder="cm">
+                <label for="">Berat Badan</label>
+                <input type="number" name="berat" id="" placeholder="kg">
+                <label for="">Jenis Kelamin</label>
+                <div class="jk">
+                    <input type="radio" name="jk" id="" value="perempuan" checked><label for="jk" name="jk">Perempuan</label>
+                    <input type="radio" name="jk" id="" value="laki-laki" ><label for="jk" name="jk">Laki-laki</label>
+                </div>
+                <button type="submit">Next</button>
+            </form>
+        </div>
+        <div class="close">X</div>
+    </div>
+</div>
+
+<script>
+// iqbal
+window.addEventListener('scroll', function () {
+  const scrollPosition = window.scrollY;
+  if(scrollPosition > 10) {
+      document.querySelector('.image-product-1 img').src = document.querySelector('.image-product-1').getAttribute('data-image');
+      document.querySelector('.image-product-2 img').src = document.querySelector('.image-product-2').getAttribute('data-image');
+      document.querySelector('.image-product-4 img').src = document.querySelector('.image-product-4').getAttribute('data-image');
+      document.querySelector('.image-product-8 img').src = document.querySelector('.image-product-8').getAttribute('data-image');
+      
+      let wrapper1img = document.querySelector('.wrapper-1').getAttribute('data-image');
+      let wrapper2img = document.querySelector('.wrapper-2').getAttribute('data-image');
+      let wrapper3img = document.querySelector('.wrapper-3').getAttribute('data-image');
+      let wrapper4img = document.querySelector('.wrapper-4').getAttribute('data-image');
+      
+      $('.wrapper-1 img').attr("src", wrapper1img);
+      $('.wrapper-2 img').attr("src", wrapper2img);
+      $('.wrapper-3 img').attr("src", wrapper3img);
+      $('.wrapper-4 img').attr("src", wrapper4img);
+      
+      
+      var resepImg = document.querySelectorAll(".resep-kami-con div[class*='imageContainer']");
+      resepImg.forEach(function(e){
+          e.querySelector('img').src = e.getAttribute('data-image');
+      });
+      
+      document.querySelector('.related-img-1 img').src = document.querySelector('.related-img-1').getAttribute('data-image');
+      document.querySelector('.related-img-2 img').src = document.querySelector('.related-img-2').getAttribute('data-image');
+      document.querySelector('.related-img-3 img').src = document.querySelector('.related-img-3').getAttribute('data-image');
+      document.querySelector('.related-img-4 img').src = document.querySelector('.related-img-4').getAttribute('data-image');
+      
+      document.querySelector('.aktifitas-kami-content-1 img').src = document.querySelector('.aktifitas-kami-content-1').getAttribute('data-image');
+      document.querySelector('.aktifitas-kami-content-2 img').src = document.querySelector('.aktifitas-kami-content-2').getAttribute('data-image');
+      document.querySelector('.aktifitas-kami-content-3 img').src = document.querySelector('.aktifitas-kami-content-3').getAttribute('data-image');
+      
+  };
+});
+
+
+let btnimt2 = document.querySelector(".section-tiga .wrapper-imt .btn-wrapper .btn-2").addEventListener("click", function(){
+    window.location.href = '{{"imt" | page }}';
+})
+let btnfr2 = document.querySelector(".section-tiga .wrapper-recall .btn-wrapper .btn-2").addEventListener("click", function(){
+    window.location.href = '{{"foodrecall-prod" | page }}';
+})
+
+
+let dArea = document.querySelector(".modall-picture .modal-body"),
+img = document.querySelector("#uploadphoto"),
+dText = document.querySelector(".drag-wrapper p");
+dArea.addEventListener("dragover", function(e){
+    e.preventDefault();
+    dArea.classList.add("active");
+    dText.textContent = "Drop your image here"; 
+})
+dArea.addEventListener("dragleave", function(e) {
+    e.preventDefault();
+    dArea.classList.remove("active");
+    dText.textContent = "Drag an image here or ";
+})
+/*
+dArea.addEventListener("drop", function(e) {
+    e.preventDefault();
+    file = e.dataTransfer.files[0];
+    let fileType = file.type;
+    
+    let validation = ['image/jpeg','image/jpg','image/png','image/webp'];
+    if( validation.includes(fileType) ){
+        let fileReader = new FileReader();
+        fileReader.onload = function(){
+            let fileUrl = fileReader.result;
+            console.log(fileUrl);
+            let imgTag = `<img src="${fileUrl}">`;
+            dArea.innerHTML = imgTag;
+            document.querySelector(".btnlanjut").classList.remove("d-none");
+            sessionStorage.setItem("b64", fileUrl);
+            document.cookie = `b64=${fileUrl}`;
+        }
+        fileReader.readAsDataURL(file);
+    }else{
+        alert("File Harus Berupa image (jpeg, jpg, png, webp)")
+    }
+    
+})
+*/
+
+dArea.addEventListener("drop", async function(e) {
+    e.preventDefault();
+    file = e.dataTransfer.files[0];
+    var compressed = await compress(file);
+    
+    if(!compressed) {
+        alert('Size file Anda terlalu besar')
+        return false;
+    } else {
+        let fileType = compressed.type;
+        console.log('compressed')
+        
+        let validation = ['image/jpeg','image/jpg','image/png','image/webp'];
+        if( validation.includes(fileType) ){
+            let fileReader = new FileReader();
+            fileReader.onload = function(){
+                let fileUrl = fileReader.result;
+                let imgTag = `<img src="${fileUrl}">`;
+                dArea.innerHTML = imgTag;
+                document.querySelector(".btnlanjut").classList.remove("d-none");
+                sessionStorage.setItem("b64", fileUrl);
+                localStorage.setItem("b64", fileUrl);
+                document.cookie = `b64=${fileUrl}`;
+                console.log(fileUrl)
+            }
+            fileReader.readAsDataURL(compressed);
+        }else{
+            alert("File Harus Berupa image (jpeg, jpg, png, webp)")
+        }
+    }
+    
+})
+    function compress(e) {
+        return new Promise((resolve, reject) => {
+            const width = 500;
+            const height = 300;
+            const fileName = e.name;
+            const fileSize = e.size / 1000000;
+            if(fileSize > 4) {
+                resolve(false)
+            }
+            const reader = new FileReader();
+            reader.readAsDataURL(e);
+            var image
+            reader.onload = event => {
+                const img = new Image();
+                img.src = event.target.result;
+                img.onload = () => {
+                        const elem = document.createElement('canvas');
+                        elem.width = width;
+                        elem.height = height;
+                        const ctx = elem.getContext('2d');
+                        // img.width and img.height will contain the original dimensions
+                        ctx.drawImage(img, 0, 0, width, height);
+                        ctx.canvas.toBlob((blob) => {
+                            file = new File([blob], fileName, {
+                                type: 'image/jpeg',
+                                lastModified: Date.now()
+                            });
+                            console.log(file.size)
+                            resolve(file)
+                        }, 'image/jpeg', 1);
+                    },
+                    reader.onerror = error => console.log(error);
+            };
+        })
+        
+    }
+    
+async function readFile() {
+    if (!this.files || !this.files[0]) return;
+        
+    const FR = new FileReader();
+        
+    FR.addEventListener("load", function(evt) {
+        var val = evt.target.result;
+        document.querySelector("#bg").src  = val;
+        document.querySelector("#bg").classList.remove("d-none");
+        sessionStorage.setItem("b64", val);
+        localStorage.setItem("b64", val);
+        document.cookie = `b64=${val}`;
+    }); 
+    $(".wrapper-bg-picture p").addClass("d-none");    
+    $(".btnlanjut").removeClass("d-none");
+    
+
+    var compressed = await compress(this.files[0]);
+    if(!compressed) {
+        alert('Size file Anda terlalu besar')
+        return false;
+    }
+    let fileType = compressed.type;
+    console.log('compressed')
+    
+    FR.readAsDataURL(compressed);
+    
+}
+
+async function readFile2() {
+    
+    if (!this.files || !this.files[0]) return;
+        
+    const FR = new FileReader();
+        
+    FR.addEventListener("load", function(evt) {
+        var val = evt.target.result;
+        document.querySelector(".wrapper-bg-mob .modal-body img").src  = val;
+        sessionStorage.setItem("b64", val);
+        localStorage.setItem("b64", val);
+    }); 
+    $(".wrapper-bg-mob").removeClass("d-none");
+    
+    var compressed = await compress(this.files[0]);
+    
+    if(!compressed) {
+        alert('Size file Anda terlalu besar')
+        return false;
+    }
+    let fileType = compressed.type;
+    console.log('compressed')
+    
+    FR.readAsDataURL(compressed);
+    
+}
+
+
+if( window.innerWidth < 768 ){
+
+    $(".fitur-wrapper").slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        dots: true,
+        infinite: false  
+    })
+    
+    $(".main").slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        dots: true,
+        infinite: false,
+        adaptiveHeight: true,
+        centerPadding: '30px',
+        centerMode: true,    
+    })
+    $(".resep-kami-con-wrapper").slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        dots: true,
+        infinite: false,
+        variableWidth : true
+    })
+    $(".aktifitas-kami-wrapper .aktifitas-kami").slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        variableWidth : true,
+        arrows: false,
+        dots: true,
+        infinite: false, 
+    })
+    $(".wrapper-recall .btn-wrapper .btn-1").on("click", function(){
+        $("#mobphoto").click();
+    })
+    document.querySelector("#mobphoto").addEventListener('change', readFile2);
+    document.querySelector(".wrapper-bg-mob .modall .close").addEventListener("click", function(){
+        document.querySelector(".wrapper-bg-mob").classList.add("d-none");
+    })
+    document.querySelector(".wrapper-bg-mob .modall .btnlanjut").addEventListener("click", function(){
+        document.querySelector(".wrapper-bg-mob").classList.add("d-none");
+        document.querySelector(".wrapper-bg-result").classList.remove("d-none");
+    })
+    
+    document.querySelector(".wrapper-bg-mob .modall .btnlanjut").addEventListener("click", function(){
+        document.querySelector(".wrapper-bg-mob").classList.add("d-none");
+        document.querySelector(".wrapper-bg-result").classList.remove("d-none");
+    })
+    
+}else{
+    document.querySelector("#uploadphoto").addEventListener('change', readFile);
+    document.querySelector(".wrapper-bg-picture .modall-picture .close").addEventListener("click", function(){
+        document.querySelector(".wrapper-bg-picture").classList.add("d-none");
+        document.querySelector("body").classList.remove("ov-hidden");
+    })
+    document.querySelector(".btnlanjut").addEventListener("click", function(){
+    document.querySelector(".wrapper-bg-picture").classList.add("d-none");
+        document.querySelector(".wrapper-bg-result").classList.remove("d-none");
+    })
+    $(".wrapper-recall .btn-1").on('click', function(){
+        $(".wrapper-bg-picture").removeClass("d-none");
+    })
+    $(".wrapper-imt .btn-1").on('click', function(){
+        $(".wrapper-bg-imtinput").removeClass("d-none");
+    })
+    $(".wrapper-bg-imtinput .close").on('click', function(){
+        $(".wrapper-bg-imtinput").addClass("d-none");
+    })
+    
+}
+
+$(function(){
+
+  $(".wrapper-bg-imtinput form").on("submit", function(e){
+      e.preventDefault();
+      var name = $("input[name='nama']").val();
+      var tb = $("input[name='tinggi']").val();
+      var bb = $("input[name='berat']").val();
+      var jk = $("input[name='jk']:checked").val()
+      $.ajax({
+        type: "post",
+        url: "#",
+        success: function (r) {
+            sessionStorage.setItem("imthomepagename", name)
+            sessionStorage.setItem("imthomepagetb", tb)
+            sessionStorage.setItem("imthomepagebb", bb)
+            sessionStorage.setItem("imthomepagejk", jk);
+            window.location.href = '{{"imt" | page }}';
+        }
+      });
+  })      
+      
+  $(".wrapper-bg-result .btn-wrapper button").click(function(){
+      sessionStorage.setItem("tipeb64", $(this).text());
+      localStorage.setItem("tipeb64", $(this).text());
+      window.location.href = '{{"foodrecall-prod" | page }}';
+  })
+
+  $(".slider-produk").slick({
+    slidesToShow: 3,
+    arrows: false,
+    dots: true,
+    infinite: false,
+    variableWidth : false,
+      responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        variableWidth : true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        variableWidth : true,
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        variableWidth : true,
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+  })  
+  
+  
+})
+
+$(".upload").on('click', function(){
+    $("#uploadphoto").click();
+});
+
+/*    
+document.querySelector("#mobphoto").addEventListener("change", function(){
+    document.querySelector(".wrapper-bg-result").classList.remove("d-none");
+    document.querySelector("body").classList.add("ov-hidden");
+})
+*/
+document.querySelector(".wrapper-bg-result .modall .close").addEventListener("click", function(){
+    document.querySelector(".wrapper-bg-result").classList.add("d-none");
+    document.querySelector("body").classList.remove("ov-hidden");
+})
+
+</script>
+{# Please don't remove, the lines bellow for adding custom field to home page #}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->
+
+<!-- {repeater name="sliders" prompt="Add slider" tab="Slider"}
+    {text name="title" label="Title (id)" placeholder="Type title (id)"}{/text}
+    {text name="title_en" label="Title (en)" placeholder="Type title (en)"}{/text}
+    {richeditor name="description" label="Description (id)" placeholder="Type description (id)"}{/richeditor}
+    {richeditor name="description_en" label="Description (en)" placeholder="Type description (en)"}{/richeditor}
+    {mediafinder name="image" label="Image Desktop" placeholder="Insert an image for desktop" mode="image"}{/mediafinder}
+    {mediafinder name="image_mobile" label="Image Mobile" placeholder="Insert an image for mobile" mode="image"}{/mediafinder}
+    {text name="button_text" label="Button Text (id)" placeholder="Type button text (id)"}{/text}
+    {text name="button_text_en" label="Button Text (en)" placeholder="Type button text (en)"}{/text}
+    {text name="button_url" label="Button URL" placeholder="Type button url"}{/text}
+    {text name="google_analytics" label="Google Analytics" placeholder="Google Analytics"}{/text}
+{/repeater} -->
+
+<!-- {repeater name="activities" prompt="Add activities" tab="Section Activity"}
+    {text name="title" label="Title (id)" placeholder="Type title (id)"}{/text}
+    {text name="title_en" label="Title (en)" placeholder="Type title (en)"}{/text}
+    {mediafinder name="image" label="Image Desktop" placeholder="Insert an image for desktop" mode="image"}{/mediafinder}
+    {mediafinder name="image_mobile" label="Image Mobile" placeholder="Insert an image for mobile" mode="image"}{/mediafinder}
+    {text name="button_text" label="Button Text (id)" placeholder="Type button url (id)"}{/text}
+    {text name="button_text_en" label="Button Text (en)" placeholder="Type button url (en)"}{/text}
+    {text name="button_url" label="Button URL" placeholder="Type button url"}{/text}
+{/repeater} -->
+
+{% partial 'site/footer' %}

@@ -1,0 +1,59 @@
+description = "Layout for Choco Periment -  Hadiah"
+
+[staticPage]
+useContent = 1
+default = 0
+==
+<?php
+function onEnd(){
+    $this->page->amp_url = $this->pageUrl('cokoperimen-amp-hadiah');
+    }
+?>
+==
+{% partial 'site/header' %}
+
+<h1 aria-hidden="true" class="seo-heading">{{ trans_pick(page, 'title')|raw }}</h1>
+
+<div class="static-baner-pages">
+    <div class="imgwrp">
+    	<img src="{{ 'cokoperimen/desktop/hadiah.jpeg'|media  }}" class="hidden-xs" />
+      <img src="{{ 'cokoperimen/mobile/hadiah.jpeg'|media  }}" class="visible-xs" />
+    </div>
+</div>
+
+{% partial 'site/chocoperiment-menu' %}
+
+<div id='main-section' style="padding: 30px 20px;">
+    <a href="{{ '/aktivitas-kami/cokoperimen/syarat-dan-ketentuan' }}">
+      <img src="{{ 'cokoperimen/desktop/list-hadiah.jpg'|media   }}" class="hidden-xs" />
+      <img src="{{  'cokoperimen/mobile/list-pemenang.jpg'|media  }}" class="visible-xs" />
+    </a>
+
+    <!-- <div class="text-center" style="margin-top: 30px;">
+      <a href="{{ '/aktivitas-kami/promo-alfamart/daftar' }}" class="button button--small">Ikuti Sekarang</a>
+      <a style="display:none !important;" href="{{ '/aktivitas-kami/promo-alfamart/pemenang' }}" class="button button--small">Lihat Pemenang</a>
+    </div> -->
+</div>
+
+<style>
+	.default-content h3 {
+	    font-size: 22px;
+	    line-height: 1.2;
+	}
+
+	@media screen and (min-width: 767px) {
+		.default-content h3 {
+			font-size: 30px;
+		}
+	}
+
+  @media screen and (max-width: 767px) {
+    .m-bottom-15 {
+      margin-bottom: 15px;
+    }
+  }
+</style>
+
+{% partial 'site/footer' %}
+
+<!-- {richeditor name="markup_en" label="Content (en)" tab="Content (en)"}{/richeditor} -->

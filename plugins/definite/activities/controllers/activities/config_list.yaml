@@ -1,0 +1,11 @@
+list: $/definite/activities/models/activity/columns.yaml
+modelClass: Definite\Activities\Models\Activity
+title: Activities
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'definite/activities/activities/update/:id'

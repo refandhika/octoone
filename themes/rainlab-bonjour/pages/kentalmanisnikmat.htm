@@ -1,0 +1,535 @@
+title = "Kental manis nikmat"
+url = "/kentalmanisnikmat"
+layout = "default"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/kental-manis-nikmat"
+==
+<?php
+function onStart(){
+    if($this->detectMobile()){
+        $this['isMobile'] = true;
+    } else {
+        $this['isMobile'] = false;
+    }
+    
+    $data = Definite\Activities\Models\WinningScm::first();
+    $articles = $data['articles'];
+    $this['main_banner'] = $data['main_banner'];
+    $recipes = $data['recipes'];
+    $this['my_recipes'] = $data['recipes'];
+    $this['banners'] = $data['banners'];
+    $this['promos'] = $data['promos'];
+    $this['articles'] = [];
+    $array = [];
+    foreach($data['articles'] as $item){
+        
+        $article = Definite\Milkpedia\Models\Milkpedia::where('id' , $item['article'])->first();
+        $array[] = $article;
+        $this['selected_article'] = $array;
+    }
+    $this['recipes'] = [];
+    $array = [];
+    foreach($data['recipes'] as $item){
+        $recipe = Definite\Activities\Models\Activity::where('id' , $item['recipe'])->first();
+        $recipe->recipe_url = $item['recipe_url'];
+        $array[] = $recipe;
+        $this['selected_recipes'] = $array;
+    }
+}
+
+function detectMobile () {
+// Get the user agent from the HTTP headers
+$userAgent = $_SERVER['HTTP_USER_AGENT'];
+
+// Detect common mobile user agents
+$isMobile = false;
+
+$mobileUserAgents = array(
+    'Mobile',
+    'Android',
+    'iPhone',
+    'iPad',
+    'Windows Phone',
+    'BlackBerry',
+    'webOS',
+    'Opera Mini',
+    'Opera Mobi'
+);
+
+foreach ($mobileUserAgents as $mobileAgent) {
+    if (stripos($userAgent, $mobileAgent) !== false) {
+        $isMobile = true;
+        break;
+    }
+}
+
+// Output the result
+if ($isMobile) {
+    return true;
+} else {
+    return false;
+}
+    
+}
+?>
+==
+<style>
+
+.container {
+    max-width: 425px;
+}
+
+.mycard {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding-top: 100%;
+}
+
+.mycard img {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    position: absolute;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+}
+
+.myslider {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    height: 35rem;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+}
+
+.myslider-2 {
+    height: fit-content;
+    margin: 7rem auto;
+}
+
+.myslider-2 p {
+    text-align: center;
+    font-weight: 800;
+    color: #114aa1;
+    font-size: large;
+    margin-bottom: 1.25rem;
+}
+
+.content-1 {
+    height: 35rem;
+    background-color: #0193d8;
+    padding: 5rem 2rem;
+    color: white;
+}
+
+.content-2 {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    background-color: #bf0000;
+    border-radius: 20px;
+    padding: 2rem;
+    color: white;
+    text-align: center;
+    height: 15rem;
+}
+
+.accor-head {
+    margin-top: 0rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    min-height: 10rem;
+    height: auto;
+    background-color: #0193d8;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+.accor-head img {
+    width: 10px;
+}
+
+.accor-head h2 {
+    font-size: 21px;
+    text-align: center;
+}
+
+.accor-item {
+    margin-bottom: 2rem;
+    background-color: #e7f5ff;
+    padding: 1.25rem;
+    border-radius: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+#accordion-section {
+    margin-bottom: 3rem;
+}
+
+.my-container {
+    width: 100%;
+    height: fit-content;
+    margin-top: 2rem;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.article-container {
+    width: 100%;
+    height: fit-content;
+    margin-top: 2rem;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.promo-container {
+    margin-top: 1rem;
+}
+
+.promo-item {
+    width: 45%;
+    margin-bottom: 2rem;
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.img-container {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding-top: 100%;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    position: absolute;
+    object-fit: cover;
+    border-radius: 10px;
+    top: 0;
+    left: 0;
+}
+
+.promo-item a:nth-child(2) {
+    color: white;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 1rem;
+    height: 3rem;
+    border-radius: 9999px;
+    background-color: #ff9f02;
+}
+
+.resep-item {
+    width: 45%;
+    margin-bottom: 2rem;
+}
+
+.resep-item a:nth-child(1) {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding-top: 100%;
+}
+
+.resep-item a img {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    position: absolute;
+    object-fit: cover;
+    border-radius: 10px;
+    top: 0;
+    left: 0;
+}
+
+.resep-item a:nth-child(2) {
+    color: white;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 1rem;
+    height: 3rem;
+    border-radius: 9999px;
+    background-color: #ff9f02;
+}
+
+.article-container h2 {
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+    font-size: xx-large;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: white;
+    font-weight: 800;
+}
+
+.article-item {
+    margin-bottom: 2rem;
+    width: 100%;
+    height: 35rem;
+    font-size: 10px;
+    position: relative;
+}
+
+.article-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.headline {
+    position: absolute;
+    bottom: 1.5rem;
+    z-index: 2;
+}
+
+.headline a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 9999px;
+    background-color: #ff9f02;
+    width: 35%;
+    height: 3rem;
+    color: white;
+    font-size: small;
+    font-weight: 800;
+    margin-left: 1rem;
+}
+
+.faded {
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height:70%;
+    z-index: 1;
+    opacity: .5;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1));
+}
+
+.desktop_view {
+    width: 100vw;
+    height: 100vh;
+    background-color: #e7f5ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('{{'/festive2021/mobile/Repeat_Grid_4.png' | media}}');
+}
+
+.card-1 {
+    position: relative;
+    width: 45%;
+    height: 30rem;
+    background-color: white;
+    border-radius: 10px;
+    padding: 3rem 7rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.desktop_view div h1 {
+    text-align: center;
+}
+
+.desktop_view div p {
+    font-size: 16px;
+}
+
+.line {
+    width: 100%;
+    height: 1rem;
+    background-color: #0193d8;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.slide-container {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: flex-start;
+}
+
+.hidden {
+    display: none;    
+}
+
+</style>
+
+{% if isMobile %}
+<!-- Mobile Content -->
+
+<!-- Slider Banner -->
+<section class="slide-banner-1 myslider">
+    {% for item in banners %}
+        <a href="{{item.link}}" class="mycard">
+            <img src="{{item.image | media}}" alt="">
+        </a>
+    {% endfor %}
+</section>
+
+<section class="container">
+
+    <!-- Promo hidden -->
+    <section class="myslider-2 hidden">
+        <h4 style="text-center">Promo menarik dapatkan disini</h4>
+        <div class="my-container">
+            {% for item in promos %}
+            <div class="promo-item">
+                <a class="img-container" href="{{item.link}}"><img src="{{item.image | media}}" alt="{{item.name}}"></a>
+                <a href="{{item.link}}">Lihat Promonya</a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    
+    <!-- Promo swipe -->
+    <section class="myslider-2">
+        <h4 class="" style="margin : 30px 10px;">Promo menarik dapatkan disini</h4>
+        <div id="slide" class="slide-promo-1"></div>
+    </section>
+    
+    <!-- Accordion -->
+    <section id="accordion-section">
+        
+        <!-- 10 Resep -->
+        <div id="accordion-head" data-target="accor-item-1" onClick="handleAccordion(this)" class="accor-head">
+            <h2>10 Resep Sarapan Nikmat & Praktis</h2>
+            <i class="fa fa-chevron-down"></i>
+        </div>
+        <div id="accor-item-1" class="accor-item hidden">
+            <div class="my-container">
+                {% for item in selected_recipes %}
+                <div class="resep-item">
+                    <a href="/amp/resep-kami/{{item.recipe_url}}/{{item.slug}}"><img src="{{item.featured_image | media}}" alt="{{item.title}}"></a>
+                    <a href="/amp/resep-kami/{{item.recipe_url}}/{{item.slug}}">Lihat Resepnya</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <!-- Aktivitas Kami -->
+        <div id="accordion-head" data-target="accor-item-2" onClick="handleAccordion(this)" class="accor-head">
+            <h2>Aktivitas Kami</h2>
+            <i class="fa fa-chevron-down"></i>
+        </div>
+        <div id="accor-item-2" class="hidden">
+            <div class="article-container">
+                {% for item in selected_article %}
+                <div class="article-item">
+                    <img src="{{item.featured_image | media}}">
+                    <div class="headline">
+                        <h2>{{item.title}}</h2>
+                        <a href="/milkpedia/{{item.categories[0].slug}}/{{item.slug}}">Lebih Lanjut</a>
+                    </div>
+                    <div class="faded"></div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    
+</section>
+
+{% put scripts %}
+<script>
+$( document ).ready(function() {
+    $('.slide-banner-1').slick({
+        dots: true,
+        autoplay: true,
+        arrows: false
+    });
+    $('.slide-promo-1').slick({
+        dots: true,
+        autoplay: true,
+        arrows: false,
+        autoplaySpeed: 4000,
+    });
+    document.querySelector('.slide-banner-1 ul').style.bottom = "-90px";
+});
+
+var item = $('.promo-item');
+var itemLength = $('.promo-item').length;
+var totalGroup = Math.ceil(itemLength/4);
+var container = [];
+var limit = 4;
+var offset = 0;
+
+for(var i = 0 ; i < totalGroup; i++){
+    container.push([]);
+    for(var j = 0 ; j < itemLength ; j++){
+        if(j < limit && j >= offset ){
+            container[i].push(item[j])
+        }
+    }
+    limit = limit + 4;
+    offset = offset + 4;
+}
+
+var target = $('#slide');
+
+for(var i = 0 ; i < container.length ; i++){
+    target.append(`<div class="slide-container"></div>`)
+    for(var j = 0; j < container[i].length ; j++){
+        $($('.slide-container')[i]).append($(container[i][j]).prop('outerHTML'))
+    }
+}
+</script>
+{% endput %}
+
+<script>
+function handleAccordion (e) {
+    <!-- $('.accor-item').addClass('hidden'); -->
+    document.querySelector('#' + e.getAttribute('data-target')).classList.toggle('hidden'); 
+}
+</script>
+
+{% else %}
+
+<!-- Desktop View -->
+<section class="desktop_view">
+    <div class="card-1">
+        <h1>Mohon Maaf</h1>
+        <p>Halaman ini hanya dapat diakses melalui handphone menggunakan chrome atau safari. Gunakan handphone anda untuk melanjutkan.</p>
+        <div class="line"></div>
+    </div>
+</section>
+
+{% endif %}

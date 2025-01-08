@@ -1,0 +1,48 @@
+[viewBag]
+
+[\Flynsarmy\Menu\Components\Menu menu]
+menu_id = 2
+==
+<?php
+function onStart(){
+    $geturl = $this->currentPageUrl();
+    $param = Input::get('param');
+    $pos = strpos($geturl, "previewsustainability");
+     $this['param'] = 0;
+     $this['geturl'] = $pos;
+     
+    if ($pos > -1) { 
+        $this['param'] = 1;
+    }
+    elseif( strpos($geturl, "resep-kami") > -1)
+    {
+        $this['param'] = 2;
+    }
+    elseif( strpos($geturl, "cokelatnya-bikin-semua-nikmat") > -1  )
+    {
+        $this['param'] = 3;
+    }
+}
+?>
+==
+{% for menu in menu.getList['data'] %}
+	<section class="w">
+		{% if menu['children'] is not empty %}
+			<h4 class="arrow_down"><a href="{{ menu['url'] }}" target="_self">{{ menu['label']| upper }}</a></h4>
+			<p>
+			
+			{% for child in menu['children'] %}
+				{% if child['enabled'] %}
+				<a href="{{ child['url'] }}" target="_self">{{ child['label'] }}</a>
+				{% endif %}
+			{% endfor %}
+			
+			</p>
+		{% else %}
+		<h4 class="title"><a href="{{ menu['url'] }}" target="_self">{{ menu['label'] | upper }}</a></h4>
+	                        <p></p>
+		
+		{% endif %}
+	</section>
+	
+{% endfor %}

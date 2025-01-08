@@ -1,0 +1,28 @@
+title = "Resep Ramadan Untuk Menangkan Puasamu | AMP"
+url = "/amp/aktivitas-kami/resep-ramadan-untuk-menangkan-puasamu"
+layout = "ramadhan2024"
+is_hidden = 0
+
+[viewBag]
+localeUrl[en] = "/resep-ramadan-kaya-rasa-di-rumah-aja-amp"
+==
+<?php
+function onStart()
+{
+    $this['pageurl'] = str_replace("/amp","",$this->currentPageUrl());
+    //redirect to normal page
+    header("Location: ".$this['pageurl']);
+}
+?>
+==
+{% partial 'ramadhan2024-banner' %}
+
+{% partial 'ramadhan2024-recipes' %}
+
+{% partial 'ramadhan2024-tips-2' %}
+
+{% partial 'ramadhan2024-promo-2' %}
+
+<!-- {% partial 'ramadhan2024-tips' %} -->
+
+<!-- {% partial 'ramadhan2024-promo' %} -->
