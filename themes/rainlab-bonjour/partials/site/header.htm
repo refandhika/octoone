@@ -63,7 +63,7 @@ function onStart(){
     $getURL = Request::path();
     $implodeURL = explode('/', $getURL);
 
-    if (!empty($_SERVER['HTTP_USER_AGENT'])) {
+    if (isset($_SERVER['HTTP_USER_AGENT']) && !empty($_SERVER['HTTP_USER_AGENT'])) {
         $useragent = $_SERVER['HTTP_USER_AGENT'];
         $pages_list = ['milkpedia', 'produk'];
 
