@@ -1,0 +1,19 @@
+columns:
+    id:
+        label: id
+        type: number
+    title:
+        label: title
+        type: text
+    btn_word:
+        label: btn_word
+        type: text
+    btn_link:
+        label: btn_link
+        type: text
+    created_at:
+        label: created_at
+        type: datetime
+    updated_at:
+        label: updated_at
+        type: datetime

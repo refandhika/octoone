@@ -1,0 +1,10 @@
+name: Wacontainers
+form: $/definite/ramadhan2024/models/wacontainer/fields.yaml
+modelClass: Definite\Ramadhan2024\Models\Wacontainer
+defaultRedirect: definite/ramadhan2024/wacontainers
+create:
+    redirect: 'definite/ramadhan2024/wacontainers/update/:id'
+    redirectClose: definite/ramadhan2024/wacontainers
+update:
+    redirect: definite/ramadhan2024/wacontainers
+    redirectClose: definite/ramadhan2024/wacontainers

@@ -1,0 +1,13 @@
+fields:
+    title:
+        label: Title
+        span: auto
+        type: text
+    btn_word:
+        label: 'Button Word'
+        span: auto
+        type: text
+    btn_link:
+        label: 'Button Link'
+        span: auto
+        type: text
