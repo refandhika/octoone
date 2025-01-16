@@ -52,6 +52,9 @@ function onStart(){
     $this->page['fb_login_url'] = $loginUrl;
 
     
+    if (!isset($_SERVER['HTTP_USER_AGENT'])) {
+        $_SERVER['HTTP_USER_AGENT'] = 'Unknown User Agent';
+    }
     /*
     ini script BARBAR, kita hapus aja dan simpan untuk jaga-jaga 
 

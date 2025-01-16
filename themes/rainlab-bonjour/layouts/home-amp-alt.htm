@@ -23,10 +23,12 @@ function onStart(){
      $this['param'] = $param;
      
 
+     if (!isset($_SERVER['HTTP_USER_AGENT'])) {
+        $_SERVER['HTTP_USER_AGENT'] = 'Unknown User Agent';
+    }
     $this['GTMETRIX'] = 'NO';
     if(
-    isset($_SERVER['HTTP_USER_AGENT']) && 
-    strpos($_SERVER['HTTP_USER_AGENT'], 'X11; Linux x86_64) AppleWebKit/537.36') !== false ||
+    isset(strpos($_SERVER['HTTP_USER_AGENT'], 'X11; Linux x86_64) AppleWebKit/537.36') !== false ||
     strpos($_SERVER['HTTP_USER_AGENT'], 'GTmetrix') !== false ||
     strpos($_SERVER['HTTP_USER_AGENT'], 'Linux; Android 6.0.1; SAMSUNG SM-G930F Build/MMB29K') !== false
     ){

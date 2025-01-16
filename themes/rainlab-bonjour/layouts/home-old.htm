@@ -15,9 +15,11 @@ function onEnd(){
     $this->page->amp_url = $this->pageUrl('home-amp');
 
 
+    if (!isset($_SERVER['HTTP_USER_AGENT'])) {
+        $_SERVER['HTTP_USER_AGENT'] = 'Unknown User Agent';
+    }
 $this['GTMETRIX'] = 'NO';
-if(isset($_SERVER['HTTP_USER_AGENT']) && 
-strpos($_SERVER['HTTP_USER_AGENT'], 'X11; Linux x86_64) AppleWebKit/537.36') !== false ||
+if(strpos($_SERVER['HTTP_USER_AGENT'], 'X11; Linux x86_64) AppleWebKit/537.36') !== false ||
 strpos($_SERVER['HTTP_USER_AGENT'], 'GTmetrix') !== false
 ){
  $this['GTMETRIX'] = 'YES';

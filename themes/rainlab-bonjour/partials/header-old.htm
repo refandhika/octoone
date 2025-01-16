@@ -59,13 +59,16 @@ function onStart(){
     $this->page['fb_login_url'] = $loginUrl;
 
     
+    if (!isset($_SERVER['HTTP_USER_AGENT'])) {
+        $_SERVER['HTTP_USER_AGENT'] = 'Unknown User Agent';
+    }
     /*
     ini script BARBAR, kita hapus aja dan simpan untuk jaga-jaga 
 
     $getURL = Request::path();
     $implodeURL = explode('/', $getURL);
 
-    if (isset($_SERVER['HTTP_USER_AGENT']) && !empty($_SERVER['HTTP_USER_AGENT'])) {
+    if (!empty($_SERVER['HTTP_USER_AGENT'])) {
         $useragent = $_SERVER['HTTP_USER_AGENT'];
         $pages_list = ['milkpedia', 'produk'];
 
@@ -96,7 +99,7 @@ function onStart(){
          
             
         // check user agent, will redirect to AMP page if mobile
-        if (isset($_SERVER['HTTP_USER_AGENT']) && !empty($_SERVER['HTTP_USER_AGENT'])) {
+        if (!empty($_SERVER['HTTP_USER_AGENT'])) {
             $useragent = $_SERVER['HTTP_USER_AGENT'];
             $is_mobile = preg_match('@(iPad|iPod|iPhone|Android|BlackBerry|SymbianOS|SCH-M\d+|Opera Mini|Windows CE|Nokia|SonyEricsson|webOS|PalmOS)@', $useragent);
         
@@ -118,8 +121,7 @@ function onStart(){
     }
 
 $this['GTMETRIX'] = 'NO';
-if(isset($_SERVER['HTTP_USER_AGENT']) && 
-strpos($_SERVER['HTTP_USER_AGENT'], 'X11; Linux x86_64) AppleWebKit/537.36') !== false || 
+if(strpos($_SERVER['HTTP_USER_AGENT'], 'X11; Linux x86_64) AppleWebKit/537.36') !== false || 
 strpos($_SERVER['HTTP_USER_AGENT'], 'GTmetrix') !== false
 ){
  $this['GTMETRIX'] = 'YES';
