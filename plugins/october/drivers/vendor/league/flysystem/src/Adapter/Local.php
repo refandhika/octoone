@@ -68,7 +68,7 @@ class Local extends AbstractAdapter
      * @param int    $linkHandling
      * @param array  $permissions
      */
-    public function __construct($root, $writeFlags = LOCK_EX, $linkHandling = self::DISALLOW_LINKS, array $permissions = [])
+    public function __construct($root, $writeFlags = 0, $linkHandling = self::DISALLOW_LINKS, array $permissions = [])
     {
         // permissionMap needs to be set before ensureDirectory() is called.
         $this->permissionMap = array_replace_recursive(static::$permissions, $permissions);

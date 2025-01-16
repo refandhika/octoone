@@ -72,7 +72,7 @@ class Local extends AbstractAdapter
      *
      * @throws LogicException
      */
-    public function __construct($root, $writeFlags = LOCK_EX, $linkHandling = self::DISALLOW_LINKS, array $permissions = [])
+    public function __construct($root, $writeFlags = 0, $linkHandling = self::DISALLOW_LINKS, array $permissions = [])
     {
         $root = is_link($root) ? realpath($root) : $root;
         $this->permissionMap = array_replace_recursive(static::$permissions, $permissions);
