@@ -27,13 +27,14 @@ function onStart(){
         
         $db_data = Definite\Activities\Models\Activity::where('slug',$slug)->get()->first();
         
-        if(count($db_data) > 0) {
+        if($db_data) {
             $db_data = $db_data;
         }
         
-        if(json_decode(file_get_contents($path, false, stream_context_create($arrContextOptions)))){
+        $jsonContent = json_decode(file_get_contents($path, false, stream_context_create($arrContextOptions)), true);
+        if($jsonContent){
             
-                 $collection        = collect(json_decode(file_get_contents($path, false, stream_context_create($arrContextOptions))));
+                 $collection        = collect($jsonContent);
                  
                  $data              = $collection->where('category',$category)->where('slug', $slug)->first();
                  if(!$data){
@@ -49,7 +50,7 @@ function onStart(){
           return $cmsController->render("/404");
         }
        
-        if(count($data) == 0){
+        if(!$data){
             
              return $cmsController->render("/404");
         }
