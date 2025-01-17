@@ -56,7 +56,17 @@ function onStart(){
         }
         
          $min               = $collection->where('category',$category)->min('id');
-         $slice             = $data->id - $min; 
+         if (is_object($data)) {
+            $slice = $data->id - $min; // Access as an object
+         } elseif (is_array($data)) {
+            if (isset($data['id'])) {
+                $slice = $data['id'] - $min; // Access as an array
+            } else {
+                $slice = 0;
+            }
+         } else {
+            $slice = 0;
+         }
          $data_category     = $collection->where('category',$category)->where('slug', '!=', $slug)->slice($slice)->take(3);
          $count             = count($data_category);
          if($count < 3){
@@ -101,12 +111,28 @@ function onStart(){
         $this['recipes']        = $data_category;
         $this['background']     = $background;
         $this['category']       = $category;
-        $this['og_image']       = $data->img;
-        $this['og_twitter']     = $data->img;
-        $this['og_description'] = $data->desc;
-        $this->page->title = ucwords(strtolower($data->title));
-        $this->page->amp_url = $this->pageUrl('ramadan-istimewa-detail-amp');
-        $this->page->meta_title = ucwords(strtolower($data->title));
+        //$this->page->amp_url    = $this->pageUrl('ramadan-istimewa-detail-amp');
+
+        if (is_object($data)) {
+            $this['og_image']       = $data->img ?? null;
+            $this['og_twitter']     = $data->img ?? null;
+            $this['og_description'] = $data->desc ?? null;
+            $this->page->title      = isset($data->title) ? ucwords(strtolower($data->title)) : null;
+            $this->page->meta_title = isset($data->title) ? ucwords(strtolower($data->title)) : null;
+        } elseif (is_array($data)) {
+            $this['og_image']       = $data['img'] ?? null;
+            $this['og_twitter']     = $data['img'] ?? null;
+            $this['og_description'] = $data['desc'] ?? null;
+            $this->page->title      = isset($data['title']) ? ucwords(strtolower($data['title'])) : null;
+            $this->page->meta_title = isset($data['title']) ? ucwords(strtolower($data['title'])) : null;
+        } else {
+            $this['og_image']       = null;
+            $this['og_twitter']     = null;
+            $this['og_description'] = null;
+            $this->page->title      = null;
+            $this->page->meta_title = null;
+        }
+        
         $pages = Definite\Activities\Models\Activity::where('slug',$category.'/'.$slug)->get()->first();
         if($pages){
             $this->page->meta_title = $pages->meta_title;
