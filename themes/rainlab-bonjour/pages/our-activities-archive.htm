@@ -23,7 +23,7 @@ notFoundMessage = "Record not found"
 function onEnd() {
 
     
-    header( "Set-Cookie: name=value; httpOnly" );
+    header( "Set-Cookie: name=value; HttpOnly" );
     
     $slug = $this->param('slug');
     if($slug == 'lombamewarnai2022'){
@@ -41,9 +41,19 @@ function onEnd() {
             $this['allowed_count'] += 1;
         }
     }
-    $this['categories'] = Definite\Activities\Models\Category::whereRaw('definite_activities_category.title like ?', [  '%#%' ] )->get();
+    $categories = Definite\Activities\Models\Category::whereRaw('definite_activities_category.title like ?', ['%#%'])->get();
+    if ($categories->isEmpty()) {
+        $this['categories'] = [];
+    } else {
+        $this['categories'] = $categories;
+    }
 
-    $_title = $this->page->components["builderDetails"]->record["title"];
+    if (isset($this->page->components["builderDetails"]) && 
+    isset($this->page->components["builderDetails"]->record["title"])) {
+        $_title = $this->page->components["builderDetails"]->record["title"];
+    } else {
+        $_title = 'Not Found';
+    }
     if($_title == "#KeluargaMinumSusu"){
         
             $this->page->title = "Keluarga Minum Susu";
