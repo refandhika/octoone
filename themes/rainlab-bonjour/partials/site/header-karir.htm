@@ -352,12 +352,12 @@ function onStart(){
                         {% endif %}
                         {% set url_trans = str_replace_first(url('/'),'',url_last) %}
                         <li class="top-menu__list hide">
-                            <a href="{{ url('/id')}}{{url_trans}}">
+                            <a href="{{ url('/id')}}{{url_trans|default('default-slug')}}">
                                 <img src="{{ 'assets/img/id.png'|theme }}" srcset="{{ 'assets/img/id2x.png'|theme }} 2x" alt="Indonesian">
                             </a>
                         </li>
                         <li class="top-menu__list hide">
-                            <a href="{{ url('/en')}}{{url_trans}}">
+                            <a href="{{ url('/en')}}{{url_trans|default('default-slug')}}">
                                 <img src="{{ 'assets/img/uk.png'|theme }}" srcset="{{ 'assets/img/uk2x.png'|theme }} 2x" alt="English">
                             </a>
                         </li>
