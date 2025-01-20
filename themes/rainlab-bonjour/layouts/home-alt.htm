@@ -43,6 +43,7 @@ function onStart(){
     $reorder = array(2, 1, 0, 3);
     $newdata = [];
     $data = DB::table('definite_products_category')->where("is_featured",1)->get();
+    DB::disconnect('mysql');
     foreach($reorder as $index) {
         $newdata[$index] = $data[$index];
     }
@@ -83,7 +84,6 @@ function onStart(){
   END, definite_activities_detailsbahan.e DESC")->limit(3)->get();
     $this['menu'] = $menu;
     
-
     if (!isset($_SERVER['HTTP_USER_AGENT'])) {
         $_SERVER['HTTP_USER_AGENT'] = 'Unknown User Agent';
     }
