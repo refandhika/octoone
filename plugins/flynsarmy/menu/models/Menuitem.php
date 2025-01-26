@@ -4,6 +4,7 @@ namespace Flynsarmy\Menu\Models;
 
 use Model;
 use Cms\Classes\Controller;
+use Illuminate\Support\Facades\Cache;
 
 //http://laravel.io/bin/XLN52#
 //http://octobercms.com/docs/database/model#deferred-binding
@@ -58,7 +59,7 @@ class Menuitem extends Model
 
     public function getUrl()
     {
-        return $this->url;
+        return $this->url ?? '';
     }
 
     /**
@@ -88,16 +89,13 @@ class Menuitem extends Model
      *
      * @return string
      */
-    public function getClassAttrib(array $settings, $depth)
+    public function getClassAttrib(array $settings, int $depth): string
     {
         if (!empty($this->cache['classAttrib'])) {
             return $this->cache['classAttrib'];
         }
 
-        $classes = [];
-        if ($this->class_attrib) {
-            $classes = explode(' ', $this->class_attrib);
-        }
+        $classes = $this->class_attrib ? explode(' ', $this->class_attrib) : [];
 
         if (is_int($depth)) {
             $classes[] = $settings['depth_prefix'].$depth;
@@ -116,23 +114,30 @@ class Menuitem extends Model
 
     public function render(Controller $controller, array $settings, $depth = 0, $url = '/', $child_count = 0)
     {
-        if (!$this->enabled) {
-            return '';
-        }
+        $cacheKey = "menuitem_{$this->id}_rendered";
 
-        // Support custom itemType-specific output
-        if (class_exists($this->master_object_class)) {
-            $itemTypeObj = new $this->master_object_class();
-            if ($output = $itemTypeObj->onRender($this, $controller, $settings, $depth, $url, $child_count)) {
-                return $output;
+        return Cache::remember($cacheKey, now()->addMinutes(10), function () use ($controller, $settings, $depth, $url, $child_count) {
+
+            if (!$this->enabled) {
+                return '';
             }
-        }
 
-        return require __DIR__.'/../partials/_menuitem.php';
+            // Support custom itemType-specific output
+            if ($this->master_object_class && class_exists($this->master_object_class)) {
+                $itemTypeObj = resolve($this->master_object_class);
+                if ($output = $itemTypeObj->onRender($this, $controller, $settings, $depth, $url, $child_count)) {
+                    return $output;
+                }
+            }
+
+            return require __DIR__.'/../partials/_menuitem.php';
+        });
     }
 
     public function beforeCreate()
     {
-        $this->setDefaultLeftAndRight();
+        if (!$this->getLeft() || !$this->getRight()) {
+            $this->setDefaultLeftAndRight();
+        }
     }
 }
