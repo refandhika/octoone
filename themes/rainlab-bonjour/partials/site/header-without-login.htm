@@ -12,9 +12,9 @@ function onStart(){
            $query       = parse_str ( parse_url ( $inputString , PHP_URL_QUERY ) , $params );
            
             
-    if (!isset($_SERVER['HTTP_USER_AGENT'])) {
-        $_SERVER['HTTP_USER_AGENT'] = 'Unknown User Agent';
-    }
+        if (!isset($_SERVER['HTTP_USER_AGENT'])) {
+            $_SERVER['HTTP_USER_AGENT'] = 'Unknown User Agent';
+        }
         // check user agent, will redirect to AMP page if mobile
         if (!empty($_SERVER['HTTP_USER_AGENT'])) {
             $useragent = $_SERVER['HTTP_USER_AGENT'];

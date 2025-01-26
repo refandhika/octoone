@@ -43,7 +43,6 @@ function onStart(){
     $reorder = array(2, 1, 0, 3);
     $newdata = [];
     $data = DB::table('definite_products_category')->where("is_featured",1)->get();
-    DB::disconnect('mysql');
     foreach($reorder as $index) {
         $newdata[$index] = $data[$index];
     }
@@ -1511,9 +1510,10 @@ body {
     <div class="container">
     <h2>Inspirasi Gaya Hidup,<br>Tips & Nutrisi Keluarga</h2>
         <div class="main">
-    	{% if milkpediaList.nutrisi  %}
-    	{% set milkpedias = milkpediaList.nutrisi.take(4) %}
-            {% for milkpediaPost  in milkpedias %}
+        {% set nutrisiPosts = milkpediaList.nutrisi %}
+    	{% if nutrisiPosts  %}
+    	{% set milkpedias = nutrisiPosts.take(4) %}
+            {% for milkpediaPost in milkpedias %}
             <div class="slide">
                 <div class="related-img-{{loop.index}}" data-image="{{ milkpediaPost.featured_image | mediathumb_resize('width', 640, 90)  }}">
                     <img loading="lazy" src="" alt="">

@@ -5,6 +5,8 @@ namespace Definite\Milkpedia\Components;
 use Cms\Classes\ComponentBase;
 use Definite\Milkpedia\Models\Milkpedia as MilkpediaModel;
 use Definite\Milkpedia\Models\Category as Category;
+use Illuminate\Support\Facades\Cache;
+// use Barryvdh\Debugbar\Facades\Debugbar;
 
 class Milkpedia extends ComponentBase
 {
@@ -20,7 +22,8 @@ class Milkpedia extends ComponentBase
 
     public function onRun()
     {
-        $this->records = $this->page['records'] = MilkpediaModel::orderBy('created_at', 'DESC')->get();
+        // $this->records = $this->page['records'] = MilkpediaModel::orderBy('created_at', 'DESC')->get();
+        // $this->records = [];
         $this->total   = $this->count();
     }
 
@@ -49,7 +52,6 @@ class Milkpedia extends ComponentBase
     
     public function count(){
         $items = Category::where('slug', $this->param('slug'))->first();
-        if($items)
-        return count($items->getTotal());
+        return $items ? $items->posts()->count() : 0;
     }
 }

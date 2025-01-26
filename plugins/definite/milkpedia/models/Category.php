@@ -3,6 +3,7 @@
 namespace Definite\Milkpedia\Models;
 
 use Definite\Base\Models\Post;
+// use Barryvdh\Debugbar\Facades\Debugbar;
 
 /**
  * Model.
@@ -18,8 +19,7 @@ class Category extends Post
     /*
      * Validation
      */
-    public $rules = [
-    ];
+    public $rules = [];
 
     /**
      * @var string the database table used by the model
@@ -38,17 +38,20 @@ class Category extends Post
     // Get Milkpedia
     public function getMilkpedia($perPage = 7)
     {
+        // return $this->posts()->with('categories')->paginate($perPage);
         return $this->belongsToMany('Definite\Milkpedia\Models\Milkpedia', 'definite_milkpedia_posts_categories', 'category_id', 'milkpedia_id')->latest()->paginate($perPage);
     }
 
      //Get Total Post Milkpedia
     public function getTotal()
     {
+        // return $this->posts()->with('categories')->get();
         return $this->belongsToMany('Definite\Milkpedia\Models\Milkpedia', 'definite_milkpedia_posts_categories', 'category_id', 'milkpedia_id')->latest()->get();
     }
     
     public function getPosts($perPage = 10)
     {
+        // return $this->posts()->paginate($perPage);
         $self = $this;
 
         return Milkpedia::with(['categories' => function ($query) use ($self) {
@@ -58,6 +61,7 @@ class Category extends Post
 
     public function findBySlug($slug)
     {
+        // return Self::firstWhere('slug', $slug);
         if ($record = Self::where('slug', '=', $slug)->first()) {
             return $record;
         }

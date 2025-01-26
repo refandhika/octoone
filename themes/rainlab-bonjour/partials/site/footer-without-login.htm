@@ -4,7 +4,6 @@ description = "footer without login"
 ==
 <?php
 function onStart(){
-
     if (!isset($_SERVER['HTTP_USER_AGENT'])) {
         $_SERVER['HTTP_USER_AGENT'] = 'Unknown User Agent';
     }
