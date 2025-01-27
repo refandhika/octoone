@@ -5,7 +5,7 @@ namespace Definite\Milkpedia\Components;
 use Cms\Classes\ComponentBase;
 use Definite\Milkpedia\Models\Milkpedia as MilkpediaModel;
 use Definite\Milkpedia\Models\Category as Category;
-use Illuminate\Support\Facades\Cache;
+// use Illuminate\Support\Facades\Cache;
 // use Barryvdh\Debugbar\Facades\Debugbar;
 
 class Milkpedia extends ComponentBase

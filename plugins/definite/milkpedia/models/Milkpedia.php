@@ -4,6 +4,7 @@ namespace Definite\Milkpedia\Models;
 
 use Definite\Base\Models\Post;
 use DB;
+use Illuminate\Support\Facades\Cache;
 
 
 class Milkpedia extends Post
