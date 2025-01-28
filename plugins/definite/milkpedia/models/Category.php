@@ -53,10 +53,11 @@ class Category extends Post
     {
         // return $this->posts()->paginate($perPage);
         $self = $this;
-
-        return Milkpedia::with(['categories' => function ($query) use ($self) {
+        $posts = Milkpedia::with(['categories' => function ($query) use ($self) {
             $query->where('id', '=', $self->id);
         }])->latest()->paginate($perPage);
+
+        return $posts;
     }
 
     public function findBySlug($slug)
