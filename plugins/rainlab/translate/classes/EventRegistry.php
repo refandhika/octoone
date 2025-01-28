@@ -207,7 +207,7 @@ class EventRegistry
      */
     public function pruneTranslatedContentTemplates($templates)
     {
-        $locales = LocaleModel::listAvailable();
+        $locales = LocaleModel::listAvailable()->toArray();
 
         $extensions = array_map(function($ext) {
             return '.'.$ext;
