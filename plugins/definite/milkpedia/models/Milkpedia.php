@@ -58,31 +58,22 @@ class Milkpedia extends Post
     public function related($take = 3)
     {
         $ids = $this->categories->pluck('id')->toArray();
-    
         $cacheKey = "related_posts_{$this->id}";
-        return Cache::remember($cacheKey, now()->addMinutes(10), function () use ($ids, $take) {
-            return $this->where('id', '<>', $this->id)
-                ->published()
-                ->filterCategories($ids)
-                ->inRandomOrder()
-                ->take($take)
-                ->get();
-        });
 
-        // $ids = [];
-        // foreach ($this->categories as $category) {
-        //     if (empty($category->childs)) {
-        //         $ids[] = $category->id;
-        //     }
-        // }
+        if (Cache::has($cacheKey)) {
+            return collect(Cache::get($cacheKey));
+        }
 
-        //  return $this->where('id', '<>', $this->id)
-        //     ->orderBy(DB::raw('RAND()'))
-        //     ->published()
-        //     ->filterCategories($ids)
-        //     ->take($take)
-        //     ->get();
+        $results = $this->where('id', '<>', $this->id)
+            ->published()
+            ->filterCategories($ids)
+            ->inRandomOrder()
+            ->take($take)
+            ->get();
+
+        Cache::put($cacheKey, $results->toArray(), now()->addMinutes(10));
+
+        return $results;
     }
-
    
 }

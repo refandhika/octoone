@@ -27,14 +27,16 @@ function onEnd() {
    if($slug == 'kapan-waktu-yang-tepat-bagi-orang-dewasa-minum-susu-penambah-berat-badan'){
           return Redirect::to("/milkpedia/kapan-dan-bagaimana-cara-minum-susu/susu-penambah-berat-badan" , 301);
     }
-   if(!$this->page->components["builderDetails"]->record){
-    
-        return Response::make( $cmsController->render("/404"), 404);
-   
+
+    $record = $this->page->components["builderDetails"]->record;
+
+    if (!$record) {
+        return Response::make($cmsController->render("/404"), 404);
     }
-   
-    $category_slug = $this->page->components["builderDetails"]->record->categories->first();
-    $slug          = $this->page->components["builderDetails"]->record->attributes["slug"];
+
+    $record->load('categories');
+    $category_slug = $record->categories->first();
+    $slug          = $record->attributes["slug"];
 
     if($param_slug == 'default')
     {
@@ -52,8 +54,8 @@ function onEnd() {
     }
 
       // get the post component
-    $_title      = $this->page->components["builderDetails"]->record->attributes["title"];
-    $_meta_title = $this->page->components["builderDetails"]->record->attributes["meta_title"];
+    $_title      = $record->attributes["title"];
+    $_meta_title = $record->attributes["meta_title"];
     
     if($_meta_title){
              $this->page->title      = $_meta_title;
@@ -61,24 +63,24 @@ function onEnd() {
         }
     else{
              $this->page->title = $_title;
-        }    
-    $_meta_description = $this->page->components["builderDetails"]->record->attributes["meta_description"] ?? NULL;
-    $_meta_keywords = $this->page->components["builderDetails"]->record->attributes["meta_keywords"] ?? NULL;
+        }
+    $_meta_description = $record->attributes["meta_description"] ?? NULL;
+    $_meta_keywords = $record->attributes["meta_keywords"] ?? NULL;
    
     $this->page->meta_description = $_meta_description;
     $this->page->meta_keywords = $_meta_keywords;
 
-    $_title_en = $this->page->components["builderDetails"]->record->attributes["title_en"] ?? NULL;
-    $_meta_description_en = $this->page->components["builderDetails"]->record->attributes["meta_description_en"] ?? NULL;
-    $_meta_keywords_en = $this->page->components["builderDetails"]->record->attributes["meta_keywords_en"] ?? NULL;
+    $_title_en = $record->attributes["title_en"] ?? NULL;
+    $_meta_description_en = $record->attributes["meta_description_en"] ?? NULL;
+    $_meta_keywords_en = $record->attributes["meta_keywords_en"] ?? NULL;
     $this->page->title_en = $_title_en;
-    $this->page->meta_title_en = $this->page->components["builderDetails"]->record->attributes["meta_title_en"] ?? NULL;
+    $this->page->meta_title_en = $record->attributes["meta_title_en"] ?? NULL;
     $this->page->meta_description_en = $_meta_description_en;
     $this->page->meta_keywords_en = $_meta_keywords_en;
 
     $this->page->category_slug = $this->param('category-slug');
-    $og_desc =  $this->page->components["builderDetails"]->record->attributes["excerpt"];
-    $og_img  =  $this->page->components["builderDetails"]->record->attributes["featured_image"];
+    $og_desc =  $record->attributes["excerpt"];
+    $og_img  =  $record->attributes["featured_image"];
     
     if(!$og_desc){
         $this->page->og_description = 'Halo! Ada artikel yang menarik dan bermanfaat untuk Anda baca dari Frisian Flag Milkpedia. Temukan juga berbagai artikel lainnya di https://www.frisianflag.com/milkpedia';
