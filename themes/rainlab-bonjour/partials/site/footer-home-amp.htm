@@ -2,19 +2,14 @@
 
 [subscriberform]
 
-[builderList]
-modelClass = "Definite\FunFact\Models\FunFact"
-scope = "-"
-scopeValue = "{{ :scope }}"
-displayColumn = "description"
-noRecordsMessage = "No records found"
-detailsPage = "-"
-detailsUrlParameter = "id"
-pageNumber = "{{ :page }}"
 ==
 <?php
+use Definite\FunFact\Models\FunFact;
+
 function onStart()
 {
+    $this['funfact'] = FunFact::query()->inRandomOrder()->first();
+
     if (!isset($_SERVER['HTTP_USER_AGENT'])) {
         $_SERVER['HTTP_USER_AGENT'] = 'Unknown User Agent';
     }
@@ -60,8 +55,7 @@ function onStart()
             </div>
             
            <!-- s:fakta -->
-          {% if not records.isEmpty %}
-              {% set funfact = records.random %}
+          {% if funfact %}
             <div class="footer__widget__box">
                 <div>
                     <h3 class="footer__widget__title">{{'fakta-seru'|_}} #{{ funfact.no }}</h3>

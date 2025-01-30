@@ -28,6 +28,6 @@ class FunFact extends Model
 
     public function random()
     {
-        return $this->all()->random();
+        return self::query()->inRandomOrder()->first();
     }
 }

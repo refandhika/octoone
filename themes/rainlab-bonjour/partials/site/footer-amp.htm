@@ -1,18 +1,13 @@
 [viewBag]
 
-[builderList]
-modelClass = "Definite\FunFact\Models\FunFact"
-scopeValue = "{{ :scope }}"
-displayColumn = "description"
-noRecordsMessage = "No records found"
-detailsPage = "-"
-detailsUrlParameter = "id"
-pageNumber = "{{ :page }}"
-
 [subscriberform]
 ==
 <?php
+use Definite\FunFact\Models\FunFact;
+
 function onStart(){
+    $this['funfact'] = FunFact::query()->inRandomOrder()->first();
+
     if(Session::pull('show_login_form', false)){
         $this->page['show_form'] = '$.fancybox.open({ src  : \'#login\'});';
 
@@ -88,8 +83,7 @@ function onStart(){
       </div>
       <div class="clearfix"></div>
       <!-- s:fakta -->
-      {% if not records.isEmpty %}
-          {% set funfact = records.random %}
+      {% if funfact %}
           <div class="title_page title_page_white">{{'fakta-seru'|_}} #{{ funfact.no }}</div>
           <div class="fakta">
             {{ trans_pick(funfact, 'description') | raw }}

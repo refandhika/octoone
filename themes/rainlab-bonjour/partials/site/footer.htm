@@ -1,18 +1,13 @@
 [viewBag]
 
-[builderList]
-modelClass = "Definite\FunFact\Models\FunFact"
-scopeValue = "{{ :scope }}"
-displayColumn = "description"
-noRecordsMessage = "No records found"
-detailsPage = "-"
-detailsUrlParameter = "id"
-pageNumber = "{{ :page }}"
-
 [subscriberform]
 ==
 <?php
+use Definite\FunFact\Models\FunFact;
+
 function onStart(){
+    $this['funfact'] = FunFact::query()->inRandomOrder()->first();
+
     if(Session::pull('show_login_form', false)){
         $this->page['show_form'] = '$.fancybox.open({ src  : \'#login\'});';
 
@@ -67,14 +62,13 @@ $this->addJs('assets/js/custom.js?v=1.03');
                 </div>
             </div>
             
-            {% if not records.isEmpty %}
-                {% set funfact = records.random %}
-                    <div class="col-md-4 footer__widget__box">
-                        <div class="col-md-12">
-                        <h3 class="footer__widget__title">{{'fakta-seru'|_}} #{{ funfact.no }}</h3>
-                            {{ trans_pick(funfact, 'description') | raw }}
-                        </div>
+            {% if funfact %}
+                <div class="col-md-4 footer__widget__box">
+                    <div class="col-md-12">
+                    <h3 class="footer__widget__title">{{'fakta-seru'|_}} #{{ funfact.no }}</h3>
+                        {{ trans_pick(funfact, 'description') | raw }}
                     </div>
+                </div>
             {% endif %}
 
             <div class="col-md-4 footer__widget__box">
