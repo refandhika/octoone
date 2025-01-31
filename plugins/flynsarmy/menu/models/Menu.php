@@ -14,6 +14,9 @@ class Menu extends Model
 
     private $firstItem;
 
+    protected static $cachedLists = [];
+    protected static $cachedFirstItems = [];
+
     /**
      * @var string the database table used by the model
      */
@@ -110,11 +113,11 @@ class Menu extends Model
      */
     public function firstItem()
     {
-        if (null !== $this->firstItem) {
-            return $this->firstItem;
+        if (isset(self::$cachedFirstItems[$this->id])) {
+            return self::$cachedFirstItems[$this->id];
         }
-
-        return $this->firstItem = $this->items()->first();
+    
+        return self::$cachedFirstItems[$this->id] = $this->items()->first();
     }
 
     public function render(Controller $controller, $overrides = [])
@@ -127,6 +130,12 @@ class Menu extends Model
 
     public function getList()
     {
-        return $this->items()->getNested();
+        if (isset(self::$cachedLists[$this->id])) {
+            return self::$cachedLists[$this->id];
+        }
+    
+        return self::$cachedLists[$this->id] = $this->items()
+            ->where('enabled', 1)
+            ->getNested();
     }
 }

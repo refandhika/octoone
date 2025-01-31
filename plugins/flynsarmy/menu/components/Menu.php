@@ -7,6 +7,9 @@ use Flynsarmy\Menu\Models\Menu as MenuModel;
 
 class Menu extends ComponentBase
 {
+    protected static $storedMenus = [];
+    protected $menu;
+
     public function componentDetails()
     {
         return [
@@ -36,44 +39,49 @@ class Menu extends ComponentBase
      */
     public function onRender()
     {
-        $menu = MenuModel::find($this->property('menu_id', 0));
+        $this->menu = $this->getMenu();
+        if (!$this->menu) return '';
+
         // Grab a list of menu settings
-        $settings = $menu->getDefaultSettings();
+        $settings = $this->menu->getDefaultSettings();
 
         // Update $settings with any inline paramters they specified on their {% component %}
         foreach ($settings as $key => $setting) {
             $settings[$key] = $this->property($key, $setting);
         }
-        $settings['menu'] = $menu;
+        $settings['menu'] = $this->menu;
         $settings['selected_item'] = $this->property('selected_item', '');
 
-        // foreach ( $settings as $key => $setting )
-        // 	$this->page[$key] = $setting;
-
-        // // This is an ugly and memory intensive hack required to get around
-        // // Controller not having a getVars() method.
-        // $this->page['settings'] = $settings;
-
-        return $menu->render($this->controller, $settings);
+        return $this->menu->render($this->controller, $settings);
     }
 
     public function getList()
     {
-        $menu = MenuModel::find($this->property('menu_id', 0));
-        // var_dump($menu);exit();
+        $this->menu = $this->getMenu();
+        if (!$this->menu) return ['data' => [], 'settings' => []];
+        
         // Grab a list of menu settings
-        $settings = $menu->getDefaultSettings();
+        $settings = $this->menu->getDefaultSettings();
 
         // Update $settings with any inline paramters they specified on their {% component %}
         foreach ($settings as $key => $setting) {
             $settings[$key] = $this->property($key, $setting);
         }
-        $settings['menu'] = $menu;
-        $settings['selected_item'] = $this->property('selected_item', '');
 
         return [
-            'data'      => $menu->getList(),
+            'data'      => $this->menu->getList(),
             'settings'  => $settings
         ];
+    }
+
+    protected function getMenu()
+    {
+        $menu_id = $this->property('menu_id', 0);
+
+        if (isset(self::$storedMenus[$menu_id])) {
+            return self::$storedMenus[$menu_id];
+        }
+
+        return self::$storedMenus[$menu_id] = MenuModel::find($menu_id);
     }
 }
