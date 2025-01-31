@@ -44,31 +44,36 @@ class Product extends Post
         'childs' => [
             'Definite\Products\Models\Product',
             'key' => 'parent_id',
+            'scope' => 'published'
         ],
     ];
 
     public $belongsTo = [
         'parent' => 'Definite\Products\Models\Product',
         'key' => 'parent_id',
+        'scope' => 'published'
     ];
     /*
     End of Relations
      */
 
+    protected $childCache = null;
+
     public function isParent()
     {
-        return !$this->childs->isEmpty();
+        if ($this->childCache === null) {
+            $this->childCache = $this->childs()->exists();
+        }
+    
+        return $this->childCache;
     }
 
     public function siblingsVariants()
     {
-        $variants = [];
-
-        if (!$this->isParent()) {
-            $variants = $this->parent->childs;
-            // $variants = $variants->prepend($this->parent);
+        if ($this->isParent()) {
+            return collect([]);
         }
 
-        return $variants;
+        return $this->parent()->with('childs')->first()->childs ?? collect([]);
     }
 }
