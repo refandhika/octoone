@@ -114,6 +114,7 @@ function onEnd() {
                             <div class="content">
                                 <h3>{{ 'berita-lainnya'|_ }}</h3>
                                 {% for news in records.first.getByLatest %}
+                                {% if news.slug is defined and news.slug is not empty %}
                                     <div class="wrp-listthu">
                                         <div class="item-listthu">
                                             <div class="imgwrp">
@@ -122,6 +123,7 @@ function onEnd() {
                                             <p><a href="{{ 'news-single'|page({"slug": news.slug}) }}">{{trans_pick(news, 'title')}}</a></p>
                                         </div>
                                     </div>
+                                {% endif %}
                                 {% endfor %}
                             </div>
                         </div>

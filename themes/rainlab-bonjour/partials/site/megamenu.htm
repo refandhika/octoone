@@ -17,18 +17,20 @@
                             <a href="{{ 'our-products-archive'|page({'slug': 'susu-kental-manis'}) }}">{{'susu-kental-manis'|_|uppercase|_}}</a></h5>
                         <ul>
                             {% for product in productList.getByCategories(['susu-kental-manis']) %}
-                            <li>
-                                <a href="{{
-                                    'our-products-single'|page({
-                                        'category-slug': 'susu-kental-manis',
-                                        'slug': product.slug
-                                    })
-                                }}">
-                                    <div class="imgprod"><img src="https://d5r0s9boode1v.cloudfront.net/storage/app/media{{ product.small_packshot_image }}" alt="{{ product.title }}"/></div>
-                                    {{ product.title }}
-                                    <span>{{ product.subtitle }}</span>
-                                </a>
-                            </li>
+                            {% if product.slug is defined and product.slug is not empty %}
+                                <li>
+                                    <a href="{{
+                                        'our-products-single'|page({
+                                            'category-slug': 'susu-kental-manis',
+                                            'slug': product.slug
+                                        })
+                                    }}">
+                                        <div class="imgprod"><img src="https://d5r0s9boode1v.cloudfront.net/storage/app/media{{ product.small_packshot_image }}" alt="{{ product.title }}"/></div>
+                                        {{ product.title }}
+                                        <span>{{ product.subtitle }}</span>
+                                    </a>
+                                </li>
+                            {% endif %}
                             {% endfor %}
                         </ul>
                     </div>
@@ -40,18 +42,20 @@
                         </h5>
                         <ul>
                             {% for category in productCategories.getChild('susu-siap-minum') %}
-                            <li>
-                                <a href="{{
-                                    'our-products-single'|page({
-                                        'category-slug': 'susu-siap-minum',
-                                        'slug': category.slug
-                                    })
-                                }}">
-                                    <div class="imgprod"><img src="https://d5r0s9boode1v.cloudfront.net/storage/app/media{{ category.small_packshot_image }}" alt="{{ category.title }}"/></div>
-                                    {{ category.title }}
-                                    <span>{{ category.subtitle }}</span>
-                                </a>
-                            </li>
+                            {% if category.slug is defined and category.slug is not empty %}
+                                <li>
+                                    <a href="{{
+                                        'our-products-single'|page({
+                                            'category-slug': 'susu-siap-minum',
+                                            'slug': category.slug
+                                        })
+                                    }}">
+                                        <div class="imgprod"><img src="https://d5r0s9boode1v.cloudfront.net/storage/app/media{{ category.small_packshot_image }}" alt="{{ category.title }}"/></div>
+                                        {{ category.title }}
+                                        <span>{{ category.subtitle }}</span>
+                                    </a>
+                                </li>
+                            {% endif %}
                             {% endfor %}
                         </ul>
                     </div>
@@ -62,18 +66,20 @@
                         </h5>
                         <ul>
                             {% for product in productList.getByCategories(['susu-bubuk-keluarga']) %}
-                            <li>
-                                <a href="{{
-                                    'our-products-single'|page({
-                                        'category-slug': 'susu-bubuk-keluarga',
-                                        'slug': product.slug
-                                    })
-                                }}">
-                                    <div class="imgprod"><img src="https://d5r0s9boode1v.cloudfront.net/storage/app/media{{ product.small_packshot_image }}" width="37"  height="37" alt="{{ product.title }}"/></div>
-                                        {{ product.title }}
-                                        <span>{{ product.subtitle }}</span>
-                                </a>
-                            </li>
+                            {% if product.slug is defined and product.slug is not empty %}
+                               <li>
+                                    <a href="{{
+                                        'our-products-single'|page({
+                                            'category-slug': 'susu-bubuk-keluarga',
+                                            'slug': product.slug
+                                        })
+                                    }}">
+                                        <div class="imgprod"><img src="https://d5r0s9boode1v.cloudfront.net/storage/app/media{{ product.small_packshot_image }}" width="37"  height="37" alt="{{ product.title }}"/></div>
+                                            {{ product.title }}
+                                            <span>{{ product.subtitle }}</span>
+                                    </a>
+                                </li>
+                            {% endif %}
                             {% endfor %}
                         </ul>
                     </div>
@@ -107,19 +113,21 @@
                         </h5>
                         <ul>
                             {% for category in productList.getByCategories(['susu-ibu-balita']) %}
-                            <li>
-                                <a href="{{
-                                    'our-products-single'|page({
-                                        'category-slug': 'susu-ibu-balita',
-                                        'slug': category.slug
-                                    })
-                                }}">
-                                    <div class="imgprod">
-                                        <img width="37" height="37" src="{{ category.small_packshot_image|media }}" alt="{{ category.title }}"/></div>
-                                        {{ category.title }}
-                                        <span>{{ category.subtitle }}</span>
-                                </a>
-                            </li>
+                            {% if category.slug is defined and category.slug is not empty %}
+                                <li>
+                                    <a href="{{
+                                        'our-products-single'|page({
+                                            'category-slug': 'susu-ibu-balita',
+                                            'slug': category.slug
+                                        })
+                                    }}">
+                                        <div class="imgprod">
+                                            <img width="37" height="37" src="{{ category.small_packshot_image|media }}" alt="{{ category.title }}"/></div>
+                                            {{ category.title }}
+                                            <span>{{ category.subtitle }}</span>
+                                    </a>
+                                </li>
+                            {% endif %}
                             {% endfor %}
                         </ul>
                     </div>

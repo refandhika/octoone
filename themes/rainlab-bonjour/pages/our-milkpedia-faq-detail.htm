@@ -110,6 +110,8 @@ function onEnd() {
 </div> -->
 
 <div id='main-section'>
+
+    {% if record.slug is defined and record.slug is not empty %}
     <div class="col-md-12">
         <div class="breadcrumb">
             <div class="container-two">
@@ -132,6 +134,7 @@ function onEnd() {
         <br>
         <br>
     </div>
+    {% endif %}
 
 
     <div class="col-md-12">

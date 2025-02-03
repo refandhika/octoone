@@ -181,6 +181,7 @@ function onEnd() {
     <div class="container-one">
         <ul>
             {% for category in categories %}
+            {% if category.slug is defined and category.slug is not empty %}
             <li>
                 <a href="{{ 'our-products-archive'|page({'slug': category.slug }) }}"
                     {% if category.slug == record.slug %}
@@ -190,12 +191,15 @@ function onEnd() {
                     {{ trans_pick(category, 'title') }}
                 </a>
             </li>
+            {% endif %}
             {% endfor %}
         </ul>
     </div>
 </div>
 
 <div id='main-section' class="container-fluid">
+
+    {% if category.slug is defined and category.slug is not empty and record.slug is defined and record.slug is not empty %}
     <div class="col-md-12">
         <div class="breadcrumb">
             <div class="container-two">
@@ -215,6 +219,7 @@ function onEnd() {
             </div>
         </div>
     </div>
+    {% endif %}
     
     <div class="col-md-12">
         <div class="default-content product-content heres">
@@ -250,7 +255,7 @@ function onEnd() {
                         <h3 class="heading heading_variant">{{'tersedia-dalam-rasa-lain'|_}}</h3>
                         <div class="variant test">
                         {% for dataitem in getdatadetail %}
-                        
+                        {% if dataitem.slug is defined and dataitem.slug is not empty %}
                             <div class="imgproduct">
                             <a href="{{ 'our-products-single'|page({
                                                 'category-slug': 'susu-kental-manis',
@@ -261,8 +266,7 @@ function onEnd() {
                                                 <h6 class="imgproduct__title">{{ trans_pick(dataitem, 'title') }}</h6>
                             </a>
                             </div>
-                        
-                        
+                        {% endif %}
                         {% endfor %}
                         </div>
                         
@@ -281,6 +285,7 @@ function onEnd() {
                                 {% if not record.parent.isEmpty %}
                                      {% if record.parent.title != 'Ide Minuman Segar dan Bernutrisi dengan Purefarm Flavour Milk' %}
                                     <div class="imgproduct">
+                                        {% if record.parent.category.slug is defined and record.parent.category.slug is not empty and record.parent.slug is defined and record.parent.slug is not empty %}
                                         <a href="{{ 'our-products-single'|page({
                                             'category-slug': record.parent.category.slug,
                                             'slug': record.parent.slug
@@ -294,6 +299,7 @@ function onEnd() {
 
                                             <h6 class="imgproduct__title">{{ trans_pick(record.parent, 'title') }}</h6>
                                         </a>
+                                        {% endif %}
                                     </div>
                                      {% endif %}
                                 {% endif %}

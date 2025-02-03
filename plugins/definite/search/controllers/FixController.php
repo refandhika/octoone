@@ -5,6 +5,7 @@
  */
 namespace Definite\Search\Controllers;
 
+use Cms\Classes\Page;
 use \Response;
 use \Request;
 use \Redirect;
@@ -17,7 +18,7 @@ class FixController extends Controller
     // Not Found Fix
     public function notFound()
     {
-        return Redirect::to('/404');
+        return redirect(Page::url('404'));
     }
 
 }

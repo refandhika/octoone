@@ -195,7 +195,11 @@ strpos($_SERVER['HTTP_USER_AGENT'], 'GTmetrix') !== false
         {% if this.page.fileName == 'home.htm' %}
             <link rel="canonical" href="{{ 'home' | page }}">
         {% elseif this.page.fileName == 'news-archive.htm' %}
-            <link rel="canonical" href="{{ 'home' | page }}/perusahaan-kami/berita/years/{{ this.param.slug }}">
+            {% if this.param.slug %}
+                <link rel="canonical" href="{{ 'home' | page }}/perusahaan-kami/berita/years/{{ this.param.slug }}">
+            {% else %}
+                <link rel="canonical" href="{{ 'home' | page }}/perusahaan-kami/berita">
+            {% endif %}
         {% elseif this.page.fileName == 'press-release-archive.htm' %}
             {% if this.param.slug %}
                 <link rel="canonical" href="{{ 'home' | page }}/perusahaan-kami/siaran-pers-archive/year/{{ this.param.slug }}">
