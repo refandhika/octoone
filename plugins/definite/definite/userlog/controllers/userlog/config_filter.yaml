@@ -1,5 +1,0 @@
-scopes:
-  created_at:
-    label: 'Date Range'
-    type: 'daterange'
-    conditions: created_at <= ':before' AND created_at >= ':after' 

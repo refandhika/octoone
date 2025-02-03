@@ -1,4 +1,0 @@
-title: Post
-modelClass: Definite\Gallery\Models\Post
-toolbar:
-    buttons: reorder_toolbar

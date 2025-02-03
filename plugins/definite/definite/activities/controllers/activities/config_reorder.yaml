@@ -1,4 +1,0 @@
-title: Activities
-modelClass: Definite\Activities\Models\Activity
-toolbar:
-    buttons: reorder_toolbar

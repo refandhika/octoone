@@ -1,4 +1,0 @@
-title: MikpediaCategory
-modelClass: Definite\Milkpedia\Models\MilkpediaCategory
-toolbar:
-    buttons: reorder_toolbar

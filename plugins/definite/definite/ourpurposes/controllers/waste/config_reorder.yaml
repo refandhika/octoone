@@ -1,4 +1,0 @@
-title: Waste
-modelClass: Definite\Ourpurposes\Models\Waste
-toolbar:
-    buttons: reorder_toolbar

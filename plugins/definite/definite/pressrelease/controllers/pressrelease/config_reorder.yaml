@@ -1,4 +1,0 @@
-title: PressRelease
-modelClass: Definite\Pressrelease\Models\PressRelease
-toolbar:
-    buttons: reorder_toolbar

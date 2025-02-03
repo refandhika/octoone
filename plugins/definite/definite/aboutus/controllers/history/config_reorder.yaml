@@ -1,4 +1,0 @@
-title: History
-modelClass: Definite\Aboutus\Models\History
-toolbar:
-    buttons: reorder_toolbar

@@ -1,4 +1,0 @@
-title: Farmer
-modelClass: Definite\Ourpurposes\Models\Farmer
-toolbar:
-    buttons: reorder_toolbar

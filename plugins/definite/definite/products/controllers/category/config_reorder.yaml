@@ -1,4 +1,0 @@
-title: Category
-modelClass: Definite\Products\Models\Category
-toolbar:
-    buttons: reorder_toolbar

@@ -1,4 +1,0 @@
-title: Detail
-modelClass: Definite\Gallery\Models\Detail
-toolbar:
-    buttons: reorder_toolbar

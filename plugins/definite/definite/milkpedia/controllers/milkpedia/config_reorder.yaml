@@ -1,5 +1,0 @@
-title: Milkpedia
-modelClass: Definite\Milkpedia\Models\Milkpedia
-nameFrom: created_at
-toolbar:
-    buttons: reorder_toolbar
