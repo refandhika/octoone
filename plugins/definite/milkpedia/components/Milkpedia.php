@@ -35,19 +35,37 @@ class Milkpedia extends ComponentBase
         })->get();
     }
 
-    public function nutrisi()
+    public function nutrisi($limit = 0)
     {
-        return $this->records = Category::find(1)->posts()->orderBy('created_at', 'DESC')->get();
+        $query = Category::find(1)->posts()->orderBy('created_at', 'DESC');
+        
+        if ($limit > 0) {
+            $query->limit($limit);
+        }
+
+        return $this->records = $query->get();
     }
 
-    public function susu()
+    public function susu($limit = 0)
     {
-        return $this->records = Category::find(2)->posts()->orderBy('created_at', 'DESC')->get();
+        $query = Category::find(2)->posts()->orderBy('created_at', 'DESC');
+        
+        if ($limit > 0) {
+            $query->limit($limit);
+        }
+
+        return $this->records = $query->get();
     }
 
-    public function cara_minum_susu()
+    public function cara_minum_susu($limit = 0)
     {
-        return $this->records = Category::find(3)->posts()->orderBy('created_at', 'DESC')->get();
+        $query = Category::find(3)->posts()->orderBy('created_at', 'DESC');
+        
+        if ($limit > 0) {
+            $query->limit($limit);
+        }
+
+        return $this->records = $query->get();
     }
     
     public function count(){

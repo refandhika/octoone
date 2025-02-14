@@ -138,10 +138,10 @@ strpos($_SERVER['HTTP_USER_AGENT'], 'GTmetrix') !== false
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        {% if this.page.title %}
-        <title>{{ this.page.title }} | Frisian Flag Indonesia</title>
-        {% else %}
+        {% if this.page.meta_title %}
         <title>{{ this.page.meta_title }} | Frisian Flag Indonesia</title>
+        {% else %}
+        <title>{{ this.page.title }} | Frisian Flag Indonesia</title>
         {% endif %}
         {% if this.page.meta_description %}
         <meta name="description" content="{{ this.page.meta_description }}">
@@ -149,7 +149,6 @@ strpos($_SERVER['HTTP_USER_AGENT'], 'GTmetrix') !== false
         {% placeholder meta %}
         {% endif %}
         <meta name="keywords" content="{{ this.page.meta_keywords }}">
-        
         <meta name="facebook-domain-verification" content="t2ubto7jn7dd9h6si4fk19a8gd88ks" />
         <meta name="facebook-domain-verification" content="74hs9dbda87d9cawoguzz2w7pjviwl" />
         <meta name="ahrefs-site-verification" content="112d70195f4804d5ec8b0a26f6808e96afa04708dac83c5ded305ccf923cb44e">
@@ -158,10 +157,10 @@ strpos($_SERVER['HTTP_USER_AGENT'], 'GTmetrix') !== false
         
         <meta name="author" content="Frisian Flag Indonesia">
          {% if no_index %}
-        <meta name="robots" content="noindex,nofollow">
+            <meta name="robots" content="noindex,nofollow">
          {% else %}
-	<meta content="index,follow" name="googlebot">
-	<meta name="robots" content="index, follow">
+        	<meta content="index,follow" name="googlebot">
+        	<meta name="robots" content="index, follow">
          {% endif %}
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta property="fb:app_id" content="872847836388420" />
@@ -186,7 +185,8 @@ strpos($_SERVER['HTTP_USER_AGENT'], 'GTmetrix') !== false
 
         <link href="https://code.jquery.com" rel="dns-prefetch" />
         <link href="https://cdnjs.cloudflare.com" rel="dns-prefetch" />
-        <link href="https://d5r0s9boode1v.cloudfront.net" rel="dns-prefetch" />
+        <link href="https://cdn.jsdelivr.net" rel="dns-prefetch" />
+        <link rel="preconnect" href="https://d5r0s9boode1v.cloudfront.net" crossorigin>
         
         {% if amp_html_uri %}
             <link rel="amphtml" href="{{ amp_html_uri }}">
@@ -195,11 +195,7 @@ strpos($_SERVER['HTTP_USER_AGENT'], 'GTmetrix') !== false
         {% if this.page.fileName == 'home.htm' %}
             <link rel="canonical" href="{{ 'home' | page }}">
         {% elseif this.page.fileName == 'news-archive.htm' %}
-            {% if this.param.slug %}
-                <link rel="canonical" href="{{ 'home' | page }}/perusahaan-kami/berita/years/{{ this.param.slug }}">
-            {% else %}
-                <link rel="canonical" href="{{ 'home' | page }}/perusahaan-kami/berita">
-            {% endif %}
+            <link rel="canonical" href="{{ 'home' | page }}/perusahaan-kami/berita/years/{{ this.param.slug }}">
         {% elseif this.page.fileName == 'press-release-archive.htm' %}
             {% if this.param.slug %}
                 <link rel="canonical" href="{{ 'home' | page }}/perusahaan-kami/siaran-pers-archive/year/{{ this.param.slug }}">
@@ -215,12 +211,9 @@ strpos($_SERVER['HTTP_USER_AGENT'], 'GTmetrix') !== false
         {% endif %}
 
 	{% if this.page.fileName == 'home-skeleteon.htm' %}
-            <script rel="dns-prefetch" src="//cdn.jsdelivr.net/npm/@shinsenter/defer.js/dist/defer_plus.min.js"></script>
-            <script rel="preconnect" src="//cdn.jsdelivr.net/npm/@shinsenter/defer.js/dist/defer_plus.min.js" crossorigin></script>
+            <script src="//cdn.jsdelivr.net/npm/@shinsenter/defer.js/dist/defer_plus.min.js" defer></script>
             <script type="text/javascript">
             // This will lzay-load FontAwesome icons
-            
-            console.log('ini', 'https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/css/app.css')
             </script>
             
             
@@ -236,12 +229,11 @@ strpos($_SERVER['HTTP_USER_AGENT'], 'GTmetrix') !== false
             
             </script>
             {% if GTMETRIX == 'NO' %}
-                <link rel="stylesheet" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/libs/cooki/cookieconsent.min.css' }}"  as="style" media="none" onload="if(media!='all')media='all'"/>     
+                <link rel="stylesheet" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/libs/cooki/cookieconsent.min.css' }}"  as="style" media="none" onload="if(media!='all')media='all'"/>
+                <link rel="stylesheet" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fancybox/helpers/jquery.fancybox-buttons.css"   as="style" media="none" onload="if(media!='all')media='all'" />
+                <link rel="stylesheet" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fancybox/helpers/jquery.fancybox-thumbs.css"  as="style" media="none" onload="if(media!='all')media='all'" />
+                <link rel="stylesheet" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fancybox/jquery.fancybox.css" as="style" media="none" onload="if(media!='all')media='all'" />x
             {% endif %}
-            <link rel="stylesheet" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fancybox/helpers/jquery.fancybox-buttons.css"   as="style" media="none" onload="if(media!='all')media='all'" />
-            <link rel="stylesheet" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fancybox/helpers/jquery.fancybox-thumbs.css"  as="style" media="none" onload="if(media!='all')media='all'" />
-            <link rel="stylesheet" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fancybox/jquery.fancybox.css" as="style" media="none" onload="if(media!='all')media='all'" />
-            
             <link rel="stylesheet" href="/themes/rainlab-bonjour/assets/css/app.css"  as="style" media="none" onload="if(media!='all')media='all'"/>
             <link rel="stylesheet" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/css/style.css"  as="style" media="none" onload="if(media!='all')media='all'"/>
               
@@ -250,7 +242,7 @@ strpos($_SERVER['HTTP_USER_AGENT'], 'GTmetrix') !== false
 
         <!-- FAVICONS -->
         <link rel="apple-touch-icon" sizes="180x180" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/favicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/favicon/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" loading="lazy" type="image/png" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/favicon/favicon-32x32.png" sizes="32x32">
         <link rel="icon" type="image/png" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/favicon/favicon-16x16.png" sizes="16x16">
         <link rel="manifest" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/favicon/manifest.json">
         <link rel="mask-icon" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
@@ -261,21 +253,30 @@ strpos($_SERVER['HTTP_USER_AGENT'], 'GTmetrix') !== false
             {% if GTMETRIX == 'NO' %}
                 <link rel="preload" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/libs/cookie/cookieconsent.min.css" media="screen"  type="text/css" as="style">
             {% endif %}
-            <link rel="stylesheet" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/css/app.css?v=1.1.0">
+            <!-- <link rel="stylesheet" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/css/app.css?v=1.1.0"> -->
+            <link rel="preload" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/css/app.css?v=1.1.0" as="style" onload="this.onload=null;this.rel='stylesheet'">
+            <noscript><link rel="stylesheet" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/css/app.css?v=1.1.0"></noscript>
+
             <link rel="preload" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fancybox/helpers/jquery.fancybox-buttons.css" type="text/css" media="screen" as="style">
             
             <link rel="preload" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fancybox/helpers/jquery.fancybox-thumbs.css" type="text/css" media="screen" as="style">
             <link rel="preload" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fancybox/jquery.fancybox.css" type="text/css" media="screen" as="style">        
-            <!-- <link rel="stylesheet" href="/themes/rainlab-bonjour/assets/css/app.css?v=1.1.0"> -->
-            <link rel="stylesheet" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/css/style.css?v=22">
+            
+            
+            <link rel="preload" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/css/style.css?v=22" as="style" onload="this.onload=null;this.rel='stylesheet'">
+            <noscript><link rel="stylesheet" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/css/style.css?v=22"></noscript>
+
+            <!-- <link rel="stylesheet" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/css/style.css?v=22"> -->
+            
             <!--script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
             <script src="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fancybox/jquery.fancybox.js"></script>
             <script src="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/js/app.min.js"></script-->
             <!--<script src="https://frisianflag.com/themes/rainlab-bonjour/assets/js/app.min.js?v=1.0.12"></script>-->
         
         {% endif %}
- 
-        <!-- STYLESHEET -->
+             
+         {% if GTMETRIX == 'NO' %}
+         <!-- STYLESHEET -->
         <link rel="preload" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fonts/Brevia-Black.woff" as="font" type="font/woff" crossorigin="anonymous">
             <link rel="preload" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fonts/Brevia-Regular.woff" as="font" type="font/woff" crossorigin="anonymous">
             <link rel="preload" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fonts/Brevia-Semibold.woff" as="font" type="font/woff" crossorigin="anonymous">
@@ -283,7 +284,6 @@ strpos($_SERVER['HTTP_USER_AGENT'], 'GTmetrix') !== false
             <link rel="preload" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fonts/slick.woff" as="font" type="font/woff" crossorigin="anonymous"> 
              <link rel="preload" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fonts/fontawesome-webfont.woff2?v=4.6.3" as="font" type="font/woff2" crossorigin="anonymous">
              
-         {% if GTMETRIX == 'NO' %}
         <script src="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/libs/cookie/cookieconsent.min.js" async></script>
         <!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c35734915acab41" async></script>  -->
         
@@ -397,88 +397,86 @@ strpos($_SERVER['HTTP_USER_AGENT'], 'GTmetrix') !== false
             gtag('config', '{{ GA_ID }}');
         </script> -->
 
-{% if GTMETRIX == 'NO' %}
-        <!-- Google Tag Manager -->
-        <script>
-setTimeout(function(){
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','{{ GTM_ID }}');
-}, 0);
-</script>
-{% endif %}
+        {% if GTMETRIX == 'NO' %}
+            <!-- Google Tag Manager -->
+            <script>
+                setTimeout(function(){
+                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                        })(window,document,'script','dataLayer','{{ GTM_ID }}');
+                }, 0);
+            </script>
+        {% endif %}
         <!-- End Google Tag Manager -->
 
         <!-- Facebook Pixel Code -->
         
           {% if this.page.fileName != 'home-skeleteon.htm' %}
-          
-{% if GTMETRIX == 'NO' %}          
-        <!-- <script>
-        setTimeout(function(){          
-        !function(f,b,e,v,n,t,s)
-          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-          n.queue=[];t=b.createElement(e);t.async=!0;
-          t.src=v;s=b.getElementsByTagName(e)[0];
-          s.parentNode.insertBefore(t,s)}(window, document,'script',
-          'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', '1152867051533614');
-          fbq('track', 'PageView');
-        }, 4500);
-        </script>
-        
-        <noscript><img height="1" width="1" style="display:none"
-          src="https://www.facebook.com/tr?id=1152867051533614&ev=PageView&noscript=1" alt="Facebook Pixel"/></noscript> -->
-{% endif %}
-          
+                {% if GTMETRIX == 'NO' %}          
+                        <!-- <script>
+                        setTimeout(function(){          
+                        !function(f,b,e,v,n,t,s)
+                          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                          n.queue=[];t=b.createElement(e);t.async=!0;
+                          t.src=v;s=b.getElementsByTagName(e)[0];
+                          s.parentNode.insertBefore(t,s)}(window, document,'script',
+                          'https://connect.facebook.net/en_US/fbevents.js');
+                          fbq('init', '1152867051533614');
+                          fbq('track', 'PageView');
+                        }, 4500);
+                        </script>
+                        
+                        <noscript><img height="1" width="1" style="display:none"
+                          src="https://www.facebook.com/tr?id=1152867051533614&ev=PageView&noscript=1" alt="Facebook Pixel"/></noscript> -->
+                {% endif %}
           {% endif %}
           
-        {% if this.page.fileName == 'home-skeleteon.htm' %}
- {% if GTMETRIX == 'NO' %}       
-     <!--    <script>
-         defer(function() {
-              !function(f,b,e,v,n,t,s)
-       {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-       n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-       if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-       n.queue=[];t=b.createElement(e);t.async=!0;
-       t.src=v;s=b.getElementsByTagName(e)[0];
-       s.parentNode.insertBefore(t,s)}(window, document,'script',
-       'https://connect.facebook.net/en_US/fbevents.js');
-       fbq('init', '1152867051533614');
-       fbq('track', 'PageView');
-         },4500);
-     
-     </script>
-     <noscript><img height="1" width="1" style="display:none"
-       src="https://www.facebook.com/tr?id=1152867051533614&ev=PageView&noscript=1" alt="Facebook Pixel"
-     /></noscript> -->
-{% endif %}
-        {% endif %}
+          {% if this.page.fileName == 'home-skeleteon.htm' %}
+             {% if GTMETRIX == 'NO' %}       
+                 <!--    <script>
+                     defer(function() {
+                          !function(f,b,e,v,n,t,s)
+                   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                   n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                   if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                   n.queue=[];t=b.createElement(e);t.async=!0;
+                   t.src=v;s=b.getElementsByTagName(e)[0];
+                   s.parentNode.insertBefore(t,s)}(window, document,'script',
+                   'https://connect.facebook.net/en_US/fbevents.js');
+                   fbq('init', '1152867051533614');
+                   fbq('track', 'PageView');
+                     },4500);
+                 
+                 </script>
+                 <noscript><img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id=1152867051533614&ev=PageView&noscript=1" alt="Facebook Pixel"
+                 /></noscript> -->
+            {% endif %}
+          {% endif %}
         <!-- End Facebook Pixel Code -->
 
-<script type='application/ld+json'>
-{
-  "@context" : "https://schema.org",
-  "@type" : "Organization",
-  "name" : "Frisian Flag Indonesia",
-  "url" : "https://www.frisianflag.com/",
-  "sameAs" : [
-    "https://www.facebook.com/FrisianFlagID",
-    "https://twitter.com/FrisianFlagID",
-    "https://www.instagram.com/frisianflagid/",
-    "https://www.youtube.com/user/frisianflagger",
-    "https://www.linkedin.com/company/pt-frisian-flag-indonesia/"
-  ],
-  "logo": "https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo2x.png"
-}
-</script>
+        <script type='application/ld+json'>
+        {
+          "@context" : "https://schema.org",
+          "@type" : "Organization",
+          "name" : "Frisian Flag Indonesia",
+          "url" : "https://www.frisianflag.com/",
+          "sameAs" : [
+            "https://www.facebook.com/FrisianFlagID",
+            "https://twitter.com/FrisianFlagID",
+            "https://www.instagram.com/frisianflagid/",
+            "https://www.youtube.com/user/frisianflagger",
+            "https://www.linkedin.com/company/pt-frisian-flag-indonesia/"
+          ],
+          "logo": "https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo2x.png"
+        }
+        </script>
+        {% placeholder schema %}
     
-    {% placeholder schema %}
     
     </head>
     <body>
@@ -487,65 +485,78 @@ setTimeout(function(){
             <script src="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/js/app.min.js"></script>
             <script src="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/fancybox/jquery.fancybox.js"></script>
         {% endif%}
-{% if GTMETRIX == 'NO' %}
-     <!--  <script>
-     setTimeout(function(){
-     (function(d, s, id) {
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) return;
-       js = d.createElement(s); js.id = id;
-       js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
-       fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
-     fbq('track', 'ViewContent')
-     }, 4500);
-     </script>
-     <div id="fb-root"></div> -->
-{% endif %}
-{% if this.page.layout == 'home-alt' %}
-   <!--
-        Start of DoubleClick Floodlight Tag: Please do not remove
-        Activity name of this tag: Frisian Flag - Homepage 2018
-        URL of the webpage where the tag is expected to be placed: https://www.frisianflag.com/
-        This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
-        Creation Date: 04/27/2018
-        -->
-{% if GTMETRIX == 'NO' %}
-        <script type="text/javascript">
-            var axel = Math.random() + "";
-            var a = axel * 10000000000000;
-            document.write('<iframe src="https://6614846.fls.doubleclick.net/activityi;src=6614846;type=frisi18;cat=frisi_h;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
-</script>
-            <noscript>
-
-            <iframe src="https://6614846.fls.doubleclick.net/activityi;src=6614846;type=frisi18;cat=frisi_h;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
-            </noscript>
-    {% endif %}
+        {% if GTMETRIX == 'NO' %}
+             <!--  <script>
+             setTimeout(function(){
+             (function(d, s, id) {
+               var js, fjs = d.getElementsByTagName(s)[0];
+               if (d.getElementById(id)) return;
+               js = d.createElement(s); js.id = id;
+               js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
+               fjs.parentNode.insertBefore(js, fjs);
+             }(document, 'script', 'facebook-jssdk'));
+             fbq('track', 'ViewContent')
+             }, 4500);
+             </script>
+             <div id="fb-root"></div> -->
+        {% endif %}
+        {% if this.page.layout == 'home-alt' %}
+           <!--
+            Start of DoubleClick Floodlight Tag: Please do not remove
+            Activity name of this tag: Frisian Flag - Homepage 2018
+            URL of the webpage where the tag is expected to be placed: https://www.frisianflag.com/
+            This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
+            Creation Date: 04/27/2018
+            -->
+            {% if GTMETRIX == 'NO' %}
+                <script type="text/javascript">
+                    var test = "";
+                    var axel = Math.random() + "";
+                    var a = axel * 10000000000000;
+                    document.write('<iframe src="https://6614846.fls.doubleclick.net/activityi;src=6614846;type=frisi18;cat=frisi_h;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+                </script>
+                <noscript>
+    
+                <iframe src="https://6614846.fls.doubleclick.net/activityi;src=6614846;type=frisi18;cat=frisi_h;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+                </noscript>
+            {% endif %}
             <!-- End of DoubleClick Floodlight Tag: Please do not remove -->
-    {% endif %}
+        {% endif %}
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ GTM_ID }}"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <header class="header">
+    
+    <style>
+    @media only screen and (max-width: 431px){
+        .header-mod-ff {
+            height: 70px !important;    
+        }  
+        .logo__small img {
+            max-width: 50%;    
+        }
+    }
+    </style>
+    
+    <header class="header header-mod-ff">
         <!-- . -->
         <!-- desktop menu -->
         <div class="container-fluid">
             <div class="row">
+            {% if GTMETRIX == 'NO' %}
                 <div class="col-md-1 col-xs-4 logo-cont">
-{% if GTMETRIX == 'NO' %}
                     <a href="{{ 'home'|page }}" class="logo">
                         <div class="logo__default">
-                            <img src="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo.png" srcset="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo2x.png 2x" alt="Frisian Flag"/>
+                            <img src="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo.png" srcset="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo2x.png 2x" alt="Frisian Flag" style="width: 100%;height: auto;" width="500" height="500"/>
                              <span>BUILDING<br/>STRONG FAMILIES<br/>SINCE 1871</span>
                         </div>
                         <div class="logo__small">
-                            <img src="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo-small.png" srcset="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo-small2x.png 2x" alt="Frisian Flag">
+                            <img src="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo-small.png" srcset="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/logo-small2x.png 2x" alt="Frisian Flag" style="height: 100%;width: auto;" width="300" height="300">
                             <span>BUILDING<br/>STRONG FAMILIES<br/>SINCE 1871</span>
                         </div>
                     </a>
-{% endif %}
                 </div>
+            {% endif %}
                 {% if Agent.isDesktop()  %}
                     <div class="col-md-12 navigation hidden-xs hidden-sm hidden-md">
  {% if GTMETRIX == 'NO' %}
@@ -582,16 +593,17 @@ setTimeout(function(){
                                     <img src="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/uk.png" srcset="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/uk2x.png 2x" alt="English">
                                 </a>
                             </li>
-{% endif %}
-                        <li class="top-menu__list top-menu__list--button"><a href="javascript:;" class="searchbtn"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                        {% endif %}
+                            <li class="top-menu__list top-menu__list--button"><a href="javascript:;" class="searchbtn"><i class="fa fa-search" aria-hidden="true"></i></a>
+                            </li>
                         </ul>
- {% if GTMETRIX == 'NO' %}
+                     {% if GTMETRIX == 'NO' %}
                         {% if str_contains(url_current(), '/en') %} 
                             {% partial 'site/nav-en' %}
                         {% else %}
                             {% partial 'site/nav' %}
                         {% endif %}
- {% endif %}
+                     {% endif %}
 
                     </div>    
                 {% endif %}
@@ -606,6 +618,8 @@ setTimeout(function(){
         </div>
         <!-- end of desktop menu -->
         <!-- Mobile Menu -->
+        
+        {% if GTMETRIX == 'NO' %}
         <div class="headermenu-xs">
             <div class="wrp-headmenu-xs">
                 {% if str_contains(url_current(), '/en') %} 
@@ -623,6 +637,7 @@ setTimeout(function(){
                 </div>
             </div>
         </div>
+        {% endif %}
         <!-- end of mobile menu -->
         <!-- search form -->
         <div class="searchform">
@@ -632,16 +647,17 @@ setTimeout(function(){
           </form>
         </div>
     </header>
-    <div class="popup--login-panel">
+    <!-- <div class="popup--login-panel">
     
     </div>
     <div class="popup--register-panel">
     
-    </div>
+    </div> -->
     {# if preview != 1 %}
     {% partial 'site/login' %}
     {% partial 'site/register' %}
     {% endif #}
+    {% if GTMETRIX == 'NO' %}
     <div id="thank-you" class="popup popup__login">
     	<div class="popup__login-heading">Frisian Flag Connect</div> <!--  .popup__login-heading -->
     	<div class="popup__login-body">	
@@ -654,5 +670,44 @@ setTimeout(function(){
     
     	</div> <!--  .popup__login-body -->
     </div>
+    
+    <script>
+    let menuKeju = document.querySelector('.menu-keju');
+    if (menuKeju) {
+        let labelNew = document.createElement('div');
+        const svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svgElement.setAttribute("stroke", "currentColor");
+        svgElement.setAttribute("fill", "rgb(216, 178, 93)");
+        svgElement.setAttribute("stroke-width", "0");
+        svgElement.setAttribute("viewBox", "0 0 512 512");
+        svgElement.setAttribute("height", "1em");
+        svgElement.setAttribute("width", "1em");
+        svgElement.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+        
+        svgElement.innerHTML = `
+            <path d="M269 335.61q-6.33.47-12.78.47c-5.23 0-10.4-.24-15.51-.69a176.11 176.11 0 0 1-127.67-72.94 4 4 0 0 0-6.77.35l-72 129.4c-2.74 5-3.17 11-.28 15.88A16.78 16.78 0 0 0 48.22 416h78a15.28 15.28 0 0 1 13.62 7.33L178.5 488a16.26 16.26 0 0 0 13.75 8c5.94-.33 12.09-4.19 14.56-9.6l66.11-145.15a4 4 0 0 0-3.92-5.64zm208.64 56.27-71.53-129.17a4 4 0 0 0-6.74-.36 176.5 176.5 0 0 1-78.31 61.42 16.09 16.09 0 0 0-8.72 8.25l-36.86 81.1a7.92 7.92 0 0 0 0 6.6l30.27 66.59c2.45 5.41 8.59 9.36 14.52 9.69a16.3 16.3 0 0 0 13.7-8.12l38.53-64.58c2.89-4.85 8.13-7.33 13.78-7.3h78.77c6.67 0 11.72-3.48 14-10a16.92 16.92 0 0 0-1.41-14.12z"></path>
+            <ellipse cx="256.26" cy="160" rx="48.01" ry="48"></ellipse>
+            <path d="M256.26 16c-79.42 0-144 64.59-144 144s64.61 144 144 144 144-64.6 144-144-64.59-144-144-144zm0 224a80 80 0 1 1 80-80 80.1 80.1 0 0 1-80 80z"></path>
+        `;
+        
+        const textNew = document.createElement('span');
+        textNew.textContent = "BARU";
+        textNew.style.color = "rgb(216, 178, 93)";
+        
+        labelNew.appendChild(svgElement);
+        labelNew.appendChild(textNew);
+        labelNew.style.display = "flex";
+        labelNew.style.gap = "0.5rem";
+        labelNew.style.alignItems = "center";
+        
+        menuKeju.appendChild(labelNew);
+        menuKeju.style.display = "flex";
+        menuKeju.style.justifyContent = "center";
+        menuKeju.style.alignItems = "center";
+        menuKeju.style.gap = "1rem";
+    }
+    </script>
+    
     <!-- akhir header.htm -->
     {% partial 'site/forgot-password' %}
+    {% endif %}

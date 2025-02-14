@@ -30,6 +30,7 @@ $this->addJs('assets/js/custom.js?v=1.03');
 {% set hiddenParts = false %}
 <!--<link rel="preload" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" as="font" type="font/format" crossorigin />-->
 
+{% if GTMETRIX == 'NO' %}
 <footer class="footer clearfix">
     <div class="footerblue">
         <div class="footer__top text-center">
@@ -46,11 +47,10 @@ $this->addJs('assets/js/custom.js?v=1.03');
                     <a href="https://www.ibudanbalita.com/" class="sites-list" target="_blank">
                         <div class="ibu-balita-img"></div>
                     </a>
-
+                    <!-- heres -->
                     <!-- <a href="https://www.friso.co.id/" class="sites-list" target="_blank">
                       <div class="friso-img"></div>
                     </a> -->
-
                     <a href="https://www.omela.com" class="sites-list" target="_blank">
                         <img loading="lazy" src="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/other-sites/omela.png'"
                              srcset="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/img/other-sites/omela2x.png" alt="Omela" width="100" height="40">
@@ -62,13 +62,14 @@ $this->addJs('assets/js/custom.js?v=1.03');
                 </div>
             </div>
             
-            {% if funfact %}
-                <div class="col-md-4 footer__widget__box">
-                    <div class="col-md-12">
-                    <h3 class="footer__widget__title">{{'fakta-seru'|_}} #{{ funfact.no }}</h3>
-                        {{ trans_pick(funfact, 'description') | raw }}
+            {% if not records.isEmpty %}
+                {% set funfact = records.random %}
+                    <div class="col-md-4 footer__widget__box">
+                        <div class="col-md-12">
+                        <h3 class="footer__widget__title">{{'fakta-seru'|_}} #{{ funfact.no }}</h3>
+                            {{ trans_pick(funfact, 'description') | raw }}
+                        </div>
                     </div>
-                </div>
             {% endif %}
 
             <div class="col-md-4 footer__widget__box">
@@ -108,14 +109,15 @@ $this->addJs('assets/js/custom.js?v=1.03');
     </div>
 
 </footer>
+{% endif %}
+
     {% if hiddenParts %}
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script> -->
     <script src="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/js/jquery-3-6-0.js"></script>
     {% endif %}
     
     {% if this.page.fileName == 'home-skeleteon.htm' %}
-    <script   rel="dns-prefetch" src="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/js/app.min.js"></script>
-    <script   rel="preconnect" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/js/app.min.js" crossorigin></script>
+    <script src="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/js/app.min.js" defer></script>
     <script src="https://rawgit.com/enbifa/jquery.skeleton.loader/master/src/jquery.scheletrone.js"></script>
                 
     <!-- <link rel="import" href="https://d5r0s9boode1v.cloudfront.net/themes/rainlab-bonjour/assets/libs/cookie/cookieconsent.min.css" media="screen"  type="text/css" async>

@@ -1510,10 +1510,9 @@ body {
     <div class="container">
     <h2>Inspirasi Gaya Hidup,<br>Tips & Nutrisi Keluarga</h2>
         <div class="main">
-        {% set nutrisiPosts = milkpediaList.nutrisi %}
+        {% set nutrisiPosts = milkpediaList.nutrisi(4) %}
     	{% if nutrisiPosts  %}
-    	{% set milkpedias = nutrisiPosts.take(4) %}
-            {% for milkpediaPost in milkpedias %}
+            {% for milkpediaPost in nutrisiPosts %}
             <div class="slide">
                 <div class="related-img-{{loop.index}}" data-image="{{ milkpediaPost.featured_image | mediathumb_resize('width', 640, 90)  }}">
                     <img loading="lazy" src="" alt="">
